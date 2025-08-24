@@ -38,6 +38,27 @@
             font-size: 1.1rem;
         }
 
+        .breadcrumb {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 0.8rem 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .breadcrumb a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .breadcrumb a:hover {
+            color: white;
+        }
+
+        .breadcrumb span {
+            color: rgba(255, 255, 255, 0.6);
+            margin: 0 0.5rem;
+        }
+
         .container {
             max-width: 900px;
             margin: 0 auto;
@@ -264,6 +285,15 @@
             border-radius: 20px;
             font-size: 0.8rem;
             font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .tag:hover {
+            background: linear-gradient(45deg, #e84393, #fd79a8);
+            color: white;
+            text-decoration: none;
+            transform: scale(1.05);
         }
 
         .strategies {
@@ -371,6 +401,14 @@
         <p>Understanding why conversations feel so complicated</p>
     </div>
 
+    <div class="breadcrumb">
+        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/index.html">Home</a>
+        <span>></span>
+        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/index.html">Daily Struggles</a>
+        <span>></span>
+        Communication Issues
+    </div>
+
     <div class="container">
         <div class="content-card">
             <div class="intro">
@@ -424,10 +462,10 @@
                     <p><strong>What it feels like:</strong> After social interactions, you feel completely drained, even if you enjoyed them. You might need hours or days to recover. Simple conversations can feel as tiring as running a marathon.</p>
                     <p><strong>Why this happens:</strong> Social interaction requires more <a class="jargon">cognitive resources<span class="tooltip">Mental energy used for thinking, processing information, and making decisions</span></a> for you than for neurotypical people. You're processing multiple streams of information and working extra hard to navigate unspoken social rules.</p>
                     <div class="conditions-tags">
-                        <span class="tag">Autism</span>
-                        <span class="tag">ADHD</span>
-                        <span class="tag">Introversion</span>
-                        <span class="tag">Sensory Processing</span>
+                        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/conditions/autism.html" class="tag">Autism</a>
+                        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/conditions/adhd.html" class="tag">ADHD</a>
+                        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/conditions/anxiety.html" class="tag">Social Anxiety</a>
+                        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/sensory-processing.html" class="tag">Sensory Processing</a>
                     </div>
                 </div>
 
@@ -436,10 +474,10 @@
                     <p><strong>What it feels like:</strong> You rehearse conversations in your head, worry about how your words will be interpreted, and second-guess everything you say. By the time you've crafted the "perfect" response, the conversation has moved on.</p>
                     <p><strong>Why this happens:</strong> Your brain is working extra hard to navigate social situations that don't come naturally. <a class="jargon">RSD<span class="tooltip">Rejection Sensitive Dysphoria - extreme emotional sensitivity to perceived or actual rejection, criticism, or failure</span></a> can make you catastrophize normal social pauses.</p>
                     <div class="conditions-tags">
-                        <span class="tag">Social Anxiety</span>
-                        <span class="tag">Autism</span>
-                        <span class="tag">Perfectionism</span>
-                        <span class="tag">RSD</span>
+                        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/conditions/anxiety.html" class="tag">Social Anxiety</a>
+                        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/conditions/autism.html" class="tag">Autism</a>
+                        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/glossary/perfectionism.html" class="tag">Perfectionism</a>
+                        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/glossary/rsd.html" class="tag">RSD</a>
                     </div>
                 </div>
 
@@ -486,9 +524,9 @@
                     <p><strong>What it feels like:</strong> People seem annoyed or uncomfortable and you have no idea why. You might continue talking when someone wants to leave, miss sarcasm, or not realize someone is hinting at something.</p>
                     <p><strong>Why this happens:</strong> Your brain prioritizes explicit information over implicit social signals. You're not "missing" anything—you're processing different types of information. Many neurotypical social cues are arbitrary cultural conventions.</p>
                     <div class="conditions-tags">
-                        <span class="tag">Autism</span>
-                        <span class="tag">ADHD Inattentiveness</span>
-                        <span class="tag">Auditory Processing</span>
+                        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/conditions/autism.html" class="tag">Autism</a>
+                        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/conditions/adhd.html" class="tag">ADHD</a>
+                        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/auditory-processing.html" class="tag">Auditory Processing</a>
                     </div>
                 </div>
 
@@ -497,9 +535,9 @@
                     <p><strong>What it feels like:</strong> People react negatively to your straightforward communication. You say exactly what you mean, but others seem offended or call you "blunt" or "harsh." You're confused because you're just being honest and efficient.</p>
                     <p><strong>Why this happens:</strong> You value clarity and honesty over social cushioning. Neurotypical communication often includes layers of politeness and indirect language that can feel inefficient or confusing to you.</p>
                     <div class="conditions-tags">
-                        <span class="tag">Autism</span>
-                        <span class="tag">ADHD Impulsivity</span>
-                        <span class="tag">Executive Function</span>
+                        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/conditions/autism.html" class="tag">Autism</a>
+                        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/conditions/adhd.html" class="tag">ADHD</a>
+                        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/executive-function.html" class="tag">Executive Function</a>
                     </div>
                 </div>
 
@@ -508,9 +546,9 @@
                     <p><strong>What it feels like:</strong> You have a thought and it feels urgent to share immediately. By the time there's a "natural" pause, you've forgotten your point or the moment has passed. People seem annoyed when you jump in, but waiting feels impossible.</p>
                     <p><strong>Why this happens:</strong> Your <a class="jargon">working memory<span class="tooltip">The ability to hold and manipulate information in your mind for short periods while performing other cognitive tasks</span></a> might not hold onto thoughts well while processing other information, or your impulse control system works differently.</p>
                     <div class="conditions-tags">
-                        <span class="tag">ADHD</span>
-                        <span class="tag">Working Memory</span>
-                        <span class="tag">Impulse Control</span>
+                        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/conditions/adhd.html" class="tag">ADHD</a>
+                        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/glossary/working-memory.html" class="tag">Working Memory</a>
+                        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/glossary/impulse-control.html" class="tag">Impulse Control</a>
                     </div>
                 </div>
 
