@@ -158,32 +158,6 @@
             text-decoration: none;
         }
 
-        .category-section.available {
-            cursor: pointer;
-        }
-
-        .category-section.coming-soon {
-            background: linear-gradient(45deg, #b2bec3, #636e72);
-            cursor: default;
-            position: relative;
-        }
-
-        .category-section.coming-soon:hover {
-            transform: none;
-            box-shadow: 0 8px 25px rgba(99, 110, 114, 0.2);
-        }
-
-        .coming-soon-badge {
-            position: absolute;
-            top: 0.8rem;
-            right: 1rem;
-            background: rgba(255, 255, 255, 0.2);
-            padding: 0.2rem 0.6rem;
-            border-radius: 10px;
-            font-size: 0.75rem;
-            font-weight: 500;
-        }
-
         .category-title {
             font-size: 1.3rem;
             font-weight: 600;
@@ -370,9 +344,9 @@
     </div>
 
     <div class="breadcrumb">
-        <a href="#">Home</a>
+        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/index.html">Home</a>
         <span>></span>
-        <a href="#">Conditions</a>
+        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/conditions/index.html">Conditions</a>
         <span>></span>
         Understanding Autism
     </div>
@@ -411,46 +385,41 @@
                 <h2>Areas Where Autism Often Creates Friction</h2>
                 <p>Autism affects different people in different ways, but there are common areas where the mismatch between autistic brains and neurotypical-designed environments creates daily challenges. Click on any area below to explore specific struggles and strategies:</p>
 
-                <a href="#communication-issues" class="category-section available">
+                <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/communication-issues.html" class="category-section">
                     <div class="category-title">Communication Issues</div>
                     <div class="category-description">Differences in how social information is processed and expressed</div>
                     <div class="category-examples">Missing social cues, being too direct, social exhaustion, masking fatigue</div>
                 </a>
 
-                <div class="category-section coming-soon">
-                    <div class="coming-soon-badge">Coming Soon</div>
+                <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/sensory-processing.html" class="category-section">
                     <div class="category-title">Sensory Processing Challenges</div>
                     <div class="category-description">Over- or under-responsiveness to sensory input from the environment</div>
                     <div class="category-examples">Sound sensitivity, texture aversion, sensory overload, seeking sensory input</div>
-                </div>
+                </a>
 
-                <div class="category-section coming-soon">
-                    <div class="coming-soon-badge">Coming Soon</div>
+                <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/executive-function.html" class="category-section">
                     <div class="category-title">Executive Function Differences</div>
                     <div class="category-description">Challenges with planning, organizing, and managing daily tasks</div>
                     <div class="category-examples">Starting tasks, time management, transitioning between activities, working memory</div>
-                </div>
+                </a>
 
-                <div class="category-section coming-soon">
-                    <div class="coming-soon-badge">Coming Soon</div>
+                <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/emotional-regulation.html" class="category-section">
                     <div class="category-title">Emotional Regulation Struggles</div>
                     <div class="category-description">Difficulty managing and expressing emotions in socially expected ways</div>
                     <div class="category-examples">Meltdowns, emotional overwhelm, difficulty identifying feelings, intense reactions</div>
-                </div>
+                </a>
 
-                <div class="category-section coming-soon">
-                    <div class="coming-soon-badge">Coming Soon</div>
+                <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/routine-and-change.html" class="category-section">
                     <div class="category-title">Routine and Change Difficulties</div>
                     <div class="category-description">Need for predictability and struggle with unexpected changes</div>
                     <div class="category-examples">Disrupted routines, unexpected schedule changes, travel difficulties, transition anxiety</div>
-                </div>
+                </a>
 
-                <div class="category-section coming-soon">
-                    <div class="coming-soon-badge">Coming Soon</div>
+                <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/special-interests.html" class="category-section">
                     <div class="category-title">Special Interests and Hyperfocus</div>
                     <div class="category-description">Intense, focused interests that can both help and create challenges</div>
                     <div class="category-examples">Time blindness during interests, social isolation, difficulty switching focus, intense expertise</div>
-                </div>
+                </a>
             </div>
 
             <div class="understanding-section">
@@ -513,28 +482,8 @@
     </div>
 
     <script>
-        // Handle clicks on available category sections
-        document.addEventListener('DOMContentLoaded', function() {
-            const availableCategories = document.querySelectorAll('.category-section.available');
-            
-            availableCategories.forEach(category => {
-                category.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    // In a real implementation, this would navigate to the communication issues page
-                    alert('This would navigate to the Communication Issues page');
-                });
-            });
-
-            // Prevent clicks on coming soon categories
-            const comingSoonCategories = document.querySelectorAll('.category-section.coming-soon');
-            
-            comingSoonCategories.forEach(category => {
-                category.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    // Do nothing - these aren't clickable
-                });
-            });
-        });
+        // All links now work as proper navigation
+        // No special handling needed - dead links serve as todo items
     </script>
 </body>
 </html>
