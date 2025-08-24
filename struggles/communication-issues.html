@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Communication Issues - Neurodivergent Survival Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            min-height: 100vh;
+            line-height: 1.7;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .header h1 {
+            color: white;
+            font-size: 2rem;
+            font-weight: 300;
+            margin-bottom: 0.5rem;
+        }
+
+        .header p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.1rem;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .content-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .intro {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            color: #555;
+        }
+
+        .category-section {
+            background: linear-gradient(45deg, #74b9ff, #0984e3);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(9, 132, 227, 0.2);
+        }
+
+        .category-section:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 35px rgba(9, 132, 227, 0.3);
+        }
+
+        .category-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .category-description {
+            font-size: 1rem;
+            opacity: 0.95;
+            margin-bottom: 1rem;
+        }
+
+        .issue-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .issue-item {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 1rem;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .issue-item:hover {
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        /* Jargon tooltip styles */
+        .jargon {
+            color: #e84393;
+            text-decoration: none;
+            border-bottom: 1px dotted #e84393;
+            position: relative;
+            cursor: help;
+            font-weight: 500;
+        }
+
+        .jargon:hover {
+            color: #fd79a8;
+            border-bottom-color: #fd79a8;
+        }
+
+        .tooltip {
+            visibility: hidden;
+            opacity: 0;
+            position: absolute;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #333;
+            color: white;
+            padding: 10px 14px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: normal;
+            z-index: 1001;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: opacity 0.3s, visibility 0.3s;
+            max-width: 280px;
+            white-space: normal;
+            text-align: center;
+            line-height: 1.4;
+        }
+
+        .tooltip::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 6px solid transparent;
+            border-top-color: #333;
+        }
+
+        .jargon:hover .tooltip {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background: white;
+            margin: 5% auto;
+            padding: 0;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 700px;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal-header {
+            background: linear-gradient(45deg, #74b9ff, #0984e3);
+            color: white;
+            padding: 1.5rem 2rem;
+            border-radius: 20px 20px 0 0;
+            position: relative;
+        }
+
+        .modal-header h2 {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+
+        .close {
+            position: absolute;
+            right: 1.5rem;
+            top: 1.5rem;
+            color: white;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: background 0.3s ease;
+        }
+
+        .close:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .modal-body {
+            padding: 2rem;
+        }
+
+        .info-section {
+            margin-bottom: 1.5rem;
+            padding: 1.2rem;
+            border-left: 4px solid #74b9ff;
+            background: #f8f9ff;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .info-section h3 {
+            color: #0984e3;
+            margin-bottom: 0.8rem;
+            font-size: 1.1rem;
+        }
+
+        .info-section p {
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .info-section ul {
+            line-height: 1.6;
+            color: #555;
+            padding-left: 1.2rem;
+        }
+
+        .info-section li {
+            margin-bottom: 0.4rem;
+        }
+
+        .conditions-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .tag {
+            background: linear-gradient(45deg, #fd79a8, #e84393);
+            color: white;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .strategies {
+            background: #e8f5e8;
+            border-left-color: #00b894;
+        }
+
+        .strategies h3 {
+            color: #00b894;
+        }
+
+        .warning {
+            background: #fff5e6;
+            border-left-color: #fdcb6e;
+        }
+
+        .warning h3 {
+            color: #e17055;
+        }
+
+        .validation {
+            background: #f0e6ff;
+            border-left-color: #a29bfe;
+        }
+
+        .validation h3 {
+            color: #6c5ce7;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .overlay-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            max-width: 400px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .overlay-content h3 {
+            color: #0984e3;
+            margin-bottom: 1rem;
+        }
+
+        .overlay-content p {
+            margin-bottom: 0.8rem;
+            color: #666;
+        }
+
+        .dismiss-hint {
+            color: #999;
+            font-size: 0.9rem;
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .content-card {
+                padding: 1.5rem;
+            }
+            
+            .modal-content {
+                margin: 10% auto;
+                width: 95%;
+            }
+            
+            .modal-body {
+                padding: 1.5rem;
+            }
+
+            .issue-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay" id="helpOverlay" onclick="dismissOverlay()">
+        <div class="overlay-content">
+            <h3>How to Navigate This Page</h3>
+            <p><strong style="color: #e84393; border-bottom: 1px dotted #e84393;">Pink dotted terms</strong> show definitions when you hover</p>
+            <p><strong style="color: #74b9ff;">Blue sections</strong> are clickable for detailed guidance</p>
+            <p class="dismiss-hint">Tap anywhere to continue</p>
+        </div>
+    </div>
+
+    <div class="header">
+        <h1>Communication Issues</h1>
+        <p>Understanding why conversations feel so complicated</p>
+    </div>
+
+    <div class="container">
+        <div class="content-card">
+            <div class="intro">
+                <p>If you're here, conversations probably feel harder than they should. Maybe you say the wrong thing, miss social cues, or feel exhausted after normal interactions. You're not broken, and you're definitely not alone.</p>
+                
+                <p>Neurodivergent brains often process social information differently than <a class="jargon">neurotypical<span class="tooltip">People whose brain development and functioning aligns with what society considers "typical" or "normal"</span></a> brains. Think of it like having a different operating system trying to run software designed for a different platform. The friction you experience isn't a bug—it's a feature mismatch.</p>
+
+                <p>Communication challenges usually fall into two main areas: things that happen inside your head during social interactions, and things that happen between you and other people. Let's break these down:</p>
+            </div>
+
+            <div class="category-section" onclick="openModal('internal-issues')">
+                <div class="category-title">Internal Communication Struggles</div>
+                <div class="category-description">The mental and emotional work that happens inside your head during social interactions</div>
+                <div class="issue-grid">
+                    <div class="issue-item">Social Exhaustion</div>
+                    <div class="issue-item">Overthinking Responses</div>
+                    <div class="issue-item">Masking Fatigue</div>
+                    <div class="issue-item">Social Anxiety Spirals</div>
+                </div>
+            </div>
+
+            <div class="category-section" onclick="openModal('interpersonal-issues')">
+                <div class="category-title">Interpersonal Communication Challenges</div>
+                <div class="category-description">The friction that happens in the actual exchange between you and other people</div>
+                <div class="issue-grid">
+                    <div class="issue-item">Missing Social Cues</div>
+                    <div class="issue-item">Being Too Direct</div>
+                    <div class="issue-item">Interrupting Others</div>
+                    <div class="issue-item">Misreading Tone</div>
+                </div>
+            </div>
+
+            <div style="background: #f8f9ff; padding: 1.5rem; border-radius: 15px; margin-top: 2rem; border-left: 4px solid #74b9ff;">
+                <p><strong>Remember:</strong> These patterns aren't character flaws. They're the result of your brain working differently in a world designed for different types of processors. Understanding them gives you choices about how to respond.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Internal Issues Modal -->
+    <div id="internal-issues" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Internal Communication Struggles</h2>
+                <span class="close" onclick="closeModal('internal-issues')">&times;</span>
+            </div>
+            <div class="modal-body">
+                <p style="margin-bottom: 1.5rem; font-size: 1.05rem; color: #666;">These are the invisible struggles—the mental and emotional work that happens inside your head during social interactions. Other people can't see this happening, but it's real and it's exhausting.</p>
+
+                <div class="info-section">
+                    <h3>Social Exhaustion</h3>
+                    <p><strong>What it feels like:</strong> After social interactions, you feel completely drained, even if you enjoyed them. You might need hours or days to recover. Simple conversations can feel as tiring as running a marathon.</p>
+                    <p><strong>Why this happens:</strong> Social interaction requires more <a class="jargon">cognitive resources<span class="tooltip">Mental energy used for thinking, processing information, and making decisions</span></a> for you than for neurotypical people. You're processing multiple streams of information and working extra hard to navigate unspoken social rules.</p>
+                    <div class="conditions-tags">
+                        <span class="tag">Autism</span>
+                        <span class="tag">ADHD</span>
+                        <span class="tag">Introversion</span>
+                        <span class="tag">Sensory Processing</span>
+                    </div>
+                </div>
+
+                <div class="info-section">
+                    <h3>Overthinking Responses</h3>
+                    <p><strong>What it feels like:</strong> You rehearse conversations in your head, worry about how your words will be interpreted, and second-guess everything you say. By the time you've crafted the "perfect" response, the conversation has moved on.</p>
+                    <p><strong>Why this happens:</strong> Your brain is working extra hard to navigate social situations that don't come naturally. <a class="jargon">RSD<span class="tooltip">Rejection Sensitive Dysphoria - extreme emotional sensitivity to perceived or actual rejection, criticism, or failure</span></a> can make you catastrophize normal social pauses.</p>
+                    <div class="conditions-tags">
+                        <span class="tag">Social Anxiety</span>
+                        <span class="tag">Autism</span>
+                        <span class="tag">Perfectionism</span>
+                        <span class="tag">RSD</span>
+                    </div>
+                </div>
+
+                <div class="info-section strategies">
+                    <h3>Immediate relief strategies</h3>
+                    <ul>
+                        <li>Find a quiet space and reduce sensory input</li>
+                        <li>Take a breath and say the first reasonable thing that comes to mind</li>
+                        <li>Remember: most people forget conversational details quickly</li>
+                        <li>It's okay to say "I'm still processing that—give me a second"</li>
+                    </ul>
+                </div>
+
+                <div class="info-section strategies">
+                    <h3>Long-term approaches</h3>
+                    <ul>
+                        <li>Schedule recovery time after social events</li>
+                        <li>Practice "good enough" responses instead of perfect ones</li>
+                        <li>Communicate your needs: "I'll need some quiet time after this"</li>
+                        <li>Challenge the belief that every response must be perfect</li>
+                    </ul>
+                </div>
+
+                <div class="info-section validation">
+                    <h3>You're not alone</h3>
+                    <p>Internal social struggles are incredibly common among neurodivergent people. Needing recovery time doesn't mean you're antisocial—it means your brain works hard during interactions. Honor this need and give yourself credit for the invisible work you're doing.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Interpersonal Issues Modal -->
+    <div id="interpersonal-issues" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Interpersonal Communication Challenges</h2>
+                <span class="close" onclick="closeModal('interpersonal-issues')">&times;</span>
+            </div>
+            <div class="modal-body">
+                <p style="margin-bottom: 1.5rem; font-size: 1.05rem; color: #666;">These are the visible struggles—the moments when the difference between your communication style and neurotypical expectations creates friction with other people.</p>
+
+                <div class="info-section">
+                    <h3>Missing Social Cues</h3>
+                    <p><strong>What it feels like:</strong> People seem annoyed or uncomfortable and you have no idea why. You might continue talking when someone wants to leave, miss sarcasm, or not realize someone is hinting at something.</p>
+                    <p><strong>Why this happens:</strong> Your brain prioritizes explicit information over implicit social signals. You're not "missing" anything—you're processing different types of information. Many neurotypical social cues are arbitrary cultural conventions.</p>
+                    <div class="conditions-tags">
+                        <span class="tag">Autism</span>
+                        <span class="tag">ADHD Inattentiveness</span>
+                        <span class="tag">Auditory Processing</span>
+                    </div>
+                </div>
+
+                <div class="info-section">
+                    <h3>Being Too Direct</h3>
+                    <p><strong>What it feels like:</strong> People react negatively to your straightforward communication. You say exactly what you mean, but others seem offended or call you "blunt" or "harsh." You're confused because you're just being honest and efficient.</p>
+                    <p><strong>Why this happens:</strong> You value clarity and honesty over social cushioning. Neurotypical communication often includes layers of politeness and indirect language that can feel inefficient or confusing to you.</p>
+                    <div class="conditions-tags">
+                        <span class="tag">Autism</span>
+                        <span class="tag">ADHD Impulsivity</span>
+                        <span class="tag">Executive Function</span>
+                    </div>
+                </div>
+
+                <div class="info-section">
+                    <h3>Interrupting Others</h3>
+                    <p><strong>What it feels like:</strong> You have a thought and it feels urgent to share immediately. By the time there's a "natural" pause, you've forgotten your point or the moment has passed. People seem annoyed when you jump in, but waiting feels impossible.</p>
+                    <p><strong>Why this happens:</strong> Your <a class="jargon">working memory<span class="tooltip">The ability to hold and manipulate information in your mind for short periods while performing other cognitive tasks</span></a> might not hold onto thoughts well while processing other information, or your impulse control system works differently.</p>
+                    <div class="conditions-tags">
+                        <span class="tag">ADHD</span>
+                        <span class="tag">Working Memory</span>
+                        <span class="tag">Impulse Control</span>
+                    </div>
+                </div>
+
+                <div class="info-section strategies">
+                    <h3>Quick fixes</h3>
+                    <ul>
+                        <li>Ask directly: "How are you feeling about this conversation?"</li>
+                        <li>Add cushioning phrases: "I might be wrong, but..." or "In my experience..."</li>
+                        <li>Hold up a finger to signal you have something to add</li>
+                        <li>Practice: "Can I add something when you're done?"</li>
+                    </ul>
+                </div>
+
+                <div class="info-section strategies">
+                    <h3>Sustainable strategies</h3>
+                    <ul>
+                        <li>Find contexts where directness is valued</li>
+                        <li>Communicate your style upfront: "I tend to be pretty direct"</li>
+                        <li>Use note-taking as external working memory</li>
+                        <li>Practice noticing natural conversation pauses</li>
+                    </ul>
+                </div>
+
+                <div class="info-section validation">
+                    <h3>Your communication has value</h3>
+                    <p>Direct communication is honest, efficient, and often exactly what people need. Many cultures value overlapping conversation as engaged and enthusiastic. Your interruptions usually come from excitement and engagement, not disrespect. You're actively listening and responding.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        function dismissOverlay() {
+            document.getElementById('helpOverlay').style.display = 'none';
+        }
+
+        // Close modal when clicking outside of it
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // Auto-dismiss overlay after 10 seconds
+        setTimeout(function() {
+            const overlay = document.getElementById('helpOverlay');
+            if (overlay) {
+                overlay.style.opacity = '0';
+                setTimeout(() => overlay.style.display = 'none', 300);
+            }
+        }, 8000);
+    </script>
+</body>
+</html>
