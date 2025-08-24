@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Understanding Autism - Neurodivergent Survival Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            min-height: 100vh;
+            line-height: 1.7;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .header h1 {
+            color: white;
+            font-size: 2rem;
+            font-weight: 300;
+            margin-bottom: 0.5rem;
+        }
+
+        .header p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.1rem;
+        }
+
+        .breadcrumb {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 0.8rem 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .breadcrumb a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .breadcrumb a:hover {
+            color: white;
+        }
+
+        .breadcrumb span {
+            color: rgba(255, 255, 255, 0.6);
+            margin: 0 0.5rem;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .content-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .overview-section {
+            background: #f8f9ff;
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            border-left: 4px solid #6c5ce7;
+        }
+
+        .overview-section h2 {
+            color: #6c5ce7;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        .overview-section p {
+            margin-bottom: 1rem;
+            font-size: 1.05rem;
+            color: #555;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            border-top: 3px solid #6c5ce7;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #6c5ce7;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 0.5rem;
+        }
+
+        .friction-areas {
+            margin: 2.5rem 0;
+        }
+
+        .friction-areas h2 {
+            color: #333;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        .friction-areas p {
+            color: #666;
+            margin-bottom: 2rem;
+            font-size: 1.05rem;
+        }
+
+        .category-section {
+            background: linear-gradient(45deg, #74b9ff, #0984e3);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin: 1.5rem 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(9, 132, 227, 0.2);
+            text-decoration: none;
+            display: block;
+        }
+
+        .category-section:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 35px rgba(9, 132, 227, 0.3);
+            color: white;
+            text-decoration: none;
+        }
+
+        .category-section.available {
+            cursor: pointer;
+        }
+
+        .category-section.coming-soon {
+            background: linear-gradient(45deg, #b2bec3, #636e72);
+            cursor: default;
+            position: relative;
+        }
+
+        .category-section.coming-soon:hover {
+            transform: none;
+            box-shadow: 0 8px 25px rgba(99, 110, 114, 0.2);
+        }
+
+        .coming-soon-badge {
+            position: absolute;
+            top: 0.8rem;
+            right: 1rem;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.2rem 0.6rem;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .category-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .category-description {
+            font-size: 1rem;
+            opacity: 0.95;
+            margin-bottom: 1rem;
+        }
+
+        .category-examples {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            font-style: italic;
+        }
+
+        .understanding-section {
+            background: #fff5e6;
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            border-left: 4px solid #fdcb6e;
+        }
+
+        .understanding-section h2 {
+            color: #e17055;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        .reflection-questions {
+            list-style: none;
+            padding: 0;
+        }
+
+        .reflection-questions li {
+            background: white;
+            padding: 1rem 1.5rem;
+            margin: 0.8rem 0;
+            border-radius: 8px;
+            border-left: 3px solid #fdcb6e;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .support-section {
+            background: #e8f5e8;
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            border-left: 4px solid #00b894;
+        }
+
+        .support-section h2 {
+            color: #00b894;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        .support-indicators {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .support-card {
+            background: white;
+            padding: 1.2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .support-card h4 {
+            color: #00b894;
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .support-card ul {
+            padding-left: 1.2rem;
+            color: #555;
+        }
+
+        .support-card li {
+            margin-bottom: 0.3rem;
+            font-size: 0.95rem;
+        }
+
+        /* Jargon tooltip styles */
+        .jargon {
+            color: #e84393;
+            text-decoration: none;
+            border-bottom: 1px dotted #e84393;
+            position: relative;
+            cursor: help;
+            font-weight: 500;
+        }
+
+        .jargon:hover {
+            color: #fd79a8;
+            border-bottom-color: #fd79a8;
+        }
+
+        .tooltip {
+            visibility: hidden;
+            opacity: 0;
+            position: absolute;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #333;
+            color: white;
+            padding: 10px 14px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: normal;
+            z-index: 1001;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: opacity 0.3s, visibility 0.3s;
+            max-width: 280px;
+            white-space: normal;
+            text-align: center;
+            line-height: 1.4;
+        }
+
+        .tooltip::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 6px solid transparent;
+            border-top-color: #333;
+        }
+
+        .jargon:hover .tooltip {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .warning-box {
+            background: #fff2f2;
+            border: 1px solid #ffcccb;
+            padding: 1.2rem;
+            border-radius: 10px;
+            margin: 1.5rem 0;
+        }
+
+        .warning-box h4 {
+            color: #d63031;
+            margin-bottom: 0.5rem;
+        }
+
+        .warning-box p {
+            color: #555;
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .content-card {
+                padding: 1.5rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .support-indicators {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Understanding Autism</h1>
+        <p>A comprehensive guide to autism and how it affects daily life</p>
+    </div>
+
+    <div class="breadcrumb">
+        <a href="#">Home</a>
+        <span>></span>
+        <a href="#">Conditions</a>
+        <span>></span>
+        Understanding Autism
+    </div>
+
+    <div class="container">
+        <div class="content-card">
+            <div class="overview-section">
+                <h2>What is Autism?</h2>
+                <p>Autism is a neurological difference that affects how people process social information, communicate, and experience sensory input. It's present from birth and influences how someone's brain develops and functions throughout their life.</p>
+                
+                <p>Rather than being a single condition, autism exists on a spectrum—meaning it shows up differently in different people. Some autistic people might struggle significantly with daily tasks, while others live independently and may not be identified until adulthood. What unites all autistic people are differences in <a class="jargon">social communication<span class="tooltip">How people share information, express needs, and connect with others through verbal and non-verbal means</span></a>, <a class="jargon">sensory processing<span class="tooltip">How the nervous system receives and responds to sensory information from the environment</span></a>, and patterns of behavior and interests.</p>
+                
+                <p>These differences aren't inherently good or bad—they're simply variations in how human brains can work. The challenges many autistic people experience often come from living in environments designed for <a class="jargon">neurotypical<span class="tooltip">People whose brain development and functioning aligns with what society considers "typical" or "normal"</span></a> brains rather than from autism itself.</p>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-number">1 in 36</span>
+                    <div class="stat-label">Children identified with autism in the US</div>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">4:1</span>
+                    <div class="stat-label">Ratio of males to females diagnosed</div>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">80%+</span>
+                    <div class="stat-label">Of autistic adults are unemployed or underemployed</div>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">Late 20s</span>
+                    <div class="stat-label">Average age of diagnosis for many adults</div>
+                </div>
+            </div>
+
+            <div class="friction-areas">
+                <h2>Areas Where Autism Often Creates Friction</h2>
+                <p>Autism affects different people in different ways, but there are common areas where the mismatch between autistic brains and neurotypical-designed environments creates daily challenges. Click on any area below to explore specific struggles and strategies:</p>
+
+                <a href="#communication-issues" class="category-section available">
+                    <div class="category-title">Communication Issues</div>
+                    <div class="category-description">Differences in how social information is processed and expressed</div>
+                    <div class="category-examples">Missing social cues, being too direct, social exhaustion, masking fatigue</div>
+                </a>
+
+                <div class="category-section coming-soon">
+                    <div class="coming-soon-badge">Coming Soon</div>
+                    <div class="category-title">Sensory Processing Challenges</div>
+                    <div class="category-description">Over- or under-responsiveness to sensory input from the environment</div>
+                    <div class="category-examples">Sound sensitivity, texture aversion, sensory overload, seeking sensory input</div>
+                </div>
+
+                <div class="category-section coming-soon">
+                    <div class="coming-soon-badge">Coming Soon</div>
+                    <div class="category-title">Executive Function Differences</div>
+                    <div class="category-description">Challenges with planning, organizing, and managing daily tasks</div>
+                    <div class="category-examples">Starting tasks, time management, transitioning between activities, working memory</div>
+                </div>
+
+                <div class="category-section coming-soon">
+                    <div class="coming-soon-badge">Coming Soon</div>
+                    <div class="category-title">Emotional Regulation Struggles</div>
+                    <div class="category-description">Difficulty managing and expressing emotions in socially expected ways</div>
+                    <div class="category-examples">Meltdowns, emotional overwhelm, difficulty identifying feelings, intense reactions</div>
+                </div>
+
+                <div class="category-section coming-soon">
+                    <div class="coming-soon-badge">Coming Soon</div>
+                    <div class="category-title">Routine and Change Difficulties</div>
+                    <div class="category-description">Need for predictability and struggle with unexpected changes</div>
+                    <div class="category-examples">Disrupted routines, unexpected schedule changes, travel difficulties, transition anxiety</div>
+                </div>
+
+                <div class="category-section coming-soon">
+                    <div class="coming-soon-badge">Coming Soon</div>
+                    <div class="category-title">Special Interests and Hyperfocus</div>
+                    <div class="category-description">Intense, focused interests that can both help and create challenges</div>
+                    <div class="category-examples">Time blindness during interests, social isolation, difficulty switching focus, intense expertise</div>
+                </div>
+            </div>
+
+            <div class="understanding-section">
+                <h2>Understanding Your Relationship with Autism</h2>
+                <p>Whether you're recently discovering you might be autistic, have been formally diagnosed, or are simply trying to understand patterns in your life, reflection can help you better understand your experiences:</p>
+                
+                <ul class="reflection-questions">
+                    <li>Do social interactions often leave you feeling drained, even when you enjoyed them?</li>
+                    <li>Have you always felt like you were "performing" or "masking" in social situations?</li>
+                    <li>Do you have intense interests that others might consider unusual or excessive?</li>
+                    <li>Are you particularly sensitive to certain sounds, textures, lights, or other sensory experiences?</li>
+                    <li>Do you prefer predictable routines and find unexpected changes distressing?</li>
+                    <li>Have you been told you're "too direct" or that you miss social cues?</li>
+                    <li>Do you find it difficult to understand what others are thinking or feeling without explicit communication?</li>
+                </ul>
+
+                <div class="warning-box">
+                    <h4>Important Note</h4>
+                    <p>These reflection questions are for self-understanding only and are not diagnostic tools. Many experiences overlap between autism and other conditions, and only qualified professionals can provide clinical diagnoses.</p>
+                </div>
+            </div>
+
+            <div class="support-section">
+                <h2>When to Consider Professional Support</h2>
+                <p>While understanding yourself better is valuable regardless of formal diagnosis, there are times when professional support becomes important:</p>
+
+                <div class="support-indicators">
+                    <div class="support-card">
+                        <h4>Consider evaluation if:</h4>
+                        <ul>
+                            <li>Daily functioning is significantly impacted</li>
+                            <li>You're experiencing depression or anxiety related to social struggles</li>
+                            <li>You need workplace or school accommodations</li>
+                            <li>Masking is causing severe burnout</li>
+                            <li>You want clarity for personal understanding</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="support-card">
+                        <h4>Seek immediate help if:</h4>
+                        <ul>
+                            <li>You're having thoughts of self-harm</li>
+                            <li>You're unable to care for basic needs</li>
+                            <li>You're experiencing frequent meltdowns that affect your safety</li>
+                            <li>Sensory issues are preventing you from leaving home</li>
+                            <li>Social anxiety is causing complete isolation</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <p style="margin-top: 1.5rem; font-size: 0.95rem; color: #666;">
+                    <strong>Finding the right professional:</strong> Look for psychologists or psychiatrists who specifically mention autism in adults, neurodivergence, or have experience with late diagnoses. Many professionals still use outdated criteria that miss how autism presents in adults, particularly women and people assigned female at birth.
+                </p>
+            </div>
+
+            <div style="background: #f8f9ff; padding: 1.5rem; border-radius: 15px; margin-top: 2rem; border-left: 4px solid #6c5ce7;">
+                <p><strong>Remember:</strong> Autism is not something that needs to be "fixed" or "cured." It's a fundamental difference in how your brain works. The goal is understanding yourself better so you can navigate a world not designed for your type of brain, while honoring and protecting what makes you authentically you.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Handle clicks on available category sections
+        document.addEventListener('DOMContentLoaded', function() {
+            const availableCategories = document.querySelectorAll('.category-section.available');
+            
+            availableCategories.forEach(category => {
+                category.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    // In a real implementation, this would navigate to the communication issues page
+                    alert('This would navigate to the Communication Issues page');
+                });
+            });
+
+            // Prevent clicks on coming soon categories
+            const comingSoonCategories = document.querySelectorAll('.category-section.coming-soon');
+            
+            comingSoonCategories.forEach(category => {
+                category.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    // Do nothing - these aren't clickable
+                });
+            });
+        });
+    </script>
+</body>
+</html>
