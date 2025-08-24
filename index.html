@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Neurodivergent Survival Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            min-height: 100vh;
+            line-height: 1.7;
+        }
+
+        .hero {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 3rem 2rem;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .hero h1 {
+            color: white;
+            font-size: 2.5rem;
+            font-weight: 300;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        .hero-cta {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            backdrop-filter: blur(10px);
+        }
+
+        .hero-cta:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+            color: white;
+            text-decoration: none;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .intro-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .intro-section h2 {
+            color: #333;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            font-weight: 400;
+        }
+
+        .intro-section p {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 1.5rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .main-sections {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .section-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .section-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.12);
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 15px;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+        }
+
+        .conditions-card .card-icon {
+            background: linear-gradient(45deg, #fd79a8, #e84393);
+        }
+
+        .struggles-card .card-icon {
+            background: linear-gradient(45deg, #74b9ff, #0984e3);
+        }
+
+        .glossary-card .card-icon {
+            background: linear-gradient(45deg, #fdcb6e, #e17055);
+        }
+
+        .section-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .section-card p {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .section-examples {
+            font-size: 0.9rem;
+            color: #888;
+            font-style: italic;
+        }
+
+        .how-it-works {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            margin: 3rem 0;
+        }
+
+        .how-it-works h2 {
+            color: #333;
+            margin-bottom: 2rem;
+            font-size: 1.8rem;
+            font-weight: 400;
+            text-align: center;
+        }
+
+        .workflow-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .workflow-step {
+            text-align: center;
+            padding: 1.5rem;
+            background: #f8f9ff;
+            border-radius: 15px;
+            border-left: 4px solid #74b9ff;
+        }
+
+        .step-number {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(45deg, #74b9ff, #0984e3);
+            color: white;
+            border-radius: 50%;
+            line-height: 40px;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .workflow-step h4 {
+            color: #0984e3;
+            margin-bottom: 0.8rem;
+            font-size: 1.1rem;
+        }
+
+        .workflow-step p {
+            color: #555;
+            font-size: 0.95rem;
+        }
+
+        /* Jargon tooltip styles */
+        .jargon {
+            color: #e84393;
+            text-decoration: none;
+            border-bottom: 1px dotted #e84393;
+            position: relative;
+            cursor: help;
+            font-weight: 500;
+        }
+
+        .jargon:hover {
+            color: #fd79a8;
+            border-bottom-color: #fd79a8;
+        }
+
+        .tooltip {
+            visibility: hidden;
+            opacity: 0;
+            position: absolute;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #333;
+            color: white;
+            padding: 10px 14px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: normal;
+            z-index: 1001;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: opacity 0.3s, visibility 0.3s;
+            max-width: 280px;
+            white-space: normal;
+            text-align: center;
+            line-height: 1.4;
+        }
+
+        .tooltip::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 6px solid transparent;
+            border-top-color: #333;
+        }
+
+        .jargon:hover .tooltip {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .footer-note {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            margin: 3rem 0;
+            border-left: 4px solid #6c5ce7;
+        }
+
+        .footer-note h3 {
+            color: #6c5ce7;
+            margin-bottom: 1rem;
+        }
+
+        .footer-note p {
+            color: #555;
+            margin-bottom: 1rem;
+        }
+
+        .disclaimer {
+            background: #fff2f2;
+            border: 1px solid #ffcccb;
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+        }
+
+        .disclaimer h4 {
+            color: #d63031;
+            margin-bottom: 0.8rem;
+        }
+
+        .disclaimer p {
+            color: #555;
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 2rem 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .container {
+                padding: 1rem;
+            }
+
+            .main-sections {
+                grid-template-columns: 1fr;
+            }
+
+            .workflow-steps {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <h1>The Neurodivergent Survival Guide</h1>
+        <p>Navigate daily friction points with understanding, practical tools, and community wisdom</p>
+        <a href="#get-started" class="hero-cta">Start Exploring</a>
+    </div>
+
+    <div class="container">
+        <div class="intro-section" id="get-started">
+            <h2>Understanding Your Daily Struggles</h2>
+            <p>If you're here, daily life probably feels harder than it should. Maybe conversations drain you, simple tasks feel impossible, or you can't figure out why everyone else seems to have an instruction manual you never received.</p>
+            <p>You're not broken. Your brain just works differently in a world designed for different types of processors. The friction you experience comes from this mismatch, not from any flaw in you.</p>
+            <p>This guide helps you understand why specific situations create challenges and gives you practical tools to navigate them. It's organized around real daily experiences, not clinical categories.</p>
+        </div>
+
+        <div class="main-sections">
+            <a href="conditions/" class="section-card conditions-card">
+                <div class="card-icon">🧠</div>
+                <h3>Understand Your Brain</h3>
+                <p>Comprehensive guides to how different neurotypes create friction in daily life. Learn about the broader patterns that might explain multiple struggles you're experiencing.</p>
+                <div class="section-examples">Autism • ADHD • Anxiety • Trauma responses</div>
+            </a>
+
+            <a href="struggles/" class="section-card struggles-card">
+                <div class="card-icon">⚡</div>
+                <h3>Navigate Daily Friction</h3>
+                <p>Practical guides for specific situations that create challenges. Each includes what it feels like, why it happens, and immediate + long-term strategies.</p>
+                <div class="section-examples">Communication • Executive function • Sensory overload • Emotional regulation</div>
+            </a>
+
+            <a href="glossary/" class="section-card glossary-card">
+                <div class="card-icon">📚</div>
+                <h3>Learn the Language</h3>
+                <p>Definitions and explanations of terms that help you understand and communicate about your experiences. Build vocabulary for self-advocacy and connection.</p>
+                <div class="section-examples">Masking • Stimming • <a class="jargon">Alexithymia<span class="tooltip">Difficulty identifying and describing your own emotions</span></a> • Echolalia</div>
+            </a>
+        </div>
+
+        <div class="how-it-works">
+            <h2>How This Guide Works</h2>
+            <div class="workflow-steps">
+                <div class="workflow-step">
+                    <div class="step-number">1</div>
+                    <h4>Start Where You Are</h4>
+                    <p>Enter through any point - a daily struggle, a condition you're exploring, or a term you heard. All paths connect.</p>
+                </div>
+
+                <div class="workflow-step">
+                    <div class="step-number">2</div>
+                    <h4>Understand the Why</h4>
+                    <p>Learn what's happening in your brain and why certain situations create friction. Knowledge reduces self-blame.</p>
+                </div>
+
+                <div class="workflow-step">
+                    <div class="step-number">3</div>
+                    <h4>Try Practical Tools</h4>
+                    <p>Get immediate strategies for tough moments and longer-term approaches for sustainable change. Adapt everything to fit your life.</p>
+                </div>
+
+                <div class="workflow-step">
+                    <div class="step-number">4</div>
+                    <h4>Build Your Toolkit</h4>
+                    <p>Explore connected topics to build a fuller picture. Understanding one area often illuminates others.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="disclaimer">
+            <h4>Important Disclaimer</h4>
+            <p>This guide is for educational and self-understanding purposes only. It is not intended to diagnose, treat, or replace professional medical or mental health care. If you're experiencing significant distress or impairment, please consult with qualified healthcare professionals. In crisis situations, contact emergency services or crisis hotlines immediately.</p>
+        </div>
+
+        <div class="footer-note">
+            <h3>A Living Resource</h3>
+            <p>This guide grows and improves based on community feedback and new research. It's built by and for neurodivergent people who understand these struggles from lived experience.</p>
+            <p>Every person's experience is unique. Take what helps, leave what doesn't, and remember that understanding yourself is a gradual process, not a destination.</p>
+        </div>
+    </div>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Handle clicks on section cards
+        document.querySelectorAll('.section-card').forEach(card => {
+            card.addEventListener('click', function(e) {
+                e.preventDefault();
+                const section = this.classList.contains('conditions-card') ? 'Conditions' : 
+                              this.classList.contains('struggles-card') ? 'Daily Struggles' : 'Glossary';
+                alert(`This would navigate to the ${section} section. For now, you can create individual pages in the ${this.getAttribute('href')} folder!`);
+            });
+        });
+    </script>
+</body>
+</html>
