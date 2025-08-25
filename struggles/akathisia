@@ -1,0 +1,573 @@
+---
+layout: struggle
+title: Akathisia
+struggle_slug: akathisia
+---
+
+<div class="header">
+    <h1>Akathisia</h1>
+    <p>When your body won't let you be still</p>
+</div>
+
+<div class="intro-section">
+    <p>Akathisia is a movement disorder that creates an overwhelming sense of inner restlessness and an irresistible urge to move. Unlike typical restlessness, this feels like your body is fighting against stillness at a cellular level.</p>
+
+    <p>This condition is most commonly caused by medications, particularly <span class="jargon-term" data-definition="Medications used to treat psychosis, bipolar disorder, and sometimes severe depression">antipsychotics</span>, but can also result from anti-nausea medications, antidepressants, or medication withdrawal.</p>
+</div>
+
+<div class="struggle-categories">
+    <h2>How Akathisia Shows Up</h2>
+    
+    <div class="category-section">
+        <h3>Internal Experience</h3>
+        <div class="struggle-grid">
+            <div class="struggle-card" onclick="openModal('inner-restlessness')">
+                <h4>Overwhelming Inner Restlessness</h4>
+                <p>Feeling like you need to crawl out of your own skin</p>
+                <div class="condition-tags">
+                    <span class="tag">Medication Side Effect</span>
+                    <span class="tag">Movement Disorder</span>
+                </div>
+            </div>
+            
+            <div class="struggle-card" onclick="openModal('inability-to-sit-still')">
+                <h4>Inability to Sit Still</h4>
+                <p>Compulsive need to pace, rock, or move constantly</p>
+                <div class="condition-tags">
+                    <span class="tag">Physical Symptom</span>
+                    <span class="tag">Medication Related</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="category-section">
+        <h3>External Challenges</h3>
+        <div class="struggle-grid">
+            <div class="struggle-card" onclick="openModal('disrupted-daily-life')">
+                <h4>Disrupted Daily Functioning</h4>
+                <p>Unable to sit through meals, work, or conversations</p>
+                <div class="condition-tags">
+                    <span class="tag">Functional Impact</span>
+                    <span class="tag">Social Difficulty</span>
+                </div>
+            </div>
+            
+            <div class="struggle-card" onclick="openModal('medication-dilemma')">
+                <h4>Medication Dilemma</h4>
+                <p>Needing psychiatric medication but suffering from movement side effects</p>
+                <div class="condition-tags">
+                    <span class="tag">Treatment Balance</span>
+                    <span class="tag">Medical Decision</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modals -->
+<div id="inner-restlessness" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <div class="modal-header">
+            <h3>Overwhelming Inner Restlessness</h3>
+            <div class="condition-tags">
+                <span class="tag">Medication Side Effect</span>
+                <span class="tag">Movement Disorder</span>
+            </div>
+        </div>
+        
+        <div class="info-section">
+            <h4>What this feels like:</h4>
+            <p>An intense, uncomfortable feeling that you need to move or escape your own body. It's not anxiety - it's a physical compulsion that feels like electricity under your skin. You might feel like you're going to "jump out of your skin" or that sitting still is physically painful.</p>
+
+            <h4>Why this might be happening:</h4>
+            <p>Akathisia occurs when medications block <span class="jargon-term" data-definition="A neurotransmitter that helps control movement and motivation">dopamine</span> receptors in the brain areas that control movement. This creates an imbalance that manifests as an irresistible urge to move. It's not psychological - it's a real neurological side effect.</p>
+
+            <h4>What can help you through the next 5 minutes:</h4>
+            <p>• Allow yourself to pace or rock - fighting the urge makes it worse</p>
+            <p>• Try gentle stretching or walking if possible</p>
+            <p>• Use deep breathing while moving (don't force stillness)</p>
+            <p>• Cool compress on your neck or face while pacing</p>
+            <p>• Remind yourself this is medication-related, not anxiety</p>
+
+            <h4>What are some healthy long-term solutions:</h4>
+            <p>• Contact your prescribing doctor immediately - this is a medical issue requiring professional intervention</p>
+            <p>• Ask about dose reduction, medication switching, or <span class="jargon-term" data-definition="Medications that can counteract movement side effects">anticholinergic medications</span></p>
+            <p>• Keep a movement diary to track patterns and severity</p>
+            <p>• Consider <span class="jargon-term" data-definition="Beta-blocker medication that can help with akathisia">propranolol</span> or other akathisia treatments</p>
+            <p>• Advocate for yourself - this side effect is often dismissed but is very real</p>
+
+            <h4>When should I consider immediate medical intervention:</h4>
+            <p>• If the restlessness is severe and interfering with sleep, eating, or basic functioning</p>
+            <p>• If you're having thoughts of self-harm due to the distress</p>
+            <p>• If it developed recently after starting or changing a medication</p>
+            <p>• If over-the-counter movement or anxiety techniques provide no relief</p>
+
+            <h4>You're not imagining this:</h4>
+            <p>Akathisia is a recognized medical condition, not "just anxiety" or restlessness. Many people experience this side effect, and it requires medical attention. Your distress is valid, and there are treatments available. Don't let anyone minimize what you're experiencing.</p>
+        </div>
+    </div>
+</div>
+
+<div id="inability-to-sit-still" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <div class="modal-header">
+            <h3>Inability to Sit Still</h3>
+            <div class="condition-tags">
+                <span class="tag">Physical Symptom</span>
+                <span class="tag">Medication Related</span>
+            </div>
+        </div>
+        
+        <div class="info-section">
+            <h4>What this feels like:</h4>
+            <p>Your body literally won't let you sit still. Even when exhausted, you feel compelled to pace, rock, shift positions constantly, or move your legs. Trying to force stillness feels torturous and increases the uncomfortable sensation.</p>
+
+            <h4>Why this might be happening:</h4>
+            <p>The medication is interfering with your brain's movement control systems. Unlike ADHD hyperactivity, this feels compulsive rather than energetic. Your brain is sending constant "move now" signals that you can't ignore.</p>
+
+            <h4>What can help you through the next 5 minutes:</h4>
+            <p>• Give in to the movement urge - pacing is better than forcing stillness</p>
+            <p>• Try rocking in place if you must stay seated</p>
+            <p>• Fidget toys or stress balls for hand movement</p>
+            <p>• Stand and stretch during conversations or activities</p>
+            <p>• Use movement as a coping tool, not something to fight</p>
+
+            <h4>What are some healthy long-term solutions:</h4>
+            <p>• Work with your doctor to adjust medication timing or dosing</p>
+            <p>• Request a different medication in the same class</p>
+            <p>• Consider adjunct treatments like <span class="jargon-term" data-definition="Vitamin B6, sometimes helpful for movement disorders">pyridoxine</span> or beta-blockers</p>
+            <p>• Modify your environment to allow for movement (standing desk, walking meetings)</p>
+            <p>• Educate family/employers about this medical condition</p>
+
+            <h4>When should I consider immediate medical intervention:</h4>
+            <p>• If you can't sit for necessary activities (driving, work, medical appointments)</p>
+            <p>• If the movement compulsion is getting stronger over time</p>
+            <p>• If you're injuring yourself from constant movement</p>
+            <p>• If sleep is severely disrupted by the need to move</p>
+
+            <h4>You're not imagining this:</h4>
+            <p>This compulsive movement is a real side effect that many people experience. It's not hyperactivity, anxiety, or lack of self-control. Medical professionals should take this seriously and work with you to find solutions that allow you to get the mental health treatment you need without unbearable side effects.</p>
+        </div>
+    </div>
+</div>
+
+<div id="disrupted-daily-life" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <div class="modal-header">
+            <h3>Disrupted Daily Functioning</h3>
+            <div class="condition-tags">
+                <span class="tag">Functional Impact</span>
+                <span class="tag">Social Difficulty</span>
+            </div>
+        </div>
+        
+        <div class="info-section">
+            <h4>What this feels like:</h4>
+            <p>Simple activities become impossible. You can't sit through meals, meetings, movies, or conversations. People might think you're rude or anxious, but you literally cannot stay still. Social situations become awkward when you need to constantly move.</p>
+
+            <h4>Why this might be happening:</h4>
+            <p>The medication is making normal sitting/stillness physically uncomfortable. Your brain's movement control is disrupted, making activities that require stillness feel torturous rather than restful.</p>
+
+            <h4>What can help you through the next 5 minutes:</h4>
+            <p>• Explain to others that you have a medical condition requiring movement</p>
+            <p>• Stand during conversations when possible</p>
+            <p>• Take frequent "stretch breaks" during activities</p>
+            <p>• Choose aisle seats or positions where you can move more freely</p>
+            <p>• Use phone calls for meetings when you need to pace</p>
+
+            <h4>What are some healthy long-term solutions:</h4>
+            <p>• Work with your doctor to address the underlying medication issue</p>
+            <p>• Request accommodations at work/school (standing desk, movement breaks)</p>
+            <p>• Develop a brief explanation for social situations</p>
+            <p>• Find activities that naturally involve movement</p>
+            <p>• Connect with others who understand medication side effects</p>
+
+            <h4>When should I consider immediate medical intervention:</h4>
+            <p>• If you're unable to work or attend essential activities</p>
+            <p>• If relationships are suffering due to misunderstanding of your condition</p>
+            <p>• If the functional impairment is worse than your original mental health condition</p>
+            <p>• If driving becomes unsafe due to inability to sit still</p>
+
+            <h4>You're not imagining this:</h4>
+            <p>Your functional difficulties are directly related to a medication side effect, not lack of willpower or social skills. Many people face this exact challenge. You deserve understanding and appropriate medical management that allows you to function in daily life.</p>
+        </div>
+    </div>
+</div>
+
+<div id="medication-dilemma" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <div class="modal-header">
+            <h3>Medication Dilemma</h3>
+            <div class="condition-tags">
+                <span class="tag">Treatment Balance</span>
+                <span class="tag">Medical Decision</span>
+            </div>
+        </div>
+        
+        <div class="info-section">
+            <h4>What this feels like:</h4>
+            <p>You're caught between needing psychiatric medication for your mental health and suffering from unbearable movement side effects. You might feel like you have to choose between mental stability and physical comfort, which feels impossible and unfair.</p>
+
+            <h4>Why this might be happening:</h4>
+            <p>Many effective psychiatric medications can cause movement disorders. This creates a genuine treatment dilemma where the cure feels worse than the disease. Healthcare providers sometimes underestimate how distressing these side effects can be.</p>
+
+            <h4>What can help you through the next 5 minutes:</h4>
+            <p>• Remind yourself that this is a solvable medical problem</p>
+            <p>• Document your side effects to discuss with your doctor</p>
+            <p>• Remember that many medication options exist</p>
+            <p>• Connect with support groups who understand this dilemma</p>
+            <p>• Know that you don't have to suffer indefinitely</p>
+
+            <h4>What are some healthy long-term solutions:</h4>
+            <p>• Work with a psychiatrist experienced in managing movement side effects</p>
+            <p>• Explore alternative medications in different classes</p>
+            <p>• Consider adjunct treatments to manage akathisia while maintaining mental health benefits</p>
+            <p>• Get second opinions if your current provider dismisses your concerns</p>
+            <p>• Learn about your rights as a patient to refuse treatments with intolerable side effects</p>
+
+            <h4>When should I consider immediate medical intervention:</h4>
+            <p>• If your current provider refuses to address the side effects</p>
+            <p>• If you're considering stopping necessary medication due to side effects</p>
+            <p>• If you're experiencing both mental health crisis and severe movement side effects</p>
+            <p>• If you need emergency psychiatric care but are avoiding it due to fear of medication side effects</p>
+
+            <h4>You're not imagining this:</h4>
+            <p>You have the right to mental health treatment that doesn't cause unbearable physical side effects. A good psychiatrist will work with you to find solutions that address both your mental health needs and your quality of life. Don't let anyone convince you that severe side effects are "just part of treatment."</p>
+        </div>
+    </div>
+</div>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+}
+
+.header {
+    text-align: center;
+    padding: 3rem 2rem;
+    background: rgba(255, 255, 255, 0.95);
+    margin-bottom: 2rem;
+}
+
+.header h1 {
+    font-size: 3rem;
+    color: #2d3748;
+    margin-bottom: 0.5rem;
+}
+
+.header p {
+    font-size: 1.2rem;
+    color: #666;
+}
+
+.intro-section {
+    max-width: 800px;
+    margin: 0 auto 3rem;
+    padding: 0 2rem;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 12px;
+    padding: 2rem;
+}
+
+.intro-section p {
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+.struggle-categories {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.category-section {
+    background: rgba(255, 255, 255, 0.95);
+    margin-bottom: 2rem;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.category-section h3 {
+    background: linear-gradient(135deg, #74b9ff, #0984e3);
+    color: white;
+    padding: 1.5rem 2rem;
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.struggle-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.struggle-card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.struggle-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    border-color: #74b9ff;
+}
+
+.struggle-card h4 {
+    color: #2d3748;
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+}
+
+.struggle-card p {
+    color: #666;
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+.condition-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.tag {
+    background: linear-gradient(135deg, #fd79a8, #e84393);
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.jargon-term {
+    color: #74b9ff;
+    border-bottom: 2px dotted #74b9ff;
+    cursor: help;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.jargon-term:hover {
+    color: #0984e3;
+    border-bottom-color: #0984e3;
+}
+
+.jargon-term::after {
+    content: attr(data-definition);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #2d3748;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    max-width: 300px;
+    white-space: normal;
+    width: max-content;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 1000;
+    margin-bottom: 5px;
+}
+
+.jargon-term:hover::after {
+    opacity: 1;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    animation: fadeIn 0.3s ease-out;
+}
+
+.modal-content {
+    background-color: white;
+    margin: 5% auto;
+    padding: 0;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 700px;
+    max-height: 85vh;
+    overflow-y: auto;
+    position: relative;
+    animation: slideIn 0.3s ease-out;
+}
+
+.modal-header {
+    background: linear-gradient(135deg, #74b9ff, #0984e3);
+    color: white;
+    padding: 2rem;
+    border-radius: 12px 12px 0 0;
+}
+
+.modal-header h3 {
+    margin: 0 0 1rem 0;
+    font-size: 1.8rem;
+}
+
+.close {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    color: white;
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.close:hover {
+    opacity: 0.7;
+}
+
+.info-section {
+    padding: 2rem;
+}
+
+.info-section h4 {
+    color: #2d3748;
+    margin: 2rem 0 1rem 0;
+    font-size: 1.2rem;
+    border-bottom: 2px solid #74b9ff;
+    padding-bottom: 0.5rem;
+}
+
+.info-section h4:first-child {
+    margin-top: 0;
+}
+
+.info-section p {
+    margin-bottom: 1.5rem;
+    line-height: 1.8;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from { 
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to { 
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .header h1 {
+        font-size: 2rem;
+    }
+    
+    .struggle-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .modal-content {
+        width: 95%;
+        margin: 10% auto;
+        max-height: 80vh;
+    }
+    
+    .jargon-term::after {
+        position: fixed;
+        bottom: 20px;
+        left: 20px;
+        right: 20px;
+        transform: none;
+        max-width: none;
+        width: auto;
+    }
+}
+</style>
+
+<script>
+function openModal(modalId) {
+    document.getElementById(modalId).style.display = 'block';
+    document.body.style.overflow = 'hidden';
+}
+
+function closeModal(modalId) {
+    document.getElementById(modalId).style.display = 'none';
+    document.body.style.overflow = 'auto';
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Close modal when clicking the X
+    const closeButtons = document.querySelectorAll('.close');
+    closeButtons.forEach(button => {
+        button.onclick = function() {
+            this.closest('.modal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+    });
+
+    // Close modal when clicking outside of it
+    window.onclick = function(event) {
+        if (event.target.classList.contains('modal')) {
+            event.target.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+    }
+
+    // Handle jargon term clicks for mobile
+    const jargonTerms = document.querySelectorAll('.jargon-term');
+    jargonTerms.forEach(term => {
+        term.addEventListener('click', function(e) {
+            e.preventDefault();
+            // On mobile, clicking will show the tooltip
+            const existingTooltip = document.querySelector('.active-tooltip');
+            if (existingTooltip) {
+                existingTooltip.classList.remove('active-tooltip');
+            }
+            this.classList.add('active-tooltip');
+        });
+    });
+
+    // Close tooltips when clicking elsewhere
+    document.addEventListener('click', function(e) {
+        if (!e.target.classList.contains('jargon-term')) {
+            const activeTooltips = document.querySelectorAll('.active-tooltip');
+            activeTooltips.forEach(tooltip => {
+                tooltip.classList.remove('active-tooltip');
+            });
+        }
+    });
+});
+</script>
