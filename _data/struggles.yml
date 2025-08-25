@@ -1,14 +1,24 @@
-- slug: auditory-processing
-  title: Auditory Processing Issues
+- slug: attention-focus
+  title: Attention and Focus
 - slug: communication-issues  
   title: Communication Issues
 - slug: emotional-regulation
   title: Emotional Regulation
 - slug: executive-function
-  title: Executive Function Issues  
-- slug: routine-and-change
-  title: Routine and Change Difficulties
+  title: Executive Function Issues
+- slug: financial-planning
+  title: Financial Planning
+- slug: medical-healthcare
+  title: Medical and Healthcare
+- slug: public-spaces
+  title: Public Spaces
+- slug: relationship-challenges
+  title: Relationship Challenges
+- slug: routine-disruptions
+  title: Routine Disruptions
 - slug: sensory-processing
   title: Sensory Processing Challenges
-- slug: special-interests
-  title: Special Interests and Hyperfocus
+- slug: time-management
+  title: Time Management
+- slug: workplace-difficulties
+  title: Workplace Difficulties
