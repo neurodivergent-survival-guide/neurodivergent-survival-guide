@@ -1,0 +1,347 @@
+---
+layout: default
+title: Daily Struggles
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Struggles - Neurodivergent Survival Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .header {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: rgba(255, 255, 255, 0.95);
+            margin-bottom: 2rem;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            color: #2d3748;
+            margin-bottom: 0.5rem;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            color: #666;
+        }
+
+        .intro-section {
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+        }
+
+        .intro-section p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .how-to-use {
+            background: rgba(255, 255, 255, 0.95);
+            margin-bottom: 2rem;
+            border-radius: 12px;
+            padding: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 3rem;
+        }
+
+        .how-to-use h2 {
+            color: #2d3748;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .usage-scenarios {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .scenario-card {
+            background: #f8f9ff;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #74b9ff;
+        }
+
+        .scenario-card h3 {
+            color: #2d3748;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .scenario-card p {
+            color: #666;
+            margin-bottom: 0;
+        }
+
+        .struggles-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .category-section {
+            background: rgba(255, 255, 255, 0.95);
+            margin-bottom: 2rem;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .category-section h2 {
+            background: linear-gradient(135deg, #74b9ff, #0984e3);
+            color: white;
+            padding: 1.5rem 2rem;
+            margin: 0;
+            font-size: 1.5rem;
+        }
+
+        .category-description {
+            padding: 1rem 2rem;
+            color: #666;
+            font-style: italic;
+            background: #f8f9ff;
+            border-bottom: 1px solid #e0e6ff;
+        }
+
+        .struggles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            padding: 2rem;
+        }
+
+        .struggle-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .struggle-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            border-color: #74b9ff;
+            text-decoration: none;
+        }
+
+        .struggle-card h3 {
+            color: #2d3748;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .struggle-card p {
+            color: #666;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .struggle-status {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .available {
+            background: linear-gradient(135deg, #00b894, #00a085);
+            color: white;
+        }
+
+        .coming-soon {
+            background: linear-gradient(135deg, #fd79a8, #e84393);
+            color: white;
+        }
+
+        .breadcrumb {
+            text-align: center;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.8);
+            margin-bottom: 0;
+        }
+
+        .breadcrumb a {
+            color: #74b9ff;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .struggles-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .usage-scenarios {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="breadcrumb">
+        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/">Home</a>
+    </div>
+
+    <div class="header">
+        <h1>Daily Struggles</h1>
+        <p>Specific situations where neurodivergent brains face friction</p>
+    </div>
+
+    <div class="intro-section">
+        <p>Daily struggles are the specific moments where neurodivergent brains bump up against a world designed for neurotypical functioning. These aren't character flaws or things to fix - they're predictable friction points that happen when different brain wiring meets standard expectations.</p>
+
+        <p>Understanding these struggles helps you recognize patterns, develop strategies, and realize you're not alone in these experiences. Each struggle page offers practical tools you can use right away, plus longer-term approaches for managing these challenges.</p>
+    </div>
+
+    <div class="how-to-use">
+        <h2>How to Use This Section</h2>
+        
+        <div class="usage-scenarios">
+            <div class="scenario-card">
+                <h3>When you're having a specific problem</h3>
+                <p>Browse the categories below to find the struggle that matches what you're experiencing right now. Get immediate help and longer-term strategies.</p>
+            </div>
+            
+            <div class="scenario-card">
+                <h3>When you want to understand patterns</h3>
+                <p>Look through multiple struggles to see which ones resonate. Understanding your pattern of difficulties can help you plan and prepare.</p>
+            </div>
+            
+            <div class="scenario-card">
+                <h3>When you're not sure where to start</h3>
+                <p>If nothing here feels right, try the <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/conditions/">Conditions</a> section or <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/glossary/">Glossary</a> instead.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="struggles-container">
+        <div class="category-section">
+            <h2>Internal Struggles</h2>
+            <div class="category-description">
+                What happens inside your head that makes daily life more difficult
+            </div>
+            
+            <div class="struggles-grid">
+                <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/communication-issues.html" class="struggle-card">
+                    <h3>Communication Issues</h3>
+                    <p>Conversations feel complicated, exhausting, or confusing in ways others don't seem to experience</p>
+                    <span class="struggle-status available">Available</span>
+                </a>
+                
+                <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/executive-function.html" class="struggle-card">
+                    <h3>Executive Function</h3>
+                    <p>Starting tasks, finishing projects, and organizing your day feels impossibly difficult</p>
+                    <span class="struggle-status coming-soon">Coming Soon</span>
+                </a>
+                
+                <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/emotional-regulation.html" class="struggle-card">
+                    <h3>Emotional Regulation</h3>
+                    <p>Your feelings feel too big, too intense, or change too quickly for the situation</p>
+                    <span class="struggle-status coming-soon">Coming Soon</span>
+                </a>
+                
+                <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/sensory-processing.html" class="struggle-card">
+                    <h3>Sensory Processing</h3>
+                    <p>Lights, sounds, textures, or crowds feel overwhelming or uncomfortable</p>
+                    <span class="struggle-status coming-soon">Coming Soon</span>
+                </a>
+
+                <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/time-management.html" class="struggle-card">
+                    <h3>Time Management</h3>
+                    <p>Time feels slippery - you lose track of it, underestimate tasks, or feel constantly behind</p>
+                    <span class="struggle-status coming-soon">Coming Soon</span>
+                </a>
+
+                <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/attention-focus.html" class="struggle-card">
+                    <h3>Attention and Focus</h3>
+                    <p>You can't focus when you need to, or you hyperfocus and lose track of everything else</p>
+                    <span class="struggle-status coming-soon">Coming Soon</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="category-section">
+            <h2>External Challenges</h2>
+            <div class="category-description">
+                When your brain differences create friction with other people or environments
+            </div>
+            
+            <div class="struggles-grid">
+                <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/workplace-difficulties.html" class="struggle-card">
+                    <h3>Workplace Difficulties</h3>
+                    <p>Office environments, meetings, and professional expectations feel impossible to navigate</p>
+                    <span class="struggle-status coming-soon">Coming Soon</span>
+                </a>
+                
+                <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/relationship-challenges.html" class="struggle-card">
+                    <h3>Relationship Challenges</h3>
+                    <p>Friendships, family, or romantic relationships involve constant misunderstandings</p>
+                    <span class="struggle-status coming-soon">Coming Soon</span>
+                </a>
+                
+                <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/public-spaces.html" class="struggle-card">
+                    <h3>Public Spaces</h3>
+                    <p>Grocery stores, restaurants, and busy places feel overwhelming or anxiety-provoking</p>
+                    <span class="struggle-status coming-soon">Coming Soon</span>
+                </a>
+                
+                <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/routine-disruptions.html" class="struggle-card">
+                    <h3>Routine Disruptions</h3>
+                    <p>Changes to your schedule or unexpected events throw off your entire day or week</p>
+                    <span class="struggle-status coming-soon">Coming Soon</span>
+                </a>
+
+                <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/medical-healthcare.html" class="struggle-card">
+                    <h3>Medical and Healthcare</h3>
+                    <p>Doctor appointments, medical procedures, and healthcare systems feel impossible to navigate</p>
+                    <span class="struggle-status coming-soon">Coming Soon</span>
+                </a>
+
+                <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/financial-planning.html" class="struggle-card">
+                    <h3>Financial Planning</h3>
+                    <p>Managing money, budgets, and financial decisions feels overwhelming or confusing</p>
+                    <span class="struggle-status coming-soon">Coming Soon</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
