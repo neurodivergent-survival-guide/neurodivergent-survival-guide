@@ -1,0 +1,708 @@
+---
+layout: default
+title: Glossary
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glossary - Neurodivergent Survival Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .header {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: rgba(255, 255, 255, 0.95);
+            margin-bottom: 2rem;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            color: #2d3748;
+            margin-bottom: 0.5rem;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            color: #666;
+        }
+
+        .intro-section {
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+        }
+
+        .intro-section p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .search-section {
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .search-box {
+            width: 100%;
+            max-width: 400px;
+            padding: 1rem 1.5rem;
+            font-size: 1.1rem;
+            border: 2px solid #74b9ff;
+            border-radius: 25px;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .search-box:focus {
+            border-color: #0984e3;
+            box-shadow: 0 0 0 3px rgba(116, 185, 255, 0.2);
+        }
+
+        .alphabet-nav {
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .alphabet-nav h2 {
+            margin-bottom: 1rem;
+            color: #2d3748;
+        }
+
+        .alphabet-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: center;
+        }
+
+        .alphabet-links a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            background: #74b9ff;
+            color: white;
+            text-decoration: none;
+            border-radius: 50%;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .alphabet-links a:hover {
+            background: #0984e3;
+            transform: scale(1.1);
+        }
+
+        .alphabet-links a.disabled {
+            background: #ddd;
+            color: #999;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .glossary-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .category-section {
+            background: rgba(255, 255, 255, 0.95);
+            margin-bottom: 2rem;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .category-section h2 {
+            background: linear-gradient(135deg, #74b9ff, #0984e3);
+            color: white;
+            padding: 1.5rem 2rem;
+            margin: 0;
+            font-size: 1.5rem;
+        }
+
+        .category-description {
+            padding: 1rem 2rem;
+            color: #666;
+            font-style: italic;
+            background: #f8f9ff;
+            border-bottom: 1px solid #e0e6ff;
+        }
+
+        .terms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            padding: 2rem;
+        }
+
+        .term-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .term-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+            border-color: #74b9ff;
+            text-decoration: none;
+        }
+
+        .term-card h3 {
+            color: #2d3748;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .term-card p {
+            color: #666;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+            font-size: 0.9rem;
+        }
+
+        .term-status {
+            display: inline-block;
+            padding: 0.2rem 0.6rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .available {
+            background: linear-gradient(135deg, #00b894, #00a085);
+            color: white;
+        }
+
+        .coming-soon {
+            background: linear-gradient(135deg, #fd79a8, #e84393);
+            color: white;
+        }
+
+        .related-tags {
+            margin-top: 1rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.3rem;
+        }
+
+        .related-tag {
+            background: #e0e6ff;
+            color: #5a67d8;
+            padding: 0.2rem 0.5rem;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            text-decoration: none;
+        }
+
+        .related-tag:hover {
+            background: #5a67d8;
+            color: white;
+        }
+
+        .breadcrumb {
+            text-align: center;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.8);
+            margin-bottom: 0;
+        }
+
+        .breadcrumb a {
+            color: #74b9ff;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .terms-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .alphabet-links a {
+                width: 35px;
+                height: 35px;
+                line-height: 35px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="breadcrumb">
+        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/">Home</a>
+    </div>
+
+    <div class="header">
+        <h1>Glossary</h1>
+        <p>Words to describe your experiences</p>
+    </div>
+
+    <div class="intro-section">
+        <p>Many neurodivergent experiences don't have common words to describe them. This glossary helps you find language for what you're going through, understand terms you encounter elsewhere, and communicate more clearly about your needs.</p>
+
+        <p>Having words for your experiences can be incredibly validating - suddenly realizing there's a name for that thing you thought was just you. Each term includes a clear definition, how it might show up in daily life, and connections to related concepts.</p>
+    </div>
+
+    <div class="search-section">
+        <h2 style="margin-bottom: 1rem; color: #2d3748;">Find a Term</h2>
+        <input type="text" class="search-box" placeholder="Search for a term..." id="searchBox" onkeyup="searchTerms()">
+        <p style="margin-top: 1rem; color: #666; font-size: 0.9rem;">Try searching for "masking," "stimming," or "executive function"</p>
+    </div>
+
+    <div class="alphabet-nav">
+        <h2>Browse by Letter</h2>
+        <div class="alphabet-links">
+            <a href="#A">A</a>
+            <a href="#B" class="disabled">B</a>
+            <a href="#C">C</a>
+            <a href="#D" class="disabled">D</a>
+            <a href="#E">E</a>
+            <a href="#F" class="disabled">F</a>
+            <a href="#G" class="disabled">G</a>
+            <a href="#H">H</a>
+            <a href="#I">I</a>
+            <a href="#J" class="disabled">J</a>
+            <a href="#K" class="disabled">K</a>
+            <a href="#L" class="disabled">L</a>
+            <a href="#M">M</a>
+            <a href="#N">N</a>
+            <a href="#O" class="disabled">O</a>
+            <a href="#P">P</a>
+            <a href="#Q" class="disabled">Q</a>
+            <a href="#R">R</a>
+            <a href="#S">S</a>
+            <a href="#T">T</a>
+            <a href="#U" class="disabled">U</a>
+            <a href="#V" class="disabled">V</a>
+            <a href="#W">W</a>
+            <a href="#X" class="disabled">X</a>
+            <a href="#Y" class="disabled">Y</a>
+            <a href="#Z" class="disabled">Z</a>
+        </div>
+    </div>
+
+    <div class="glossary-container">
+        <div class="category-section" id="A">
+            <h2>A Terms</h2>
+            <div class="category-description">
+                Terms starting with A
+            </div>
+            
+            <div class="terms-grid">
+                <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/glossary/alexithymia.html" class="term-card">
+                    <h3>Alexithymia</h3>
+                    <p>Difficulty identifying, understanding, or describing your own emotions</p>
+                    <span class="term-status coming-soon">Coming Soon</span>
+                    <div class="related-tags">
+                        <a href="#" class="related-tag">Autism</a>
+                        <a href="#" class="related-tag">Emotional Regulation</a>
+                    </div>
+                </a>
+                
+                <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/glossary/auditory-processing.html" class="term-card">
+                    <h3>Auditory Processing Disorder</h3>
+                    <p>Difficulty processing and making sense of sounds, especially speech</p>
+                    <span class="term-status coming-soon">Coming Soon</span>
+                    <div class="related-tags">
+                        <a href="#" class="related-tag">Communication</a>
+                        <a href="#" class="related-tag">ADHD</a>
+                    </div>
+                </a>
+
+                <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/glossary/autistic-burnout.html" class="term-card">
+                    <h3>Autistic Burnout</h3>
+                    <p>Physical and mental exhaustion from prolonged stress of masking and overwhelm</p>
+                    <span class="term-status coming-soon">Coming Soon</span>
+                    <div class="related-tags">
+                        <a href="#" class="related-tag">Autism</a>
+                        <a href="#" class="related-tag">Masking</a>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="category-section" id="C">
+            <h2>C Terms</h2>
+            <div class="category-description">
+                Terms starting with C
+            </div>
+            
+            <div class="terms-grid">
+                <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/glossary/cognitive-resources.html" class="term-card">
+                    <h3>Cognitive Resources</h3>
+                    <p>Mental energy used for thinking, processing, and decision-making</p>
+                    <span class="term-status coming-soon">Coming Soon</span>
+                    <div class="related-tags">
+                        <a href="#" class="related-tag">Executive Function</a>
+                        <a href="#" class="related-tag">Energy Management</a>
+                    </div>
+                </a>
+                
+                <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/glossary/comorbid.html" class="term-card">
+                    <h3>Comorbid</h3>
+                    <p>Having multiple conditions or diagnoses at the same time</p>
+                    <span class="term-status coming-soon">Coming Soon</span>
+                    <div class="related-tags">
+                        <a href="#" class="related-tag">Medical</a>
+                        <a href="#" class="related-tag">Diagnosis</a>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="category-section" id="E">
+            <h2>E Terms</h2>
+            <div class="category-description">
+                Terms starting with E
+            </div>
+            
+            <div class="terms-grid">
+                <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/glossary/echolalia.html" class="term-card">
+                    <h3>Echolalia</h3>
+                    <p>Repeating words or phrases from others, media, or your own previous speech</p>
+                    <span class="term-status available">Available</span>
+                    <div class="related-tags">
+                        <a href="#" class="related-tag">Autism</a>
+                        <a href="#" class="related-tag">Communication</a>
+                        <a href="#" class="related-tag">Stimming</a>
+                    </div>
+                </a>
+                
+                <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/glossary/executive-dysfunction.html" class="term-card">
+                    <h3>Executive Dysfunction</h3>
+                    <p>Difficulty with planning, organizing, starting tasks, or managing time</p>
+                    <span class="term-status coming-soon">Coming Soon</span>
+                    <div class="related-tags">
+                        <a href="#" class="related-tag">ADHD</a>
+                        <a href="#" class="related-tag">Autism</a>
+                        <a href="#" class="related-tag">Task Management</a>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="category-section" id="H">
+            <h2>H Terms</h2>
+            <div class="category-description">
+                Terms starting with H
+            </div>
+            
+            <div class="terms-grid">
+                <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/glossary/hyperfocus.html" class="term-card">
+                    <h3>Hyperfocus</h3>
+                    <p>Intense, prolonged focus on activities of interest, often to the exclusion of everything else</p>
+                    <span class="term-status coming-soon">Coming Soon</span>
+                    <div class="related-tags">
+                        <a href="#" class="related-tag">ADHD</a>
+                        <a href="#" class="related-tag">Autism</a>
+                        <a href="#" class="related-tag">Attention</a>
+                    </div>
+                </a>
+                
+                <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/glossary/hyposensitivity.html" class="term-card">
+                    <h3>Hyposensitivity</h3>
+                    <p>Under-responding to sensory input; needing more intense stimulation to register sensations</p>
+                    <span class="term-status coming-soon">Coming Soon</span>
+                    <div class="related-tags">
+                        <a href="#" class="related-tag">Sensory Processing</a>
+                        <a href="#" class="related-tag">Autism</a>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="category-section" id="I">
+            <h2>I Terms</h2>
+            <div class="category-description">
+                Terms starting with I
+            </div>
+            
+            <div class="terms-grid">
+                <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/glossary/impulse-control.html" class="term-card">
+                    <h3>Impulse Control</h3>
+                    <p>The ability to resist immediate urges or impulses in favor of longer-term goals</p>
+                    <span class="term-status coming-soon">Coming Soon</span>
+                    <div class="related-tags">
+                        <a href="#" class="related-tag">ADHD</a>
+                        <a href="#" class="related-tag">Executive Function</a>
+                    </div>
+                </a>
+                
+                <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/glossary/interoception.html" class="term-card">
+                    <h3>Interoception</h3>
+                    <p>Awareness of internal body signals like hunger, thirst, need to use the bathroom, or emotions</p>
+                    <span class="term-status coming-soon">Coming Soon</span>
+                    <div class="related-tags">
+                        <a href="#" class="related-tag">Sensory Processing</a>
+                        <a href="#" class="related-tag">Body Awareness</a>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="category-section" id="M">
+            <h2>M Terms</h2>
+            <div class="category-description">
+                Terms starting with M
+            </div>
+            
+            <div class="terms-grid">
+                <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/glossary/masking.html" class="term-card">
+                    <h3>Masking</h3>
+                    <p>Camouflaging natural neurodivergent behaviors to appear more neurotypical</p>
+                    <span class="term-status coming-soon">Coming Soon</span>
+                    <div class="related-tags">
+                        <a href="#" class="related-tag">Autism</a>
+                        <a href="#" class="related-tag">ADHD</a>
+                        <a href="#" class="related-tag">Social Situations</a>
+                    </div>
+                </a>
+                
+                <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/glossary/meltdown.html" class="term-card">
+                    <h3>Meltdown</h3>
+                    <p>An involuntary response to overwhelming stress or sensory input</p>
+                    <span class="term-status coming-soon">Coming Soon</span>
+                    <div class="related-tags">
+                        <a href="#" class="related-tag">Autism</a>
+                        <a href="#" class="related-tag">Emotional Regulation</a>
+                        <a href="#" class="related-tag">Overwhelm</a>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="category-section" id="N">
+            <h2>N Terms</h2>
+            <div class="category-description">
+                Terms starting with N
+            </div>
+            
+            <div class="terms-grid">
+                <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/glossary/neurotypical.html" class="term-card">
+                    <h3>Neurotypical</h3>
+                    <p>People whose brains develop and process information in ways considered typical by society</p>
+                    <span class="term-status coming-soon">Coming Soon</span>
+                    <div class="related-tags">
+                        <a href="#" class="related-tag">Identity</a>
+                        <a href="#" class="related-tag">Neurodiversity</a>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="category-section" id="P">
+            <h2>P Terms</h2>
+            <div class="category-description">
+                Terms starting with P
+            </div>
+            
+            <div class="terms-grid">
+                <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/glossary/perfectionism.html" class="term-card">
+                    <h3>Perfectionism</h3>
+                    <p>Setting unrealistically high standards and being overly critical of mistakes</p>
+                    <span class="term-status coming-soon">Coming Soon</span>
+                    <div class="related-tags">
+                        <a href="#" class="related-tag">Anxiety</a>
+                        <a href="#" class="related-tag">Autism</a>
+                        <a href="#" class="related-tag">Self-Criticism</a>
+                    </div>
+                </a>
+                
+                <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/glossary/proprioception.html" class="term-card">
+                    <h3>Proprioception</h3>
+                    <p>Awareness of where your body is in space and how your body parts relate to each other</p>
+                    <span class="term-status coming-soon">Coming Soon</span>
+                    <div class="related-tags">
+                        <a href="#" class="related-tag">Sensory Processing</a>
+                        <a href="#" class="related-tag">Body Awareness</a>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="category-section" id="R">
+            <h2>R Terms</h2>
+            <div class="category-description">
+                Terms starting with R
+            </div>
+            
+            <div class="terms-grid">
+                <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/glossary/rsd.html" class="term-card">
+                    <h3>RSD (Rejection Sensitive Dysphoria)</h3>
+                    <p>Extreme emotional sensitivity to perceived rejection, criticism, or failure</p>
+                    <span class="term-status coming-soon">Coming Soon</span>
+                    <div class="related-tags">
+                        <a href="#" class="related-tag">ADHD</a>
+                        <a href="#" class="related-tag">Emotional Regulation</a>
+                        <a href="#" class="related-tag">Relationships</a>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="category-section" id="S">
+            <h2>S Terms</h2>
+            <div class="category-description">
+                Terms starting with S
+            </div>
+            
+            <div class="terms-grid">
+                <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/glossary/stimming.html" class="term-card">
+                    <h3>Stimming</h3>
+                    <p>Self-stimulating behaviors that help regulate emotions and sensory input</p>
+                    <span class="term-status coming-soon">Coming Soon</span>
+                    <div class="related-tags">
+                        <a href="#" class="related-tag">Autism</a>
+                        <a href="#" class="related-tag">ADHD</a>
+                        <a href="#" class="related-tag">Self-Regulation</a>
+                    </div>
+                </a>
+                
+                <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/glossary/shutdown.html" class="term-card">
+                    <h3>Shutdown</h3>
+                    <p>When overwhelm causes you to withdraw, become non-verbal, or shut down emotionally</p>
+                    <span class="term-status coming-soon">Coming Soon</span>
+                    <div class="related-tags">
+                        <a href="#" class="related-tag">Autism</a>
+                        <a href="#" class="related-tag">Overwhelm</a>
+                        <a href="#" class="related-tag">Coping</a>
+                    </div>
+                </a>
+
+                <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/glossary/special-interest.html" class="term-card">
+                    <h3>Special Interest</h3>
+                    <p>Intense, focused interests that bring joy and can become areas of expertise</p>
+                    <span class="term-status coming-soon">Coming Soon</span>
+                    <div class="related-tags">
+                        <a href="#" class="related-tag">Autism</a>
+                        <a href="#" class="related-tag">Hyperfocus</a>
+                        <a href="#" class="related-tag">Identity</a>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="category-section" id="T">
+            <h2>T Terms</h2>
+            <div class="category-description">
+                Terms starting with T
+            </div>
+            
+            <div class="terms-grid">
+                <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/glossary/time-blindness.html" class="term-card">
+                    <h3>Time Blindness</h3>
+                    <p>Difficulty perceiving, tracking, or managing time effectively</p>
+                    <span class="term-status coming-soon">Coming Soon</span>
+                    <div class="related-tags">
+                        <a href="#" class="related-tag">ADHD</a>
+                        <a href="#" class="related-tag">Executive Function</a>
+                        <a href="#" class="related-tag">Time Management</a>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="category-section" id="W">
+            <h2>W Terms</h2>
+            <div class="category-description">
+                Terms starting with W
+            </div>
+            
+            <div class="terms-grid">
+                <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/glossary/working-memory.html" class="term-card">
+                    <h3>Working Memory</h3>
+                    <p>The ability to temporarily hold and manipulate information while performing other tasks</p>
+                    <span class="term-status coming-soon">Coming Soon</span>
+                    <div class="related-tags">
+                        <a href="#" class="related-tag">ADHD</a>
+                        <a href="#" class="related-tag">Executive Function</a>
+                        <a href="#" class="related-tag">Memory</a>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function searchTerms() {
+            const searchBox = document.getElementById('searchBox');
+            const searchTerm = searchBox.value.toLowerCase();
+            const termCards = document.querySelectorAll('.term-card');
+            
+            termCards.forEach(card => {
+                const title = card.querySelector('h3').textContent.toLowerCase();
+                const description = card.querySelector('p').textContent.toLowerCase();
+                
+                if (title.includes(searchTerm) || description.includes(searchTerm)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+            
+            // Hide sections with no visible cards
+            const sections = document.querySelectorAll('.category-section');
+            sections.forEach(section => {
+                const visibleCards = section.querySelectorAll('.term-card[style="display: block"], .term-card:not([style*="display: none"])');
+                if (visibleCards.length === 0 && searchTerm !== '') {
+                    section.style.display = 'none';
+                } else {
+                    section.style.display = 'block';
+                }
+            });
+        }
+
+        // Handle disabled alphabet links
+        document.addEventListener('DOMContentLoaded', function() {
+            const disabledLinks = document.querySelectorAll('.alphabet-links a.disabled');
+            disabledLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                });
+            });
+        });
+    </script>
+</body>
+</html>
