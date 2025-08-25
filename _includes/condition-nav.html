@@ -1,0 +1,103 @@
+{% assign conditions = site.data.conditions %}
+{% for condition in conditions %}
+  {% if condition.slug == page.condition_slug %}
+    {% assign current_index = forloop.index0 %}
+    {% break %}
+  {% endif %}
+{% endfor %}
+
+{% assign prev_index = current_index | minus: 1 %}
+{% assign next_index = current_index | plus: 1 %}
+
+<div class="condition-navigation">
+  <div class="nav-container">
+    {% if prev_index >= 0 %}
+      {% assign prev_condition = conditions[prev_index] %}
+      <a href="{{ prev_condition.slug }}.html" class="nav-link prev">
+        ← {{ prev_condition.title }}
+      </a>
+    {% else %}
+      <div class="nav-link disabled"></div>
+    {% endif %}
+    
+    <div class="current-condition">
+      {{ conditions[current_index].title }}
+    </div>
+    
+    {% if next_index < conditions.size %}
+      {% assign next_condition = conditions[next_index] %}
+      <a href="{{ next_condition.slug }}.html" class="nav-link next">
+        {{ next_condition.title }} →
+      </a>
+    {% else %}
+      <div class="nav-link disabled"></div>
+    {% endif %}
+  </div>
+</div>
+
+<style>
+.condition-navigation {
+    background: rgba(255, 255, 255, 0.9);
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 1.5rem 0;
+    margin-top: 2rem;
+}
+
+.nav-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 2rem;
+    align-items: center;
+}
+
+.nav-link {
+    color: #74b9ff;
+    text-decoration: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    background: white;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.nav-link:hover {
+    background: #74b9ff;
+    color: white;
+    text-decoration: none;
+    transform: translateY(-2px);
+}
+
+.nav-link.prev {
+    text-align: left;
+}
+
+.nav-link.next {
+    text-align: right;
+}
+
+.nav-link.disabled {
+    visibility: hidden;
+}
+
+.current-condition {
+    text-align: center;
+    font-weight: 600;
+    color: #333;
+    padding: 0.8rem 1rem;
+    background: #f8f9ff;
+    border-radius: 25px;
+    border-left: 4px solid #6c5ce7;
+}
+
+@media (max-width: 768px) {
+    .nav-container {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        text-align: center;
+    }
+}
+</style>
