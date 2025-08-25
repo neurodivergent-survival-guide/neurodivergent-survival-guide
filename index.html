@@ -41,25 +41,43 @@
             margin: 0 auto 2rem;
         }
 
-        .hero-cta {
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 25px;
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-            backdrop-filter: blur(10px);
+        .search-section {
+            max-width: 500px;
+            margin: 2rem auto 0;
+            position: relative;
         }
 
-        .hero-cta:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: translateY(-2px);
+        .search-box {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            font-size: 1.1rem;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 25px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
             color: white;
-            text-decoration: none;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .search-box::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .search-box:focus {
+            border-color: rgba(255, 255, 255, 0.6);
+            background: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1);
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 1.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.2rem;
+            pointer-events: none;
         }
 
         .container {
@@ -212,6 +230,46 @@
             font-size: 0.95rem;
         }
 
+        .quick-access {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+            margin: 3rem 0;
+            text-align: center;
+        }
+
+        .quick-access h3 {
+            color: #333;
+            margin-bottom: 1.5rem;
+            font-size: 1.4rem;
+        }
+
+        .quick-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .quick-link {
+            background: #f8f9ff;
+            padding: 1rem 1.5rem;
+            border-radius: 15px;
+            text-decoration: none;
+            color: #0984e3;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border-left: 3px solid #74b9ff;
+        }
+
+        .quick-link:hover {
+            background: #74b9ff;
+            color: white;
+            text-decoration: none;
+            transform: translateY(-2px);
+        }
+
         /* Jargon tooltip styles */
         .jargon {
             color: #e84393;
@@ -311,6 +369,10 @@
                 font-size: 2rem;
             }
 
+            .search-section {
+                max-width: 90%;
+            }
+
             .container {
                 padding: 1rem;
             }
@@ -322,13 +384,22 @@
             .workflow-steps {
                 grid-template-columns: 1fr;
             }
+
+            .quick-links {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
-            <div class="hero">
+    <div class="hero">
         <h1>The Neurodivergent Survival Guide</h1>
         <p>Navigate daily friction points with understanding, practical tools, and community wisdom</p>
+        
+        <div class="search-section">
+            <input type="text" class="search-box" placeholder="Search for conditions, struggles, or terms..." id="searchBox" onkeypress="handleSearch(event)">
+            <span class="search-icon">🔍</span>
+        </div>
     </div>
 
     <div class="container">
@@ -340,26 +411,39 @@
         </div>
 
         <div class="main-sections">
-            <a href="conditions/" class="section-card conditions-card">
+            <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/conditions/" class="section-card conditions-card">
                 <div class="card-icon">🧠</div>
                 <h3>Understand Your Brain</h3>
                 <p>Comprehensive guides to how different neurotypes create friction in daily life. Learn about the broader patterns that might explain multiple struggles you're experiencing.</p>
                 <div class="section-examples">Autism • ADHD • Anxiety • Trauma responses</div>
             </a>
 
-            <a href="struggles/" class="section-card struggles-card">
+            <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/" class="section-card struggles-card">
                 <div class="card-icon">⚡</div>
                 <h3>Navigate Daily Friction</h3>
                 <p>Practical guides for specific situations that create challenges. Each includes what it feels like, why it happens, and immediate + long-term strategies.</p>
                 <div class="section-examples">Communication • Executive function • Sensory overload • Emotional regulation</div>
             </a>
 
-            <a href="glossary/" class="section-card glossary-card">
+            <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/glossary/" class="section-card glossary-card">
                 <div class="card-icon">📚</div>
                 <h3>Learn the Language</h3>
                 <p>Definitions and explanations of terms that help you understand and communicate about your experiences. Build vocabulary for self-advocacy and connection.</p>
                 <div class="section-examples">Masking • Stimming • Alexithymia • Echolalia</div>
             </a>
+        </div>
+
+        <div class="quick-access">
+            <h3>Popular Starting Points</h3>
+            <p style="color: #666; margin-bottom: 1.5rem;">Jump directly to commonly accessed topics</p>
+            <div class="quick-links">
+                <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/communication-issues.html" class="quick-link">Communication Issues</a>
+                <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/conditions/autism.html" class="quick-link">Autism Guide</a>
+                <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/glossary/masking.html" class="quick-link">What is Masking?</a>
+                <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/glossary/stimming.html" class="quick-link">What is Stimming?</a>
+                <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/conditions/adhd.html" class="quick-link">ADHD Guide</a>
+                <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/executive-function.html" class="quick-link">Executive Function</a>
+            </div>
         </div>
 
         <div class="how-it-works">
@@ -398,6 +482,47 @@
     </div>
 
     <script>
+        function handleSearch(event) {
+            if (event.key === 'Enter') {
+                const searchTerm = event.target.value.toLowerCase().trim();
+                
+                // Simple routing based on common search terms
+                const routes = {
+                    'autism': 'conditions/autism.html',
+                    'adhd': 'conditions/adhd.html',
+                    'communication': 'struggles/communication-issues.html',
+                    'masking': 'glossary/masking.html',
+                    'stimming': 'glossary/stimming.html',
+                    'echolalia': 'glossary/echolalia.html',
+                    'sensory': 'struggles/sensory-processing.html',
+                    'executive function': 'struggles/executive-function.html',
+                    'anxiety': 'conditions/anxiety.html'
+                };
+                
+                // Find matching route
+                let targetPage = null;
+                for (const [term, page] of Object.entries(routes)) {
+                    if (searchTerm.includes(term)) {
+                        targetPage = page;
+                        break;
+                    }
+                }
+                
+                if (targetPage) {
+                    window.location.href = `https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/${targetPage}`;
+                } else if (searchTerm) {
+                    // If no specific match, route to appropriate section
+                    if (searchTerm.includes('condition') || searchTerm.includes('brain') || searchTerm.includes('neurotype')) {
+                        window.location.href = 'https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/conditions/';
+                    } else if (searchTerm.includes('struggle') || searchTerm.includes('daily') || searchTerm.includes('friction')) {
+                        window.location.href = 'https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/';
+                    } else {
+                        window.location.href = 'https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/glossary/';
+                    }
+                }
+            }
+        }
+
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -409,16 +534,6 @@
                         block: 'start'
                     });
                 }
-            });
-        });
-
-        // Handle clicks on section cards
-        document.querySelectorAll('.section-card').forEach(card => {
-            card.addEventListener('click', function(e) {
-                e.preventDefault();
-                const section = this.classList.contains('conditions-card') ? 'Conditions' : 
-                              this.classList.contains('struggles-card') ? 'Daily Struggles' : 'Glossary';
-                alert(`This would navigate to the ${section} section. For now, you can create individual pages in the ${this.getAttribute('href')} folder!`);
             });
         });
     </script>
