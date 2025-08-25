@@ -1,0 +1,36 @@
+{% assign struggles = site.data.struggles %}
+{% for struggle in struggles %}
+  {% if struggle.slug == page.struggle_slug %}
+    {% assign current_index = forloop.index0 %}
+    {% break %}
+  {% endif %}
+{% endfor %}
+
+{% assign prev_index = current_index | minus: 1 %}
+{% assign next_index = current_index | plus: 1 %}
+
+<div class="struggle-navigation">
+  <div class="nav-container">
+    {% if prev_index >= 0 %}
+      {% assign prev_struggle = struggles[prev_index] %}
+      <a href="{{ prev_struggle.slug }}.html" class="nav-link prev">
+        ← {{ prev_struggle.title }}
+      </a>
+    {% else %}
+      <div class="nav-link disabled"></div>
+    {% endif %}
+    
+    <div class="current-struggle">
+      {{ struggles[current_index].title }}
+    </div>
+    
+    {% if next_index < struggles.size %}
+      {% assign next_struggle = struggles[next_index] %}
+      <a href="{{ next_struggle.slug }}.html" class="nav-link next">
+        {{ next_struggle.title }} →
+      </a>
+    {% else %}
+      <div class="nav-link disabled"></div>
+    {% endif %}
+  </div>
+</div>
