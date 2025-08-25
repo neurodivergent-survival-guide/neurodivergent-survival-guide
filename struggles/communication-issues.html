@@ -37,6 +37,68 @@ body {
     color: #666;
 }
 
+.disclaimer-banner {
+    background: #fff2f2;
+    border: 2px solid #ffcccb;
+    padding: 1.5rem 2rem;
+    margin: 0 auto 2rem;
+    max-width: 800px;
+    border-radius: 12px;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.disclaimer-banner.dismissed {
+    display: none;
+}
+
+.disclaimer-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: #d63031;
+    color: white;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.2rem;
+    font-weight: bold;
+    transition: background 0.3s ease;
+}
+
+.disclaimer-close:hover {
+    background: #a71e1e;
+}
+
+.disclaimer-banner h3 {
+    color: #d63031;
+    margin-bottom: 0.8rem;
+    font-size: 1.1rem;
+}
+
+.disclaimer-banner p {
+    color: #555;
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
+}
+
+.crisis-resources {
+    background: #e8f5e8;
+    border: 2px solid #00b894;
+    padding: 1rem 2rem;
+    margin-top: 1rem;
+    border-radius: 8px;
+}
+
+.crisis-resources h4 {
+    color: #00b894;
+    margin-bottom: 0.5rem;
+}
+
 .intro-section {
     max-width: 800px;
     margin: 0 auto 3rem;
@@ -49,6 +111,20 @@ body {
     margin-bottom: 1.5rem;
     font-size: 1.1rem;
     line-height: 1.8;
+}
+
+.individual-variation-note {
+    background: #fff3cd;
+    border: 1px solid #ffeaa7;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    margin: 1.5rem 0;
+}
+
+.individual-variation-note h4 {
+    color: #d68910;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
 }
 
 .struggle-categories {
@@ -247,6 +323,16 @@ body {
     line-height: 1.8;
 }
 
+.info-section ul {
+    margin-bottom: 1.5rem;
+    padding-left: 1.5rem;
+}
+
+.info-section li {
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+}
+
 /* Advanced content styling */
 .learn-more-section {
     margin: 2rem 0;
@@ -311,7 +397,7 @@ body {
     font-size: 1rem;
 }
 
-.citation {
+.org-reference {
     font-size: 0.9rem;
     color: #666;
     font-style: italic;
@@ -328,6 +414,20 @@ body {
 
 .complexity-note h6 {
     color: #d68910;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+}
+
+.professional-note {
+    background: #e8f5e8;
+    border-left: 4px solid #00b894;
+    padding: 1rem 1.5rem;
+    margin: 1.5rem 0;
+    border-radius: 0 8px 8px 0;
+}
+
+.professional-note h6 {
+    color: #00b894;
     margin-bottom: 0.5rem;
     font-size: 1rem;
 }
@@ -378,21 +478,40 @@ body {
 
 <div class="header">
     <h1>Communication Issues</h1>
-    <p>Understanding why conversations feel so complicated</p>
+    <p>Understanding when conversations feel complicated</p>
+</div>
+
+<div class="disclaimer-banner" id="disclaimer-banner">
+    <div class="disclaimer-close" onclick="dismissDisclaimer()">×</div>
+    <h3>Important: Educational Resource Only</h3>
+    <p>This guide provides educational information for self-understanding. It is not intended to diagnose, treat, or replace professional medical or mental health care.</p>
+    <p>If experiences described here significantly impact daily functioning, relationships, or wellbeing, consider consulting qualified healthcare professionals.</p>
+    
+    <div class="crisis-resources">
+        <h4>Immediate Help Available</h4>
+        <p><strong>Crisis situations:</strong> Contact emergency services (911) or crisis hotlines.</p>
+        <p><strong>Suicide Prevention:</strong> 988 Lifeline</p>
+        <p><strong>Crisis Text Line:</strong> Text HOME to 741741</p>
+    </div>
 </div>
 
 <div class="intro-section">
-    <p>Neurodivergent brains often process social communication differently than <span class="jargon-term" data-definition="People whose brains develop and process information in ways considered typical by society">neurotypical</span> brains. This isn't better or worse - just different. However, since most social environments are designed around neurotypical communication styles, these differences can create friction in daily interactions.</p>
+    <p>Many neurodivergent people process social communication differently than <span class="jargon-term" data-definition="People whose brains develop and process information in ways considered typical by society">neurotypical</span> individuals. These differences create friction in social environments designed around neurotypical communication patterns.</p>
 
-    <p>Understanding your specific communication patterns can help you navigate social situations with less stress and more authenticity. The key is recognizing that communication struggles often stem from mismatched expectations, not personal failings.</p>
+    <p>Understanding specific communication patterns can help reduce stress and increase authenticity in social situations. Communication struggles often stem from mismatched expectations between different neurotypes, not personal failings.</p>
+    
+    <div class="individual-variation-note">
+        <h4>Individual Experiences Vary</h4>
+        <p>Communication challenges show up differently across individuals, cultures, ages, and life circumstances. Multiple conditions often interact in complex ways. The experiences described here represent common patterns, not universal rules.</p>
+    </div>
 </div>
 
 <div class="struggle-categories">
     <h2>Types of Communication Challenges</h2>
     
     <div class="category-section">
-        <h3>Internal Communication Struggles</h3>
-        <p>These happen inside your head and affect how you experience social interactions.</p>
+        <h3>Internal Communication Experiences</h3>
+        <p>These patterns happen within individuals and affect how social interactions feel.</p>
         
         <div class="struggle-grid">
             <div class="struggle-card" onclick="openModal('social-exhaustion')">
@@ -407,7 +526,7 @@ body {
             
             <div class="struggle-card" onclick="openModal('overthinking-responses')">
                 <h4>Overthinking Responses</h4>
-                <p>Analyzing every word before speaking and replaying conversations afterward</p>
+                <p>Analyzing words before speaking and replaying conversations afterward</p>
                 <div class="condition-tags">
                     <span class="tag">Anxiety</span>
                     <span class="tag">Autism</span>
@@ -417,7 +536,7 @@ body {
             
             <div class="struggle-card" onclick="openModal('masking-fatigue')">
                 <h4>Masking Fatigue</h4>
-                <p>Exhaustion from constantly hiding your natural communication style</p>
+                <p>Exhaustion from hiding natural communication patterns</p>
                 <div class="condition-tags">
                     <span class="tag">Autism</span>
                     <span class="tag">ADHD</span>
@@ -427,7 +546,7 @@ body {
             
             <div class="struggle-card" onclick="openModal('social-anxiety-spirals')">
                 <h4>Social Anxiety Spirals</h4>
-                <p>Cascading worried thoughts about how others perceive you</p>
+                <p>Cascading worried thoughts about how others perceive interactions</p>
                 <div class="condition-tags">
                     <span class="tag">Social Anxiety</span>
                     <span class="tag">RSD</span>
@@ -439,7 +558,7 @@ body {
 
     <div class="category-section">
         <h3>Interpersonal Communication Challenges</h3>
-        <p>These create friction between you and other people during conversations.</p>
+        <p>These patterns create friction between people during conversations.</p>
         
         <div class="struggle-grid">
             <div class="struggle-card" onclick="openModal('missing-social-cues')">
@@ -454,7 +573,7 @@ body {
             
             <div class="struggle-card" onclick="openModal('being-too-direct')">
                 <h4>Being Too Direct</h4>
-                <p>Speaking honestly in ways others find blunt or insensitive</p>
+                <p>Speaking honestly in ways others find blunt</p>
                 <div class="condition-tags">
                     <span class="tag">Autism</span>
                     <span class="tag">ADHD</span>
@@ -464,7 +583,7 @@ body {
             
             <div class="struggle-card" onclick="openModal('interrupting-others')">
                 <h4>Interrupting Others</h4>
-                <p>Jumping into conversations or talking over people without meaning to</p>
+                <p>Jumping into conversations without meaning to be rude</p>
                 <div class="condition-tags">
                     <span class="tag">ADHD</span>
                     <span class="tag">Autism</span>
@@ -485,7 +604,7 @@ body {
     </div>
 </div>
 
-<!-- All 8 Complete Modals -->
+<!-- Enhanced Modals Following Guidelines -->
 
 <div id="social-exhaustion" class="modal">
     <div class="modal-content">
@@ -501,474 +620,56 @@ body {
         
         <div class="info-section">
             <h4>What this feels like:</h4>
-            <p>After social interactions, you feel completely drained - like your battery is at 0%. Even enjoyable conversations can leave you needing hours to recover. You might feel mentally foggy, emotionally raw, or physically exhausted. Sometimes you need to isolate for days to feel normal again.</p>
+            <p>After social interactions, many people experience complete mental and physical drainage - like all energy has been consumed. Even enjoyable conversations can leave someone needing hours to recover. This might include mental fog, emotional rawness, or physical exhaustion. Some individuals need to isolate for extended periods to feel balanced again.</p>
 
             <h4>Why this might be happening:</h4>
-            <p>Social interactions require intense <span class="jargon-term" data-definition="Mental energy used for thinking, processing, and decision-making">cognitive resources</span> for neurodivergent people. You're simultaneously processing what people are saying, monitoring their body language, managing your own responses, and often <span class="jargon-term" data-definition="Camouflaging natural neurodivergent behaviors to appear more neurotypical">masking</span> your natural behaviors. This constant multitasking is genuinely exhausting.</p>
+            <p>Social interactions often require intense <span class="jargon-term" data-definition="Mental energy used for thinking, processing, and decision-making">cognitive resources</span>. Many people simultaneously process spoken content, monitor body language, manage personal responses, and often engage in <span class="jargon-term" data-definition="Camouflaging natural neurodivergent behaviors to appear more neurotypical">masking</span> behaviors. This constant mental multitasking can be genuinely exhausting for some neurotypes.</p>
 
             <div class="learn-more-section">
                 <div class="learn-more-header" onclick="toggleLearnMore('social-science')">
-                    <h5>Learn More: Scientific Background</h5>
+                    <h5>Learn More: Research Background</h5>
                     <span class="expand-icon">▼</span>
                 </div>
                 <div class="learn-more-content" id="social-science">
                     <div class="research-highlight">
-                        <h6>Neurological Basis</h6>
-                        <p>Social cognition activates multiple brain networks simultaneously: the default mode network for theory of mind, the salience network for attention switching, and executive control networks for behavioral regulation. Autistic brains show different connectivity patterns in these networks, requiring more conscious processing of what neurotypicals handle automatically.</p>
-                        <div class="citation">Schilbach et al. (2013). Toward a second-person neuroscience. Behavioral and Brain Sciences.</div>
+                        <h6>Neurological Considerations</h6>
+                        <p>Research suggests social cognition activates multiple brain networks simultaneously. Autistic Self Advocacy Network resources indicate that autistic brains may show different connectivity patterns in these networks, potentially requiring more conscious processing of social information that neurotypical brains handle automatically.</p>
+                        <div class="org-reference">Source: Autistic Self Advocacy Network educational materials</div>
                     </div>
                     
-                    <p><strong>Cognitive Load Theory Applied:</strong> Social situations create high extraneous cognitive load for neurodivergent individuals. While neurotypicals can process social information via automated schemas, neurodivergent people often rely on controlled processing, which consumes limited working memory resources.</p>
+                    <p><strong>Cognitive Load Considerations:</strong> Some research indicates social situations may create higher cognitive demands for certain individuals. While neurotypical people often process social information through established patterns, some neurodivergent people may rely more on active processing, which can consume mental energy resources.</p>
                     
                     <div class="complexity-note">
                         <h6>Individual Variation</h6>
-                        <p>Social exhaustion severity correlates with masking frequency, alexithymia levels, and sensory processing sensitivity. The intersection of these factors creates highly individualized exhaustion patterns that don't follow simple diagnostic categories.</p>
+                        <p>Social exhaustion patterns vary significantly based on masking frequency, sensory sensitivities, and individual social processing styles. Multiple factors interact to create highly personalized exhaustion experiences that don't fit simple categories.</p>
                     </div>
                 </div>
             </div>
 
-            <h4>What can help you through the next 5 minutes:</h4>
-            <p>• Find a quiet, low-stimulation space immediately</p>
-            <p>• Dim the lights or close your eyes</p>
-            <p>• Remove any uncomfortable clothing or accessories</p>
-            <p>• Do gentle <span class="jargon-term" data-definition="Self-soothing repetitive behaviors">stimming</span> if it helps (rocking, fidgeting)</p>
-            <p>• Avoid making any social plans or decisions right now</p>
+            <h4>What can help through the next 5 minutes:</h4>
+            <ul>
+                <li>Find a quiet, low-stimulation space when possible</li>
+                <li>Dim lights or close eyes if helpful</li>
+                <li>Remove uncomfortable clothing or accessories</li>
+                <li>Engage in gentle <span class="jargon-term" data-definition="Self-soothing repetitive behaviors">stimming</span> if it helps (rocking, fidgeting)</li>
+                <li>Avoid making social plans or important decisions during exhaustion</li>
+            </ul>
 
-            <h4>What are some healthy long-term solutions:</h4>
-            <p>• Schedule recovery time after social events</p>
-            <p>• Set boundaries around how many social events you attend per week</p>
-            <p>• Practice unmasking with safe people to reduce the energy drain</p>
-            <p>• Identify which types of social interactions are most/least draining</p>
-            <p>• Prepare conversation topics in advance to reduce mental load</p>
+            <h4>What are some healthy long-term approaches:</h4>
+            <ul>
+                <li>Schedule recovery time after social events</li>
+                <li>Set boundaries around social event frequency</li>
+                <li>Practice reducing masking with safe people when possible</li>
+                <li>Identify which types of social interactions feel most/least draining</li>
+                <li>Prepare conversation topics in advance to reduce mental load</li>
+            </ul>
 
             <div class="learn-more-section">
                 <div class="learn-more-header" onclick="toggleLearnMore('social-advanced')">
-                    <h5>Learn More: Advanced Strategies</h5>
+                    <h5>Learn More: Advanced Approaches</h5>
                     <span class="expand-icon">▼</span>
                 </div>
                 <div class="learn-more-content" id="social-advanced">
-                    <p><strong>Energy Budget Management:</strong> Track your social interactions and recovery times for 2-3 weeks. Identify patterns: Which types of interactions (work meetings, family gatherings, phone calls) drain you most? What's your recovery ratio (2 hours social = 6 hours recovery)? Use this data to make informed scheduling decisions.</p>
+                    <p><strong>Energy Pattern Tracking:</strong> Consider tracking social interactions and recovery times over several weeks. Identify patterns around interaction types (work meetings, family gatherings, phone calls), duration, and recovery needs. Use this information for informed scheduling decisions.</p>
                     
-                    <p><strong>Selective Masking Strategy:</strong> Rather than binary masking/unmasking, develop a repertoire of "low-cost" adaptations. For example, maintaining eye contact during important points rather than constantly, or using scripted responses for small talk while being authentic in deeper conversations.</p>
-                    
-                    <div class="research-highlight">
-                        <h6>Professional Considerations</h6>
-                        <p>Document patterns of exhaustion for potential workplace accommodations. Social exhaustion can qualify for intermittent FMLA if it significantly impacts functioning. Consider requesting schedule modifications, reduced meeting loads, or written communication preferences.</p>
-                    </div>
-                </div>
-            </div>
-
-            <h4>When should I consider medical intervention:</h4>
-            <p>• If social exhaustion is preventing you from maintaining necessary relationships</p>
-            <p>• If you're avoiding all social contact due to the recovery time needed</p>
-            <p>• If the exhaustion is accompanied by depression, anxiety, or thoughts of self-harm</p>
-            <p>• If you're using substances to cope with social situations</p>
-
-            <h4>You're not imagining this:</h4>
-            <p>Social exhaustion is a real phenomenon experienced by many neurodivergent people. It's not antisocial behavior or social anxiety - it's the natural result of your brain working extra hard to navigate social situations. Your need for recovery time is valid and important for your wellbeing.</p>
-        </div>
-    </div>
-</div>
-
-<div id="overthinking-responses" class="modal">
-    <div class="modal-content">
-        <span class="close">&times;</span>
-        <div class="modal-header">
-            <h3>Overthinking Responses</h3>
-            <div class="condition-tags">
-                <span class="tag">Anxiety</span>
-                <span class="tag">Autism</span>
-                <span class="tag">Perfectionism</span>
-            </div>
-        </div>
-        
-        <div class="info-section">
-            <h4>What this feels like:</h4>
-            <p>You rehearse conversations before they happen, analyze every word you're about to say, and then replay interactions for hours afterward wondering if you said something wrong. Casual conversations feel high-stakes because you're trying to get every response "right."</p>
-
-            <h4>Why this might be happening:</h4>
-            <p>Your brain is trying to solve the complex puzzle of social communication by thinking through all the possibilities. This often stems from past experiences of miscommunication or social rejection, making your brain hyper-vigilant about potential social mistakes.</p>
-
-            <h4>What can help you through the next 5 minutes:</h4>
-            <p>• Use the 3-second rule: count to three, then respond with whatever feels natural</p>
-            <p>• Have bridge phrases ready: "That's interesting," "Let me think about that," "I see what you mean"</p>
-            <p>• Remind yourself that most people aren't analyzing your words as intensely as you are</p>
-            <p>• Focus on listening rather than planning your response</p>
-            <p>• Accept that some conversations will be imperfect, and that's normal</p>
-
-            <h4>What are some healthy long-term solutions:</h4>
-            <p>• Practice the "good enough" approach - aim for adequate communication rather than perfect</p>
-            <p>• Set time limits for post-conversation analysis (e.g., 10 minutes maximum)</p>
-            <p>• Work on <span class="jargon-term" data-definition="Being present in the moment rather than lost in thoughts">mindfulness</span> techniques to stay present during conversations</p>
-            <p>• Build relationships with people who accept your communication style</p>
-            <p>• Challenge catastrophic thinking about social "mistakes"</p>
-
-            <h4>When should I consider medical intervention:</h4>
-            <p>• If overthinking is preventing you from speaking up at work or in important situations</p>
-            <p>• If social anxiety is leading to panic attacks or avoidance of necessary conversations</p>
-            <p>• If you're losing sleep analyzing past conversations</p>
-            <p>• If perfectionism around communication is affecting your self-worth</p>
-
-            <h4>You're not imagining this:</h4>
-            <p>Many neurodivergent people experience this intense mental rehearsal around communication. Your desire to communicate well shows how much you care about others. The goal isn't to stop caring, but to find a balance that doesn't exhaust you mentally.</p>
-        </div>
-    </div>
-</div>
-
-<div id="masking-fatigue" class="modal">
-    <div class="modal-content">
-        <span class="close">&times;</span>
-        <div class="modal-header">
-            <h3>Masking Fatigue</h3>
-            <div class="condition-tags">
-                <span class="tag">Autism</span>
-                <span class="tag">ADHD</span>
-                <span class="tag">Masking</span>
-            </div>
-        </div>
-        
-        <div class="info-section">
-            <h4>What this feels like:</h4>
-            <p>You're exhausted from constantly performing a version of yourself that feels acceptable to others. You monitor your tone, suppress your natural reactions, force eye contact, and hide your stims. By the end of the day, you don't even know what your authentic response would be anymore.</p>
-
-            <h4>Why this might be happening:</h4>
-            <p>Masking requires enormous mental energy because you're constantly monitoring and adjusting your behavior. You've learned to camouflage your natural neurodivergent traits to avoid negative reactions, but this leaves you feeling disconnected from your authentic self.</p>
-
-            <div class="learn-more-section">
-                <div class="learn-more-header" onclick="toggleLearnMore('masking-science')">
-                    <h5>Learn More: The Science of Masking</h5>
-                    <span class="expand-icon">▼</span>
-                </div>
-                <div class="learn-more-content" id="masking-science">
-                    <div class="research-highlight">
-                        <h6>Neurological Cost</h6>
-                        <p>Masking requires constant activation of executive control networks while suppressing default behavioral patterns. This creates a state of chronic cognitive effort similar to constantly translating between languages. Brain imaging studies show increased activation in prefrontal regions associated with inhibitory control during social masking tasks.</p>
-                        <div class="citation">Lai et al. (2017). Quantifying and exploring camouflaging in men and women with autism. Autism.</div>
-                    </div>
-                    
-                    <p><strong>Identity Integration Theory:</strong> Masking creates a disconnect between authentic self-concept and performed identity. This incongruence can lead to identity confusion, imposter syndrome, and difficulty accessing genuine emotional responses even in private settings.</p>
-                    
-                    <div class="complexity-note">
-                        <h6>Masking vs. Social Skills</h6>
-                        <p>There's an important distinction between learning genuine social skills and performing neurotypical behavior. Skills enhance communication; masking conceals authentic self-expression. The line isn't always clear, but the key is whether adaptations feel empowering or depleting.</p>
-                    </div>
-                </div>
-            </div>
-
-            <h4>What can help you through the next 5 minutes:</h4>
-            <p>• Drop the mask immediately - stop monitoring your behavior</p>
-            <p>• Allow yourself to stim freely or make your natural facial expressions</p>
-            <p>• Say what you actually think instead of what you think you should say</p>
-            <p>• Give yourself permission to be weird, blunt, or intense</p>
-            <p>• Do something that feels authentically you</p>
-
-            <h4>What are some healthy long-term solutions:</h4>
-            <p>• Identify safe people and spaces where you can unmask</p>
-            <p>• Gradually reduce masking in low-stakes situations</p>
-            <p>• Practice recognizing what your authentic responses actually are</p>
-            <p>• Build self-acceptance around your natural neurodivergent traits</p>
-            <p>• Set boundaries around how much masking you're willing to do</p>
-
-            <h4>When should I consider medical intervention:</h4>
-            <p>• If you've lost touch with your authentic self entirely</p>
-            <p>• If masking is leading to identity crisis or dissociation</p>
-            <p>• If you're experiencing <span class="jargon-term" data-definition="Exhaustion and breakdown from prolonged masking and stress">autistic burnout</span> or severe depression</p>
-            <p>• If you're having thoughts of self-harm related to feeling fake or unseen</p>
-
-            <h4>You're not imagining this:</h4>
-            <p>Masking fatigue is a recognized experience in neurodivergent communities. The exhaustion you feel from constant performance is real and valid. You deserve relationships where you can show up authentically without having to hide core parts of yourself.</p>
-        </div>
-    </div>
-</div>
-
-<div id="social-anxiety-spirals" class="modal">
-    <div class="modal-content">
-        <span class="close">&times;</span>
-        <div class="modal-header">
-            <h3>Social Anxiety Spirals</h3>
-            <div class="condition-tags">
-                <span class="tag">Social Anxiety</span>
-                <span class="tag">RSD</span>
-                <span class="tag">ADHD</span>
-            </div>
-        </div>
-        
-        <div class="info-section">
-            <h4>What this feels like:</h4>
-            <p>One worried thought about a social situation cascades into hours of catastrophic thinking. "Did I sound stupid?" becomes "Everyone thinks I'm weird" becomes "I'm going to be rejected by everyone." Your mind creates increasingly dramatic scenarios of social disaster.</p>
-
-            <h4>Why this might be happening:</h4>
-            <p>Your brain is trying to protect you from social rejection by analyzing every possible threat. If you have <span class="jargon-term" data-definition="Rejection Sensitive Dysphoria - extreme sensitivity to perceived rejection">RSD</span>, your threat detection system may be especially sensitive to signs of disapproval or dislike.</p>
-
-            <h4>What can help you through the next 5 minutes:</h4>
-            <p>• Use 5-4-3-2-1 grounding: name 5 things you see, 4 you feel, 3 you hear, 2 you smell, 1 you taste</p>
-            <p>• Challenge the spiral by asking "What evidence do I actually have for this worry?"</p>
-            <p>• Remind yourself that most people are focused on themselves, not analyzing you</p>
-            <p>• Take breaks from social situations to reset when you feel the spiral starting</p>
-            <p>• Use bathroom breaks or step outside for fresh air</p>
-
-            <h4>What are some healthy long-term solutions:</h4>
-            <p>• Learn to recognize spiral triggers and early warning signs</p>
-            <p>• Practice thought-challenging techniques regularly, not just during crises</p>
-            <p>• Build evidence against anxiety predictions by tracking social outcomes</p>
-            <p>• Develop a support system of people who understand your sensitivity</p>
-            <p>• Consider therapy specifically for social anxiety or RSD</p>
-
-            <h4>When should I consider medical intervention:</h4>
-            <p>• If social anxiety is preventing you from work, school, or essential activities</p>
-            <p>• If spirals are happening daily or lasting for hours</p>
-            <p>• If you're avoiding all social contact due to anxiety</p>
-            <p>• If anxiety spirals are accompanied by panic attacks or self-harm thoughts</p>
-
-            <h4>You're not imagining this:</h4>
-            <p>Social anxiety spirals are a common experience, especially for neurodivergent people who may have faced more social rejection or misunderstanding. Your sensitivity to social cues, while sometimes painful, often comes from a place of caring deeply about connections with others.</p>
-        </div>
-    </div>
-</div>
-
-<div id="missing-social-cues" class="modal">
-    <div class="modal-content">
-        <span class="close">&times;</span>
-        <div class="modal-header">
-            <h3>Missing Social Cues</h3>
-            <div class="condition-tags">
-                <span class="tag">Autism</span>
-                <span class="tag">ADHD</span>
-                <span class="tag">Auditory Processing</span>
-            </div>
-        </div>
-        
-        <div class="info-section">
-            <h4>What this feels like:</h4>
-            <p>You realize afterward that you missed important unspoken information during conversations. People seem to communicate in a secret code of raised eyebrows, tone changes, and meaningful pauses that you don't naturally pick up on. You often ask "Are you being sarcastic?" or miss when someone is uncomfortable.</p>
-
-            <h4>Why this might be happening:</h4>
-            <p>Neurotypical communication often relies heavily on subtext, body language, and implied meanings. Your brain may focus more on the literal words being said rather than the full communication context, or you may process visual and auditory information differently.</p>
-
-            <h4>What can help you through the next 5 minutes:</h4>
-            <p>• Ask directly: "How are you feeling about this conversation?" or "Are you joking?"</p>
-            <p>• Pay attention to tone changes as much as words</p>
-            <p>• Notice if someone's body language doesn't match their words</p>
-            <p>• When in doubt, check: "It seems like something shifted - did I miss something?"</p>
-            <p>• Focus on one type of social cue at a time rather than trying to catch everything</p>
-
-            <h4>What are some healthy long-term solutions:</h4>
-            <p>• Learn common social cue patterns in your culture (though these vary widely)</p>
-            <p>• Build relationships with people who communicate directly and don't rely heavily on subtext</p>
-            <p>• Practice asking clarifying questions without apologizing for needing clarity</p>
-            <p>• Advocate for explicit communication in important relationships</p>
-            <p>• Accept that you'll miss some cues, and that's okay - most people do sometimes</p>
-
-            <h4>When should I consider medical intervention:</h4>
-            <p>• If missing social cues is severely impacting work relationships or performance</p>
-            <p>• If you're avoiding social situations entirely due to confusion</p>
-            <p>• If miscommunication is causing significant relationship problems</p>
-            <p>• If you want professional social skills coaching or evaluation</p>
-
-            <h4>You're not imagining this:</h4>
-            <p>Social cues are genuinely complex, and many are cultural or contextual. Missing them doesn't mean you're socially deficient - it means your brain processes communication differently. Many successful neurodivergent people navigate this by building relationships with understanding people and advocating for clearer communication.</p>
-        </div>
-    </div>
-</div>
-
-<div id="being-too-direct" class="modal">
-    <div class="modal-content">
-        <span class="close">&times;</span>
-        <div class="modal-header">
-            <h3>Being Too Direct</h3>
-            <div class="condition-tags">
-                <span class="tag">Autism</span>
-                <span class="tag">ADHD</span>
-                <span class="tag">Impulse Control</span>
-            </div>
-        </div>
-        
-        <div class="info-section">
-            <h4>What this feels like:</h4>
-            <p>You say exactly what you think and mean, but others react as if you were rude or insensitive. You're confused because you were just being honest and efficient, but people seem hurt or offended. Comments like "you could have said that nicer" leave you wondering what you did wrong.</p>
-
-            <h4>Why this might be happening:</h4>
-            <p>You're communicating logically and efficiently, but neurotypical communication often includes social cushioning - extra words and phrases designed to manage emotions and relationships rather than just convey information. Your directness isn't wrong, it's just different from expected social norms.</p>
-
-            <h4>What can help you through the next 5 minutes:</h4>
-            <p>• Add cushioning phrases: "I might be wrong, but..." or "What do you think about..."</p>
-            <p>• Acknowledge the person's feelings: "I can see this is important to you, and..."</p>
-            <p>• Ask before giving feedback: "Would you like my thoughts on this?"</p>
-            <p>• Use "I" statements: "I noticed..." instead of "You always..."</p>
-            <p>• Add appreciation: "Thanks for bringing this up, I think..."</p>
-
-            <h4>What are some healthy long-term solutions:</h4>
-            <p>• Learn which relationships value your directness and which need more cushioning</p>
-            <p>• Practice adding one extra "nice" phrase to important communications</p>
-            <p>• Find work and social environments that appreciate straightforward communication</p>
-            <p>• Build relationships with other direct communicators</p>
-            <p>• Remember that adapting your style doesn't mean you're fake - it's translation, not masking</p>
-
-            <h4>When should I consider medical intervention:</h4>
-            <p>• If your communication style is consistently damaging important relationships</p>
-            <p>• If you're being disciplined at work repeatedly for how you communicate</p>
-            <p>• If you want professional communication coaching</p>
-            <p>• If directness stems from impulse control issues that interfere with other life areas</p>
-
-            <h4>You're not imagining this:</h4>
-            <p>Direct communication is efficient, honest, and valuable. Many cultures and professions appreciate straightforward communication. The challenge is learning when to adapt your style for specific contexts without losing your authentic voice. Your honesty is a strength, even when it needs some social translation.</p>
-        </div>
-    </div>
-</div>
-
-<div id="interrupting-others" class="modal">
-    <div class="modal-content">
-        <span class="close">&times;</span>
-        <div class="modal-header">
-            <h3>Interrupting Others</h3>
-            <div class="condition-tags">
-                <span class="tag">ADHD</span>
-                <span class="tag">Autism</span>
-                <span class="tag">Working Memory</span>
-            </div>
-        </div>
-        
-        <div class="info-section">
-            <h4>What this feels like:</h4>
-            <p>You have a perfect response or important thought, but if you don't say it right now, you'll forget it. So you jump into the conversation, only to realize you've interrupted someone mid-sentence. You're not trying to be rude - you're trying to contribute meaningfully while your thought is still accessible.</p>
-
-            <h4>Why this might be happening:</h4>
-            <p><span class="jargon-term" data-definition="The ability to temporarily hold and work with information in your mind">Working memory</span> challenges mean that thoughts feel urgent and fleeting. Additionally, you might process conversation patterns differently, missing the subtle cues that indicate when it's your turn to speak. Your enthusiasm to engage is positive, but the timing needs adjustment.</p>
-
-            <h4>What can help you through the next 5 minutes:</h4>
-            <p>• Write your thought down so you won't forget it, then wait for a natural pause</p>
-            <p>• Hold up one finger to signal "I have something to add" without speaking</p>
-            <p>• Count to two after someone stops talking before you respond</p>
-            <p>• If you do interrupt, quickly say "Sorry, please continue" and wait</p>
-            <p>• Focus on listening completely to their point before forming your response</p>
-
-            <h4>What are some healthy long-term solutions:</h4>
-            <p>• Practice the "notepad method" - always have something to jot thoughts on during conversations</p>
-            <p>• Ask friends to give you a specific signal when you interrupt</p>
-            <p>• In meetings, establish that you might need to write thoughts down to participate effectively</p>
-            <p>• Work on strengthening <span class="jargon-term" data-definition="The ability to temporarily hold and work with information in your mind">working memory</span> through exercises and strategies</p>
-            <p>• Find conversation partners who understand your communication style</p>
-
-            <h4>When should I consider medical intervention:</h4>
-            <p>• If interrupting is severely impacting work meetings or important relationships</p>
-            <p>• If it's part of broader impulse control challenges affecting multiple life areas</p>
-            <p>• If you want medication evaluation for ADHD symptoms including conversational impulsivity</p>
-            <p>• If working memory issues are significantly interfering with daily functioning</p>
-
-            <h4>You're not imagining this:</h4>
-            <p>The urge to speak immediately when you have a thought is a real experience related to how your brain processes and stores information. Your eagerness to contribute to conversations shows you care about connecting with others. Learning timing strategies doesn't mean suppressing your voice - it means ensuring your valuable contributions are heard and appreciated.</p>
-        </div>
-    </div>
-</div>
-
-<div id="misreading-tone" class="modal">
-    <div class="modal-content">
-        <span class="close">&times;</span>
-        <div class="modal-header">
-            <h3>Misreading Tone</h3>
-            <div class="condition-tags">
-                <span class="tag">Autism</span>
-                <span class="tag">Anxiety</span>
-                <span class="tag">Auditory Processing</span>
-            </div>
-        </div>
-        
-        <div class="info-section">
-            <h4>What this feels like:</h4>
-            <p>Someone says something and you can't tell if they're joking, being sarcastic, or serious. You might laugh at something that wasn't meant to be funny, or take a joke literally. Text messages are especially confusing because you can't hear tone at all. You often ask "Wait, are you being serious?"</p>
-
-            <h4>Why this might be happening:</h4>
-            <p>Tone carries a lot of social meaning that isn't contained in the actual words. Your brain might focus more on literal content than emotional subtext, or you might process auditory information differently. Cultural differences in tonal expression can also make this more challenging.</p>
-
-            <h4>What can help you through the next 5 minutes:</h4>
-            <p>• Ask directly: "Are you joking?" or "How should I interpret that?"</p>
-            <p>• Pay attention to facial expressions as well as voice tone</p>
-            <p>• When uncertain, respond neutrally until you get more context</p>
-            <p>• In text conversations, ask for clarification or use emojis to convey your own tone</p>
-            <p>• Remember that misreading tone occasionally happens to everyone</p>
-
-            <h4>What are some healthy long-term solutions:</h4>
-            <p>• Build relationships with people who communicate their intentions clearly</p>
-            <p>• Practice identifying different tones in low-stakes situations (movies, audiobooks)</p>
-            <p>• Ask trusted friends to be explicit about their tone when discussing important topics</p>
-            <p>• Develop phrases for checking understanding: "I want to make sure I'm reading this right..."</p>
-            <p>• Accept that you'll sometimes misread tone, and that's okay</p>
-
-            <h4>When should I consider medical intervention:</h4>
-            <p>• If tone misreading is causing significant problems in important relationships</p>
-            <p>• If it's part of broader auditory processing challenges</p>
-            <p>• If you want professional evaluation for social communication differences</p>
-            <p>• If anxiety about misreading tone is preventing you from engaging in conversations</p>
-
-            <h4>You're not imagining this:</h4>
-            <p>Tone is genuinely complex and often ambiguous. Many people misread tone regularly, and cultural differences make it even more complicated. Your difficulty with tonal nuances doesn't reflect poor social skills - it reflects a different way of processing social information. Clear, direct communication benefits everyone.</p>
-        </div>
-    </div>
-</div>
-
-<script>
-function openModal(modalId) {
-    document.getElementById(modalId).style.display = 'block';
-    document.body.style.overflow = 'hidden';
-}
-
-function closeModal(modalId) {
-    document.getElementById(modalId).style.display = 'none';
-    document.body.style.overflow = 'auto';
-}
-
-function toggleLearnMore(contentId) {
-    const content = document.getElementById(contentId);
-    const header = content.previousElementSibling;
-    
-    if (content.classList.contains('expanded')) {
-        content.classList.remove('expanded');
-        header.classList.remove('expanded');
-    } else {
-        content.classList.add('expanded');
-        header.classList.add('expanded');
-    }
-}
-
-document.addEventListener('DOMContentLoaded', function() {
-    // Close modal when clicking the X
-    const closeButtons = document.querySelectorAll('.close');
-    closeButtons.forEach(button => {
-        button.onclick = function() {
-            this.closest('.modal').style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
-    });
-
-    // Close modal when clicking outside of it
-    window.onclick = function(event) {
-        if (event.target.classList.contains('modal')) {
-            event.target.style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
-    }
-
-    // Handle jargon term clicks for mobile
-    const jargonTerms = document.querySelectorAll('.jargon-term');
-    jargonTerms.forEach(term => {
-        term.addEventListener('click', function(e) {
-            e.preventDefault();
-            const existingTooltip = document.querySelector('.active-tooltip');
-            if (existingTooltip) {
-                existingTooltip.classList.remove('active-tooltip');
-            }
-            this.classList.add('active-tooltip');
-        });
-    });
-
-    // Close tooltips when clicking elsewhere
-    document.addEventListener('click', function(e) {
-        if (!e.target.classList.contains('jargon-term')) {
-            const activeTooltips = document.querySelectorAll('.active-tooltip');
-            activeTooltips.forEach(tooltip => {
-                tooltip.classList.remove('active-tooltip');
-            });
-        }
-    });
-});
-</script>
+                    <p><strong>Graduated Masking Approa
