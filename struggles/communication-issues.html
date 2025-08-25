@@ -1,904 +1,974 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Communication Issues - Neurodivergent Survival Guide</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+---
+layout: struggle
+title: Communication Issues
+struggle_slug: communication-issues
+---
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: #333;
-            min-height: 100vh;
-            line-height: 1.7;
-        }
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        .header {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            padding: 1.5rem 2rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-        }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+}
 
-        .header h1 {
-            color: white;
-            font-size: 2rem;
-            font-weight: 300;
-            margin-bottom: 0.5rem;
-        }
+.header {
+    text-align: center;
+    padding: 3rem 2rem;
+    background: rgba(255, 255, 255, 0.95);
+    margin-bottom: 2rem;
+}
 
-        .header p {
-            color: rgba(255, 255, 255, 0.9);
-            font-size: 1.1rem;
-        }
+.header h1 {
+    font-size: 3rem;
+    color: #2d3748;
+    margin-bottom: 0.5rem;
+}
 
-        .breadcrumb {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 0.8rem 2rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
+.header p {
+    font-size: 1.2rem;
+    color: #666;
+}
 
-        .breadcrumb a {
-            color: rgba(255, 255, 255, 0.8);
-            text-decoration: none;
-            font-size: 0.9rem;
-        }
+.intro-section {
+    max-width: 800px;
+    margin: 0 auto 3rem;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 12px;
+}
 
-        .breadcrumb a:hover {
-            color: white;
-        }
+.intro-section p {
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
 
-        .breadcrumb span {
-            color: rgba(255, 255, 255, 0.6);
-            margin: 0 0.5rem;
-        }
+.struggle-categories {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
 
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
+.category-section {
+    background: rgba(255, 255, 255, 0.95);
+    margin-bottom: 2rem;
+    border-radius: 12px;
+    overflow: hidden;
+}
 
-        .content-card {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 20px;
-            padding: 2.5rem;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-            margin-bottom: 2rem;
-        }
+.category-section h3 {
+    background: linear-gradient(135deg, #74b9ff, #0984e3);
+    color: white;
+    padding: 1.5rem 2rem;
+    margin: 0;
+    font-size: 1.5rem;
+}
 
-        .intro {
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
-            color: #555;
-        }
+.category-section > p {
+    padding: 1rem 2rem;
+    color: #666;
+    font-style: italic;
+    background: #f8f9ff;
+    border-bottom: 1px solid #e0e6ff;
+}
 
-        .intro p {
-            margin-bottom: 1.5rem;
-        }
+.struggle-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+}
 
-        .category-section {
-            background: linear-gradient(45deg, #74b9ff, #0984e3);
-            color: white;
-            padding: 1.5rem;
-            border-radius: 15px;
-            margin: 2rem 0;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 8px 25px rgba(9, 132, 227, 0.2);
-        }
+.struggle-card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
 
-        .category-section:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 35px rgba(9, 132, 227, 0.3);
-        }
+.struggle-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    border-color: #74b9ff;
+}
 
-        .category-title {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
+.struggle-card h4 {
+    color: #2d3748;
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+}
 
-        .category-description {
-            font-size: 1rem;
-            opacity: 0.95;
-            margin-bottom: 1rem;
-        }
+.struggle-card p {
+    color: #666;
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
 
-        .issue-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-        }
+.condition-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
 
-        .issue-item {
-            background: rgba(255, 255, 255, 0.15);
-            padding: 1rem;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: background 0.3s ease;
-            font-size: 0.95rem;
-        }
+.tag {
+    background: linear-gradient(135deg, #fd79a8, #e84393);
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
 
-        .issue-item:hover {
-            background: rgba(255, 255, 255, 0.25);
-        }
+.tag:hover {
+    transform: scale(1.05);
+    background: linear-gradient(135deg, #e84393, #d63384);
+}
 
-        /* Jargon tooltip styles */
-        .jargon {
-            color: #e84393;
-            text-decoration: none;
-            border-bottom: 1px dotted #e84393;
-            position: relative;
-            cursor: help;
-            font-weight: 500;
-        }
+.jargon-term {
+    color: #74b9ff;
+    border-bottom: 2px dotted #74b9ff;
+    cursor: help;
+    position: relative;
+    transition: all 0.3s ease;
+}
 
-        .jargon:hover {
-            color: #fd79a8;
-            border-bottom-color: #fd79a8;
-        }
+.jargon-term:hover {
+    color: #0984e3;
+    border-bottom-color: #0984e3;
+}
 
-        .jargon.active {
-            color: #fd79a8;
-            border-bottom-color: #fd79a8;
-        }
+.jargon-term::after {
+    content: attr(data-definition);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #2d3748;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    white-space: normal;
+    max-width: 300px;
+    width: max-content;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 1000;
+    margin-bottom: 5px;
+}
 
-        .tooltip {
-            visibility: hidden;
-            opacity: 0;
-            position: absolute;
-            bottom: 125%;
-            left: 50%;
-            transform: translateX(-50%);
-            background: #333;
-            color: white;
-            padding: 10px 14px;
-            border-radius: 8px;
-            font-size: 0.85rem;
-            font-weight: normal;
-            z-index: 1001;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-            transition: opacity 0.3s, visibility 0.3s;
-            max-width: 280px;
-            white-space: normal;
-            text-align: center;
-            line-height: 1.4;
-        }
+.jargon-term:hover::after {
+    opacity: 1;
+}
 
-        .tooltip::after {
-            content: '';
-            position: absolute;
-            top: 100%;
-            left: 50%;
-            transform: translateX(-50%);
-            border: 6px solid transparent;
-            border-top-color: #333;
-        }
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    animation: fadeIn 0.3s ease-out;
+}
 
-        .jargon:hover .tooltip,
-        .jargon.active .tooltip {
-            visibility: visible;
-            opacity: 1;
-        }
+.modal-content {
+    background-color: white;
+    margin: 3% auto;
+    padding: 0;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 800px;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    animation: slideIn 0.3s ease-out;
+}
 
-        /* Mobile-friendly adjustments */
-        @media (max-width: 768px) {
-            .tooltip {
-                position: fixed;
-                bottom: 20px;
-                left: 50%;
-                transform: translateX(-50%);
-                max-width: calc(100vw - 40px);
-                width: auto;
-            }
+.modal-header {
+    background: linear-gradient(135deg, #74b9ff, #0984e3);
+    color: white;
+    padding: 2rem;
+    border-radius: 12px 12px 0 0;
+}
+
+.modal-header h3 {
+    margin: 0 0 1rem 0;
+    font-size: 1.8rem;
+}
+
+.close {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    color: white;
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.close:hover {
+    opacity: 0.7;
+}
+
+.info-section {
+    padding: 2rem;
+}
+
+.info-section h4 {
+    color: #2d3748;
+    margin: 2rem 0 1rem 0;
+    font-size: 1.2rem;
+    border-bottom: 2px solid #74b9ff;
+    padding-bottom: 0.5rem;
+}
+
+.info-section h4:first-child {
+    margin-top: 0;
+}
+
+.info-section p {
+    margin-bottom: 1.5rem;
+    line-height: 1.8;
+}
+
+/* Advanced content styling */
+.learn-more-section {
+    margin: 2rem 0;
+    border: 2px solid #e0e6ff;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #f8f9ff;
+}
+
+.learn-more-header {
+    background: linear-gradient(135deg, #6c5ce7, #5a67d8);
+    color: white;
+    padding: 1rem 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.learn-more-header:hover {
+    background: linear-gradient(135deg, #5a67d8, #553c9a);
+}
+
+.learn-more-header h5 {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.expand-icon {
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+}
+
+.learn-more-header.expanded .expand-icon {
+    transform: rotate(180deg);
+}
+
+.learn-more-content {
+    display: none;
+    padding: 2rem;
+    background: white;
+    border-top: 1px solid #e0e6ff;
+}
+
+.learn-more-content.expanded {
+    display: block;
+}
+
+.research-highlight {
+    background: #e8f4fd;
+    border-left: 4px solid #74b9ff;
+    padding: 1rem 1.5rem;
+    margin: 1.5rem 0;
+    border-radius: 0 8px 8px 0;
+}
+
+.research-highlight h6 {
+    color: #0984e3;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+}
+
+.citation {
+    font-size: 0.9rem;
+    color: #666;
+    font-style: italic;
+    margin-top: 0.5rem;
+}
+
+.complexity-note {
+    background: #fff3cd;
+    border: 1px solid #ffeaa7;
+    padding: 1rem;
+    border-radius: 8px;
+    margin: 1rem 0;
+}
+
+.complexity-note h6 {
+    color: #d68910;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from { 
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to { 
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .header h1 {
+        font-size: 2rem;
+    }
+    
+    .struggle-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .modal-content {
+        width: 95%;
+        margin: 5% auto;
+        max-height: 85vh;
+    }
+    
+    .jargon-term::after {
+        position: fixed;
+        bottom: 20px;
+        left: 20px;
+        right: 20px;
+        transform: none;
+        max-width: none;
+        width: auto;
+    }
+}
+</style>
+
+<div class="header">
+    <h1>Communication Issues</h1>
+    <p>Understanding why conversations feel so complicated</p>
+</div>
+
+<div class="intro-section">
+    <p>Neurodivergent brains often process social communication differently than <span class="jargon-term" data-definition="People whose brains develop and process information in ways considered typical by society">neurotypical</span> brains. This isn't better or worse - just different. However, since most social environments are designed around neurotypical communication styles, these differences can create friction in daily interactions.</p>
+
+    <p>Understanding your specific communication patterns can help you navigate social situations with less stress and more authenticity. The key is recognizing that communication struggles often stem from mismatched expectations, not personal failings.</p>
+</div>
+
+<div class="struggle-categories">
+    <h2>Types of Communication Challenges</h2>
+    
+    <div class="category-section">
+        <h3>Internal Communication Struggles</h3>
+        <p>These happen inside your head and affect how you experience social interactions.</p>
+        
+        <div class="struggle-grid">
+            <div class="struggle-card" onclick="openModal('social-exhaustion')">
+                <h4>Social Exhaustion</h4>
+                <p>Feeling drained after social interactions, even positive ones</p>
+                <div class="condition-tags">
+                    <span class="tag">Autism</span>
+                    <span class="tag">Social Anxiety</span>
+                    <span class="tag">Masking</span>
+                </div>
+            </div>
             
-            .tooltip::after {
-                display: none;
-            }
-        }
-
-        /* Modal styles */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(5px);
-        }
-
-        .modal-content {
-            background: white;
-            margin: 5% auto;
-            padding: 0;
-            border-radius: 20px;
-            width: 90%;
-            max-width: 700px;
-            max-height: 80vh;
-            overflow-y: auto;
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
-        }
-
-        .modal-header {
-            background: linear-gradient(45deg, #74b9ff, #0984e3);
-            color: white;
-            padding: 1.5rem 2rem;
-            border-radius: 20px 20px 0 0;
-            position: relative;
-        }
-
-        .modal-header h2 {
-            margin: 0;
-            font-size: 1.5rem;
-        }
-
-        .close {
-            position: absolute;
-            right: 1.5rem;
-            top: 1.5rem;
-            color: white;
-            font-size: 28px;
-            font-weight: bold;
-            cursor: pointer;
-            width: 30px;
-            height: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.2);
-            transition: background 0.3s ease;
-        }
-
-        .close:hover {
-            background: rgba(255, 255, 255, 0.3);
-        }
-
-        .modal-body {
-            padding: 2rem;
-        }
-
-        .modal-body > p {
-            margin-bottom: 1.5rem;
-        }
-
-        .info-section {
-            margin-bottom: 1.5rem;
-            padding: 1.2rem;
-            border-left: 4px solid #74b9ff;
-            background: #f8f9ff;
-            border-radius: 0 10px 10px 0;
-        }
-
-        .info-section h3 {
-            color: #0984e3;
-            margin-bottom: 0.8rem;
-            font-size: 1.1rem;
-        }
-
-        .info-section p {
-            line-height: 1.6;
-            color: #555;
-            margin-bottom: 1.5rem;
-        }
-
-        .info-section ul {
-            line-height: 1.6;
-            color: #555;
-            padding-left: 1.2rem;
-        }
-
-        .info-section li {
-            margin-bottom: 0.4rem;
-        }
-
-        .conditions-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-top: 1rem;
-        }
-
-        .tag {
-            background: linear-gradient(45deg, #fd79a8, #e84393);
-            color: white;
-            padding: 0.4rem 1rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 500;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .tag:hover {
-            background: linear-gradient(45deg, #e84393, #fd79a8);
-            color: white;
-            text-decoration: none;
-            transform: scale(1.05);
-        }
-
-        .strategies {
-            background: #e8f5e8;
-            border-left-color: #00b894;
-        }
-
-        .strategies h3 {
-            color: #00b894;
-        }
-
-        .warning {
-            background: #fff5e6;
-            border-left-color: #fdcb6e;
-        }
-
-        .warning h3 {
-            color: #e17055;
-        }
-
-        .validation {
-            background: #f0e6ff;
-            border-left-color: #a29bfe;
-        }
-
-        .validation h3 {
-            color: #6c5ce7;
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                padding: 1rem;
-            }
+            <div class="struggle-card" onclick="openModal('overthinking-responses')">
+                <h4>Overthinking Responses</h4>
+                <p>Analyzing every word before speaking and replaying conversations afterward</p>
+                <div class="condition-tags">
+                    <span class="tag">Anxiety</span>
+                    <span class="tag">Autism</span>
+                    <span class="tag">Perfectionism</span>
+                </div>
+            </div>
             
-            .content-card {
-                padding: 1.5rem;
-            }
+            <div class="struggle-card" onclick="openModal('masking-fatigue')">
+                <h4>Masking Fatigue</h4>
+                <p>Exhaustion from constantly hiding your natural communication style</p>
+                <div class="condition-tags">
+                    <span class="tag">Autism</span>
+                    <span class="tag">ADHD</span>
+                    <span class="tag">Masking</span>
+                </div>
+            </div>
             
-            .modal-content {
-                margin: 10% auto;
-                width: 95%;
-            }
+            <div class="struggle-card" onclick="openModal('social-anxiety-spirals')">
+                <h4>Social Anxiety Spirals</h4>
+                <p>Cascading worried thoughts about how others perceive you</p>
+                <div class="condition-tags">
+                    <span class="tag">Social Anxiety</span>
+                    <span class="tag">RSD</span>
+                    <span class="tag">ADHD</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="category-section">
+        <h3>Interpersonal Communication Challenges</h3>
+        <p>These create friction between you and other people during conversations.</p>
+        
+        <div class="struggle-grid">
+            <div class="struggle-card" onclick="openModal('missing-social-cues')">
+                <h4>Missing Social Cues</h4>
+                <p>Not picking up on unspoken social signals and context</p>
+                <div class="condition-tags">
+                    <span class="tag">Autism</span>
+                    <span class="tag">ADHD</span>
+                    <span class="tag">Auditory Processing</span>
+                </div>
+            </div>
             
-            .modal-body {
-                padding: 1.5rem;
-            }
-
-            .issue-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
-</head>
-<body>
-    <div class="header">
-        <h1>Communication Issues</h1>
-        <p>Understanding why conversations feel so complicated</p>
-    </div>
-
-    <div class="breadcrumb">
-        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/index.html">Home</a>
-        <span>></span>
-        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/index.html">Daily Struggles</a>
-        <span>></span>
-        Communication Issues
-    </div>
-
-    <div class="container">
-        <div class="content-card">
-            <div class="intro">
-                <p>If you're here, conversations probably feel harder than they should. Maybe you say the wrong thing, miss social cues, or feel exhausted after normal interactions. You're not broken, and you're definitely not alone.</p>
-                
-                <p>Neurodivergent brains often process social information differently than <a class="jargon">neurotypical<span class="tooltip">People whose brain development and functioning aligns with what society considers "typical" or "normal"</span></a> brains. Think of it like having a different operating system trying to run software designed for a different platform. The friction you experience isn't a bug—it's a feature mismatch.</p>
-
-                <p>Communication challenges usually fall into two main areas: things that happen inside your head during social interactions, and things that happen between you and other people. Let's break these down:</p>
-            </div>
-
-            <div class="category-section">
-                <div class="category-title">Internal Communication Struggles</div>
-                <div class="category-description">The mental and emotional work that happens inside your head during social interactions</div>
-                <div class="issue-grid">
-                    <div class="issue-item" onclick="openModal('social-exhaustion')">Social Exhaustion</div>
-                    <div class="issue-item" onclick="openModal('overthinking-responses')">Overthinking Responses</div>
-                    <div class="issue-item" onclick="openModal('masking-fatigue')">Masking Fatigue</div>
-                    <div class="issue-item" onclick="openModal('social-anxiety-spirals')">Social Anxiety Spirals</div>
+            <div class="struggle-card" onclick="openModal('being-too-direct')">
+                <h4>Being Too Direct</h4>
+                <p>Speaking honestly in ways others find blunt or insensitive</p>
+                <div class="condition-tags">
+                    <span class="tag">Autism</span>
+                    <span class="tag">ADHD</span>
+                    <span class="tag">Impulse Control</span>
                 </div>
             </div>
-
-            <div class="category-section">
-                <div class="category-title">Interpersonal Communication Challenges</div>
-                <div class="category-description">The friction that happens in the actual exchange between you and other people</div>
-                <div class="issue-grid">
-                    <div class="issue-item" onclick="openModal('missing-social-cues')">Missing Social Cues</div>
-                    <div class="issue-item" onclick="openModal('being-too-direct')">Being Too Direct</div>
-                    <div class="issue-item" onclick="openModal('interrupting-others')">Interrupting Others</div>
-                    <div class="issue-item" onclick="openModal('misreading-tone')">Misreading Tone</div>
+            
+            <div class="struggle-card" onclick="openModal('interrupting-others')">
+                <h4>Interrupting Others</h4>
+                <p>Jumping into conversations or talking over people without meaning to</p>
+                <div class="condition-tags">
+                    <span class="tag">ADHD</span>
+                    <span class="tag">Autism</span>
+                    <span class="tag">Working Memory</span>
                 </div>
             </div>
-
-            <div style="background: #f8f9ff; padding: 1.5rem; border-radius: 15px; margin-top: 2rem; border-left: 4px solid #74b9ff;">
-                <p style="margin-bottom: 0;"><strong>Remember:</strong> These patterns aren't character flaws. They're the result of your brain working differently in a world designed for different types of processors. Understanding them gives you choices about how to respond.</p>
+            
+            <div class="struggle-card" onclick="openModal('misreading-tone')">
+                <h4>Misreading Tone</h4>
+                <p>Misinterpreting whether someone is joking, serious, or upset</p>
+                <div class="condition-tags">
+                    <span class="tag">Autism</span>
+                    <span class="tag">Anxiety</span>
+                    <span class="tag">Auditory Processing</span>
+                </div>
             </div>
         </div>
     </div>
+</div>
 
-    <!-- Social Exhaustion Modal -->
-    <div id="social-exhaustion" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>Social Exhaustion</h2>
-                <span class="close" onclick="closeModal('social-exhaustion')">&times;</span>
+<!-- All 8 Complete Modals -->
+
+<div id="social-exhaustion" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <div class="modal-header">
+            <h3>Social Exhaustion</h3>
+            <div class="condition-tags">
+                <span class="tag">Autism</span>
+                <span class="tag">Social Anxiety</span>
+                <span class="tag">Masking</span>
             </div>
-            <div class="modal-body">
-                <div class="info-section">
-                    <h3>What it feels like</h3>
-                    <p>After social interactions, you feel completely drained, even if you enjoyed them. You might need hours or days to recover. Simple conversations can feel as tiring as running a marathon. Your brain feels foggy and you just want to be alone in a quiet space.</p>
-                </div>
+        </div>
+        
+        <div class="info-section">
+            <h4>What this feels like:</h4>
+            <p>After social interactions, you feel completely drained - like your battery is at 0%. Even enjoyable conversations can leave you needing hours to recover. You might feel mentally foggy, emotionally raw, or physically exhausted. Sometimes you need to isolate for days to feel normal again.</p>
 
-                <div class="info-section">
-                    <h3>Why this happens</h3>
-                    <p>Social interaction requires more <a class="jargon">cognitive resources<span class="tooltip">Mental energy used for thinking, processing information, and making decisions</span></a> for you than for neurotypical people. You're processing multiple streams of information, reading faces, monitoring tone, and working extra hard to navigate unspoken social rules all at once.</p>
-                    <div class="conditions-tags">
-                        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/conditions/autism.html" class="tag">Autism</a>
-                        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/conditions/adhd.html" class="tag">ADHD</a>
-                        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/conditions/anxiety.html" class="tag">Social Anxiety</a>
-                        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/sensory-processing.html" class="tag">Sensory Processing</a>
+            <h4>Why this might be happening:</h4>
+            <p>Social interactions require intense <span class="jargon-term" data-definition="Mental energy used for thinking, processing, and decision-making">cognitive resources</span> for neurodivergent people. You're simultaneously processing what people are saying, monitoring their body language, managing your own responses, and often <span class="jargon-term" data-definition="Camouflaging natural neurodivergent behaviors to appear more neurotypical">masking</span> your natural behaviors. This constant multitasking is genuinely exhausting.</p>
+
+            <div class="learn-more-section">
+                <div class="learn-more-header" onclick="toggleLearnMore('social-science')">
+                    <h5>Learn More: Scientific Background</h5>
+                    <span class="expand-icon">▼</span>
+                </div>
+                <div class="learn-more-content" id="social-science">
+                    <div class="research-highlight">
+                        <h6>Neurological Basis</h6>
+                        <p>Social cognition activates multiple brain networks simultaneously: the default mode network for theory of mind, the salience network for attention switching, and executive control networks for behavioral regulation. Autistic brains show different connectivity patterns in these networks, requiring more conscious processing of what neurotypicals handle automatically.</p>
+                        <div class="citation">Schilbach et al. (2013). Toward a second-person neuroscience. Behavioral and Brain Sciences.</div>
+                    </div>
+                    
+                    <p><strong>Cognitive Load Theory Applied:</strong> Social situations create high extraneous cognitive load for neurodivergent individuals. While neurotypicals can process social information via automated schemas, neurodivergent people often rely on controlled processing, which consumes limited working memory resources.</p>
+                    
+                    <div class="complexity-note">
+                        <h6>Individual Variation</h6>
+                        <p>Social exhaustion severity correlates with masking frequency, alexithymia levels, and sensory processing sensitivity. The intersection of these factors creates highly individualized exhaustion patterns that don't follow simple diagnostic categories.</p>
                     </div>
                 </div>
-
-                <div class="info-section strategies">
-                    <h3>Next 5 minutes</h3>
-                    <ul>
-                        <li>Find the quietest space available immediately</li>
-                        <li>Dim lights or close your eyes</li>
-                        <li>Remove uncomfortable clothing or accessories</li>
-                        <li>Do something soothing and non-social: listen to familiar music, pet an animal, or just breathe</li>
-                    </ul>
-                </div>
-
-                <div class="info-section strategies">
-                    <h3>Long-term strategies</h3>
-                    <ul>
-                        <li>Schedule recovery time after social events - treat it as non-negotiable</li>
-                        <li>Communicate your needs: "I'll need some quiet time after this"</li>
-                        <li>Limit back-to-back social commitments</li>
-                        <li>Find lower-energy social activities like parallel activities or one-on-one time with close friends</li>
-                        <li>Create a "recharge kit" with comfort items, snacks, and calming activities</li>
-                    </ul>
-                </div>
-
-                <div class="info-section validation">
-                    <h3>You're not alone</h3>
-                    <p>Social exhaustion is a real, documented experience for many neurodivergent people. Needing recovery time doesn't mean you're antisocial or broken—it means your brain works harder during interactions. Honor this need and give yourself credit for the invisible work you're doing.</p>
-                </div>
             </div>
-        </div>
-    </div>
 
-    <!-- Overthinking Responses Modal -->
-    <div id="overthinking-responses" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>Overthinking Responses</h2>
-                <span class="close" onclick="closeModal('overthinking-responses')">&times;</span>
-            </div>
-            <div class="modal-body">
-                <div class="info-section">
-                    <h3>What it feels like</h3>
-                    <p>You rehearse conversations in your head, worry about how your words will be interpreted, and second-guess everything you say. By the time you've crafted the "perfect" response, the conversation has moved on. You replay interactions later, analyzing what went wrong.</p>
+            <h4>What can help you through the next 5 minutes:</h4>
+            <p>• Find a quiet, low-stimulation space immediately</p>
+            <p>• Dim the lights or close your eyes</p>
+            <p>• Remove any uncomfortable clothing or accessories</p>
+            <p>• Do gentle <span class="jargon-term" data-definition="Self-soothing repetitive behaviors">stimming</span> if it helps (rocking, fidgeting)</p>
+            <p>• Avoid making any social plans or decisions right now</p>
+
+            <h4>What are some healthy long-term solutions:</h4>
+            <p>• Schedule recovery time after social events</p>
+            <p>• Set boundaries around how many social events you attend per week</p>
+            <p>• Practice unmasking with safe people to reduce the energy drain</p>
+            <p>• Identify which types of social interactions are most/least draining</p>
+            <p>• Prepare conversation topics in advance to reduce mental load</p>
+
+            <div class="learn-more-section">
+                <div class="learn-more-header" onclick="toggleLearnMore('social-advanced')">
+                    <h5>Learn More: Advanced Strategies</h5>
+                    <span class="expand-icon">▼</span>
                 </div>
-
-                <div class="info-section">
-                    <h3>Why this happens</h3>
-                    <p>Your brain is working extra hard to navigate social situations that don't come naturally. <a class="jargon">RSD<span class="tooltip">Rejection Sensitive Dysphoria - extreme emotional sensitivity to perceived or actual rejection, criticism, or failure</span></a> can make you catastrophize normal social pauses or neutral responses.</p>
-                    <div class="conditions-tags">
-                        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/conditions/anxiety.html" class="tag">Social Anxiety</a>
-                        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/conditions/autism.html" class="tag">Autism</a>
-                        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/conditions/adhd.html" class="tag">ADHD</a>
-                        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/glossary/rsd.html" class="tag">RSD</a>
+                <div class="learn-more-content" id="social-advanced">
+                    <p><strong>Energy Budget Management:</strong> Track your social interactions and recovery times for 2-3 weeks. Identify patterns: Which types of interactions (work meetings, family gatherings, phone calls) drain you most? What's your recovery ratio (2 hours social = 6 hours recovery)? Use this data to make informed scheduling decisions.</p>
+                    
+                    <p><strong>Selective Masking Strategy:</strong> Rather than binary masking/unmasking, develop a repertoire of "low-cost" adaptations. For example, maintaining eye contact during important points rather than constantly, or using scripted responses for small talk while being authentic in deeper conversations.</p>
+                    
+                    <div class="research-highlight">
+                        <h6>Professional Considerations</h6>
+                        <p>Document patterns of exhaustion for potential workplace accommodations. Social exhaustion can qualify for intermittent FMLA if it significantly impacts functioning. Consider requesting schedule modifications, reduced meeting loads, or written communication preferences.</p>
                     </div>
                 </div>
-
-                <div class="info-section strategies">
-                    <h3>Next 5 minutes</h3>
-                    <ul>
-                        <li>Take a breath and say the first reasonable thing that comes to mind</li>
-                        <li>Set a mental timer: "I have 3 seconds to respond"</li>
-                        <li>Use simple bridge phrases: "That's interesting," "Tell me more," or "I need a moment to think about that"</li>
-                        <li>Remember: most people forget conversational details quickly</li>
-                    </ul>
-                </div>
-
-                <div class="info-section strategies">
-                    <h3>Long-term strategies</h3>
-                    <ul>
-                        <li>Practice "good enough" responses instead of perfect ones</li>
-                        <li>Challenge the belief that every response must be perfect</li>
-                        <li>Prepare a few go-to responses for common situations</li>
-                        <li>Set boundaries on post-conversation analysis: limit it to 5 minutes, then redirect</li>
-                        <li>Practice self-compassion: treat conversation "mistakes" like you would a friend's</li>
-                    </ul>
-                </div>
-
-                <div class="info-section validation">
-                    <h3>You're not alone</h3>
-                    <p>Many neurodivergent people experience this analysis paralysis in conversations. Your careful consideration shows that you care about others' feelings. The goal isn't to stop caring, but to find a balance that doesn't exhaust you.</p>
-                </div>
             </div>
+
+            <h4>When should I consider medical intervention:</h4>
+            <p>• If social exhaustion is preventing you from maintaining necessary relationships</p>
+            <p>• If you're avoiding all social contact due to the recovery time needed</p>
+            <p>• If the exhaustion is accompanied by depression, anxiety, or thoughts of self-harm</p>
+            <p>• If you're using substances to cope with social situations</p>
+
+            <h4>You're not imagining this:</h4>
+            <p>Social exhaustion is a real phenomenon experienced by many neurodivergent people. It's not antisocial behavior or social anxiety - it's the natural result of your brain working extra hard to navigate social situations. Your need for recovery time is valid and important for your wellbeing.</p>
         </div>
     </div>
+</div>
 
-    <!-- Masking Fatigue Modal -->
-    <div id="masking-fatigue" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>Masking Fatigue</h2>
-                <span class="close" onclick="closeModal('masking-fatigue')">&times;</span>
+<div id="overthinking-responses" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <div class="modal-header">
+            <h3>Overthinking Responses</h3>
+            <div class="condition-tags">
+                <span class="tag">Anxiety</span>
+                <span class="tag">Autism</span>
+                <span class="tag">Perfectionism</span>
             </div>
-            <div class="modal-body">
-                <div class="info-section">
-                    <h3>What it feels like</h3>
-                    <p>You feel like you're performing or pretending to be someone else in social situations. Maintaining this "normal" persona is exhausting. When you get home, you might crash completely or feel disconnected from your authentic self. The effort of appearing neurotypical is overwhelming.</p>
-                </div>
+        </div>
+        
+        <div class="info-section">
+            <h4>What this feels like:</h4>
+            <p>You rehearse conversations before they happen, analyze every word you're about to say, and then replay interactions for hours afterward wondering if you said something wrong. Casual conversations feel high-stakes because you're trying to get every response "right."</p>
 
-                <div class="info-section">
-                    <h3>Why this happens</h3>
-                    <p>You've learned to camouflage your natural responses to fit in socially. While this can be protective, constantly suppressing your authentic self requires enormous energy and can lead to identity confusion and burnout.</p>
-                    <div class="conditions-tags">
-                        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/conditions/autism.html" class="tag">Autism</a>
-                        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/conditions/adhd.html" class="tag">ADHD</a>
-                        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/glossary/masking.html" class="tag">Masking</a>
+            <h4>Why this might be happening:</h4>
+            <p>Your brain is trying to solve the complex puzzle of social communication by thinking through all the possibilities. This often stems from past experiences of miscommunication or social rejection, making your brain hyper-vigilant about potential social mistakes.</p>
+
+            <h4>What can help you through the next 5 minutes:</h4>
+            <p>• Use the 3-second rule: count to three, then respond with whatever feels natural</p>
+            <p>• Have bridge phrases ready: "That's interesting," "Let me think about that," "I see what you mean"</p>
+            <p>• Remind yourself that most people aren't analyzing your words as intensely as you are</p>
+            <p>• Focus on listening rather than planning your response</p>
+            <p>• Accept that some conversations will be imperfect, and that's normal</p>
+
+            <h4>What are some healthy long-term solutions:</h4>
+            <p>• Practice the "good enough" approach - aim for adequate communication rather than perfect</p>
+            <p>• Set time limits for post-conversation analysis (e.g., 10 minutes maximum)</p>
+            <p>• Work on <span class="jargon-term" data-definition="Being present in the moment rather than lost in thoughts">mindfulness</span> techniques to stay present during conversations</p>
+            <p>• Build relationships with people who accept your communication style</p>
+            <p>• Challenge catastrophic thinking about social "mistakes"</p>
+
+            <h4>When should I consider medical intervention:</h4>
+            <p>• If overthinking is preventing you from speaking up at work or in important situations</p>
+            <p>• If social anxiety is leading to panic attacks or avoidance of necessary conversations</p>
+            <p>• If you're losing sleep analyzing past conversations</p>
+            <p>• If perfectionism around communication is affecting your self-worth</p>
+
+            <h4>You're not imagining this:</h4>
+            <p>Many neurodivergent people experience this intense mental rehearsal around communication. Your desire to communicate well shows how much you care about others. The goal isn't to stop caring, but to find a balance that doesn't exhaust you mentally.</p>
+        </div>
+    </div>
+</div>
+
+<div id="masking-fatigue" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <div class="modal-header">
+            <h3>Masking Fatigue</h3>
+            <div class="condition-tags">
+                <span class="tag">Autism</span>
+                <span class="tag">ADHD</span>
+                <span class="tag">Masking</span>
+            </div>
+        </div>
+        
+        <div class="info-section">
+            <h4>What this feels like:</h4>
+            <p>You're exhausted from constantly performing a version of yourself that feels acceptable to others. You monitor your tone, suppress your natural reactions, force eye contact, and hide your stims. By the end of the day, you don't even know what your authentic response would be anymore.</p>
+
+            <h4>Why this might be happening:</h4>
+            <p>Masking requires enormous mental energy because you're constantly monitoring and adjusting your behavior. You've learned to camouflage your natural neurodivergent traits to avoid negative reactions, but this leaves you feeling disconnected from your authentic self.</p>
+
+            <div class="learn-more-section">
+                <div class="learn-more-header" onclick="toggleLearnMore('masking-science')">
+                    <h5>Learn More: The Science of Masking</h5>
+                    <span class="expand-icon">▼</span>
+                </div>
+                <div class="learn-more-content" id="masking-science">
+                    <div class="research-highlight">
+                        <h6>Neurological Cost</h6>
+                        <p>Masking requires constant activation of executive control networks while suppressing default behavioral patterns. This creates a state of chronic cognitive effort similar to constantly translating between languages. Brain imaging studies show increased activation in prefrontal regions associated with inhibitory control during social masking tasks.</p>
+                        <div class="citation">Lai et al. (2017). Quantifying and exploring camouflaging in men and women with autism. Autism.</div>
+                    </div>
+                    
+                    <p><strong>Identity Integration Theory:</strong> Masking creates a disconnect between authentic self-concept and performed identity. This incongruence can lead to identity confusion, imposter syndrome, and difficulty accessing genuine emotional responses even in private settings.</p>
+                    
+                    <div class="complexity-note">
+                        <h6>Masking vs. Social Skills</h6>
+                        <p>There's an important distinction between learning genuine social skills and performing neurotypical behavior. Skills enhance communication; masking conceals authentic self-expression. The line isn't always clear, but the key is whether adaptations feel empowering or depleting.</p>
                     </div>
                 </div>
-
-                <div class="info-section strategies">
-                    <h3>Next 5 minutes</h3>
-                    <ul>
-                        <li>Remove the mask: <a class="jargon">stim<span class="tooltip">Self-stimulating behaviors like fidgeting, rocking, or repeating sounds/movements that help regulate emotions and sensory input</span></a>, move naturally, make comfortable sounds</li>
-                        <li>Remind yourself: "I performed well, but that wasn't the real me"</li>
-                        <li>Do something authentically you: engage with special interests, comfortable routines</li>
-                        <li>Give yourself credit for the hard work you just did</li>
-                    </ul>
-                </div>
-
-                <div class="info-section strategies">
-                    <h3>Long-term strategies</h3>
-                    <ul>
-                        <li>Gradually unmask in safe relationships and environments</li>
-                        <li>Find communities where you can be more authentic</li>
-                        <li>Practice saying "This is just how I am" about harmless differences</li>
-                        <li>Set boundaries about when and where you're willing to mask</li>
-                        <li>Schedule "unmask time" regularly to reconnect with yourself</li>
-                    </ul>
-                </div>
-
-                <div class="info-section validation">
-                    <h3>You're not alone</h3>
-                    <p>Masking is a survival skill you developed to navigate a world that isn't designed for you. It shows incredible adaptability and intelligence. You deserve spaces where you can be authentically yourself without performing neurotypicality.</p>
-                </div>
             </div>
+
+            <h4>What can help you through the next 5 minutes:</h4>
+            <p>• Drop the mask immediately - stop monitoring your behavior</p>
+            <p>• Allow yourself to stim freely or make your natural facial expressions</p>
+            <p>• Say what you actually think instead of what you think you should say</p>
+            <p>• Give yourself permission to be weird, blunt, or intense</p>
+            <p>• Do something that feels authentically you</p>
+
+            <h4>What are some healthy long-term solutions:</h4>
+            <p>• Identify safe people and spaces where you can unmask</p>
+            <p>• Gradually reduce masking in low-stakes situations</p>
+            <p>• Practice recognizing what your authentic responses actually are</p>
+            <p>• Build self-acceptance around your natural neurodivergent traits</p>
+            <p>• Set boundaries around how much masking you're willing to do</p>
+
+            <h4>When should I consider medical intervention:</h4>
+            <p>• If you've lost touch with your authentic self entirely</p>
+            <p>• If masking is leading to identity crisis or dissociation</p>
+            <p>• If you're experiencing <span class="jargon-term" data-definition="Exhaustion and breakdown from prolonged masking and stress">autistic burnout</span> or severe depression</p>
+            <p>• If you're having thoughts of self-harm related to feeling fake or unseen</p>
+
+            <h4>You're not imagining this:</h4>
+            <p>Masking fatigue is a recognized experience in neurodivergent communities. The exhaustion you feel from constant performance is real and valid. You deserve relationships where you can show up authentically without having to hide core parts of yourself.</p>
         </div>
     </div>
+</div>
 
-    <!-- Social Anxiety Spirals Modal -->
-    <div id="social-anxiety-spirals" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>Social Anxiety Spirals</h2>
-                <span class="close" onclick="closeModal('social-anxiety-spirals')">&times;</span>
-            </div>
-            <div class="modal-body">
-                <div class="info-section">
-                    <h3>What it feels like</h3>
-                    <p>One small social worry snowballs into overwhelming panic. You might catastrophize a neutral response, convince yourself everyone hates you, or become paralyzed by fear of saying the wrong thing. Your mind races through worst-case scenarios.</p>
-                </div>
-
-                <div class="info-section">
-                    <h3>Why this happens</h3>
-                    <p>Your brain's threat detection system is hypervigilant to social rejection. <a class="jargon">RSD<span class="tooltip">Rejection Sensitive Dysphoria - extreme emotional sensitivity to perceived or actual rejection, criticism, or failure</span></a> can turn minor social friction into perceived emergencies, triggering your fight-or-flight response.</p>
-                    <div class="conditions-tags">
-                        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/conditions/anxiety.html" class="tag">Social Anxiety</a>
-                        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/conditions/adhd.html" class="tag">ADHD</a>
-                        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/glossary/rsd.html" class="tag">RSD</a>
-                        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/conditions/trauma.html" class="tag">Trauma</a>
-                    </div>
-                </div>
-
-                <div class="info-section strategies">
-                    <h3>Next 5 minutes</h3>
-                    <ul>
-                        <li>Ground yourself: 5 things you can see, 4 you can hear, 3 you can touch, 2 you can smell, 1 you can taste</li>
-                        <li>Breathe slowly: 4 counts in, hold for 4, out for 6</li>
-                        <li>Challenge the spiral: "Is this definitely true, or is my anxiety talking?"</li>
-                        <li>Remove yourself from the situation if possible - bathroom breaks are your friend</li>
-                    </ul>
-                </div>
-
-                <div class="info-section strategies">
-                    <h3>Long-term strategies</h3>
-                    <ul>
-                        <li>Practice the "evidence test": look for actual proof of your fears</li>
-                        <li>Develop a "spiral stopper" phrase: "This feeling will pass"</li>
-                        <li>Create a comfort plan for social events: exit strategies, support people, calming activities</li>
-                        <li>Work on self-compassion: you're not responsible for everyone's reactions</li>
-                        <li>Consider therapy for anxiety management techniques and RSD coping strategies</li>
-                    </ul>
-                </div>
-
-                <div class="info-section validation">
-                    <h3>You're not alone</h3>
-                    <p>Social anxiety spirals are common among neurodivergent people who've experienced repeated social rejection or misunderstanding. Your sensitivity isn't weakness—it's a response to real experiences. You can learn to work with your sensitive system.</p>
-                </div>
+<div id="social-anxiety-spirals" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <div class="modal-header">
+            <h3>Social Anxiety Spirals</h3>
+            <div class="condition-tags">
+                <span class="tag">Social Anxiety</span>
+                <span class="tag">RSD</span>
+                <span class="tag">ADHD</span>
             </div>
         </div>
-    </div>
+        
+        <div class="info-section">
+            <h4>What this feels like:</h4>
+            <p>One worried thought about a social situation cascades into hours of catastrophic thinking. "Did I sound stupid?" becomes "Everyone thinks I'm weird" becomes "I'm going to be rejected by everyone." Your mind creates increasingly dramatic scenarios of social disaster.</p>
 
-    <!-- Missing Social Cues Modal -->
-    <div id="missing-social-cues" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>Missing Social Cues</h2>
-                <span class="close" onclick="closeModal('missing-social-cues')">&times;</span>
-            </div>
-            <div class="modal-body">
-                <div class="info-section">
-                    <h3>What it feels like</h3>
-                    <p>People seem annoyed or uncomfortable and you have no idea why. You might continue talking when someone wants to leave, miss sarcasm, or not realize someone is hinting at something. It's like everyone is playing a game with invisible rules.</p>
-                </div>
+            <h4>Why this might be happening:</h4>
+            <p>Your brain is trying to protect you from social rejection by analyzing every possible threat. If you have <span class="jargon-term" data-definition="Rejection Sensitive Dysphoria - extreme sensitivity to perceived rejection">RSD</span>, your threat detection system may be especially sensitive to signs of disapproval or dislike.</p>
 
-                <div class="info-section">
-                    <h3>Why this happens</h3>
-                    <p>Your brain prioritizes explicit information over implicit social signals. You're not "missing" anything—you're processing different types of information. Many neurotypical social cues are arbitrary cultural conventions, not universal truths.</p>
-                    <div class="conditions-tags">
-                        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/conditions/autism.html" class="tag">Autism</a>
-                        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/conditions/adhd.html" class="tag">ADHD</a>
-                        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/auditory-processing.html" class="tag">Auditory Processing</a>
-                    </div>
-                </div>
+            <h4>What can help you through the next 5 minutes:</h4>
+            <p>• Use 5-4-3-2-1 grounding: name 5 things you see, 4 you feel, 3 you hear, 2 you smell, 1 you taste</p>
+            <p>• Challenge the spiral by asking "What evidence do I actually have for this worry?"</p>
+            <p>• Remind yourself that most people are focused on themselves, not analyzing you</p>
+            <p>• Take breaks from social situations to reset when you feel the spiral starting</p>
+            <p>• Use bathroom breaks or step outside for fresh air</p>
 
-                <div class="info-section strategies">
-                    <h3>Next 5 minutes</h3>
-                    <ul>
-                        <li>Ask directly: "How are you feeling about this conversation?"</li>
-                        <li>Look for obvious exit signals: checking phones, stepping back, short responses</li>
-                        <li>It's okay to say "I sometimes miss social cues—please let me know if you need to go"</li>
-                        <li>When in doubt, check: "Should I keep talking or would you like to share something?"</li>
-                    </ul>
-                </div>
+            <h4>What are some healthy long-term solutions:</h4>
+            <p>• Learn to recognize spiral triggers and early warning signs</p>
+            <p>• Practice thought-challenging techniques regularly, not just during crises</p>
+            <p>• Build evidence against anxiety predictions by tracking social outcomes</p>
+            <p>• Develop a support system of people who understand your sensitivity</p>
+            <p>• Consider therapy specifically for social anxiety or RSD</p>
 
-                <div class="info-section strategies">
-                    <h3>Long-term strategies</h3>
-                    <ul>
-                        <li>Develop a trusted friend who can give you subtle signals in group settings</li>
-                        <li>Practice the "check-in" habit: "How is this landing for you?"</li>
-                        <li>Learn common exit phrases: "Well, I should let you go..." and use them proactively</li>
-                        <li>Set conversation timers: check in with the other person every 5-10 minutes</li>
-                        <li>Remember: direct communication is often more honest and efficient</li>
-                    </ul>
-                </div>
+            <h4>When should I consider medical intervention:</h4>
+            <p>• If social anxiety is preventing you from work, school, or essential activities</p>
+            <p>• If spirals are happening daily or lasting for hours</p>
+            <p>• If you're avoiding all social contact due to anxiety</p>
+            <p>• If anxiety spirals are accompanied by panic attacks or self-harm thoughts</p>
 
-                <div class="info-section validation">
-                    <h3>You're not alone</h3>
-                    <p>Many neurodivergent people process social information differently. Your direct, explicit communication style has value. The goal isn't to become a mind reader, but to find ways to bridge different communication styles.</p>
-                </div>
-            </div>
+            <h4>You're not imagining this:</h4>
+            <p>Social anxiety spirals are a common experience, especially for neurodivergent people who may have faced more social rejection or misunderstanding. Your sensitivity to social cues, while sometimes painful, often comes from a place of caring deeply about connections with others.</p>
         </div>
     </div>
+</div>
 
-    <!-- Being Too Direct Modal -->
-    <div id="being-too-direct" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>Being Too Direct</h2>
-                <span class="close" onclick="closeModal('being-too-direct')">&times;</span>
-            </div>
-            <div class="modal-body">
-                <div class="info-section">
-                    <h3>What it feels like</h3>
-                    <p>People react negatively to your straightforward communication. You say exactly what you mean, but others seem offended or call you "blunt" or "harsh." You're confused because you're just being honest and efficient.</p>
-                </div>
-
-                <div class="info-section">
-                    <h3>Why this happens</h3>
-                    <p>You value clarity and honesty over social cushioning. Neurotypical communication often includes layers of politeness and indirect language that can feel inefficient or confusing to you. Your directness isn't rudeness—it's a different communication style.</p>
-                    <div class="conditions-tags">
-                        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/conditions/autism.html" class="tag">Autism</a>
-                        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/conditions/adhd.html" class="tag">ADHD</a>
-                        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/executive-function.html" class="tag">Executive Function</a>
-                    </div>
-                </div>
-
-                <div class="info-section strategies">
-                    <h3>Next 5 minutes</h3>
-                    <ul>
-                        <li>Add cushioning phrases: "I might be wrong, but..." or "In my experience..."</li>
-                        <li>Ask permission: "Can I share some direct feedback?"</li>
-                        <li>If someone seems hurt, try: "I'm sorry if that came across harshly—I meant..."</li>
-                        <li>Remember: your intent matters, but so does their reception</li>
-                    </ul>
-                </div>
-
-                <div class="info-section strategies">
-                    <h3>Long-term strategies</h3>
-                    <ul>
-                        <li>Find contexts where directness is valued (certain work cultures, close friendships)</li>
-                        <li>Practice "feedback sandwiches": positive → direct point → positive</li>
-                        <li>Communicate your style upfront: "I tend to be pretty direct—let me know if you'd prefer a different approach"</li>
-                        <li>Learn to distinguish between situations requiring diplomacy vs. efficiency</li>
-                        <li>Build relationships where your honesty is appreciated</li>
-                    </ul>
-                </div>
-
-                <div class="info-section validation">
-                    <h3>Your communication has value</h3>
-                    <p>Direct communication is honest, efficient, and often exactly what people need. Many people actually appreciate straightforward feedback once they adjust to it. Your communication style has value—the goal is finding the right contexts and people who appreciate it.</p>
-                </div>
+<div id="missing-social-cues" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <div class="modal-header">
+            <h3>Missing Social Cues</h3>
+            <div class="condition-tags">
+                <span class="tag">Autism</span>
+                <span class="tag">ADHD</span>
+                <span class="tag">Auditory Processing</span>
             </div>
         </div>
-    </div>
+        
+        <div class="info-section">
+            <h4>What this feels like:</h4>
+            <p>You realize afterward that you missed important unspoken information during conversations. People seem to communicate in a secret code of raised eyebrows, tone changes, and meaningful pauses that you don't naturally pick up on. You often ask "Are you being sarcastic?" or miss when someone is uncomfortable.</p>
 
-    <!-- Interrupting Others Modal -->
-    <div id="interrupting-others" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>Interrupting Others</h2>
-                <span class="close" onclick="closeModal('interrupting-others')">&times;</span>
-            </div>
-            <div class="modal-body">
-                <div class="info-section">
-                    <h3>What it feels like</h3>
-                    <p>You have a thought and it feels urgent to share immediately. By the time there's a "natural" pause, you've forgotten your point or the moment has passed. People seem annoyed when you jump in, but waiting feels impossible.</p>
-                </div>
+            <h4>Why this might be happening:</h4>
+            <p>Neurotypical communication often relies heavily on subtext, body language, and implied meanings. Your brain may focus more on the literal words being said rather than the full communication context, or you may process visual and auditory information differently.</p>
 
-                <div class="info-section">
-                    <h3>Why this happens</h3>
-                    <p>Your <a class="jargon">working memory<span class="tooltip">The ability to hold and manipulate information in your mind for short periods while performing other cognitive tasks</span></a> might not hold onto thoughts well while processing other information, or your impulse control system works differently. You're not being rude—you're managing cognitive limitations in real-time.</p>
-                    <div class="conditions-tags">
-                        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/conditions/adhd.html" class="tag">ADHD</a>
-                        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/glossary/working-memory.html" class="tag">Working Memory</a>
-                        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/glossary/impulse-control.html" class="tag">Impulse Control</a>
-                    </div>
-                </div>
+            <h4>What can help you through the next 5 minutes:</h4>
+            <p>• Ask directly: "How are you feeling about this conversation?" or "Are you joking?"</p>
+            <p>• Pay attention to tone changes as much as words</p>
+            <p>• Notice if someone's body language doesn't match their words</p>
+            <p>• When in doubt, check: "It seems like something shifted - did I miss something?"</p>
+            <p>• Focus on one type of social cue at a time rather than trying to catch everything</p>
 
-                <div class="info-section strategies">
-                    <h3>Next 5 minutes</h3>
-                    <ul>
-                        <li>Write down your thought quickly if possible</li>
-                        <li>Hold up a finger to signal you have something to add</li>
-                        <li>Say "Sorry to interrupt—" and then share briefly</li>
-                        <li>Practice the phrase "Can I add something when you're done?"</li>
-                    </ul>
-                </div>
+            <h4>What are some healthy long-term solutions:</h4>
+            <p>• Learn common social cue patterns in your culture (though these vary widely)</p>
+            <p>• Build relationships with people who communicate directly and don't rely heavily on subtext</p>
+            <p>• Practice asking clarifying questions without apologizing for needing clarity</p>
+            <p>• Advocate for explicit communication in important relationships</p>
+            <p>• Accept that you'll miss some cues, and that's okay - most people do sometimes</p>
 
-                <div class="info-section strategies">
-                    <h3>Long-term strategies</h3>
-                    <ul>
-                        <li>Explain your processing style to close friends/colleagues</li>
-                        <li>Use note-taking as an external working memory in meetings</li>
-                        <li>Practice noticing natural conversation pauses (after complete thoughts, questions)</li>
-                        <li>Find conversation partners who appreciate dynamic, overlapping dialogue</li>
-                        <li>Set up environments where your interrupting is less disruptive (smaller groups, informal settings)</li>
-                    </ul>
-                </div>
+            <h4>When should I consider medical intervention:</h4>
+            <p>• If missing social cues is severely impacting work relationships or performance</p>
+            <p>• If you're avoiding social situations entirely due to confusion</p>
+            <p>• If miscommunication is causing significant relationship problems</p>
+            <p>• If you want professional social skills coaching or evaluation</p>
 
-                <div class="info-section validation">
-                    <h3>You're not alone</h3>
-                    <p>Many cultures actually value overlapping conversation as engaged and enthusiastic. Your interruptions often come from excitement and engagement, not disrespect. You're actively listening and responding—that's a strength in many contexts.</p>
-                </div>
-            </div>
+            <h4>You're not imagining this:</h4>
+            <p>Social cues are genuinely complex, and many are cultural or contextual. Missing them doesn't mean you're socially deficient - it means your brain processes communication differently. Many successful neurodivergent people navigate this by building relationships with understanding people and advocating for clearer communication.</p>
         </div>
     </div>
+</div>
 
-    <!-- Misreading Tone Modal -->
-    <div id="misreading-tone" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>Misreading Tone</h2>
-                <span class="close" onclick="closeModal('misreading-tone')">&times;</span>
-            </div>
-            <div class="modal-body">
-                <div class="info-section">
-                    <h3>What it feels like</h3>
-                    <p>You think someone is angry when they're just tired, or you miss sarcasm and respond literally. You might perceive criticism where none was intended, or miss when someone is joking. Tone feels like a foreign language you're supposed to understand but don't.</p>
-                </div>
-
-                <div class="info-section">
-                    <h3>Why this happens</h3>
-                    <p>Your brain processes auditory information differently, or you rely more on words than vocal inflection. <a class="jargon">RSD<span class="tooltip">Rejection Sensitive Dysphoria - extreme emotional sensitivity to perceived or actual rejection, criticism, or failure</span></a> can also make neutral tones sound negative when you're already feeling vulnerable.</p>
-                    <div class="conditions-tags">
-                        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/conditions/autism.html" class="tag">Autism</a>
-                        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/conditions/adhd.html" class="tag">ADHD</a>
-                        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/auditory-processing.html" class="tag">Auditory Processing</a>
-                        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/glossary/rsd.html" class="tag">RSD</a>
-                    </div>
-                </div>
-
-                <div class="info-section strategies">
-                    <h3>Next 5 minutes</h3>
-                    <ul>
-                        <li>When in doubt, ask: "Are you upset about something?" or "Are you joking right now?"</li>
-                        <li>Focus on the words being said, not just how they sound</li>
-                        <li>Look for context clues: facial expressions, body language, situation</li>
-                        <li>Give people the benefit of the doubt: assume neutral intent unless clearly stated otherwise</li>
-                    </ul>
-                </div>
-
-                <div class="info-section strategies">
-                    <h3>Long-term strategies</h3>
-                    <ul>
-                        <li>Ask close friends to be explicit about their emotional states</li>
-                        <li>Practice tone recognition with trusted people: "What tone was that?"</li>
-                        <li>Use written communication when possible for important conversations</li>
-                        <li>Learn common verbal cues: "I'm kidding," tone markers, emotional check-ins</li>
-                        <li>Accept that some tone nuances may always be challenging—that's okay</li>
-                    </ul>
-                </div>
-
-                <div class="info-section validation">
-                    <h3>You're not alone</h3>
-                    <p>Tone processing differences are common in neurodivergent people. Your literal processing of language is actually a strength in many situations. The goal isn't perfect tone reading, but developing strategies to clarify when you're uncertain.</p>
-                </div>
+<div id="being-too-direct" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <div class="modal-header">
+            <h3>Being Too Direct</h3>
+            <div class="condition-tags">
+                <span class="tag">Autism</span>
+                <span class="tag">ADHD</span>
+                <span class="tag">Impulse Control</span>
             </div>
         </div>
+        
+        <div class="info-section">
+            <h4>What this feels like:</h4>
+            <p>You say exactly what you think and mean, but others react as if you were rude or insensitive. You're confused because you were just being honest and efficient, but people seem hurt or offended. Comments like "you could have said that nicer" leave you wondering what you did wrong.</p>
+
+            <h4>Why this might be happening:</h4>
+            <p>You're communicating logically and efficiently, but neurotypical communication often includes social cushioning - extra words and phrases designed to manage emotions and relationships rather than just convey information. Your directness isn't wrong, it's just different from expected social norms.</p>
+
+            <h4>What can help you through the next 5 minutes:</h4>
+            <p>• Add cushioning phrases: "I might be wrong, but..." or "What do you think about..."</p>
+            <p>• Acknowledge the person's feelings: "I can see this is important to you, and..."</p>
+            <p>• Ask before giving feedback: "Would you like my thoughts on this?"</p>
+            <p>• Use "I" statements: "I noticed..." instead of "You always..."</p>
+            <p>• Add appreciation: "Thanks for bringing this up, I think..."</p>
+
+            <h4>What are some healthy long-term solutions:</h4>
+            <p>• Learn which relationships value your directness and which need more cushioning</p>
+            <p>• Practice adding one extra "nice" phrase to important communications</p>
+            <p>• Find work and social environments that appreciate straightforward communication</p>
+            <p>• Build relationships with other direct communicators</p>
+            <p>• Remember that adapting your style doesn't mean you're fake - it's translation, not masking</p>
+
+            <h4>When should I consider medical intervention:</h4>
+            <p>• If your communication style is consistently damaging important relationships</p>
+            <p>• If you're being disciplined at work repeatedly for how you communicate</p>
+            <p>• If you want professional communication coaching</p>
+            <p>• If directness stems from impulse control issues that interfere with other life areas</p>
+
+            <h4>You're not imagining this:</h4>
+            <p>Direct communication is efficient, honest, and valuable. Many cultures and professions appreciate straightforward communication. The challenge is learning when to adapt your style for specific contexts without losing your authentic voice. Your honesty is a strength, even when it needs some social translation.</p>
+        </div>
     </div>
+</div>
 
-    <script>
-        function openModal(modalId) {
-            document.getElementById(modalId).style.display = 'block';
-            document.body.style.overflow = 'hidden';
-        }
+<div id="interrupting-others" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <div class="modal-header">
+            <h3>Interrupting Others</h3>
+            <div class="condition-tags">
+                <span class="tag">ADHD</span>
+                <span class="tag">Autism</span>
+                <span class="tag">Working Memory</span>
+            </div>
+        </div>
+        
+        <div class="info-section">
+            <h4>What this feels like:</h4>
+            <p>You have a perfect response or important thought, but if you don't say it right now, you'll forget it. So you jump into the conversation, only to realize you've interrupted someone mid-sentence. You're not trying to be rude - you're trying to contribute meaningfully while your thought is still accessible.</p>
 
-        function closeModal(modalId) {
-            document.getElementById(modalId).style.display = 'none';
+            <h4>Why this might be happening:</h4>
+            <p><span class="jargon-term" data-definition="The ability to temporarily hold and work with information in your mind">Working memory</span> challenges mean that thoughts feel urgent and fleeting. Additionally, you might process conversation patterns differently, missing the subtle cues that indicate when it's your turn to speak. Your enthusiasm to engage is positive, but the timing needs adjustment.</p>
+
+            <h4>What can help you through the next 5 minutes:</h4>
+            <p>• Write your thought down so you won't forget it, then wait for a natural pause</p>
+            <p>• Hold up one finger to signal "I have something to add" without speaking</p>
+            <p>• Count to two after someone stops talking before you respond</p>
+            <p>• If you do interrupt, quickly say "Sorry, please continue" and wait</p>
+            <p>• Focus on listening completely to their point before forming your response</p>
+
+            <h4>What are some healthy long-term solutions:</h4>
+            <p>• Practice the "notepad method" - always have something to jot thoughts on during conversations</p>
+            <p>• Ask friends to give you a specific signal when you interrupt</p>
+            <p>• In meetings, establish that you might need to write thoughts down to participate effectively</p>
+            <p>• Work on strengthening <span class="jargon-term" data-definition="The ability to temporarily hold and work with information in your mind">working memory</span> through exercises and strategies</p>
+            <p>• Find conversation partners who understand your communication style</p>
+
+            <h4>When should I consider medical intervention:</h4>
+            <p>• If interrupting is severely impacting work meetings or important relationships</p>
+            <p>• If it's part of broader impulse control challenges affecting multiple life areas</p>
+            <p>• If you want medication evaluation for ADHD symptoms including conversational impulsivity</p>
+            <p>• If working memory issues are significantly interfering with daily functioning</p>
+
+            <h4>You're not imagining this:</h4>
+            <p>The urge to speak immediately when you have a thought is a real experience related to how your brain processes and stores information. Your eagerness to contribute to conversations shows you care about connecting with others. Learning timing strategies doesn't mean suppressing your voice - it means ensuring your valuable contributions are heard and appreciated.</p>
+        </div>
+    </div>
+</div>
+
+<div id="misreading-tone" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <div class="modal-header">
+            <h3>Misreading Tone</h3>
+            <div class="condition-tags">
+                <span class="tag">Autism</span>
+                <span class="tag">Anxiety</span>
+                <span class="tag">Auditory Processing</span>
+            </div>
+        </div>
+        
+        <div class="info-section">
+            <h4>What this feels like:</h4>
+            <p>Someone says something and you can't tell if they're joking, being sarcastic, or serious. You might laugh at something that wasn't meant to be funny, or take a joke literally. Text messages are especially confusing because you can't hear tone at all. You often ask "Wait, are you being serious?"</p>
+
+            <h4>Why this might be happening:</h4>
+            <p>Tone carries a lot of social meaning that isn't contained in the actual words. Your brain might focus more on literal content than emotional subtext, or you might process auditory information differently. Cultural differences in tonal expression can also make this more challenging.</p>
+
+            <h4>What can help you through the next 5 minutes:</h4>
+            <p>• Ask directly: "Are you joking?" or "How should I interpret that?"</p>
+            <p>• Pay attention to facial expressions as well as voice tone</p>
+            <p>• When uncertain, respond neutrally until you get more context</p>
+            <p>• In text conversations, ask for clarification or use emojis to convey your own tone</p>
+            <p>• Remember that misreading tone occasionally happens to everyone</p>
+
+            <h4>What are some healthy long-term solutions:</h4>
+            <p>• Build relationships with people who communicate their intentions clearly</p>
+            <p>• Practice identifying different tones in low-stakes situations (movies, audiobooks)</p>
+            <p>• Ask trusted friends to be explicit about their tone when discussing important topics</p>
+            <p>• Develop phrases for checking understanding: "I want to make sure I'm reading this right..."</p>
+            <p>• Accept that you'll sometimes misread tone, and that's okay</p>
+
+            <h4>When should I consider medical intervention:</h4>
+            <p>• If tone misreading is causing significant problems in important relationships</p>
+            <p>• If it's part of broader auditory processing challenges</p>
+            <p>• If you want professional evaluation for social communication differences</p>
+            <p>• If anxiety about misreading tone is preventing you from engaging in conversations</p>
+
+            <h4>You're not imagining this:</h4>
+            <p>Tone is genuinely complex and often ambiguous. Many people misread tone regularly, and cultural differences make it even more complicated. Your difficulty with tonal nuances doesn't reflect poor social skills - it reflects a different way of processing social information. Clear, direct communication benefits everyone.</p>
+        </div>
+    </div>
+</div>
+
+<script>
+function openModal(modalId) {
+    document.getElementById(modalId).style.display = 'block';
+    document.body.style.overflow = 'hidden';
+}
+
+function closeModal(modalId) {
+    document.getElementById(modalId).style.display = 'none';
+    document.body.style.overflow = 'auto';
+}
+
+function toggleLearnMore(contentId) {
+    const content = document.getElementById(contentId);
+    const header = content.previousElementSibling;
+    
+    if (content.classList.contains('expanded')) {
+        content.classList.remove('expanded');
+        header.classList.remove('expanded');
+    } else {
+        content.classList.add('expanded');
+        header.classList.add('expanded');
+    }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Close modal when clicking the X
+    const closeButtons = document.querySelectorAll('.close');
+    closeButtons.forEach(button => {
+        button.onclick = function() {
+            this.closest('.modal').style.display = 'none';
             document.body.style.overflow = 'auto';
         }
+    });
 
-        // Close modal when clicking outside of it
-        window.onclick = function(event) {
-            if (event.target.classList.contains('modal')) {
-                event.target.style.display = 'none';
-                document.body.style.overflow = 'auto';
-            }
+    // Close modal when clicking outside of it
+    window.onclick = function(event) {
+        if (event.target.classList.contains('modal')) {
+            event.target.style.display = 'none';
+            document.body.style.overflow = 'auto';
         }
+    }
 
-        // Handle jargon tooltip clicks for mobile
-        document.addEventListener('DOMContentLoaded', function() {
-            const jargonTerms = document.querySelectorAll('.jargon');
-            
-            jargonTerms.forEach(term => {
-                term.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    
-                    // Close any other open tooltips
-                    jargonTerms.forEach(otherTerm => {
-                        if (otherTerm !== term) {
-                            otherTerm.classList.remove('active');
-                        }
-                    });
-                    
-                    // Toggle this tooltip
-                    term.classList.toggle('active');
-                });
-            });
-            
-            // Close tooltips when clicking elsewhere
-            document.addEventListener('click', function(e) {
-                if (!e.target.closest('.jargon')) {
-                    jargonTerms.forEach(term => {
-                        term.classList.remove('active');
-                    });
-                }
-            });
+    // Handle jargon term clicks for mobile
+    const jargonTerms = document.querySelectorAll('.jargon-term');
+    jargonTerms.forEach(term => {
+        term.addEventListener('click', function(e) {
+            e.preventDefault();
+            const existingTooltip = document.querySelector('.active-tooltip');
+            if (existingTooltip) {
+                existingTooltip.classList.remove('active-tooltip');
+            }
+            this.classList.add('active-tooltip');
         });
-    </script>
-</body>
-</html>
+    });
+
+    // Close tooltips when clicking elsewhere
+    document.addEventListener('click', function(e) {
+        if (!e.target.classList.contains('jargon-term')) {
+            const activeTooltips = document.querySelectorAll('.active-tooltip');
+            activeTooltips.forEach(tooltip => {
+                tooltip.classList.remove('active-tooltip');
+            });
+        }
+    });
+});
+</script>
