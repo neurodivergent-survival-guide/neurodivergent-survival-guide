@@ -393,25 +393,25 @@
                 <p>Communication challenges usually fall into two main areas: things that happen inside your head during social interactions, and things that happen between you and other people. Let's break these down:</p>
             </div>
 
-            <div class="category-section" onclick="openModal('internal-issues')">
+            <div class="category-section">
                 <div class="category-title">Internal Communication Struggles</div>
                 <div class="category-description">The mental and emotional work that happens inside your head during social interactions</div>
                 <div class="issue-grid">
-                    <div class="issue-item">Social Exhaustion</div>
-                    <div class="issue-item">Overthinking Responses</div>
-                    <div class="issue-item">Masking Fatigue</div>
-                    <div class="issue-item">Social Anxiety Spirals</div>
+                    <div class="issue-item" onclick="openModal('social-exhaustion')">Social Exhaustion</div>
+                    <div class="issue-item" onclick="openModal('overthinking-responses')">Overthinking Responses</div>
+                    <div class="issue-item" onclick="openModal('masking-fatigue')">Masking Fatigue</div>
+                    <div class="issue-item" onclick="openModal('social-anxiety-spirals')">Social Anxiety Spirals</div>
                 </div>
             </div>
 
-            <div class="category-section" onclick="openModal('interpersonal-issues')">
+            <div class="category-section">
                 <div class="category-title">Interpersonal Communication Challenges</div>
                 <div class="category-description">The friction that happens in the actual exchange between you and other people</div>
                 <div class="issue-grid">
-                    <div class="issue-item">Missing Social Cues</div>
-                    <div class="issue-item">Being Too Direct</div>
-                    <div class="issue-item">Interrupting Others</div>
-                    <div class="issue-item">Misreading Tone</div>
+                    <div class="issue-item" onclick="openModal('missing-social-cues')">Missing Social Cues</div>
+                    <div class="issue-item" onclick="openModal('being-too-direct')">Being Too Direct</div>
+                    <div class="issue-item" onclick="openModal('interrupting-others')">Interrupting Others</div>
+                    <div class="issue-item" onclick="openModal('misreading-tone')">Misreading Tone</div>
                 </div>
             </div>
 
@@ -421,20 +421,22 @@
         </div>
     </div>
 
-    <!-- Internal Issues Modal -->
-    <div id="internal-issues" class="modal">
+    <!-- Social Exhaustion Modal -->
+    <div id="social-exhaustion" class="modal">
         <div class="modal-content">
             <div class="modal-header">
-                <h2>Internal Communication Struggles</h2>
-                <span class="close" onclick="closeModal('internal-issues')">&times;</span>
+                <h2>Social Exhaustion</h2>
+                <span class="close" onclick="closeModal('social-exhaustion')">&times;</span>
             </div>
             <div class="modal-body">
-                <p style="margin-bottom: 1.5rem; font-size: 1.05rem; color: #666;">These are the invisible struggles—the mental and emotional work that happens inside your head during social interactions. Other people can't see this happening, but it's real and it's exhausting.</p>
+                <div class="info-section">
+                    <h3>What it feels like</h3>
+                    <p>After social interactions, you feel completely drained, even if you enjoyed them. You might need hours or days to recover. Simple conversations can feel as tiring as running a marathon. Your brain feels foggy and you just want to be alone in a quiet space.</p>
+                </div>
 
                 <div class="info-section">
-                    <h3>Social Exhaustion</h3>
-                    <p><strong>What it feels like:</strong> After social interactions, you feel completely drained, even if you enjoyed them. You might need hours or days to recover. Simple conversations can feel as tiring as running a marathon.</p>
-                    <p><strong>Why this happens:</strong> Social interaction requires more <a class="jargon">cognitive resources<span class="tooltip">Mental energy used for thinking, processing information, and making decisions</span></a> for you than for neurotypical people. You're processing multiple streams of information and working extra hard to navigate unspoken social rules.</p>
+                    <h3>Why this happens</h3>
+                    <p>Social interaction requires more <a class="jargon">cognitive resources<span class="tooltip">Mental energy used for thinking, processing information, and making decisions</span></a> for you than for neurotypical people. You're processing multiple streams of information, reading faces, monitoring tone, and working extra hard to navigate unspoken social rules all at once.</p>
                     <div class="conditions-tags">
                         <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/conditions/autism.html" class="tag">Autism</a>
                         <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/conditions/adhd.html" class="tag">ADHD</a>
@@ -443,60 +445,209 @@
                     </div>
                 </div>
 
-                <div class="info-section">
-                    <h3>Overthinking Responses</h3>
-                    <p><strong>What it feels like:</strong> You rehearse conversations in your head, worry about how your words will be interpreted, and second-guess everything you say. By the time you've crafted the "perfect" response, the conversation has moved on.</p>
-                    <p><strong>Why this happens:</strong> Your brain is working extra hard to navigate social situations that don't come naturally. <a class="jargon">RSD<span class="tooltip">Rejection Sensitive Dysphoria - extreme emotional sensitivity to perceived or actual rejection, criticism, or failure</span></a> can make you catastrophize normal social pauses.</p>
-                    <div class="conditions-tags">
-                        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/conditions/anxiety.html" class="tag">Social Anxiety</a>
-                        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/conditions/autism.html" class="tag">Autism</a>
-                        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/glossary/perfectionism.html" class="tag">Perfectionism</a>
-                        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/glossary/rsd.html" class="tag">RSD</a>
-                    </div>
-                </div>
-
                 <div class="info-section strategies">
-                    <h3>Immediate relief strategies</h3>
+                    <h3>Next 5 minutes</h3>
                     <ul>
-                        <li>Find a quiet space and reduce sensory input</li>
-                        <li>Take a breath and say the first reasonable thing that comes to mind</li>
-                        <li>Remember: most people forget conversational details quickly</li>
-                        <li>It's okay to say "I'm still processing that—give me a second"</li>
+                        <li>Find the quietest space available immediately</li>
+                        <li>Dim lights or close your eyes</li>
+                        <li>Remove uncomfortable clothing or accessories</li>
+                        <li>Do something soothing and non-social: listen to familiar music, pet an animal, or just breathe</li>
                     </ul>
                 </div>
 
                 <div class="info-section strategies">
-                    <h3>Long-term approaches</h3>
+                    <h3>Long-term strategies</h3>
                     <ul>
-                        <li>Schedule recovery time after social events</li>
-                        <li>Practice "good enough" responses instead of perfect ones</li>
+                        <li>Schedule recovery time after social events - treat it as non-negotiable</li>
                         <li>Communicate your needs: "I'll need some quiet time after this"</li>
-                        <li>Challenge the belief that every response must be perfect</li>
+                        <li>Limit back-to-back social commitments</li>
+                        <li>Find lower-energy social activities like parallel activities or one-on-one time with close friends</li>
+                        <li>Create a "recharge kit" with comfort items, snacks, and calming activities</li>
                     </ul>
                 </div>
 
                 <div class="info-section validation">
                     <h3>You're not alone</h3>
-                    <p>Internal social struggles are incredibly common among neurodivergent people. Needing recovery time doesn't mean you're antisocial—it means your brain works hard during interactions. Honor this need and give yourself credit for the invisible work you're doing.</p>
+                    <p>Social exhaustion is a real, documented experience for many neurodivergent people. Needing recovery time doesn't mean you're antisocial or broken—it means your brain works harder during interactions. Honor this need and give yourself credit for the invisible work you're doing.</p>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Interpersonal Issues Modal -->
-    <div id="interpersonal-issues" class="modal">
+    <!-- Overthinking Responses Modal -->
+    <div id="overthinking-responses" class="modal">
         <div class="modal-content">
             <div class="modal-header">
-                <h2>Interpersonal Communication Challenges</h2>
-                <span class="close" onclick="closeModal('interpersonal-issues')">&times;</span>
+                <h2>Overthinking Responses</h2>
+                <span class="close" onclick="closeModal('overthinking-responses')">&times;</span>
             </div>
             <div class="modal-body">
-                <p style="margin-bottom: 1.5rem; font-size: 1.05rem; color: #666;">These are the visible struggles—the moments when the difference between your communication style and neurotypical expectations creates friction with other people.</p>
+                <div class="info-section">
+                    <h3>What it feels like</h3>
+                    <p>You rehearse conversations in your head, worry about how your words will be interpreted, and second-guess everything you say. By the time you've crafted the "perfect" response, the conversation has moved on. You replay interactions later, analyzing what went wrong.</p>
+                </div>
 
                 <div class="info-section">
-                    <h3>Missing Social Cues</h3>
-                    <p><strong>What it feels like:</strong> People seem annoyed or uncomfortable and you have no idea why. You might continue talking when someone wants to leave, miss sarcasm, or not realize someone is hinting at something.</p>
-                    <p><strong>Why this happens:</strong> Your brain prioritizes explicit information over implicit social signals. You're not "missing" anything—you're processing different types of information. Many neurotypical social cues are arbitrary cultural conventions.</p>
+                    <h3>Why this happens</h3>
+                    <p>Your brain is working extra hard to navigate social situations that don't come naturally. <a class="jargon">RSD<span class="tooltip">Rejection Sensitive Dysphoria - extreme emotional sensitivity to perceived or actual rejection, criticism, or failure</span></a> can make you catastrophize normal social pauses or neutral responses.</p>
+                    <div class="conditions-tags">
+                        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/conditions/anxiety.html" class="tag">Social Anxiety</a>
+                        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/conditions/autism.html" class="tag">Autism</a>
+                        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/conditions/adhd.html" class="tag">ADHD</a>
+                        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/glossary/rsd.html" class="tag">RSD</a>
+                    </div>
+                </div>
+
+                <div class="info-section strategies">
+                    <h3>Next 5 minutes</h3>
+                    <ul>
+                        <li>Take a breath and say the first reasonable thing that comes to mind</li>
+                        <li>Set a mental timer: "I have 3 seconds to respond"</li>
+                        <li>Use simple bridge phrases: "That's interesting," "Tell me more," or "I need a moment to think about that"</li>
+                        <li>Remember: most people forget conversational details quickly</li>
+                    </ul>
+                </div>
+
+                <div class="info-section strategies">
+                    <h3>Long-term strategies</h3>
+                    <ul>
+                        <li>Practice "good enough" responses instead of perfect ones</li>
+                        <li>Challenge the belief that every response must be perfect</li>
+                        <li>Prepare a few go-to responses for common situations</li>
+                        <li>Set boundaries on post-conversation analysis: limit it to 5 minutes, then redirect</li>
+                        <li>Practice self-compassion: treat conversation "mistakes" like you would a friend's</li>
+                    </ul>
+                </div>
+
+                <div class="info-section validation">
+                    <h3>You're not alone</h3>
+                    <p>Many neurodivergent people experience this analysis paralysis in conversations. Your careful consideration shows that you care about others' feelings. The goal isn't to stop caring, but to find a balance that doesn't exhaust you.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Masking Fatigue Modal -->
+    <div id="masking-fatigue" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Masking Fatigue</h2>
+                <span class="close" onclick="closeModal('masking-fatigue')">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="info-section">
+                    <h3>What it feels like</h3>
+                    <p>You feel like you're performing or pretending to be someone else in social situations. Maintaining this "normal" persona is exhausting. When you get home, you might crash completely or feel disconnected from your authentic self. The effort of appearing neurotypical is overwhelming.</p>
+                </div>
+
+                <div class="info-section">
+                    <h3>Why this happens</h3>
+                    <p>You've learned to camouflage your natural responses to fit in socially. While this can be protective, constantly suppressing your authentic self requires enormous energy and can lead to identity confusion and burnout.</p>
+                    <div class="conditions-tags">
+                        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/conditions/autism.html" class="tag">Autism</a>
+                        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/conditions/adhd.html" class="tag">ADHD</a>
+                        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/glossary/masking.html" class="tag">Masking</a>
+                    </div>
+                </div>
+
+                <div class="info-section strategies">
+                    <h3>Next 5 minutes</h3>
+                    <ul>
+                        <li>Remove the mask: <a class="jargon">stim<span class="tooltip">Self-stimulating behaviors like fidgeting, rocking, or repeating sounds/movements that help regulate emotions and sensory input</span></a>, move naturally, make comfortable sounds</li>
+                        <li>Remind yourself: "I performed well, but that wasn't the real me"</li>
+                        <li>Do something authentically you: engage with special interests, comfortable routines</li>
+                        <li>Give yourself credit for the hard work you just did</li>
+                    </ul>
+                </div>
+
+                <div class="info-section strategies">
+                    <h3>Long-term strategies</h3>
+                    <ul>
+                        <li>Gradually unmask in safe relationships and environments</li>
+                        <li>Find communities where you can be more authentic</li>
+                        <li>Practice saying "This is just how I am" about harmless differences</li>
+                        <li>Set boundaries about when and where you're willing to mask</li>
+                        <li>Schedule "unmask time" regularly to reconnect with yourself</li>
+                    </ul>
+                </div>
+
+                <div class="info-section validation">
+                    <h3>You're not alone</h3>
+                    <p>Masking is a survival skill you developed to navigate a world that isn't designed for you. It shows incredible adaptability and intelligence. You deserve spaces where you can be authentically yourself without performing neurotypicality.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Social Anxiety Spirals Modal -->
+    <div id="social-anxiety-spirals" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Social Anxiety Spirals</h2>
+                <span class="close" onclick="closeModal('social-anxiety-spirals')">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="info-section">
+                    <h3>What it feels like</h3>
+                    <p>One small social worry snowballs into overwhelming panic. You might catastrophize a neutral response, convince yourself everyone hates you, or become paralyzed by fear of saying the wrong thing. Your mind races through worst-case scenarios.</p>
+                </div>
+
+                <div class="info-section">
+                    <h3>Why this happens</h3>
+                    <p>Your brain's threat detection system is hypervigilant to social rejection. <a class="jargon">RSD<span class="tooltip">Rejection Sensitive Dysphoria - extreme emotional sensitivity to perceived or actual rejection, criticism, or failure</span></a> can turn minor social friction into perceived emergencies, triggering your fight-or-flight response.</p>
+                    <div class="conditions-tags">
+                        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/conditions/anxiety.html" class="tag">Social Anxiety</a>
+                        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/conditions/adhd.html" class="tag">ADHD</a>
+                        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/glossary/rsd.html" class="tag">RSD</a>
+                        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/conditions/trauma.html" class="tag">Trauma</a>
+                    </div>
+                </div>
+
+                <div class="info-section strategies">
+                    <h3>Next 5 minutes</h3>
+                    <ul>
+                        <li>Ground yourself: 5 things you can see, 4 you can hear, 3 you can touch, 2 you can smell, 1 you can taste</li>
+                        <li>Breathe slowly: 4 counts in, hold for 4, out for 6</li>
+                        <li>Challenge the spiral: "Is this definitely true, or is my anxiety talking?"</li>
+                        <li>Remove yourself from the situation if possible - bathroom breaks are your friend</li>
+                    </ul>
+                </div>
+
+                <div class="info-section strategies">
+                    <h3>Long-term strategies</h3>
+                    <ul>
+                        <li>Practice the "evidence test": look for actual proof of your fears</li>
+                        <li>Develop a "spiral stopper" phrase: "This feeling will pass"</li>
+                        <li>Create a comfort plan for social events: exit strategies, support people, calming activities</li>
+                        <li>Work on self-compassion: you're not responsible for everyone's reactions</li>
+                        <li>Consider therapy for anxiety management techniques and RSD coping strategies</li>
+                    </ul>
+                </div>
+
+                <div class="info-section validation">
+                    <h3>You're not alone</h3>
+                    <p>Social anxiety spirals are common among neurodivergent people who've experienced repeated social rejection or misunderstanding. Your sensitivity isn't weakness—it's a response to real experiences. You can learn to work with your sensitive system.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Missing Social Cues Modal -->
+    <div id="missing-social-cues" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Missing Social Cues</h2>
+                <span class="close" onclick="closeModal('missing-social-cues')">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="info-section">
+                    <h3>What it feels like</h3>
+                    <p>People seem annoyed or uncomfortable and you have no idea why. You might continue talking when someone wants to leave, miss sarcasm, or not realize someone is hinting at something. It's like everyone is playing a game with invisible rules.</p>
+                </div>
+
+                <div class="info-section">
+                    <h3>Why this happens</h3>
+                    <p>Your brain prioritizes explicit information over implicit social signals. You're not "missing" anything—you're processing different types of information. Many neurotypical social cues are arbitrary cultural conventions, not universal truths.</p>
                     <div class="conditions-tags">
                         <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/conditions/autism.html" class="tag">Autism</a>
                         <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/conditions/adhd.html" class="tag">ADHD</a>
@@ -504,10 +655,51 @@
                     </div>
                 </div>
 
+                <div class="info-section strategies">
+                    <h3>Next 5 minutes</h3>
+                    <ul>
+                        <li>Ask directly: "How are you feeling about this conversation?"</li>
+                        <li>Look for obvious exit signals: checking phones, stepping back, short responses</li>
+                        <li>It's okay to say "I sometimes miss social cues—please let me know if you need to go"</li>
+                        <li>When in doubt, check: "Should I keep talking or would you like to share something?"</li>
+                    </ul>
+                </div>
+
+                <div class="info-section strategies">
+                    <h3>Long-term strategies</h3>
+                    <ul>
+                        <li>Develop a trusted friend who can give you subtle signals in group settings</li>
+                        <li>Practice the "check-in" habit: "How is this landing for you?"</li>
+                        <li>Learn common exit phrases: "Well, I should let you go..." and use them proactively</li>
+                        <li>Set conversation timers: check in with the other person every 5-10 minutes</li>
+                        <li>Remember: direct communication is often more honest and efficient</li>
+                    </ul>
+                </div>
+
+                <div class="info-section validation">
+                    <h3>You're not alone</h3>
+                    <p>Many neurodivergent people process social information differently. Your direct, explicit communication style has value. The goal isn't to become a mind reader, but to find ways to bridge different communication styles.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Being Too Direct Modal -->
+    <div id="being-too-direct" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Being Too Direct</h2>
+                <span class="close" onclick="closeModal('being-too-direct')">&times;</span>
+            </div>
+            <div class="modal-body">
                 <div class="info-section">
-                    <h3>Being Too Direct</h3>
-                    <p><strong>What it feels like:</strong> People react negatively to your straightforward communication. You say exactly what you mean, but others seem offended or call you "blunt" or "harsh." You're confused because you're just being honest and efficient.</p>
-                    <p><strong>Why this happens:</strong> You value clarity and honesty over social cushioning. Neurotypical communication often includes layers of politeness and indirect language that can feel inefficient or confusing to you.</p>
+                    <h3>What it feels like</h3>
+                    <p>People react negatively to your straightforward communication. You say exactly what you mean, but others seem offended or call you "blunt" or "harsh." You're confused because you're just being honest and efficient.</p>
+                </div>
+
+                <div class="info-section">
+                    <h3>Why this happens</h3>
+                    <p>You value clarity and honesty over social cushioning. Neurotypical communication often includes layers of politeness and indirect language that can feel inefficient or confusing to you. Your directness isn't rudeness—it's a different communication style.</p>
                     <div class="conditions-tags">
                         <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/conditions/autism.html" class="tag">Autism</a>
                         <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/conditions/adhd.html" class="tag">ADHD</a>
@@ -515,10 +707,51 @@
                     </div>
                 </div>
 
+                <div class="info-section strategies">
+                    <h3>Next 5 minutes</h3>
+                    <ul>
+                        <li>Add cushioning phrases: "I might be wrong, but..." or "In my experience..."</li>
+                        <li>Ask permission: "Can I share some direct feedback?"</li>
+                        <li>If someone seems hurt, try: "I'm sorry if that came across harshly—I meant..."</li>
+                        <li>Remember: your intent matters, but so does their reception</li>
+                    </ul>
+                </div>
+
+                <div class="info-section strategies">
+                    <h3>Long-term strategies</h3>
+                    <ul>
+                        <li>Find contexts where directness is valued (certain work cultures, close friendships)</li>
+                        <li>Practice "feedback sandwiches": positive → direct point → positive</li>
+                        <li>Communicate your style upfront: "I tend to be pretty direct—let me know if you'd prefer a different approach"</li>
+                        <li>Learn to distinguish between situations requiring diplomacy vs. efficiency</li>
+                        <li>Build relationships where your honesty is appreciated</li>
+                    </ul>
+                </div>
+
+                <div class="info-section validation">
+                    <h3>Your communication has value</h3>
+                    <p>Direct communication is honest, efficient, and often exactly what people need. Many people actually appreciate straightforward feedback once they adjust to it. Your communication style has value—the goal is finding the right contexts and people who appreciate it.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Interrupting Others Modal -->
+    <div id="interrupting-others" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Interrupting Others</h2>
+                <span class="close" onclick="closeModal('interrupting-others')">&times;</span>
+            </div>
+            <div class="modal-body">
                 <div class="info-section">
-                    <h3>Interrupting Others</h3>
-                    <p><strong>What it feels like:</strong> You have a thought and it feels urgent to share immediately. By the time there's a "natural" pause, you've forgotten your point or the moment has passed. People seem annoyed when you jump in, but waiting feels impossible.</p>
-                    <p><strong>Why this happens:</strong> Your <a class="jargon">working memory<span class="tooltip">The ability to hold and manipulate information in your mind for short periods while performing other cognitive tasks</span></a> might not hold onto thoughts well while processing other information, or your impulse control system works differently.</p>
+                    <h3>What it feels like</h3>
+                    <p>You have a thought and it feels urgent to share immediately. By the time there's a "natural" pause, you've forgotten your point or the moment has passed. People seem annoyed when you jump in, but waiting feels impossible.</p>
+                </div>
+
+                <div class="info-section">
+                    <h3>Why this happens</h3>
+                    <p>Your <a class="jargon">working memory<span class="tooltip">The ability to hold and manipulate information in your mind for short periods while performing other cognitive tasks</span></a> might not hold onto thoughts well while processing other information, or your impulse control system works differently. You're not being rude—you're managing cognitive limitations in real-time.</p>
                     <div class="conditions-tags">
                         <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/conditions/adhd.html" class="tag">ADHD</a>
                         <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/glossary/working-memory.html" class="tag">Working Memory</a>
@@ -527,28 +760,82 @@
                 </div>
 
                 <div class="info-section strategies">
-                    <h3>Quick fixes</h3>
+                    <h3>Next 5 minutes</h3>
                     <ul>
-                        <li>Ask directly: "How are you feeling about this conversation?"</li>
-                        <li>Add cushioning phrases: "I might be wrong, but..." or "In my experience..."</li>
+                        <li>Write down your thought quickly if possible</li>
                         <li>Hold up a finger to signal you have something to add</li>
-                        <li>Practice: "Can I add something when you're done?"</li>
+                        <li>Say "Sorry to interrupt—" and then share briefly</li>
+                        <li>Practice the phrase "Can I add something when you're done?"</li>
                     </ul>
                 </div>
 
                 <div class="info-section strategies">
-                    <h3>Sustainable strategies</h3>
+                    <h3>Long-term strategies</h3>
                     <ul>
-                        <li>Find contexts where directness is valued</li>
-                        <li>Communicate your style upfront: "I tend to be pretty direct"</li>
-                        <li>Use note-taking as external working memory</li>
-                        <li>Practice noticing natural conversation pauses</li>
+                        <li>Explain your processing style to close friends/colleagues</li>
+                        <li>Use note-taking as an external working memory in meetings</li>
+                        <li>Practice noticing natural conversation pauses (after complete thoughts, questions)</li>
+                        <li>Find conversation partners who appreciate dynamic, overlapping dialogue</li>
+                        <li>Set up environments where your interrupting is less disruptive (smaller groups, informal settings)</li>
                     </ul>
                 </div>
 
                 <div class="info-section validation">
-                    <h3>Your communication has value</h3>
-                    <p>Direct communication is honest, efficient, and often exactly what people need. Many cultures value overlapping conversation as engaged and enthusiastic. Your interruptions usually come from excitement and engagement, not disrespect. You're actively listening and responding.</p>
+                    <h3>You're not alone</h3>
+                    <p>Many cultures actually value overlapping conversation as engaged and enthusiastic. Your interruptions often come from excitement and engagement, not disrespect. You're actively listening and responding—that's a strength in many contexts.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Misreading Tone Modal -->
+    <div id="misreading-tone" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Misreading Tone</h2>
+                <span class="close" onclick="closeModal('misreading-tone')">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="info-section">
+                    <h3>What it feels like</h3>
+                    <p>You think someone is angry when they're just tired, or you miss sarcasm and respond literally. You might perceive criticism where none was intended, or miss when someone is joking. Tone feels like a foreign language you're supposed to understand but don't.</p>
+                </div>
+
+                <div class="info-section">
+                    <h3>Why this happens</h3>
+                    <p>Your brain processes auditory information differently, or you rely more on words than vocal inflection. <a class="jargon">RSD<span class="tooltip">Rejection Sensitive Dysphoria - extreme emotional sensitivity to perceived or actual rejection, criticism, or failure</span></a> can also make neutral tones sound negative when you're already feeling vulnerable.</p>
+                    <div class="conditions-tags">
+                        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/conditions/autism.html" class="tag">Autism</a>
+                        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/conditions/adhd.html" class="tag">ADHD</a>
+                        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/auditory-processing.html" class="tag">Auditory Processing</a>
+                        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/glossary/rsd.html" class="tag">RSD</a>
+                    </div>
+                </div>
+
+                <div class="info-section strategies">
+                    <h3>Next 5 minutes</h3>
+                    <ul>
+                        <li>When in doubt, ask: "Are you upset about something?" or "Are you joking right now?"</li>
+                        <li>Focus on the words being said, not just how they sound</li>
+                        <li>Look for context clues: facial expressions, body language, situation</li>
+                        <li>Give people the benefit of the doubt: assume neutral intent unless clearly stated otherwise</li>
+                    </ul>
+                </div>
+
+                <div class="info-section strategies">
+                    <h3>Long-term strategies</h3>
+                    <ul>
+                        <li>Ask close friends to be explicit about their emotional states</li>
+                        <li>Practice tone recognition with trusted people: "What tone was that?"</li>
+                        <li>Use written communication when possible for important conversations</li>
+                        <li>Learn common verbal cues: "I'm kidding," tone markers, emotional check-ins</li>
+                        <li>Accept that some tone nuances may always be challenging—that's okay</li>
+                    </ul>
+                </div>
+
+                <div class="info-section validation">
+                    <h3>You're not alone</h3>
+                    <p>Tone processing differences are common in neurodivergent people. Your literal processing of language is actually a strength in many situations. The goal isn't perfect tone reading, but developing strategies to clarify when you're uncertain.</p>
                 </div>
             </div>
         </div>
@@ -572,6 +859,37 @@
                 document.body.style.overflow = 'auto';
             }
         }
+
+        // Handle jargon tooltip clicks for mobile
+        document.addEventListener('DOMContentLoaded', function() {
+            const jargonTerms = document.querySelectorAll('.jargon');
+            
+            jargonTerms.forEach(term => {
+                term.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    // Close any other open tooltips
+                    jargonTerms.forEach(otherTerm => {
+                        if (otherTerm !== term) {
+                            otherTerm.classList.remove('active');
+                        }
+                    });
+                    
+                    // Toggle this tooltip
+                    term.classList.toggle('active');
+                });
+            });
+            
+            // Close tooltips when clicking elsewhere
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.jargon')) {
+                    jargonTerms.forEach(term => {
+                        term.classList.remove('active');
+                    });
+                }
+            });
+        });
     </script>
 </body>
 </html>
