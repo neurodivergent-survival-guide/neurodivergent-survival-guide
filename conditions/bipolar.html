@@ -1,0 +1,554 @@
+---
+layout: condition
+title: "Bipolar"
+slug: "bipolar"
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bipolar - Understanding the Condition | Neurodivergent Survival Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #00b894 0%, #00cec9 100%);
+            color: #333;
+            min-height: 100vh;
+            line-height: 1.7;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .header h1 {
+            color: white;
+            font-size: 2.5rem;
+            font-weight: 300;
+            margin-bottom: 0.5rem;
+        }
+
+        .header p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.2rem;
+        }
+
+        .breadcrumb {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 0.8rem 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .breadcrumb a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .breadcrumb a:hover {
+            color: white;
+        }
+
+        .breadcrumb span {
+            color: rgba(255, 255, 255, 0.6);
+            margin: 0 0.5rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .content-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .condition-intro {
+            background: #e8f5e8;
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            border-left: 4px solid #00b894;
+        }
+
+        .condition-intro h2 {
+            color: #00b894;
+            margin-bottom: 1rem;
+            font-size: 1.6rem;
+        }
+
+        .condition-intro p {
+            margin-bottom: 1rem;
+            font-size: 1.05rem;
+            color: #555;
+        }
+
+        .reframe-box {
+            background: #e8f5e8;
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+            border-left: 4px solid #00cec9;
+        }
+
+        .reframe-box h3 {
+            color: #00cec9;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .reframe-box p {
+            color: #555;
+            margin-bottom: 0.8rem;
+        }
+
+        .characteristics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        @media (min-width: 900px) {
+            .characteristics-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .characteristic-card {
+            background: white;
+            border-radius: 15px;
+            padding: 1.8rem;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            border-top: 3px solid #00b894;
+        }
+
+        .characteristic-card h4 {
+            color: #00b894;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .characteristic-card p {
+            color: #555;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .characteristic-card ul {
+            padding-left: 1.2rem;
+            color: #555;
+        }
+
+        .characteristic-card li {
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .struggles-section {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            border: 1px solid #e0e0e0;
+        }
+
+        .struggles-section h3 {
+            color: #333;
+            margin-bottom: 1.5rem;
+            font-size: 1.4rem;
+        }
+
+        .struggles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1rem;
+        }
+
+        .struggle-link {
+            background: white;
+            padding: 1rem 1.2rem;
+            border-radius: 10px;
+            text-decoration: none;
+            color: #333;
+            transition: all 0.3s ease;
+            border-left: 3px solid #00b894;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .struggle-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            text-decoration: none;
+            color: #333;
+        }
+
+        .struggle-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .struggle-description {
+            font-size: 0.85rem;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        .cross-cutting-section {
+            background: #f0f8ff;
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin: 1.5rem 0;
+            border-left: 4px solid #74b9ff;
+        }
+
+        .cross-cutting-section h4 {
+            color: #74b9ff;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .cross-cutting-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .cross-cutting-link {
+            background: #74b9ff;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .cross-cutting-link:hover {
+            background: #0984e3;
+            color: white;
+            text-decoration: none;
+            transform: translateY(-1px);
+        }
+
+        .co-occurring {
+            background: #fff3e0;
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+            border-left: 4px solid #ff9800;
+        }
+
+        .co-occurring h3 {
+            color: #f57c00;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .jargon {
+            color: #e84393;
+            text-decoration: none;
+            border-bottom: 1px dotted #e84393;
+            position: relative;
+            cursor: help;
+            font-weight: 500;
+        }
+
+        .jargon:hover {
+            color: #fd79a8;
+            border-bottom-color: #fd79a8;
+        }
+
+        .tooltip {
+            visibility: hidden;
+            opacity: 0;
+            position: absolute;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #333;
+            color: white;
+            padding: 10px 14px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: normal;
+            z-index: 1001;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: opacity 0.3s, visibility 0.3s;
+            max-width: 280px;
+            white-space: normal;
+            text-align: center;
+            line-height: 1.4;
+        }
+
+        .tooltip::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 6px solid transparent;
+            border-top-color: #333;
+        }
+
+        .jargon:hover .tooltip {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .content-card {
+                padding: 1.5rem;
+            }
+
+            .characteristics-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .struggles-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cross-cutting-links {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Bipolar</h1>
+        <p>Understanding the depths and complexity of emotional experience</p>
+    </div>
+
+    <div class="breadcrumb">
+        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/index.html">Home</a>
+        <span>></span>
+        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/conditions/index.html">Conditions</a>
+        <span>></span>
+        Bipolar
+    </div>
+
+    <div class="container">
+        <div class="content-card">
+            <div class="condition-intro">
+                <h2>What is Bipolar?</h2>
+                <p>Bipolar involves significant shifts between periods of elevated mood (mania or hypomania) and periods of depression. These aren't just mood swings - they're distinct episodes that can last days to months, affecting energy, sleep, thinking, and behavior in ways that create friction with environments designed for emotional stability.</p>
+                
+                <p>People with bipolar often describe their emotional range as operating at intensities that others might not experience. This can mean profound lows, extraordinary highs, and everything in between - sometimes creating challenges, sometimes offering remarkable depth and insight.</p>
+            </div>
+
+            <div class="reframe-box">
+                <h3>Reframing Bipolar</h3>
+                <p>Traditional descriptions focus on bipolar as a "disorder" of extreme mood swings. A more nuanced understanding recognizes it as a neurological difference where <a class="jargon">mood episodes<span class="tooltip">Distinct periods of altered mood, energy, and behavior that are different from your baseline</span></a> operate with greater intensity and duration than typical emotional responses.</p>
+                
+                <p>Think of it like having an emotional system that doesn't have a "medium" setting - when it moves, it moves significantly. This creates genuine challenges during episodes, but it can also lead to extraordinary creativity, empathy, and insight during stable periods. The goal isn't to eliminate these patterns but to understand and manage them safely.</p>
+            </div>
+
+            <div class="characteristics-grid">
+                <div class="characteristic-card">
+                    <h4>Manic/Hypomanic Episodes</h4>
+                    <p>Periods of elevated or irritable mood with increased energy lasting at least several days. Hypomania is less severe than full mania but follows similar patterns.</p>
+                    <ul>
+                        <li>Decreased need for sleep (feeling rested on 2-3 hours)</li>
+                        <li>Racing thoughts or rapid speech</li>
+                        <li>Increased goal-directed activity or agitation</li>
+                        <li>Inflated self-esteem or grandiosity</li>
+                        <li>Distractibility or poor judgment</li>
+                        <li>Engaging in activities with potential negative consequences</li>
+                    </ul>
+                </div>
+
+                <div class="characteristic-card">
+                    <h4>Major Depressive Episodes</h4>
+                    <p>Periods of persistent low mood or loss of interest lasting at least two weeks, often much longer, that significantly impact daily functioning.</p>
+                    <ul>
+                        <li>Profound sadness, emptiness, or hopelessness</li>
+                        <li>Loss of interest in previously enjoyable activities</li>
+                        <li>Sleep disturbances (too much or too little)</li>
+                        <li>Fatigue or complete energy loss</li>
+                        <li>Concentration and decision-making difficulties</li>
+                        <li>Feelings of worthlessness or inappropriate guilt</li>
+                    </ul>
+                </div>
+
+                <div class="characteristic-card">
+                    <h4>Mixed States and Rapid Cycling</h4>
+                    <p>Complex presentations where symptoms of mania and depression occur simultaneously, or mood episodes change frequently throughout the year.</p>
+                    <ul>
+                        <li>High energy with depressed mood</li>
+                        <li>Racing thoughts alongside hopelessness</li>
+                        <li>Agitation combined with sadness</li>
+                        <li>Four or more mood episodes in 12 months</li>
+                        <li>Particularly challenging to manage and recognize</li>
+                        <li>Higher risk periods requiring careful monitoring</li>
+                    </ul>
+                </div>
+
+                <div class="characteristic-card">
+                    <h4>Between Episodes</h4>
+                    <p>Periods of stability where mood, energy, and functioning return closer to baseline. These times often involve processing episode impacts and maintaining wellness.</p>
+                    <ul>
+                        <li>Rebuilding relationships affected during episodes</li>
+                        <li>Managing consequences of episode decisions</li>
+                        <li>Maintaining medication and therapy routines</li>
+                        <li>Developing episode recognition and prevention strategies</li>
+                        <li>Often the times of greatest insight and creativity</li>
+                        <li>Working on identity integration across mood states</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="struggles-section">
+                <h3>Bipolar-Related Struggles</h3>
+                <p style="margin-bottom: 1.5rem; color: #666;">Click on any struggle to learn what it feels like, why it happens, and what can help.</p>
+                
+                <div class="struggles-grid">
+                    <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/elevated-mood-periods.html" class="struggle-link">
+                        <div class="struggle-title">Elevated Mood Periods</div>
+                        <div class="struggle-description">Times of unusually high energy and mood that can be both exhilarating and challenging</div>
+                    </a>
+
+                    <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/decreased-need-for-sleep.html" class="struggle-link">
+                        <div class="struggle-title">Decreased Need for Sleep</div>
+                        <div class="struggle-description">Feeling rested on very little sleep during mood episodes</div>
+                    </a>
+
+                    <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/racing-thoughts-flight-of-ideas.html" class="struggle-link">
+                        <div class="struggle-title">Racing Thoughts Flight of Ideas</div>
+                        <div class="struggle-description">Mind moving too fast to follow or communicate clearly</div>
+                    </a>
+
+                    <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/grandiosity-inflated-self-esteem.html" class="struggle-link">
+                        <div class="struggle-title">Grandiosity Inflated Self-Esteem</div>
+                        <div class="struggle-description">Unrealistic beliefs about abilities during episodes</div>
+                    </a>
+
+                    <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/increased-goal-directed-activity.html" class="struggle-link">
+                        <div class="struggle-title">Increased Goal-Directed Activity</div>
+                        <div class="struggle-description">Excessive involvement in activities during manic periods</div>
+                    </a>
+
+                    <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/poor-judgment-during-episodes.html" class="struggle-link">
+                        <div class="struggle-title">Poor Judgment During Episodes</div>
+                        <div class="struggle-description">Making decisions during episodes that have negative consequences</div>
+                    </a>
+
+                    <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/persistent-low-mood.html" class="struggle-link">
+                        <div class="struggle-title">Persistent Low Mood</div>
+                        <div class="struggle-description">Extended periods of sadness, hopelessness, or emotional numbness</div>
+                    </a>
+
+                    <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/anhedonia.html" class="struggle-link">
+                        <div class="struggle-title">Anhedonia</div>
+                        <div class="struggle-description">Loss of interest or pleasure in activities you normally enjoy</div>
+                    </a>
+
+                    <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/sleep-disturbances.html" class="struggle-link">
+                        <div class="struggle-title">Sleep Disturbances</div>
+                        <div class="struggle-description">Difficulty with sleep patterns during mood episodes</div>
+                    </a>
+
+                    <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/fatigue-energy-loss.html" class="struggle-link">
+                        <div class="struggle-title">Fatigue Energy Loss</div>
+                        <div class="struggle-description">Physical and mental exhaustion that doesn't improve with rest</div>
+                    </a>
+
+                    <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/concentration-difficulties.html" class="struggle-link">
+                        <div class="struggle-title">Concentration Difficulties</div>
+                        <div class="struggle-description">Problems with focus and decision-making during episodes</div>
+                    </a>
+
+                    <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/suicidal-ideation.html" class="struggle-link">
+                        <div class="struggle-title">Suicidal Ideation</div>
+                        <div class="struggle-description">Thoughts of death or self-harm during depressive episodes</div>
+                    </a>
+
+                    <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/mixed-states.html" class="struggle-link">
+                        <div class="struggle-title">Mixed States</div>
+                        <div class="struggle-description">Experiencing depression and mania symptoms simultaneously</div>
+                    </a>
+
+                    <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/rapid-cycling-patterns.html" class="struggle-link">
+                        <div class="struggle-title">Rapid Cycling Patterns</div>
+                        <div class="struggle-description">Frequent mood episode changes that disrupt stability</div>
+                    </a>
+
+                    <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/medication-side-effect-management.html" class="struggle-link">
+                        <div class="struggle-title">Medication Side Effect Management</div>
+                        <div class="struggle-description">Dealing with the effects of mood stabilizers and other medications</div>
+                    </a>
+
+                    <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/identity-confusion-between-episodes.html" class="struggle-link">
+                        <div class="struggle-title">Identity Confusion Between Episodes</div>
+                        <div class="struggle-description">Feeling unsure of your "real" self across different mood states</div>
+                    </a>
+
+                    <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/relationship-strain-from-mood-volatility.html" class="struggle-link">
+                        <div class="struggle-title">Relationship Strain from Mood Volatility</div>
+                        <div class="struggle-description">Impact of mood episodes on family, friends, and romantic relationships</div>
+                    </a>
+
+                    <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/financial-consequences-manic-spending.html" class="struggle-link">
+                        <div class="struggle-title">Financial Consequences Manic Spending</div>
+                        <div class="struggle-description">Dealing with debt from poor financial decisions during episodes</div>
+                    </a>
+                </div>
+
+                <div class="cross-cutting-section">
+                    <h4>Related Struggles from Other Conditions</h4>
+                    <p style="font-size: 0.9rem; color: #666; margin-bottom: 1rem;">People with bipolar often experience these struggles from other neurodivergent conditions:</p>
+                    <div class="cross-cutting-links">
+                        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/impulsive-decision-making.html" class="cross-cutting-link">Impulsive Decision-Making (ADHD)</a>
+                        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/task-initiation-paralysis.html" class="cross-cutting-link">Task Initiation Paralysis (ADHD)</a>
+                        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/working-memory-difficulties.html" class="cross-cutting-link">Working Memory Difficulties (ADHD)</a>
+                        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/change-and-transition-difficulties.html" class="cross-cutting-link">Change and Transition Difficulties (Autism)</a>
+                        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/sensory-processing-challenges.html" class="cross-cutting-link">Sensory Processing Challenges (Autism)</a>
+                        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/fear-of-abandonment.html" class="cross-cutting-link">Fear of Abandonment (BPD)</a>
+                        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/unstable-interpersonal-relationships.html" class="cross-cutting-link">Unstable Relationships (BPD)</a>
+                        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/intrusive-thoughts-images-urges.html" class="cross-cutting-link">Intrusive Thoughts (OCD)</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="co-occurring">
+                <h3>Common Co-Occurring Conditions</h3>
+                <p>Bipolar frequently occurs alongside other mental health conditions. Understanding these connections can help you get comprehensive, coordinated care that addresses all aspects of your experience.</p>
+                
+                <p><strong>Frequently co-occurring:</strong> Anxiety disorders (particularly during depressive episodes or between mood episodes), ADHD (overlap in impulsivity and attention challenges), substance use (often as self-medication for mood symptoms), sleep disorders, and medical conditions like thyroid disorders that can affect mood stability.</p>
+                
+                <p><strong>Individual variation:</strong> Bipolar presents very differently across individuals - some people have predominantly manic episodes, others mostly depressive episodes, and timing between episodes varies widely. Age of onset, triggers, and response to treatment are highly individual, making personalized care essential.</p>
+            </div>
+
+            <div style="background: #e8f5e8; padding: 1.5rem; border-radius: 15px; margin-top: 2rem; border-left: 4px solid #00b894;">
+                <p><strong>Related Resources:</strong></p>
+                <div style="margin-top: 1rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                    <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/glossary/mood-episodes.html" style="color: #00b894; text-decoration: none;">Mood Episodes →</a>
+                    <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/glossary/emotional-regulation.html" style="color: #00b894; text-decoration: none;">Emotional Regulation →</a>
+                    <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/glossary/medication-treatment.html" style="color: #00b894; text-decoration: none;">Medication and Treatment →</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
