@@ -1,24 +1,328 @@
-- slug: attention-focus
-  title: Attention and Focus
-- slug: communication-issues  
-  title: Communication Issues
-- slug: emotional-regulation
-  title: Emotional Regulation
-- slug: executive-function
-  title: Executive Function Issues
-- slug: financial-planning
-  title: Financial Planning
-- slug: medical-healthcare
-  title: Medical and Healthcare
-- slug: public-spaces
-  title: Public Spaces
-- slug: relationship-challenges
-  title: Relationship Challenges
-- slug: routine-disruptions
-  title: Routine Disruptions
-- slug: sensory-processing
-  title: Sensory Processing Challenges
-- slug: time-management
-  title: Time Management
-- slug: workplace-difficulties
-  title: Workplace Difficulties
+# _data/struggles.yml
+- name: "Affective Instability"
+  slug: "affective-instability"
+  conditions: ["Borderline Personality Disorder"]
+
+- name: "Alexithymia"
+  slug: "alexithymia"
+  conditions: ["Autism"]
+
+- name: "Anhedonia"
+  slug: "anhedonia"
+  conditions: ["Bipolar"]
+
+- name: "Attempts to Ignore Suppress Neutralize"
+  slug: "attempts-to-ignore-suppress-neutralize"
+  conditions: ["OCD"]
+
+- name: "Attention Regulation"
+  slug: "attention-regulation"
+  conditions: ["ADHD"]
+
+- name: "Autistic Inertia"
+  slug: "autistic-inertia"
+  conditions: ["Autism"]
+
+- name: "Avoidance Behaviors Lifestyle Restrictions"
+  slug: "avoidance-behaviors-lifestyle-restrictions"
+  conditions: ["OCD"]
+
+- name: "Being Too Direct"
+  slug: "being-too-direct"
+  conditions: ["Autism"]
+
+- name: "Change and Transition Difficulties"
+  slug: "change-and-transition-difficulties"
+  conditions: ["Autism"]
+
+- name: "Checking Behaviors Never Complete"
+  slug: "checking-behaviors-never-complete"
+  conditions: ["OCD"]
+
+- name: "Chronic Feelings of Emptiness"
+  slug: "chronic-feelings-of-emptiness"
+  conditions: ["Borderline Personality Disorder"]
+
+- name: "Concentration Difficulties"
+  slug: "concentration-difficulties"
+  conditions: ["Bipolar"]
+
+- name: "Contamination Beyond Germs"
+  slug: "contamination-beyond-germs"
+  conditions: ["OCD"]
+
+- name: "Decreased Need for Sleep"
+  slug: "decreased-need-for-sleep"
+  conditions: ["Bipolar"]
+
+- name: "Elevated Mood Periods"
+  slug: "elevated-mood-periods"
+  conditions: ["Bipolar"]
+
+- name: "Emotional Dysregulation"
+  slug: "emotional-dysregulation"
+  conditions: ["ADHD"]
+
+- name: "Emotional Flashbacks"
+  slug: "emotional-flashbacks"
+  conditions: ["Borderline Personality Disorder"]
+
+- name: "Employment Academic Accommodations"
+  slug: "employment-academic-accommodations"
+  conditions: ["Cross-cutting"]
+
+- name: "Executive Function Challenges"
+  slug: "executive-function-challenges"
+  conditions: ["Cross-cutting"]
+
+- name: "Face Blindness"
+  slug: "face-blindness"
+  conditions: ["Autism"]
+
+- name: "Fatigue Energy Loss"
+  slug: "fatigue-energy-loss"
+  conditions: ["Bipolar"]
+
+- name: "Favorite Person Dynamics"
+  slug: "favorite-person-dynamics"
+  conditions: ["Borderline Personality Disorder"]
+
+- name: "Fear of Abandonment"
+  slug: "fear-of-abandonment"
+  conditions: ["Borderline Personality Disorder"]
+
+- name: "Financial Consequences Manic Spending"
+  slug: "financial-consequences-manic-spending"
+  conditions: ["Bipolar"]
+
+- name: "Follow-Through Completion Struggles"
+  slug: "follow-through-completion-struggles"
+  conditions: ["ADHD"]
+
+- name: "Grandiosity Inflated Self-Esteem"
+  slug: "grandiosity-inflated-self-esteem"
+  conditions: ["Bipolar"]
+
+- name: "Hyperfocus Episodes"
+  slug: "hyperfocus-episodes"
+  conditions: ["ADHD"]
+
+- name: "Hypervigilance to Rejection Cues"
+  slug: "hypervigilance-to-rejection-cues"
+  conditions: ["Borderline Personality Disorder"]
+
+- name: "Identity and Self-Worth Issues"
+  slug: "identity-and-self-worth-issues"
+  conditions: ["Cross-cutting"]
+
+- name: "Identity Confusion Between Episodes"
+  slug: "identity-confusion-between-episodes"
+  conditions: ["Bipolar"]
+
+- name: "Identity Diffusion in Relationships"
+  slug: "identity-diffusion-in-relationships"
+  conditions: ["Borderline Personality Disorder"]
+
+- name: "Identity Disturbance"
+  slug: "identity-disturbance"
+  conditions: ["Borderline Personality Disorder"]
+
+- name: "Impatience with Waiting"
+  slug: "impatience-with-waiting"
+  conditions: ["ADHD"]
+
+- name: "Impulsive Decision-Making"
+  slug: "impulsive-decision-making"
+  conditions: ["ADHD"]
+
+- name: "Impulsivity Potentially Damaging"
+  slug: "impulsivity-potentially-damaging"
+  conditions: ["Borderline Personality Disorder"]
+
+- name: "Inappropriate Intense Anger"
+  slug: "inappropriate-intense-anger"
+  conditions: ["Borderline Personality Disorder"]
+
+- name: "Increased Goal-Directed Activity"
+  slug: "increased-goal-directed-activity"
+  conditions: ["Bipolar"]
+
+- name: "Interest-Based Nervous System"
+  slug: "interest-based-nervous-system"
+  conditions: ["ADHD"]
+
+- name: "Interrupting and Blurting"
+  slug: "interrupting-and-blurting"
+  conditions: ["ADHD"]
+
+- name: "Intrusive Thoughts Images Urges"
+  slug: "intrusive-thoughts-images-urges"
+  conditions: ["OCD"]
+
+- name: "Late Diagnosis Grief"
+  slug: "late-diagnosis-grief"
+  conditions: ["Autism"]
+
+- name: "Masking Burnout"
+  slug: "masking-burnout"
+  conditions: ["Autism"]
+
+- name: "Medication Management"
+  slug: "medication-management"
+  conditions: ["Cross-cutting"]
+
+- name: "Medication Side Effect Management"
+  slug: "medication-side-effect-management"
+  conditions: ["Bipolar"]
+
+- name: "Missing Social Cues"
+  slug: "missing-social-cues"
+  conditions: ["Autism"]
+
+- name: "Mixed States"
+  slug: "mixed-states"
+  conditions: ["Bipolar"]
+
+- name: "Moral Scrupulosity"
+  slug: "moral-scrupulosity"
+  conditions: ["OCD"]
+
+- name: "Nonverbal Communication Difficulties"
+  slug: "nonverbal-communication-difficulties"
+  conditions: ["Autism"]
+
+- name: "Object Permanence Issues"
+  slug: "object-permanence-issues"
+  conditions: ["ADHD"]
+
+- name: "Organization and Planning Challenges"
+  slug: "organization-and-planning-challenges"
+  conditions: ["ADHD"]
+
+- name: "Performed in Response to Obsessions"
+  slug: "performed-in-response-to-obsessions"
+  conditions: ["OCD"]
+
+- name: "Persistent Low Mood"
+  slug: "persistent-low-mood"
+  conditions: ["Bipolar"]
+
+- name: "Physical Restlessness"
+  slug: "physical-restlessness"
+  conditions: ["ADHD"]
+
+- name: "Poor Judgment During Episodes"
+  slug: "poor-judgment-during-episodes"
+  conditions: ["Bipolar"]
+
+- name: "Pure-O Mental Compulsions"
+  slug: "pure-o-mental-compulsions"
+  conditions: ["OCD"]
+
+- name: "Racing Thoughts Flight of Ideas"
+  slug: "racing-thoughts-flight-of-ideas"
+  conditions: ["Bipolar"]
+
+- name: "Rapid Cycling Patterns"
+  slug: "rapid-cycling-patterns"
+  conditions: ["Bipolar"]
+
+- name: "Recurrent Suicidal Behaviors Self-Harm"
+  slug: "recurrent-suicidal-behaviors-self-harm"
+  conditions: ["Borderline Personality Disorder"]
+
+- name: "Rejection Sensitive Dysphoria"
+  slug: "rejection-sensitive-dysphoria"
+  conditions: ["ADHD"]
+
+- name: "Relationship Impacts"
+  slug: "relationship-impacts"
+  conditions: ["Cross-cutting"]
+
+- name: "Relationship Maintenance Struggles"
+  slug: "relationship-maintenance-struggles"
+  conditions: ["Autism"]
+
+- name: "Relationship Strain from Mood Volatility"
+  slug: "relationship-strain-from-mood-volatility"
+  conditions: ["Bipolar"]
+
+- name: "Repetitive Behaviors Mental Acts"
+  slug: "repetitive-behaviors-mental-acts"
+  conditions: ["OCD"]
+
+- name: "Routine Disruption Anxiety"
+  slug: "routine-disruption-anxiety"
+  conditions: ["Autism"]
+
+- name: "Secondary Depression from Shame Exhaustion"
+  slug: "secondary-depression-from-shame-exhaustion"
+  conditions: ["OCD"]
+
+- name: "Sensory Processing Challenges"
+  slug: "sensory-processing-challenges"
+  conditions: ["Autism"]
+
+- name: "Sensory Regulation Needs"
+  slug: "sensory-regulation-needs"
+  conditions: ["Cross-cutting"]
+
+- name: "Sensory Seeking Behaviors"
+  slug: "sensory-seeking-behaviors"
+  conditions: ["Autism"]
+
+- name: "Shame Spirals"
+  slug: "shame-spirals"
+  conditions: ["Borderline Personality Disorder"]
+
+- name: "Sleep Disturbances"
+  slug: "sleep-disturbances"
+  conditions: ["Cross-cutting"]
+
+- name: "Sleep Rhythm Disruption"
+  slug: "sleep-rhythm-disruption"
+  conditions: ["ADHD"]
+
+- name: "Social Reciprocity Challenges"
+  slug: "social-reciprocity-challenges"
+  conditions: ["Autism"]
+
+- name: "Special Interests Consuming Focus"
+  slug: "special-interests-consuming-focus"
+  conditions: ["Autism"]
+
+- name: "Splitting Black and White Thinking"
+  slug: "splitting-black-and-white-thinking"
+  conditions: ["Borderline Personality Disorder"]
+
+- name: "Stimming and Self-Regulation"
+  slug: "stimming-and-self-regulation"
+  conditions: ["Autism"]
+
+- name: "Stress-Related Dissociation Paranoia"
+  slug: "stress-related-dissociation-paranoia"
+  conditions: ["Borderline Personality Disorder"]
+
+- name: "Suicidal Ideation"
+  slug: "suicidal-ideation"
+  conditions: ["Bipolar"]
+
+- name: "Task Initiation Paralysis"
+  slug: "task-initiation-paralysis"
+  conditions: ["ADHD"]
+
+- name: "Time Blindness"
+  slug: "time-blindness"
+  conditions: ["ADHD"]
+
+- name: "Trauma Responses"
+  slug: "trauma-responses"
+  conditions: ["Cross-cutting"]
+
+- name: "Unstable Interpersonal Relationships"
+  slug: "unstable-interpersonal-relationships"
+  conditions: ["Borderline Personality Disorder"]
+
+- name: "Working Memory Difficulties"
+  slug: "working-memory-difficulties"
+  conditions: ["ADHD"]
