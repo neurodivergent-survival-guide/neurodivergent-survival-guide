@@ -1,8 +1,8 @@
 # Basic Jekyll configuration
-title: Neurodivergent Survival Guide
-description: Navigate daily friction points with understanding and practical tools.
-url: https://neurodivergent-survival-guide.github.io
-baseurl: /neurodivergent-survival-guide
+title: "Neurodivergent Survival Guide"
+description: "Navigate daily friction points with understanding and practical tools"
+url: "https://neurodivergent-survival-guide.github.io"
+baseurl: "/neurodivergent-survival-guide"
 
 # Build settings
 markdown: kramdown
@@ -21,8 +21,8 @@ exclude:
   - Gemfile.lock
   - node_modules
   - vendor
-  - Neurodivergent Survival Guide: Complete Project Specification.md
-  - Handoff Doc.md
+  - "Neurodivergent Survival Guide: Complete Project Specification.md"
+  - "Handoff Doc.md
 
 # Sass
 sass:
