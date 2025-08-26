@@ -1,18 +1,20 @@
-- slug: adhd
-  title: ADHD
-- slug: anxiety
-  title: Anxiety Disorders
-- slug: autism
-  title: Autism
-- slug: bipolar
-  title: Bipolar Disorder
-- slug: borderline-personality
-  title: Borderline Personality Disorder
-- slug: depression
-  title: Depression
-- slug: ocd
-  title: OCD
-- slug: ptsd
-  title: PTSD
-- slug: tourettes
-  title: Tourette Syndrome
+# _data/conditions.yml
+- name: "ADHD"
+  url: "/conditions/adhd.html"
+  description: "Brain differences in attention regulation, impulse control, and executive function"
+
+- name: "Autism" 
+  url: "/conditions/autism.html"
+  description: "Brain differences that create predictable friction with neurotypical-designed social and sensory environments"
+
+- name: "Bipolar"
+  url: "/conditions/bipolar.html"
+  description: "Mood condition involving episodes of mania/hypomania and depression"
+
+- name: "Borderline Personality Disorder"
+  url: "/conditions/borderline-personality-disorder.html" 
+  description: "Pattern of instability in relationships, self-image, and emotions with marked impulsivity"
+
+- name: "OCD"
+  url: "/conditions/ocd.html"
+  description: "Obsessive thoughts and compulsive behaviors that interfere with daily life"
