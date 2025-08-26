@@ -1,573 +1,611 @@
 ---
-layout: condition
+layout: default
 title: "Autism"
-slug: "autism"
 ---
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Autism - Understanding the Condition | Neurodivergent Survival Guide</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<!-- conditions/autism.html -->
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
-            color: #333;
-            min-height: 100vh;
-            line-height: 1.7;
-        }
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+        color: #333;
+        min-height: 100vh;
+        line-height: 1.7;
+    }
 
+    .header {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        padding: 1.5rem 2rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .header h1 {
+        color: white;
+        font-size: 2.5rem;
+        font-weight: 300;
+        margin-bottom: 0.5rem;
+    }
+
+    .header p {
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 1.2rem;
+    }
+
+    .breadcrumb {
+        background: rgba(255, 255, 255, 0.05);
+        padding: 0.8rem 2rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    .breadcrumb a {
+        color: rgba(255, 255, 255, 0.8);
+        text-decoration: none;
+        font-size: 0.9rem;
+    }
+
+    .breadcrumb a:hover {
+        color: white;
+    }
+
+    .breadcrumb span {
+        color: rgba(255, 255, 255, 0.6);
+        margin: 0 0.5rem;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .content-card {
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 20px;
+        padding: 2.5rem;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        margin-bottom: 2rem;
+    }
+
+    .condition-intro {
+        background: #e3f2fd;
+        padding: 2rem;
+        border-radius: 15px;
+        margin: 2rem 0;
+        border-left: 4px solid #0984e3;
+    }
+
+    .condition-intro h2 {
+        color: #0984e3;
+        margin-bottom: 1rem;
+        font-size: 1.6rem;
+    }
+
+    .condition-intro p {
+        margin-bottom: 1rem;
+        font-size: 1.05rem;
+        color: #555;
+    }
+
+    .reframe-box {
+        background: #e8f5e8;
+        padding: 1.5rem;
+        border-radius: 12px;
+        margin: 2rem 0;
+        border-left: 4px solid #00cec9;
+    }
+
+    .reframe-box h3 {
+        color: #00cec9;
+        margin-bottom: 1rem;
+        font-size: 1.3rem;
+    }
+
+    .reframe-box p {
+        color: #555;
+        margin-bottom: 0.8rem;
+    }
+
+    .characteristics-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.5rem;
+        margin: 2rem 0;
+    }
+
+    @media (min-width: 900px) {
+        .characteristics-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    .characteristic-card {
+        background: white;
+        border-radius: 15px;
+        padding: 1.8rem;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+        border-top: 3px solid #0984e3;
+    }
+
+    .characteristic-card h4 {
+        color: #0984e3;
+        margin-bottom: 1rem;
+        font-size: 1.2rem;
+    }
+
+    .characteristic-card p {
+        color: #555;
+        margin-bottom: 1rem;
+        font-size: 0.95rem;
+    }
+
+    .characteristic-card ul {
+        padding-left: 1.2rem;
+        color: #555;
+    }
+
+    .characteristic-card li {
+        margin-bottom: 0.5rem;
+        font-size: 0.95rem;
+    }
+
+    .struggles-section {
+        background: #f8f9fa;
+        padding: 2rem;
+        border-radius: 15px;
+        margin: 2rem 0;
+        border: 1px solid #e0e0e0;
+    }
+
+    .struggles-section h3 {
+        color: #333;
+        margin-bottom: 1.5rem;
+        font-size: 1.4rem;
+    }
+
+    .struggles-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 1rem;
+    }
+
+    .struggle-link {
+        background: white;
+        padding: 1rem 1.2rem;
+        border-radius: 10px;
+        text-decoration: none;
+        color: #333;
+        transition: all 0.3s ease;
+        border-left: 3px solid #0984e3;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        min-height: 44px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .struggle-link:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        text-decoration: none;
+        color: #333;
+    }
+
+    .struggle-title {
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        font-size: 0.95rem;
+    }
+
+    .struggle-description {
+        font-size: 0.85rem;
+        color: #666;
+        line-height: 1.5;
+    }
+
+    .cross-cutting-section {
+        background: #f0f8ff;
+        padding: 1.5rem;
+        border-radius: 12px;
+        margin: 1.5rem 0;
+        border-left: 4px solid #74b9ff;
+    }
+
+    .cross-cutting-section h4 {
+        color: #74b9ff;
+        margin-bottom: 1rem;
+        font-size: 1.1rem;
+    }
+
+    .cross-cutting-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .cross-cutting-link {
+        background: #74b9ff;
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+    }
+
+    .cross-cutting-link:hover {
+        background: #0984e3;
+        color: white;
+        text-decoration: none;
+        transform: translateY(-1px);
+    }
+
+    .co-occurring {
+        background: #fff3e0;
+        padding: 1.5rem;
+        border-radius: 12px;
+        margin: 2rem 0;
+        border-left: 4px solid #ff9800;
+    }
+
+    .co-occurring h3 {
+        color: #f57c00;
+        margin-bottom: 1rem;
+        font-size: 1.3rem;
+    }
+
+    .jargon {
+        color: #e84393;
+        text-decoration: none;
+        border-bottom: 1px dotted #e84393;
+        position: relative;
+        cursor: help;
+        font-weight: 500;
+    }
+
+    .jargon:hover {
+        color: #fd79a8;
+        border-bottom-color: #fd79a8;
+    }
+
+    .tooltip {
+        visibility: hidden;
+        opacity: 0;
+        position: absolute;
+        bottom: 125%;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #333;
+        color: white;
+        padding: 12px 16px;
+        border-radius: 8px;
+        font-size: 0.9rem;
+        font-weight: normal;
+        z-index: 1001;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        transition: opacity 0.3s, visibility 0.3s;
+        max-width: 800px;
+        min-width: 200px;
+        width: max-content;
+        white-space: normal;
+        text-align: left;
+        line-height: 1.5;
+    }
+
+    .tooltip::after {
+        content: '';
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        border: 6px solid transparent;
+        border-top-color: #333;
+    }
+
+    .jargon:hover .tooltip {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    /* Mobile responsive tooltip adjustments */
+    @media (max-width: 1024px) {
+        .tooltip {
+            max-width: 400px;
+        }
+    }
+
+    @media (max-width: 768px) {
         .header {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            padding: 1.5rem 2rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 1rem;
         }
 
         .header h1 {
-            color: white;
-            font-size: 2.5rem;
-            font-weight: 300;
-            margin-bottom: 0.5rem;
+            font-size: 2rem;
         }
 
         .header p {
-            color: rgba(255, 255, 255, 0.9);
-            font-size: 1.2rem;
+            font-size: 1rem;
         }
 
         .breadcrumb {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 0.8rem 2rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .breadcrumb a {
-            color: rgba(255, 255, 255, 0.8);
-            text-decoration: none;
-            font-size: 0.9rem;
-        }
-
-        .breadcrumb a:hover {
-            color: white;
-        }
-
-        .breadcrumb span {
-            color: rgba(255, 255, 255, 0.6);
-            margin: 0 0.5rem;
+            padding: 0.6rem 1rem;
         }
 
         .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
+            padding: 1rem;
         }
-
+        
         .content-card {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 20px;
-            padding: 2.5rem;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-            margin-bottom: 2rem;
+            padding: 1.5rem;
         }
 
         .condition-intro {
-            background: #e3f2fd;
-            padding: 2rem;
-            border-radius: 15px;
-            margin: 2rem 0;
-            border-left: 4px solid #0984e3;
-        }
-
-        .condition-intro h2 {
-            color: #0984e3;
-            margin-bottom: 1rem;
-            font-size: 1.6rem;
-        }
-
-        .condition-intro p {
-            margin-bottom: 1rem;
-            font-size: 1.05rem;
-            color: #555;
+            padding: 1.5rem;
         }
 
         .reframe-box {
-            background: #e8f5e8;
-            padding: 1.5rem;
-            border-radius: 12px;
-            margin: 2rem 0;
-            border-left: 4px solid #00cec9;
-        }
-
-        .reframe-box h3 {
-            color: #00cec9;
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
-        }
-
-        .reframe-box p {
-            color: #555;
-            margin-bottom: 0.8rem;
+            padding: 1.2rem;
         }
 
         .characteristics-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin: 2rem 0;
-        }
-
-        @media (min-width: 900px) {
-            .characteristics-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        .characteristic-card {
-            background: white;
-            border-radius: 15px;
-            padding: 1.8rem;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-            border-top: 3px solid #0984e3;
-        }
-
-        .characteristic-card h4 {
-            color: #0984e3;
-            margin-bottom: 1rem;
-            font-size: 1.2rem;
-        }
-
-        .characteristic-card p {
-            color: #555;
-            margin-bottom: 1rem;
-            font-size: 0.95rem;
-        }
-
-        .characteristic-card ul {
-            padding-left: 1.2rem;
-            color: #555;
-        }
-
-        .characteristic-card li {
-            margin-bottom: 0.5rem;
-            font-size: 0.95rem;
-        }
-
-        .struggles-section {
-            background: #f8f9fa;
-            padding: 2rem;
-            border-radius: 15px;
-            margin: 2rem 0;
-            border: 1px solid #e0e0e0;
-        }
-
-        .struggles-section h3 {
-            color: #333;
-            margin-bottom: 1.5rem;
-            font-size: 1.4rem;
-        }
-
-        .struggles-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            grid-template-columns: 1fr;
             gap: 1rem;
         }
 
-        .struggle-link {
-            background: white;
-            padding: 1rem 1.2rem;
-            border-radius: 10px;
-            text-decoration: none;
-            color: #333;
-            transition: all 0.3s ease;
-            border-left: 3px solid #0984e3;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-        }
-
-        .struggle-link:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-            text-decoration: none;
-            color: #333;
-        }
-
-        .struggle-title {
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            font-size: 0.95rem;
-        }
-
-        .struggle-description {
-            font-size: 0.85rem;
-            color: #666;
-            line-height: 1.5;
-        }
-
-        .cross-cutting-section {
-            background: #f0f8ff;
+        .characteristic-card {
             padding: 1.5rem;
-            border-radius: 12px;
-            margin: 1.5rem 0;
-            border-left: 4px solid #74b9ff;
         }
 
-        .cross-cutting-section h4 {
-            color: #74b9ff;
-            margin-bottom: 1rem;
-            font-size: 1.1rem;
+        .struggles-grid {
+            grid-template-columns: 1fr;
         }
 
         .cross-cutting-links {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
+            flex-direction: column;
         }
 
         .cross-cutting-link {
-            background: #74b9ff;
-            color: white;
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            text-decoration: none;
-            transition: all 0.3s ease;
+            justify-content: center;
+            text-align: center;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .header h1 {
+            font-size: 1.8rem;
         }
 
-        .cross-cutting-link:hover {
-            background: #0984e3;
-            color: white;
-            text-decoration: none;
-            transform: translateY(-1px);
-        }
-
-        .co-occurring {
-            background: #fff3e0;
-            padding: 1.5rem;
-            border-radius: 12px;
-            margin: 2rem 0;
-            border-left: 4px solid #ff9800;
-        }
-
-        .co-occurring h3 {
-            color: #f57c00;
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
-        }
-
-        .jargon {
-            color: #e84393;
-            text-decoration: none;
-            border-bottom: 1px dotted #e84393;
-            position: relative;
-            cursor: help;
-            font-weight: 500;
-        }
-
-        .jargon:hover {
-            color: #fd79a8;
-            border-bottom-color: #fd79a8;
-        }
-
-        .tooltip {
-            visibility: hidden;
-            opacity: 0;
-            position: absolute;
-            bottom: 125%;
-            left: 50%;
-            transform: translateX(-50%);
-            background: #333;
-            color: white;
-            padding: 12px 16px;
-            border-radius: 8px;
+        .header p {
             font-size: 0.9rem;
-            font-weight: normal;
-            z-index: 1001;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-            transition: opacity 0.3s, visibility 0.3s;
-            width: 800px;
-            white-space: normal;
-            text-align: left;
-            line-height: 1.5;
         }
 
-        .tooltip::after {
-            content: '';
-            position: absolute;
-            top: 100%;
-            left: 50%;
-            transform: translateX(-50%);
-            border: 6px solid transparent;
-            border-top-color: #333;
+        .content-card {
+            padding: 1.2rem;
         }
 
-        .jargon:hover .tooltip {
-            visibility: visible;
-            opacity: 1;
+        .condition-intro {
+            padding: 1.2rem;
         }
 
-        @media (max-width: 768px) {
-            .container {
-                padding: 1rem;
-            }
+        .characteristic-card {
+            padding: 1.2rem;
+        }
+    }
+</style>
+
+<div class="header">
+    <h1>Autism</h1>
+    <p>Understanding brain differences that create predictable friction with <a class="jargon">neurotypical<span class="tooltip">People whose brains develop and function in ways that align with societal expectations and norms</span></a> environments</p>
+</div>
+
+<div class="breadcrumb">
+    <a href="{{ '/index.html' | relative_url }}">Home</a>
+    <span>></span>
+    <a href="{{ '/conditions/index.html' | relative_url }}">Conditions</a>
+    <span>></span>
+    Autism
+</div>
+
+<div class="container">
+    <div class="content-card">
+        <div class="condition-intro">
+            <h2>What is Autism?</h2>
+            <p>Autism involves brain differences that create predictable friction with <a class="jargon">neurotypical<span class="tooltip">People whose brains develop and function in ways that align with societal expectations and norms</span></a>-designed social and <a class="jargon">sensory environments<span class="tooltip">Physical spaces and social contexts that include various sensory inputs like sounds, lights, textures, and social expectations</span></a>. Autistic people process social information, <a class="jargon">sensory input<span class="tooltip">Information received through the senses like sight, sound, touch, smell, taste, and body position</span></a>, and changes in routine differently than <a class="jargon">neurotypical<span class="tooltip">People whose brains develop and function in ways that align with societal expectations and norms</span></a> people, leading to both unique strengths and specific challenges in a world not designed for these differences.</p>
             
-            .content-card {
-                padding: 1.5rem;
-            }
+            <p>Autism isn't something you grow out of or fix - it's a fundamental aspect of how your brain processes the world. Understanding and accommodating these differences, rather than trying to eliminate them, leads to better outcomes and authentic self-acceptance.</p>
+        </div>
 
-            .characteristics-grid {
-                grid-template-columns: 1fr;
-            }
+        <div class="reframe-box">
+            <h3>Reframing Autism</h3>
+            <p>Traditional descriptions focus on "deficits" and behaviors that differ from <a class="jargon">neurotypical<span class="tooltip">People whose brains develop and function in ways that align with societal expectations and norms</span></a> norms. A more helpful framework recognizes autism as neurological differences that create both challenges and strengths, depending on environmental support and understanding.</p>
+            
+            <p>Many struggles autistic people experience come from <a class="jargon">environmental mismatch<span class="tooltip">When environments are designed for neurotypical brains without considering neurodivergent needs</span></a> rather than inherent disability. With appropriate accommodations and understanding, autistic people can thrive while remaining authentically themselves.</p>
+        </div>
 
-            .struggles-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .cross-cutting-links {
-                flex-direction: column;
-            }
-
-            .tooltip {
-                width: 300px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .tooltip {
-                width: 250px;
-            }
-        }
-    </style>
-</head>
-<body>
-    <div class="header">
-        <h1>Autism</h1>
-        <p>Understanding brain differences that create predictable friction with neurotypical environments</p>
-    </div>
-
-    <div class="breadcrumb">
-        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/index.html">Home</a>
-        <span>></span>
-        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/conditions/index.html">Conditions</a>
-        <span>></span>
-        Autism
-    </div>
-
-    <div class="container">
-        <div class="content-card">
-            <div class="condition-intro">
-                <h2>What is Autism?</h2>
-                <p>Autism involves brain differences that create predictable friction with neurotypical-designed social and sensory environments. Autistic people process social information, sensory input, and changes in routine differently than neurotypical people, leading to both unique strengths and specific challenges in a world not designed for these differences.</p>
-                
-                <p>Autism isn't something you grow out of or fix - it's a fundamental aspect of how your brain processes the world. Understanding and accommodating these differences, rather than trying to eliminate them, leads to better outcomes and authentic self-acceptance.</p>
-            </div>
-
-            <div class="reframe-box">
-                <h3>Reframing Autism</h3>
-                <p>Traditional descriptions focus on "deficits" and behaviors that differ from neurotypical norms. A more helpful framework recognizes autism as neurological differences that create both challenges and strengths, depending on environmental support and understanding.</p>
-                
-                <p>Many struggles autistic people experience come from <a class="jargon">environmental mismatch<span class="tooltip">When environments are designed for neurotypical brains without considering neurodivergent needs</span></a> rather than inherent disability. With appropriate accommodations and understanding, autistic people can thrive while remaining authentically themselves.</p>
-            </div>
-
-            <div class="characteristics-grid">
-                <div class="characteristic-card">
-                    <h4>Social Communication Differences</h4>
-                    <p>Processing and expressing social information in ways that differ from neurotypical expectations, not lacking social interest or empathy.</p>
-                    <ul>
-                        <li>Direct, literal communication style</li>
-                        <li>Missing unspoken social rules or expectations</li>
-                        <li>Difficulty with nonverbal communication like eye contact</li>
-                        <li>Different patterns of social reciprocity</li>
-                        <li>Challenges maintaining relationships without explicit guidance</li>
-                    </ul>
-                </div>
-
-                <div class="characteristic-card">
-                    <h4>Sensory Processing Differences</h4>
-                    <p>Heightened or reduced sensitivity to sounds, textures, lights, and other sensory input that can significantly impact daily functioning.</p>
-                    <ul>
-                        <li>Sensory overload in busy environments</li>
-                        <li>Specific texture or sound aversions</li>
-                        <li>Need for sensory regulation through movement or pressure</li>
-                        <li>Difficulty filtering background noise</li>
-                        <li>Sensory seeking behaviors for regulation</li>
-                    </ul>
-                </div>
-
-                <div class="characteristic-card">
-                    <h4>Repetitive Behaviors and Interests</h4>
-                    <p>Patterns of behavior, interests, or activities that provide regulation, joy, and expertise, often misunderstood as restrictive.</p>
-                    <ul>
-                        <li>Intense special interests that bring deep knowledge</li>
-                        <li>Stimming for self-regulation and expression</li>
-                        <li>Need for predictable routines and structure</li>
-                        <li>Repetitive movements that aid concentration</li>
-                        <li>Detailed focus on specific topics or activities</li>
-                    </ul>
-                </div>
-
-                <div class="characteristic-card">
-                    <h4>Change and Transition Challenges</h4>
-                    <p>Difficulty adapting to unexpected changes or transitions between activities, requiring more processing time and support.</p>
-                    <ul>
-                        <li>Distress when plans change unexpectedly</li>
-                        <li>Need for advance notice of schedule changes</li>
-                        <li>Difficulty switching between tasks or activities</li>
-                        <li>Preference for familiar environments and routines</li>
-                        <li>Extended adjustment periods for new situations</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="struggles-section">
-                <h3>Autism-Related Struggles</h3>
-                <p style="margin-bottom: 1.5rem; color: #666;">Click on any struggle to learn what it feels like, why it happens, and what can help.</p>
-                
-                <div class="struggles-grid">
-                    <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/missing-social-cues.html" class="struggle-link">
-                        <div class="struggle-title">Missing Social Cues</div>
-                        <div class="struggle-description">When conversations have hidden meanings you don't catch</div>
-                    </a>
-
-                    <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/being-too-direct.html" class="struggle-link">
-                        <div class="struggle-title">Being Too Direct</div>
-                        <div class="struggle-description">When your honest communication style is seen as rude</div>
-                    </a>
-
-                    <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/nonverbal-communication-difficulties.html" class="struggle-link">
-                        <div class="struggle-title">Nonverbal Communication Difficulties</div>
-                        <div class="struggle-description">Trouble with eye contact, body language, and facial expressions</div>
-                    </a>
-
-                    <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/social-reciprocity-challenges.html" class="struggle-link">
-                        <div class="struggle-title">Social Reciprocity Challenges</div>
-                        <div class="struggle-description">Difficulty with back-and-forth conversation flow</div>
-                    </a>
-
-                    <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/relationship-maintenance-struggles.html" class="struggle-link">
-                        <div class="struggle-title">Relationship Maintenance Struggles</div>
-                        <div class="struggle-description">Not knowing how to keep friendships going over time</div>
-                    </a>
-
-                    <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/special-interests-consuming-focus.html" class="struggle-link">
-                        <div class="struggle-title">Special Interests Consuming Focus</div>
-                        <div class="struggle-description">When intense interests take over your time and social life</div>
-                    </a>
-
-                    <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/routine-disruption-anxiety.html" class="struggle-link">
-                        <div class="struggle-title">Routine Disruption Anxiety</div>
-                        <div class="struggle-description">Distress when plans change unexpectedly</div>
-                    </a>
-
-                    <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/sensory-processing-challenges.html" class="struggle-link">
-                        <div class="struggle-title">Sensory Processing Challenges</div>
-                        <div class="struggle-description">Over- or under-responsivity to sensory input</div>
-                    </a>
-
-                    <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/stimming-and-self-regulation.html" class="struggle-link">
-                        <div class="struggle-title">Stimming and Self-Regulation</div>
-                        <div class="struggle-description">Repetitive behaviors that help but may draw attention</div>
-                    </a>
-
-                    <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/change-and-transition-difficulties.html" class="struggle-link">
-                        <div class="struggle-title">Change and Transition Difficulties</div>
-                        <div class="struggle-description">Trouble adapting to new environments or schedules</div>
-                    </a>
-
-                    <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/face-blindness.html" class="struggle-link">
-                        <div class="struggle-title">Face Blindness</div>
-                        <div class="struggle-description">Difficulty recognizing faces, even of familiar people</div>
-                    </a>
-
-                    <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/alexithymia.html" class="struggle-link">
-                        <div class="struggle-title">Alexithymia</div>
-                        <div class="struggle-description">Trouble identifying and describing your emotions</div>
-                    </a>
-
-                    <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/autistic-inertia.html" class="struggle-link">
-                        <div class="struggle-title">Autistic Inertia</div>
-                        <div class="struggle-description">Difficulty starting or stopping activities once engaged</div>
-                    </a>
-
-                    <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/masking-burnout.html" class="struggle-link">
-                        <div class="struggle-title">Masking Burnout</div>
-                        <div class="struggle-description">Exhaustion from years of camouflaging your authentic self</div>
-                    </a>
-
-                    <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/late-diagnosis-grief.html" class="struggle-link">
-                        <div class="struggle-title">Late Diagnosis Grief</div>
-                        <div class="struggle-description">Processing missed opportunities after adult diagnosis</div>
-                    </a>
-
-                    <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/sensory-seeking-behaviors.html" class="struggle-link">
-                        <div class="struggle-title">Sensory Seeking Behaviors</div>
-                        <div class="struggle-description">Need for intense sensory input to feel regulated</div>
-                    </a>
-                </div>
-
-                <div class="cross-cutting-section">
-                    <h4>Related Struggles from Other Conditions</h4>
-                    <div class="cross-cutting-links">
-                        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/time-blindness.html" class="cross-cutting-link">Time Blindness</a>
-                        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/hyperfocus-episodes.html" class="cross-cutting-link">Hyperfocus Episodes</a>
-                        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/rejection-sensitive-dysphoria.html" class="cross-cutting-link">Rejection Sensitive Dysphoria</a>
-                        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/task-initiation-paralysis.html" class="cross-cutting-link">Task Initiation Paralysis</a>
-                        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/identity-confusion-between-episodes.html" class="cross-cutting-link">Identity Confusion</a>
-                        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/splitting-black-and-white-thinking.html" class="cross-cutting-link">All-or-Nothing Thinking</a>
-                        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/fear-of-abandonment.html" class="cross-cutting-link">Fear of Abandonment</a>
-                        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/checking-behaviors-never-complete.html" class="cross-cutting-link">Checking Behaviors</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="co-occurring">
-                <h3>Common Co-Occurring Conditions</h3>
-                <p>Autism frequently appears alongside other neurodivergent conditions and mental health challenges. Understanding these connections can help you get comprehensive support:</p>
+        <div class="characteristics-grid">
+            <div class="characteristic-card">
+                <h4><a class="jargon">Social Communication<span class="tooltip">The complex system of verbal and nonverbal ways people share information and connect with each other</span></a> Differences</h4>
+                <p>Processing and expressing social information in ways that differ from <a class="jargon">neurotypical<span class="tooltip">People whose brains develop and function in ways that align with societal expectations and norms</span></a> expectations, not lacking social interest or <a class="jargon">empathy<span class="tooltip">The ability to understand and share the feelings of others</span></a>.</p>
                 <ul>
-                    <li><strong>ADHD:</strong> Many autistic people also have ADHD, sharing executive function and attention regulation challenges</li>
-                    <li><strong>Anxiety disorders:</strong> Social anxiety, generalized anxiety, and specific phobias are common</li>
-                    <li><strong>Depression:</strong> Often develops from years of misunderstanding, masking, or social rejection</li>
-                    <li><strong>OCD:</strong> Repetitive behaviors and need for certainty can overlap with OCD patterns</li>
-                    <li><strong>Eating disorders:</strong> Sensory issues with food textures and restrictive eating patterns</li>
-                    <li><strong>Sleep disorders:</strong> Irregular sleep patterns and difficulty with sleep hygiene</li>
+                    <li>Direct, literal communication style</li>
+                    <li>Missing unspoken social rules or expectations</li>
+                    <li>Difficulty with nonverbal communication like <a class="jargon">eye contact<span class="tooltip">Direct gaze between people, often expected in neurotypical social interactions but can feel uncomfortable or overwhelming for autistic people</span></a></li>
+                    <li>Different patterns of <a class="jargon">social reciprocity<span class="tooltip">The back-and-forth exchange of social behaviors, emotions, and communication in relationships</span></a></li>
+                    <li>Challenges maintaining relationships without explicit guidance</li>
                 </ul>
             </div>
 
-            <div style="background: #e3f2fd; padding: 1.5rem; border-radius: 12px; margin: 2rem 0; border-left: 4px solid #0984e3;">
-                <h3 style="color: #0984e3; margin-bottom: 1rem; font-size: 1.3rem;">Related Resources</h3>
-                <div style="display: flex; flex-direction: column; gap: 0.5rem;">
-                    <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/glossary/social-communication.html" style="color: #0984e3; text-decoration: none;">Social Communication →</a>
-                    <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/glossary/sensory-processing.html" style="color: #0984e3; text-decoration: none;">Sensory Processing →</a>
-                    <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/glossary/emotional-regulation.html" style="color: #0984e3; text-decoration: none;">Emotional Regulation →</a>
-                    <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/glossary/inertia-transitions.html" style="color: #0984e3; text-decoration: none;">Inertia and Transitions →</a>
+            <div class="characteristic-card">
+                <h4><a class="jargon">Sensory Processing<span class="tooltip">How the nervous system receives and responds to sensory information from the environment and body</span></a> Differences</h4>
+                <p>Heightened or reduced sensitivity to sounds, textures, lights, and other <a class="jargon">sensory input<span class="tooltip">Information received through the senses like sight, sound, touch, smell, taste, and body position</span></a> that can significantly impact daily functioning.</p>
+                <ul>
+                    <li><a class="jargon">Sensory overload<span class="tooltip">When the brain receives more sensory information than it can process, leading to overwhelm and distress</span></a> in busy environments</li>
+                    <li>Specific texture or sound aversions</li>
+                    <li>Need for <a class="jargon">sensory regulation<span class="tooltip">Strategies to help the nervous system maintain an optimal level of alertness and calm</span></a> through movement or pressure</li>
+                    <li>Difficulty filtering background noise</li>
+                    <li>Sensory seeking behaviors for regulation</li>
+                </ul>
+            </div>
+
+            <div class="characteristic-card">
+                <h4>Repetitive Behaviors and Interests</h4>
+                <p>Patterns of behavior, interests, or activities that provide regulation, joy, and expertise, often misunderstood as restrictive.</p>
+                <ul>
+                    <li>Intense <a class="jargon">special interests<span class="tooltip">Deep, passionate interests that bring joy, expertise, and often serve as a source of identity and regulation</span></a> that bring deep knowledge</li>
+                    <li><a class="jargon">Stimming<span class="tooltip">Self-stimulatory behaviors like rocking, hand-flapping, or repetitive movements that help with regulation and expression</span></a> for self-regulation and expression</li>
+                    <li>Need for predictable routines and structure</li>
+                    <li>Repetitive movements that aid concentration</li>
+                    <li>Detailed focus on specific topics or activities</li>
+                </ul>
+            </div>
+
+            <div class="characteristic-card">
+                <h4>Change and Transition Challenges</h4>
+                <p>Difficulty adapting to unexpected changes or transitions between activities, requiring more processing time and support.</p>
+                <ul>
+                    <li>Distress when plans change unexpectedly</li>
+                    <li>Need for advance notice of schedule changes</li>
+                    <li>Difficulty switching between tasks or activities</li>
+                    <li>Preference for familiar environments and routines</li>
+                    <li>Extended adjustment periods for new situations</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="struggles-section">
+            <h3>Autism-Related Struggles</h3>
+            <p style="margin-bottom: 1.5rem; color: #666;">Click on any struggle to learn what it feels like, why it happens, and what can help.</p>
+            
+            <div class="struggles-grid">
+                <a href="{{ '/struggles/missing-social-cues.html' | relative_url }}" class="struggle-link">
+                    <div class="struggle-title">Missing Social Cues</div>
+                    <div class="struggle-description">When conversations have hidden meanings you don't catch</div>
+                </a>
+
+                <a href="{{ '/struggles/being-too-direct.html' | relative_url }}" class="struggle-link">
+                    <div class="struggle-title">Being Too Direct</div>
+                    <div class="struggle-description">When your honest communication style is seen as rude</div>
+                </a>
+
+                <a href="{{ '/struggles/nonverbal-communication-difficulties.html' | relative_url }}" class="struggle-link">
+                    <div class="struggle-title">Nonverbal Communication Difficulties</div>
+                    <div class="struggle-description">Trouble with <a class="jargon">eye contact<span class="tooltip">Direct gaze between people, often expected in neurotypical social interactions but can feel uncomfortable or overwhelming for autistic people</span></a>, body language, and facial expressions</div>
+                </a>
+
+                <a href="{{ '/struggles/social-reciprocity-challenges.html' | relative_url }}" class="struggle-link">
+                    <div class="struggle-title">Social Reciprocity Challenges</div>
+                    <div class="struggle-description">Difficulty with back-and-forth conversation flow</div>
+                </a>
+
+                <a href="{{ '/struggles/relationship-maintenance-struggles.html' | relative_url }}" class="struggle-link">
+                    <div class="struggle-title">Relationship Maintenance Struggles</div>
+                    <div class="struggle-description">Not knowing how to keep friendships going over time</div>
+                </a>
+
+                <a href="{{ '/struggles/special-interests-consuming-focus.html' | relative_url }}" class="struggle-link">
+                    <div class="struggle-title">Special Interests Consuming Focus</div>
+                    <div class="struggle-description">When intense interests take over your time and social life</div>
+                </a>
+
+                <a href="{{ '/struggles/routine-disruption-anxiety.html' | relative_url }}" class="struggle-link">
+                    <div class="struggle-title">Routine Disruption Anxiety</div>
+                    <div class="struggle-description">Distress when plans change unexpectedly</div>
+                </a>
+
+                <a href="{{ '/struggles/sensory-processing-challenges.html' | relative_url }}" class="struggle-link">
+                    <div class="struggle-title">Sensory Processing Challenges</div>
+                    <div class="struggle-description">Over- or under-responsivity to <a class="jargon">sensory input<span class="tooltip">Information received through the senses like sight, sound, touch, smell, taste, and body position</span></a></div>
+                </a>
+
+                <a href="{{ '/struggles/stimming-and-self-regulation.html' | relative_url }}" class="struggle-link">
+                    <div class="struggle-title">Stimming and Self-Regulation</div>
+                    <div class="struggle-description">Repetitive behaviors that help but may draw attention</div>
+                </a>
+
+                <a href="{{ '/struggles/change-and-transition-difficulties.html' | relative_url }}" class="struggle-link">
+                    <div class="struggle-title">Change and Transition Difficulties</div>
+                    <div class="struggle-description">Trouble adapting to new environments or schedules</div>
+                </a>
+
+                <a href="{{ '/struggles/face-blindness.html' | relative_url }}" class="struggle-link">
+                    <div class="struggle-title">Face Blindness</div>
+                    <div class="struggle-description">Difficulty recognizing faces, even of familiar people</div>
+                </a>
+
+                <a href="{{ '/struggles/alexithymia.html' | relative_url }}" class="struggle-link">
+                    <div class="struggle-title">Alexithymia</div>
+                    <div class="struggle-description">Trouble identifying and describing your emotions</div>
+                </a>
+
+                <a href="{{ '/struggles/autistic-inertia.html' | relative_url }}" class="struggle-link">
+                    <div class="struggle-title">Autistic Inertia</div>
+                    <div class="struggle-description">Difficulty starting or stopping activities once engaged</div>
+                </a>
+
+                <a href="{{ '/struggles/masking-burnout.html' | relative_url }}" class="struggle-link">
+                    <div class="struggle-title">Masking Burnout</div>
+                    <div class="struggle-description">Exhaustion from years of camouflaging your authentic self</div>
+                </a>
+
+                <a href="{{ '/struggles/late-diagnosis-grief.html' | relative_url }}" class="struggle-link">
+                    <div class="struggle-title">Late Diagnosis Grief</div>
+                    <div class="struggle-description">Processing missed opportunities after adult diagnosis</div>
+                </a>
+
+                <a href="{{ '/struggles/sensory-seeking-behaviors.html' | relative_url }}" class="struggle-link">
+                    <div class="struggle-title">Sensory Seeking Behaviors</div>
+                    <div class="struggle-description">Need for intense <a class="jargon">sensory input<span class="tooltip">Information received through the senses like sight, sound, touch, smell, taste, and body position</span></a> to feel regulated</div>
+                </a>
+            </div>
+
+            <div class="cross-cutting-section">
+                <h4>Related Struggles from Other Conditions</h4>
+                <div class="cross-cutting-links">
+                    <a href="{{ '/struggles/time-blindness.html' | relative_url }}" class="cross-cutting-link">Time Blindness</a>
+                    <a href="{{ '/struggles/hyperfocus-episodes.html' | relative_url }}" class="cross-cutting-link">Hyperfocus Episodes</a>
+                    <a href="{{ '/struggles/rejection-sensitive-dysphoria.html' | relative_url }}" class="cross-cutting-link">Rejection Sensitive Dysphoria</a>
+                    <a href="{{ '/struggles/task-initiation-paralysis.html' | relative_url }}" class="cross-cutting-link">Task Initiation Paralysis</a>
+                    <a href="{{ '/struggles/identity-confusion-between-episodes.html' | relative_url }}" class="cross-cutting-link">Identity Confusion</a>
+                    <a href="{{ '/struggles/splitting-black-and-white-thinking.html' | relative_url }}" class="cross-cutting-link">All-or-Nothing Thinking</a>
+                    <a href="{{ '/struggles/fear-of-abandonment.html' | relative_url }}" class="cross-cutting-link">Fear of Abandonment</a>
+                    <a href="{{ '/struggles/checking-behaviors-never-complete.html' | relative_url }}" class="cross-cutting-link">Checking Behaviors</a>
                 </div>
             </div>
         </div>
-    </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Add click listeners to all learn-more elements
-            const learnMoreElements = document.querySelectorAll('.learn-more');
-            
-            learnMoreElements.forEach(function(element) {
-                element.addEventListener('click', function() {
-                    this.classList.toggle('expanded');
-                    const arrow = this.querySelector('h3');
-                    if (this.classList.contains('expanded')) {
-                        arrow.innerHTML = arrow.innerHTML.replace('↓', '↑');
-                    } else {
-                        arrow.innerHTML = arrow.innerHTML.replace('↑', '↓');
-                    }
-                });
-            });
-        });
-    </script>
-</body>
-</html>
+        <div class="co-occurring">
+            <h3>Common Co-Occurring Conditions</h3>
+            <p>Autism frequently appears alongside other <a class="jargon">neurodivergent<span class="tooltip">Brain differences that create distinct patterns of thinking, processing, and behavior</span></a> conditions and mental health challenges. Understanding these connections can help you get comprehensive support:</p>
+            <ul>
+                <li><strong>ADHD:</strong> Many autistic people also have ADHD, sharing <a class="jargon">executive function<span class="tooltip">The brain's management system that handles planning, organization, time management, task initiation, and follow-through</span></a> and <a class="jargon">attention regulation<span class="tooltip">The brain's ability to direct and sustain focus where you want it, when you want it</span></a> challenges</li>
+                <li><strong>Anxiety disorders:</strong> Social anxiety, generalized anxiety, and specific phobias are common</li>
+                <li><strong>Depression:</strong> Often develops from years of misunderstanding, <a class="jargon">masking<span class="tooltip">Camouflaging natural neurodivergent behaviors and responses to appear more neurotypical</span></a>, or social rejection</li>
+                <li><strong>OCD:</strong> Repetitive behaviors and need for certainty can overlap with OCD patterns</li>
+                <li><strong>Eating disorders:</strong> <a class="jargon">Sensory issues<span class="tooltip">Difficulties processing sensory information that can make certain textures, sounds, or environments uncomfortable or overwhelming</span></a> with food textures and restrictive eating patterns</li>
+                <li><strong>Sleep disorders:</strong> Irregular sleep patterns and difficulty with sleep hygiene</li>
+            </ul>
+        </div>
+
+        <div style="background: #e3f2fd; padding: 1.5rem; border-radius: 12px; margin: 2rem 0; border-left: 4px solid #0984e3;">
+            <h3 style="color: #0984e3; margin-bottom: 1rem; font-size: 1.3rem;">Related Resources</h3>
+            <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                <a href="{{ '/glossary/social-communication.html' | relative_url }}" style="color: #0984e3; text-decoration: none;">Social Communication →</a>
+                <a href="{{ '/glossary/sensory-processing.html' | relative_url }}" style="color: #0984e3; text-decoration: none;">Sensory Processing →</a>
+                <a href="{{ '/glossary/emotional-regulation.html' | relative_url }}" style="color: #0984e3; text-decoration: none;">Emotional Regulation →</a>
+                <a href="{{ '/glossary/inertia-transitions.html' | relative_url }}" style="color: #0984e3; text-decoration: none;">Inertia and Transitions →</a>
+            </div>
+        </div>
+    </div>
+</div>
