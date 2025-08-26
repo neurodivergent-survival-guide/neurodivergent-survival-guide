@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: 'en-US' }}">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- Your existing head content -->
+    {% if site.title and site.title != page.title %}
+    <title>{{ page.title }} | {{ site.title }}</title>
+    {% else %}
+    <title>{{ page.title }}</title>
+    {% endif %}
+    
+    <!-- Your existing stylesheets -->
+    
+    <!-- Add disclaimer banner styles -->
+    <link rel="stylesheet" href="{{ '/assets/css/disclaimer-banner.css' | relative_url }}">
+</head>
+
+<body>
+    {{ content }}
+    
+    <!-- Add disclaimer banner script before closing body -->
+    <script src="{{ '/assets/js/disclaimer-banner.js' | relative_url }}"></script>
+</body>
+</html>
