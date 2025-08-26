@@ -16,9 +16,9 @@ plugins:
 
 # Exclude from processing
 exclude:
-  - /README.md
-  - "/Neurodivergent Survival Guide: Complete Project Specification.md"
-  - "/Handoff Doc.md
+  - README.md
+  - "Neurodivergent Survival Guide: Complete Project Specification.md"
+  - "Handoff Doc.md"
 
 # Sass
 sass:
