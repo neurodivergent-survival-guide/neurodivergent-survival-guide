@@ -7,3 +7,29 @@ baseurl: "/neurodivergent-survival-guide"
 # Build settings
 markdown: kramdown
 highlighter: rouge
+
+# GitHub Pages specific
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+# Exclude from processing
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+
+# Sass
+sass:
+  style: compressed
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "default"
