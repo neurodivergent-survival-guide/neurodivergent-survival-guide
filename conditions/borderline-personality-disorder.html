@@ -1,0 +1,539 @@
+---
+layout: condition
+title: "Borderline Personality Disorder"
+slug: "borderline-personality-disorder"
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Borderline Personality Disorder - Understanding the Condition | Neurodivergent Survival Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #6c5ce7 0%, #a29bfe 100%);
+            color: #333;
+            min-height: 100vh;
+            line-height: 1.7;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .header h1 {
+            color: white;
+            font-size: 2.5rem;
+            font-weight: 300;
+            margin-bottom: 0.5rem;
+        }
+
+        .header p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.2rem;
+        }
+
+        .breadcrumb {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 0.8rem 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .breadcrumb a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .breadcrumb a:hover {
+            color: white;
+        }
+
+        .breadcrumb span {
+            color: rgba(255, 255, 255, 0.6);
+            margin: 0 0.5rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .content-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .condition-intro {
+            background: #fff4e6;
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            border-left: 4px solid #e17055;
+        }
+
+        .condition-intro h2 {
+            color: #e17055;
+            margin-bottom: 1rem;
+            font-size: 1.6rem;
+        }
+
+        .condition-intro p {
+            margin-bottom: 1rem;
+            font-size: 1.05rem;
+            color: #555;
+        }
+
+        .reframe-box {
+            background: #e8f5e8;
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+            border-left: 4px solid #00cec9;
+        }
+
+        .reframe-box h3 {
+            color: #00cec9;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .reframe-box p {
+            color: #555;
+            margin-bottom: 0.8rem;
+        }
+
+        .characteristics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        @media (min-width: 900px) {
+            .characteristics-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .characteristic-card {
+            background: white;
+            border-radius: 15px;
+            padding: 1.8rem;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            border-top: 3px solid #e17055;
+        }
+
+        .characteristic-card h4 {
+            color: #e17055;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .characteristic-card p {
+            color: #555;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .characteristic-card ul {
+            padding-left: 1.2rem;
+            color: #555;
+        }
+
+        .characteristic-card li {
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .struggles-section {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            border: 1px solid #e0e0e0;
+        }
+
+        .struggles-section h3 {
+            color: #333;
+            margin-bottom: 1.5rem;
+            font-size: 1.4rem;
+        }
+
+        .struggles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1rem;
+        }
+
+        .struggle-link {
+            background: white;
+            padding: 1rem 1.2rem;
+            border-radius: 10px;
+            text-decoration: none;
+            color: #333;
+            transition: all 0.3s ease;
+            border-left: 3px solid #e17055;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .struggle-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            text-decoration: none;
+            color: #333;
+        }
+
+        .struggle-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .struggle-description {
+            font-size: 0.85rem;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        .cross-cutting-section {
+            background: #f0f8ff;
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin: 1.5rem 0;
+            border-left: 4px solid #74b9ff;
+        }
+
+        .cross-cutting-section h4 {
+            color: #74b9ff;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .cross-cutting-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .cross-cutting-link {
+            background: #74b9ff;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .cross-cutting-link:hover {
+            background: #0984e3;
+            color: white;
+            text-decoration: none;
+            transform: translateY(-1px);
+        }
+
+        .co-occurring {
+            background: #fff3e0;
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+            border-left: 4px solid #ff9800;
+        }
+
+        .co-occurring h3 {
+            color: #f57c00;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .jargon {
+            color: #e84393;
+            text-decoration: none;
+            border-bottom: 1px dotted #e84393;
+            position: relative;
+            cursor: help;
+            font-weight: 500;
+        }
+
+        .jargon:hover {
+            color: #fd79a8;
+            border-bottom-color: #fd79a8;
+        }
+
+        .tooltip {
+            visibility: hidden;
+            opacity: 0;
+            position: absolute;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #333;
+            color: white;
+            padding: 10px 14px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: normal;
+            z-index: 1001;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: opacity 0.3s, visibility 0.3s;
+            max-width: 280px;
+            white-space: normal;
+            text-align: center;
+            line-height: 1.4;
+        }
+
+        .tooltip::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 6px solid transparent;
+            border-top-color: #333;
+        }
+
+        .jargon:hover .tooltip {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .content-card {
+                padding: 1.5rem;
+            }
+
+            .characteristics-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .struggles-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cross-cutting-links {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Borderline Personality Disorder</h1>
+        <p>Understanding emotional intensity and the deep human need for connection</p>
+    </div>
+
+    <div class="breadcrumb">
+        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/index.html">Home</a>
+        <span>></span>
+        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/conditions/index.html">Conditions</a>
+        <span>></span>
+        Borderline Personality Disorder
+    </div>
+
+    <div class="container">
+        <div class="content-card">
+            <div class="condition-intro">
+                <h2>What is Borderline Personality Disorder?</h2>
+                <p>BPD involves intense emotional responses and relationship patterns that developed as protective strategies against abandonment - real or perceived. People with BPD often experience emotions at amplified intensities and have learned to be hypervigilant about relationship threats, leading to behaviors that others might find confusing or overwhelming.</p>
+                
+                <p>These patterns typically emerge from early experiences where emotional safety was uncertain. The brain learned to scan constantly for signs of rejection and respond strongly to maintain connection or protect against abandonment pain. What looks like chaos from the outside often makes perfect sense from the inside.</p>
+            </div>
+
+            <div class="reframe-box">
+                <h3>Reframing BPD</h3>
+                <p>Traditional descriptions focus on BPD as "unstable" or "difficult" behavior. A more understanding framework recognizes it as an <a class="jargon">attachment system<span class="tooltip">The brain patterns that govern how we connect with and respond to important relationships</span></a> that learned to expect abandonment and developed intense responses to prevent it.</p>
+                
+                <p>Think of it like having an emotional smoke detector that's extremely sensitive. It goes off at the first hint of relationship danger, triggering responses designed to either pull people closer or push them away before they can leave first. The "splitting," the threats to leave, the intense emotions - these aren't character flaws, they're protective strategies that made sense in earlier contexts but now create the very abandonment they're trying to prevent.</p>
+            </div>
+
+            <div class="characteristics-grid">
+                <div class="characteristic-card">
+                    <h4>Fear of Abandonment</h4>
+                    <p>Intense anxiety about being left alone or rejected, leading to behaviors aimed at preventing real or imagined abandonment.</p>
+                    <ul>
+                        <li>Hypervigilance to signs of rejection or distancing</li>
+                        <li>Difficulty being alone or with separation</li>
+                        <li>Testing relationships to see if people will stay</li>
+                        <li>Overwhelming panic when relationships feel threatened</li>
+                        <li>Alternating between clinging and pushing away</li>
+                        <li>Reading rejection into neutral interactions</li>
+                    </ul>
+                </div>
+
+                <div class="characteristic-card">
+                    <h4>Relationship Patterns</h4>
+                    <p>Intense but unstable relationships that alternate between idealization and devaluation, reflecting the inner struggle between needing connection and fearing abandonment.</p>
+                    <ul>
+                        <li>Relationships that feel all-consuming and vital</li>
+                        <li>Seeing people as perfect or terrible with little middle ground</li>
+                        <li>Favorite person dynamics with intense attachment</li>
+                        <li>Difficulty maintaining consistent views of others</li>
+                        <li>Relationships that cycle through closeness and conflict</li>
+                        <li>Fear that loving someone means losing yourself</li>
+                    </ul>
+                </div>
+
+                <div class="characteristic-card">
+                    <h4>Emotional Intensity</h4>
+                    <p>Emotions that feel overwhelming and change rapidly, often lasting longer and feeling more intense than others might experience in similar situations.</p>
+                    <ul>
+                        <li>Feelings that seem too big for your body</li>
+                        <li>Mood changes that happen quickly and dramatically</li>
+                        <li>Emotional responses that feel disproportionate</li>
+                        <li>Difficulty regulating emotional intensity</li>
+                        <li>Chronic feelings of emptiness or numbness</li>
+                        <li>Anger that feels explosive or uncontrollable</li>
+                    </ul>
+                </div>
+
+                <div class="characteristic-card">
+                    <h4>Identity and Self-Image</h4>
+                    <p>Sense of self that feels unclear or changes depending on relationships and circumstances, reflecting difficulty developing stable self-concept.</p>
+                    <ul>
+                        <li>Not knowing who you "really" are</li>
+                        <li>Identity that shifts based on who you're with</li>
+                        <li>Values and goals that change frequently</li>
+                        <li>Feeling like you're different people in different contexts</li>
+                        <li>Chronic sense of being fundamentally flawed</li>
+                        <li>Difficulty distinguishing your feelings from others'</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="struggles-section">
+                <h3>BPD-Related Struggles</h3>
+                <p style="margin-bottom: 1.5rem; color: #666;">Click on any struggle to learn what it feels like, why it happens, and what can help.</p>
+                
+                <div class="struggles-grid">
+                    <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/fear-of-abandonment.html" class="struggle-link">
+                        <div class="struggle-title">Fear of Abandonment</div>
+                        <div class="struggle-description">Intense anxiety about being left alone or rejected by important people</div>
+                    </a>
+
+                    <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/unstable-interpersonal-relationships.html" class="struggle-link">
+                        <div class="struggle-title">Unstable Interpersonal Relationships</div>
+                        <div class="struggle-description">Relationships that alternate between idealization and devaluation</div>
+                    </a>
+
+                    <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/identity-disturbance.html" class="struggle-link">
+                        <div class="struggle-title">Identity Disturbance</div>
+                        <div class="struggle-description">Unclear or rapidly changing sense of who you are</div>
+                    </a>
+
+                    <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/impulsivity-potentially-damaging.html" class="struggle-link">
+                        <div class="struggle-title">Impulsive Actions</div>
+                        <div class="struggle-description">Acting quickly in ways that could harm your finances, relationships, or safety</div>
+                    </a>
+
+                    <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/recurrent-suicidal-behaviors-self-harm.html" class="struggle-link">
+                        <div class="struggle-title">Self-Harm and Suicidal Thoughts</div>
+                        <div class="struggle-description">Repeated thoughts or actions involving self-injury or suicide</div>
+                    </a>
+
+                    <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/affective-instability.html" class="struggle-link">
+                        <div class="struggle-title">Rapid Mood Changes</div>
+                        <div class="struggle-description">Intense mood changes that feel overwhelming and unpredictable</div>
+                    </a>
+
+                    <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/chronic-feelings-of-emptiness.html" class="struggle-link">
+                        <div class="struggle-title">Chronic Feelings of Emptiness</div>
+                        <div class="struggle-description">Persistent sense of inner void or meaninglessness</div>
+                    </a>
+
+                    <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/inappropriate-intense-anger.html" class="struggle-link">
+                        <div class="struggle-title">Intense Anger</div>
+                        <div class="struggle-description">Anger responses that feel too big for the situation</div>
+                    </a>
+
+                    <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/stress-related-dissociation-paranoia.html" class="struggle-link">
+                        <div class="struggle-title">Dissociation and Paranoia</div>
+                        <div class="struggle-description">Feeling disconnected from yourself or suspicious of others during high stress</div>
+                    </a>
+
+                    <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/emotional-flashbacks.html" class="struggle-link">
+                        <div class="struggle-title">Emotional Flashbacks</div>
+                        <div class="struggle-description">Suddenly re-experiencing intense emotions from past traumatic situations</div>
+                    </a>
+
+                    <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/favorite-person-dynamics.html" class="struggle-link">
+                        <div class="struggle-title">Favorite Person Dynamics</div>
+                        <div class="struggle-description">Intense attachment to one person that affects your emotional stability</div>
+                    </a>
+
+                    <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/splitting-black-and-white-thinking.html" class="struggle-link">
+                        <div class="struggle-title">All-or-Nothing Thinking</div>
+                        <div class="struggle-description">Seeing people and situations as all good or all bad</div>
+                    </a>
+
+                    <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/identity-diffusion-in-relationships.html" class="struggle-link">
+                        <div class="struggle-title">Identity Diffusion in Relationships</div>
+                        <div class="struggle-description">Losing sense of yourself when in close relationships</div>
+                    </a>
+
+                    <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/shame-spirals.html" class="struggle-link">
+                        <div class="struggle-title">Shame Spirals</div>
+                        <div class="struggle-description">Overwhelming feelings of being fundamentally flawed or bad</div>
+                    </a>
+
+                    <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/hypervigilance-to-rejection-cues.html" class="struggle-link">
+                        <div class="struggle-title">Hypervigilance to Rejection Cues</div>
+                        <div class="struggle-description">Constantly scanning for signs that others might leave or reject you</div>
+                    </a>
+                </div>
+
+                <div class="cross-cutting-section">
+                    <h4>Related Struggles from Other Conditions</h4>
+                    <p style="font-size: 0.9rem; color: #666; margin-bottom: 1rem;">People with BPD often experience these struggles from other neurodivergent conditions:</p>
+                    <div class="cross-cutting-links">
+                        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/rejection-sensitive-dysphoria.html" class="cross-cutting-link">Rejection Sensitive Dysphoria (ADHD)</a>
+                        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/emotional-dysregulation.html" class="cross-cutting-link">Emotional Dysregulation (ADHD)</a>
+                        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/missing-social-cues.html" class="cross-cutting-link">Missing Social Cues (Autism)</a>
+                        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/masking-burnout.html" class="cross-cutting-link">Masking Burnout (Autism)</a>
+                        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/alexithymia.html" class="cross-cutting-link">Alexithymia (Autism)</a>
+                        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/mixed-states.html" class="cross-cutting-link">Mixed States (Bipolar)</a>
+                        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/identity-confusion-between-episodes.html" class="cross-cutting-link">Identity Confusion (Bipolar)</a>
+                        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/intrusive-thoughts-images-urges.html" class="cross-cutting-link">Intrusive Thoughts (OCD)</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="co-occurring">
+                <h3>Common Co-Occurring Conditions</h3>
+                <p>BPD frequently occurs alongside other mental health conditions, often reflecting the complex trauma and attachment disruption that can contribute to its development. Understanding these connections helps create comprehensive treatment approaches.</p>
+                
+                <p><strong>Frequently co-occurring:</strong> PTSD and complex trauma (reflecting early adverse experiences), depression (particularly during identity crises), anxiety disorders (from hypervigilance to abandonment), eating disorders (often as emotional regulation attempts), substance use (frequently as self-medication), and ADHD (overlap in emotional dysregulation and impulsivity).</p>
+                
+                <p><strong>Individual variation:</strong> BPD presents very differently across individuals - some people have predominantly relationship struggles, others focus more on identity confusion or emotional overwhelm. Response to different therapeutic approaches varies, with DBT, DBT-informed therapy, and trauma-focused therapies showing strong evidence for helping people build more stable, fulfilling lives.</p>
+            </div>
+
+            <div style="background: #fff4e6; padding: 1.5rem; border-radius: 15px; margin-top: 2rem; border-left: 4px solid #e17055;">
+                <p><strong>Related Resources:</strong></p>
+                <div style="margin-top: 1rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                    <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/glossary/relationship-dynamics.html" style="color: #e17055; text-decoration: none;">Relationship Dynamics →</a>
+                    <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/glossary/emotional-regulation.html" style="color: #e17055; text-decoration: none;">Emotional Regulation →</a>
+                    <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/glossary/identity-self-concept.html" style="color: #e17055; text-decoration: none;">Identity and Self-Concept →</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
