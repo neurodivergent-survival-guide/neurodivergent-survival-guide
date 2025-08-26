@@ -443,4 +443,57 @@ slug: "task-initiation-paralysis"
                 <p>A healthcare provider familiar with ADHD can help evaluate whether medication, therapy, or other interventions might help. Many people find that proper ADHD treatment dramatically improves their ability to start tasks.</p>
 
                 <div class="highlight-box">
-                    <p><strong>Types of support that help:</strong> ADHD coaching, cog
+                    <p><strong>Types of support that help:</strong> ADHD coaching, cognitive-behavioral therapy, medication evaluation, occupational therapy for executive function skills, or comprehensive ADHD assessment if you haven't been evaluated.</p>
+                </div>
+            </div>
+
+            <!-- Section 6: Validation -->
+            <div class="section validation">
+                <h2>You're Not Imagining This</h2>
+                <p>Task initiation paralysis is a real neurological experience, not a character flaw or lack of motivation. Your brain literally processes task initiation differently than neurotypical brains, and this creates genuine barriers that willpower alone can't overcome.</p>
+
+                <p>Many people with ADHD describe feeling like they're "broken" or "lazy" because they struggle to start tasks that seem simple to others. This isn't true. You're dealing with differences in brain chemistry and neural connectivity that affect motivation and activation systems.</p>
+
+                <p>It's also important to know that task initiation difficulties can vary dramatically from day to day. You might start tasks easily when you're interested or have external pressure, then struggle with the exact same type of task on a different day. This inconsistency is part of ADHD, not evidence that you're not trying hard enough.</p>
+
+                <p>Understanding that this is a neurological difference, not a moral failing, can help reduce the self-criticism that often makes the problem worse. With the right strategies and support, most people can significantly improve their ability to start tasks while accepting that some days will be harder than others.</p>
+
+                <div class="highlight-box">
+                    <p><strong>Remember:</strong> Millions of people with ADHD experience this exact struggle. You're part of a community that understands what you're going through, and many have found effective ways to work with their brains rather than against them.</p>
+                </div>
+            </div>
+
+            <div class="related-struggles">
+                <h3>Related Struggles</h3>
+                <div class="struggle-tags">
+                    <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/follow-through-completion-struggles.html" class="struggle-tag">Follow-Through Completion</a>
+                    <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/time-blindness.html" class="struggle-tag">Time Blindness</a>
+                    <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/organization-and-planning-challenges.html" class="struggle-tag">Organization Challenges</a>
+                    <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/working-memory-difficulties.html" class="struggle-tag">Working Memory</a>
+                    <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/interest-based-nervous-system.html" class="struggle-tag">Interest-Based System</a>
+                    <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/executive-function-challenges.html" class="struggle-tag">Executive Function</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add click listeners to all learn-more elements
+            const learnMoreElements = document.querySelectorAll('.learn-more');
+            
+            learnMoreElements.forEach(function(element) {
+                element.addEventListener('click', function() {
+                    this.classList.toggle('expanded');
+                    const arrow = this.querySelector('h3');
+                    if (this.classList.contains('expanded')) {
+                        arrow.innerHTML = arrow.innerHTML.replace('↓', '↑');
+                    } else {
+                        arrow.innerHTML = arrow.innerHTML.replace('↑', '↓');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
