@@ -284,17 +284,17 @@ slug: "borderline-personality-disorder"
             transform: translateX(-50%);
             background: #333;
             color: white;
-            padding: 10px 14px;
+            padding: 12px 16px;
             border-radius: 8px;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             font-weight: normal;
             z-index: 1001;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
             transition: opacity 0.3s, visibility 0.3s;
-            max-width: 280px;
+            width: 800px;
             white-space: normal;
-            text-align: center;
-            line-height: 1.4;
+            text-align: left;
+            line-height: 1.5;
         }
 
         .tooltip::after {
@@ -331,6 +331,16 @@ slug: "borderline-personality-disorder"
 
             .cross-cutting-links {
                 flex-direction: column;
+            }
+
+            .tooltip {
+                width: 300px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .tooltip {
+                width: 250px;
             }
         }
     </style>
@@ -535,5 +545,24 @@ slug: "borderline-personality-disorder"
             </div>
         </div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add click listeners to all learn-more elements
+            const learnMoreElements = document.querySelectorAll('.learn-more');
+            
+            learnMoreElements.forEach(function(element) {
+                element.addEventListener('click', function() {
+                    this.classList.toggle('expanded');
+                    const arrow = this.querySelector('h3');
+                    if (this.classList.contains('expanded')) {
+                        arrow.innerHTML = arrow.innerHTML.replace('↓', '↑');
+                    } else {
+                        arrow.innerHTML = arrow.innerHTML.replace('↑', '↓');
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
