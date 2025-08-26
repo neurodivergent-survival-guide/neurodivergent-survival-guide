@@ -257,9 +257,8 @@ slug: "task-initiation-paralysis"
         .tooltip {
             visibility: hidden;
             opacity: 0;
-            position: fixed;
-            bottom: auto;
-            top: calc(100% + 10px);
+            position: absolute;
+            bottom: 125%;
             left: 50%;
             transform: translateX(-50%);
             background: #333;
@@ -271,8 +270,8 @@ slug: "task-initiation-paralysis"
             z-index: 1001;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
             transition: opacity 0.3s, visibility 0.3s;
-            width: 600px;
-            max-width: none;
+            width: 400px;
+            min-width: 400px;
             white-space: normal;
             text-align: left;
             line-height: 1.5;
