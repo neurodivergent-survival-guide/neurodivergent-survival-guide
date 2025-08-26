@@ -1,13 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ page.title }} - Neurodivergent Survival Guide</title>
+  <!-- head content -->
 </head>
 <body>
-    {{ content }}
-    
-    {% include condition-nav.html %}
+  {{ content }}
+  
+  <!-- Navigation Banner -->
+  {% assign conditions = site.data.conditions | sort: 'name' %}
+  {% for condition in conditions %}
+    {% if condition.slug == page.slug %}
+      {% assign current_index = forloop.index0 %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
+  
+  <div class="navigation-banner">
+    <div class="nav-links">
+      {% if current_index > 0 %}
+        {% assign prev_condition = conditions[current_index | minus: 1] %}
+        <a href="/conditions/{{ prev_condition.slug }}.html">← Previous: {{ prev_condition.name }}</a>
+      {% else %}
+        <span class="nav-link disabled">← Previous Condition</span>
+      {% endif %}
+      
+      <span>{{ page.title }} ({{ current_index | plus: 1 }} of {{ conditions.size }} conditions)</span>
+      
+      {% if current_index < conditions.size | minus: 1 %}
+        {% assign next_condition = conditions[current_index | plus: 1] %}
+        <a href="/conditions/{{ next_condition.slug }}.html">Next: {{ next_condition.name }} →</a>
+      {% else %}
+        <span class="nav-link disabled">Next Condition →</span>
+      {% endif %}
+    </div>
+  </div>
 </body>
 </html>
