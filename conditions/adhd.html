@@ -16,6 +16,8 @@ title: "ADHD"
         color: #333;
         min-height: 100vh;
         line-height: 1.7;
+        overflow-x: hidden;
+        width: 100%;
     }
 
     .header {
@@ -64,6 +66,8 @@ title: "ADHD"
         max-width: 1200px;
         margin: 0 auto;
         padding: 2rem;
+        width: 100%;
+        box-sizing: border-box;
     }
 
     .content-card {
@@ -294,7 +298,9 @@ title: "ADHD"
         z-index: 1001;
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
         transition: opacity 0.3s, visibility 0.3s;
-        width: 800px;
+        max-width: 800px;
+        min-width: 200px;
+        width: max-content;
         white-space: normal;
         text-align: left;
         line-height: 1.5;
@@ -318,7 +324,7 @@ title: "ADHD"
     /* Mobile responsive tooltip adjustments */
     @media (max-width: 1024px) {
         .tooltip {
-            width: 400px;
+            max-width: 400px;
         }
     }
 
@@ -378,7 +384,7 @@ title: "ADHD"
         }
 
         .tooltip {
-            width: 300px;
+            max-width: 300px;
             left: 10px;
             right: 10px;
             transform: none;
@@ -407,7 +413,7 @@ title: "ADHD"
         }
 
         .tooltip {
-            width: 250px;
+            max-width: 250px;
         }
     }
 </style>
