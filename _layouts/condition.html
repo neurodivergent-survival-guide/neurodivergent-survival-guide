@@ -13,25 +13,34 @@ layout: default
   {% endif %}
 {% endfor %}
 
-<div class="navigation-banner">
-  <div class="nav-links">
+<div style="background: #fff; padding: 1rem 0; border-top: 1px solid #e0e0e0; margin-top: 2rem;">
+  <div style="display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 2rem;">
     {% if current_index > 0 %}
       {% assign prev_index = current_index | minus: 1 %}
       {% assign prev_condition = conditions[prev_index] %}
-      <a href="/conditions/{{ prev_condition.slug }}.html">← Previous: {{ prev_condition.name }}</a>
+      <a href="{{ '/conditions/' | append: prev_condition.slug | append: '.html' | relative_url }}" style="background: #0984e3; color: white; padding: 0.8rem 1.5rem; border-radius: 25px; text-decoration: none; font-weight: 500; transition: all 0.3s ease;">← Previous: {{ prev_condition.name }}</a>
     {% else %}
-      <span class="nav-link disabled">← Previous Condition</span>
+      <span style="background: #ddd; color: #999; padding: 0.8rem 1.5rem; border-radius: 25px; cursor: not-allowed;">← Previous Condition</span>
     {% endif %}
     
     {% assign position = current_index | plus: 1 %}
-    <span>{{ page.title }} ({{ position }} of {{ conditions.size }} conditions)</span>
+    <span style="color: #666; font-size: 0.9rem;">{{ page.title }} ({{ position }} of {{ conditions.size }} conditions)</span>
     
     {% assign next_index = current_index | plus: 1 %}
     {% if next_index < conditions.size %}
       {% assign next_condition = conditions[next_index] %}
-      <a href="/conditions/{{ next_condition.slug }}.html">Next: {{ next_condition.name }} →</a>
+      <a href="{{ '/conditions/' | append: next_condition.slug | append: '.html' | relative_url }}" style="background: #0984e3; color: white; padding: 0.8rem 1.5rem; border-radius: 25px; text-decoration: none; font-weight: 500; transition: all 0.3s ease;">Next: {{ next_condition.name }} →</a>
     {% else %}
-      <span class="nav-link disabled">Next Condition →</span>
+      <span style="background: #ddd; color: #999; padding: 0.8rem 1.5rem; border-radius: 25px; cursor: not-allowed;">Next Condition →</span>
     {% endif %}
   </div>
 </div>
+
+<style>
+@media (max-width: 768px) {
+  div[style*="display: flex"] {
+    flex-direction: column !important;
+    gap: 1rem;
+  }
+}
+</style>
