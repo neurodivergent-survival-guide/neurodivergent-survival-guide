@@ -1,622 +1,610 @@
 ---
-layout: condition
+layout: default
 title: "ADHD"
-slug: "adhd"
 ---
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ADHD - Understanding the Condition | Neurodivergent Survival Guide</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<!-- conditions/adhd.html -->
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #ff7675 0%, #fd79a8 100%);
-            color: #333;
-            min-height: 100vh;
-            line-height: 1.7;
-        }
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        background: linear-gradient(135deg, #ff7675 0%, #fd79a8 100%);
+        color: #333;
+        min-height: 100vh;
+        line-height: 1.7;
+    }
 
+    .header {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        padding: 1.5rem 2rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .header h1 {
+        color: white;
+        font-size: 2.5rem;
+        font-weight: 300;
+        margin-bottom: 0.5rem;
+    }
+
+    .header p {
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 1.2rem;
+    }
+
+    .breadcrumb {
+        background: rgba(255, 255, 255, 0.05);
+        padding: 0.8rem 2rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    .breadcrumb a {
+        color: rgba(255, 255, 255, 0.8);
+        text-decoration: none;
+        font-size: 0.9rem;
+    }
+
+    .breadcrumb a:hover {
+        color: white;
+    }
+
+    .breadcrumb span {
+        color: rgba(255, 255, 255, 0.6);
+        margin: 0 0.5rem;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+    }
+
+    .content-card {
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 20px;
+        padding: 2.5rem;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        margin-bottom: 2rem;
+    }
+
+    .condition-intro {
+        background: #fff5f5;
+        padding: 2rem;
+        border-radius: 15px;
+        margin: 2rem 0;
+        border-left: 4px solid #fd79a8;
+    }
+
+    .condition-intro h2 {
+        color: #fd79a8;
+        margin-bottom: 1rem;
+        font-size: 1.6rem;
+    }
+
+    .condition-intro p {
+        margin-bottom: 1rem;
+        font-size: 1.05rem;
+        color: #555;
+    }
+
+    .reframe-box {
+        background: #e8f8f5;
+        padding: 1.5rem;
+        border-radius: 12px;
+        margin: 2rem 0;
+        border-left: 4px solid #00cec9;
+    }
+
+    .reframe-box h3 {
+        color: #00cec9;
+        margin-bottom: 1rem;
+        font-size: 1.3rem;
+    }
+
+    .reframe-box p {
+        color: #555;
+        margin-bottom: 0.8rem;
+    }
+
+    .characteristics-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.5rem;
+        margin: 2rem 0;
+    }
+
+    @media (min-width: 900px) {
+        .characteristics-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    .characteristic-card {
+        background: white;
+        border-radius: 15px;
+        padding: 1.8rem;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+        border-top: 3px solid #fd79a8;
+    }
+
+    .characteristic-card h4 {
+        color: #fd79a8;
+        margin-bottom: 1rem;
+        font-size: 1.2rem;
+    }
+
+    .characteristic-card p {
+        color: #555;
+        margin-bottom: 1rem;
+        font-size: 0.95rem;
+    }
+
+    .characteristic-card ul {
+        padding-left: 1.2rem;
+        color: #555;
+    }
+
+    .characteristic-card li {
+        margin-bottom: 0.5rem;
+        font-size: 0.95rem;
+    }
+
+    .struggles-section {
+        background: #f8f9fa;
+        padding: 2rem;
+        border-radius: 15px;
+        margin: 2rem 0;
+        border: 1px solid #e0e0e0;
+    }
+
+    .struggles-section h3 {
+        color: #333;
+        margin-bottom: 1.5rem;
+        font-size: 1.4rem;
+    }
+
+    .struggles-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 1rem;
+    }
+
+    .struggle-link {
+        background: white;
+        padding: 1rem 1.2rem;
+        border-radius: 10px;
+        text-decoration: none;
+        color: #333;
+        transition: all 0.3s ease;
+        border-left: 3px solid #fd79a8;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        min-height: 44px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .struggle-link:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        text-decoration: none;
+        color: #333;
+    }
+
+    .struggle-title {
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        font-size: 0.95rem;
+    }
+
+    .struggle-description {
+        font-size: 0.85rem;
+        color: #666;
+        line-height: 1.5;
+    }
+
+    .cross-cutting-section {
+        background: #f0f8ff;
+        padding: 1.5rem;
+        border-radius: 12px;
+        margin: 1.5rem 0;
+        border-left: 4px solid #74b9ff;
+    }
+
+    .cross-cutting-section h4 {
+        color: #74b9ff;
+        margin-bottom: 1rem;
+        font-size: 1.1rem;
+    }
+
+    .cross-cutting-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .cross-cutting-link {
+        background: #74b9ff;
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+    }
+
+    .cross-cutting-link:hover {
+        background: #0984e3;
+        color: white;
+        text-decoration: none;
+        transform: translateY(-1px);
+    }
+
+    .co-occurring {
+        background: #fff3e0;
+        padding: 1.5rem;
+        border-radius: 12px;
+        margin: 2rem 0;
+        border-left: 4px solid #ff9800;
+    }
+
+    .co-occurring h3 {
+        color: #f57c00;
+        margin-bottom: 1rem;
+        font-size: 1.3rem;
+    }
+
+    .jargon {
+        color: #e84393;
+        text-decoration: none;
+        border-bottom: 1px dotted #e84393;
+        position: relative;
+        cursor: help;
+        font-weight: 500;
+    }
+
+    .jargon:hover {
+        color: #fd79a8;
+        border-bottom-color: #fd79a8;
+    }
+
+    .tooltip {
+        visibility: hidden;
+        opacity: 0;
+        position: absolute;
+        bottom: 125%;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #333;
+        color: white;
+        padding: 12px 16px;
+        border-radius: 8px;
+        font-size: 0.9rem;
+        font-weight: normal;
+        z-index: 1001;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        transition: opacity 0.3s, visibility 0.3s;
+        width: 800px;
+        white-space: normal;
+        text-align: left;
+        line-height: 1.5;
+    }
+
+    .tooltip::after {
+        content: '';
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        border: 6px solid transparent;
+        border-top-color: #333;
+    }
+
+    .jargon:hover .tooltip {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    /* Mobile responsive tooltip adjustments */
+    @media (max-width: 1024px) {
+        .tooltip {
+            width: 400px;
+        }
+    }
+
+    @media (max-width: 768px) {
         .header {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            padding: 1.5rem 2rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 1rem 1.5rem;
         }
 
         .header h1 {
-            color: white;
-            font-size: 2.5rem;
-            font-weight: 300;
-            margin-bottom: 0.5rem;
+            font-size: 2rem;
         }
 
         .header p {
-            color: rgba(255, 255, 255, 0.9);
-            font-size: 1.2rem;
+            font-size: 1rem;
         }
 
         .breadcrumb {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 0.8rem 2rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .breadcrumb a {
-            color: rgba(255, 255, 255, 0.8);
-            text-decoration: none;
-            font-size: 0.9rem;
-        }
-
-        .breadcrumb a:hover {
-            color: white;
-        }
-
-        .breadcrumb span {
-            color: rgba(255, 255, 255, 0.6);
-            margin: 0 0.5rem;
+            padding: 0.6rem 1.5rem;
         }
 
         .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
+            padding: 1rem;
         }
-
+        
         .content-card {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 20px;
-            padding: 2.5rem;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-            margin-bottom: 2rem;
+            padding: 1.5rem;
         }
 
         .condition-intro {
-            background: #fff5f5;
-            padding: 2rem;
-            border-radius: 15px;
-            margin: 2rem 0;
-            border-left: 4px solid #fd79a8;
-        }
-
-        .condition-intro h2 {
-            color: #fd79a8;
-            margin-bottom: 1rem;
-            font-size: 1.6rem;
-        }
-
-        .condition-intro p {
-            margin-bottom: 1rem;
-            font-size: 1.05rem;
-            color: #555;
+            padding: 1.5rem;
         }
 
         .reframe-box {
-            background: #e8f8f5;
-            padding: 1.5rem;
-            border-radius: 12px;
-            margin: 2rem 0;
-            border-left: 4px solid #00cec9;
-        }
-
-        .reframe-box h3 {
-            color: #00cec9;
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
-        }
-
-        .reframe-box p {
-            color: #555;
-            margin-bottom: 0.8rem;
+            padding: 1.2rem;
         }
 
         .characteristics-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin: 2rem 0;
-        }
-
-        @media (min-width: 900px) {
-            .characteristics-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        .characteristic-card {
-            background: white;
-            border-radius: 15px;
-            padding: 1.8rem;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-            border-top: 3px solid #fd79a8;
-        }
-
-        .characteristic-card h4 {
-            color: #fd79a8;
-            margin-bottom: 1rem;
-            font-size: 1.2rem;
-        }
-
-        .characteristic-card p {
-            color: #555;
-            margin-bottom: 1rem;
-            font-size: 0.95rem;
-        }
-
-        .characteristic-card ul {
-            padding-left: 1.2rem;
-            color: #555;
-        }
-
-        .characteristic-card li {
-            margin-bottom: 0.5rem;
-            font-size: 0.95rem;
-        }
-
-        .struggles-section {
-            background: #f8f9fa;
-            padding: 2rem;
-            border-radius: 15px;
-            margin: 2rem 0;
-            border: 1px solid #e0e0e0;
-        }
-
-        .struggles-section h3 {
-            color: #333;
-            margin-bottom: 1.5rem;
-            font-size: 1.4rem;
-        }
-
-        .struggles-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            grid-template-columns: 1fr;
             gap: 1rem;
         }
 
-        .struggle-link {
-            background: white;
-            padding: 1rem 1.2rem;
-            border-radius: 10px;
-            text-decoration: none;
-            color: #333;
-            transition: all 0.3s ease;
-            border-left: 3px solid #fd79a8;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-        }
-
-        .struggle-link:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-            text-decoration: none;
-            color: #333;
-        }
-
-        .struggle-title {
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            font-size: 0.95rem;
-        }
-
-        .struggle-description {
-            font-size: 0.85rem;
-            color: #666;
-            line-height: 1.5;
-        }
-
-        .cross-cutting-section {
-            background: #f0f8ff;
+        .characteristic-card {
             padding: 1.5rem;
-            border-radius: 12px;
-            margin: 1.5rem 0;
-            border-left: 4px solid #74b9ff;
         }
 
-        .cross-cutting-section h4 {
-            color: #74b9ff;
-            margin-bottom: 1rem;
-            font-size: 1.1rem;
+        .struggles-grid {
+            grid-template-columns: 1fr;
         }
 
         .cross-cutting-links {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
+            flex-direction: column;
         }
 
         .cross-cutting-link {
-            background: #74b9ff;
-            color: white;
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .cross-cutting-link:hover {
-            background: #0984e3;
-            color: white;
-            text-decoration: none;
-            transform: translateY(-1px);
-        }
-
-        .co-occurring {
-            background: #fff3e0;
-            padding: 1.5rem;
-            border-radius: 12px;
-            margin: 2rem 0;
-            border-left: 4px solid #ff9800;
-        }
-
-        .co-occurring h3 {
-            color: #f57c00;
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
-        }
-
-        .disclaimer {
-            background: #e3f2fd;
-            padding: 1.5rem;
-            border-radius: 12px;
-            margin: 2rem 0;
-            border: 1px solid #bbdefb;
-        }
-
-        .disclaimer h4 {
-            color: #1976d2;
-            margin-bottom: 1rem;
-            font-size: 1.1rem;
-        }
-
-        .disclaimer p {
-            color: #555;
-            font-size: 0.95rem;
-            margin-bottom: 0.8rem;
-        }
-
-        .crisis-resources {
-            background: #ffebee;
-            padding: 1.5rem;
-            border-radius: 12px;
-            margin: 2rem 0;
-            border-left: 4px solid #f44336;
-        }
-
-        .crisis-resources h4 {
-            color: #d32f2f;
-            margin-bottom: 1rem;
-            font-size: 1.1rem;
-        }
-
-        .crisis-resources p {
-            color: #555;
-            font-size: 0.95rem;
-            margin-bottom: 0.8rem;
-        }
-
-        .jargon {
-            color: #e84393;
-            text-decoration: none;
-            border-bottom: 1px dotted #e84393;
-            position: relative;
-            cursor: help;
-            font-weight: 500;
-        }
-
-        .jargon:hover {
-            color: #fd79a8;
-            border-bottom-color: #fd79a8;
+            justify-content: center;
+            text-align: center;
         }
 
         .tooltip {
-            visibility: hidden;
-            opacity: 0;
-            position: absolute;
-            bottom: 125%;
-            left: 50%;
-            transform: translateX(-50%);
-            background: #333;
-            color: white;
-            padding: 10px 14px;
-            border-radius: 8px;
-            font-size: 0.85rem;
-            font-weight: normal;
-            z-index: 1001;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-            transition: opacity 0.3s, visibility 0.3s;
-            max-width: 280px;
-            white-space: normal;
-            text-align: center;
-            line-height: 1.4;
+            width: 300px;
+            left: 10px;
+            right: 10px;
+            transform: none;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .header h1 {
+            font-size: 1.8rem;
         }
 
-        .tooltip::after {
-            content: '';
-            position: absolute;
-            top: 100%;
-            left: 50%;
-            transform: translateX(-50%);
-            border: 6px solid transparent;
-            border-top-color: #333;
+        .header p {
+            font-size: 0.9rem;
         }
 
-        .jargon:hover .tooltip {
-            visibility: visible;
-            opacity: 1;
+        .content-card {
+            padding: 1.2rem;
         }
 
-        .navigation-banner {
-            background: #fff;
-            padding: 1rem 0;
-            border-top: 1px solid #e0e0e0;
-            margin-top: 2rem;
+        .condition-intro {
+            padding: 1.2rem;
         }
 
-        .nav-links {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
+        .characteristic-card {
+            padding: 1.2rem;
         }
 
-        .nav-link {
-            background: #fd79a8;
-            color: white;
-            padding: 0.8rem 1.5rem;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
+        .tooltip {
+            width: 250px;
         }
+    }
+</style>
 
-        .nav-link:hover {
-            background: #e84393;
-            color: white;
-            text-decoration: none;
-            transform: translateY(-1px);
-        }
+<div class="header">
+    <h1>ADHD</h1>
+    <p>Understanding brain differences in attention, impulse control, and executive function</p>
+</div>
 
-        .nav-link.disabled {
-            background: #ddd;
-            color: #999;
-            cursor: not-allowed;
-        }
+<div class="breadcrumb">
+    <a href="{{ '/index.html' | relative_url }}">Home</a>
+    <span>></span>
+    <a href="{{ '/conditions/index.html' | relative_url }}">Conditions</a>
+    <span>></span>
+    ADHD
+</div>
 
-        @media (max-width: 768px) {
-            .container {
-                padding: 1rem;
-            }
+<div class="container">
+    <div class="content-card">
+        <div class="condition-intro">
+            <h2>What is ADHD?</h2>
+            <p>ADHD (Attention-Deficit/Hyperactivity Disorder) involves brain differences in how <a class="jargon">attention<span class="tooltip">The brain's ability to focus cognitive resources on specific information while filtering out distractions</span></a> is regulated, <a class="jargon">impulses<span class="tooltip">Quick urges to act or respond before fully considering consequences</span></a> are controlled, and daily tasks are managed. These differences create predictable friction with environments designed for <a class="jargon">neurotypical<span class="tooltip">People whose brains develop and function in ways that align with societal expectations and norms</span></a> brains, particularly in schools and workplaces that emphasize sustained focus and traditional organizational methods.</p>
             
-            .content-card {
-                padding: 1.5rem;
-            }
+            <p>ADHD isn't about lacking attention - it's about having a different type of attention that works best with interesting, challenging, urgent, or novel activities. Many people with ADHD can <a class="jargon">hyperfocus<span class="tooltip">Intense, sustained concentration on a task of interest, often to the exclusion of everything else including basic needs</span></a> intensely on engaging tasks while struggling to start routine or boring ones.</p>
+        </div>
 
-            .characteristics-grid {
-                grid-template-columns: 1fr;
-            }
+        <div class="reframe-box">
+            <h3>Reframing ADHD</h3>
+            <p>Traditional descriptions focus on what ADHD brains "can't do" compared to <a class="jargon">neurotypical<span class="tooltip">People whose brains develop and function in ways that align with societal expectations and norms</span></a> expectations. A more helpful framework recognizes ADHD as an <a class="jargon">interest-based nervous system<span class="tooltip">A brain that functions optimally when tasks are interesting, challenging, urgent, or novel, rather than simply important</span></a> rather than an importance-based one.</p>
+            
+            <p>This means your brain prioritizes what's engaging over what's important, which can create challenges in structured environments but also leads to incredible creativity, problem-solving abilities, and passion-driven achievements.</p>
+        </div>
 
-            .struggles-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .cross-cutting-links {
-                flex-direction: column;
-            }
-
-            .nav-links {
-                flex-direction: column;
-                gap: 1rem;
-            }
-        }
-    </style>
-</head>
-<body>
-    <div class="header">
-        <h1>ADHD</h1>
-        <p>Understanding brain differences in attention, impulse control, and executive function</p>
-    </div>
-
-    <div class="breadcrumb">
-        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/index.html">Home</a>
-        <span>></span>
-        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/conditions/index.html">Conditions</a>
-        <span>></span>
-        ADHD
-    </div>
-
-    <div class="container">
-        <div class="content-card">
-            <div class="condition-intro">
-                <h2>What is ADHD?</h2>
-                <p>ADHD (Attention-Deficit/Hyperactivity Disorder) involves brain differences in how attention is regulated, impulses are controlled, and daily tasks are managed. These differences create predictable friction with environments designed for neurotypical brains, particularly in schools and workplaces that emphasize sustained focus and traditional organizational methods.</p>
-                
-                <p>ADHD isn't about lacking attention - it's about having a different type of attention that works best with interesting, challenging, urgent, or novel activities. Many people with ADHD can hyperfocus intensely on engaging tasks while struggling to start routine or boring ones.</p>
+        <div class="characteristics-grid">
+            <div class="characteristic-card">
+                <h4><a class="jargon">Attention Regulation<span class="tooltip">The brain's ability to direct and sustain focus where you want it, when you want it</span></a> Differences</h4>
+                <p>Difficulty controlling where your focus goes, not a lack of attention. Many people with ADHD describe having "too much" attention that's hard to direct.</p>
+                <ul>
+                    <li><a class="jargon">Hyperfocus<span class="tooltip">Intense, sustained concentration on a task of interest, often to the exclusion of everything else including basic needs</span></a> on interesting activities</li>
+                    <li>Difficulty sustaining focus on routine tasks</li>
+                    <li>Easy distractibility by internal thoughts or external <a class="jargon">stimuli<span class="tooltip">Environmental inputs like sounds, lights, movements, or internal thoughts that capture attention</span></a></li>
+                    <li>Attention that shifts rapidly between topics</li>
+                </ul>
             </div>
 
-            <div class="reframe-box">
-                <h3>Reframing ADHD</h3>
-                <p>Traditional descriptions focus on what ADHD brains "can't do" compared to neurotypical expectations. A more helpful framework recognizes ADHD as an <a class="jargon">interest-based nervous system<span class="tooltip">A brain that functions optimally when tasks are interesting, challenging, urgent, or novel</span></a> rather than an importance-based one.</p>
-                
-                <p>This means your brain prioritizes what's engaging over what's important, which can create challenges in structured environments but also leads to incredible creativity, problem-solving abilities, and passion-driven achievements.</p>
+            <div class="characteristic-card">
+                <h4><a class="jargon">Executive Function<span class="tooltip">The brain's management system that handles planning, organization, time management, task initiation, and follow-through</span></a> Differences</h4>
+                <p>Challenges with the brain's "management system" - the skills that help you plan, organize, and complete tasks.</p>
+                <ul>
+                    <li>Difficulty starting tasks (<a class="jargon">initiation paralysis<span class="tooltip">Knowing what needs to be done but being unable to begin, despite wanting to</span></a>)</li>
+                    <li>Trouble with <a class="jargon">time awareness<span class="tooltip">Understanding how much time has passed, how long tasks will take, or managing schedules</span></a> and planning</li>
+                    <li><a class="jargon">Working memory<span class="tooltip">The brain's ability to hold and manipulate information temporarily while completing a task</span></a> challenges</li>
+                    <li>Organization and follow-through struggles</li>
+                </ul>
             </div>
 
-            <div class="characteristics-grid">
-                <div class="characteristic-card">
-                    <h4>Attention Regulation Differences</h4>
-                    <p>Difficulty controlling where your focus goes, not a lack of attention. Many people with ADHD describe having "too much" attention that's hard to direct.</p>
-                    <ul>
-                        <li>Hyperfocus on interesting activities</li>
-                        <li>Difficulty sustaining focus on routine tasks</li>
-                        <li>Easy distractibility by internal thoughts or external stimuli</li>
-                        <li>Attention that shifts rapidly between topics</li>
-                    </ul>
-                </div>
-
-                <div class="characteristic-card">
-                    <h4>Executive Function Differences</h4>
-                    <p>Challenges with the brain's "management system" - the skills that help you plan, organize, and complete tasks.</p>
-                    <ul>
-                        <li>Difficulty starting tasks (initiation paralysis)</li>
-                        <li>Trouble with time awareness and planning</li>
-                        <li>Working memory challenges</li>
-                        <li>Organization and follow-through struggles</li>
-                    </ul>
-                </div>
-
-                <div class="characteristic-card">
-                    <h4>Hyperactivity and Impulsivity</h4>
-                    <p>Need for movement and tendency to act quickly without fully considering consequences. This can look different in adults compared to children.</p>
-                    <ul>
-                        <li>Physical restlessness or fidgeting</li>
-                        <li>Interrupting or blurting things out</li>
-                        <li>Difficulty waiting or impatience</li>
-                        <li>Quick decision-making that sometimes backfires</li>
-                    </ul>
-                </div>
-
-                <div class="characteristic-card">
-                    <h4>Emotional Intensity</h4>
-                    <p>Strong emotional responses and sensitivity to rejection or criticism. Emotions often feel more intense and change more quickly than for neurotypical people.</p>
-                    <ul>
-                        <li>Rejection Sensitive Dysphoria (RSD)</li>
-                        <li>Emotional ups and downs</li>
-                        <li>Difficulty regulating emotional responses</li>
-                        <li>High empathy and emotional attunement to others</li>
-                    </ul>
-                </div>
+            <div class="characteristic-card">
+                <h4>Hyperactivity and Impulsivity</h4>
+                <p>Need for movement and tendency to act quickly without fully considering consequences. This can look different in adults compared to children.</p>
+                <ul>
+                    <li>Physical restlessness or <a class="jargon">fidgeting<span class="tooltip">Small repetitive movements that help regulate attention and energy levels</span></a></li>
+                    <li>Interrupting or blurting things out</li>
+                    <li>Difficulty waiting or impatience</li>
+                    <li>Quick decision-making that sometimes backfires</li>
+                </ul>
             </div>
 
-            <div class="struggles-section">
-                <h3>ADHD-Related Struggles</h3>
-                <p style="margin-bottom: 1.5rem; color: #666;">Click on any struggle to learn what it feels like, why it happens, and what can help.</p>
-                
-                <div class="struggles-grid">
-                    <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/task-initiation-paralysis.html" class="struggle-link">
-                        <div class="struggle-title">Task Initiation Paralysis</div>
-                        <div class="struggle-description">Knowing what to do but being unable to start</div>
-                    </a>
+            <div class="characteristic-card">
+                <h4>Emotional Intensity</h4>
+                <p>Strong emotional responses and sensitivity to rejection or criticism. Emotions often feel more intense and change more quickly than for <a class="jargon">neurotypical<span class="tooltip">People whose brains develop and function in ways that align with societal expectations and norms</span></a> people.</p>
+                <ul>
+                    <li><a class="jargon">Rejection Sensitive Dysphoria<span class="tooltip">Intense emotional pain triggered by perceived rejection, criticism, or failure to meet expectations</span></a> (RSD)</li>
+                    <li>Emotional ups and downs</li>
+                    <li>Difficulty regulating emotional responses</li>
+                    <li>High <a class="jargon">empathy<span class="tooltip">The ability to understand and share the feelings of others</span></a> and emotional attunement to others</li>
+                </ul>
+            </div>
+        </div>
 
-                    <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/attention-regulation.html" class="struggle-link">
-                        <div class="struggle-title">Attention Regulation</div>
-                        <div class="struggle-description">Difficulty controlling where your focus goes</div>
-                    </a>
+        <div class="struggles-section">
+            <h3>ADHD-Related Struggles</h3>
+            <p style="margin-bottom: 1.5rem; color: #666;">Click on any struggle to learn what it feels like, why it happens, and what can help.</p>
+            
+            <div class="struggles-grid">
+                <a href="{{ '/struggles/task-initiation-paralysis.html' | relative_url }}" class="struggle-link">
+                    <div class="struggle-title">Task Initiation Paralysis</div>
+                    <div class="struggle-description">Knowing what to do but being unable to start</div>
+                </a>
 
-                    <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/follow-through-completion-struggles.html" class="struggle-link">
-                        <div class="struggle-title">Follow-Through Completion Struggles</div>
-                        <div class="struggle-description">Starting projects but not finishing them</div>
-                    </a>
+                <a href="{{ '/struggles/attention-regulation.html' | relative_url }}" class="struggle-link">
+                    <div class="struggle-title">Attention Regulation</div>
+                    <div class="struggle-description">Difficulty controlling where your focus goes</div>
+                </a>
 
-                    <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/organization-and-planning-challenges.html" class="struggle-link">
-                        <div class="struggle-title">Organization and Planning Challenges</div>
-                        <div class="struggle-description">Difficulty structuring your environment and activities</div>
-                    </a>
+                <a href="{{ '/struggles/follow-through-completion-struggles.html' | relative_url }}" class="struggle-link">
+                    <div class="struggle-title">Follow-Through Completion Struggles</div>
+                    <div class="struggle-description">Starting projects but not finishing them</div>
+                </a>
 
-                    <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/time-blindness.html" class="struggle-link">
-                        <div class="struggle-title">Time Blindness</div>
-                        <div class="struggle-description">Losing track of time or misjudging duration</div>
-                    </a>
+                <a href="{{ '/struggles/organization-and-planning-challenges.html' | relative_url }}" class="struggle-link">
+                    <div class="struggle-title">Organization and Planning Challenges</div>
+                    <div class="struggle-description">Difficulty structuring your environment and activities</div>
+                </a>
 
-                    <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/working-memory-difficulties.html" class="struggle-link">
-                        <div class="struggle-title">Working Memory Difficulties</div>
-                        <div class="struggle-description">Forgetting instructions or losing track of multi-step tasks</div>
-                    </a>
+                <a href="{{ '/struggles/time-blindness.html' | relative_url }}" class="struggle-link">
+                    <div class="struggle-title">Time Blindness</div>
+                    <div class="struggle-description">Losing track of time or misjudging duration</div>
+                </a>
 
-                    <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/physical-restlessness.html" class="struggle-link">
-                        <div class="struggle-title">Physical Restlessness</div>
-                        <div class="struggle-description">Need to move your body or fidget frequently</div>
-                    </a>
+                <a href="{{ '/struggles/working-memory-difficulties.html' | relative_url }}" class="struggle-link">
+                    <div class="struggle-title">Working Memory Difficulties</div>
+                    <div class="struggle-description">Forgetting instructions or losing track of multi-step tasks</div>
+                </a>
 
-                    <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/interrupting-and-blurting.html" class="struggle-link">
-                        <div class="struggle-title">Interrupting and Blurting</div>
-                        <div class="struggle-description">Speaking before others finish or saying things impulsively</div>
-                    </a>
+                <a href="{{ '/struggles/physical-restlessness.html' | relative_url }}" class="struggle-link">
+                    <div class="struggle-title">Physical Restlessness</div>
+                    <div class="struggle-description">Need to move your body or fidget frequently</div>
+                </a>
 
-                    <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/impatience-with-waiting.html" class="struggle-link">
-                        <div class="struggle-title">Impatience with Waiting</div>
-                        <div class="struggle-description">Difficulty tolerating delays or slow processes</div>
-                    </a>
+                <a href="{{ '/struggles/interrupting-and-blurting.html' | relative_url }}" class="struggle-link">
+                    <div class="struggle-title">Interrupting and Blurting</div>
+                    <div class="struggle-description">Speaking before others finish or saying things impulsively</div>
+                </a>
 
-                    <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/impulsive-decision-making.html" class="struggle-link">
-                        <div class="struggle-title">Impulsive Decision-Making</div>
-                        <div class="struggle-description">Making quick choices without considering consequences</div>
-                    </a>
+                <a href="{{ '/struggles/impatience-with-waiting.html' | relative_url }}" class="struggle-link">
+                    <div class="struggle-title">Impatience with Waiting</div>
+                    <div class="struggle-description">Difficulty tolerating delays or slow processes</div>
+                </a>
 
-                    <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/rejection-sensitive-dysphoria.html" class="struggle-link">
-                        <div class="struggle-title">Rejection Sensitive Dysphoria</div>
-                        <div class="struggle-description">Intense emotional response to perceived rejection</div>
-                    </a>
+                <a href="{{ '/struggles/impulsive-decision-making.html' | relative_url }}" class="struggle-link">
+                    <div class="struggle-title">Impulsive Decision-Making</div>
+                    <div class="struggle-description">Making quick choices without considering consequences</div>
+                </a>
 
-                    <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/emotional-dysregulation.html" class="struggle-link">
-                        <div class="struggle-title">Emotional Dysregulation</div>
-                        <div class="struggle-description">Difficulty managing emotional intensity</div>
-                    </a>
+                <a href="{{ '/struggles/rejection-sensitive-dysphoria.html' | relative_url }}" class="struggle-link">
+                    <div class="struggle-title">Rejection Sensitive Dysphoria</div>
+                    <div class="struggle-description">Intense emotional response to perceived rejection</div>
+                </a>
 
-                    <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/hyperfocus-episodes.html" class="struggle-link">
-                        <div class="struggle-title">Hyperfocus Episodes</div>
-                        <div class="struggle-description">Becoming so absorbed you lose awareness of time and needs</div>
-                    </a>
+                <a href="{{ '/struggles/emotional-dysregulation.html' | relative_url }}" class="struggle-link">
+                    <div class="struggle-title">Emotional Dysregulation</div>
+                    <div class="struggle-description">Difficulty managing emotional intensity</div>
+                </a>
 
-                    <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/sleep-rhythm-disruption.html" class="struggle-link">
-                        <div class="struggle-title">Sleep Rhythm Disruption</div>
-                        <div class="struggle-description">Difficulty with conventional sleep schedules</div>
-                    </a>
+                <a href="{{ '/struggles/hyperfocus-episodes.html' | relative_url }}" class="struggle-link">
+                    <div class="struggle-title">Hyperfocus Episodes</div>
+                    <div class="struggle-description">Becoming so absorbed you lose awareness of time and needs</div>
+                </a>
 
-                    <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/object-permanence-issues.html" class="struggle-link">
-                        <div class="struggle-title">Object Permanence Issues</div>
-                        <div class="struggle-description">Forgetting about things when they're not visible</div>
-                    </a>
+                <a href="{{ '/struggles/sleep-rhythm-disruption.html' | relative_url }}" class="struggle-link">
+                    <div class="struggle-title">Sleep Rhythm Disruption</div>
+                    <div class="struggle-description">Difficulty with conventional sleep schedules</div>
+                </a>
 
-                    <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/interest-based-nervous-system.html" class="struggle-link">
-                        <div class="struggle-title">Interest-Based Nervous System</div>
-                        <div class="struggle-description">Functioning best with interesting, challenging, or novel activities</div>
-                    </a>
-                </div>
+                <a href="{{ '/struggles/object-permanence-issues.html' | relative_url }}" class="struggle-link">
+                    <div class="struggle-title">Object Permanence Issues</div>
+                    <div class="struggle-description">Forgetting about things when they're not visible</div>
+                </a>
 
-                <div class="cross-cutting-section">
-                    <h4>Related Struggles from Other Conditions</h4>
-                    <p style="font-size: 0.9rem; color: #666; margin-bottom: 1rem;">People with ADHD often experience these struggles from other neurodivergent conditions:</p>
-                    <div class="cross-cutting-links">
-                        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/sensory-processing-challenges.html" class="cross-cutting-link">Sensory Processing Challenges (Autism)</a>
-                        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/routine-disruption-anxiety.html" class="cross-cutting-link">Routine Disruption Anxiety (Autism)</a>
-                        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/special-interests-consuming-focus.html" class="cross-cutting-link">Special Interests (Autism)</a>
-                        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/mixed-states.html" class="cross-cutting-link">Mixed States (Bipolar)</a>
-                        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/racing-thoughts-flight-of-ideas.html" class="cross-cutting-link">Racing Thoughts (Bipolar)</a>
-                        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/emotional-flashbacks.html" class="cross-cutting-link">Emotional Flashbacks (BPD)</a>
-                        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/identity-disturbance.html" class="cross-cutting-link">Identity Disturbance (BPD)</a>
-                        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/intrusive-thoughts-images-urges.html" class="cross-cutting-link">Intrusive Thoughts (OCD)</a>
-                    </div>
-                </div>
+                <a href="{{ '/struggles/interest-based-nervous-system.html' | relative_url }}" class="struggle-link">
+                    <div class="struggle-title">Interest-Based Nervous System</div>
+                    <div class="struggle-description">Functioning best with interesting, challenging, or novel activities</div>
+                </a>
             </div>
 
-            <div class="co-occurring">
-                <h3>Common Co-Occurring Conditions</h3>
-                <p>ADHD frequently occurs alongside other neurodivergent conditions and mental health differences. Understanding these connections can help you get comprehensive support.</p>
-                
-                <p><strong>Frequently co-occurring:</strong> Autism (overlap in executive function and sensory differences), anxiety (often from years of struggling in neurotypical environments), depression (particularly from <a class="jargon">RSD<span class="tooltip">Rejection Sensitive Dysphoria - intense emotional pain from perceived rejection or criticism</span></a> and chronic overwhelm), learning differences (dyslexia, dyscalculia), and sleep disorders.</p>
-                
-                <p><strong>Individual variation:</strong> ADHD presents differently across gender, age, and life circumstances. Many people, particularly women and girls, are diagnosed later in life after years of <a class="jargon">masking<span class="tooltip">Camouflaging natural behaviors to appear more neurotypical</span></a> their differences.</p>
-            </div>
-
-
-
-            <div style="background: #fff5f5; padding: 1.5rem; border-radius: 15px; margin-top: 2rem; border-left: 4px solid #fd79a8;">
-                <p><strong>Related Resources:</strong></p>
-                <div style="margin-top: 1rem; display: flex; flex-direction: column; gap: 0.5rem;">
-                    <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/glossary/executive-function.html" style="color: #fd79a8; text-decoration: none;">Executive Function →</a>
-                    <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/glossary/attention-focus.html" style="color: #fd79a8; text-decoration: none;">Attention and Focus →</a>
-                    <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/glossary/emotional-regulation.html" style="color: #fd79a8; text-decoration: none;">Emotional Regulation →</a>
+            <div class="cross-cutting-section">
+                <h4>Related Struggles from Other Conditions</h4>
+                <p style="font-size: 0.9rem; color: #666; margin-bottom: 1rem;">People with ADHD often experience these struggles from other <a class="jargon">neurodivergent<span class="tooltip">Brain differences that create distinct patterns of thinking, processing, and behavior</span></a> conditions:</p>
+                <div class="cross-cutting-links">
+                    <a href="{{ '/struggles/sensory-processing-challenges.html' | relative_url }}" class="cross-cutting-link">Sensory Processing Challenges (Autism)</a>
+                    <a href="{{ '/struggles/routine-disruption-anxiety.html' | relative_url }}" class="cross-cutting-link">Routine Disruption Anxiety (Autism)</a>
+                    <a href="{{ '/struggles/special-interests-consuming-focus.html' | relative_url }}" class="cross-cutting-link">Special Interests (Autism)</a>
+                    <a href="{{ '/struggles/mixed-states.html' | relative_url }}" class="cross-cutting-link">Mixed States (Bipolar)</a>
+                    <a href="{{ '/struggles/racing-thoughts-flight-of-ideas.html' | relative_url }}" class="cross-cutting-link">Racing Thoughts (Bipolar)</a>
+                    <a href="{{ '/struggles/emotional-flashbacks.html' | relative_url }}" class="cross-cutting-link">Emotional Flashbacks (BPD)</a>
+                    <a href="{{ '/struggles/identity-disturbance.html' | relative_url }}" class="cross-cutting-link">Identity Disturbance (BPD)</a>
+                    <a href="{{ '/struggles/intrusive-thoughts-images-urges.html' | relative_url }}" class="cross-cutting-link">Intrusive Thoughts (OCD)</a>
                 </div>
             </div>
         </div>
+
+        <div class="co-occurring">
+            <h3>Common Co-Occurring Conditions</h3>
+            <p>ADHD frequently occurs alongside other <a class="jargon">neurodivergent<span class="tooltip">Brain differences that create distinct patterns of thinking, processing, and behavior</span></a> conditions and mental health differences. Understanding these connections can help you get comprehensive support.</p>
+            
+            <p><strong>Frequently co-occurring:</strong> Autism (overlap in <a class="jargon">executive function<span class="tooltip">The brain's management system that handles planning, organization, time management, task initiation, and follow-through</span></a> and <a class="jargon">sensory differences<span class="tooltip">Variations in how the brain processes sensory information like sounds, textures, lights, and movement</span></a>), anxiety (often from years of struggling in <a class="jargon">neurotypical<span class="tooltip">People whose brains develop and function in ways that align with societal expectations and norms</span></a> environments), depression (particularly from <a class="jargon">RSD<span class="tooltip">Rejection Sensitive Dysphoria - intense emotional pain triggered by perceived rejection, criticism, or failure to meet expectations</span></a> and chronic overwhelm), learning differences (dyslexia, dyscalculia), and sleep disorders.</p>
+            
+            <p><strong>Individual variation:</strong> ADHD presents differently across gender, age, and life circumstances. Many people, particularly women and girls, are diagnosed later in life after years of <a class="jargon">masking<span class="tooltip">Camouflaging natural neurodivergent behaviors and responses to appear more neurotypical</span></a> their differences.</p>
+        </div>
+
+        <div style="background: #fff5f5; padding: 1.5rem; border-radius: 15px; margin-top: 2rem; border-left: 4px solid #fd79a8;">
+            <p><strong>Related Resources:</strong></p>
+            <div style="margin-top: 1rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                <a href="{{ '/glossary/executive-function.html' | relative_url }}" style="color: #fd79a8; text-decoration: none;">Executive Function →</a>
+                <a href="{{ '/glossary/attention-focus.html' | relative_url }}" style="color: #fd79a8; text-decoration: none;">Attention and Focus →</a>
+                <a href="{{ '/glossary/emotional-regulation.html' | relative_url }}" style="color: #fd79a8; text-decoration: none;">Emotional Regulation →</a>
+            </div>
+        </div>
     </div>
-</body>
-</html>
+</div>
