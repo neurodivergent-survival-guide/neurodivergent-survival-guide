@@ -1,8 +1,8 @@
 # Basic Jekyll configuration
-title: "Neurodivergent Survival Guide"
-description: "Navigate daily friction points with understanding and practical tools"
-url: "https://neurodivergent-survival-guide.github.io"
-baseurl: "/neurodivergent-survival-guide"
+title: Neurodivergent Survival Guide
+description: Navigate daily friction points with understanding and practical tools.
+url: https://neurodivergent-survival-guide.github.io
+baseurl: /neurodivergent-survival-guide
 
 # Build settings
 markdown: kramdown
