@@ -6,7 +6,6 @@ layout: default
 
 {% assign struggles = site.data.struggles | sort: 'name' %}
 {% assign current_index = -1 %}
-{% for struggle in struggles %}
   {% if struggle.slug == page.slug %}
     {% assign current_index = forloop.index0 %}
     {% break %}
