@@ -119,7 +119,7 @@ slug: "adhd"
 
         .characteristics-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 1.5rem;
             margin: 2rem 0;
         }
@@ -176,7 +176,7 @@ slug: "adhd"
 
         .struggles-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 1rem;
         }
 
@@ -189,8 +189,6 @@ slug: "adhd"
             transition: all 0.3s ease;
             border-left: 3px solid #fd79a8;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-            display: block;
-            min-height: 80px;
         }
 
         .struggle-link:hover {
@@ -204,7 +202,6 @@ slug: "adhd"
             font-weight: 600;
             margin-bottom: 0.5rem;
             font-size: 0.95rem;
-            line-height: 1.3;
         }
 
         .struggle-description {
@@ -236,14 +233,11 @@ slug: "adhd"
         .cross-cutting-link {
             background: #74b9ff;
             color: white;
-            padding: 0.4rem 0.9rem;
+            padding: 0.3rem 0.8rem;
             border-radius: 20px;
             font-size: 0.85rem;
             text-decoration: none;
             transition: all 0.3s ease;
-            display: inline-block;
-            min-height: 32px;
-            line-height: 1.2;
         }
 
         .cross-cutting-link:hover {
@@ -397,113 +391,30 @@ slug: "adhd"
             cursor: not-allowed;
         }
 
-        /* Enhanced Mobile Responsiveness */
         @media (max-width: 768px) {
-            .header {
-                padding: 1rem 1.5rem;
-                text-align: center;
-            }
-
-            .header h1 {
-                font-size: 2rem;
-            }
-
-            .header p {
-                font-size: 1rem;
-            }
-
-            .breadcrumb {
-                padding: 0.6rem 1.5rem;
-                font-size: 0.85rem;
-            }
-
             .container {
                 padding: 1rem;
             }
-
+            
             .content-card {
                 padding: 1.5rem;
-                border-radius: 15px;
-            }
-
-            .condition-intro {
-                padding: 1.5rem;
-                margin: 1.5rem 0;
-            }
-
-            .condition-intro h2 {
-                font-size: 1.4rem;
-            }
-
-            .reframe-box {
-                padding: 1.2rem;
-                margin: 1.5rem 0;
-            }
-
-            .reframe-box h3 {
-                font-size: 1.2rem;
             }
 
             .characteristics-grid {
                 grid-template-columns: 1fr;
-                gap: 1rem;
-            }
-
-            .characteristic-card {
-                padding: 1.5rem;
-            }
-
-            .characteristic-card h4 {
-                font-size: 1.1rem;
-            }
-
-            .struggles-section {
-                padding: 1.5rem;
-                margin: 1.5rem 0;
-            }
-
-            .struggles-section h3 {
-                font-size: 1.3rem;
             }
 
             .struggles-grid {
                 grid-template-columns: 1fr;
-                gap: 0.8rem;
-            }
-
-            .struggle-link {
-                padding: 1rem;
-                min-height: auto;
-            }
-
-            .cross-cutting-section {
-                padding: 1.2rem;
             }
 
             .cross-cutting-links {
                 flex-direction: column;
-                gap: 0.3rem;
-            }
-
-            .cross-cutting-link {
-                text-align: center;
-                padding: 0.6rem 1rem;
-            }
-
-            .co-occurring {
-                padding: 1.2rem;
             }
 
             .nav-links {
                 flex-direction: column;
                 gap: 1rem;
-                padding: 0 1rem;
-            }
-
-            .nav-link {
-                width: 100%;
-                text-align: center;
-                padding: 1rem;
             }
 
             .tooltip {
@@ -512,85 +423,8 @@ slug: "adhd"
         }
 
         @media (max-width: 480px) {
-            .header {
-                padding: 1rem;
-            }
-
-            .header h1 {
-                font-size: 1.8rem;
-            }
-
-            .breadcrumb {
-                padding: 0.5rem 1rem;
-                overflow-x: auto;
-                white-space: nowrap;
-            }
-
-            .container {
-                padding: 0.5rem;
-            }
-
-            .content-card {
-                padding: 1.2rem;
-                margin-bottom: 1rem;
-            }
-
-            .condition-intro {
-                padding: 1rem;
-            }
-
-            .reframe-box {
-                padding: 1rem;
-            }
-
-            .characteristic-card {
-                padding: 1.2rem;
-            }
-
-            .struggles-section {
-                padding: 1rem;
-            }
-
-            .cross-cutting-section {
-                padding: 1rem;
-            }
-
-            .co-occurring {
-                padding: 1rem;
-            }
-
             .tooltip {
                 width: 250px;
-                font-size: 0.85rem;
-                padding: 10px 12px;
-            }
-        }
-
-        /* Touch-friendly improvements */
-        @media (hover: none) and (pointer: coarse) {
-            .jargon {
-                padding: 0.2rem 0;
-            }
-
-            .struggle-link {
-                min-height: 60px;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-            }
-
-            .cross-cutting-link {
-                min-height: 44px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-
-            .nav-link {
-                min-height: 48px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
             }
         }
     </style>
@@ -615,7 +449,7 @@ slug: "adhd"
                 <h2>What is ADHD?</h2>
                 <p>ADHD (Attention-Deficit/Hyperactivity Disorder) involves brain differences in how attention is regulated, impulses are controlled, and daily tasks are managed. These differences create predictable friction with environments designed for neurotypical brains, particularly in schools and workplaces that emphasize sustained focus and traditional organizational methods.</p>
                 
-                <p>ADHD isn't about lacking attention - it's about having a different type of attention that works best with interesting, challenging, urgent, or novel activities. Many people with ADHD can <a class="jargon">hyperfocus<span class="tooltip">Intense, prolonged focus on engaging activities that becomes difficult to break away from</span></a> intensely on engaging tasks while struggling to start routine or boring ones.</p>
+                <p>ADHD isn't about lacking attention - it's about having a different type of attention that works best with interesting, challenging, urgent, or novel activities. Many people with ADHD can hyperfocus intensely on engaging tasks while struggling to start routine or boring ones.</p>
             </div>
 
             <div class="reframe-box">
@@ -630,9 +464,9 @@ slug: "adhd"
                     <h4>Attention Regulation Differences</h4>
                     <p>Difficulty controlling where your focus goes, not a lack of attention. Many people with ADHD describe having "too much" attention that's hard to direct.</p>
                     <ul>
-                        <li><a class="jargon">Hyperfocus<span class="tooltip">Intense, prolonged focus on engaging activities that becomes difficult to break away from</span></a> on interesting activities</li>
+                        <li>Hyperfocus on interesting activities</li>
                         <li>Difficulty sustaining focus on routine tasks</li>
-                        <li>Easy distractibility by internal thoughts or external <a class="jargon">stimuli<span class="tooltip">Environmental inputs like sounds, sights, or movements that can capture attention</span></a></li>
+                        <li>Easy distractibility by internal thoughts or external stimuli</li>
                         <li>Attention that shifts rapidly between topics</li>
                     </ul>
                 </div>
@@ -641,9 +475,9 @@ slug: "adhd"
                     <h4>Executive Function Differences</h4>
                     <p>Challenges with the brain's "management system" - the skills that help you plan, organize, and complete tasks.</p>
                     <ul>
-                        <li>Difficulty starting tasks (<a class="jargon">initiation paralysis<span class="tooltip">Knowing what to do but being unable to begin, often due to low dopamine or overwhelm</span></a>)</li>
-                        <li>Trouble with <a class="jargon">time awareness<span class="tooltip">Understanding how much time has passed or accurately estimating how long tasks will take</span></a> and planning</li>
-                        <li><a class="jargon">Working memory<span class="tooltip">The mental workspace that temporarily holds and manipulates information during thinking tasks</span></a> challenges</li>
+                        <li>Difficulty starting tasks (initiation paralysis)</li>
+                        <li>Trouble with time awareness and planning</li>
+                        <li>Working memory challenges</li>
                         <li>Organization and follow-through struggles</li>
                     </ul>
                 </div>
@@ -652,7 +486,7 @@ slug: "adhd"
                     <h4>Hyperactivity and Impulsivity</h4>
                     <p>Need for movement and tendency to act quickly without fully considering consequences. This can look different in adults compared to children.</p>
                     <ul>
-                        <li>Physical restlessness or <a class="jargon">fidgeting<span class="tooltip">Small repetitive movements that help regulate attention and energy levels</span></a></li>
+                        <li>Physical restlessness or fidgeting</li>
                         <li>Interrupting or blurting things out</li>
                         <li>Difficulty waiting or impatience</li>
                         <li>Quick decision-making that sometimes backfires</li>
@@ -663,7 +497,7 @@ slug: "adhd"
                     <h4>Emotional Intensity</h4>
                     <p>Strong emotional responses and sensitivity to rejection or criticism. Emotions often feel more intense and change more quickly than for neurotypical people.</p>
                     <ul>
-                        <li><a class="jargon">Rejection Sensitive Dysphoria<span class="tooltip">Intense emotional response to perceived rejection, criticism, or disapproval that feels overwhelming</span></a> (RSD)</li>
+                        <li>Rejection Sensitive Dysphoria (RSD)</li>
                         <li>Emotional ups and downs</li>
                         <li>Difficulty regulating emotional responses</li>
                         <li>High empathy and emotional attunement to others</li>
@@ -730,62 +564,3 @@ slug: "adhd"
                         <div class="struggle-title">Rejection Sensitive Dysphoria</div>
                         <div class="struggle-description">Intense emotional response to perceived rejection</div>
                     </a>
-
-                    <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/emotional-dysregulation.html" class="struggle-link">
-                        <div class="struggle-title">Emotional Dysregulation</div>
-                        <div class="struggle-description">Difficulty managing emotional intensity and responses</div>
-                    </a>
-                </div>
-            </div>
-
-            <div class="cross-cutting-section">
-                <h4>Cross-Cutting Struggles (shared with other conditions)</h4>
-                <div class="cross-cutting-links">
-                    <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/sensory-processing-challenges.html" class="cross-cutting-link">Sensory Processing</a>
-                    <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/sleep-disturbances.html" class="cross-cutting-link">Sleep Disturbances</a>
-                    <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/social-isolation-withdrawal.html" class="cross-cutting-link">Social Isolation</a>
-                    <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/perfectionism-paralysis.html" class="cross-cutting-link">Perfectionism</a>
-                </div>
-            </div>
-
-            <div class="co-occurring">
-                <h3>Common Co-Occurring Conditions</h3>
-                <p>ADHD frequently occurs alongside other neurodivergent conditions and mental health challenges. Understanding these connections can help with comprehensive support approaches.</p>
-                <p><strong>Common combinations:</strong> Autism, anxiety disorders, depression, learning differences, sensory processing differences, sleep disorders</p>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Add click listeners to all learn-more elements if they exist
-            const learnMoreElements = document.querySelectorAll('.learn-more');
-            
-            learnMoreElements.forEach(function(element) {
-                element.addEventListener('click', function(e) {
-                    // Don't toggle if clicking on jargon inside learn-more
-                    if (e.target.classList.contains('jargon')) {
-                        return;
-                    }
-                    
-                    this.classList.toggle('expanded');
-                    const arrow = this.querySelector('h3');
-                    if (this.classList.contains('expanded')) {
-                        arrow.innerHTML = arrow.innerHTML.replace('↓', '↑');
-                    } else {
-                        arrow.innerHTML = arrow.innerHTML.replace('↑', '↓');
-                    }
-                });
-            });
-
-            // Handle jargon clicks to prevent event bubbling
-            const jargonTerms = document.querySelectorAll('.jargon');
-            jargonTerms.forEach(function(jargon) {
-                jargon.addEventListener('click', function(e) {
-                    e.stopPropagation(); // Prevent bubbling to learn-more handler
-                });
-            });
-        });
-    </script>
-</body>
-</html>
