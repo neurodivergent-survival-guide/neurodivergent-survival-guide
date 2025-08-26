@@ -1,38 +1,37 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <!-- head content -->
-</head>
-<body>
-  {{ content }}
-  
-  <!-- Navigation Banner -->
-  {% assign conditions = site.data.conditions | sort: 'name' %}
-  {% for condition in conditions %}
-    {% if condition.slug == page.slug %}
-      {% assign current_index = forloop.index0 %}
-      {% break %}
+---
+layout: default
+---
+
+{{ content }}
+
+{% assign conditions = site.data.conditions | sort: 'name' %}
+{% assign current_index = -1 %}
+{% for condition in conditions %}
+  {% if condition.slug == page.slug %}
+    {% assign current_index = forloop.index0 %}
+    {% break %}
+  {% endif %}
+{% endfor %}
+
+<div class="navigation-banner">
+  <div class="nav-links">
+    {% if current_index > 0 %}
+      {% assign prev_index = current_index | minus: 1 %}
+      {% assign prev_condition = conditions[prev_index] %}
+      <a href="/conditions/{{ prev_condition.slug }}.html">← Previous: {{ prev_condition.name }}</a>
+    {% else %}
+      <span class="nav-link disabled">← Previous Condition</span>
     {% endif %}
-  {% endfor %}
-  
-  <div class="navigation-banner">
-    <div class="nav-links">
-      {% if current_index > 0 %}
-        {% assign prev_condition = conditions[current_index | minus: 1] %}
-        <a href="/conditions/{{ prev_condition.slug }}.html">← Previous: {{ prev_condition.name }}</a>
-      {% else %}
-        <span class="nav-link disabled">← Previous Condition</span>
-      {% endif %}
-      
-      <span>{{ page.title }} ({{ current_index | plus: 1 }} of {{ conditions.size }} conditions)</span>
-      
-      {% if current_index < conditions.size | minus: 1 %}
-        {% assign next_condition = conditions[current_index | plus: 1] %}
-        <a href="/conditions/{{ next_condition.slug }}.html">Next: {{ next_condition.name }} →</a>
-      {% else %}
-        <span class="nav-link disabled">Next Condition →</span>
-      {% endif %}
-    </div>
+    
+    {% assign position = current_index | plus: 1 %}
+    <span>{{ page.title }} ({{ position }} of {{ conditions.size }} conditions)</span>
+    
+    {% assign next_index = current_index | plus: 1 %}
+    {% if next_index < conditions.size %}
+      {% assign next_condition = conditions[next_index] %}
+      <a href="/conditions/{{ next_condition.slug }}.html">Next: {{ next_condition.name }} →</a>
+    {% else %}
+      <span class="nav-link disabled">Next Condition →</span>
+    {% endif %}
   </div>
-</body>
-</html>
+</div>
