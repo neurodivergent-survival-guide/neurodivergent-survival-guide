@@ -1,9 +1,27 @@
 ---
 layout: default
-title: "Understanding Conditions"
+title: "The Neurodivergent Survival Guide"
 ---
-<!-- conditions/index.html -->
+<!-- index.html -->
 <style>
+    :root {
+        --aurora-start: #1e3c72;
+        --aurora-mid: #2a5298;
+        --aurora-end: #764ba2;
+        --rainbow-1: #ff6b6b;
+        --rainbow-2: #feca57;
+        --rainbow-3: #48dbfb;
+        --rainbow-4: #ff9ff3;
+        --rainbow-5: #54a0ff;
+        --rainbow-6: #5f27cd;
+        --text-primary: #333;
+        --text-secondary: #555;
+        --text-light: #666;
+        --card-background: rgba(255, 255, 255, 0.95);
+        --glass-background: rgba(255, 255, 255, 0.1);
+        --glass-border: rgba(255, 255, 255, 0.2);
+    }
+
     * {
         margin: 0;
         padding: 0;
@@ -13,52 +31,149 @@ title: "Understanding Conditions"
     body {
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         font-weight: 500;
-        background: linear-gradient(135deg, #6b7280 0%, #4b5563 100%);
-        color: #333;
+        background: linear-gradient(135deg, var(--aurora-start) 0%, var(--aurora-mid) 50%, var(--aurora-end) 100%);
+        background-size: 400% 400%;
+        animation: auroraShift 20s ease infinite;
+        color: var(--text-primary);
         min-height: 100vh;
         line-height: 1.7;
+        position: relative;
+        overflow-x: hidden;
     }
 
-    .header {
-        background: rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(10px);
-        padding: 1.5rem 2rem;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    @keyframes auroraShift {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
     }
 
-    .header h1 {
+    body::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: 
+            radial-gradient(circle at 20% 80%, var(--rainbow-1) 0%, transparent 50%),
+            radial-gradient(circle at 80% 20%, var(--rainbow-2) 0%, transparent 50%),
+            radial-gradient(circle at 40% 40%, var(--rainbow-3) 0%, transparent 50%);
+        opacity: 0.1;
+        z-index: -2;
+        animation: floatColors 30s ease-in-out infinite;
+    }
+
+    @keyframes floatColors {
+        0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.1; }
+        50% { transform: translateY(-20px) rotate(5deg); opacity: 0.15; }
+    }
+
+    body::after {
+        content: '∞ ∞ ∞ ∞ ∞ ∞ ∞ ∞ ∞ ∞ ∞ ∞ ∞ ∞ ∞ ∞ ∞ ∞ ∞ ∞ ∞ ∞ ∞ ∞ ∞ ∞ ∞ ∞ ∞ ∞';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 200%;
+        height: 200%;
+        font-size: 2rem;
+        color: rgba(255, 255, 255, 0.03);
+        z-index: -1;
+        transform: rotate(-15deg);
+        line-height: 4rem;
+        pointer-events: none;
+        animation: infinityFloat 40s linear infinite;
+    }
+
+    @keyframes infinityFloat {
+        0% { transform: rotate(-15deg) translateX(0); }
+        100% { transform: rotate(-15deg) translateX(-50%); }
+    }
+
+    .hero {
+        background: var(--glass-background);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        padding: 3rem 2rem;
+        text-align: center;
+        border-bottom: 1px solid var(--glass-border);
+        position: relative;
+    }
+
+    .hero::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: linear-gradient(90deg, 
+            var(--rainbow-1), var(--rainbow-2), var(--rainbow-3), 
+            var(--rainbow-4), var(--rainbow-5), var(--rainbow-6), var(--rainbow-1));
+        background-size: 300% 100%;
+        animation: rainbowShift 8s ease infinite;
+    }
+
+    @keyframes rainbowShift {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+
+    .hero h1 {
         color: white;
         font-size: 2.5rem;
         font-weight: 300;
-        margin-bottom: 0.5rem;
+        margin-bottom: 1rem;
+        background: linear-gradient(135deg, #fff, #e0e7ff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
     }
 
-    .header p {
+    .hero p {
         color: rgba(255, 255, 255, 0.9);
         font-size: 1.2rem;
+        max-width: 600px;
+        margin: 0 auto 2rem;
     }
 
-    .breadcrumb {
-        background: rgba(255, 255, 255, 0.05);
-        padding: 0.8rem 2rem;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        overflow-x: auto;
-        white-space: nowrap;
+    .search-section {
+        max-width: 500px;
+        margin: 2rem auto 0;
+        position: relative;
     }
 
-    .breadcrumb a {
-        color: rgba(255, 255, 255, 0.8);
-        text-decoration: none;
-        font-size: 0.9rem;
-    }
-
-    .breadcrumb a:hover {
+    .search-box {
+        width: 100%;
+        padding: 1rem 1.5rem;
+        font-size: 1.1rem;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        border-radius: 25px;
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(10px);
         color: white;
+        outline: none;
+        transition: all 0.3s ease;
     }
 
-    .breadcrumb span {
-        color: rgba(255, 255, 255, 0.6);
-        margin: 0 0.5rem;
+    .search-box::placeholder {
+        color: rgba(255, 255, 255, 0.7);
+    }
+
+    .search-box:focus {
+        border-color: var(--rainbow-3);
+        background: rgba(255, 255, 255, 0.25);
+        box-shadow: 0 0 0 3px rgba(72, 219, 251, 0.2);
+    }
+
+    .search-icon {
+        position: absolute;
+        right: 1.5rem;
+        top: 50%;
+        transform: translateY(-50%);
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 1.2rem;
+        pointer-events: none;
     }
 
     .container {
@@ -69,221 +184,292 @@ title: "Understanding Conditions"
         box-sizing: border-box;
     }
 
-    .content-card {
-        background: rgba(255, 255, 255, 0.95);
+    .intro-section {
+        background: var(--card-background);
+        backdrop-filter: blur(10px);
         border-radius: 20px;
         padding: 2.5rem;
         box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-        margin-bottom: 2rem;
-    }
-
-    .intro-section {
-        margin-bottom: 2rem;
+        margin-bottom: 3rem;
+        text-align: center;
+        border: 1px solid rgba(255, 255, 255, 0.2);
     }
 
     .intro-section h2 {
-        color: #333;
-        margin-bottom: 1rem;
-        font-size: 1.6rem;
+        color: var(--text-primary);
+        margin-bottom: 1.5rem;
+        font-size: 1.8rem;
+        font-weight: 400;
     }
 
     .intro-section p {
-        font-size: 1.05rem;
-        color: #555;
-        margin-bottom: 1rem;
+        font-size: 1.1rem;
+        color: var(--text-secondary);
+        margin-bottom: 1.5rem;
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
     }
 
-    .usage-guide {
-        background: #f8f9ff;
-        padding: 2rem;
-        border-radius: 16px;
-        border-left: 4px solid #6c5ce7;
-        margin: 2rem 0;
-    }
-
-    .usage-guide h3 {
-        color: #6c5ce7;
-        margin-bottom: 1rem;
-        font-size: 1.3rem;
-    }
-
-    .usage-list {
-        color: #555;
-        padding-left: 1.2rem;
-    }
-
-    .usage-list li {
-        margin-bottom: 0.8rem;
-        font-size: 0.95rem;
-    }
-
-    .conditions-grid {
+    .main-sections {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.5rem;
-        margin: 2rem 0;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 2rem;
+        margin: 3rem 0;
     }
 
-    @media (max-width: 900px) {
-        .conditions-grid {
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1rem;
-        }
-    }
-
-    .condition-card {
-        background: white;
-        border-radius: 12px;
-        padding: 1.8rem;
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    .section-card {
+        background: var(--card-background);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        padding: 2rem;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
         transition: all 0.3s ease;
         cursor: pointer;
         text-decoration: none;
         color: inherit;
-        min-height: 44px;
-        display: flex;
-        flex-direction: column;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        position: relative;
+        overflow: hidden;
     }
 
-    .condition-card:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    .section-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .conditions-card::before {
+        background: linear-gradient(90deg, var(--rainbow-4), var(--rainbow-1));
+    }
+
+    .struggles-card::before {
+        background: linear-gradient(90deg, var(--rainbow-3), var(--rainbow-5));
+    }
+
+    .glossary-card::before {
+        background: linear-gradient(90deg, var(--rainbow-2), var(--rainbow-6));
+    }
+
+    .section-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 45px rgba(0, 0, 0, 0.12);
         color: inherit;
         text-decoration: none;
     }
 
-    .condition-card.adhd {
-        border-top: 4px solid #d63031;
+    .section-card:hover::before {
+        opacity: 1;
     }
 
-    .condition-card.autism {
-        border-top: 4px solid #27ae60;
+    .card-icon {
+        width: 60px;
+        height: 60px;
+        border-radius: 15px;
+        margin-bottom: 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.8rem;
+        position: relative;
+        overflow: hidden;
     }
 
-    .condition-card.bipolar {
-        border-top: 4px solid #74b9ff;
+    .conditions-card .card-icon {
+        background: linear-gradient(45deg, var(--rainbow-4), var(--rainbow-1));
     }
 
-    .condition-card.bpd {
-        border-top: 4px solid #f39c12;
+    .struggles-card .card-icon {
+        background: linear-gradient(45deg, var(--rainbow-3), var(--rainbow-5));
     }
 
-    .condition-icon {
-        font-size: 3rem;
+    .glossary-card .card-icon {
+        background: linear-gradient(45deg, var(--rainbow-2), var(--rainbow-6));
+    }
+
+    .section-card h3 {
+        font-size: 1.4rem;
         margin-bottom: 1rem;
+        color: var(--text-primary);
+    }
+
+    .section-card p {
+        color: var(--text-light);
+        margin-bottom: 1rem;
+    }
+
+    .section-examples {
+        font-size: 0.9rem;
+        color: #888;
+        font-style: italic;
+    }
+
+    .how-it-works {
+        background: var(--card-background);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        padding: 2.5rem;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        margin: 3rem 0;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .how-it-works h2 {
+        color: var(--text-primary);
+        margin-bottom: 2rem;
+        font-size: 1.8rem;
+        font-weight: 400;
         text-align: center;
     }
 
-    .condition-title {
-        font-size: 1.2rem;
-        font-weight: 600;
-        color: #333;
-        margin-bottom: 0.5rem;
+    .workflow-steps {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        margin-top: 2rem;
     }
 
-    .condition-subtitle {
-        font-size: 0.85rem;
-        color: #888;
-        font-style: italic;
+    .workflow-step {
+        text-align: center;
+        padding: 1.5rem;
+        background: rgba(248, 249, 255, 0.8);
+        backdrop-filter: blur(5px);
+        border-radius: 16px;
+        border-left: 4px solid var(--rainbow-3);
+        transition: all 0.3s ease;
+    }
+
+    .workflow-step:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    }
+
+    .step-number {
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        background: linear-gradient(45deg, var(--rainbow-3), var(--rainbow-5));
+        color: white;
+        border-radius: 50%;
+        line-height: 40px;
+        font-weight: 600;
         margin-bottom: 1rem;
     }
 
-    .condition-description {
-        color: #666;
-        flex-grow: 1;
+    .workflow-step h4 {
+        color: var(--rainbow-5);
+        margin-bottom: 0.8rem;
+        font-size: 1.1rem;
+    }
+
+    .workflow-step p {
+        color: var(--text-secondary);
         font-size: 0.95rem;
-        line-height: 1.6;
+    }
+
+    .quick-access {
+        background: var(--card-background);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        padding: 2rem;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+        margin: 3rem 0;
+        text-align: center;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .quick-access h3 {
+        color: var(--text-primary);
+        margin-bottom: 1.5rem;
+        font-size: 1.4rem;
+    }
+
+    .quick-links {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+        margin-top: 1.5rem;
+    }
+
+    .quick-link {
+        background: rgba(248, 249, 255, 0.8);
+        backdrop-filter: blur(5px);
+        padding: 1rem 1.5rem;
+        border-radius: 12px;
+        text-decoration: none;
+        color: var(--rainbow-5);
+        font-weight: 500;
+        transition: all 0.3s ease;
+        border-left: 3px solid var(--rainbow-3);
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .quick-link:hover {
+        background: var(--rainbow-3);
+        color: white;
+        text-decoration: none;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(72, 219, 251, 0.3);
     }
 
     .disclaimer {
-        background: #fff2f2;
+        background: rgba(255, 242, 242, 0.9);
+        backdrop-filter: blur(10px);
         border: 1px solid #ffcccb;
         padding: 1.5rem;
-        border-radius: 12px;
+        border-radius: 16px;
         margin: 2rem 0;
     }
 
     .disclaimer h4 {
         color: #d63031;
-        margin-bottom: 1rem;
+        margin-bottom: 0.8rem;
         font-size: 1.2rem;
     }
 
     .disclaimer p {
-        color: #555;
+        color: var(--text-secondary);
         font-size: 0.95rem;
         margin-bottom: 0.8rem;
     }
 
-    .navigation-help {
-        background: #e8f5e8;
-        padding: 1.5rem;
-        border-radius: 12px;
-        margin: 2rem 0;
-        border-left: 4px solid #00b894;
+    .footer-note {
+        background: var(--card-background);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        padding: 2rem;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+        text-align: center;
+        margin: 3rem 0;
+        border-left: 4px solid #6c5ce7;
+        border: 1px solid rgba(255, 255, 255, 0.2);
     }
 
-    .navigation-help h3 {
-        color: #00b894;
+    .footer-note h3 {
+        color: #6c5ce7;
         margin-bottom: 1rem;
         font-size: 1.3rem;
     }
 
-    .navigation-help p {
-        color: #555;
+    .footer-note p {
+        color: var(--text-secondary);
         margin-bottom: 1rem;
         font-size: 0.95rem;
     }
 
-    .nav-links {
-        display: flex;
-        gap: 0.5rem;
-        flex-wrap: wrap;
-    }
-
-    .nav-link {
-        background: #00b894;
-        color: white;
-        padding: 0.5rem 1rem;
-        border-radius: 8px;
-        text-decoration: none;
-        font-size: 0.85rem;
-        transition: all 0.3s ease;
-        min-height: 44px;
-        display: flex;
-        align-items: center;
-    }
-
-    .nav-link:hover {
-        background: #00a085;
-        color: white;
-        text-decoration: none;
-        transform: translateY(-1px);
-    }
-
-    /* Focus states for accessibility */
-    .condition-card:focus,
-    .nav-link:focus,
-    .jargon:focus,
-    .breadcrumb a:focus {
-        outline: 2px solid #fff;
-        outline-offset: 2px;
-    }
-
-    /* Motion accessibility */
-    @media (prefers-reduced-motion: reduce) {
-        *, *::before, *::after {
-            animation-duration: 0.01ms !important;
-            animation-iteration-count: 1 !important;
-            transition-duration: 0.01ms !important;
-        }
-    }
-
-    /* Minimal jargon styling for index pages */
+    /* Jargon tooltip styles */
     .jargon {
         color: #e84393;
-        border-bottom: 1px dotted #e84393;
         text-decoration: none;
+        border-bottom: 1px dotted #e84393;
         position: relative;
         cursor: help;
         font-weight: 500;
@@ -294,23 +480,6 @@ title: "Understanding Conditions"
         border-bottom-color: #fd79a8;
     }
 
-    /* White jargon for gradient backgrounds */
-    .header .jargon,
-    .breadcrumb .jargon {
-        color: white;
-        border-bottom-color: rgba(255, 255, 255, 0.7);
-        background: rgba(255, 255, 255, 0.1);
-        padding: 2px 6px;
-        border-radius: 4px;
-    }
-
-    .header .jargon:hover,
-    .breadcrumb .jargon:hover {
-        background: rgba(255, 255, 255, 0.2);
-        border-bottom-color: white;
-    }
-
-    /* Auto-sizing tooltips */
     .tooltip {
         visibility: hidden;
         opacity: 0;
@@ -351,6 +520,33 @@ title: "Understanding Conditions"
         opacity: 1;
     }
 
+    /* Focus states for accessibility */
+    .section-card:focus,
+    .quick-link:focus,
+    .jargon:focus,
+    .search-box:focus {
+        outline: 2px solid #fff;
+        outline-offset: 2px;
+    }
+
+    /* Motion accessibility */
+    @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+        }
+        
+        body::before,
+        body::after {
+            animation: none !important;
+        }
+        
+        .hero::before {
+            animation: none !important;
+        }
+    }
+
     /* Mobile responsive tooltip adjustments */
     @media (max-width: 1024px) {
         .tooltip {
@@ -358,7 +554,6 @@ title: "Understanding Conditions"
         }
     }
 
-    /* Mobile-specific tooltip positioning */
     @media (max-width: 768px) {
         .tooltip {
             position: fixed !important;
@@ -374,80 +569,59 @@ title: "Understanding Conditions"
             display: none !important;
         }
 
-        .header {
-            padding: 1rem;
+        .hero {
+            padding: 2rem 1rem;
         }
 
-        .header h1 {
+        .hero h1 {
             font-size: 2rem;
         }
 
-        .header p {
-            font-size: 1rem;
-        }
-
-        .breadcrumb {
-            padding: 0.6rem 1rem;
+        .search-section {
+            max-width: 90%;
         }
 
         .container {
             padding: 1rem;
         }
-        
-        .content-card {
+
+        .intro-section,
+        .how-it-works,
+        .quick-access,
+        .footer-note {
             padding: 1.5rem;
         }
 
-        .usage-guide {
-            padding: 1.5rem;
-        }
-
-        .conditions-grid {
+        .main-sections {
             grid-template-columns: 1fr;
-            gap: 1rem;
         }
 
-        .condition-card {
-            padding: 1.5rem;
-            margin-bottom: 0.5rem;
+        .workflow-steps {
+            grid-template-columns: 1fr;
         }
 
-        .condition-icon {
-            font-size: 2.5rem;
-            margin-bottom: 0.8rem;
-        }
-
-        .condition-card {
-            padding: 1.5rem;
+        .quick-links {
+            grid-template-columns: 1fr;
         }
 
         .disclaimer {
             padding: 1.2rem;
         }
-
-        .navigation-help {
-            padding: 1.2rem;
-        }
-
-        .nav-links {
-            flex-direction: column;
-        }
     }
 
     @media (max-width: 480px) {
-        .header h1 {
+        .hero h1 {
             font-size: 1.8rem;
         }
 
-        .header p {
-            font-size: 0.9rem;
+        .hero p {
+            font-size: 1rem;
         }
 
-        .content-card {
-            padding: 1.2rem;
-        }
-
-        .condition-card {
+        .intro-section,
+        .how-it-works,
+        .quick-access,
+        .footer-note {
             padding: 1.2rem;
         }
 
@@ -459,90 +633,155 @@ title: "Understanding Conditions"
     }
 </style>
 
-<div class="header">
-    <h1>Understanding Conditions</h1>
-    <p>Learn about different ways brains can work and process the world</p>
-</div>
-
-<div class="breadcrumb">
-    <a href="{{ '/index.html' | relative_url }}">Home</a>
-    <span>></span>
-    Understanding Conditions
+<div class="hero">
+    <h1>The Neurodivergent Survival Guide</h1>
+    <p>Navigate daily friction points with understanding, practical tools, and community wisdom from those who understand the journey</p>
+    
+    <div class="search-section">
+        <input type="text" class="search-box" placeholder="Search for conditions, struggles, or terms..." id="searchBox" onkeypress="handleSearch(event)">
+        <span class="search-icon">🔍</span>
+    </div>
 </div>
 
 <div class="container">
     <main role="main" id="main-content">
-        <div class="content-card">
-            <div class="intro-section">
-                <h2 id="what-are-conditions">What Are <a class="jargon">Neurodivergent<span class="tooltip">Brain differences that create distinct patterns of thinking, processing, and behavior</span></a> Conditions?</h2>
-                <p>Some people's brains work differently from what society considers "typical." These differences aren't diseases or problems to fix—they're variations in how human brains can develop and function. These brain differences can create both challenges and strengths, with challenges usually coming from living in environments designed for different types of brains.</p>
-                
-                <p>Understanding your brain type can help you make sense of daily struggles and find better ways to navigate the world. Each condition affects people differently - two people with the same condition might have completely different daily experiences. Think of these as starting points for understanding yourself, not rigid categories that define you.</p>
+        <div class="intro-section" id="get-started">
+            <h2>Understanding Your Daily Struggles</h2>
+            <p>If you're here, daily life probably feels harder than it should. Maybe conversations drain you, simple tasks feel impossible, or you can't figure out why everyone else seems to have an instruction manual you never received.</p>
+            <p>You're not broken. Your brain just works differently in a world designed for different types of processors. The friction you experience comes from this mismatch, not from any flaw in you.</p>
+            <p>This guide helps you understand why specific situations create challenges and gives you practical tools to navigate them. It's organized around real daily experiences, not clinical categories.</p>
+        </div>
+
+        <div class="main-sections">
+            <a href="{{ '/conditions/index.html' | relative_url }}" class="section-card conditions-card">
+                <div class="card-icon">🧠</div>
+                <h3>Understand Your Brain</h3>
+                <p>Comprehensive guides to how different neurotypes create friction in daily life. Learn about the broader patterns that might explain multiple struggles you're experiencing.</p>
+                <div class="section-examples">Autism • ADHD • Bipolar • BPD</div>
+            </a>
+
+            <a href="{{ '/struggles/index.html' | relative_url }}" class="section-card struggles-card">
+                <div class="card-icon">⚡</div>
+                <h3>Navigate Daily Friction</h3>
+                <p>Practical guides for specific situations that create challenges. Each includes what it feels like, why it happens, and immediate + long-term strategies that actually work.</p>
+                <div class="section-examples">Communication • Executive function • Sensory overload • Emotional regulation</div>
+            </a>
+
+            <a href="{{ '/glossary/index.html' | relative_url }}" class="section-card glossary-card">
+                <div class="card-icon">📚</div>
+                <h3>Learn the Language</h3>
+                <p>Definitions and explanations of terms that help you understand and communicate about your experiences. Build vocabulary for self-advocacy and connection with others.</p>
+                <div class="section-examples">Masking • Stimming • Alexithymia • Echolalia</div>
+            </a>
+        </div>
+
+        <div class="quick-access">
+            <h3>Popular Starting Points</h3>
+            <p style="color: #666; margin-bottom: 1.5rem;">Jump directly to commonly accessed topics</p>
+            <div class="quick-links">
+                <a href="{{ '/struggles/communication-issues.html' | relative_url }}" class="quick-link">Communication Issues</a>
+                <a href="{{ '/conditions/autism.html' | relative_url }}" class="quick-link">Autism Guide</a>
+                <a href="{{ '/glossary/masking.html' | relative_url }}" class="quick-link">What is Masking?</a>
+                <a href="{{ '/glossary/stimming.html' | relative_url }}" class="quick-link">What is Stimming?</a>
+                <a href="{{ '/conditions/adhd.html' | relative_url }}" class="quick-link">ADHD Guide</a>
+                <a href="{{ '/struggles/executive-function.html' | relative_url }}" class="quick-link">Executive Function</a>
             </div>
+        </div>
 
-            <div class="usage-guide">
-                <h3>How to Use This Section</h3>
-                <ul class="usage-list">
-                    <li><strong>If you suspect a specific condition:</strong> Click on that condition to learn more about how it shows up in daily life</li>
-                    <li><strong>If you're exploring multiple possibilities:</strong> Read through several conditions to see what resonates with your experiences</li>
-                    <li><strong>If you're newly diagnosed:</strong> Start with your condition to understand how it might affect different areas of your life</li>
-                    <li><strong>If you're supporting someone else:</strong> Learn about their condition to better understand their daily experiences</li>
-                </ul>
-            </div>
+        <div class="how-it-works">
+            <h2>How This Guide Works</h2>
+            <div class="workflow-steps">
+                <div class="workflow-step">
+                    <div class="step-number">1</div>
+                    <h4>Start Where You Are</h4>
+                    <p>Enter through any point - a daily struggle, a condition you're exploring, or a term you heard. All paths connect to build understanding.</p>
+                </div>
 
-            <div class="disclaimer">
-                <h4>Important: This Is Not for Diagnosis</h4>
-                <p>This information helps you understand yourself better and communicate with healthcare providers. It cannot diagnose conditions—only qualified professionals can do that. Many experiences overlap between conditions, and many people have multiple conditions simultaneously.</p>
-                <p>Use this information as a starting point for conversations with doctors, therapists, or other professionals who can provide proper <a class="jargon">assessment<span class="tooltip">Professional evaluation to determine if you meet criteria for specific conditions</span></a> and support.</p>
-            </div>
+                <div class="workflow-step">
+                    <div class="step-number">2</div>
+                    <h4>Understand the Why</h4>
+                    <p>Learn what's happening in your brain and why certain situations create friction. Knowledge reduces self-blame and shame.</p>
+                </div>
 
-            <div class="conditions-grid">
-                <a href="{{ '/conditions/adhd.html' | relative_url }}" class="condition-card adhd">
-                    <div class="condition-icon">⚡</div>
-                    <div class="condition-title">ADHD</div>
-                    <div class="condition-subtitle">Attention-Deficit/Hyperactivity Disorder</div>
-                    <div class="condition-description">
-                        Brain differences in attention, impulse control, and executive function. Interest-based attention that works intensely when engaged but struggles with boring tasks.
-                    </div>
-                </a>
-
-                <a href="{{ '/conditions/autism.html' | relative_url }}" class="condition-card autism">
-                    <div class="condition-icon">🧩</div>
-                    <div class="condition-title">Autism</div>
-                    <div class="condition-subtitle">Autistic Spectrum Condition</div>
-                    <div class="condition-description">
-                        Brain differences in social communication, sensory processing, and routine needs. Creates friction with environments designed for neurotypical social and sensory expectations.
-                    </div>
-                </a>
-
-                <a href="{{ '/conditions/bipolar.html' | relative_url }}" class="condition-card bipolar">
-                    <div class="condition-icon">🔄</div>
-                    <div class="condition-title">Bipolar</div>
-                    <div class="condition-subtitle">Bipolar Disorder</div>
-                    <div class="condition-description">
-                        Significant shifts between periods of elevated mood and depression. Episodes affect energy, sleep, thinking, and behavior in ways that create friction with environments expecting emotional stability.
-                    </div>
-                </a>
-
-                <a href="{{ '/conditions/bpd.html' | relative_url }}" class="condition-card bpd">
-                    <div class="condition-icon">💝</div>
-                    <div class="condition-title">Borderline Personality Disorder</div>
-                    <div class="condition-subtitle">BPD</div>
-                    <div class="condition-description">
-                        Intense emotional responses and relationship patterns that developed as protective strategies against abandonment. Attachment system learned to expect rejection and responds strongly to prevent it.
-                    </div>
-                </a>
-            </div>
-
-            <div class="navigation-help">
-                <h3>Not Sure Where to Start?</h3>
-                <p>If you're feeling overwhelmed or don't know which condition might apply to you, try starting with specific daily struggles instead. Sometimes it's easier to identify what's difficult than to understand why.</p>
-                <div class="nav-links">
-                    <a href="{{ '/struggles/index.html' | relative_url }}" class="nav-link">Browse Daily Struggles</a>
-                    <a href="{{ '/glossary/index.html' | relative_url }}" class="nav-link">Look Up Terms</a>
-                    <a href="{{ '/index.html' | relative_url }}" class="nav-link">Back to Homepage</a>
+                <div class="workflow-step">
+                    <div class="step-number">3</div>
+                    <h4>Build Your Toolkit</h4>
+                    <p>Get immediate strategies and long-term approaches that work for your life. Explore connected topics to build fuller understanding.</p>
                 </div>
             </div>
         </div>
+
+        <div class="disclaimer">
+            <h4>Important Disclaimer</h4>
+            <p>This guide is for educational and self-understanding purposes only. It is not intended to diagnose, treat, or replace professional medical or mental health care. If you're experiencing significant distress or impairment, please consult with qualified healthcare professionals.</p>
+            <p><strong>Crisis Resources:</strong> Emergency: 911 | Suicide & Crisis Lifeline: 988 | Crisis Text Line: Text HOME to 741741</p>
+        </div>
+
+        <div class="footer-note">
+            <h3>A Living Resource</h3>
+            <p>This guide grows and improves based on community feedback and new research. It's built by and for <a class="jargon">neurodivergent<span class="tooltip">Brain differences that create distinct patterns of thinking, processing, and behavior</span></a> people who understand these struggles from lived experience.</p>
+            <p>Every person's experience is unique. Take what helps, leave what doesn't, and remember that understanding yourself is a gradual process, not a destination.</p>
+        </div>
     </main>
 </div>
+
+<script>
+    function handleSearch(event) {
+        if (event.key === 'Enter') {
+            const searchTerm = event.target.value.toLowerCase().trim();
+            
+            // Simple routing based on common search terms
+            const routes = {
+                'autism': 'conditions/autism.html',
+                'adhd': 'conditions/adhd.html',
+                'bipolar': 'conditions/bipolar.html',
+                'bpd': 'conditions/bpd.html',
+                'communication': 'struggles/communication-issues.html',
+                'masking': 'glossary/masking.html',
+                'stimming': 'glossary/stimming.html',
+                'echolalia': 'glossary/echolalia.html',
+                'alexithymia': 'glossary/alexithymia.html',
+                'sensory': 'struggles/sensory-processing.html',
+                'executive function': 'struggles/executive-function.html',
+                'interrupting': 'struggles/interrupting-and-blurting.html',
+                'waiting': 'struggles/impatience-with-waiting.html'
+            };
+            
+            // Find matching route
+            let targetPage = null;
+            for (const [term, page] of Object.entries(routes)) {
+                if (searchTerm.includes(term)) {
+                    targetPage = page;
+                    break;
+                }
+            }
+            
+            if (targetPage) {
+                window.location.href = targetPage;
+            } else if (searchTerm) {
+                // If no specific match, route to appropriate section
+                if (searchTerm.includes('condition') || searchTerm.includes('brain') || searchTerm.includes('neurotype')) {
+                    window.location.href = 'conditions/index.html';
+                } else if (searchTerm.includes('struggle') || searchTerm.includes('daily') || searchTerm.includes('friction')) {
+                    window.location.href = 'struggles/index.html';
+                } else {
+                    window.location.href = 'glossary/index.html';
+                }
+            }
+        }
+    }
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+</script>
