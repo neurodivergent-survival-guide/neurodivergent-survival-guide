@@ -284,7 +284,7 @@ title: "Autism"
         visibility: hidden;
         opacity: 0;
         position: absolute;
-        bottom: 125%;
+        bottom: calc(100% + 8px);
         left: 50%;
         transform: translateX(-50%);
         background: #333;
@@ -302,6 +302,7 @@ title: "Autism"
         white-space: normal;
         text-align: left;
         line-height: 1.5;
+        pointer-events: none;
     }
 
     .tooltip::after {
@@ -379,6 +380,21 @@ title: "Autism"
         .cross-cutting-link {
             justify-content: center;
             text-align: center;
+        }
+
+        .tooltip {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
+            max-width: none;
+            width: auto;
+            transform: none;
+            border-radius: 12px;
+        }
+        
+        .tooltip::after {
+            display: none;
         }
     }
 
