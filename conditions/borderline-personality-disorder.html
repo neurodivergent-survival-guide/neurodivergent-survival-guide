@@ -13,7 +13,7 @@ title: "Borderline Personality Disorder"
     body {
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         font-weight: 500;
-        background: linear-gradient(135deg, #FFF700 0%, #FFA500 100%);
+        background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
         color: #333;
         min-height: 100vh;
         line-height: 1.7;
@@ -27,14 +27,14 @@ title: "Borderline Personality Disorder"
     }
 
     .header h1 {
-        color: #333;
+        color: white;
         font-size: 2.5rem;
         font-weight: 300;
         margin-bottom: 0.5rem;
     }
 
     .header p {
-        color: rgba(0, 0, 0, 0.8);
+        color: rgba(255, 255, 255, 0.9);
         font-size: 1.2rem;
     }
 
@@ -47,17 +47,17 @@ title: "Borderline Personality Disorder"
     }
 
     .breadcrumb a {
-        color: rgba(0, 0, 0, 0.7);
+        color: rgba(255, 255, 255, 0.8);
         text-decoration: none;
         font-size: 0.9rem;
     }
 
     .breadcrumb a:hover {
-        color: #333;
+        color: white;
     }
 
     .breadcrumb span {
-        color: rgba(0, 0, 0, 0.5);
+        color: rgba(255, 255, 255, 0.6);
         margin: 0 0.5rem;
     }
 
@@ -78,15 +78,15 @@ title: "Borderline Personality Disorder"
     }
 
     .condition-intro {
-        background: #fffbf0;
+        background: #fef9e7;
         padding: 2rem;
         border-radius: 16px;
         margin: 2rem 0;
-        border-left: 4px solid #FFF700;
+        border-left: 4px solid #f39c12;
     }
 
     .condition-intro h2 {
-        color: #FFF700;
+        color: #f39c12;
         margin-bottom: 1rem;
         font-size: 1.6rem;
     }
@@ -98,15 +98,15 @@ title: "Borderline Personality Disorder"
     }
 
     .reframe-box {
-        background: #fffbf0;
+        background: #fef9e7;
         padding: 1.5rem;
         border-radius: 12px;
         margin: 2rem 0;
-        border-left: 4px solid #FFF700;
+        border-left: 4px solid #f39c12;
     }
 
     .reframe-box h3 {
-        color: #FFF700;
+        color: #f39c12;
         margin-bottom: 1rem;
         font-size: 1.3rem;
     }
@@ -134,11 +134,11 @@ title: "Borderline Personality Disorder"
         border-radius: 12px;
         padding: 1.8rem;
         box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-        border-top: 3px solid #FFF700;
+        border-top: 3px solid #f39c12;
     }
 
     .characteristic-card h4 {
-        color: #FFF700;
+        color: #f39c12;
         margin-bottom: 1rem;
         font-size: 1.2rem;
     }
@@ -186,7 +186,7 @@ title: "Borderline Personality Disorder"
         text-decoration: none;
         color: #333;
         transition: all 0.3s ease;
-        border-left: 3px solid #FFF700;
+        border-left: 3px solid #f39c12;
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
         min-height: 44px;
         display: flex;
@@ -272,7 +272,7 @@ title: "Borderline Personality Disorder"
     .cross-cutting-link:focus,
     .jargon:focus,
     .breadcrumb a:focus {
-        outline: 2px solid #333;
+        outline: 2px solid #fff;
         outline-offset: 2px;
     }
 
@@ -318,20 +318,20 @@ title: "Borderline Personality Disorder"
         border-bottom-color: #333;
     }
 
-    /* Black jargon for yellow gradient backgrounds (accessibility) */
+    /* White jargon for gradient backgrounds */
     .header .jargon,
     .breadcrumb .jargon {
-        color: #333;
-        border-bottom-color: rgba(0, 0, 0, 0.7);
-        background: rgba(0, 0, 0, 0.1);
+        color: white;
+        border-bottom-color: rgba(255, 255, 255, 0.7);
+        background: rgba(255, 255, 255, 0.1);
         padding: 2px 6px;
         border-radius: 4px;
     }
 
     .header .jargon:hover,
     .breadcrumb .jargon:hover {
-        background: rgba(0, 0, 0, 0.2);
-        border-bottom-color: #333;
+        background: rgba(255, 255, 255, 0.2);
+        border-bottom-color: white;
     }
 
     /* Auto-sizing tooltips */
@@ -484,7 +484,7 @@ title: "Borderline Personality Disorder"
 
 <div class="header">
     <h1>Borderline Personality Disorder</h1>
-    <p>Understanding emotional intensity and the deep human need for connection</p>
+    <p>Understanding <a class="jargon">emotional intensity<span class="tooltip">Emotions that feel overwhelming, intense, or disproportionate compared to typical responses</span></a> and the deep human need for connection</p>
 </div>
 
 <div class="breadcrumb">
@@ -578,7 +578,7 @@ title: "Borderline Personality Disorder"
 
                     <a href="{{ '/struggles/unstable-interpersonal-relationships.html' | relative_url }}" class="struggle-link">
                         <div class="struggle-title">Unstable Interpersonal Relationships</div>
-                        <div class="struggle-description">Relationships that alternate between <a class="jargon">idealization<span class="tooltip">Viewing someone as perfect, wonderful, or all-good, often early in relationships</span></a> and <a class="jargon">devaluation<span class="tooltip">Viewing someone as terrible, worthless, or all-bad, often when feeling threatened</span></a></div>
+                        <div class="struggle-description">Relationships that alternate between extremes of closeness and conflict</div>
                     </a>
 
                     <a href="{{ '/struggles/identity-disturbance.html' | relative_url }}" class="struggle-link">
@@ -593,7 +593,7 @@ title: "Borderline Personality Disorder"
 
                     <a href="{{ '/struggles/recurrent-suicidal-behaviors-self-harm.html' | relative_url }}" class="struggle-link">
                         <div class="struggle-title">Self-Harm and Suicidal Thoughts</div>
-                        <div class="struggle-description">Repeated thoughts or actions involving <a class="jargon">self-injury<span class="tooltip">Deliberately hurting yourself as a way to cope with emotional pain or distress</span></a> or <a class="jargon">suicide<span class="tooltip">Thoughts, plans, or actions related to ending your own life</span></a></div>
+                        <div class="struggle-description">Repeated thoughts or actions involving self-injury or suicide</div>
                     </a>
 
                     <a href="{{ '/struggles/affective-instability.html' | relative_url }}" class="struggle-link">
@@ -671,13 +671,13 @@ title: "Borderline Personality Disorder"
                 <p><strong>Individual variation:</strong> <a class="jargon">BPD<span class="tooltip">Borderline Personality Disorder - a condition involving intense emotions, unstable relationships, and difficulty with sense of self</span></a> presents very differently across individuals - some people have predominantly relationship struggles, others focus more on <a class="jargon">identity confusion<span class="tooltip">Uncertainty about who you are, what you believe, or what you want from life</span></a> or emotional overwhelm. Response to different therapeutic approaches varies, with <a class="jargon">DBT<span class="tooltip">Dialectical Behavior Therapy - evidence-based treatment focusing on emotion regulation and interpersonal skills</span></a>, DBT-informed therapy, and <a class="jargon">trauma-focused therapies<span class="tooltip">Therapeutic approaches designed to help process and heal from traumatic experiences</span></a> showing strong evidence for helping people build more stable, fulfilling lives.</p>
             </div>
 
-            <div style="background: #fffbf0; padding: 1.5rem; border-radius: 12px; margin: 2rem 0; border-left: 4px solid #FFF700;">
-                <h3 style="color: #FFF700; margin-bottom: 1rem; font-size: 1.3rem;">Related Resources</h3>
+            <div style="background: #fef9e7; padding: 1.5rem; border-radius: 12px; margin: 2rem 0; border-left: 4px solid #f39c12;">
+                <h3 style="color: #f39c12; margin-bottom: 1rem; font-size: 1.3rem;">Related Resources</h3>
                 <div style="display: flex; flex-direction: column; gap: 0.5rem;">
-                    <a href="{{ '/glossary/relationship-dynamics.html' | relative_url }}" style="color: #FFF700; text-decoration: none;">Relationship Dynamics →</a>
-                    <a href="{{ '/glossary/emotional-regulation.html' | relative_url }}" style="color: #FFF700; text-decoration: none;">Emotional Regulation →</a>
-                    <a href="{{ '/glossary/identity-self-concept.html' | relative_url }}" style="color: #FFF700; text-decoration: none;">Identity and Self-Concept →</a>
-                    <a href="{{ '/glossary/trauma-attachment.html' | relative_url }}" style="color: #FFF700; text-decoration: none;">Trauma and Attachment →</a>
+                    <a href="{{ '/glossary/relationship-dynamics.html' | relative_url }}" style="color: #f39c12; text-decoration: none;">Relationship Dynamics →</a>
+                    <a href="{{ '/glossary/emotional-regulation.html' | relative_url }}" style="color: #f39c12; text-decoration: none;">Emotional Regulation →</a>
+                    <a href="{{ '/glossary/identity-self-concept.html' | relative_url }}" style="color: #f39c12; text-decoration: none;">Identity and Self-Concept →</a>
+                    <a href="{{ '/glossary/trauma-attachment.html' | relative_url }}" style="color: #f39c12; text-decoration: none;">Trauma and Attachment →</a>
                 </div>
             </div>
         </div>
