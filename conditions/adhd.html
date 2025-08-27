@@ -12,6 +12,7 @@ title: "ADHD"
 
     body {
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-weight: 500;
         background: linear-gradient(135deg, #d63031 0%, #a21f23 100%);
         color: #333;
         min-height: 100vh;
@@ -79,7 +80,7 @@ title: "ADHD"
     .condition-intro {
         background: #ffeaa7;
         padding: 2rem;
-        border-radius: 15px;
+        border-radius: 16px;
         margin: 2rem 0;
         border-left: 4px solid #d63031;
     }
@@ -101,11 +102,11 @@ title: "ADHD"
         padding: 1.5rem;
         border-radius: 12px;
         margin: 2rem 0;
-        border-left: 4px solid #a21f23;
+        border-left: 4px solid #d63031;
     }
 
     .reframe-box h3 {
-        color: #a21f23;
+        color: #d63031;
         margin-bottom: 1rem;
         font-size: 1.3rem;
     }
@@ -130,7 +131,7 @@ title: "ADHD"
 
     .characteristic-card {
         background: white;
-        border-radius: 15px;
+        border-radius: 12px;
         padding: 1.8rem;
         box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
         border-top: 3px solid #d63031;
@@ -161,7 +162,7 @@ title: "ADHD"
     .struggles-section {
         background: #f8f9fa;
         padding: 2rem;
-        border-radius: 15px;
+        border-radius: 16px;
         margin: 2rem 0;
         border: 1px solid #e0e0e0;
     }
@@ -181,7 +182,7 @@ title: "ADHD"
     .struggle-link {
         background: white;
         padding: 1rem 1.2rem;
-        border-radius: 10px;
+        border-radius: 8px;
         text-decoration: none;
         color: #333;
         transition: all 0.3s ease;
@@ -195,7 +196,7 @@ title: "ADHD"
 
     .struggle-link:hover {
         transform: translateY(-2px);
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
         text-decoration: none;
         color: #333;
     }
@@ -236,7 +237,7 @@ title: "ADHD"
         background: #74b9ff;
         color: white;
         padding: 0.5rem 1rem;
-        border-radius: 20px;
+        border-radius: 8px;
         font-size: 0.85rem;
         text-decoration: none;
         transition: all 0.3s ease;
@@ -264,6 +265,24 @@ title: "ADHD"
         color: #f57c00;
         margin-bottom: 1rem;
         font-size: 1.3rem;
+    }
+
+    /* Focus states for accessibility */
+    .struggle-link:focus,
+    .cross-cutting-link:focus,
+    .jargon:focus,
+    .breadcrumb a:focus {
+        outline: 2px solid #fff;
+        outline-offset: 2px;
+    }
+
+    /* Motion accessibility */
+    @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+        }
     }
 
     /* Jargon styling - context-aware based on background */
@@ -477,9 +496,10 @@ title: "ADHD"
 </div>
 
 <div class="container">
-    <div class="content-card">
-        <div class="condition-intro">
-            <h2>What is ADHD?</h2>
+    <main role="main" id="main-content">
+        <div class="content-card">
+            <div class="condition-intro">
+                <h2 id="what-is-adhd">What is ADHD?</h2>
             <p><a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> involves brain differences in <a class="jargon">attention regulation<span class="tooltip">The brain's ability to direct and sustain focus where you want it, when you want it</span></a>, impulse control, and <a class="jargon">executive function<span class="tooltip">The brain's management system that handles planning, organization, time management, task initiation, and follow-through</span></a>. These differences create predictable friction with environments designed for neurotypical attention patterns and organization systems.</p>
             
             <p>People with <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> often have intense focus when interested (<a class="jargon">hyperfocus<span class="tooltip">Periods of intense concentration on engaging activities, often at the expense of other tasks or awareness of time</span></a>) but struggle with sustained attention on less engaging tasks. This creates a pattern of exceptional performance in some areas while facing significant challenges in others, particularly with traditional academic and workplace structures.</p>
@@ -546,8 +566,8 @@ title: "ADHD"
             </div>
         </div>
 
-        <div class="struggles-section">
-            <h3>ADHD-Related Struggles</h3>
+        <div class="struggles-section" role="region" aria-labelledby="struggles-heading">
+            <h3 id="struggles-heading">ADHD-Related Struggles</h3>
             <p style="margin-bottom: 1.5rem; color: #666;">Click on any struggle to learn what it feels like, why it happens, and what can help.</p>
             
             <div class="struggles-grid">
@@ -669,5 +689,5 @@ title: "ADHD"
                 <a href="{{ '/glossary/dopamine-motivation.html' | relative_url }}" style="color: #d63031; text-decoration: none;">Dopamine and Motivation →</a>
             </div>
         </div>
-    </div>
+    </main>
 </div>
