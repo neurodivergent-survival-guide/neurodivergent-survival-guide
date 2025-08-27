@@ -286,7 +286,7 @@ title: "ADHD"
         visibility: hidden;
         opacity: 0;
         position: absolute;
-        bottom: 125%;
+        bottom: calc(100% + 8px);
         left: 50%;
         transform: translateX(-50%);
         background: #333;
@@ -304,6 +304,7 @@ title: "ADHD"
         white-space: normal;
         text-align: left;
         line-height: 1.5;
+        pointer-events: none;
     }
 
     .tooltip::after {
@@ -384,10 +385,18 @@ title: "ADHD"
         }
 
         .tooltip {
-            max-width: 300px;
-            left: 10px;
-            right: 10px;
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
+            max-width: none;
+            width: auto;
             transform: none;
+            border-radius: 12px;
+        }
+        
+        .tooltip::after {
+            display: none;
         }
     }
 
@@ -410,10 +419,6 @@ title: "ADHD"
 
         .characteristic-card {
             padding: 1.2rem;
-        }
-
-        .tooltip {
-            max-width: 250px;
         }
     }
 </style>
@@ -508,8 +513,8 @@ title: "ADHD"
                     <div class="struggle-description">Difficulty controlling where your focus goes</div>
                 </a>
 
-                <a href="{{ '/struggles/follow-through-completion-struggles.html' | relative_url }}" class="struggle-link">
-                    <div class="struggle-title">Follow-Through Completion Struggles</div>
+                <a href="{{ '/struggles/follow-through-completion.html' | relative_url }}" class="struggle-link">
+                    <div class="struggle-title">Follow-Through Completion</div>
                     <div class="struggle-description">Starting projects but not finishing them</div>
                 </a>
 
