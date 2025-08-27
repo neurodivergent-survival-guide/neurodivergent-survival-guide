@@ -1,0 +1,539 @@
+---
+layout: default
+title: "Time Blindness"
+---
+<!-- struggles/time-blindness.html -->
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        background: linear-gradient(135deg, #ff7675 0%, #fd79a8 100%);
+        color: #333;
+        min-height: 100vh;
+        line-height: 1.7;
+    }
+
+    .header {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        padding: 1.5rem 2rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .header h1 {
+        color: white;
+        font-size: 2.5rem;
+        font-weight: 300;
+        margin-bottom: 0.5rem;
+    }
+
+    .header p {
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 1.1rem;
+    }
+
+    .breadcrumb {
+        background: rgba(255, 255, 255, 0.05);
+        padding: 0.8rem 2rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    .breadcrumb a {
+        color: rgba(255, 255, 255, 0.8);
+        text-decoration: none;
+        font-size: 0.9rem;
+    }
+
+    .breadcrumb a:hover {
+        color: white;
+    }
+
+    .breadcrumb span {
+        color: rgba(255, 255, 255, 0.6);
+        margin: 0 0.5rem;
+    }
+
+    .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 2rem;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .content-card {
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 20px;
+        padding: 2.5rem;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        margin-bottom: 2rem;
+    }
+
+    .section {
+        background: white;
+        border-radius: 15px;
+        padding: 2rem;
+        margin: 2rem 0;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+        border-top: 3px solid #fd79a8;
+    }
+
+    .section h2 {
+        color: #fd79a8;
+        font-size: 1.4rem;
+        margin-bottom: 1.5rem;
+        font-weight: 600;
+    }
+
+    .section p {
+        color: #555;
+        margin-bottom: 1rem;
+        font-size: 1rem;
+    }
+
+    .section ul {
+        padding-left: 1.5rem;
+        color: #555;
+        margin: 1rem 0;
+    }
+
+    .section li {
+        margin-bottom: 0.8rem;
+        font-size: 0.95rem;
+    }
+
+    .immediate-help {
+        background: #e8f5e8;
+        border-left-color: #00b894;
+    }
+
+    .immediate-help h2 {
+        color: #00b894;
+    }
+
+    .long-term {
+        background: #e3f2fd;
+        border-left-color: #1976d2;
+    }
+
+    .long-term h2 {
+        color: #1976d2;
+    }
+
+    .medical-intervention {
+        background: #fff3e0;
+        border-left-color: #f57c00;
+    }
+
+    .medical-intervention h2 {
+        color: #f57c00;
+    }
+
+    .validation {
+        background: #f3e5f5;
+        border-left-color: #8e24aa;
+    }
+
+    .validation h2 {
+        color: #8e24aa;
+    }
+
+    .learn-more {
+        background: linear-gradient(45deg, #a29bfe, #6c5ce7);
+        color: white;
+        padding: 1.5rem;
+        border-radius: 12px;
+        margin: 1.5rem 0;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .learn-more h3 {
+        margin-bottom: 1rem;
+        font-size: 1.2rem;
+        color: white;
+    }
+
+    .learn-more:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    .learn-more-content {
+        display: none;
+        margin-top: 1rem;
+        padding-top: 1rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.3);
+        color: white;
+    }
+
+    .learn-more-content p {
+        color: white;
+    }
+
+    .learn-more.expanded .learn-more-content {
+        display: block;
+    }
+
+    .related-struggles {
+        background: #f8f9fa;
+        padding: 1.5rem;
+        border-radius: 12px;
+        margin: 2rem 0;
+        border: 1px solid #e0e0e0;
+    }
+
+    .related-struggles h3 {
+        color: #333;
+        margin-bottom: 1rem;
+        font-size: 1.2rem;
+    }
+
+    .struggle-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .struggle-tag {
+        background: #fd79a8;
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+    }
+
+    .struggle-tag:hover {
+        background: #e84393;
+        color: white;
+        text-decoration: none;
+        transform: translateY(-1px);
+    }
+
+    .jargon {
+        color: #e84393;
+        text-decoration: none;
+        border-bottom: 1px dotted #e84393;
+        position: relative;
+        cursor: help;
+        font-weight: 500;
+    }
+
+    .jargon:hover {
+        color: #fd79a8;
+        border-bottom-color: #fd79a8;
+    }
+
+    /* White jargon for purple gradient backgrounds */
+    .header .jargon,
+    .breadcrumb .jargon,
+    .learn-more .jargon,
+    .learn-more-content .jargon {
+        color: white;
+        border-bottom: 1px dotted rgba(255, 255, 255, 0.8);
+        background: rgba(255, 255, 255, 0.2);
+        padding: 2px 4px;
+        border-radius: 3px;
+    }
+
+    .header .jargon:hover,
+    .breadcrumb .jargon:hover,
+    .learn-more .jargon:hover,
+    .learn-more-content .jargon:hover {
+        color: white;
+        border-bottom-color: white;
+        background: rgba(255, 255, 255, 0.3);
+    }
+
+    .tooltip {
+        visibility: hidden;
+        opacity: 0;
+        position: absolute;
+        bottom: 125%;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #333;
+        color: white;
+        padding: 12px 16px;
+        border-radius: 8px;
+        font-size: 0.9rem;
+        font-weight: normal;
+        z-index: 1001;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        transition: opacity 0.3s, visibility 0.3s;
+        max-width: 800px;
+        min-width: 200px;
+        width: max-content;
+        white-space: normal;
+        text-align: left;
+        line-height: 1.5;
+    }
+
+    .tooltip::after {
+        content: '';
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        border: 6px solid transparent;
+        border-top-color: #333;
+    }
+
+    .jargon:hover .tooltip {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    .highlight-box {
+        background: #fff8e1;
+        padding: 1rem;
+        border-radius: 8px;
+        border-left: 3px solid #ffc107;
+        margin: 1rem 0;
+    }
+
+    /* Mobile responsive tooltip adjustments */
+    @media (max-width: 1024px) {
+        .tooltip {
+            max-width: 400px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .header {
+            padding: 1rem;
+        }
+
+        .header h1 {
+            font-size: 2rem;
+        }
+
+        .header p {
+            font-size: 1rem;
+        }
+
+        .breadcrumb {
+            padding: 0.6rem 1rem;
+        }
+
+        .container {
+            padding: 1rem;
+        }
+
+        .content-card {
+            padding: 1.5rem;
+        }
+
+        .section {
+            padding: 1.5rem;
+        }
+
+        .struggle-tags {
+            flex-direction: column;
+        }
+
+        .struggle-tag {
+            justify-content: center;
+            text-align: center;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .header h1 {
+            font-size: 1.8rem;
+        }
+
+        .header p {
+            font-size: 0.9rem;
+        }
+
+        .content-card {
+            padding: 1.2rem;
+        }
+
+        .section {
+            padding: 1.2rem;
+        }
+    }
+</style>
+
+<div class="header">
+    <h1>Time Blindness</h1>
+    <p>When time feels like a foreign concept</p>
+</div>
+
+<div class="breadcrumb">
+    <a href="{{ '/index.html' | relative_url }}">Home</a>
+    <span>></span>
+    <a href="{{ '/conditions/adhd.html' | relative_url }}">ADHD</a>
+    <span>></span>
+    Time Blindness
+</div>
+
+<div class="container">
+    <div class="content-card">
+        <!-- Section 1: What this feels like -->
+        <div class="section">
+            <h2>What This Feels Like</h2>
+            <p><a class="jargon">Time blindness<span class="tooltip">Difficulty accurately perceiving, tracking, or estimating the passage of time</span></a> often feels like living in a world where time operates by completely different rules than everyone else experiences. Many people describe feeling like they have no <a class="jargon">internal clock<span class="tooltip">The brain's ability to naturally track time and estimate duration</span></a> - five minutes and five hours can feel remarkably similar.</p>
+
+            <p>You might sit down to quickly check email and suddenly realize three hours have vanished without your awareness. Or you'll start getting ready for an appointment, convinced you have plenty of time, only to discover you're already late. <a class="jargon">Time estimation<span class="tooltip">The cognitive ability to predict how long tasks or activities will take</span></a> feels like guesswork rather than intuition.</p>
+
+            <p>During <a class="jargon">hyperfocus<span class="tooltip">Intense, sustained concentration on interesting activities, often to the exclusion of time awareness</span></a> episodes, time seems to stop existing entirely. You might work on a project "for a few minutes" and emerge to find you've missed meals, appointments, or even sleep. This creates a pattern of being chronically late, missing deadlines, or feeling completely unprepared for scheduled activities.</p>
+
+            <div class="highlight-box">
+                <p><strong>Common experiences:</strong> Consistently underestimating how long tasks take; losing entire hours to <a class="jargon">hyperfocus<span class="tooltip">Intense, sustained concentration on interesting activities, often to the exclusion of time awareness</span></a>; feeling shocked when you check the time; being chronically late despite good intentions; struggling to leave adequate time between activities.</p>
+            </div>
+        </div>
+
+        <!-- Section 2: Why this might be happening -->
+        <div class="section">
+            <h2>Why This Might Be Happening</h2>
+            <p><a class="jargon">Time blindness<span class="tooltip">Difficulty accurately perceiving, tracking, or estimating the passage of time</span></a> in <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> involves differences in how your brain processes <a class="jargon">temporal information<span class="tooltip">Information about time, duration, sequence, and timing</span></a> and maintains <a class="jargon">time awareness<span class="tooltip">The ongoing sense of how much time has passed and what time it currently is</span></a>. This isn't about lacking motivation to be on time - it's about fundamental differences in <a class="jargon">temporal processing<span class="tooltip">How the brain perceives, tracks, and predicts time-related information</span></a>.</p>
+
+            <p>The <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> brain shows differences in areas responsible for <a class="jargon">chronesthesia<span class="tooltip">The brain's ability to be aware of time and place events in temporal context</span></a> - the mental time travel that helps you connect past, present, and future time experiences. Your <a class="jargon">working memory<span class="tooltip">The mental workspace that temporarily holds and manipulates information during thinking tasks</span></a> struggles to maintain ongoing awareness of time while focused on other tasks.</p>
+
+            <p><a class="jargon">Dopamine<span class="tooltip">A neurotransmitter that affects motivation, reward, and time perception</span></a> differences also affect time perception. When you're engaged in interesting activities, your brain's reward system can essentially "hijack" your attention, making time awareness disappear. This creates the <a class="jargon">planning fallacy<span class="tooltip">The tendency to underestimate how much time tasks will take, despite past experience showing otherwise</span></a> where you repeatedly underestimate <a class="jargon">task duration<span class="tooltip">How long activities actually take to complete from start to finish</span></a> despite past evidence.</p>
+
+            <div class="learn-more" onclick="toggleLearnMore(this)">
+                <h3>Learn More: The Neuroscience of Time Perception in ADHD ↓</h3>
+                <div class="learn-more-content">
+                    <p><a class="jargon">Time blindness<span class="tooltip">Difficulty accurately perceiving, tracking, or estimating the passage of time</span></a> involves multiple brain networks including the <a class="jargon">prefrontal cortex<span class="tooltip">Brain area responsible for executive functions including time management and planning</span></a>, <a class="jargon">cerebellum<span class="tooltip">Brain region that helps with timing, coordination, and temporal processing</span></a>, and <a class="jargon">striatum<span class="tooltip">Brain structure involved in timing, habit formation, and reward processing</span></a>. In <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a>, these areas show different patterns of activation and connectivity.</p>
+                    
+                    <p>Research suggests that <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> brains may have a faster <a class="jargon">internal pacemaker<span class="tooltip">The brain's internal timing mechanism that tracks the passage of time</span></a>, causing time to feel like it's moving more slowly, which contributes to impatience and <a class="jargon">time estimation<span class="tooltip">The cognitive ability to predict how long tasks or activities will take</span></a> difficulties. <a class="jargon">Circadian rhythm<span class="tooltip">Your body's internal 24-hour biological clock that regulates sleep-wake cycles and time awareness</span></a> differences may also contribute to time perception challenges.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 3: Next 5 minutes -->
+        <div class="section immediate-help">
+            <h2>What Can Help You Through the Next 5 Minutes</h2>
+            <p>When you're struggling with time awareness right now, these strategies can help:</p>
+
+            <ul>
+                <li><strong>Set a timer immediately:</strong> Before starting any task, set a timer for how long you think it should take. This creates <a class="jargon">external time cues<span class="tooltip">Timers, alarms, and alerts that provide time awareness when your internal clock isn't reliable</span></a> your brain can't ignore.</li>
+                <li><strong>Use <a class="jargon">time anchors<span class="tooltip">Fixed time points in your day that help you orient and track the passage of time</span></a>:</strong> Identify what time it is right now and connect it to something concrete - "It's 2 PM, which means I have lunch in my stomach and the sun is on that side of my room."</li>
+                <li><strong>Practice <a class="jargon">time checking<span class="tooltip">Regularly looking at clocks to build better time awareness throughout the day</span></a>:</strong> Look at a clock, guess how much time has passed since you last checked, then verify. This helps calibrate your time sense.</li>
+                <li><strong>Use the "5-minute warning" system:</strong> Set alarms 5 minutes before you need to transition to help your brain prepare for stopping current activities.</li>
+                <li><strong>Add <a class="jargon">buffer time<span class="tooltip">Extra time built into schedules to account for unexpected delays or time estimation errors</span></a> to everything:</strong> Take your time estimate and multiply by 1.5. This accounts for <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> <a class="jargon">time estimation<span class="tooltip">The cognitive ability to predict how long tasks or activities will take</span></a> challenges.</li>
+                <li><strong>Work in <a class="jargon">time-boxed<span class="tooltip">Fixed periods of time dedicated to specific activities, with clear start and end points</span></a> chunks:</strong> Use <a class="jargon">Pomodoro technique<span class="tooltip">Working in focused 25-minute intervals followed by short breaks</span></a> or similar methods to create artificial time boundaries.</li>
+                <li><strong>Make time visible:</strong> Use analog clocks, countdown timers, or apps that show time visually rather than just numerically.</li>
+            </ul>
+
+            <div class="highlight-box">
+                <p><strong>Emergency time awareness hack:</strong> Set repeating alarms every 30 minutes throughout your day just to practice checking in with time. This helps build <a class="jargon">time awareness<span class="tooltip">The ongoing sense of how much time has passed and what time it currently is</span></a> habits.</p>
+            </div>
+        </div>
+
+        <!-- Section 4: Long-term solutions -->
+        <div class="section long-term">
+            <h2>What Are Some Healthy Long-Term Solutions</h2>
+            <p>Building sustainable systems for <a class="jargon">time management<span class="tooltip">Strategies and systems for effectively organizing and using time</span></a> that work with your <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> brain:</p>
+
+            <ul>
+                <li><strong>Build comprehensive <a class="jargon">external time structure<span class="tooltip">Systems outside your brain that track and manage time, reducing reliance on internal time awareness</span></a>:</strong> Use multiple alarms, calendar notifications, and <a class="jargon">time tracking<span class="tooltip">Systems that monitor how much time you spend on different activities</span></a> apps to create the time awareness your brain doesn't naturally provide.</li>
+                <li><strong>Practice <a class="jargon">realistic planning<span class="tooltip">Creating schedules and expectations based on actual time requirements rather than optimistic estimates</span></a>:</strong> Track how long common tasks actually take you, then use that data for future planning instead of wishful thinking.</li>
+                <li><strong>Design <a class="jargon">transition routines<span class="tooltip">Structured activities that help you shift from one task to another with appropriate time awareness</span></a>:</strong> Create specific steps for ending activities and beginning new ones, including time buffers for mental switching.</li>
+                <li><strong>Use <a class="jargon">deadline pressure<span class="tooltip">The motivating effect of time constraints that can help ADHD brains focus and take action</span></a> strategically:</strong> Create artificial deadlines and <a class="jargon">urgency<span class="tooltip">The feeling that something needs to be done soon, which can activate ADHD motivation</span></a> for important tasks to activate your brain's <a class="jargon">crisis mode<span class="tooltip">High-stimulation state where ADHD brains often function most effectively</span></a> motivation.</li>
+                <li><strong>Implement <a class="jargon">time awareness rituals<span class="tooltip">Regular habits that help you stay connected to time throughout your day</span></a>:</strong> Regular check-ins with time, consistent daily routines that anchor you to time of day, and scheduled breaks that reset your time sense.</li>
+                <li><strong>Build in <a class="jargon">hyperfocus breaks<span class="tooltip">Planned interruptions to prevent losing hours to intense focus sessions</span></a>:</strong> Use alarms, accountability partners, or apps that force breaks during intense focus sessions to prevent time loss.</li>
+                <li><strong>Create time-based environments:</strong> Use lighting, music, or other environmental cues that change throughout the day to provide natural <a class="jargon">time anchors<span class="tooltip">Fixed time points in your day that help you orient and track the passage of time</span></a>.</li>
+                <li><strong>Consider medication support:</strong> <a class="jargon">Stimulant medications<span class="tooltip">ADHD medications that can improve time awareness and planning abilities</span></a> often improve <a class="jargon">executive function<span class="tooltip">Mental skills that help you plan, focus, remember instructions, and manage multiple tasks</span></a> including time awareness and planning skills.</li>
+            </ul>
+
+            <div class="learn-more" onclick="toggleLearnMore(this)">
+                <h3>Learn More: Advanced Time Management Strategies ↓</h3>
+                <div class="learn-more-content">
+                    <p><strong><a class="jargon">Temporal discounting<span class="tooltip">The tendency to value immediate rewards more than future rewards, affecting long-term planning</span></a> management:</strong> <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> brains often struggle with valuing future time and rewards. Use visualization techniques to make future consequences feel more immediate and real.</p>
+                    
+                    <p><strong><a class="jargon">Chronotype<span class="tooltip">Your natural preference for when to be active and when to rest during a 24-hour period</span></a> optimization:</strong> Work with your natural energy rhythms rather than against them. Schedule demanding tasks during your peak alertness times and protect your <a class="jargon">circadian rhythm<span class="tooltip">Your body's internal 24-hour biological clock that regulates sleep-wake cycles and time awareness</span></a>.</p>
+                    
+                    <p><strong>Technology integration:</strong> Use smart home devices, wearable technology, and integrated calendar systems that provide seamless <a class="jargon">time awareness<span class="tooltip">The ongoing sense of how much time has passed and what time it currently is</span></a> throughout your environment.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 5: Medical intervention -->
+        <div class="section medical-intervention">
+            <h2>When Should I Consider Medical Intervention</h2>
+            <p>Consider professional support if <a class="jargon">time blindness<span class="tooltip">Difficulty accurately perceiving, tracking, or estimating the passage of time</span></a> is significantly impacting your life:</p>
+
+            <ul>
+                <li>You're consistently late for work, school, or important appointments despite genuine efforts</li>
+                <li><a class="jargon">Time management<span class="tooltip">Strategies and systems for effectively organizing and using time</span></a> difficulties are affecting your job performance or relationships</li>
+                <li>You're missing deadlines regularly, causing academic or professional consequences</li>
+                <li><a class="jargon">Time anxiety<span class="tooltip">Stress and worry about being late, missing deadlines, or not having enough time</span></a> is creating significant stress or affecting your mental health</li>
+                <li>You're avoiding commitments or opportunities because you don't trust your ability to manage time</li>
+                <li><a class="jargon">Hyperfocus episodes<span class="tooltip">Periods of intense concentration that cause you to lose awareness of time and surroundings</span></a> are interfering with basic needs like eating, sleeping, or personal care</li>
+            </ul>
+
+            <p>Professional support can help evaluate whether medication might improve <a class="jargon">executive function<span class="tooltip">Mental skills that help you plan, focus, remember instructions, and manage multiple tasks</span></a> and <a class="jargon">time awareness<span class="tooltip">The ongoing sense of how much time has passed and what time it currently is</span></a>, and provide specialized coaching for <a class="jargon">time management<span class="tooltip">Strategies and systems for effectively organizing and using time</span></a> strategies.</p>
+
+            <div class="highlight-box">
+                <p><strong>Types of support that help:</strong> <a class="jargon">ADHD coaching<span class="tooltip">Specialized support focused on developing practical strategies for ADHD-related challenges</span></a> for <a class="jargon">time management<span class="tooltip">Strategies and systems for effectively organizing and using time</span></a> systems, <a class="jargon">occupational therapy<span class="tooltip">Therapy focused on developing skills for daily living and practical tasks</span></a> for <a class="jargon">executive function<span class="tooltip">Mental skills that help you plan, focus, remember instructions, and manage multiple tasks</span></a> skills, medication evaluation for <a class="jargon">cognitive enhancement<span class="tooltip">Improvements in thinking skills like planning, time awareness, and working memory</span></a>, or <a class="jargon">cognitive behavioral therapy<span class="tooltip">Therapy focused on changing thought patterns and behaviors to improve functioning</span></a> for <a class="jargon">time anxiety<span class="tooltip">Stress and worry about being late, missing deadlines, or not having enough time</span></a> and planning skills.</p>
+            </div>
+        </div>
+
+        <!-- Section 6: Validation -->
+        <div class="section validation">
+            <h2>You're Not Imagining This</h2>
+            <p><a class="jargon">Time blindness<span class="tooltip">Difficulty accurately perceiving, tracking, or estimating the passage of time</span></a> is a well-documented aspect of <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> that affects millions of people. Your struggles with time aren't about lacking respect for others or being irresponsible - they reflect real differences in how your brain processes <a class="jargon">temporal information<span class="tooltip">Information about time, duration, sequence, and timing</span></a>.</p>
+
+            <p>Many highly successful people with <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> continue to rely on extensive <a class="jargon">external time structure<span class="tooltip">Systems outside your brain that track and manage time, reducing reliance on internal time awareness</span></a> throughout their lives. The goal isn't to develop <a class="jargon">neurotypical<span class="tooltip">People whose brains develop and function in ways that align with societal expectations and norms</span></a> <a class="jargon">time perception<span class="tooltip">How the brain processes and understands the passage and duration of time</span></a> - it's to build systems that compensate for your brain's unique <a class="jargon">temporal processing<span class="tooltip">How the brain perceives, tracks, and predicts time-related information</span></a> patterns.</p>
+
+            <p>The chronic lateness and missed deadlines that many people with <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> experience often lead to shame and self-criticism. Understanding that these challenges have neurological roots can help reduce self-blame and redirect energy toward building effective <a class="jargon">time management<span class="tooltip">Strategies and systems for effectively organizing and using time</span></a> systems.</p>
+
+            <p>Your <a class="jargon">hyperfocus<span class="tooltip">Intense, sustained concentration on interesting activities, often to the exclusion of time awareness</span></a> abilities, while they contribute to <a class="jargon">time blindness<span class="tooltip">Difficulty accurately perceiving, tracking, or estimating the passage of time</span></a>, also represent remarkable cognitive strengths. Learning to harness these abilities while building <a class="jargon">time awareness<span class="tooltip">The ongoing sense of how much time has passed and what time it currently is</span></a> supports creates a sustainable approach to productivity.</p>
+
+            <div class="highlight-box">
+                <p><strong>Remember:</strong> Your relationship with time is different, not defective. Focus on building systems that work with your brain's natural patterns rather than trying to force yourself into <a class="jargon">neurotypical<span class="tooltip">People whose brains develop and function in ways that align with societal expectations and norms</span></a> <a class="jargon">time management<span class="tooltip">Strategies and systems for effectively organizing and using time</span></a> approaches.</p>
+            </div>
+        </div>
+
+        <div class="related-struggles">
+            <h3>Related Struggles</h3>
+            <div class="struggle-tags">
+                <a href="{{ '/struggles/task-initiation-paralysis.html' | relative_url }}" class="struggle-tag">Task Initiation Paralysis</a>
+                <a href="{{ '/struggles/follow-through-completion.html' | relative_url }}" class="struggle-tag">Follow-Through Completion</a>
+                <a href="{{ '/struggles/organization-and-planning-challenges.html' | relative_url }}" class="struggle-tag">Organization Challenges</a>
+                <a href="{{ '/struggles/attention-regulation.html' | relative_url }}" class="struggle-tag">Attention Regulation</a>
+                <a href="{{ '/struggles/working-memory-difficulties.html' | relative_url }}" class="struggle-tag">Working Memory</a>
+                <a href="{{ '/struggles/executive-function-challenges.html' | relative_url }}" class="struggle-tag">Executive Function</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function toggleLearnMore(element) {
+    element.classList.toggle('expanded');
+    const arrow = element.querySelector('h3');
+    if (element.classList.contains('expanded')) {
+        arrow.innerHTML = arrow.innerHTML.replace('↓', '↑');
+    } else {
+        arrow.innerHTML = arrow.innerHTML.replace('↑', '↓');
+    }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Handle jargon clicks to prevent event bubbling
+    const jargonTerms = document.querySelectorAll('.jargon');
+    jargonTerms.forEach(function(jargon) {
+        jargon.addEventListener('click', function(e) {
+            e.stopPropagation(); // Prevent bubbling to learn-more handler
+        });
+    });
+});
+</script>
