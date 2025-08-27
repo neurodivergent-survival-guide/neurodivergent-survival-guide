@@ -16,8 +16,6 @@ title: "ADHD"
         color: #333;
         min-height: 100vh;
         line-height: 1.7;
-        overflow-x: hidden;
-        width: 100%;
     }
 
     .header {
@@ -79,7 +77,7 @@ title: "ADHD"
     }
 
     .condition-intro {
-        background: #fff5f5;
+        background: #ffeaa7;
         padding: 2rem;
         border-radius: 15px;
         margin: 2rem 0;
@@ -99,15 +97,15 @@ title: "ADHD"
     }
 
     .reframe-box {
-        background: #e8f8f5;
+        background: #ffeaa7;
         padding: 1.5rem;
         border-radius: 12px;
         margin: 2rem 0;
-        border-left: 4px solid #00cec9;
+        border-left: 4px solid #a21f23;
     }
 
     .reframe-box h3 {
-        color: #00cec9;
+        color: #a21f23;
         margin-bottom: 1rem;
         font-size: 1.3rem;
     }
@@ -292,23 +290,16 @@ title: "ADHD"
         border-bottom-color: #fd79a8;
     }
 
-    /* Bold black jargon for colored sections */
+    /* Bold black jargon for colored backgrounds */
     .condition-intro .jargon,
     .reframe-box .jargon,
     .co-occurring .jargon {
         color: #333;
         font-weight: 600;
-        border-bottom: 1px dotted #333;
+        border-bottom-color: #333;
     }
 
-    .condition-intro .jargon:hover,
-    .reframe-box .jargon:hover,
-    .co-occurring .jargon:hover {
-        color: #555;
-        border-bottom-color: #555;
-    }
-
-    /* White jargon for gradient backgrounds */
+    /* White jargon for gradient backgrounds only */
     .header .jargon,
     .breadcrumb .jargon {
         color: white;
@@ -389,7 +380,7 @@ title: "ADHD"
         }
 
         .header {
-            padding: 1rem 1.5rem;
+            padding: 1rem;
         }
 
         .header h1 {
@@ -401,7 +392,7 @@ title: "ADHD"
         }
 
         .breadcrumb {
-            padding: 0.6rem 1.5rem;
+            padding: 0.6rem 1rem;
         }
 
         .container {
@@ -474,7 +465,7 @@ title: "ADHD"
 
 <div class="header">
     <h1>ADHD</h1>
-    <p>Understanding brain differences in attention, impulse control, and executive function</p>
+    <p>Understanding brain differences in <a class="jargon">attention<span class="tooltip">The brain's ability to direct and sustain focus where you want it, when you want it</span></a>, <a class="jargon">executive function<span class="tooltip">The brain's management system that handles planning, organization, time management, task initiation, and follow-through</span></a>, and energy regulation</p>
 </div>
 
 <div class="breadcrumb">
@@ -489,60 +480,68 @@ title: "ADHD"
     <div class="content-card">
         <div class="condition-intro">
             <h2>What is ADHD?</h2>
-            <p><a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> involves brain differences in how <a class="jargon">attention<span class="tooltip">The brain's ability to focus cognitive resources on specific information while filtering out distractions</span></a> is regulated, <a class="jargon">impulses<span class="tooltip">Quick urges to act or respond before fully considering consequences</span></a> are controlled, and daily tasks are managed. These differences create predictable friction with environments designed for <a class="jargon">neurotypical<span class="tooltip">People whose brains develop and function in ways that align with societal expectations and norms</span></a> brains, particularly in schools and workplaces that emphasize sustained focus and traditional organizational methods.</p>
+            <p><a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> involves brain differences in <a class="jargon">attention regulation<span class="tooltip">The brain's ability to direct and sustain focus where you want it, when you want it</span></a>, impulse control, and <a class="jargon">executive function<span class="tooltip">The brain's management system that handles planning, organization, time management, task initiation, and follow-through</span></a>. These differences create predictable friction with environments designed for neurotypical attention patterns and organization systems.</p>
             
-            <p><a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> isn't about lacking attention - it's about having a different type of attention that works best with interesting, challenging, urgent, or novel activities. Many people with <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> can <a class="jargon">hyperfocus<span class="tooltip">Intense, sustained concentration on a task of interest, often to the exclusion of everything else including basic needs</span></a> intensely on engaging tasks while struggling to start routine or boring ones.</p>
+            <p>People with <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> often have intense focus when interested (<a class="jargon">hyperfocus<span class="tooltip">Periods of intense concentration on engaging activities, often at the expense of other tasks or awareness of time</span></a>) but struggle with sustained attention on less engaging tasks. This creates a pattern of exceptional performance in some areas while facing significant challenges in others, particularly with traditional academic and workplace structures.</p>
         </div>
 
         <div class="reframe-box">
             <h3>Reframing ADHD</h3>
-            <p>Traditional descriptions focus on what <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> brains "can't do" compared to <a class="jargon">neurotypical<span class="tooltip">People whose brains develop and function in ways that align with societal expectations and norms</span></a> expectations. A more helpful framework recognizes <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> as an <a class="jargon">interest-based nervous system<span class="tooltip">A brain that functions optimally when tasks are interesting, challenging, urgent, or novel, rather than simply important</span></a> rather than an importance-based one.</p>
+            <p>Traditional descriptions focus on <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> as a "deficit" in attention and hyperactivity "disorder." A more accurate understanding recognizes it as brain differences that create challenges with interest-based attention systems in environments designed for willpower-based attention.</p>
             
-            <p>This means your brain prioritizes what's engaging over what's important, which can create challenges in structured environments but also leads to incredible creativity, problem-solving abilities, and passion-driven achievements.</p>
+            <p>Think of <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> brains as having a different type of attention - one that works incredibly well when engaged and interested, but struggles when forced to focus on tasks that don't provide enough stimulation. The struggles often come from mismatched expectations rather than broken brains.</p>
         </div>
 
         <div class="characteristics-grid">
             <div class="characteristic-card">
-                <h4><a class="jargon">Attention Regulation<span class="tooltip">The brain's ability to direct and sustain focus where you want it, when you want it</span></a> Differences</h4>
-                <p>Difficulty controlling where your focus goes, not a lack of attention. Many people with <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> describe having "too much" attention that's hard to direct.</p>
+                <h4>Attention and Focus</h4>
+                <p>Interest-based attention that works differently than <a class="jargon">neurotypical<span class="tooltip">People whose brains develop and function in ways that align with societal expectations and norms</span></a> willpower-based focus systems.</p>
                 <ul>
-                    <li><a class="jargon">Hyperfocus<span class="tooltip">Intense, sustained concentration on a task of interest, often to the exclusion of everything else including basic needs</span></a> on interesting activities</li>
-                    <li>Difficulty sustaining focus on routine tasks</li>
-                    <li>Easy distractibility by internal thoughts or external <a class="jargon">stimuli<span class="tooltip">Environmental inputs like sounds, lights, movements, or internal thoughts that capture attention</span></a></li>
-                    <li>Attention that shifts rapidly between topics</li>
+                    <li>Intense focus when interested (<a class="jargon">hyperfocus<span class="tooltip">Periods of intense concentration on engaging activities, often at the expense of other tasks or awareness of time</span></a>)</li>
+                    <li>Difficulty sustaining attention on boring tasks</li>
+                    <li>Mind wandering during unstimulating activities</li>
+                    <li><a class="jargon">Distractibility<span class="tooltip">Attention easily drawn to interesting or novel stimuli in the environment</span></a> by more interesting stimuli</li>
+                    <li>All-or-nothing focus patterns</li>
+                    <li>Difficulty shifting attention when absorbed</li>
                 </ul>
             </div>
 
             <div class="characteristic-card">
-                <h4><a class="jargon">Executive Function<span class="tooltip">The brain's management system that handles planning, organization, time management, task initiation, and follow-through</span></a> Differences</h4>
-                <p>Challenges with the brain's "management system" - the skills that help you plan, organize, and complete tasks.</p>
+                <h4><a class="jargon">Executive Function<span class="tooltip">The brain's management system that handles planning, organization, time management, task initiation, and follow-through</span></a> Challenges</h4>
+                <p>Difficulty with the brain's management systems for planning, organizing, and completing tasks in expected timeframes.</p>
                 <ul>
-                    <li>Difficulty starting tasks (<a class="jargon">initiation paralysis<span class="tooltip">Knowing what needs to be done but being unable to begin, despite wanting to</span></a>)</li>
-                    <li>Trouble with <a class="jargon">time awareness<span class="tooltip">Understanding how much time has passed, how long tasks will take, or managing schedules</span></a> and planning</li>
-                    <li><a class="jargon">Working memory<span class="tooltip">The brain's ability to hold and manipulate information temporarily while completing a task</span></a> challenges</li>
-                    <li>Organization and follow-through struggles</li>
+                    <li><a class="jargon">Task initiation paralysis<span class="tooltip">Difficulty starting tasks even when you know they're important and want to complete them</span></a></li>
+                    <li><a class="jargon">Working memory<span class="tooltip">The brain's ability to hold and manipulate information temporarily while completing tasks</span></a> limitations</li>
+                    <li><a class="jargon">Time blindness<span class="tooltip">Difficulty accurately estimating how much time tasks will take or how much time has passed</span></a> and planning difficulties</li>
+                    <li>Organization and priority management challenges</li>
+                    <li>Difficulty breaking large tasks into manageable steps</li>
+                    <li>Inconsistent <a class="jargon">follow-through<span class="tooltip">Completing tasks and projects from start to finish, particularly with long-term or multi-step activities</span></a> despite good intentions</li>
                 </ul>
             </div>
 
             <div class="characteristic-card">
-                <h4>Hyperactivity and Impulsivity</h4>
-                <p>Need for movement and tendency to act quickly without fully considering consequences. This can look different in adults compared to children.</p>
+                <h4>Impulse Control and Hyperactivity</h4>
+                <p>Immediate response to thoughts, feelings, and environmental stimuli, often before considering consequences.</p>
                 <ul>
-                    <li>Physical restlessness or <a class="jargon">fidgeting<span class="tooltip">Small repetitive movements that help regulate attention and energy levels</span></a></li>
-                    <li>Interrupting or blurting things out</li>
-                    <li>Difficulty waiting or impatience</li>
-                    <li>Quick decision-making that sometimes backfires</li>
+                    <li>Speaking or acting before fully thinking through</li>
+                    <li>Difficulty waiting in situations that require patience</li>
+                    <li><a class="jargon">Physical restlessness<span class="tooltip">Need for movement and difficulty sitting still for extended periods</span></a> and fidgeting</li>
+                    <li>Internal mental restlessness and racing thoughts</li>
+                    <li>Interrupting conversations unintentionally</li>
+                    <li>Emotional reactions that happen quickly and intensely</li>
                 </ul>
             </div>
 
             <div class="characteristic-card">
-                <h4>Emotional Intensity</h4>
-                <p>Strong emotional responses and sensitivity to rejection or criticism. Emotions often feel more intense and change more quickly than for <a class="jargon">neurotypical<span class="tooltip">People whose brains develop and function in ways that align with societal expectations and norms</span></a> people.</p>
+                <h4>Emotional and Social Patterns</h4>
+                <p>Intense emotions and social differences that create unique relational challenges and strengths.</p>
                 <ul>
-                    <li><a class="jargon">Rejection Sensitive Dysphoria<span class="tooltip">Intense emotional pain triggered by perceived rejection, criticism, or failure to meet expectations</span></a> (RSD)</li>
-                    <li>Emotional ups and downs</li>
-                    <li>Difficulty regulating emotional responses</li>
-                    <li>High <a class="jargon">empathy<span class="tooltip">The ability to understand and share the feelings of others</span></a> and emotional attunement to others</li>
+                    <li><a class="jargon">Rejection sensitive dysphoria<span class="tooltip">Extreme emotional pain triggered by perceived or real rejection, criticism, or failure</span></a></li>
+                    <li>Emotional highs and lows that feel intense</li>
+                    <li>Difficulty with criticism or feedback</li>
+                    <li>Social interaction patterns others might find overwhelming</li>
+                    <li>Deep empathy and enthusiasm when engaged</li>
+                    <li>Justice-sensitivity and advocacy for fairness</li>
                 </ul>
             </div>
         </div>
@@ -554,116 +553,120 @@ title: "ADHD"
             <div class="struggles-grid">
                 <a href="{{ '/struggles/task-initiation-paralysis.html' | relative_url }}" class="struggle-link">
                     <div class="struggle-title">Task Initiation Paralysis</div>
-                    <div class="struggle-description">Knowing what to do but being unable to start</div>
+                    <div class="struggle-description">Can't start tasks even when they're important and you want to do them</div>
                 </a>
 
                 <a href="{{ '/struggles/attention-regulation.html' | relative_url }}" class="struggle-link">
                     <div class="struggle-title">Attention Regulation</div>
-                    <div class="struggle-description">Difficulty controlling where your focus goes</div>
-                </a>
-
-                <a href="{{ '/struggles/follow-through-completion.html' | relative_url }}" class="struggle-link">
-                    <div class="struggle-title">Follow-Through Completion</div>
-                    <div class="struggle-description">Starting projects but not finishing them</div>
-                </a>
-
-                <a href="{{ '/struggles/organization-and-planning-challenges.html' | relative_url }}" class="struggle-link">
-                    <div class="struggle-title">Organization and Planning Challenges</div>
-                    <div class="struggle-description">Difficulty structuring your environment and activities</div>
+                    <div class="struggle-description">Focus goes where it wants, not where you need it</div>
                 </a>
 
                 <a href="{{ '/struggles/time-blindness.html' | relative_url }}" class="struggle-link">
                     <div class="struggle-title">Time Blindness</div>
-                    <div class="struggle-description">Losing track of time or misjudging duration</div>
+                    <div class="struggle-description">Can't tell how long things take or how much time has passed</div>
                 </a>
 
                 <a href="{{ '/struggles/working-memory-difficulties.html' | relative_url }}" class="struggle-link">
                     <div class="struggle-title">Working Memory Difficulties</div>
-                    <div class="struggle-description">Forgetting instructions or losing track of multi-step tasks</div>
+                    <div class="struggle-description">Losing track of information while trying to use it</div>
+                </a>
+
+                <a href="{{ '/struggles/follow-through-completion.html' | relative_url }}" class="struggle-link">
+                    <div class="struggle-title">Follow-Through Completion</div>
+                    <div class="struggle-description">Starting projects enthusiastically but struggling to finish them</div>
+                </a>
+
+                <a href="{{ '/struggles/organization-planning-challenges.html' | relative_url }}" class="struggle-link">
+                    <div class="struggle-title">Organization and Planning Challenges</div>
+                    <div class="struggle-description">Systems that work for others don't stick for you</div>
                 </a>
 
                 <a href="{{ '/struggles/physical-restlessness.html' | relative_url }}" class="struggle-link">
                     <div class="struggle-title">Physical Restlessness</div>
-                    <div class="struggle-description">Need to move your body or fidget frequently</div>
-                </a>
-
-                <a href="{{ '/struggles/interrupting-and-blurting.html' | relative_url }}" class="struggle-link">
-                    <div class="struggle-title">Interrupting and Blurting</div>
-                    <div class="struggle-description">Speaking before others finish or saying things impulsively</div>
-                </a>
-
-                <a href="{{ '/struggles/impatience-with-waiting.html' | relative_url }}" class="struggle-link">
-                    <div class="struggle-title">Impatience with Waiting</div>
-                    <div class="struggle-description">Difficulty tolerating delays or slow processes</div>
-                </a>
-
-                <a href="{{ '/struggles/impulsive-decision-making.html' | relative_url }}" class="struggle-link">
-                    <div class="struggle-title">Impulsive Decision-Making</div>
-                    <div class="struggle-description">Making quick choices without considering consequences</div>
+                    <div class="struggle-description">Need to move that makes sitting still uncomfortable</div>
                 </a>
 
                 <a href="{{ '/struggles/rejection-sensitive-dysphoria.html' | relative_url }}" class="struggle-link">
                     <div class="struggle-title">Rejection Sensitive Dysphoria</div>
-                    <div class="struggle-description">Intense emotional response to perceived rejection</div>
+                    <div class="struggle-description">Criticism or rejection feels unbearably painful</div>
                 </a>
 
                 <a href="{{ '/struggles/emotional-dysregulation.html' | relative_url }}" class="struggle-link">
                     <div class="struggle-title">Emotional Dysregulation</div>
-                    <div class="struggle-description">Difficulty managing emotional intensity</div>
+                    <div class="struggle-description">Emotions feel too big and change too quickly</div>
                 </a>
 
                 <a href="{{ '/struggles/hyperfocus-episodes.html' | relative_url }}" class="struggle-link">
                     <div class="struggle-title">Hyperfocus Episodes</div>
-                    <div class="struggle-description">Becoming so absorbed you lose awareness of time and needs</div>
+                    <div class="struggle-description">Getting so absorbed you lose awareness of time and needs</div>
                 </a>
 
-                <a href="{{ '/struggles/sleep-rhythm-disruption.html' | relative_url }}" class="struggle-link">
-                    <div class="struggle-title">Sleep Rhythm Disruption</div>
-                    <div class="struggle-description">Difficulty with conventional sleep schedules</div>
+                <a href="{{ '/struggles/decision-paralysis.html' | relative_url }}" class="struggle-link">
+                    <div class="struggle-title">Decision Paralysis</div>
+                    <div class="struggle-description">Too many options leading to inability to choose</div>
                 </a>
 
-                <a href="{{ '/struggles/object-permanence-issues.html' | relative_url }}" class="struggle-link">
-                    <div class="struggle-title">Object Permanence Issues</div>
-                    <div class="struggle-description">Forgetting about things when they're not visible</div>
+                <a href="{{ '/struggles/social-interaction-overwhelm.html' | relative_url }}" class="struggle-link">
+                    <div class="struggle-title">Social Interaction Overwhelm</div>
+                    <div class="struggle-description">Social situations drain energy faster than expected</div>
                 </a>
 
-                <a href="{{ '/struggles/interest-based-nervous-system.html' | relative_url }}" class="struggle-link">
-                    <div class="struggle-title">Interest-Based Nervous System</div>
-                    <div class="struggle-description">Functioning best with interesting, challenging, or novel activities</div>
+                <a href="{{ '/struggles/perfectionism-paralysis.html' | relative_url }}" class="struggle-link">
+                    <div class="struggle-title">Perfectionism Paralysis</div>
+                    <div class="struggle-description">Fear of not doing something perfectly prevents starting</div>
+                </a>
+
+                <a href="{{ '/struggles/imposter-syndrome.html' | relative_url }}" class="struggle-link">
+                    <div class="struggle-title">Imposter Syndrome</div>
+                    <div class="struggle-description">Feeling like you don't deserve success or belong</div>
+                </a>
+
+                <a href="{{ '/struggles/rejection-avoidance.html' | relative_url }}" class="struggle-link">
+                    <div class="struggle-title">Rejection Avoidance</div>
+                    <div class="struggle-description">Avoiding activities where you might fail or be criticized</div>
+                </a>
+
+                <a href="{{ '/struggles/akathisia.html' | relative_url }}" class="struggle-link">
+                    <div class="struggle-title">Akathisia</div>
+                    <div class="struggle-description">Internal sense of restlessness that feels almost unbearable</div>
                 </a>
             </div>
 
             <div class="cross-cutting-section">
                 <h4>Related Struggles from Other Conditions</h4>
-                <p style="font-size: 0.9rem; color: #666; margin-bottom: 1rem;">People with <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> often experience these struggles from other <a class="jargon">neurodivergent<span class="tooltip">Brain differences that create distinct patterns of thinking, processing, and behavior</span></a> conditions:</p>
                 <div class="cross-cutting-links">
-                    <a href="{{ '/struggles/sensory-processing-challenges.html' | relative_url }}" class="cross-cutting-link">Sensory Processing Challenges (Autism)</a>
-                    <a href="{{ '/struggles/routine-disruption-anxiety.html' | relative_url }}" class="cross-cutting-link">Routine Disruption Anxiety (Autism)</a>
-                    <a href="{{ '/struggles/special-interests-consuming-focus.html' | relative_url }}" class="cross-cutting-link">Special Interests (Autism)</a>
-                    <a href="{{ '/struggles/mixed-states.html' | relative_url }}" class="cross-cutting-link">Mixed States (Bipolar)</a>
-                    <a href="{{ '/struggles/racing-thoughts-flight-of-ideas.html' | relative_url }}" class="cross-cutting-link">Racing Thoughts (Bipolar)</a>
-                    <a href="{{ '/struggles/emotional-flashbacks.html' | relative_url }}" class="cross-cutting-link">Emotional Flashbacks (BPD)</a>
-                    <a href="{{ '/struggles/identity-disturbance.html' | relative_url }}" class="cross-cutting-link">Identity Disturbance (BPD)</a>
-                    <a href="{{ '/struggles/intrusive-thoughts-images-urges.html' | relative_url }}" class="cross-cutting-link">Intrusive Thoughts (OCD)</a>
+                    <a href="{{ '/struggles/sensory-processing-challenges.html' | relative_url }}" class="cross-cutting-link">Sensory Processing Challenges</a>
+                    <a href="{{ '/struggles/masking-burnout.html' | relative_url }}" class="cross-cutting-link">Masking Burnout</a>
+                    <a href="{{ '/struggles/routine-disruption-anxiety.html' | relative_url }}" class="cross-cutting-link">Routine Disruption Anxiety</a>
+                    <a href="{{ '/struggles/alexithymia.html' | relative_url }}" class="cross-cutting-link">Alexithymia</a>
+                    <a href="{{ '/struggles/mixed-states.html' | relative_url }}" class="cross-cutting-link">Mixed States</a>
+                    <a href="{{ '/struggles/mood-tracking-awareness.html' | relative_url }}" class="cross-cutting-link">Mood Tracking Awareness</a>
+                    <a href="{{ '/struggles/identity-disturbance.html' | relative_url }}" class="cross-cutting-link">Identity Disturbance</a>
+                    <a href="{{ '/struggles/fear-of-abandonment.html' | relative_url }}" class="cross-cutting-link">Fear of Abandonment</a>
                 </div>
             </div>
         </div>
 
         <div class="co-occurring">
             <h3>Common Co-Occurring Conditions</h3>
-            <p><a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> frequently occurs alongside other <a class="jargon">neurodivergent<span class="tooltip">Brain differences that create distinct patterns of thinking, processing, and behavior</span></a> conditions and mental health differences. Understanding these connections can help you get comprehensive support.</p>
-            
-            <p><strong>Frequently co-occurring:</strong> Autism (overlap in <a class="jargon">executive function<span class="tooltip">The brain's management system that handles planning, organization, time management, task initiation, and follow-through</span></a> and <a class="jargon">sensory differences<span class="tooltip">Variations in how the brain processes sensory information like sounds, textures, lights, and movement</span></a>), anxiety (often from years of struggling in <a class="jargon">neurotypical<span class="tooltip">People whose brains develop and function in ways that align with societal expectations and norms</span></a> environments), depression (particularly from <a class="jargon">RSD<span class="tooltip">Rejection Sensitive Dysphoria - intense emotional pain triggered by perceived rejection, criticism, or failure to meet expectations</span></a> and chronic overwhelm), learning differences (dyslexia, dyscalculia), and sleep disorders.</p>
-            
-            <p><strong>Individual variation:</strong> <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> presents differently across gender, age, and life circumstances. Many people, particularly women and girls, are diagnosed later in life after years of <a class="jargon">masking<span class="tooltip">Camouflaging natural neurodivergent behaviors and responses to appear more neurotypical</span></a> their differences.</p>
+            <p><a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> frequently appears alongside other <a class="jargon">neurodivergent<span class="tooltip">Brain differences that create distinct patterns of thinking, processing, and behavior</span></a> conditions and mental health differences. Understanding these connections can help you get comprehensive support:</p>
+            <ul>
+                <li><strong>Autism:</strong> Many people have both <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> and autism, sharing <a class="jargon">sensory processing<span class="tooltip">How the nervous system receives and responds to sensory information from the environment and body</span></a> differences and social challenges</li>
+                <li><strong>Anxiety disorders:</strong> Often develop from years of struggling in <a class="jargon">neurotypical<span class="tooltip">People whose brains develop and function in ways that align with societal expectations and norms</span></a> environments without understanding or support</li>
+                <li><strong>Depression:</strong> Can result from chronic feelings of failure or inadequacy in unsupported environments</li>
+                <li><strong>Learning differences:</strong> Overlapping challenges with traditional educational approaches</li>
+                <li><strong>Sleep disorders:</strong> Difficulty with sleep hygiene and regular sleep schedules</li>
+                <li><strong>Eating disorders:</strong> <a class="jargon">Dopamine<span class="tooltip">Neurotransmitter involved in motivation, reward, and pleasure that plays a key role in ADHD</span></a> seeking through food or restriction patterns</li>
+            </ul>
         </div>
 
-        <div style="background: #fff5f5; padding: 1.5rem; border-radius: 15px; margin-top: 2rem; border-left: 4px solid #d63031;">
-            <p><strong>Related Resources:</strong></p>
-            <div style="margin-top: 1rem; display: flex; flex-direction: column; gap: 0.5rem;">
-                <a href="{{ '/glossary/executive-function.html' | relative_url }}" style="color: #d63031; text-decoration: none;">Executive Function →</a>
-                <a href="{{ '/glossary/attention-focus.html' | relative_url }}" style="color: #d63031; text-decoration: none;">Attention and Focus →</a>
+        <div style="background: #ffeaa7; padding: 1.5rem; border-radius: 12px; margin: 2rem 0; border-left: 4px solid #d63031;">
+            <h3 style="color: #d63031; margin-bottom: 1rem; font-size: 1.3rem;">Related Resources</h3>
+            <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                <a href="{{ '/glossary/attention-executive-function.html' | relative_url }}" style="color: #d63031; text-decoration: none;">Attention and Executive Function →</a>
                 <a href="{{ '/glossary/emotional-regulation.html' | relative_url }}" style="color: #d63031; text-decoration: none;">Emotional Regulation →</a>
+                <a href="{{ '/glossary/time-awareness.html' | relative_url }}" style="color: #d63031; text-decoration: none;">Time Awareness →</a>
+                <a href="{{ '/glossary/dopamine-motivation.html' | relative_url }}" style="color: #d63031; text-decoration: none;">Dopamine and Motivation →</a>
             </div>
         </div>
     </div>
