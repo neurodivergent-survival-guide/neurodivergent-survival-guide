@@ -12,7 +12,7 @@ title: "ADHD"
 
     body {
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        background: linear-gradient(135deg, #ff7675 0%, #fd79a8 100%);
+        background: linear-gradient(135deg, #d63031 0%, #a21f23 100%);
         color: #333;
         min-height: 100vh;
         line-height: 1.7;
@@ -83,11 +83,11 @@ title: "ADHD"
         padding: 2rem;
         border-radius: 15px;
         margin: 2rem 0;
-        border-left: 4px solid #fd79a8;
+        border-left: 4px solid #d63031;
     }
 
     .condition-intro h2 {
-        color: #fd79a8;
+        color: #d63031;
         margin-bottom: 1rem;
         font-size: 1.6rem;
     }
@@ -135,11 +135,11 @@ title: "ADHD"
         border-radius: 15px;
         padding: 1.8rem;
         box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-        border-top: 3px solid #fd79a8;
+        border-top: 3px solid #d63031;
     }
 
     .characteristic-card h4 {
-        color: #fd79a8;
+        color: #d63031;
         margin-bottom: 1rem;
         font-size: 1.2rem;
     }
@@ -187,7 +187,7 @@ title: "ADHD"
         text-decoration: none;
         color: #333;
         transition: all 0.3s ease;
-        border-left: 3px solid #fd79a8;
+        border-left: 3px solid #d63031;
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
         min-height: 44px;
         display: flex;
@@ -268,20 +268,63 @@ title: "ADHD"
         font-size: 1.3rem;
     }
 
+    /* Jargon styling - context-aware based on background */
     .jargon {
-        color: #e84393;
         text-decoration: none;
-        border-bottom: 1px dotted #e84393;
+        border-bottom: 1px dotted;
         position: relative;
         cursor: help;
         font-weight: 500;
     }
 
-    .jargon:hover {
+    /* Pink jargon for white backgrounds */
+    .content-card .jargon,
+    .characteristic-card .jargon,
+    .struggles-section .jargon {
+        color: #e84393;
+        border-bottom-color: #e84393;
+    }
+
+    .content-card .jargon:hover,
+    .characteristic-card .jargon:hover,
+    .struggles-section .jargon:hover {
         color: #fd79a8;
         border-bottom-color: #fd79a8;
     }
 
+    /* Bold black jargon for colored sections */
+    .condition-intro .jargon,
+    .reframe-box .jargon,
+    .co-occurring .jargon {
+        color: #333;
+        font-weight: 600;
+        border-bottom: 1px dotted #333;
+    }
+
+    .condition-intro .jargon:hover,
+    .reframe-box .jargon:hover,
+    .co-occurring .jargon:hover {
+        color: #555;
+        border-bottom-color: #555;
+    }
+
+    /* White jargon for gradient backgrounds */
+    .header .jargon,
+    .breadcrumb .jargon {
+        color: white;
+        border-bottom-color: rgba(255, 255, 255, 0.7);
+        background: rgba(255, 255, 255, 0.1);
+        padding: 2px 6px;
+        border-radius: 4px;
+    }
+
+    .header .jargon:hover,
+    .breadcrumb .jargon:hover {
+        background: rgba(255, 255, 255, 0.2);
+        border-bottom-color: white;
+    }
+
+    /* Auto-sizing tooltips */
     .tooltip {
         visibility: hidden;
         opacity: 0;
@@ -329,7 +372,22 @@ title: "ADHD"
         }
     }
 
+    /* Mobile-specific tooltip positioning */
     @media (max-width: 768px) {
+        .tooltip {
+            position: fixed !important;
+            bottom: 20px !important;
+            left: 20px !important;
+            right: 20px !important;
+            transform: none !important;
+            max-width: none !important;
+            width: auto !important;
+        }
+
+        .tooltip::after {
+            display: none !important;
+        }
+
         .header {
             padding: 1rem 1.5rem;
         }
@@ -383,21 +441,6 @@ title: "ADHD"
             justify-content: center;
             text-align: center;
         }
-
-        .tooltip {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            right: 20px;
-            max-width: none;
-            width: auto;
-            transform: none;
-            border-radius: 12px;
-        }
-        
-        .tooltip::after {
-            display: none;
-        }
     }
 
     @media (max-width: 480px) {
@@ -420,6 +463,12 @@ title: "ADHD"
         .characteristic-card {
             padding: 1.2rem;
         }
+
+        .tooltip {
+            left: 10px !important;
+            right: 10px !important;
+            bottom: 10px !important;
+        }
     }
 </style>
 
@@ -440,14 +489,14 @@ title: "ADHD"
     <div class="content-card">
         <div class="condition-intro">
             <h2>What is ADHD?</h2>
-            <p>ADHD (Attention-Deficit/Hyperactivity Disorder) involves brain differences in how <a class="jargon">attention<span class="tooltip">The brain's ability to focus cognitive resources on specific information while filtering out distractions</span></a> is regulated, <a class="jargon">impulses<span class="tooltip">Quick urges to act or respond before fully considering consequences</span></a> are controlled, and daily tasks are managed. These differences create predictable friction with environments designed for <a class="jargon">neurotypical<span class="tooltip">People whose brains develop and function in ways that align with societal expectations and norms</span></a> brains, particularly in schools and workplaces that emphasize sustained focus and traditional organizational methods.</p>
+            <p><a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> involves brain differences in how <a class="jargon">attention<span class="tooltip">The brain's ability to focus cognitive resources on specific information while filtering out distractions</span></a> is regulated, <a class="jargon">impulses<span class="tooltip">Quick urges to act or respond before fully considering consequences</span></a> are controlled, and daily tasks are managed. These differences create predictable friction with environments designed for <a class="jargon">neurotypical<span class="tooltip">People whose brains develop and function in ways that align with societal expectations and norms</span></a> brains, particularly in schools and workplaces that emphasize sustained focus and traditional organizational methods.</p>
             
-            <p>ADHD isn't about lacking attention - it's about having a different type of attention that works best with interesting, challenging, urgent, or novel activities. Many people with ADHD can <a class="jargon">hyperfocus<span class="tooltip">Intense, sustained concentration on a task of interest, often to the exclusion of everything else including basic needs</span></a> intensely on engaging tasks while struggling to start routine or boring ones.</p>
+            <p><a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> isn't about lacking attention - it's about having a different type of attention that works best with interesting, challenging, urgent, or novel activities. Many people with <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> can <a class="jargon">hyperfocus<span class="tooltip">Intense, sustained concentration on a task of interest, often to the exclusion of everything else including basic needs</span></a> intensely on engaging tasks while struggling to start routine or boring ones.</p>
         </div>
 
         <div class="reframe-box">
             <h3>Reframing ADHD</h3>
-            <p>Traditional descriptions focus on what ADHD brains "can't do" compared to <a class="jargon">neurotypical<span class="tooltip">People whose brains develop and function in ways that align with societal expectations and norms</span></a> expectations. A more helpful framework recognizes ADHD as an <a class="jargon">interest-based nervous system<span class="tooltip">A brain that functions optimally when tasks are interesting, challenging, urgent, or novel, rather than simply important</span></a> rather than an importance-based one.</p>
+            <p>Traditional descriptions focus on what <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> brains "can't do" compared to <a class="jargon">neurotypical<span class="tooltip">People whose brains develop and function in ways that align with societal expectations and norms</span></a> expectations. A more helpful framework recognizes <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> as an <a class="jargon">interest-based nervous system<span class="tooltip">A brain that functions optimally when tasks are interesting, challenging, urgent, or novel, rather than simply important</span></a> rather than an importance-based one.</p>
             
             <p>This means your brain prioritizes what's engaging over what's important, which can create challenges in structured environments but also leads to incredible creativity, problem-solving abilities, and passion-driven achievements.</p>
         </div>
@@ -455,7 +504,7 @@ title: "ADHD"
         <div class="characteristics-grid">
             <div class="characteristic-card">
                 <h4><a class="jargon">Attention Regulation<span class="tooltip">The brain's ability to direct and sustain focus where you want it, when you want it</span></a> Differences</h4>
-                <p>Difficulty controlling where your focus goes, not a lack of attention. Many people with ADHD describe having "too much" attention that's hard to direct.</p>
+                <p>Difficulty controlling where your focus goes, not a lack of attention. Many people with <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> describe having "too much" attention that's hard to direct.</p>
                 <ul>
                     <li><a class="jargon">Hyperfocus<span class="tooltip">Intense, sustained concentration on a task of interest, often to the exclusion of everything else including basic needs</span></a> on interesting activities</li>
                     <li>Difficulty sustaining focus on routine tasks</li>
@@ -586,7 +635,7 @@ title: "ADHD"
 
             <div class="cross-cutting-section">
                 <h4>Related Struggles from Other Conditions</h4>
-                <p style="font-size: 0.9rem; color: #666; margin-bottom: 1rem;">People with ADHD often experience these struggles from other <a class="jargon">neurodivergent<span class="tooltip">Brain differences that create distinct patterns of thinking, processing, and behavior</span></a> conditions:</p>
+                <p style="font-size: 0.9rem; color: #666; margin-bottom: 1rem;">People with <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> often experience these struggles from other <a class="jargon">neurodivergent<span class="tooltip">Brain differences that create distinct patterns of thinking, processing, and behavior</span></a> conditions:</p>
                 <div class="cross-cutting-links">
                     <a href="{{ '/struggles/sensory-processing-challenges.html' | relative_url }}" class="cross-cutting-link">Sensory Processing Challenges (Autism)</a>
                     <a href="{{ '/struggles/routine-disruption-anxiety.html' | relative_url }}" class="cross-cutting-link">Routine Disruption Anxiety (Autism)</a>
@@ -602,19 +651,19 @@ title: "ADHD"
 
         <div class="co-occurring">
             <h3>Common Co-Occurring Conditions</h3>
-            <p>ADHD frequently occurs alongside other <a class="jargon">neurodivergent<span class="tooltip">Brain differences that create distinct patterns of thinking, processing, and behavior</span></a> conditions and mental health differences. Understanding these connections can help you get comprehensive support.</p>
+            <p><a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> frequently occurs alongside other <a class="jargon">neurodivergent<span class="tooltip">Brain differences that create distinct patterns of thinking, processing, and behavior</span></a> conditions and mental health differences. Understanding these connections can help you get comprehensive support.</p>
             
             <p><strong>Frequently co-occurring:</strong> Autism (overlap in <a class="jargon">executive function<span class="tooltip">The brain's management system that handles planning, organization, time management, task initiation, and follow-through</span></a> and <a class="jargon">sensory differences<span class="tooltip">Variations in how the brain processes sensory information like sounds, textures, lights, and movement</span></a>), anxiety (often from years of struggling in <a class="jargon">neurotypical<span class="tooltip">People whose brains develop and function in ways that align with societal expectations and norms</span></a> environments), depression (particularly from <a class="jargon">RSD<span class="tooltip">Rejection Sensitive Dysphoria - intense emotional pain triggered by perceived rejection, criticism, or failure to meet expectations</span></a> and chronic overwhelm), learning differences (dyslexia, dyscalculia), and sleep disorders.</p>
             
-            <p><strong>Individual variation:</strong> ADHD presents differently across gender, age, and life circumstances. Many people, particularly women and girls, are diagnosed later in life after years of <a class="jargon">masking<span class="tooltip">Camouflaging natural neurodivergent behaviors and responses to appear more neurotypical</span></a> their differences.</p>
+            <p><strong>Individual variation:</strong> <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> presents differently across gender, age, and life circumstances. Many people, particularly women and girls, are diagnosed later in life after years of <a class="jargon">masking<span class="tooltip">Camouflaging natural neurodivergent behaviors and responses to appear more neurotypical</span></a> their differences.</p>
         </div>
 
-        <div style="background: #fff5f5; padding: 1.5rem; border-radius: 15px; margin-top: 2rem; border-left: 4px solid #fd79a8;">
+        <div style="background: #fff5f5; padding: 1.5rem; border-radius: 15px; margin-top: 2rem; border-left: 4px solid #d63031;">
             <p><strong>Related Resources:</strong></p>
             <div style="margin-top: 1rem; display: flex; flex-direction: column; gap: 0.5rem;">
-                <a href="{{ '/glossary/executive-function.html' | relative_url }}" style="color: #fd79a8; text-decoration: none;">Executive Function →</a>
-                <a href="{{ '/glossary/attention-focus.html' | relative_url }}" style="color: #fd79a8; text-decoration: none;">Attention and Focus →</a>
-                <a href="{{ '/glossary/emotional-regulation.html' | relative_url }}" style="color: #fd79a8; text-decoration: none;">Emotional Regulation →</a>
+                <a href="{{ '/glossary/executive-function.html' | relative_url }}" style="color: #d63031; text-decoration: none;">Executive Function →</a>
+                <a href="{{ '/glossary/attention-focus.html' | relative_url }}" style="color: #d63031; text-decoration: none;">Attention and Focus →</a>
+                <a href="{{ '/glossary/emotional-regulation.html' | relative_url }}" style="color: #d63031; text-decoration: none;">Emotional Regulation →</a>
             </div>
         </div>
     </div>
