@@ -12,7 +12,8 @@ title: "Akathisia"
 
     body {
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        background: linear-gradient(135deg, #ff7675 0%, #fd79a8 100%);
+        font-weight: 500;
+        background: linear-gradient(135deg, #d63031 0%, #a21f23 100%);
         color: #333;
         min-height: 100vh;
         line-height: 1.7;
@@ -78,15 +79,15 @@ title: "Akathisia"
 
     .section {
         background: white;
-        border-radius: 15px;
+        border-radius: 12px;
         padding: 2rem;
         margin: 2rem 0;
         box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-        border-top: 3px solid #fd79a8;
+        border-top: 3px solid #d63031;
     }
 
     .section h2 {
-        color: #fd79a8;
+        color: #d63031;
         font-size: 1.4rem;
         margin-bottom: 1.5rem;
         font-weight: 600;
@@ -203,10 +204,10 @@ title: "Akathisia"
     }
 
     .struggle-tag {
-        background: #fd79a8;
+        background: #d63031;
         color: white;
         padding: 0.5rem 1rem;
-        border-radius: 20px;
+        border-radius: 8px;
         font-size: 0.85rem;
         text-decoration: none;
         transition: all 0.3s ease;
@@ -216,52 +217,89 @@ title: "Akathisia"
     }
 
     .struggle-tag:hover {
-        background: #e84393;
+        background: #a21f23;
         color: white;
         text-decoration: none;
         transform: translateY(-1px);
     }
 
+    /* Focus states for accessibility */
+    .struggle-tag:focus,
+    .jargon:focus,
+    .breadcrumb a:focus {
+        outline: 2px solid #fff;
+        outline-offset: 2px;
+    }
+
+    /* Motion accessibility */
+    @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+        }
+    }
+
+    /* Jargon styling - context-aware based on background */
     .jargon {
-        color: #e84393;
         text-decoration: none;
-        border-bottom: 1px dotted #e84393;
+        border-bottom: 1px dotted;
         position: relative;
         cursor: help;
         font-weight: 500;
     }
 
-    .jargon:hover {
+    /* Pink jargon for white backgrounds */
+    .content-card .jargon,
+    .section .jargon,
+    .related-struggles .jargon {
+        color: #e84393;
+        border-bottom-color: #e84393;
+    }
+
+    .content-card .jargon:hover,
+    .section .jargon:hover,
+    .related-struggles .jargon:hover {
         color: #fd79a8;
         border-bottom-color: #fd79a8;
     }
 
-    /* White jargon for purple gradient backgrounds */
+    /* Bold black jargon for colored sections */
+    .immediate-help .jargon,
+    .long-term .jargon,
+    .medical-intervention .jargon,
+    .validation .jargon {
+        color: #333;
+        font-weight: 600;
+        border-bottom-color: #333;
+    }
+
+    /* White jargon for gradient backgrounds */
     .header .jargon,
     .breadcrumb .jargon,
     .learn-more .jargon,
     .learn-more-content .jargon {
         color: white;
-        border-bottom: 1px dotted rgba(255, 255, 255, 0.8);
-        background: rgba(255, 255, 255, 0.2);
-        padding: 2px 4px;
-        border-radius: 3px;
+        border-bottom-color: rgba(255, 255, 255, 0.7);
+        background: rgba(255, 255, 255, 0.1);
+        padding: 2px 6px;
+        border-radius: 4px;
     }
 
     .header .jargon:hover,
     .breadcrumb .jargon:hover,
     .learn-more .jargon:hover,
     .learn-more-content .jargon:hover {
-        color: white;
+        background: rgba(255, 255, 255, 0.2);
         border-bottom-color: white;
-        background: rgba(255, 255, 255, 0.3);
     }
 
+    /* Auto-sizing tooltips */
     .tooltip {
         visibility: hidden;
         opacity: 0;
         position: absolute;
-        bottom: 125%;
+        bottom: calc(100% + 8px);
         left: 50%;
         transform: translateX(-50%);
         background: #333;
@@ -279,6 +317,7 @@ title: "Akathisia"
         white-space: normal;
         text-align: left;
         line-height: 1.5;
+        pointer-events: none;
     }
 
     .tooltip::after {
@@ -311,23 +350,22 @@ title: "Akathisia"
         }
     }
 
+    /* Mobile-specific tooltip positioning */
     @media (max-width: 768px) {
         .tooltip {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            right: 20px;
-            max-width: none;
-            width: auto;
-            transform: none;
-            border-radius: 12px;
-        }
-        
-        .tooltip::after {
-            display: none;
+            position: fixed !important;
+            bottom: 20px !important;
+            left: 20px !important;
+            right: 20px !important;
+            transform: none !important;
+            max-width: none !important;
+            width: auto !important;
         }
 
-    @media (max-width: 768px) {
+        .tooltip::after {
+            display: none !important;
+        }
+
         .header {
             padding: 1rem;
         }
@@ -382,6 +420,12 @@ title: "Akathisia"
         .section {
             padding: 1.2rem;
         }
+
+        .tooltip {
+            left: 10px !important;
+            right: 10px !important;
+            bottom: 10px !important;
+        }
     }
 </style>
 
@@ -399,137 +443,139 @@ title: "Akathisia"
 </div>
 
 <div class="container">
-    <div class="content-card">
-        <!-- Section 1: What this feels like -->
-        <div class="section">
-            <h2>What This Feels Like</h2>
-            <p><a class="jargon">Akathisia<span class="tooltip">A movement disorder characterized by inner restlessness and an irresistible urge to move</span></a> is a <a class="jargon">movement disorder<span class="tooltip">Neurological conditions that affect the speed, fluency, quality, and ease of movement</span></a> that creates an overwhelming sense of inner restlessness and an irresistible urge to move. Unlike typical restlessness, this feels like your body is fighting against stillness at a cellular level.</p>
+    <main role="main" id="main-content">
+        <div class="content-card">
+            <!-- Section 1: What this feels like -->
+            <div class="section">
+                <h2>What This Feels Like</h2>
+                <p><a class="jargon">Akathisia<span class="tooltip">A movement disorder characterized by inner restlessness and an irresistible urge to move</span></a> is a <a class="jargon">movement disorder<span class="tooltip">Neurological conditions that affect the speed, fluency, quality, and ease of movement</span></a> that creates an overwhelming sense of inner restlessness and an irresistible urge to move. Unlike typical restlessness, this feels like your body is fighting against stillness at a cellular level.</p>
 
-            <p>Many people describe it as feeling like they need to "crawl out of their own skin" or that sitting still is physically painful. It's not anxiety in the traditional sense - it's a physical compulsion that feels like electricity or insects under your skin. You might find yourself pacing compulsively, rocking back and forth, or constantly shifting positions without relief.</p>
+                <p>Many people describe it as feeling like they need to "crawl out of their own skin" or that sitting still is physically painful. It's not anxiety in the traditional sense - it's a physical compulsion that feels like electricity or insects under your skin. You might find yourself pacing compulsively, rocking back and forth, or constantly shifting positions without relief.</p>
 
-            <p>This condition is most commonly caused by medications, particularly <a class="jargon">antipsychotics<span class="tooltip">Medications used to treat psychosis, bipolar disorder, and sometimes severe depression or anxiety</span></a>, but can also result from <a class="jargon">anti-nausea medications<span class="tooltip">Drugs like metoclopramide or prochlorperazine that can block dopamine receptors</span></a>, certain antidepressants, or <a class="jargon">medication withdrawal<span class="tooltip">The period when stopping or reducing psychiatric medications, which can trigger movement disorders</span></a>.</p>
+                <p>This condition is most commonly caused by medications, particularly <a class="jargon">antipsychotics<span class="tooltip">Medications used to treat psychosis, bipolar disorder, and sometimes severe depression or anxiety</span></a>, but can also result from <a class="jargon">anti-nausea medications<span class="tooltip">Drugs like metoclopramide or prochlorperazine that can block dopamine receptors</span></a>, certain antidepressants, or <a class="jargon">medication withdrawal<span class="tooltip">The period when stopping or reducing psychiatric medications, which can trigger movement disorders</span></a>.</p>
 
-            <div class="highlight-box">
-                <p><strong>Common experiences:</strong> Feeling like you can't sit through meals, meetings, or conversations; needing to pace constantly; feeling tormented by the inability to get comfortable; describing the sensation as "crawling out of your skin."</p>
+                <div class="highlight-box">
+                    <p><strong>Common experiences:</strong> Feeling like you can't sit through meals, meetings, or conversations; needing to pace constantly; feeling tormented by the inability to get comfortable; describing the sensation as "crawling out of your skin."</p>
+                </div>
             </div>
-        </div>
 
-        <!-- Section 2: Why this might be happening -->
-        <div class="section">
-            <h2>Why This Might Be Happening</h2>
-            <p><a class="jargon">Akathisia<span class="tooltip">A movement disorder characterized by inner restlessness and an irresistible urge to move</span></a> occurs when medications block <a class="jargon">dopamine receptors<span class="tooltip">Brain cell receptors that respond to dopamine, a neurotransmitter essential for movement control and motivation</span></a> in the brain areas that control movement. This creates a neurochemical imbalance that manifests as an irresistible urge to move. It's not psychological - it's a real neurological <a class="jargon">side effect<span class="tooltip">Unintended effects of medication that occur alongside the intended therapeutic effects</span></a>.</p>
+            <!-- Section 2: Why this might be happening -->
+            <div class="section">
+                <h2>Why This Might Be Happening</h2>
+                <p><a class="jargon">Akathisia<span class="tooltip">A movement disorder characterized by inner restlessness and an irresistible urge to move</span></a> occurs when medications block <a class="jargon">dopamine receptors<span class="tooltip">Brain cell receptors that respond to dopamine, a neurotransmitter essential for movement control and motivation</span></a> in the brain areas that control movement. This creates a <a class="jargon">neurochemical imbalance<span class="tooltip">Disruption in the brain's chemical messaging systems that regulate movement and mood</span></a> that manifests as an irresistible urge to move. It's not psychological - it's a real neurological <a class="jargon">side effect<span class="tooltip">Unintended effects of medication that occur alongside the intended therapeutic effects</span></a>.</p>
 
-            <p>The brain's <a class="jargon">basal ganglia<span class="tooltip">Brain structures that help control movement, balance, and coordination</span></a> rely on precise <a class="jargon">dopamine<span class="tooltip">A neurotransmitter that helps control movement, motivation, and pleasure</span></a> signaling to regulate movement and stillness. When medications interfere with this system, particularly by blocking <a class="jargon">D2 dopamine receptors<span class="tooltip">Specific dopamine receptors in the brain that are crucial for movement control</span></a>, the brain loses its ability to feel comfortable at rest.</p>
+                <p>The brain's <a class="jargon">basal ganglia<span class="tooltip">Brain structures that help control movement, balance, and coordination</span></a> rely on precise <a class="jargon">dopamine<span class="tooltip">A neurotransmitter that helps control movement, motivation, and pleasure</span></a> signaling to regulate movement and stillness. When medications interfere with this system, particularly by blocking <a class="jargon">D2 dopamine receptors<span class="tooltip">Specific dopamine receptors in the brain that are crucial for movement control</span></a>, the brain loses its ability to feel comfortable at rest.</p>
 
-            <p>Certain people are more vulnerable to developing <a class="jargon">akathisia<span class="tooltip">A movement disorder characterized by inner restlessness and an irresistible urge to move</span></a>, including those with <a class="jargon">iron deficiency<span class="tooltip">Low iron levels that can increase susceptibility to movement disorders</span></a>, elderly individuals, women, and people taking higher doses or multiple medications that affect <a class="jargon">dopamine<span class="tooltip">A neurotransmitter that helps control movement, motivation, and pleasure</span></a>.</p>
+                <p>Certain people are more vulnerable to developing <a class="jargon">akathisia<span class="tooltip">A movement disorder characterized by inner restlessness and an irresistible urge to move</span></a>, including those with <a class="jargon">iron deficiency<span class="tooltip">Low iron levels that can increase susceptibility to movement disorders</span></a>, elderly individuals, women, and people taking higher doses or multiple medications that affect <a class="jargon">dopamine<span class="tooltip">A neurotransmitter that helps control movement, motivation, and pleasure</span></a>.</p>
 
-            <div class="learn-more" onclick="toggleLearnMore(this)">
-                <h3>Learn More: The Neuroscience of Medication-Induced Movement Disorders ↓</h3>
-                <div class="learn-more-content">
-                    <p><a class="jargon">Akathisia<span class="tooltip">A movement disorder characterized by inner restlessness and an irresistible urge to move</span></a> typically develops when <a class="jargon">dopamine receptor occupancy<span class="tooltip">The percentage of dopamine receptors in the brain that are blocked by medication</span></a> exceeds 80% in certain brain regions. <a class="jargon">Antipsychotic medications<span class="tooltip">Drugs that block dopamine receptors to treat psychosis but can cause movement side effects</span></a> vary in their likelihood of causing <a class="jargon">akathisia<span class="tooltip">A movement disorder characterized by inner restlessness and an irresistible urge to move</span></a>, with <a class="jargon">high-potency typical antipsychotics<span class="tooltip">Older antipsychotic medications like haloperidol that strongly block dopamine receptors</span></a> having the highest risk.</p>
-                    
-                    <p>The condition can develop within hours of starting medication, but may also emerge weeks or months later. <a class="jargon">Tardive akathisia<span class="tooltip">A persistent form of akathisia that can continue even after stopping the medication that caused it</span></a> is a particularly challenging variant that can persist even after discontinuing the causative medication, due to changes in <a class="jargon">dopamine receptor sensitivity<span class="tooltip">How responsive brain cells become to dopamine after prolonged medication exposure</span></a>.</p>
+                <div class="learn-more" onclick="toggleLearnMore(this)">
+                    <h3>Learn More: The Neuroscience of Medication-Induced Movement Disorders ↓</h3>
+                    <div class="learn-more-content">
+                        <p><a class="jargon">Akathisia<span class="tooltip">A movement disorder characterized by inner restlessness and an irresistible urge to move</span></a> typically develops when <a class="jargon">dopamine receptor occupancy<span class="tooltip">The percentage of dopamine receptors in the brain that are blocked by medication</span></a> exceeds 80% in certain brain regions. <a class="jargon">Antipsychotic medications<span class="tooltip">Drugs that block dopamine receptors to treat psychosis but can cause movement side effects</span></a> vary in their likelihood of causing <a class="jargon">akathisia<span class="tooltip">A movement disorder characterized by inner restlessness and an irresistible urge to move</span></a>, with <a class="jargon">high-potency typical antipsychotics<span class="tooltip">Older antipsychotic medications like haloperidol that strongly block dopamine receptors</span></a> having the highest risk.</p>
+                        
+                        <p>The condition can develop within hours of starting medication, but may also emerge weeks or months later. <a class="jargon">Tardive akathisia<span class="tooltip">A persistent form of akathisia that can continue even after stopping the medication that caused it</span></a> is a particularly challenging variant that can persist even after discontinuing the causative medication, due to changes in <a class="jargon">dopamine receptor sensitivity<span class="tooltip">How responsive brain cells become to dopamine after prolonged medication exposure</span></a>.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 3: Next 5 minutes -->
+            <div class="section immediate-help">
+                <h2>What Can Help You Through the Next 5 Minutes</h2>
+                <p>When you're experiencing <a class="jargon">akathisia<span class="tooltip">A movement disorder characterized by inner restlessness and an irresistible urge to move</span></a> right now, these strategies can provide some relief:</p>
+
+                <ul>
+                    <li><strong>Allow yourself to move:</strong> Don't fight the urge to pace, rock, or shift positions. Fighting the compulsion typically makes it worse and increases distress.</li>
+                    <li><strong>Try gentle movement:</strong> Walking, stretching, or doing gentle exercises can sometimes help channel the restless energy in a more organized way.</li>
+                    <li><strong>Use cooling techniques:</strong> A cool compress on your neck, face, or wrists while moving can provide some <a class="jargon">sensory relief<span class="tooltip">Comfort from physical sensations that can help distract from internal restlessness</span></a>.</li>
+                    <li><strong>Practice breathing while moving:</strong> Don't force yourself to sit still for breathing exercises - practice <a class="jargon">deep breathing<span class="tooltip">Slow, controlled breathing that can help calm the nervous system</span></a> while pacing or rocking.</li>
+                    <li><strong>Remind yourself this is medical:</strong> The distress you're feeling is a medication <a class="jargon">side effect<span class="tooltip">Unintended effects of medication that occur alongside the intended therapeutic effects</span></a>, not anxiety or a mental health crisis. This can help reduce panic about the sensations.</li>
+                    <li><strong>Use distraction while moving:</strong> Listen to music, podcasts, or audiobooks while pacing. Mental distraction combined with allowed movement can reduce suffering.</li>
+                    <li><strong>Try different positions:</strong> Alternate between sitting, standing, and lying down. Some people find that certain positions or movements provide temporary relief.</li>
+                </ul>
+
+                <div class="highlight-box">
+                    <p><strong>Emergency comfort measure:</strong> If possible, take a warm shower or bath while the water runs over you. The combination of warmth, movement, and sensory input can provide temporary relief for some people.</p>
+                </div>
+            </div>
+
+            <!-- Section 4: Long-term solutions -->
+            <div class="section long-term">
+                <h2>What Are Some Healthy Long-Term Solutions</h2>
+                <p>Managing <a class="jargon">akathisia<span class="tooltip">A movement disorder characterized by inner restlessness and an irresistible urge to move</span></a> requires medical intervention, but these approaches can help:</p>
+
+                <ul>
+                    <li><strong>Contact your prescribing doctor immediately:</strong> <a class="jargon">Akathisia<span class="tooltip">A movement disorder characterized by inner restlessness and an irresistible urge to move</span></a> is a serious <a class="jargon">side effect<span class="tooltip">Unintended effects of medication that occur alongside the intended therapeutic effects</span></a> that requires professional medical attention. Don't try to tough it out.</li>
+                    <li><strong>Request medication adjustments:</strong> Options include dose reduction, switching to a different medication, or adding <a class="jargon">anticholinergic medications<span class="tooltip">Drugs like benztropine that can counteract movement side effects by balancing brain chemicals</span></a> to counteract the movement effects.</li>
+                    <li><strong>Ask about specific treatments:</strong> <a class="jargon">Propranolol<span class="tooltip">A beta-blocker medication that can help reduce akathisia symptoms in some people</span></a>, <a class="jargon">benzodiazepines<span class="tooltip">Anti-anxiety medications that may provide short-term relief from akathisia</span></a>, or <a class="jargon">mirtazapine<span class="tooltip">An antidepressant that may help with medication-induced movement disorders</span></a> may help reduce symptoms.</li>
+                    <li><strong>Keep a <a class="jargon">movement diary<span class="tooltip">A record of when symptoms occur, their severity, and what factors make them better or worse</span></a>:</strong> Track when symptoms are worst, what helps or makes them worse, and any patterns related to medication timing or activities.</li>
+                    <li><strong>Advocate for yourself persistently:</strong> <a class="jargon">Akathisia<span class="tooltip">A movement disorder characterized by inner restlessness and an irresistible urge to move</span></a> is often dismissed as "just anxiety" but requires specific treatment approaches.</li>
+                    <li><strong>Create movement-friendly environments:</strong> Arrange your living and work spaces to accommodate pacing and movement. Use standing desks, walking meetings, or areas where restless movement is acceptable.</li>
+                    <li><strong>Build support networks:</strong> Connect with others who have experienced medication-induced <a class="jargon">movement disorders<span class="tooltip">Neurological conditions that affect the speed, fluency, quality, and ease of movement</span></a>. Understanding and validation from people who've been through this is invaluable.</li>
+                    <li><strong>Consider <a class="jargon">iron supplementation<span class="tooltip">Adding iron supplements if blood tests show deficiency, which may help reduce movement disorder susceptibility</span></a>:</strong> If you have <a class="jargon">iron deficiency<span class="tooltip">Low iron levels that can increase susceptibility to movement disorders</span></a>, addressing this may help reduce susceptibility to <a class="jargon">akathisia<span class="tooltip">A movement disorder characterized by inner restlessness and an irresistible urge to move</span></a>.</li>
+                </ul>
+
+                <div class="learn-more" onclick="toggleLearnMore(this)">
+                    <h3>Learn More: Treatment Approaches and Medication Options ↓</h3>
+                    <div class="learn-more-content">
+                        <p><strong><a class="jargon">Dose reduction strategies<span class="tooltip">Carefully lowering medication amounts to find the lowest effective dose that doesn't cause movement side effects</span></a>:</strong> Often the most effective approach is finding the lowest effective dose of the necessary medication. Sometimes a 25-50% reduction can eliminate <a class="jargon">akathisia<span class="tooltip">A movement disorder characterized by inner restlessness and an irresistible urge to move</span></a> while maintaining therapeutic benefits.</p>
+                        
+                        <p><strong>Medication switching:</strong> Some <a class="jargon">atypical antipsychotics<span class="tooltip">Newer antipsychotic medications like quetiapine or aripiprazole that may have lower risk of movement side effects</span></a> have lower rates of <a class="jargon">akathisia<span class="tooltip">A movement disorder characterized by inner restlessness and an irresistible urge to move</span></a>. <a class="jargon">Partial dopamine agonists<span class="tooltip">Medications like aripiprazole that can stabilize dopamine activity rather than just blocking it</span></a> like aripiprazole may actually help treat <a class="jargon">akathisia<span class="tooltip">A movement disorder characterized by inner restlessness and an irresistible urge to move</span></a> in some cases.</p>
+                        
+                        <p><strong>Combination therapy:</strong> Adding <a class="jargon">vitamin B6<span class="tooltip">A vitamin supplement that may help with some medication-induced movement disorders</span></a>, <a class="jargon">magnesium<span class="tooltip">A mineral supplement that may help with muscle tension and movement disorders</span></a>, or working with <a class="jargon">integrative medicine approaches<span class="tooltip">Medical approaches that combine conventional treatments with complementary therapies</span></a> alongside conventional treatment may provide additional relief.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 5: Medical intervention -->
+            <div class="section medical-intervention">
+                <h2>When Should I Consider Immediate Medical Intervention</h2>
+                <p>Seek immediate medical attention for <a class="jargon">akathisia<span class="tooltip">A movement disorder characterized by inner restlessness and an irresistible urge to move</span></a> in these situations:</p>
+
+                <ul>
+                    <li><strong>Severe distress or <a class="jargon">suicidal thoughts<span class="tooltip">Thoughts of self-harm that can occur when akathisia becomes unbearable</span></a>:</strong> <a class="jargon">Akathisia<span class="tooltip">A movement disorder characterized by inner restlessness and an irresistible urge to move</span></a> can be so distressing that people consider self-harm. This is a medical emergency.</li>
+                    <li><strong>Complete inability to function:</strong> If you can't sit for meals, work, sleep, or basic activities due to the compulsive movement.</li>
+                    <li><strong>Recent medication changes:</strong> If <a class="jargon">akathisia<span class="tooltip">A movement disorder characterized by inner restlessness and an irresistible urge to move</span></a> developed within days or weeks of starting a new medication or increasing a dose.</li>
+                    <li><strong>Worsening symptoms:</strong> If the restlessness is getting progressively worse despite trying to manage it.</li>
+                    <li><strong>Sleep disruption:</strong> If the movement compulsion is preventing sleep for multiple consecutive nights.</li>
+                    <li><strong>Your doctor dismisses your concerns:</strong> If healthcare providers aren't taking your symptoms seriously, seek a second opinion from someone familiar with <a class="jargon">medication-induced movement disorders<span class="tooltip">Side effects of psychiatric medications that affect movement and motor control</span></a>.</li>
+                </ul>
+
+                <p>Remember that <a class="jargon">akathisia<span class="tooltip">A movement disorder characterized by inner restlessness and an irresistible urge to move</span></a> is a recognized medical condition with established treatments. You shouldn't have to suffer through unbearable <a class="jargon">side effects<span class="tooltip">Unintended effects of medication that occur alongside the intended therapeutic effects</span></a> to maintain mental health treatment.</p>
+
+                <div class="highlight-box">
+                    <p><strong>Emergency resources:</strong> If you're having thoughts of self-harm due to <a class="jargon">akathisia<span class="tooltip">A movement disorder characterized by inner restlessness and an irresistible urge to move</span></a> distress, contact emergency services, call 988 (Suicide & Crisis Lifeline), or go to an emergency room immediately. Bring information about your medications and explain that you're experiencing medication-induced <a class="jargon">akathisia<span class="tooltip">A movement disorder characterized by inner restlessness and an irresistible urge to move</span></a>.</p>
+                </div>
+            </div>
+
+            <!-- Section 6: Validation -->
+            <div class="section validation">
+                <h2>You're Not Imagining This</h2>
+                <p><a class="jargon">Akathisia<span class="tooltip">A movement disorder characterized by inner restlessness and an irresistible urge to move</span></a> is a well-documented medical condition with specific <a class="jargon">diagnostic criteria<span class="tooltip">Standardized symptoms and signs that healthcare providers use to identify and diagnose conditions</span></a> and established treatments. The torment you're experiencing is real and valid - this isn't "just anxiety" or something you need to learn to live with indefinitely.</p>
+
+                <p>Many people with <a class="jargon">akathisia<span class="tooltip">A movement disorder characterized by inner restlessness and an irresistible urge to move</span></a> report feeling like they're "going crazy" or that others don't understand the intensity of their distress. Healthcare providers sometimes underestimate how unbearable this condition can be, but your suffering is legitimate and deserves proper treatment.</p>
+
+                <p>You have the right to mental health treatment that doesn't cause intolerable physical <a class="jargon">side effects<span class="tooltip">Unintended effects of medication that occur alongside the intended therapeutic effects</span></a>. A competent psychiatrist will work with you to find solutions that address both your mental health needs and your quality of life. Don't let anyone convince you that severe <a class="jargon">akathisia<span class="tooltip">A movement disorder characterized by inner restlessness and an irresistible urge to move</span></a> is "just part of treatment."</p>
+
+                <p>The compulsive movement and inner torture you're experiencing reflects a disruption in your brain's movement control systems, not a personal failing or inability to cope. Many people have successfully found <a class="jargon">akathisia<span class="tooltip">A movement disorder characterized by inner restlessness and an irresistible urge to move</span></a> treatments that allow them to maintain necessary psychiatric care without unbearable <a class="jargon">side effects<span class="tooltip">Unintended effects of medication that occur alongside the intended therapeutic effects</span></a>.</p>
+
+                <div class="highlight-box">
+                    <p><strong>Community support:</strong> Consider joining online support groups for people with <a class="jargon">medication-induced movement disorders<span class="tooltip">Side effects of psychiatric medications that affect movement and motor control</span></a>. Connecting with others who truly understand this experience can provide both practical advice and emotional validation.</p>
+                </div>
+            </div>
+
+            <div class="related-struggles">
+                <h3>Related Struggles</h3>
+                <div class="struggle-tags">
+                    <a href="{{ '/struggles/medication-side-effects.html' | relative_url }}" class="struggle-tag">Medication Side Effects</a>
+                    <a href="{{ '/struggles/physical-restlessness.html' | relative_url }}" class="struggle-tag">Physical Restlessness</a>
+                    <a href="{{ '/struggles/anxiety-management.html' | relative_url }}" class="struggle-tag">Anxiety Management</a>
+                    <a href="{{ '/struggles/medical-advocacy.html' | relative_url }}" class="struggle-tag">Medical Advocacy</a>
+                    <a href="{{ '/struggles/sleep-disruption.html' | relative_url }}" class="struggle-tag">Sleep Disruption</a>
+                    <a href="{{ '/struggles/movement-disorders.html' | relative_url }}" class="struggle-tag">Movement Disorders</a>
                 </div>
             </div>
         </div>
-
-        <!-- Section 3: Next 5 minutes -->
-        <div class="section immediate-help">
-            <h2>What Can Help You Through the Next 5 Minutes</h2>
-            <p>When you're experiencing <a class="jargon">akathisia<span class="tooltip">A movement disorder characterized by inner restlessness and an irresistible urge to move</span></a> right now, these strategies can provide some relief:</p>
-
-            <ul>
-                <li><strong>Allow yourself to move:</strong> Don't fight the urge to pace, rock, or shift positions. Fighting the compulsion typically makes it worse and increases distress.</li>
-                <li><strong>Try gentle movement:</strong> Walking, stretching, or doing gentle exercises can sometimes help channel the restless energy in a more organized way.</li>
-                <li><strong>Use cooling techniques:</strong> A cool compress on your neck, face, or wrists while moving can provide some sensory relief.</li>
-                <li><strong>Practice breathing while moving:</strong> Don't force yourself to sit still for breathing exercises - practice <a class="jargon">deep breathing<span class="tooltip">Slow, controlled breathing that can help calm the nervous system</span></a> while pacing or rocking.</li>
-                <li><strong>Remind yourself this is medical:</strong> The distress you're feeling is a medication <a class="jargon">side effect<span class="tooltip">Unintended effects of medication that occur alongside the intended therapeutic effects</span></a>, not anxiety or a mental health crisis. This can help reduce panic about the sensations.</li>
-                <li><strong>Use distraction while moving:</strong> Listen to music, podcasts, or audiobooks while pacing. Mental distraction combined with allowed movement can reduce suffering.</li>
-                <li><strong>Try different positions:</strong> Alternate between sitting, standing, and lying down. Some people find that certain positions or movements provide temporary relief.</li>
-            </ul>
-
-            <div class="highlight-box">
-                <p><strong>Emergency comfort measure:</strong> If possible, take a warm shower or bath while the water runs over you. The combination of warmth, movement, and sensory input can provide temporary relief for some people.</p>
-            </div>
-        </div>
-
-        <!-- Section 4: Long-term solutions -->
-        <div class="section long-term">
-            <h2>What Are Some Healthy Long-Term Solutions</h2>
-            <p>Managing <a class="jargon">akathisia<span class="tooltip">A movement disorder characterized by inner restlessness and an irresistible urge to move</span></a> requires medical intervention, but these approaches can help:</p>
-
-            <ul>
-                <li><strong>Contact your prescribing doctor immediately:</strong> <a class="jargon">Akathisia<span class="tooltip">A movement disorder characterized by inner restlessness and an irresistible urge to move</span></a> is a serious <a class="jargon">side effect<span class="tooltip">Unintended effects of medication that occur alongside the intended therapeutic effects</span></a> that requires professional medical attention. Don't try to tough it out.</li>
-                <li><strong>Request medication adjustments:</strong> Options include dose reduction, switching to a different medication, or adding <a class="jargon">anticholinergic medications<span class="tooltip">Drugs like benztropine that can counteract movement side effects by balancing brain chemicals</span></a> to counteract the movement effects.</li>
-                <li><strong>Ask about specific treatments:</strong> <a class="jargon">Propranolol<span class="tooltip">A beta-blocker medication that can help reduce akathisia symptoms in some people</span></a>, <a class="jargon">benzodiazepines<span class="tooltip">Anti-anxiety medications that may provide short-term relief from akathisia</span></a>, or <a class="jargon">mirtazapine<span class="tooltip">An antidepressant that may help with medication-induced movement disorders</span></a> may help reduce symptoms.</li>
-                <li><strong>Keep a movement diary:</strong> Track when symptoms are worst, what helps or makes them worse, and any patterns related to medication timing or activities.</li>
-                <li><strong>Advocate for yourself persistently:</strong> <a class="jargon">Akathisia<span class="tooltip">A movement disorder characterized by inner restlessness and an irresistible urge to move</span></a> is often dismissed as "just anxiety" but requires specific treatment approaches.</li>
-                <li><strong>Create movement-friendly environments:</strong> Arrange your living and work spaces to accommodate pacing and movement. Use standing desks, walking meetings, or areas where restless movement is acceptable.</li>
-                <li><strong>Build support networks:</strong> Connect with others who have experienced medication-induced <a class="jargon">movement disorders<span class="tooltip">Neurological conditions that affect the speed, fluency, quality, and ease of movement</span></a>. Understanding and validation from people who've been through this is invaluable.</li>
-                <li><strong>Consider iron supplementation:</strong> If you have <a class="jargon">iron deficiency<span class="tooltip">Low iron levels that can increase susceptibility to movement disorders</span></a>, addressing this may help reduce susceptibility to <a class="jargon">akathisia<span class="tooltip">A movement disorder characterized by inner restlessness and an irresistible urge to move</span></a>.</li>
-            </ul>
-
-            <div class="learn-more" onclick="toggleLearnMore(this)">
-                <h3>Learn More: Treatment Approaches and Medication Options ↓</h3>
-                <div class="learn-more-content">
-                    <p><strong><a class="jargon">Dose reduction strategies<span class="tooltip">Carefully lowering medication amounts to find the lowest effective dose that doesn't cause movement side effects</span></a>:</strong> Often the most effective approach is finding the lowest effective dose of the necessary medication. Sometimes a 25-50% reduction can eliminate <a class="jargon">akathisia<span class="tooltip">A movement disorder characterized by inner restlessness and an irresistible urge to move</span></a> while maintaining therapeutic benefits.</p>
-                    
-                    <p><strong>Medication switching:</strong> Some <a class="jargon">atypical antipsychotics<span class="tooltip">Newer antipsychotic medications like quetiapine or aripiprazole that may have lower risk of movement side effects</span></a> have lower rates of <a class="jargon">akathisia<span class="tooltip">A movement disorder characterized by inner restlessness and an irresistible urge to move</span></a>. <a class="jargon">Partial dopamine agonists<span class="tooltip">Medications like aripiprazole that can stabilize dopamine activity rather than just blocking it</span></a> like aripiprazole may actually help treat <a class="jargon">akathisia<span class="tooltip">A movement disorder characterized by inner restlessness and an irresistible urge to move</span></a> in some cases.</p>
-                    
-                    <p><strong>Combination therapy:</strong> Adding <a class="jargon">vitamin B6<span class="tooltip">A vitamin supplement that may help with some medication-induced movement disorders</span></a>, <a class="jargon">magnesium<span class="tooltip">A mineral supplement that may help with muscle tension and movement disorders</span></a>, or working with <a class="jargon">integrative medicine approaches<span class="tooltip">Medical approaches that combine conventional treatments with complementary therapies</span></a> alongside conventional treatment may provide additional relief.</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Section 5: Medical intervention -->
-        <div class="section medical-intervention">
-            <h2>When Should I Consider Immediate Medical Intervention</h2>
-            <p>Seek immediate medical attention for <a class="jargon">akathisia<span class="tooltip">A movement disorder characterized by inner restlessness and an irresistible urge to move</span></a> in these situations:</p>
-
-            <ul>
-                <li><strong>Severe distress or <a class="jargon">suicidal thoughts<span class="tooltip">Thoughts of self-harm that can occur when akathisia becomes unbearable</span></a>:</strong> <a class="jargon">Akathisia<span class="tooltip">A movement disorder characterized by inner restlessness and an irresistible urge to move</span></a> can be so distressing that people consider self-harm. This is a medical emergency.</li>
-                <li><strong>Complete inability to function:</strong> If you can't sit for meals, work, sleep, or basic activities due to the compulsive movement.</li>
-                <li><strong>Recent medication changes:</strong> If <a class="jargon">akathisia<span class="tooltip">A movement disorder characterized by inner restlessness and an irresistible urge to move</span></a> developed within days or weeks of starting a new medication or increasing a dose.</li>
-                <li><strong>Worsening symptoms:</strong> If the restlessness is getting progressively worse despite trying to manage it.</li>
-                <li><strong>Sleep disruption:</strong> If the movement compulsion is preventing sleep for multiple consecutive nights.</li>
-                <li><strong>Your doctor dismisses your concerns:</strong> If healthcare providers aren't taking your symptoms seriously, seek a second opinion from someone familiar with <a class="jargon">medication-induced movement disorders<span class="tooltip">Side effects of psychiatric medications that affect movement and motor control</span></a>.</li>
-            </ul>
-
-            <p>Remember that <a class="jargon">akathisia<span class="tooltip">A movement disorder characterized by inner restlessness and an irresistible urge to move</span></a> is a recognized medical condition with established treatments. You shouldn't have to suffer through unbearable <a class="jargon">side effects<span class="tooltip">Unintended effects of medication that occur alongside the intended therapeutic effects</span></a> to maintain mental health treatment.</p>
-
-            <div class="highlight-box">
-                <p><strong>Emergency resources:</strong> If you're having thoughts of self-harm due to <a class="jargon">akathisia<span class="tooltip">A movement disorder characterized by inner restlessness and an irresistible urge to move</span></a> distress, contact emergency services, call 988 (Suicide & Crisis Lifeline), or go to an emergency room immediately. Bring information about your medications and explain that you're experiencing medication-induced <a class="jargon">akathisia<span class="tooltip">A movement disorder characterized by inner restlessness and an irresistible urge to move</span></a>.</p>
-            </div>
-        </div>
-
-        <!-- Section 6: Validation -->
-        <div class="section validation">
-            <h2>You're Not Imagining This</h2>
-            <p><a class="jargon">Akathisia<span class="tooltip">A movement disorder characterized by inner restlessness and an irresistible urge to move</span></a> is a well-documented medical condition with specific diagnostic criteria and established treatments. The torment you're experiencing is real and valid - this isn't "just anxiety" or something you need to learn to live with indefinitely.</p>
-
-            <p>Many people with <a class="jargon">akathisia<span class="tooltip">A movement disorder characterized by inner restlessness and an irresistible urge to move</span></a> report feeling like they're "going crazy" or that others don't understand the intensity of their distress. Healthcare providers sometimes underestimate how unbearable this condition can be, but your suffering is legitimate and deserves proper treatment.</p>
-
-            <p>You have the right to mental health treatment that doesn't cause intolerable physical <a class="jargon">side effects<span class="tooltip">Unintended effects of medication that occur alongside the intended therapeutic effects</span></a>. A competent psychiatrist will work with you to find solutions that address both your mental health needs and your quality of life. Don't let anyone convince you that severe <a class="jargon">akathisia<span class="tooltip">A movement disorder characterized by inner restlessness and an irresistible urge to move</span></a> is "just part of treatment."</p>
-
-            <p>The compulsive movement and inner torture you're experiencing reflects a disruption in your brain's movement control systems, not a personal failing or inability to cope. Many people have successfully found <a class="jargon">akathisia<span class="tooltip">A movement disorder characterized by inner restlessness and an irresistible urge to move</span></a> treatments that allow them to maintain necessary psychiatric care without unbearable <a class="jargon">side effects<span class="tooltip">Unintended effects of medication that occur alongside the intended therapeutic effects</span></a>.</p>
-
-            <div class="highlight-box">
-                <p><strong>Community support:</strong> Consider joining online support groups for people with <a class="jargon">medication-induced movement disorders<span class="tooltip">Side effects of psychiatric medications that affect movement and motor control</span></a>. Connecting with others who truly understand this experience can provide both practical advice and emotional validation.</p>
-            </div>
-        </div>
-
-        <div class="related-struggles">
-            <h3>Related Struggles</h3>
-            <div class="struggle-tags">
-                <a href="{{ '/struggles/medication-side-effects.html' | relative_url }}" class="struggle-tag">Medication Side Effects</a>
-                <a href="{{ '/struggles/physical-restlessness.html' | relative_url }}" class="struggle-tag">Physical Restlessness</a>
-                <a href="{{ '/struggles/anxiety-management.html' | relative_url }}" class="struggle-tag">Anxiety Management</a>
-                <a href="{{ '/struggles/medical-advocacy.html' | relative_url }}" class="struggle-tag">Medical Advocacy</a>
-                <a href="{{ '/struggles/sleep-disruption.html' | relative_url }}" class="struggle-tag">Sleep Disruption</a>
-                <a href="{{ '/struggles/movement-disorders.html' | relative_url }}" class="struggle-tag">Movement Disorders</a>
-            </div>
-        </div>
-    </div>
+    </main>
 </div>
 
 <script>
