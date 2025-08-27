@@ -266,25 +266,58 @@ title: "Bipolar"
         font-size: 1.3rem;
     }
 
+    /* Jargon styling - context-aware based on background */
     .jargon {
-        color: #e84393;
         text-decoration: none;
-        border-bottom: 1px dotted #e84393;
+        border-bottom: 1px dotted;
         position: relative;
         cursor: help;
         font-weight: 500;
     }
 
-    .jargon:hover {
+    /* Pink jargon for white backgrounds */
+    .content-card .jargon,
+    .characteristic-card .jargon,
+    .struggles-section .jargon,
+    .co-occurring .jargon {
+        color: #e84393;
+        border-bottom-color: #e84393;
+    }
+
+    .content-card .jargon:hover,
+    .characteristic-card .jargon:hover,
+    .struggles-section .jargon:hover,
+    .co-occurring .jargon:hover {
         color: #fd79a8;
         border-bottom-color: #fd79a8;
     }
 
+    /* White jargon for gradient backgrounds */
+    .header .jargon,
+    .breadcrumb .jargon,
+    .condition-intro .jargon,
+    .reframe-box .jargon {
+        color: white;
+        border-bottom-color: rgba(255, 255, 255, 0.7);
+        background: rgba(255, 255, 255, 0.1);
+        padding: 2px 6px;
+        border-radius: 4px;
+    }
+
+    .header .jargon:hover,
+    .breadcrumb .jargon:hover,
+    .condition-intro .jargon:hover,
+    .reframe-box .jargon:hover {
+        background: rgba(255, 255, 255, 0.2);
+        border-bottom-color: white;
+    }
+
+    /* Auto-sizing tooltips */
     .tooltip {
         visibility: hidden;
         opacity: 0;
         position: absolute;
-        bottom: 125%;
+        bottom: calc(100% + 8px);
         left: 50%;
         transform: translateX(-50%);
         background: #333;
@@ -302,6 +335,7 @@ title: "Bipolar"
         white-space: normal;
         text-align: left;
         line-height: 1.5;
+        pointer-events: none;
     }
 
     .tooltip::after {
@@ -326,7 +360,22 @@ title: "Bipolar"
         }
     }
 
+    /* Mobile-specific tooltip positioning */
     @media (max-width: 768px) {
+        .tooltip {
+            position: fixed !important;
+            bottom: 20px !important;
+            left: 20px !important;
+            right: 20px !important;
+            transform: none !important;
+            max-width: none !important;
+            width: auto !important;
+        }
+
+        .tooltip::after {
+            display: none !important;
+        }
+
         .header {
             padding: 1rem;
         }
@@ -402,6 +451,12 @@ title: "Bipolar"
         .characteristic-card {
             padding: 1.2rem;
         }
+
+        .tooltip {
+            left: 10px !important;
+            right: 10px !important;
+            bottom: 10px !important;
+        }
     }
 </style>
 
@@ -422,14 +477,14 @@ title: "Bipolar"
     <div class="content-card">
         <div class="condition-intro">
             <h2>What is Bipolar?</h2>
-            <p>Bipolar involves significant shifts between periods of elevated mood (<a class="jargon">mania<span class="tooltip">Distinct period of abnormally elevated, expansive, or irritable mood lasting at least one week</span></a> or <a class="jargon">hypomania<span class="tooltip">A milder form of mania lasting at least four days with elevated mood but less severe impairment</span></a>) and periods of depression. These aren't just mood swings - they're distinct <a class="jargon">episodes<span class="tooltip">Discrete periods of altered mood, energy, and behavior that are clearly different from your baseline functioning</span></a> that can last days to months, affecting energy, sleep, thinking, and behavior in ways that create friction with environments designed for emotional stability.</p>
+            <p><a class="jargon">Bipolar<span class="tooltip">A neurological condition involving significant shifts between periods of elevated mood and depression</span></a> involves significant shifts between periods of elevated mood (<a class="jargon">mania<span class="tooltip">Distinct period of abnormally elevated, expansive, or irritable mood lasting at least one week</span></a> or <a class="jargon">hypomania<span class="tooltip">A milder form of mania lasting at least four days with elevated mood but less severe impairment</span></a>) and periods of <a class="jargon">depression<span class="tooltip">Persistent low mood or loss of interest lasting at least two weeks, significantly impacting daily functioning</span></a>. These aren't just mood swings - they're distinct <a class="jargon">episodes<span class="tooltip">Discrete periods of altered mood, energy, and behavior that are clearly different from your baseline functioning</span></a> that can last days to months, affecting energy, sleep, thinking, and behavior in ways that create friction with environments designed for emotional stability.</p>
             
-            <p>People with bipolar often describe their emotional range as operating at intensities that others might not experience. This can mean profound lows, extraordinary highs, and everything in between - sometimes creating challenges, sometimes offering remarkable depth and insight.</p>
+            <p>People with <a class="jargon">bipolar<span class="tooltip">A neurological condition involving significant shifts between periods of elevated mood and depression</span></a> often describe their emotional range as operating at intensities that others might not experience. This can mean profound lows, extraordinary highs, and everything in between - sometimes creating challenges, sometimes offering remarkable depth and insight.</p>
         </div>
 
         <div class="reframe-box">
             <h3>Reframing Bipolar</h3>
-            <p>Traditional descriptions focus on bipolar as a "disorder" of extreme mood swings. A more nuanced understanding recognizes it as a neurological difference where <a class="jargon">mood episodes<span class="tooltip">Distinct periods of altered mood, energy, and behavior that are different from your baseline</span></a> operate with greater intensity and duration than typical emotional responses.</p>
+            <p>Traditional descriptions focus on <a class="jargon">bipolar<span class="tooltip">A neurological condition involving significant shifts between periods of elevated mood and depression</span></a> as a "disorder" of extreme mood swings. A more nuanced understanding recognizes it as a neurological difference where <a class="jargon">mood episodes<span class="tooltip">Distinct periods of altered mood, energy, and behavior that are different from your baseline</span></a> operate with greater intensity and duration than typical emotional responses.</p>
             
             <p>Think of it like having an emotional system that doesn't have a "medium" setting - when it moves, it moves significantly. This creates genuine challenges during <a class="jargon">episodes<span class="tooltip">Discrete periods of altered mood, energy, and behavior that are clearly different from your baseline functioning</span></a>, but it can also lead to extraordinary creativity, <a class="jargon">empathy<span class="tooltip">The ability to understand and share the feelings of others</span></a>, and insight during stable periods. The goal isn't to eliminate these patterns but to understand and manage them safely.</p>
         </div>
@@ -441,15 +496,15 @@ title: "Bipolar"
                 <ul>
                     <li>Decreased need for sleep (feeling rested on 2-3 hours)</li>
                     <li><a class="jargon">Racing thoughts<span class="tooltip">Thoughts that move so quickly they're hard to follow, organize, or communicate effectively</span></a> or rapid speech</li>
-                    <li>Increased goal-directed activity or agitation</li>
+                    <li>Increased <a class="jargon">goal-directed activity<span class="tooltip">Excessive involvement in activities with potential for negative consequences</span></a> or <a class="jargon">psychomotor agitation<span class="tooltip">Visible physical restlessness and increased movement that others can observe</span></a></li>
                     <li>Inflated self-esteem or <a class="jargon">grandiosity<span class="tooltip">Unrealistic beliefs about your abilities, importance, or power during mood episodes</span></a></li>
-                    <li>Distractibility or poor judgment</li>
+                    <li><a class="jargon">Distractibility<span class="tooltip">Attention easily drawn to unimportant or irrelevant external stimuli</span></a> or poor judgment</li>
                     <li>Engaging in activities with potential negative consequences</li>
                 </ul>
             </div>
 
             <div class="characteristic-card">
-                <h4>Major Depressive Episodes</h4>
+                <h4>Major <a class="jargon">Depressive Episodes<span class="tooltip">Periods of persistent low mood or loss of interest lasting at least two weeks that significantly impact functioning</span></a></h4>
                 <p>Periods of persistent low mood or loss of interest lasting at least two weeks, often much longer, that significantly impact daily functioning.</p>
                 <ul>
                     <li>Profound sadness, emptiness, or hopelessness</li>
@@ -458,16 +513,17 @@ title: "Bipolar"
                     <li>Fatigue or complete energy loss</li>
                     <li>Concentration and decision-making difficulties</li>
                     <li>Feelings of worthlessness or inappropriate guilt</li>
+                    <li>Thoughts of death or <a class="jargon">suicidal ideation<span class="tooltip">Thoughts about ending your life, ranging from passive wishes to specific plans</span></a></li>
                 </ul>
             </div>
 
             <div class="characteristic-card">
                 <h4><a class="jargon">Mixed States<span class="tooltip">Periods where symptoms of mania and depression occur simultaneously, creating intense emotional conflict</span></a> and <a class="jargon">Rapid Cycling<span class="tooltip">Experiencing four or more mood episodes within a 12-month period</span></a></h4>
-                <p>Complex presentations where symptoms of <a class="jargon">mania<span class="tooltip">Distinct period of abnormally elevated, expansive, or irritable mood lasting at least one week</span></a> and depression occur simultaneously, or <a class="jargon">mood episodes<span class="tooltip">Distinct periods of altered mood, energy, and behavior that are different from your baseline</span></a> change frequently throughout the year.</p>
+                <p>Complex presentations where symptoms of <a class="jargon">mania<span class="tooltip">Distinct period of abnormally elevated, expansive, or irritable mood lasting at least one week</span></a> and <a class="jargon">depression<span class="tooltip">Persistent low mood or loss of interest lasting at least two weeks, significantly impacting daily functioning</span></a> occur simultaneously, or <a class="jargon">mood episodes<span class="tooltip">Distinct periods of altered mood, energy, and behavior that are different from your baseline</span></a> change frequently throughout the year.</p>
                 <ul>
                     <li>High energy with depressed mood</li>
                     <li><a class="jargon">Racing thoughts<span class="tooltip">Thoughts that move so quickly they're hard to follow, organize, or communicate effectively</span></a> alongside hopelessness</li>
-                    <li>Agitation combined with sadness</li>
+                    <li><a class="jargon">Agitation<span class="tooltip">Feeling restless, irritable, or unable to sit still during mood episodes</span></a> combined with sadness</li>
                     <li>Four or more <a class="jargon">mood episodes<span class="tooltip">Distinct periods of altered mood, energy, and behavior that are different from your baseline</span></a> in 12 months</li>
                     <li>Particularly challenging to manage and recognize</li>
                     <li>Higher risk periods requiring careful monitoring</li>
@@ -480,7 +536,7 @@ title: "Bipolar"
                 <ul>
                     <li>Rebuilding relationships affected during <a class="jargon">episodes<span class="tooltip">Discrete periods of altered mood, energy, and behavior that are clearly different from your baseline functioning</span></a></li>
                     <li>Managing consequences of episode decisions</li>
-                    <li>Maintaining medication and therapy routines</li>
+                    <li>Maintaining <a class="jargon">medication<span class="tooltip">Pharmaceutical treatments that help stabilize mood and prevent episodes</span></a> and <a class="jargon">therapy<span class="tooltip">Professional counseling to develop coping strategies and understand patterns</span></a> routines</li>
                     <li>Developing episode recognition and prevention strategies</li>
                     <li>Often the times of greatest insight and creativity</li>
                     <li>Working on identity integration across <a class="jargon">mood states<span class="tooltip">Different emotional and cognitive conditions that occur during various phases of bipolar</span></a></li>
@@ -529,7 +585,7 @@ title: "Bipolar"
                 </a>
 
                 <a href="{{ '/struggles/anhedonia.html' | relative_url }}" class="struggle-link">
-                    <div class="struggle-title">Anhedonia</div>
+                    <div class="struggle-title"><a class="jargon">Anhedonia<span class="tooltip">The inability to feel pleasure or interest in activities that you normally enjoy</span></a></div>
                     <div class="struggle-description">Loss of interest or pleasure in activities you normally enjoy</div>
                 </a>
 
@@ -555,12 +611,32 @@ title: "Bipolar"
 
                 <a href="{{ '/struggles/mixed-states.html' | relative_url }}" class="struggle-link">
                     <div class="struggle-title">Mixed States</div>
-                    <div class="struggle-description">Experiencing depression and <a class="jargon">mania<span class="tooltip">Distinct period of abnormally elevated, expansive, or irritable mood lasting at least one week</span></a> symptoms simultaneously</div>
+                    <div class="struggle-description">Experiencing <a class="jargon">depression<span class="tooltip">Persistent low mood or loss of interest lasting at least two weeks, significantly impacting daily functioning</span></a> and <a class="jargon">mania<span class="tooltip">Distinct period of abnormally elevated, expansive, or irritable mood lasting at least one week</span></a> symptoms simultaneously</div>
                 </a>
 
                 <a href="{{ '/struggles/rapid-cycling-patterns.html' | relative_url }}" class="struggle-link">
                     <div class="struggle-title">Rapid Cycling Patterns</div>
                     <div class="struggle-description">Frequent <a class="jargon">mood episodes<span class="tooltip">Distinct periods of altered mood, energy, and behavior that are different from your baseline</span></a> throughout the year</div>
+                </a>
+
+                <a href="{{ '/struggles/medication-side-effects.html' | relative_url }}" class="struggle-link">
+                    <div class="struggle-title">Medication Side Effects</div>
+                    <div class="struggle-description">Managing the effects of <a class="jargon">mood stabilizers<span class="tooltip">Medications that help prevent mood episodes and maintain emotional stability</span></a> and other treatments</div>
+                </a>
+
+                <a href="{{ '/struggles/episode-recovery.html' | relative_url }}" class="struggle-link">
+                    <div class="struggle-title">Episode Recovery</div>
+                    <div class="struggle-description">Rebuilding stability and relationships after intense <a class="jargon">mood episodes<span class="tooltip">Distinct periods of altered mood, energy, and behavior that are different from your baseline</span></a></div>
+                </a>
+
+                <a href="{{ '/struggles/mood-tracking-awareness.html' | relative_url }}" class="struggle-link">
+                    <div class="struggle-title">Mood Tracking Awareness</div>
+                    <div class="struggle-description">Learning to recognize early signs of approaching <a class="jargon">episodes<span class="tooltip">Discrete periods of altered mood, energy, and behavior that are clearly different from your baseline functioning</span></a></div>
+                </a>
+
+                <a href="{{ '/struggles/identity-across-mood-states.html' | relative_url }}" class="struggle-link">
+                    <div class="struggle-title">Identity Across Mood States</div>
+                    <div class="struggle-description">Maintaining sense of self across different <a class="jargon">mood episodes<span class="tooltip">Distinct periods of altered mood, energy, and behavior that are different from your baseline</span></a></div>
                 </a>
             </div>
 
@@ -568,12 +644,13 @@ title: "Bipolar"
                 <h4>Related Struggles from Other Conditions</h4>
                 <div class="cross-cutting-links">
                     <a href="{{ '/struggles/task-initiation-paralysis.html' | relative_url }}" class="cross-cutting-link">Task Initiation Paralysis (ADHD)</a>
-                    <a href="{{ '/struggles/hyperfocus-episodes.html' | relative_url }}" class="cross-cutting-link">Hyperfocus Episodes (ADHD)</a>
+                    <a href="{{ '/struggles/attention-regulation.html' | relative_url }}" class="cross-cutting-link">Attention Regulation (ADHD)</a>
                     <a href="{{ '/struggles/rejection-sensitive-dysphoria.html' | relative_url }}" class="cross-cutting-link">Rejection Sensitive Dysphoria (ADHD)</a>
                     <a href="{{ '/struggles/sensory-processing-challenges.html' | relative_url }}" class="cross-cutting-link">Sensory Processing Challenges (Autism)</a>
                     <a href="{{ '/struggles/masking-burnout.html' | relative_url }}" class="cross-cutting-link">Masking Burnout (Autism)</a>
                     <a href="{{ '/struggles/emotional-flashbacks.html' | relative_url }}" class="cross-cutting-link">Emotional Flashbacks (BPD)</a>
                     <a href="{{ '/struggles/identity-disturbance.html' | relative_url }}" class="cross-cutting-link">Identity Disturbance (BPD)</a>
+                    <a href="{{ '/struggles/abandonment-fears.html' | relative_url }}" class="cross-cutting-link">Abandonment Fears (BPD)</a>
                     <a href="{{ '/struggles/intrusive-thoughts-images-urges.html' | relative_url }}" class="cross-cutting-link">Intrusive Thoughts (OCD)</a>
                 </div>
             </div>
@@ -581,11 +658,11 @@ title: "Bipolar"
 
         <div class="co-occurring">
             <h3>Common Co-Occurring Conditions</h3>
-            <p>Bipolar frequently occurs alongside other <a class="jargon">neurodivergent<span class="tooltip">Brain differences that create distinct patterns of thinking, processing, and behavior</span></a> conditions and mental health differences. Understanding these connections can help you get comprehensive support.</p>
+            <p><a class="jargon">Bipolar<span class="tooltip">A neurological condition involving significant shifts between periods of elevated mood and depression</span></a> frequently occurs alongside other <a class="jargon">neurodivergent<span class="tooltip">Brain differences that create distinct patterns of thinking, processing, and behavior</span></a> conditions and mental health differences. Understanding these connections can help you get comprehensive support.</p>
             
-            <p><strong>Frequently co-occurring:</strong> ADHD (overlap in <a class="jargon">executive function<span class="tooltip">The brain's management system that handles planning, organization, time management, task initiation, and follow-through</span></a> challenges and emotional intensity), anxiety disorders (particularly during depressive phases), substance use disorders (often as self-medication), eating disorders, and <a class="jargon">borderline personality disorder<span class="tooltip">A condition involving intense emotions, unstable relationships, and difficulty with sense of self</span></a> (shared emotional intensity patterns).</p>
+            <p><strong>Frequently co-occurring:</strong> <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> (overlap in <a class="jargon">executive function<span class="tooltip">The brain's management system that handles planning, organization, time management, task initiation, and follow-through</span></a> challenges and emotional intensity), <a class="jargon">anxiety disorders<span class="tooltip">Conditions involving excessive worry, fear, or physical anxiety symptoms</span></a> (particularly during depressive phases), <a class="jargon">substance use disorders<span class="tooltip">Problematic use of alcohol or drugs, often as attempts to self-medicate mood symptoms</span></a> (often as self-medication), eating disorders, and <a class="jargon">borderline personality disorder<span class="tooltip">A condition involving intense emotions, unstable relationships, and difficulty with sense of self</span></a> (shared emotional intensity patterns).</p>
             
-            <p><strong>Individual variation:</strong> Bipolar presents differently across individuals, with some experiencing more frequent <a class="jargon">episodes<span class="tooltip">Discrete periods of altered mood, energy, and behavior that are clearly different from your baseline functioning</span></a>, different episode patterns, or varying degrees of functional impact between <a class="jargon">mood states<span class="tooltip">Different emotional and cognitive conditions that occur during various phases of bipolar</span></a>.</p>
+            <p><strong>Individual variation:</strong> <a class="jargon">Bipolar<span class="tooltip">A neurological condition involving significant shifts between periods of elevated mood and depression</span></a> presents differently across individuals, with some experiencing more frequent <a class="jargon">episodes<span class="tooltip">Discrete periods of altered mood, energy, and behavior that are clearly different from your baseline functioning</span></a>, different episode patterns, or varying degrees of functional impact between <a class="jargon">mood states<span class="tooltip">Different emotional and cognitive conditions that occur during various phases of bipolar</span></a>.</p>
         </div>
 
         <div style="background: #e8f5e8; padding: 1.5rem; border-radius: 15px; margin-top: 2rem; border-left: 4px solid #00b894;">
@@ -594,7 +671,7 @@ title: "Bipolar"
                 <a href="{{ '/glossary/mood-regulation.html' | relative_url }}" style="color: #00b894; text-decoration: none;">Mood Regulation →</a>
                 <a href="{{ '/glossary/emotional-regulation.html' | relative_url }}" style="color: #00b894; text-decoration: none;">Emotional Regulation →</a>
                 <a href="{{ '/glossary/sleep-energy.html' | relative_url }}" style="color: #00b894; text-decoration: none;">Sleep and Energy →</a>
-                <a href="{{ '/glossary/executive-function.html' | relative_url }}" style="color: #00b894; text-decoration: none;">Executive Function →</a>
+                <a href="{{ '/glossary/episode-management.html' | relative_url }}" style="color: #00b894; text-decoration: none;">Episode Management →</a>
             </div>
         </div>
     </div>
