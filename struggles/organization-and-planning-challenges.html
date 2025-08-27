@@ -1,0 +1,539 @@
+---
+layout: default
+title: "Organization and Planning Challenges"
+---
+<!-- struggles/organization-and-planning-challenges.html -->
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        background: linear-gradient(135deg, #ff7675 0%, #fd79a8 100%);
+        color: #333;
+        min-height: 100vh;
+        line-height: 1.7;
+    }
+
+    .header {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        padding: 1.5rem 2rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .header h1 {
+        color: white;
+        font-size: 2.5rem;
+        font-weight: 300;
+        margin-bottom: 0.5rem;
+    }
+
+    .header p {
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 1.1rem;
+    }
+
+    .breadcrumb {
+        background: rgba(255, 255, 255, 0.05);
+        padding: 0.8rem 2rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    .breadcrumb a {
+        color: rgba(255, 255, 255, 0.8);
+        text-decoration: none;
+        font-size: 0.9rem;
+    }
+
+    .breadcrumb a:hover {
+        color: white;
+    }
+
+    .breadcrumb span {
+        color: rgba(255, 255, 255, 0.6);
+        margin: 0 0.5rem;
+    }
+
+    .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 2rem;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .content-card {
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 20px;
+        padding: 2.5rem;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        margin-bottom: 2rem;
+    }
+
+    .section {
+        background: white;
+        border-radius: 15px;
+        padding: 2rem;
+        margin: 2rem 0;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+        border-top: 3px solid #fd79a8;
+    }
+
+    .section h2 {
+        color: #fd79a8;
+        font-size: 1.4rem;
+        margin-bottom: 1.5rem;
+        font-weight: 600;
+    }
+
+    .section p {
+        color: #555;
+        margin-bottom: 1rem;
+        font-size: 1rem;
+    }
+
+    .section ul {
+        padding-left: 1.5rem;
+        color: #555;
+        margin: 1rem 0;
+    }
+
+    .section li {
+        margin-bottom: 0.8rem;
+        font-size: 0.95rem;
+    }
+
+    .immediate-help {
+        background: #e8f5e8;
+        border-left-color: #00b894;
+    }
+
+    .immediate-help h2 {
+        color: #00b894;
+    }
+
+    .long-term {
+        background: #e3f2fd;
+        border-left-color: #1976d2;
+    }
+
+    .long-term h2 {
+        color: #1976d2;
+    }
+
+    .medical-intervention {
+        background: #fff3e0;
+        border-left-color: #f57c00;
+    }
+
+    .medical-intervention h2 {
+        color: #f57c00;
+    }
+
+    .validation {
+        background: #f3e5f5;
+        border-left-color: #8e24aa;
+    }
+
+    .validation h2 {
+        color: #8e24aa;
+    }
+
+    .learn-more {
+        background: linear-gradient(45deg, #a29bfe, #6c5ce7);
+        color: white;
+        padding: 1.5rem;
+        border-radius: 12px;
+        margin: 1.5rem 0;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .learn-more h3 {
+        margin-bottom: 1rem;
+        font-size: 1.2rem;
+        color: white;
+    }
+
+    .learn-more:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    .learn-more-content {
+        display: none;
+        margin-top: 1rem;
+        padding-top: 1rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.3);
+        color: white;
+    }
+
+    .learn-more-content p {
+        color: white;
+    }
+
+    .learn-more.expanded .learn-more-content {
+        display: block;
+    }
+
+    .related-struggles {
+        background: #f8f9fa;
+        padding: 1.5rem;
+        border-radius: 12px;
+        margin: 2rem 0;
+        border: 1px solid #e0e0e0;
+    }
+
+    .related-struggles h3 {
+        color: #333;
+        margin-bottom: 1rem;
+        font-size: 1.2rem;
+    }
+
+    .struggle-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .struggle-tag {
+        background: #fd79a8;
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+    }
+
+    .struggle-tag:hover {
+        background: #e84393;
+        color: white;
+        text-decoration: none;
+        transform: translateY(-1px);
+    }
+
+    .jargon {
+        color: #e84393;
+        text-decoration: none;
+        border-bottom: 1px dotted #e84393;
+        position: relative;
+        cursor: help;
+        font-weight: 500;
+    }
+
+    .jargon:hover {
+        color: #fd79a8;
+        border-bottom-color: #fd79a8;
+    }
+
+    /* White jargon for purple gradient backgrounds */
+    .header .jargon,
+    .breadcrumb .jargon,
+    .learn-more .jargon,
+    .learn-more-content .jargon {
+        color: white;
+        border-bottom: 1px dotted rgba(255, 255, 255, 0.8);
+        background: rgba(255, 255, 255, 0.2);
+        padding: 2px 4px;
+        border-radius: 3px;
+    }
+
+    .header .jargon:hover,
+    .breadcrumb .jargon:hover,
+    .learn-more .jargon:hover,
+    .learn-more-content .jargon:hover {
+        color: white;
+        border-bottom-color: white;
+        background: rgba(255, 255, 255, 0.3);
+    }
+
+    .tooltip {
+        visibility: hidden;
+        opacity: 0;
+        position: absolute;
+        bottom: 125%;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #333;
+        color: white;
+        padding: 12px 16px;
+        border-radius: 8px;
+        font-size: 0.9rem;
+        font-weight: normal;
+        z-index: 1001;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        transition: opacity 0.3s, visibility 0.3s;
+        max-width: 800px;
+        min-width: 200px;
+        width: max-content;
+        white-space: normal;
+        text-align: left;
+        line-height: 1.5;
+    }
+
+    .tooltip::after {
+        content: '';
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        border: 6px solid transparent;
+        border-top-color: #333;
+    }
+
+    .jargon:hover .tooltip {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    .highlight-box {
+        background: #fff8e1;
+        padding: 1rem;
+        border-radius: 8px;
+        border-left: 3px solid #ffc107;
+        margin: 1rem 0;
+    }
+
+    /* Mobile responsive tooltip adjustments */
+    @media (max-width: 1024px) {
+        .tooltip {
+            max-width: 400px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .header {
+            padding: 1rem;
+        }
+
+        .header h1 {
+            font-size: 2rem;
+        }
+
+        .header p {
+            font-size: 1rem;
+        }
+
+        .breadcrumb {
+            padding: 0.6rem 1rem;
+        }
+
+        .container {
+            padding: 1rem;
+        }
+
+        .content-card {
+            padding: 1.5rem;
+        }
+
+        .section {
+            padding: 1.5rem;
+        }
+
+        .struggle-tags {
+            flex-direction: column;
+        }
+
+        .struggle-tag {
+            justify-content: center;
+            text-align: center;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .header h1 {
+            font-size: 1.8rem;
+        }
+
+        .header p {
+            font-size: 0.9rem;
+        }
+
+        .content-card {
+            padding: 1.2rem;
+        }
+
+        .section {
+            padding: 1.2rem;
+        }
+    }
+</style>
+
+<div class="header">
+    <h1>Organization and Planning Challenges</h1>
+    <p>When structuring your environment and future feels overwhelming</p>
+</div>
+
+<div class="breadcrumb">
+    <a href="{{ '/index.html' | relative_url }}">Home</a>
+    <span>></span>
+    <a href="{{ '/conditions/adhd.html' | relative_url }}">ADHD</a>
+    <span>></span>
+    Organization and Planning Challenges
+</div>
+
+<div class="container">
+    <div class="content-card">
+        <!-- Section 1: What this feels like -->
+        <div class="section">
+            <h2>What This Feels Like</h2>
+            <p><a class="jargon">Organization and planning challenges<span class="tooltip">Difficulties with structuring your environment, time, and future activities in ways that support your goals</span></a> often feel like living in constant chaos despite genuine efforts to get organized. Many people describe their spaces as looking like a tornado hit, even after spending hours trying to clean and organize.</p>
+
+            <p>You might start organizing projects with enthusiasm, buying containers and making detailed plans, only to find yourself more overwhelmed than when you started. Your <a class="jargon">working memory<span class="tooltip">The mental workspace that temporarily holds and manipulates information during thinking tasks</span></a> struggles to hold multiple organizational decisions at once, making even simple tasks like "clean your room" feel impossibly complex.</p>
+
+            <p>Planning future activities can feel like trying to solve a puzzle with missing pieces. You might struggle to estimate how long tasks take, forget important steps, or feel paralyzed by trying to consider all the variables involved in making plans. <a class="jargon">Executive function<span class="tooltip">Mental skills that help you plan, focus, remember instructions, and manage multiple tasks</span></a> challenges make it hard to break down large goals into manageable steps.</p>
+
+            <div class="highlight-box">
+                <p><strong>Common experiences:</strong> Buying organizational systems that you never use; feeling overwhelmed by the number of decisions required to organize anything; losing important items regularly; starting organizational projects but never finishing them; struggling to plan activities that require multiple steps.</p>
+            </div>
+        </div>
+
+        <!-- Section 2: Why this might be happening -->
+        <div class="section">
+            <h2>Why This Might Be Happening</h2>
+            <p>Organization and planning rely heavily on <a class="jargon">executive function<span class="tooltip">Mental skills that help you plan, focus, remember instructions, and manage multiple tasks</span></a> systems that work differently in <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> brains. These challenges stem from differences in how your brain processes <a class="jargon">working memory<span class="tooltip">The mental workspace that temporarily holds and manipulates information during thinking tasks</span></a>, manages <a class="jargon">cognitive load<span class="tooltip">The amount of mental effort being used in your working memory during a task</span></a>, and sustains attention through detailed, multi-step processes.</p>
+
+            <p>Traditional organizational systems are often designed for <a class="jargon">neurotypical<span class="tooltip">People whose brains develop and function in ways that align with societal expectations and norms</span></a> brains that can easily maintain mental categories, remember where things belong, and follow through on complex organizational schemes. <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> brains often need <a class="jargon">visual organization<span class="tooltip">Systems where items and information are visible and easy to locate, rather than hidden away in categories</span></a> and simpler systems that work with <a class="jargon">interest-based motivation<span class="tooltip">The ADHD brain's tendency to be motivated by what's engaging rather than what's important</span></a>.</p>
+
+            <p><a class="jargon">Planning paralysis<span class="tooltip">Getting stuck when trying to organize or plan because there are too many decisions and variables to consider</span></a> often occurs because your brain struggles with <a class="jargon">decision fatigue<span class="tooltip">Mental exhaustion from making too many choices, which depletes cognitive resources</span></a> and the overwhelming number of choices involved in organizational tasks. Each item to organize requires decisions about categorization, location, and systems - quickly overwhelming your mental processing capacity.</p>
+
+            <div class="learn-more" onclick="toggleLearnMore(this)">
+                <h3>Learn More: The Neuroscience of Organization and Planning ↓</h3>
+                <div class="learn-more-content">
+                    <p>Organization requires coordination between multiple brain networks: the <a class="jargon">prefrontal cortex<span class="tooltip">Brain area responsible for executive functions including planning and organization</span></a> for planning and decision-making, the <a class="jargon">parietal cortex<span class="tooltip">Brain region involved in spatial processing and attention</span></a> for spatial processing, and <a class="jargon">memory systems<span class="tooltip">Brain networks that store and retrieve information about where things belong and how systems work</span></a> for remembering where things belong.</p>
+                    
+                    <p>In <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a>, these systems show different patterns of activation and connectivity. <a class="jargon">Dopamine<span class="tooltip">A neurotransmitter that helps with motivation, reward, and sustaining effort</span></a> differences affect motivation for boring organizational tasks, while <a class="jargon">working memory<span class="tooltip">The mental workspace that temporarily holds and manipulates information during thinking tasks</span></a> limitations make it hard to hold multiple organizational categories in mind simultaneously.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 3: Next 5 minutes -->
+        <div class="section immediate-help">
+            <h2>What Can Help You Through the Next 5 Minutes</h2>
+            <p>When you're feeling overwhelmed by organizational chaos right now, these strategies can help:</p>
+
+            <ul>
+                <li><strong>Choose one tiny area:</strong> Pick one drawer, one corner of your desk, or one category of items. Ignore everything else and focus only on that small space.</li>
+                <li><strong>Use the <a class="jargon">one-minute rule<span class="tooltip">If something takes less than one minute to put away or organize, do it immediately</span></a>:</strong> If organizing something takes less than one minute, do it immediately. This prevents small messes from becoming overwhelming.</li>
+                <li><strong>Do a quick <a class="jargon">brain dump<span class="tooltip">Writing down everything in your head onto paper to reduce mental load</span></a>:</strong> Write down everything you think needs to be organized or planned. Getting it out of your head reduces <a class="jargon">cognitive load<span class="tooltip">The amount of mental effort being used in your working memory during a task</span></a>.</li>
+                <li><strong>Set a timer for 15 minutes:</strong> Work on organizing for exactly 15 minutes, then stop. This makes the task feel manageable and often creates enough <a class="jargon">momentum<span class="tooltip">The psychological boost that comes from starting a task, making continuation easier</span></a> to continue.</li>
+                <li><strong>Use the "grab a bag" method:</strong> Get a bag or box and quickly collect items that obviously don't belong in your current space. Sort later if needed.</li>
+                <li><strong>Make decisions quickly:</strong> For each item, decide immediately - keep, donate, or trash. Don't deliberate. Trust your first instinct to avoid <a class="jargon">decision fatigue<span class="tooltip">Mental exhaustion from making too many choices, which depletes cognitive resources</span></a>.</li>
+                <li><strong>Play energizing music:</strong> Choose music that makes organizing feel less tedious and more engaging to your <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> brain.</li>
+            </ul>
+
+            <div class="highlight-box">
+                <p><strong>Emergency organization hack:</strong> If someone's coming over in an hour, use the "10-minute pickup" - set a timer and quickly move everything that's clearly out of place to where it belongs, without worrying about perfect organization.</p>
+            </div>
+        </div>
+
+        <!-- Section 4: Long-term solutions -->
+        <div class="section long-term">
+            <h2>What Are Some Healthy Long-Term Solutions</h2>
+            <p>Building sustainable organizational systems that work with your <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> brain patterns:</p>
+
+            <ul>
+                <li><strong>Embrace <a class="jargon">visual organization<span class="tooltip">Systems where items and information are visible and easy to locate, rather than hidden away in categories</span></a>:</strong> Use clear containers, open shelving, and labels. If you can't see it, your brain often forgets it exists.</li>
+                <li><strong>Design for your laziest day:</strong> Create systems that work even when you have minimal energy or motivation. Make putting things away easier than leaving them out.</li>
+                <li><strong>Use <a class="jargon">external structure<span class="tooltip">Physical and environmental supports that help organize your life without relying on memory</span></a> extensively:</strong> Timers, alarms, physical reminders, and <a class="jargon">organizational tools<span class="tooltip">Apps, systems, or physical objects that support planning and organization</span></a> that don't rely on your memory.</li>
+                <li><strong>Implement <a class="jargon">habit stacking<span class="tooltip">Linking new organizational habits to existing routines to make them more automatic</span></a>:</strong> Attach organizing tasks to existing habits - "After I make coffee, I'll put away the dishes from the counter."</li>
+                <li><strong>Create <a class="jargon">launching pads<span class="tooltip">Designated areas where you keep items you need to take with you, reducing morning chaos</span></a>:</strong> Designated spots near your exit for keys, wallet, work items, and anything you need to remember to take with you.</li>
+                <li><strong>Use <a class="jargon">task breakdown<span class="tooltip">Breaking large organizational or planning projects into smaller, specific actions</span></a> for big projects:</strong> Instead of "organize closet," create specific steps like "gather all t-shirts," "sort by keep/donate," "put away keepers."</li>
+                <li><strong>Plan for <a class="jargon">maintenance cycles<span class="tooltip">Regular, scheduled times for maintaining organizational systems before they become overwhelming</span></a>:</strong> Schedule regular "reset" times rather than waiting for things to become chaotic again.</li>
+                <li><strong>Work with <a class="jargon">accountability systems<span class="tooltip">External support that helps you follow through on organizational goals and planning tasks</span></a>:</strong> Body doubling for organizing, regular check-ins with friends, or professional organizing support.</li>
+            </ul>
+
+            <div class="learn-more" onclick="toggleLearnMore(this)">
+                <h3>Learn More: ADHD-Friendly Organization Strategies ↓</h3>
+                <div class="learn-more-content">
+                    <p><strong><a class="jargon">Environmental design<span class="tooltip">Arranging your physical spaces to support your brain's natural patterns and reduce organizational burden</span></a> principles:</strong> Design your spaces so the easiest choice is the organized choice. Make frequently used items the most accessible, and create physical barriers to disorganization.</p>
+                    
+                    <p><strong><a class="jargon">External memory systems<span class="tooltip">Tools and methods that store information outside your brain, reducing reliance on working memory</span></a>:</strong> Use calendars, apps, physical reminders, and documentation systems to store information you'd otherwise have to remember. Your environment should remember for you.</p>
+                    
+                    <p><strong><a class="jargon">Priority management<span class="tooltip">Systems for identifying what's most important and focusing organizational energy on high-impact areas</span></a>:</strong> Focus organizational energy on areas that have the biggest impact on your daily functioning. Perfect organization isn't the goal - functional organization is.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 5: Medical intervention -->
+        <div class="section medical-intervention">
+            <h2>When Should I Consider Medical Intervention</h2>
+            <p>Consider professional support if organizational and planning challenges are significantly impacting your life:</p>
+
+            <ul>
+                <li>You're consistently late or missing important appointments and deadlines due to poor planning</li>
+                <li>Disorganization is affecting your work performance, relationships, or living situation</li>
+                <li>You feel overwhelmed and distressed by the state of your environment despite repeated efforts</li>
+                <li>You're losing important documents, bills, or items regularly, causing financial or practical problems</li>
+                <li><a class="jargon">Executive function<span class="tooltip">Mental skills that help you plan, focus, remember instructions, and manage multiple tasks</span></a> challenges are preventing you from completing necessary life tasks</li>
+                <li>Family members or roommates are experiencing stress due to shared organizational challenges</li>
+            </ul>
+
+            <p>Professional support can help evaluate whether medication might improve <a class="jargon">executive function<span class="tooltip">Mental skills that help you plan, focus, remember instructions, and manage multiple tasks</span></a>, and provide specialized strategies for <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a>-friendly organization and planning.</p>
+
+            <div class="highlight-box">
+                <p><strong>Types of support that help:</strong> <a class="jargon">ADHD coaching<span class="tooltip">Specialized support focused on developing practical strategies for ADHD-related challenges</span></a> for organizational systems, <a class="jargon">occupational therapy<span class="tooltip">Therapy focused on developing skills for daily living and practical tasks</span></a> for <a class="jargon">executive function<span class="tooltip">Mental skills that help you plan, focus, remember instructions, and manage multiple tasks</span></a> skills, professional organizers who understand <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a>, medication evaluation for <a class="jargon">cognitive enhancement<span class="tooltip">Improvements in thinking skills like planning, organization, and working memory</span></a>, or <a class="jargon">cognitive behavioral therapy<span class="tooltip">Therapy focused on changing thought patterns and behaviors to improve functioning</span></a> for overwhelming perfectionism.</p>
+            </div>
+        </div>
+
+        <!-- Section 6: Validation -->
+        <div class="section validation">
+            <h2>You're Not Imagining This</h2>
+            <p>Organizational and planning challenges are core features of <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a>, not character flaws or laziness. Your brain literally processes organizational information differently than <a class="jargon">neurotypical<span class="tooltip">People whose brains develop and function in ways that align with societal expectations and norms</span></a> brains, making traditional organizational advice often unhelpful or counterproductive.</p>
+
+            <p>Many highly successful people with <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> continue to use non-traditional organizational systems throughout their lives. The goal isn't to organize like everyone else - it's to find systems that support your unique brain patterns and life goals.</p>
+
+            <p>The shame many people feel about being "disorganized" often makes the problem worse by adding emotional weight to organizational tasks. Understanding that your organizational challenges have neurological roots can help reduce self-criticism and allow you to focus energy on finding solutions that actually work for your brain.</p>
+
+            <p>It's also important to recognize that some level of <a class="jargon">organized chaos<span class="tooltip">Systems that may look messy to others but work functionally for your specific brain patterns</span></a> might be optimal for your creativity and productivity. The goal is functional organization that supports your life, not perfect organization that looks good to others.</p>
+
+            <div class="highlight-box">
+                <p><strong>Remember:</strong> Your worth isn't determined by how organized your space looks. Focus on creating systems that help you find things when you need them and support your daily functioning, regardless of whether they look like traditional organization.</p>
+            </div>
+        </div>
+
+        <div class="related-struggles">
+            <h3>Related Struggles</h3>
+            <div class="struggle-tags">
+                <a href="{{ '/struggles/task-initiation-paralysis.html' | relative_url }}" class="struggle-tag">Task Initiation Paralysis</a>
+                <a href="{{ '/struggles/follow-through-completion.html' | relative_url }}" class="struggle-tag">Follow-Through Completion</a>
+                <a href="{{ '/struggles/working-memory-difficulties.html' | relative_url }}" class="struggle-tag">Working Memory</a>
+                <a href="{{ '/struggles/time-blindness.html' | relative_url }}" class="struggle-tag">Time Blindness</a>
+                <a href="{{ '/struggles/decision-fatigue.html' | relative_url }}" class="struggle-tag">Decision Fatigue</a>
+                <a href="{{ '/struggles/executive-function-challenges.html' | relative_url }}" class="struggle-tag">Executive Function</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function toggleLearnMore(element) {
+    element.classList.toggle('expanded');
+    const arrow = element.querySelector('h3');
+    if (element.classList.contains('expanded')) {
+        arrow.innerHTML = arrow.innerHTML.replace('↓', '↑');
+    } else {
+        arrow.innerHTML = arrow.innerHTML.replace('↑', '↓');
+    }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Handle jargon clicks to prevent event bubbling
+    const jargonTerms = document.querySelectorAll('.jargon');
+    jargonTerms.forEach(function(jargon) {
+        jargon.addEventListener('click', function(e) {
+            e.stopPropagation(); // Prevent bubbling to learn-more handler
+        });
+    });
+});
+</script>
