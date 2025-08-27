@@ -222,46 +222,56 @@ title: "Time Blindness"
         transform: translateY(-1px);
     }
 
+    /* Jargon styling - context-aware based on background */
     .jargon {
-        color: #e84393;
         text-decoration: none;
-        border-bottom: 1px dotted #e84393;
+        border-bottom: 1px dotted;
         position: relative;
         cursor: help;
         font-weight: 500;
     }
 
-    .jargon:hover {
+    /* Pink jargon for white backgrounds */
+    .content-card .jargon,
+    .section .jargon,
+    .related-struggles .jargon {
+        color: #e84393;
+        border-bottom-color: #e84393;
+    }
+
+    .content-card .jargon:hover,
+    .section .jargon:hover,
+    .related-struggles .jargon:hover {
         color: #fd79a8;
         border-bottom-color: #fd79a8;
     }
 
-    /* White jargon for purple gradient backgrounds */
+    /* White jargon for gradient backgrounds */
     .header .jargon,
     .breadcrumb .jargon,
     .learn-more .jargon,
     .learn-more-content .jargon {
         color: white;
-        border-bottom: 1px dotted rgba(255, 255, 255, 0.8);
-        background: rgba(255, 255, 255, 0.2);
-        padding: 2px 4px;
-        border-radius: 3px;
+        border-bottom-color: rgba(255, 255, 255, 0.7);
+        background: rgba(255, 255, 255, 0.1);
+        padding: 2px 6px;
+        border-radius: 4px;
     }
 
     .header .jargon:hover,
     .breadcrumb .jargon:hover,
     .learn-more .jargon:hover,
     .learn-more-content .jargon:hover {
-        color: white;
+        background: rgba(255, 255, 255, 0.2);
         border-bottom-color: white;
-        background: rgba(255, 255, 255, 0.3);
     }
 
+    /* Auto-sizing tooltips */
     .tooltip {
         visibility: hidden;
         opacity: 0;
         position: absolute;
-        bottom: 125%;
+        bottom: calc(100% + 8px);
         left: 50%;
         transform: translateX(-50%);
         background: #333;
@@ -279,6 +289,7 @@ title: "Time Blindness"
         white-space: normal;
         text-align: left;
         line-height: 1.5;
+        pointer-events: none;
     }
 
     .tooltip::after {
@@ -311,7 +322,22 @@ title: "Time Blindness"
         }
     }
 
+    /* Mobile-specific tooltip positioning */
     @media (max-width: 768px) {
+        .tooltip {
+            position: fixed !important;
+            bottom: 20px !important;
+            left: 20px !important;
+            right: 20px !important;
+            transform: none !important;
+            max-width: none !important;
+            width: auto !important;
+        }
+
+        .tooltip::after {
+            display: none !important;
+        }
+
         .header {
             padding: 1rem;
         }
@@ -365,6 +391,12 @@ title: "Time Blindness"
 
         .section {
             padding: 1.2rem;
+        }
+
+        .tooltip {
+            left: 10px !important;
+            right: 10px !important;
+            bottom: 10px !important;
         }
     }
 </style>
