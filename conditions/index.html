@@ -119,9 +119,16 @@ title: "Understanding Conditions"
 
     .conditions-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        grid-template-columns: repeat(2, 1fr);
         gap: 1.5rem;
         margin: 2rem 0;
+    }
+
+    @media (max-width: 900px) {
+        .conditions-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
     }
 
     .condition-card {
@@ -402,6 +409,16 @@ title: "Understanding Conditions"
 
         .condition-card {
             padding: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .condition-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .condition-card {
+            padding: 1.5rem;
         }
 
         .disclaimer {
@@ -485,7 +502,7 @@ title: "Understanding Conditions"
                     <div class="condition-title">ADHD</div>
                     <div class="condition-subtitle">Attention-Deficit/Hyperactivity Disorder</div>
                     <div class="condition-description">
-                        Brain differences in attention, impulse control, and <a class="jargon">executive function<span class="tooltip">The brain's management system that handles planning, organization, time management, task initiation, and follow-through</span></a>. Interest-based attention that works intensely when engaged but struggles with boring tasks.
+                        Brain differences in attention, impulse control, and executive function. Interest-based attention that works intensely when engaged but struggles with boring tasks.
                     </div>
                 </a>
 
@@ -494,7 +511,7 @@ title: "Understanding Conditions"
                     <div class="condition-title">Autism</div>
                     <div class="condition-subtitle">Autistic Spectrum Condition</div>
                     <div class="condition-description">
-                        Brain differences in social communication, <a class="jargon">sensory processing<span class="tooltip">How the nervous system receives and responds to sensory information from the environment and body</span></a>, and routine needs. Creates friction with environments designed for <a class="jargon">neurotypical<span class="tooltip">People whose brains develop and function in ways that align with societal expectations and norms</span></a> social and sensory expectations.
+                        Brain differences in social communication, sensory processing, and routine needs. Creates friction with environments designed for neurotypical social and sensory expectations.
                     </div>
                 </a>
 
@@ -503,7 +520,7 @@ title: "Understanding Conditions"
                     <div class="condition-title">Bipolar</div>
                     <div class="condition-subtitle">Bipolar Disorder</div>
                     <div class="condition-description">
-                        Significant shifts between periods of elevated mood and depression. <a class="jargon">Episodes<span class="tooltip">Discrete periods of altered mood, energy, and behavior that are clearly different from your baseline functioning</span></a> affect energy, sleep, thinking, and behavior in ways that create friction with environments expecting emotional stability.
+                        Significant shifts between periods of elevated mood and depression. Episodes affect energy, sleep, thinking, and behavior in ways that create friction with environments expecting emotional stability.
                     </div>
                 </a>
 
@@ -512,7 +529,7 @@ title: "Understanding Conditions"
                     <div class="condition-title">Borderline Personality Disorder</div>
                     <div class="condition-subtitle">BPD</div>
                     <div class="condition-description">
-                        Intense emotional responses and relationship patterns that developed as protective strategies against abandonment. <a class="jargon">Attachment system<span class="tooltip">The brain patterns that govern how we connect with and respond to important relationships</span></a> learned to expect rejection and responds strongly to prevent it.
+                        Intense emotional responses and relationship patterns that developed as protective strategies against abandonment. Attachment system learned to expect rejection and responds strongly to prevent it.
                     </div>
                 </a>
             </div>
