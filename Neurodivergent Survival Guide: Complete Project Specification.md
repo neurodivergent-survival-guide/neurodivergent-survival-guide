@@ -75,7 +75,7 @@ Knowing what to do but being unable to start. Page explains the neurological bas
 **Attention Regulation** - /struggles/attention-regulation.html
 Difficulty controlling where your focus goes, not a deficit. Page reframes attention differences and offers tools for directing focus more intentionally.
 
-**Follow-Through Completion Struggles** - /struggles/follow-through-completion-struggles.html
+**Follow-Through Completion Struggles** - /struggles/follow-through-completion.html
 Starting projects but not finishing them. Page addresses perfectionism, overwhelm, and practical completion strategies.
 
 **Organization and Planning Challenges** - /struggles/organization-and-planning-challenges.html
