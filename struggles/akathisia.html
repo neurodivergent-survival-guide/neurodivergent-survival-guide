@@ -312,6 +312,22 @@ title: "Akathisia"
     }
 
     @media (max-width: 768px) {
+        .tooltip {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
+            max-width: none;
+            width: auto;
+            transform: none;
+            border-radius: 12px;
+        }
+        
+        .tooltip::after {
+            display: none;
+        }
+
+    @media (max-width: 768px) {
         .header {
             padding: 1rem;
         }
