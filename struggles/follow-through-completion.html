@@ -12,7 +12,8 @@ title: "Follow-Through Completion"
 
     body {
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        background: linear-gradient(135deg, #ff7675 0%, #fd79a8 100%);
+        font-weight: 500;
+        background: linear-gradient(135deg, #d63031 0%, #a21f23 100%);
         color: #333;
         min-height: 100vh;
         line-height: 1.7;
@@ -78,15 +79,15 @@ title: "Follow-Through Completion"
 
     .section {
         background: white;
-        border-radius: 15px;
+        border-radius: 12px;
         padding: 2rem;
         margin: 2rem 0;
         box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-        border-top: 3px solid #fd79a8;
+        border-top: 3px solid #d63031;
     }
 
     .section h2 {
-        color: #fd79a8;
+        color: #d63031;
         font-size: 1.4rem;
         margin-bottom: 1.5rem;
         font-weight: 600;
@@ -203,10 +204,10 @@ title: "Follow-Through Completion"
     }
 
     .struggle-tag {
-        background: #fd79a8;
+        background: #d63031;
         color: white;
         padding: 0.5rem 1rem;
-        border-radius: 20px;
+        border-radius: 8px;
         font-size: 0.85rem;
         text-decoration: none;
         transition: all 0.3s ease;
@@ -216,52 +217,89 @@ title: "Follow-Through Completion"
     }
 
     .struggle-tag:hover {
-        background: #e84393;
+        background: #a21f23;
         color: white;
         text-decoration: none;
         transform: translateY(-1px);
     }
 
+    /* Focus states for accessibility */
+    .struggle-tag:focus,
+    .jargon:focus,
+    .breadcrumb a:focus {
+        outline: 2px solid #fff;
+        outline-offset: 2px;
+    }
+
+    /* Motion accessibility */
+    @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+        }
+    }
+
+    /* Jargon styling - context-aware based on background */
     .jargon {
-        color: #e84393;
         text-decoration: none;
-        border-bottom: 1px dotted #e84393;
+        border-bottom: 1px dotted;
         position: relative;
         cursor: help;
         font-weight: 500;
     }
 
-    .jargon:hover {
+    /* Pink jargon for white backgrounds */
+    .content-card .jargon,
+    .section .jargon,
+    .related-struggles .jargon {
+        color: #e84393;
+        border-bottom-color: #e84393;
+    }
+
+    .content-card .jargon:hover,
+    .section .jargon:hover,
+    .related-struggles .jargon:hover {
         color: #fd79a8;
         border-bottom-color: #fd79a8;
     }
 
-    /* White jargon for purple gradient backgrounds */
+    /* Bold black jargon for colored sections */
+    .immediate-help .jargon,
+    .long-term .jargon,
+    .medical-intervention .jargon,
+    .validation .jargon {
+        color: #333;
+        font-weight: 600;
+        border-bottom-color: #333;
+    }
+
+    /* White jargon for gradient backgrounds */
     .header .jargon,
     .breadcrumb .jargon,
     .learn-more .jargon,
     .learn-more-content .jargon {
         color: white;
-        border-bottom: 1px dotted rgba(255, 255, 255, 0.8);
-        background: rgba(255, 255, 255, 0.2);
-        padding: 2px 4px;
-        border-radius: 3px;
+        border-bottom-color: rgba(255, 255, 255, 0.7);
+        background: rgba(255, 255, 255, 0.1);
+        padding: 2px 6px;
+        border-radius: 4px;
     }
 
     .header .jargon:hover,
     .breadcrumb .jargon:hover,
     .learn-more .jargon:hover,
     .learn-more-content .jargon:hover {
-        color: white;
+        background: rgba(255, 255, 255, 0.2);
         border-bottom-color: white;
-        background: rgba(255, 255, 255, 0.3);
     }
 
+    /* Auto-sizing tooltips */
     .tooltip {
         visibility: hidden;
         opacity: 0;
         position: absolute;
-        bottom: 125%;
+        bottom: calc(100% + 8px);
         left: 50%;
         transform: translateX(-50%);
         background: #333;
@@ -279,6 +317,7 @@ title: "Follow-Through Completion"
         white-space: normal;
         text-align: left;
         line-height: 1.5;
+        pointer-events: none;
     }
 
     .tooltip::after {
@@ -311,23 +350,22 @@ title: "Follow-Through Completion"
         }
     }
 
+    /* Mobile-specific tooltip positioning */
     @media (max-width: 768px) {
         .tooltip {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            right: 20px;
-            max-width: none;
-            width: auto;
-            transform: none;
-            border-radius: 12px;
-        }
-        
-        .tooltip::after {
-            display: none;
+            position: fixed !important;
+            bottom: 20px !important;
+            left: 20px !important;
+            right: 20px !important;
+            transform: none !important;
+            max-width: none !important;
+            width: auto !important;
         }
 
-    @media (max-width: 768px) {
+        .tooltip::after {
+            display: none !important;
+        }
+
         .header {
             padding: 1rem;
         }
@@ -382,6 +420,12 @@ title: "Follow-Through Completion"
         .section {
             padding: 1.2rem;
         }
+
+        .tooltip {
+            left: 10px !important;
+            right: 10px !important;
+            bottom: 10px !important;
+        }
     }
 </style>
 
@@ -399,137 +443,139 @@ title: "Follow-Through Completion"
 </div>
 
 <div class="container">
-    <div class="content-card">
-        <!-- Section 1: What this feels like -->
-        <div class="section">
-            <h2>What This Feels Like</h2>
-            <p><a class="jargon">Follow-through completion<span class="tooltip">The ability to finish tasks and projects once you've started them</span></a> difficulties often feel like hitting an invisible wall somewhere between starting a project and actually finishing it. Many people describe getting 70-90% of the way through tasks before their brain seems to abandon ship entirely.</p>
+    <main role="main" id="main-content">
+        <div class="content-card">
+            <!-- Section 1: What this feels like -->
+            <div class="section">
+                <h2>What This Feels Like</h2>
+                <p><a class="jargon">Follow-through completion<span class="tooltip">The ability to finish tasks and projects once you've started them</span></a> difficulties often feel like hitting an invisible wall somewhere between starting a project and actually finishing it. Many people describe getting 70-90% of the way through tasks before their brain seems to abandon ship entirely.</p>
 
-            <p>You might experience genuine enthusiasm and momentum at the beginning of projects, making substantial progress and feeling confident about completion. Then, seemingly without warning, the task that felt engaging yesterday now feels impossible to continue. You know exactly what needs to be done to finish, but your brain refuses to cooperate.</p>
+                <p>You might experience genuine enthusiasm and momentum at the beginning of projects, making substantial progress and feeling confident about completion. Then, seemingly without warning, the task that felt engaging yesterday now feels impossible to continue. You know exactly what needs to be done to finish, but your brain refuses to cooperate.</p>
 
-            <p>This creates a painful pattern of having multiple "almost finished" projects scattered around your life. Each abandoned project carries shame and reinforces the narrative that you "never finish anything," which makes starting new projects feel risky and completion feel even more elusive.</p>
+                <p>This creates a painful pattern of having multiple "almost finished" projects scattered around your life. Each abandoned project carries shame and reinforces the narrative that you "never finish anything," which makes starting new projects feel risky and completion feel even more elusive.</p>
 
-            <div class="highlight-box">
-                <p><strong>Common experiences:</strong> Having a "graveyard" of 85% complete projects, losing interest right when tasks become routine, getting stuck on final details that feel impossible, avoiding starting new projects because you assume you won't finish them.</p>
+                <div class="highlight-box">
+                    <p><strong>Common experiences:</strong> Having a "graveyard" of 85% complete projects, losing interest right when tasks become routine, getting stuck on final details that feel impossible, avoiding starting new projects because you assume you won't finish them.</p>
+                </div>
             </div>
-        </div>
 
-        <!-- Section 2: Why this might be happening -->
-        <div class="section">
-            <h2>Why This Might Be Happening</h2>
-            <p>Follow-through completion involves sustaining motivation and <a class="jargon">executive function<span class="tooltip">Mental skills that help you plan, focus, remember instructions, and manage multiple tasks</span></a> through the less exciting phases of a project. In <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> brains, this creates predictable challenges related to how your brain processes novelty, reward, and sustained effort.</p>
+            <!-- Section 2: Why this might be happening -->
+            <div class="section">
+                <h2>Why This Might Be Happening</h2>
+                <p>Follow-through completion involves sustaining motivation and <a class="jargon">executive function<span class="tooltip">Mental skills that help you plan, focus, remember instructions, and manage multiple tasks</span></a> through the less exciting phases of a project. In <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> brains, this creates predictable challenges related to how your brain processes novelty, reward, and sustained effort.</p>
 
-            <p>The ADHD brain's <a class="jargon">interest-based nervous system<span class="tooltip">A brain that functions optimally when tasks are interesting, challenging, urgent, or novel</span></a> means you need tasks to remain engaging to maintain motivation. Once the novelty wears off and a project becomes routine or predictable, your brain may experience what feels like a "motivation crash." This happens even when you logically want to finish and understand the importance of completion.</p>
+                <p>The ADHD brain's <a class="jargon">interest-based nervous system<span class="tooltip">A brain that functions optimally when tasks are interesting, challenging, urgent, or novel</span></a> means you need tasks to remain engaging to maintain motivation. Once the novelty wears off and a project becomes routine or predictable, your brain may experience what feels like a "motivation crash." This happens even when you logically want to finish and understand the importance of completion.</p>
 
-            <p>Additionally, the final phases of projects often require different cognitive skills than the initial creative or problem-solving phases. Tasks like proofreading, formatting, or administrative wrap-up demand sustained attention to detail when your <a class="jargon">executive function<span class="tooltip">Mental skills that help you plan, focus, remember instructions, and manage multiple tasks</span></a> resources may already be depleted from the earlier work.</p>
+                <p>Additionally, the final phases of projects often require different cognitive skills than the initial creative or problem-solving phases. Tasks like proofreading, formatting, or administrative wrap-up demand sustained attention to detail when your <a class="jargon">executive function<span class="tooltip">Mental skills that help you plan, focus, remember instructions, and manage multiple tasks</span></a> resources may already be depleted from the earlier work.</p>
 
-            <div class="learn-more" onclick="toggleLearnMore(this)">
-                <h3>Learn More: The Neuroscience of Project Completion ↓</h3>
-                <div class="learn-more-content">
-                    <p>Completion difficulties involve the interplay between <a class="jargon">dopamine<span class="tooltip">A brain chemical that helps with motivation, reward, and sustaining effort</span></a> reward systems and <a class="jargon">prefrontal cortex<span class="tooltip">Brain area responsible for executive functions including sustained attention and project completion</span></a> functioning. As projects lose novelty, <a class="jargon">dopamine<span class="tooltip">A brain chemical that helps with motivation, reward, and sustaining effort</span></a> levels drop, making it harder to maintain the motivation needed for completion.</p>
-                    
-                    <p>The final stages of projects also require significant <a class="jargon">working memory<span class="tooltip">The mental workspace that temporarily holds and manipulates information during thinking tasks</span></a> and sustained attention, which can be challenging when these <a class="jargon">executive function<span class="tooltip">Mental skills that help you plan, focus, remember instructions, and manage multiple tasks</span></a> resources have been utilized throughout the project. This creates a neurological bottleneck at the completion phase.</p>
+                <div class="learn-more" onclick="toggleLearnMore(this)">
+                    <h3>Learn More: The Neuroscience of Project Completion ↓</h3>
+                    <div class="learn-more-content">
+                        <p>Completion difficulties involve the interplay between <a class="jargon">dopamine<span class="tooltip">A brain chemical that helps with motivation, reward, and sustaining effort</span></a> reward systems and <a class="jargon">prefrontal cortex<span class="tooltip">Brain area responsible for executive functions including sustained attention and project completion</span></a> functioning. As projects lose novelty, <a class="jargon">dopamine<span class="tooltip">A brain chemical that helps with motivation, reward, and sustaining effort</span></a> levels drop, making it harder to maintain the motivation needed for completion.</p>
+                        
+                        <p>The final stages of projects also require significant <a class="jargon">working memory<span class="tooltip">The mental workspace that temporarily holds and manipulates information during thinking tasks</span></a> and sustained attention, which can be challenging when these <a class="jargon">executive function<span class="tooltip">Mental skills that help you plan, focus, remember instructions, and manage multiple tasks</span></a> resources have been utilized throughout the project. This creates a neurological bottleneck at the completion phase.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 3: Next 5 minutes -->
+            <div class="section immediate-help">
+                <h2>What Can Help You Through the Next 5 Minutes</h2>
+                <p>When you're stalled on completing something right now, these strategies can help break through the completion barrier:</p>
+
+                <ul>
+                    <li><strong>Focus only on the very next step:</strong> Don't think about everything left to do. Identify the single next action and commit to just that one thing.</li>
+                    <li><strong>Set a completion timer:</strong> Choose 15-25 minutes and work only on completion tasks during that time. The <a class="jargon">time-boxing<span class="tooltip">Setting a specific, limited time period to work on something</span></a> makes the remaining work feel manageable.</li>
+                    <li><strong>Lower your completion standards temporarily:</strong> Ask yourself "What would 'good enough' look like?" and aim for that rather than perfection.</li>
+                    <li><strong>Change your environment:</strong> Move to a different location or work standing up. Environmental shifts can reset your brain's <a class="jargon">activation state<span class="tooltip">Your brain's current level of alertness and readiness to engage with tasks</span></a>.</li>
+                    <li><strong>Call someone:</strong> Tell a friend or family member that you're going to finish this specific thing in the next hour. The <a class="jargon">social accountability<span class="tooltip">The motivation that comes from others being aware of your goals and progress</span></a> often provides the external motivation needed.</li>
+                    <li><strong>Promise yourself a specific reward:</strong> Plan something enjoyable immediately after completion - a favorite snack, show episode, or activity.</li>
+                    <li><strong>Use <a class="jargon">body doubling<span class="tooltip">Working in the presence of another person whose focus and energy helps you maintain your own focus</span></a>:</strong> Work alongside someone else (virtually or in person) during your completion session.</li>
+                </ul>
+
+                <div class="highlight-box">
+                    <p><strong>Emergency completion hack:</strong> Set a timer for 10 minutes and work on making the project "presentable" rather than perfect. Often this creates enough <a class="jargon">momentum<span class="tooltip">The psychological and neurological boost that comes from making progress, making continuation easier</span></a> to push through to actual completion.</p>
+                </div>
+            </div>
+
+            <!-- Section 4: Long-term solutions -->
+            <div class="section long-term">
+                <h2>What Are Some Healthy Long-Term Solutions</h2>
+                <p>Building systems that support completion while working with your <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> brain patterns:</p>
+
+                <ul>
+                    <li><strong>Build completion into project planning:</strong> At the start of any project, specifically plan when and how you'll complete it. Schedule <a class="jargon">completion sprints<span class="tooltip">Dedicated time periods focused exclusively on finishing tasks and projects</span></a> on your calendar.</li>
+                    <li><strong>Create artificial urgency:</strong> Set earlier deadlines for yourself or arrange external accountability that creates helpful pressure to finish.</li>
+                    <li><strong>Use the "80% rule":</strong> Practice calling things complete at 80% and moving on. <a class="jargon">Perfectionism<span class="tooltip">Setting unrealistically high standards that often prevent completion</span></a> disguised as thoroughness often blocks completion.</li>
+                    <li><strong>Batch completion work:</strong> Dedicate specific days or time periods to finishing multiple projects rather than trying to complete things immediately after starting them.</li>
+                    <li><strong>Find completion partners:</strong> Work with people who excel at finishing tasks, or trade completion work with other people who have <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> - sometimes it's easier to finish someone else's project than your own.</li>
+                    <li><strong>Track your completion patterns:</strong> Notice what types of projects you actually finish and what conditions support completion. Build these factors into future projects.</li>
+                    <li><strong>Separate creation from completion:</strong> Accept that the creative/building phase uses different brain energy than the finishing phase. Plan them as separate activities.</li>
+                    <li><strong>Consider medication support:</strong> <a class="jargon">Stimulant medications<span class="tooltip">ADHD medications that increase dopamine levels to improve sustained motivation and follow-through</span></a> can help sustain the motivation and focus needed for completion by supporting <a class="jargon">dopamine<span class="tooltip">A brain chemical that helps with motivation, reward, and sustaining effort</span></a> availability throughout longer projects.</li>
+                </ul>
+
+                <div class="learn-more" onclick="toggleLearnMore(this)">
+                    <h3>Learn More: Advanced Completion Strategies ↓</h3>
+                    <div class="learn-more-content">
+                        <p><strong><a class="jargon">Project completion templates<span class="tooltip">Standard checklists and processes for common types of finishing work</span></a>:</strong> Develop standard completion checklists for different types of work - writing projects, creative projects, administrative tasks - so the final phase becomes more routine and requires less <a class="jargon">decision-making energy<span class="tooltip">Mental resources needed to make choices and plan next steps</span></a>.</p>
+                        
+                        <p><strong>Completion environment design:</strong> Create a specific physical space or setup dedicated only to finishing work. This helps your brain recognize "completion mode" and reduces the temptation to start new projects.</p>
+                        
+                        <p><strong><a class="jargon">Energy management<span class="tooltip">Matching your task demands to your current mental and physical energy levels</span></a> for completion:</strong> Schedule completion work during your highest-energy times rather than trying to finish when you're already mentally depleted from the main project work.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 5: Medical intervention -->
+            <div class="section medical-intervention">
+                <h2>When Should I Consider Medical Intervention</h2>
+                <p>Consider professional support if completion difficulties are significantly impacting your life:</p>
+
+                <ul>
+                    <li>You have a pattern of abandoned projects that's affecting your work performance or career advancement</li>
+                    <li>Unfinished commitments are damaging important relationships or your reputation</li>
+                    <li>You're avoiding taking on new projects or opportunities because you don't trust yourself to finish them</li>
+                    <li>The shame and frustration around completion difficulties is contributing to depression or anxiety</li>
+                    <li>You're missing important deadlines consistently despite genuine effort and good intentions</li>
+                    <li><a class="jargon">Completion anxiety<span class="tooltip">Fear of judgment or criticism that makes finishing and sharing work feel dangerous</span></a> is preventing you from finishing school assignments, work projects, or creative endeavors</li>
+                </ul>
+
+                <p>A healthcare provider familiar with ADHD can help evaluate whether medication, therapy, or other interventions might help. Many people find that proper ADHD treatment significantly improves their ability to sustain motivation through completion phases.</p>
+
+                <div class="highlight-box">
+                    <p><strong>Types of support that help:</strong> <a class="jargon">ADHD coaching<span class="tooltip">Specialized support focused on developing practical strategies for ADHD-related challenges</span></a> for completion strategies, <a class="jargon">cognitive-behavioral therapy<span class="tooltip">Therapy focused on changing thought patterns and behaviors to improve functioning</span></a> for <a class="jargon">perfectionism<span class="tooltip">Setting unrealistically high standards that often prevent completion</span></a> and <a class="jargon">completion anxiety<span class="tooltip">Fear of judgment or criticism that makes finishing and sharing work feel dangerous</span></a>, medication evaluation, or <a class="jargon">project management support<span class="tooltip">Help developing systems and strategies for planning and completing complex projects</span></a>.</p>
+                </div>
+            </div>
+
+            <!-- Section 6: Validation -->
+            <div class="section validation">
+                <h2>You're Not Imagining This</h2>
+                <p>Completion difficulties are one of the most common and frustrating aspects of ADHD. The gap between your intentions and your ability to follow through isn't about laziness, lack of commitment, or character flaws. It's about how your brain manages motivation, attention, and effort over extended periods.</p>
+
+                <p>Many highly successful people with <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> continue to struggle with completion throughout their lives. They succeed by building systems that support completion, finding collaborators who complement their strengths, and accepting that their <a class="jargon">project management style<span class="tooltip">Your individual approach to planning, executing, and completing work</span></a> might look different from <a class="jargon">neurotypical<span class="tooltip">People whose brains develop and function in ways that align with societal expectations and norms</span></a> patterns.</p>
+
+                <p>The frustration and shame you feel about unfinished projects often makes the problem worse by adding emotional weight to completion. Many people find that reducing self-criticism and developing completion strategies that work with their brain's natural patterns leads to dramatically better follow-through over time.</p>
+
+                <p>Your pattern of starting but not finishing doesn't mean you lack perseverance or commitment. It means you're working with brain differences that require different approaches to <a class="jargon">sustained motivation<span class="tooltip">The ability to maintain drive and effort over extended periods, especially during routine or detailed phases of work</span></a> and completion. Understanding this difference is the first step toward developing strategies that actually work.</p>
+
+                <div class="highlight-box">
+                    <p><strong>Remember:</strong> The projects you start represent genuine creativity, initiative, and problem-solving skills. Learning to complete them doesn't diminish these strengths - it allows them to have greater impact.</p>
+                </div>
+            </div>
+
+            <div class="related-struggles">
+                <h3>Related Struggles</h3>
+                <div class="struggle-tags">
+                    <a href="{{ '/struggles/task-initiation-paralysis.html' | relative_url }}" class="struggle-tag">Task Initiation Paralysis</a>
+                    <a href="{{ '/struggles/attention-regulation.html' | relative_url }}" class="struggle-tag">Attention Regulation</a>
+                    <a href="{{ '/struggles/working-memory-difficulties.html' | relative_url }}" class="struggle-tag">Working Memory</a>
+                    <a href="{{ '/struggles/time-blindness.html' | relative_url }}" class="struggle-tag">Time Blindness</a>
+                    <a href="{{ '/struggles/perfectionism-paralysis.html' | relative_url }}" class="struggle-tag">Perfectionism Paralysis</a>
+                    <a href="{{ '/struggles/interest-based-nervous-system.html' | relative_url }}" class="struggle-tag">Interest-Based System</a>
                 </div>
             </div>
         </div>
-
-        <!-- Section 3: Next 5 minutes -->
-        <div class="section immediate-help">
-            <h2>What Can Help You Through the Next 5 Minutes</h2>
-            <p>When you're stalled on completing something right now, these strategies can help break through the completion barrier:</p>
-
-            <ul>
-                <li><strong>Focus only on the very next step:</strong> Don't think about everything left to do. Identify the single next action and commit to just that one thing.</li>
-                <li><strong>Set a completion timer:</strong> Choose 15-25 minutes and work only on completion tasks during that time. The <a class="jargon">time-boxing<span class="tooltip">Setting a specific, limited time period to work on something</span></a> makes the remaining work feel manageable.</li>
-                <li><strong>Lower your completion standards temporarily:</strong> Ask yourself "What would 'good enough' look like?" and aim for that rather than perfection.</li>
-                <li><strong>Change your environment:</strong> Move to a different location or work standing up. Environmental shifts can reset your brain's <a class="jargon">activation state<span class="tooltip">Your brain's current level of alertness and readiness to engage with tasks</span></a>.</li>
-                <li><strong>Call someone:</strong> Tell a friend or family member that you're going to finish this specific thing in the next hour. The <a class="jargon">social accountability<span class="tooltip">The motivation that comes from others being aware of your goals and progress</span></a> often provides the external motivation needed.</li>
-                <li><strong>Promise yourself a specific reward:</strong> Plan something enjoyable immediately after completion - a favorite snack, show episode, or activity.</li>
-                <li><strong>Use <a class="jargon">body doubling<span class="tooltip">Working in the presence of another person whose focus and energy helps you maintain your own focus</span></a>:</strong> Work alongside someone else (virtually or in person) during your completion session.</li>
-            </ul>
-
-            <div class="highlight-box">
-                <p><strong>Emergency completion hack:</strong> Set a timer for 10 minutes and work on making the project "presentable" rather than perfect. Often this creates enough <a class="jargon">momentum<span class="tooltip">The psychological and neurological boost that comes from making progress, making continuation easier</span></a> to push through to actual completion.</p>
-            </div>
-        </div>
-
-        <!-- Section 4: Long-term solutions -->
-        <div class="section long-term">
-            <h2>What Are Some Healthy Long-Term Solutions</h2>
-            <p>Building systems that support completion while working with your <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> brain patterns:</p>
-
-            <ul>
-                <li><strong>Build completion into project planning:</strong> At the start of any project, specifically plan when and how you'll complete it. Schedule <a class="jargon">completion sprints<span class="tooltip">Dedicated time periods focused exclusively on finishing tasks and projects</span></a> on your calendar.</li>
-                <li><strong>Create artificial urgency:</strong> Set earlier deadlines for yourself or arrange external accountability that creates helpful pressure to finish.</li>
-                <li><strong>Use the "80% rule":</strong> Practice calling things complete at 80% and moving on. <a class="jargon">Perfectionism<span class="tooltip">Setting unrealistically high standards that often prevent completion</span></a> disguised as thoroughness often blocks completion.</li>
-                <li><strong>Batch completion work:</strong> Dedicate specific days or time periods to finishing multiple projects rather than trying to complete things immediately after starting them.</li>
-                <li><strong>Find completion partners:</strong> Work with people who excel at finishing tasks, or trade completion work with other people who have <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> - sometimes it's easier to finish someone else's project than your own.</li>
-                <li><strong>Track your completion patterns:</strong> Notice what types of projects you actually finish and what conditions support completion. Build these factors into future projects.</li>
-                <li><strong>Separate creation from completion:</strong> Accept that the creative/building phase uses different brain energy than the finishing phase. Plan them as separate activities.</li>
-                <li><strong>Consider medication support:</strong> <a class="jargon">Stimulant medications<span class="tooltip">ADHD medications that increase dopamine levels to improve sustained motivation and follow-through</span></a> can help sustain the motivation and focus needed for completion by supporting <a class="jargon">dopamine<span class="tooltip">A brain chemical that helps with motivation, reward, and sustaining effort</span></a> availability throughout longer projects.</li>
-            </ul>
-
-            <div class="learn-more" onclick="toggleLearnMore(this)">
-                <h3>Learn More: Advanced Completion Strategies ↓</h3>
-                <div class="learn-more-content">
-                    <p><strong><a class="jargon">Project completion templates<span class="tooltip">Standard checklists and processes for common types of finishing work</span></a>:</strong> Develop standard completion checklists for different types of work - writing projects, creative projects, administrative tasks - so the final phase becomes more routine and requires less <a class="jargon">decision-making energy<span class="tooltip">Mental resources needed to make choices and plan next steps</span></a>.</p>
-                    
-                    <p><strong>Completion environment design:</strong> Create a specific physical space or setup dedicated only to finishing work. This helps your brain recognize "completion mode" and reduces the temptation to start new projects.</p>
-                    
-                    <p><strong><a class="jargon">Energy management<span class="tooltip">Matching your task demands to your current mental and physical energy levels</span></a> for completion:</strong> Schedule completion work during your highest-energy times rather than trying to finish when you're already mentally depleted from the main project work.</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Section 5: Medical intervention -->
-        <div class="section medical-intervention">
-            <h2>When Should I Consider Medical Intervention</h2>
-            <p>Consider professional support if completion difficulties are significantly impacting your life:</p>
-
-            <ul>
-                <li>You have a pattern of abandoned projects that's affecting your work performance or career advancement</li>
-                <li>Unfinished commitments are damaging important relationships or your reputation</li>
-                <li>You're avoiding taking on new projects or opportunities because you don't trust yourself to finish them</li>
-                <li>The shame and frustration around completion difficulties is contributing to depression or anxiety</li>
-                <li>You're missing important deadlines consistently despite genuine effort and good intentions</li>
-                <li><a class="jargon">Completion anxiety<span class="tooltip">Fear of judgment or criticism that makes finishing and sharing work feel dangerous</span></a> is preventing you from finishing school assignments, work projects, or creative endeavors</li>
-            </ul>
-
-            <p>A healthcare provider familiar with ADHD can help evaluate whether medication, therapy, or other interventions might help. Many people find that proper ADHD treatment significantly improves their ability to sustain motivation through completion phases.</p>
-
-            <div class="highlight-box">
-                <p><strong>Types of support that help:</strong> <a class="jargon">ADHD coaching<span class="tooltip">Specialized support focused on developing practical strategies for ADHD-related challenges</span></a> for completion strategies, <a class="jargon">cognitive-behavioral therapy<span class="tooltip">Therapy focused on changing thought patterns and behaviors to improve functioning</span></a> for <a class="jargon">perfectionism<span class="tooltip">Setting unrealistically high standards that often prevent completion</span></a> and <a class="jargon">completion anxiety<span class="tooltip">Fear of judgment or criticism that makes finishing and sharing work feel dangerous</span></a>, medication evaluation, or <a class="jargon">project management support<span class="tooltip">Help developing systems and strategies for planning and completing complex projects</span></a>.</p>
-            </div>
-        </div>
-
-        <!-- Section 6: Validation -->
-        <div class="section validation">
-            <h2>You're Not Imagining This</h2>
-            <p>Completion difficulties are one of the most common and frustrating aspects of ADHD. The gap between your intentions and your ability to follow through isn't about laziness, lack of commitment, or character flaws. It's about how your brain manages motivation, attention, and effort over extended periods.</p>
-
-            <p>Many highly successful people with <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> continue to struggle with completion throughout their lives. They succeed by building systems that support completion, finding collaborators who complement their strengths, and accepting that their <a class="jargon">project management style<span class="tooltip">Your individual approach to planning, executing, and completing work</span></a> might look different from <a class="jargon">neurotypical<span class="tooltip">People whose brains develop and function in ways that align with societal expectations and norms</span></a> patterns.</p>
-
-            <p>The frustration and shame you feel about unfinished projects often makes the problem worse by adding emotional weight to completion. Many people find that reducing self-criticism and developing completion strategies that work with their brain's natural patterns leads to dramatically better follow-through over time.</p>
-
-            <p>Your pattern of starting but not finishing doesn't mean you lack perseverance or commitment. It means you're working with brain differences that require different approaches to <a class="jargon">sustained motivation<span class="tooltip">The ability to maintain drive and effort over extended periods, especially during routine or detailed phases of work</span></a> and completion. Understanding this difference is the first step toward developing strategies that actually work.</p>
-
-            <div class="highlight-box">
-                <p><strong>Remember:</strong> The projects you start represent genuine creativity, initiative, and problem-solving skills. Learning to complete them doesn't diminish these strengths - it allows them to have greater impact.</p>
-            </div>
-        </div>
-
-        <div class="related-struggles">
-            <h3>Related Struggles</h3>
-            <div class="struggle-tags">
-                <a href="{{ '/struggles/task-initiation-paralysis.html' | relative_url }}" class="struggle-tag">Task Initiation Paralysis</a>
-                <a href="{{ '/struggles/attention-regulation.html' | relative_url }}" class="struggle-tag">Attention Regulation</a>
-                <a href="{{ '/struggles/working-memory-difficulties.html' | relative_url }}" class="struggle-tag">Working Memory</a>
-                <a href="{{ '/struggles/time-blindness.html' | relative_url }}" class="struggle-tag">Time Blindness</a>
-                <a href="{{ '/struggles/perfectionism-paralysis.html' | relative_url }}" class="struggle-tag">Perfectionism Paralysis</a>
-                <a href="{{ '/struggles/interest-based-nervous-system.html' | relative_url }}" class="struggle-tag">Interest-Based System</a>
-            </div>
-        </div>
-    </div>
+    </main>
 </div>
 
 <script>
