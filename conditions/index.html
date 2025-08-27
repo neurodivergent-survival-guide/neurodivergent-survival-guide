@@ -1,469 +1,518 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Understanding Conditions - Neurodivergent Survival Guide</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+---
+layout: default
+title: "Understanding Conditions"
+---
+<!-- conditions/index.html -->
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-weight: 500;
+        background: linear-gradient(135deg, #6b7280 0%, #4b5563 100%);
+        color: #333;
+        min-height: 100vh;
+        line-height: 1.7;
+    }
+
+    .header {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        padding: 1.5rem 2rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .header h1 {
+        color: white;
+        font-size: 2.5rem;
+        font-weight: 300;
+        margin-bottom: 0.5rem;
+    }
+
+    .header p {
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 1.2rem;
+    }
+
+    .breadcrumb {
+        background: rgba(255, 255, 255, 0.05);
+        padding: 0.8rem 2rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    .breadcrumb a {
+        color: rgba(255, 255, 255, 0.8);
+        text-decoration: none;
+        font-size: 0.9rem;
+    }
+
+    .breadcrumb a:hover {
+        color: white;
+    }
+
+    .breadcrumb span {
+        color: rgba(255, 255, 255, 0.6);
+        margin: 0 0.5rem;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .content-card {
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 20px;
+        padding: 2.5rem;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        margin-bottom: 2rem;
+    }
+
+    .intro-section {
+        margin-bottom: 2rem;
+    }
+
+    .intro-section h2 {
+        color: #333;
+        margin-bottom: 1rem;
+        font-size: 1.6rem;
+    }
+
+    .intro-section p {
+        font-size: 1.05rem;
+        color: #555;
+        margin-bottom: 1rem;
+    }
+
+    .usage-guide {
+        background: #f8f9ff;
+        padding: 2rem;
+        border-radius: 16px;
+        border-left: 4px solid #6c5ce7;
+        margin: 2rem 0;
+    }
+
+    .usage-guide h3 {
+        color: #6c5ce7;
+        margin-bottom: 1rem;
+        font-size: 1.3rem;
+    }
+
+    .usage-list {
+        color: #555;
+        padding-left: 1.2rem;
+    }
+
+    .usage-list li {
+        margin-bottom: 0.8rem;
+        font-size: 0.95rem;
+    }
+
+    .conditions-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 1.5rem;
+        margin: 2rem 0;
+    }
+
+    .condition-card {
+        background: white;
+        border-radius: 12px;
+        padding: 1.8rem;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+        transition: all 0.3s ease;
+        cursor: pointer;
+        text-decoration: none;
+        color: inherit;
+        min-height: 44px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .condition-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        color: inherit;
+        text-decoration: none;
+    }
+
+    .condition-card.adhd {
+        border-top: 4px solid #d63031;
+    }
+
+    .condition-card.autism {
+        border-top: 4px solid #27ae60;
+    }
+
+    .condition-card.bipolar {
+        border-top: 4px solid #74b9ff;
+    }
+
+    .condition-card.bpd {
+        border-top: 4px solid #f39c12;
+    }
+
+    .condition-icon {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        text-align: center;
+    }
+
+    .condition-title {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 0.5rem;
+    }
+
+    .condition-subtitle {
+        font-size: 0.85rem;
+        color: #888;
+        font-style: italic;
+        margin-bottom: 1rem;
+    }
+
+    .condition-description {
+        color: #666;
+        flex-grow: 1;
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+
+    .disclaimer {
+        background: #fff2f2;
+        border: 1px solid #ffcccb;
+        padding: 1.5rem;
+        border-radius: 12px;
+        margin: 2rem 0;
+    }
+
+    .disclaimer h4 {
+        color: #d63031;
+        margin-bottom: 1rem;
+        font-size: 1.2rem;
+    }
+
+    .disclaimer p {
+        color: #555;
+        font-size: 0.95rem;
+        margin-bottom: 0.8rem;
+    }
+
+    .navigation-help {
+        background: #e8f5e8;
+        padding: 1.5rem;
+        border-radius: 12px;
+        margin: 2rem 0;
+        border-left: 4px solid #00b894;
+    }
+
+    .navigation-help h3 {
+        color: #00b894;
+        margin-bottom: 1rem;
+        font-size: 1.3rem;
+    }
+
+    .navigation-help p {
+        color: #555;
+        margin-bottom: 1rem;
+        font-size: 0.95rem;
+    }
+
+    .nav-links {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+    }
+
+    .nav-link {
+        background: #00b894;
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 8px;
+        text-decoration: none;
+        font-size: 0.85rem;
+        transition: all 0.3s ease;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+    }
+
+    .nav-link:hover {
+        background: #00a085;
+        color: white;
+        text-decoration: none;
+        transform: translateY(-1px);
+    }
+
+    /* Focus states for accessibility */
+    .condition-card:focus,
+    .nav-link:focus,
+    .jargon:focus,
+    .breadcrumb a:focus {
+        outline: 2px solid #fff;
+        outline-offset: 2px;
+    }
+
+    /* Motion accessibility */
+    @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+        }
+    }
+
+    /* Minimal jargon styling for index pages */
+    .jargon {
+        color: #e84393;
+        border-bottom: 1px dotted #e84393;
+        text-decoration: none;
+        position: relative;
+        cursor: help;
+        font-weight: 500;
+    }
+
+    .jargon:hover {
+        color: #fd79a8;
+        border-bottom-color: #fd79a8;
+    }
+
+    /* White jargon for gradient backgrounds */
+    .header .jargon,
+    .breadcrumb .jargon {
+        color: white;
+        border-bottom-color: rgba(255, 255, 255, 0.7);
+        background: rgba(255, 255, 255, 0.1);
+        padding: 2px 6px;
+        border-radius: 4px;
+    }
+
+    .header .jargon:hover,
+    .breadcrumb .jargon:hover {
+        background: rgba(255, 255, 255, 0.2);
+        border-bottom-color: white;
+    }
+
+    /* Auto-sizing tooltips */
+    .tooltip {
+        visibility: hidden;
+        opacity: 0;
+        position: absolute;
+        bottom: calc(100% + 8px);
+        left: 50%;
+        transform: translateX(-50%);
+        background: #333;
+        color: white;
+        padding: 12px 16px;
+        border-radius: 8px;
+        font-size: 0.9rem;
+        font-weight: normal;
+        z-index: 1001;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        transition: opacity 0.3s, visibility 0.3s;
+        max-width: 800px;
+        min-width: 200px;
+        width: max-content;
+        white-space: normal;
+        text-align: left;
+        line-height: 1.5;
+        pointer-events: none;
+    }
+
+    .tooltip::after {
+        content: '';
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        border: 6px solid transparent;
+        border-top-color: #333;
+    }
+
+    .jargon:hover .tooltip {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    /* Mobile responsive tooltip adjustments */
+    @media (max-width: 1024px) {
+        .tooltip {
+            max-width: 400px;
+        }
+    }
+
+    /* Mobile-specific tooltip positioning */
+    @media (max-width: 768px) {
+        .tooltip {
+            position: fixed !important;
+            bottom: 20px !important;
+            left: 20px !important;
+            right: 20px !important;
+            transform: none !important;
+            max-width: none !important;
+            width: auto !important;
         }
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: #333;
-            min-height: 100vh;
-            line-height: 1.7;
+        .tooltip::after {
+            display: none !important;
         }
 
         .header {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            padding: 1.5rem 2rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 1rem;
         }
 
         .header h1 {
-            color: white;
             font-size: 2rem;
-            font-weight: 300;
-            margin-bottom: 0.5rem;
         }
 
         .header p {
-            color: rgba(255, 255, 255, 0.9);
-            font-size: 1.1rem;
-        }
-
-        .breadcrumb {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 0.8rem 2rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .breadcrumb a {
-            color: rgba(255, 255, 255, 0.8);
-            text-decoration: none;
-            font-size: 0.9rem;
-        }
-
-        .breadcrumb a:hover {
-            color: white;
-        }
-
-        .breadcrumb span {
-            color: rgba(255, 255, 255, 0.6);
-            margin: 0 0.5rem;
-        }
-
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-
-        .content-card {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 20px;
-            padding: 2.5rem;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-            margin-bottom: 2rem;
-        }
-
-        .intro-section {
-            margin-bottom: 3rem;
-        }
-
-        .intro-section h2 {
-            color: #333;
-            margin-bottom: 1.5rem;
-            font-size: 1.6rem;
-            font-weight: 400;
-        }
-
-        .intro-section p {
-            font-size: 1.1rem;
-            color: #555;
-            margin-bottom: 1.5rem;
-        }
-
-        .usage-guide {
-            background: #f8f9ff;
-            padding: 2rem;
-            border-radius: 15px;
-            border-left: 4px solid #6c5ce7;
-            margin: 2rem 0;
-        }
-
-        .usage-guide h3 {
-            color: #6c5ce7;
-            margin-bottom: 1rem;
-            font-size: 1.2rem;
-        }
-
-        .usage-list {
-            color: #555;
-            padding-left: 1.2rem;
-        }
-
-        .usage-list li {
-            margin-bottom: 0.8rem;
-        }
-
-        .section-title {
-            color: #333;
-            font-size: 1.4rem;
-            font-weight: 500;
-            margin: 2.5rem 0 1.5rem 0;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid #e9ecef;
-        }
-
-        .conditions-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 2rem;
-            margin: 2rem 0;
-        }
-
-        .condition-card {
-            background: white;
-            border-radius: 15px;
-            padding: 2rem;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-            transition: all 0.3s ease;
-            cursor: pointer;
-            text-decoration: none;
-            color: inherit;
-            border-top: 4px solid #fd79a8;
-        }
-
-        .condition-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
-            color: inherit;
-            text-decoration: none;
-        }
-
-        .condition-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 1rem;
-        }
-
-        .condition-icon {
-            width: 50px;
-            height: 50px;
-            border-radius: 12px;
-            background: linear-gradient(45deg, #fd79a8, #e84393);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            margin-right: 1rem;
-        }
-
-        .condition-title {
-            font-size: 1.3rem;
-            font-weight: 600;
-            color: #333;
-        }
-
-        .condition-subtitle {
-            font-size: 0.9rem;
-            color: #888;
-            font-style: italic;
-        }
-
-        .condition-description {
-            color: #666;
-            margin-bottom: 1.5rem;
-        }
-
-        .condition-stats {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.85rem;
-            color: #999;
-            padding-top: 1rem;
-            border-top: 1px solid #f0f0f0;
-        }
-
-        .stat-item {
-            text-align: center;
-        }
-
-        .stat-number {
-            display: block;
-            font-weight: 600;
-            color: #fd79a8;
             font-size: 1rem;
         }
 
+        .breadcrumb {
+            padding: 0.6rem 1rem;
+        }
+
+        .container {
+            padding: 1rem;
+        }
+        
+        .content-card {
+            padding: 1.5rem;
+        }
+
+        .usage-guide {
+            padding: 1.5rem;
+        }
+
+        .conditions-grid {
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+
+        .condition-card {
+            padding: 1.5rem;
+        }
+
         .disclaimer {
-            background: #fff2f2;
-            border: 1px solid #ffcccb;
-            padding: 1.8rem;
-            border-radius: 15px;
-            margin: 2rem 0;
-        }
-
-        .disclaimer h4 {
-            color: #d63031;
-            margin-bottom: 1rem;
-        }
-
-        .disclaimer p {
-            color: #555;
-            font-size: 0.95rem;
-            margin-bottom: 0.8rem;
+            padding: 1.2rem;
         }
 
         .navigation-help {
-            background: #e8f5e8;
-            padding: 2rem;
-            border-radius: 15px;
-            margin: 2rem 0;
-            border-left: 4px solid #00b894;
-        }
-
-        .navigation-help h3 {
-            color: #00b894;
-            margin-bottom: 1rem;
-        }
-
-        .navigation-help p {
-            color: #555;
-            margin-bottom: 1rem;
+            padding: 1.2rem;
         }
 
         .nav-links {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
+            flex-direction: column;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .header h1 {
+            font-size: 1.8rem;
         }
 
-        .nav-link {
-            background: white;
-            color: #00b894;
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
-            text-decoration: none;
+        .header p {
             font-size: 0.9rem;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            transition: all 0.2s ease;
         }
 
-        .nav-link:hover {
-            background: #00b894;
-            color: white;
-            text-decoration: none;
+        .content-card {
+            padding: 1.2rem;
         }
 
-        @media (max-width: 768px) {
-            .container {
-                padding: 1rem;
-            }
-            
-            .content-card {
-                padding: 1.5rem;
-            }
-
-            .conditions-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-
-            .nav-links {
-                flex-direction: column;
-            }
+        .condition-card {
+            padding: 1.2rem;
         }
-    </style>
-</head>
-<body>
-    <div class="header">
-        <h1>Understanding Conditions</h1>
-        <p>Learn about different ways brains can work</p>
-    </div>
 
-    <div class="breadcrumb">
-        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/index.html">Home</a>
-        <span>></span>
-        Understanding Conditions
-    </div>
+        .tooltip {
+            left: 10px !important;
+            right: 10px !important;
+            bottom: 10px !important;
+        }
+    }
+</style>
 
-    <div class="container">
+<div class="header">
+    <h1>Understanding Conditions</h1>
+    <p>Learn about different ways brains can work and process the world</p>
+</div>
+
+<div class="breadcrumb">
+    <a href="{{ '/index.html' | relative_url }}">Home</a>
+    <span>></span>
+    Understanding Conditions
+</div>
+
+<div class="container">
+    <main role="main" id="main-content">
         <div class="content-card">
             <div class="intro-section">
-                <h2>What Are Neurodivergent Conditions?</h2>
-                <p>Some people's brains work differently from what society considers "typical." These differences aren't diseases or problems to fix—they're just variations in how human brains can develop and function.</p>
+                <h2 id="what-are-conditions">What Are <a class="jargon">Neurodivergent<span class="tooltip">Brain differences that create distinct patterns of thinking, processing, and behavior</span></a> Conditions?</h2>
+                <p>Some people's brains work differently from what society considers "typical." These differences aren't diseases or problems to fix—they're variations in how human brains can develop and function. These brain differences can create both challenges and strengths, with challenges usually coming from living in environments designed for different types of brains.</p>
                 
-                <p>These brain differences can create both challenges and strengths. The challenges usually come from living in a world designed for brains that work differently than yours. Understanding your brain type can help you make sense of daily struggles and find better ways to navigate the world.</p>
-
-                <p>Each condition affects people differently. Two people with autism, for example, might have completely different daily experiences. Think of these as starting points for understanding yourself, not boxes that define you.</p>
+                <p>Understanding your brain type can help you make sense of daily struggles and find better ways to navigate the world. Each condition affects people differently - two people with the same condition might have completely different daily experiences. Think of these as starting points for understanding yourself, not rigid categories that define you.</p>
             </div>
 
             <div class="usage-guide">
                 <h3>How to Use This Section</h3>
                 <ul class="usage-list">
                     <li><strong>If you suspect a specific condition:</strong> Click on that condition to learn more about how it shows up in daily life</li>
-                    <li><strong>If you're exploring multiple possibilities:</strong> Read through several conditions to see what resonates</li>
+                    <li><strong>If you're exploring multiple possibilities:</strong> Read through several conditions to see what resonates with your experiences</li>
                     <li><strong>If you're newly diagnosed:</strong> Start with your condition to understand how it might affect different areas of your life</li>
-                    <li><strong>If you're supporting someone else:</strong> Learn about their condition to better understand their experiences</li>
+                    <li><strong>If you're supporting someone else:</strong> Learn about their condition to better understand their daily experiences</li>
                 </ul>
             </div>
 
             <div class="disclaimer">
                 <h4>Important: This Is Not for Diagnosis</h4>
-                <p>This information is designed to help you understand yourself better and communicate with healthcare providers. It cannot diagnose conditions—only qualified professionals can do that.</p>
-                <p>Many experiences overlap between conditions, and many people have multiple conditions at once. Use this information as a starting point for conversations with doctors, therapists, or other professionals.</p>
+                <p>This information helps you understand yourself better and communicate with healthcare providers. It cannot diagnose conditions—only qualified professionals can do that. Many experiences overlap between conditions, and many people have multiple conditions simultaneously.</p>
+                <p>Use this information as a starting point for conversations with doctors, therapists, or other professionals who can provide proper <a class="jargon">assessment<span class="tooltip">Professional evaluation to determine if you meet criteria for specific conditions</span></a> and support.</p>
             </div>
 
-            <h2 class="section-title">Common Conditions</h2>
-
             <div class="conditions-grid">
-                <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/conditions/autism.html" class="condition-card">
-                    <div class="condition-header">
-                        <div class="condition-icon">🧩</div>
-                        <div>
-                            <div class="condition-title">Autism</div>
-                            <div class="condition-subtitle">Autistic Spectrum Disorder</div>
-                        </div>
-                    </div>
+                <a href="{{ '/conditions/adhd.html' | relative_url }}" class="condition-card adhd">
+                    <div class="condition-icon">⚡</div>
+                    <div class="condition-title">ADHD</div>
+                    <div class="condition-subtitle">Attention-Deficit/Hyperactivity Disorder</div>
                     <div class="condition-description">
-                        Differences in social communication, sensory processing, and patterns of behavior. Often involves intense interests and need for routine.
-                    </div>
-                    <div class="condition-stats">
-                        <div class="stat-item">
-                            <span class="stat-number">1 in 36</span>
-                            <div>Children identified</div>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number">6 areas</span>
-                            <div>Daily friction points</div>
-                        </div>
+                        Brain differences in attention, impulse control, and <a class="jargon">executive function<span class="tooltip">The brain's management system that handles planning, organization, time management, task initiation, and follow-through</span></a>. Interest-based attention that works intensely when engaged but struggles with boring tasks.
                     </div>
                 </a>
 
-                <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/conditions/adhd.html" class="condition-card">
-                    <div class="condition-header">
-                        <div class="condition-icon">⚡</div>
-                        <div>
-                            <div class="condition-title">ADHD</div>
-                            <div class="condition-subtitle">Attention-Deficit/Hyperactivity</div>
-                        </div>
-                    </div>
+                <a href="{{ '/conditions/autism.html' | relative_url }}" class="condition-card autism">
+                    <div class="condition-icon">🧩</div>
+                    <div class="condition-title">Autism</div>
+                    <div class="condition-subtitle">Autistic Spectrum Condition</div>
                     <div class="condition-description">
-                        Differences in attention, impulse control, and activity levels. Can involve hyperfocus, time blindness, and executive function challenges.
-                    </div>
-                    <div class="condition-stats">
-                        <div class="stat-item">
-                            <span class="stat-number">1 in 20</span>
-                            <div>Adults affected</div>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number">5 areas</span>
-                            <div>Daily friction points</div>
-                        </div>
+                        Brain differences in social communication, <a class="jargon">sensory processing<span class="tooltip">How the nervous system receives and responds to sensory information from the environment and body</span></a>, and routine needs. Creates friction with environments designed for <a class="jargon">neurotypical<span class="tooltip">People whose brains develop and function in ways that align with societal expectations and norms</span></a> social and sensory expectations.
                     </div>
                 </a>
 
-                <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/conditions/anxiety.html" class="condition-card">
-                    <div class="condition-header">
-                        <div class="condition-icon">💭</div>
-                        <div>
-                            <div class="condition-title">Anxiety Disorders</div>
-                            <div class="condition-subtitle">Various anxiety conditions</div>
-                        </div>
-                    </div>
+                <a href="{{ '/conditions/bipolar.html' | relative_url }}" class="condition-card bipolar">
+                    <div class="condition-icon">🔄</div>
+                    <div class="condition-title">Bipolar</div>
+                    <div class="condition-subtitle">Bipolar Disorder</div>
                     <div class="condition-description">
-                        Persistent worry, fear, or panic that interferes with daily life. Can involve social anxiety, generalized anxiety, or specific phobias.
-                    </div>
-                    <div class="condition-stats">
-                        <div class="stat-item">
-                            <span class="stat-number">1 in 5</span>
-                            <div>Adults affected</div>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number">4 areas</span>
-                            <div>Daily friction points</div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-
-            <h2 class="section-title">Less Common but Important</h2>
-
-            <div class="conditions-grid">
-                <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/conditions/trauma.html" class="condition-card">
-                    <div class="condition-header">
-                        <div class="condition-icon">🌊</div>
-                        <div>
-                            <div class="condition-title">Trauma Responses</div>
-                            <div class="condition-subtitle">Complex PTSD, C-PTSD</div>
-                        </div>
-                    </div>
-                    <div class="condition-description">
-                        How past difficult experiences continue to affect daily life, relationships, and emotional responses.
-                    </div>
-                    <div class="condition-stats">
-                        <div class="stat-item">
-                            <span class="stat-number">Variable</span>
-                            <div>Prevalence</div>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number">4 areas</span>
-                            <div>Daily friction points</div>
-                        </div>
+                        Significant shifts between periods of elevated mood and depression. <a class="jargon">Episodes<span class="tooltip">Discrete periods of altered mood, energy, and behavior that are clearly different from your baseline functioning</span></a> affect energy, sleep, thinking, and behavior in ways that create friction with environments expecting emotional stability.
                     </div>
                 </a>
 
-                <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/conditions/bipolar.html" class="condition-card">
-                    <div class="condition-header">
-                        <div class="condition-icon">🔄</div>
-                        <div>
-                            <div class="condition-title">Bipolar Disorder</div>
-                            <div class="condition-subtitle">Mood cycling conditions</div>
-                        </div>
-                    </div>
+                <a href="{{ '/conditions/bpd.html' | relative_url }}" class="condition-card bpd">
+                    <div class="condition-icon">💝</div>
+                    <div class="condition-title">Borderline Personality Disorder</div>
+                    <div class="condition-subtitle">BPD</div>
                     <div class="condition-description">
-                        Periods of intense emotional highs and lows that affect energy, thinking, and behavior in significant ways.
-                    </div>
-                    <div class="condition-stats">
-                        <div class="stat-item">
-                            <span class="stat-number">2.8%</span>
-                            <div>Adults affected</div>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number">3 areas</span>
-                            <div>Daily friction points</div>
-                        </div>
-                    </div>
-                </a>
-
-                <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/conditions/learning-differences.html" class="condition-card">
-                    <div class="condition-header">
-                        <div class="condition-icon">📚</div>
-                        <div>
-                            <div class="condition-title">Learning Differences</div>
-                            <div class="condition-subtitle">Dyslexia, Dyscalculia, etc.</div>
-                        </div>
-                    </div>
-                    <div class="condition-description">
-                        Different ways of processing written language, numbers, or other academic skills that can affect daily life.
-                    </div>
-                    <div class="condition-stats">
-                        <div class="stat-item">
-                            <span class="stat-number">15-20%</span>
-                            <div>Population affected</div>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number">3 areas</span>
-                            <div>Daily friction points</div>
-                        </div>
+                        Intense emotional responses and relationship patterns that developed as protective strategies against abandonment. <a class="jargon">Attachment system<span class="tooltip">The brain patterns that govern how we connect with and respond to important relationships</span></a> learned to expect rejection and responds strongly to prevent it.
                     </div>
                 </a>
             </div>
@@ -472,17 +521,11 @@
                 <h3>Not Sure Where to Start?</h3>
                 <p>If you're feeling overwhelmed or don't know which condition might apply to you, try starting with specific daily struggles instead. Sometimes it's easier to identify what's difficult than to understand why.</p>
                 <div class="nav-links">
-                    <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/index.html" class="nav-link">Browse Daily Struggles</a>
-                    <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/glossary/index.html" class="nav-link">Look Up Terms</a>
-                    <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/index.html" class="nav-link">Back to Homepage</a>
+                    <a href="{{ '/struggles/index.html' | relative_url }}" class="nav-link">Browse Daily Struggles</a>
+                    <a href="{{ '/glossary/index.html' | relative_url }}" class="nav-link">Look Up Terms</a>
+                    <a href="{{ '/index.html' | relative_url }}" class="nav-link">Back to Homepage</a>
                 </div>
             </div>
         </div>
-    </div>
-
-    <script>
-        // All links now work as proper navigation
-        // No special handling needed - dead links serve as todo items
-    </script>
-</body>
-</html>
+    </main>
+</div>
