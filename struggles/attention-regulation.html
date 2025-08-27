@@ -1,479 +1,512 @@
 ---
-layout: struggle
+layout: default
 title: "Attention Regulation"
-slug: "attention-regulation"
 ---
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Attention Regulation | Neurodivergent Survival Guide</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<!-- struggles/attention-regulation.html -->
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #ff7675 0%, #fd79a8 100%);
-            color: #333;
-            min-height: 100vh;
-            line-height: 1.7;
-        }
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        background: linear-gradient(135deg, #ff7675 0%, #fd79a8 100%);
+        color: #333;
+        min-height: 100vh;
+        line-height: 1.7;
+    }
 
+    .header {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        padding: 1.5rem 2rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .header h1 {
+        color: white;
+        font-size: 2.5rem;
+        font-weight: 300;
+        margin-bottom: 0.5rem;
+    }
+
+    .header p {
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 1.1rem;
+    }
+
+    .breadcrumb {
+        background: rgba(255, 255, 255, 0.05);
+        padding: 0.8rem 2rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    .breadcrumb a {
+        color: rgba(255, 255, 255, 0.8);
+        text-decoration: none;
+        font-size: 0.9rem;
+    }
+
+    .breadcrumb a:hover {
+        color: white;
+    }
+
+    .breadcrumb span {
+        color: rgba(255, 255, 255, 0.6);
+        margin: 0 0.5rem;
+    }
+
+    .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 2rem;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .content-card {
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 20px;
+        padding: 2.5rem;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        margin-bottom: 2rem;
+    }
+
+    .section {
+        background: white;
+        border-radius: 15px;
+        padding: 2rem;
+        margin: 2rem 0;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+        border-top: 3px solid #fd79a8;
+    }
+
+    .section h2 {
+        color: #fd79a8;
+        font-size: 1.4rem;
+        margin-bottom: 1.5rem;
+        font-weight: 600;
+    }
+
+    .section p {
+        color: #555;
+        margin-bottom: 1rem;
+        font-size: 1rem;
+    }
+
+    .section ul {
+        padding-left: 1.5rem;
+        color: #555;
+        margin: 1rem 0;
+    }
+
+    .section li {
+        margin-bottom: 0.8rem;
+        font-size: 0.95rem;
+    }
+
+    .immediate-help {
+        background: #e8f5e8;
+        border-left-color: #00b894;
+    }
+
+    .immediate-help h2 {
+        color: #00b894;
+    }
+
+    .long-term {
+        background: #e3f2fd;
+        border-left-color: #1976d2;
+    }
+
+    .long-term h2 {
+        color: #1976d2;
+    }
+
+    .medical-intervention {
+        background: #fff3e0;
+        border-left-color: #f57c00;
+    }
+
+    .medical-intervention h2 {
+        color: #f57c00;
+    }
+
+    .validation {
+        background: #f3e5f5;
+        border-left-color: #8e24aa;
+    }
+
+    .validation h2 {
+        color: #8e24aa;
+    }
+
+    .learn-more {
+        background: linear-gradient(45deg, #a29bfe, #6c5ce7);
+        color: white;
+        padding: 1.5rem;
+        border-radius: 12px;
+        margin: 1.5rem 0;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .learn-more h3 {
+        margin-bottom: 1rem;
+        font-size: 1.2rem;
+        color: white;
+    }
+
+    .learn-more:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    .learn-more-content {
+        display: none;
+        margin-top: 1rem;
+        padding-top: 1rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.3);
+        color: white;
+    }
+
+    .learn-more-content p {
+        color: white;
+    }
+
+    .learn-more.expanded .learn-more-content {
+        display: block;
+    }
+
+    .related-struggles {
+        background: #f8f9fa;
+        padding: 1.5rem;
+        border-radius: 12px;
+        margin: 2rem 0;
+        border: 1px solid #e0e0e0;
+    }
+
+    .related-struggles h3 {
+        color: #333;
+        margin-bottom: 1rem;
+        font-size: 1.2rem;
+    }
+
+    .struggle-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .struggle-tag {
+        background: #fd79a8;
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+    }
+
+    .struggle-tag:hover {
+        background: #e84393;
+        color: white;
+        text-decoration: none;
+        transform: translateY(-1px);
+    }
+
+    .jargon {
+        color: white;
+        text-decoration: none;
+        border-bottom: 1px dotted rgba(255, 255, 255, 0.8);
+        position: relative;
+        cursor: help;
+        font-weight: 500;
+        background: rgba(255, 255, 255, 0.2);
+        padding: 2px 4px;
+        border-radius: 3px;
+    }
+
+    .jargon:hover {
+        color: white;
+        border-bottom-color: white;
+        background: rgba(255, 255, 255, 0.3);
+    }
+
+    .tooltip {
+        visibility: hidden;
+        opacity: 0;
+        position: absolute;
+        bottom: 125%;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #333;
+        color: white;
+        padding: 12px 16px;
+        border-radius: 8px;
+        font-size: 0.9rem;
+        font-weight: normal;
+        z-index: 1001;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        transition: opacity 0.3s, visibility 0.3s;
+        max-width: 800px;
+        min-width: 200px;
+        width: max-content;
+        white-space: normal;
+        text-align: left;
+        line-height: 1.5;
+    }
+
+    .tooltip::after {
+        content: '';
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        border: 6px solid transparent;
+        border-top-color: #333;
+    }
+
+    .jargon:hover .tooltip {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    .highlight-box {
+        background: #fff8e1;
+        padding: 1rem;
+        border-radius: 8px;
+        border-left: 3px solid #ffc107;
+        margin: 1rem 0;
+    }
+
+    /* Mobile responsive tooltip adjustments */
+    @media (max-width: 1024px) {
+        .tooltip {
+            max-width: 400px;
+        }
+    }
+
+    @media (max-width: 768px) {
         .header {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            padding: 1.5rem 2rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 1rem;
         }
 
         .header h1 {
-            color: white;
-            font-size: 2.5rem;
-            font-weight: 300;
-            margin-bottom: 0.5rem;
+            font-size: 2rem;
         }
 
         .header p {
-            color: rgba(255, 255, 255, 0.9);
-            font-size: 1.1rem;
-        }
-
-        .breadcrumb {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 0.8rem 2rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .breadcrumb a {
-            color: rgba(255, 255, 255, 0.8);
-            text-decoration: none;
-            font-size: 0.9rem;
-        }
-
-        .breadcrumb a:hover {
-            color: white;
-        }
-
-        .breadcrumb span {
-            color: rgba(255, 255, 255, 0.6);
-            margin: 0 0.5rem;
-        }
-
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-
-        .content-card {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 20px;
-            padding: 2.5rem;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-            margin-bottom: 2rem;
-        }
-
-        .section {
-            background: white;
-            border-radius: 15px;
-            padding: 2rem;
-            margin: 2rem 0;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-            border-top: 3px solid #fd79a8;
-        }
-
-        .section h2 {
-            color: #fd79a8;
-            font-size: 1.4rem;
-            margin-bottom: 1.5rem;
-            font-weight: 600;
-        }
-
-        .section p {
-            color: #555;
-            margin-bottom: 1rem;
             font-size: 1rem;
         }
 
-        .section ul {
-            padding-left: 1.5rem;
-            color: #555;
-            margin: 1rem 0;
+        .breadcrumb {
+            padding: 0.6rem 1rem;
         }
 
-        .section li {
-            margin-bottom: 0.8rem;
-            font-size: 0.95rem;
+        .container {
+            padding: 1rem;
         }
 
-        .immediate-help {
-            background: #e8f5e8;
-            border-left-color: #00b894;
-        }
-
-        .immediate-help h2 {
-            color: #00b894;
-        }
-
-        .long-term {
-            background: #e3f2fd;
-            border-left-color: #1976d2;
-        }
-
-        .long-term h2 {
-            color: #1976d2;
-        }
-
-        .medical-intervention {
-            background: #fff3e0;
-            border-left-color: #f57c00;
-        }
-
-        .medical-intervention h2 {
-            color: #f57c00;
-        }
-
-        .validation {
-            background: #f3e5f5;
-            border-left-color: #8e24aa;
-        }
-
-        .validation h2 {
-            color: #8e24aa;
-        }
-
-        .learn-more {
-            background: linear-gradient(45deg, #a29bfe, #6c5ce7);
-            color: white;
+        .content-card {
             padding: 1.5rem;
-            border-radius: 12px;
-            margin: 1.5rem 0;
-            cursor: pointer;
-            transition: all 0.3s ease;
         }
 
-        .learn-more h3 {
-            margin-bottom: 1rem;
-            font-size: 1.2rem;
-            color: white;
-        }
-
-        .learn-more:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-        }
-
-        .learn-more-content {
-            display: none;
-            margin-top: 1rem;
-            padding-top: 1rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.3);
-            color: white;
-        }
-
-        .learn-more-content p {
-            color: white;
-        }
-
-        .learn-more.expanded .learn-more-content {
-            display: block;
-        }
-
-        .related-struggles {
-            background: #f8f9fa;
+        .section {
             padding: 1.5rem;
-            border-radius: 12px;
-            margin: 2rem 0;
-            border: 1px solid #e0e0e0;
-        }
-
-        .related-struggles h3 {
-            color: #333;
-            margin-bottom: 1rem;
-            font-size: 1.2rem;
         }
 
         .struggle-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
+            flex-direction: column;
         }
 
         .struggle-tag {
-            background: #fd79a8;
-            color: white;
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            text-decoration: none;
-            transition: all 0.3s ease;
+            justify-content: center;
+            text-align: center;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .header h1 {
+            font-size: 1.8rem;
         }
 
-        .struggle-tag:hover {
-            background: #e84393;
-            color: white;
-            text-decoration: none;
-            transform: translateY(-1px);
-        }
-
-        .jargon {
-            color: #e84393;
-            text-decoration: none;
-            border-bottom: 1px dotted #e84393;
-            position: relative;
-            cursor: help;
-            font-weight: 500;
-        }
-
-        .jargon:hover {
-            color: #fd79a8;
-            border-bottom-color: #fd79a8;
-        }
-
-        .tooltip {
-            visibility: hidden;
-            opacity: 0;
-            position: absolute;
-            bottom: 125%;
-            left: 50%;
-            transform: translateX(-50%);
-            background: #333;
-            color: white;
-            padding: 12px 16px;
-            border-radius: 8px;
+        .header p {
             font-size: 0.9rem;
-            font-weight: normal;
-            z-index: 1001;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-            transition: opacity 0.3s, visibility 0.3s;
-            width: 800px;
-            white-space: normal;
-            text-align: left;
-            line-height: 1.5;
         }
 
-        .tooltip::after {
-            content: '';
-            position: absolute;
-            top: 100%;
-            left: 50%;
-            transform: translateX(-50%);
-            border: 6px solid transparent;
-            border-top-color: #333;
+        .content-card {
+            padding: 1.2rem;
         }
 
-        .jargon:hover .tooltip {
-            visibility: visible;
-            opacity: 1;
+        .section {
+            padding: 1.2rem;
         }
+    }
+</style>
 
-        .highlight-box {
-            background: #fff8e1;
-            padding: 1rem;
-            border-radius: 8px;
-            border-left: 3px solid #ffc107;
-            margin: 1rem 0;
-        }
+<div class="header">
+    <h1>Attention Regulation</h1>
+    <p>When you have too much attention that's hard to direct</p>
+</div>
 
-        /* Mobile responsive tooltips */
-        @media (max-width: 768px) {
-            .container {
-                padding: 1rem;
-            }
+<div class="breadcrumb">
+    <a href="{{ '/index.html' | relative_url }}">Home</a>
+    <span>></span>
+    <a href="{{ '/conditions/adhd.html' | relative_url }}">ADHD</a>
+    <span>></span>
+    Attention Regulation
+</div>
 
-            .content-card {
-                padding: 1.5rem;
-            }
+<div class="container">
+    <div class="content-card">
+        <!-- Section 1: What this feels like -->
+        <div class="section">
+            <h2>What This Feels Like</h2>
+            <p><a class="jargon">Attention regulation<span class="tooltip">The brain's ability to direct and sustain focus where you want it, when you want it</span></a> issues often feel like having a spotlight that either shines too intensely in one direction or bounces around uncontrollably. Many people describe their attention as either completely absorbed by something interesting or impossible to focus on anything at all - with very little middle ground between these extremes.</p>
 
-            .struggle-tags {
-                flex-direction: column;
-            }
+            <p>You might find yourself reading the same paragraph five times without absorbing any information, while later that day becoming so engrossed in a video or project that hours pass without notice. During boring tasks, your mind might wander constantly to more interesting thoughts, making it nearly impossible to concentrate on what's in front of you.</p>
 
-            .tooltip {
-                width: 300px;
-            }
-        }
+            <p>Many people experience this as having "too much" attention rather than too little - your brain takes in everything around you, making it difficult to filter out distractions and focus on what's supposed to be important. This can feel exhausting, like your <a class="jargon">mental energy<span class="tooltip">The cognitive resources available for thinking, processing, and maintaining focus</span></a> is being pulled in multiple directions simultaneously.</p>
 
-        @media (max-width: 480px) {
-            .tooltip {
-                width: 250px;
-            }
-        }
-    </style>
-</head>
-<body>
-    <div class="header">
-        <h1>Attention Regulation</h1>
-        <p>When you have too much attention that's hard to direct</p>
-    </div>
-
-    <div class="breadcrumb">
-        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/index.html">Home</a>
-        <span>></span>
-        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/conditions/adhd.html">ADHD</a>
-        <span>></span>
-        Attention Regulation
-    </div>
-
-    <div class="container">
-        <div class="content-card">
-            <!-- Section 1: What this feels like -->
-            <div class="section">
-                <h2>What This Feels Like</h2>
-                <p>Attention regulation issues often feel like having a spotlight that either shines too intensely in one direction or bounces around uncontrollably. Many people describe their attention as either completely absorbed by something interesting or impossible to focus on anything at all - with very little middle ground between these extremes.</p>
-
-                <p>You might find yourself reading the same paragraph five times without absorbing any information, while later that day becoming so engrossed in a video or project that hours pass without notice. During boring tasks, your mind might wander constantly to more interesting thoughts, making it nearly impossible to concentrate on what's in front of you.</p>
-
-                <p>Many people experience this as having "too much" attention rather than too little - your brain takes in everything around you, making it difficult to filter out distractions and focus on what's supposed to be important. This can feel exhausting, like your <a class="jargon">mental energy<span class="tooltip">The cognitive resources available for thinking, processing, and maintaining focus</span></a> is being pulled in multiple directions simultaneously.</p>
-
-                <div class="highlight-box">
-                    <p><strong>Common experiences:</strong> Losing focus mid-conversation, reading without comprehending, <a class="jargon">hyperfocusing<span class="tooltip">Intense, prolonged focus on interesting activities that becomes difficult to break away from</span></a> on interesting things while unable to focus on responsibilities, constantly noticing background sounds or movements.</p>
-                </div>
+            <div class="highlight-box">
+                <p><strong>Common experiences:</strong> Losing focus mid-conversation, reading without comprehending, <a class="jargon">hyperfocusing<span class="tooltip">Intense, prolonged focus on interesting activities that becomes difficult to break away from</span></a> on interesting things while unable to focus on responsibilities, constantly noticing background sounds or movements.</p>
             </div>
+        </div>
 
-            <!-- Section 2: Why this might be happening -->
-            <div class="section">
-                <h2>Why This Might Be Happening</h2>
-                <p>Attention regulation involves complex brain networks that manage where you direct your focus and how long you sustain it. In ADHD brains, these systems work differently, particularly in areas involving <a class="jargon">dopamine<span class="tooltip">A brain chemical that helps with motivation, reward, and maintaining focus on activities</span></a> regulation and <a class="jargon">executive function<span class="tooltip">Mental skills that help you plan, focus, remember instructions, and manage multiple tasks</span></a>.</p>
+        <!-- Section 2: Why this might be happening -->
+        <div class="section">
+            <h2>Why This Might Be Happening</h2>
+            <p>Attention regulation involves complex brain networks that manage where you direct your focus and how long you sustain it. In <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> brains, these systems work differently, particularly in areas involving <a class="jargon">dopamine<span class="tooltip">A brain chemical that helps with motivation, reward, and maintaining focus on activities</span></a> regulation and <a class="jargon">executive function<span class="tooltip">Mental skills that help you plan, focus, remember instructions, and manage multiple tasks</span></a>.</p>
 
-                <p>ADHD attention operates on an <a class="jargon">interest-based nervous system<span class="tooltip">A brain that functions optimally when tasks are interesting, challenging, urgent, or novel</span></a> - your brain allocates attention based on what's engaging rather than what's important. Tasks that lack novelty, challenge, or personal interest may not generate enough <a class="jargon">neural activation<span class="tooltip">The brain activity needed to engage attention and maintain focus</span></a> to sustain focus, while highly interesting activities can capture attention so completely that it becomes difficult to shift focus elsewhere.</p>
+            <p>ADHD attention operates on an <a class="jargon">interest-based nervous system<span class="tooltip">A brain that functions optimally when tasks are interesting, challenging, urgent, or novel</span></a> - your brain allocates attention based on what's engaging rather than what's important. Tasks that lack novelty, challenge, or personal interest may not generate enough <a class="jargon">neural activation<span class="tooltip">The brain activity needed to engage attention and maintain focus</span></a> to sustain focus, while highly interesting activities can capture attention so completely that it becomes difficult to shift focus elsewhere.</p>
 
-                <p>The ADHD brain also shows differences in <a class="jargon">default mode network<span class="tooltip">Brain networks that are active during rest and mind-wandering, which can compete with focused attention</span></a> activity, which can make your mind more prone to wandering and internal distraction. This isn't about lacking willpower - it's about having different neurological patterns for <a class="jargon">attention allocation<span class="tooltip">How your brain decides what to focus on and for how long</span></a>.</p>
+            <p>The ADHD brain also shows differences in <a class="jargon">default mode network<span class="tooltip">Brain networks that are active during rest and mind-wandering, which can compete with focused attention</span></a> activity, which can make your mind more prone to wandering and internal distraction. This isn't about lacking willpower - it's about having different neurological patterns for <a class="jargon">attention allocation<span class="tooltip">How your brain decides what to focus on and for how long</span></a>.</p>
 
-                <div class="learn-more" onclick="toggleLearnMore(this)">
-                    <h3>Learn More: The Neuroscience of ADHD Attention ↓</h3>
-                    <div class="learn-more-content">
-                        <p>ADHD involves differences in <a class="jargon">prefrontal cortex<span class="tooltip">Brain area responsible for executive functions including attention control and focus regulation</span></a> functioning, particularly in circuits that regulate dopamine and norepinephrine. These neurotransmitters are crucial for maintaining sustained attention and filtering out irrelevant information.</p>
-                        <p>Research shows that ADHD brains may have lower baseline levels of these neurotransmitters, making it harder to engage attention on low-stimulation tasks while seeking out higher-stimulation activities to achieve optimal <a class="jargon">cognitive arousal<span class="tooltip">The level of brain activation needed for optimal functioning and attention</span></a>.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Section 3: Next 5 minutes -->
-            <div class="section immediate-help">
-                <h2>What Can Help You Through the Next 5 Minutes</h2>
-                <p>When your attention feels scattered or stuck right now, these strategies can help regain some control:</p>
-
-                <ul>
-                    <li><strong>Use the <a class="jargon">2-minute rule<span class="tooltip">Committing to focus for just 2 minutes, which often leads to longer periods of sustained attention</span></a>:</strong> Set a timer for 2 minutes and commit to focusing only on one thing until it goes off. Often this creates enough momentum to continue.</li>
-                    <li><strong>Try <a class="jargon">environmental manipulation<span class="tooltip">Changing your physical surroundings to support better attention and focus</span></a>:</strong> Move to a different room, put on different music, or change your lighting. Your attention often responds to environmental shifts.</li>
-                    <li><strong>Use <a class="jargon">attention anchors<span class="tooltip">Specific sensory inputs like background music, fidget tools, or physical positions that help maintain focus</span></a>:</strong> Background music, a fidget toy, or specific seating can provide just enough stimulation to help regulate attention without being distracting.</li>
-                    <li><strong>Practice <a class="jargon">attention reset<span class="tooltip">Brief activities that help clear mental distractions and refocus: deep breathing, movement, or sensory grounding</span></a>:</strong> Take 10 deep breaths, do jumping jacks, or splash cold water on your face to reset your brain's attention system.</li>
-                    <li><strong>Externalize distractions:</strong> Write down intrusive thoughts or interesting ideas so your brain doesn't have to hold onto them, freeing up <a class="jargon">working memory<span class="tooltip">The mental workspace that temporarily holds and manipulates information during thinking tasks</span></a> for the task at hand.</li>
-                    <li><strong>Use <a class="jargon">attention cues<span class="tooltip">External signals that remind your brain what to focus on: visual reminders, verbal self-prompts, or physical positioning</span></a>:</strong> Say out loud what you're trying to focus on, or point to specific text while reading to help direct your attention.</li>
-                </ul>
-
-                <div class="highlight-box">
-                    <p><strong>Emergency attention rescue:</strong> If completely scattered, try naming 5 things you can see, 4 things you can touch, 3 things you can hear. This <a class="jargon">grounding technique<span class="tooltip">Exercises that help bring your attention back to the present moment and current environment</span></a> can help gather your attention back to the present moment.</p>
-                </div>
-            </div>
-
-            <!-- Section 4: Long-term solutions -->
-            <div class="section long-term">
-                <h2>What Are Some Healthy Long-Term Solutions</h2>
-                <p>Building sustainable systems that work with your attention patterns rather than fighting them:</p>
-
-                <ul>
-                    <li><strong>Identify your <a class="jargon">attention rhythms<span class="tooltip">Your personal patterns of when attention feels easier or harder to control throughout the day</span></a>:</strong> Track when focusing feels easier versus harder (time of day, energy levels, environment) and schedule demanding tasks during your optimal attention windows.</li>
-                    <li><strong>Create <a class="jargon">attention-friendly environments<span class="tooltip">Physical spaces designed to minimize distractions and support your specific attention needs</span></a>:</strong> Reduce visual clutter, control noise levels, and organize your workspace to minimize attention-stealing distractions.</li>
-                    <li><strong>Use <a class="jargon">attention switching strategies<span class="tooltip">Techniques for deliberately moving your focus from one activity to another when hyperfocused or stuck</span></a>:</strong> Set timers to remind yourself to check in with time, use transition activities between tasks, or develop rituals that help you shift focus intentionally.</li>
-                    <li><strong>Practice <a class="jargon">selective attention<span class="tooltip">The ability to focus on relevant information while ignoring distractions</span></a> training:</strong> Use apps, meditation, or exercises that strengthen your ability to direct attention where you choose rather than where it wanders.</li>
-                    <li><strong>Develop <a class="jargon">hyperfocus management<span class="tooltip">Strategies for benefiting from intense focus while preventing it from taking over your entire day</span></a>:</strong> Set boundaries around engaging activities, use body cues (hunger, thirst) as natural break reminders, and plan hyperfocus time intentionally.</li>
-                    <li><strong>Build in <a class="jargon">attention breaks<span class="tooltip">Planned periods of mental rest that help prevent attention fatigue and overwhelm</span></a>:</strong> Schedule regular mental breaks, especially during tasks requiring sustained focus. Your attention system needs rest to function optimally.</li>
-                    <li><strong>Use external <a class="jargon">attention supports<span class="tooltip">Tools and systems outside your brain that help direct and maintain focus: timers, reminders, organizational systems</span></a>:</strong> Timers, notification systems, <a class="jargon">body doubling<span class="tooltip">Working in the presence of another person whose focus and energy helps you maintain your own attention</span></a>, or accountability partners can provide the external structure your attention system needs.</li>
-                    <li><strong>Consider medication:</strong> Stimulant medications can significantly improve attention regulation for many people with ADHD by increasing available dopamine and helping with <a class="jargon">sustained attention<span class="tooltip">The ability to maintain focus on a task or activity for extended periods</span></a>.</li>
-                </ul>
-
-                <div class="learn-more" onclick="toggleLearnMore(this)">
-                    <h3>Learn More: Advanced Attention Management ↓</h3>
-                    <div class="learn-more-content">
-                        <p><strong>Attention state monitoring:</strong> Learn to recognize different <a class="jargon">attentional states<span class="tooltip">Different modes of focus: scattered, hyperfocused, optimal sustained attention, or attention fatigue</span></a> (scattered, hyperfocused, optimal) and develop specific strategies for each state rather than fighting them.</p>
-                        <p><strong>Interest cultivation:</strong> Find ways to make routine tasks more engaging through gamification, social elements, variety, or connecting them to longer-term goals that interest you.</p>
-                        <p><strong>Professional accommodations:</strong> At work or school, you might request flexible scheduling, permission to use <a class="jargon">focus tools<span class="tooltip">Items like noise-canceling headphones, fidget devices, or standing desks that support attention regulation</span></a>, or alternative task presentation methods that work better with your attention patterns.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Section 5: Medical intervention -->
-            <div class="section medical-intervention">
-                <h2>When Should I Consider Medical Intervention</h2>
-                <p>Consider professional support if attention regulation difficulties are significantly impacting your life:</p>
-
-                <ul>
-                    <li>You're consistently unable to focus on work, school, or essential daily tasks despite trying various strategies</li>
-                    <li>Attention difficulties are affecting your job performance, relationships, or academic success</li>
-                    <li>You're experiencing significant distress or depression related to feeling unable to control your focus</li>
-                    <li><a class="jargon">Hyperfocus episodes<span class="tooltip">Periods of intense, prolonged focus that become difficult to break away from</span></a> are interfering with basic needs like eating, sleeping, or social obligations</li>
-                    <li>You're using substances (caffeine, alcohol, other drugs) to try to regulate your attention</li>
-                    <li>Attention regulation problems are worsening over time or creating safety concerns (driving, work hazards)</li>
-                </ul>
-
-                <p>A healthcare provider familiar with ADHD can help evaluate whether medication, therapy, or other interventions might improve your <a class="jargon">attention control<span class="tooltip">Your ability to consciously direct and sustain focus where you choose</span></a>. Many people find that proper ADHD treatment dramatically improves their ability to regulate attention in daily activities.</p>
-
-                <div class="highlight-box">
-                    <p><strong>Types of support that help:</strong> ADHD medication evaluation, <a class="jargon">cognitive behavioral therapy<span class="tooltip">Therapy focused on changing thought patterns and behaviors to improve functioning</span></a>, attention training programs, <a class="jargon">neurofeedback<span class="tooltip">Training that helps you learn to regulate brain activity and improve attention control</span></a>, or comprehensive ADHD assessment if you haven't been evaluated.</p>
-                </div>
-            </div>
-
-            <!-- Section 6: Validation -->
-            <div class="section validation">
-                <h2>You're Not Imagining This</h2>
-                <p>Attention regulation differences are fundamental aspects of ADHD neurology, not character flaws or lack of discipline. The challenges you experience with controlling your focus reflect genuine brain differences in how <a class="jargon">attention networks<span class="tooltip">Brain systems that work together to control where you focus and how long you maintain attention</span></a> function and respond to different types of stimulation.</p>
-
-                <p>Many successful people with ADHD continue to experience attention regulation challenges while building meaningful careers and relationships. The goal isn't achieving neurotypical attention patterns - it's understanding your unique attention style and developing strategies that help you direct your focus more intentionally when needed.</p>
-
-                <p>The frustration of wanting to focus but feeling unable to control where your attention goes is a valid neurological experience. Your attention differences include strengths like <a class="jargon">hyperfocus abilities<span class="tooltip">The capacity for intense, sustained focus on engaging activities that can lead to exceptional productivity and creativity</span></a> and <a class="jargon">divergent thinking<span class="tooltip">The ability to think creatively and make unexpected connections between different ideas and concepts</span></a>, even when they create challenges in structured environments designed for different attention patterns.</p>
-            </div>
-
-            <!-- Related struggles -->
-            <div class="related-struggles">
-                <h3>Related Struggles</h3>
-                <div class="struggle-tags">
-                    <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/task-initiation-paralysis.html" class="struggle-tag">Task Initiation Paralysis</a>
-                    <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/follow-through-completion-struggles.html" class="struggle-tag">Follow-Through Completion</a>
-                    <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/working-memory-difficulties.html" class="struggle-tag">Working Memory</a>
-                    <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/time-blindness.html" class="struggle-tag">Time Blindness</a>
-                    <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/physical-restlessness.html" class="struggle-tag">Physical Restlessness</a>
+            <div class="learn-more" onclick="toggleLearnMore(this)">
+                <h3>Learn More: The Neuroscience of ADHD Attention ↓</h3>
+                <div class="learn-more-content">
+                    <p>ADHD involves differences in <a class="jargon">prefrontal cortex<span class="tooltip">Brain area responsible for executive functions including attention control and focus regulation</span></a> functioning, particularly in circuits that regulate <a class="jargon">dopamine<span class="tooltip">A brain chemical that helps with motivation, reward, and maintaining focus on activities</span></a> and <a class="jargon">norepinephrine<span class="tooltip">A brain chemical that helps with alertness, attention, and arousal</span></a>. These <a class="jargon">neurotransmitters<span class="tooltip">Chemical messengers that carry signals between brain cells</span></a> are crucial for maintaining sustained attention and filtering out irrelevant information.</p>
+                    <p>Research shows that ADHD brains may have lower baseline levels of these <a class="jargon">neurotransmitters<span class="tooltip">Chemical messengers that carry signals between brain cells</span></a>, making it harder to engage attention on low-stimulation tasks while seeking out higher-stimulation activities to achieve optimal <a class="jargon">cognitive arousal<span class="tooltip">The level of brain activation needed for optimal functioning and attention</span></a>.</p>
                 </div>
             </div>
         </div>
+
+        <!-- Section 3: Next 5 minutes -->
+        <div class="section immediate-help">
+            <h2>What Can Help You Through the Next 5 Minutes</h2>
+            <p>When your attention feels scattered or stuck right now, these strategies can help regain some control:</p>
+
+            <ul>
+                <li><strong>Use the <a class="jargon">2-minute rule<span class="tooltip">Committing to focus for just 2 minutes, which often leads to longer periods of sustained attention</span></a>:</strong> Set a timer for 2 minutes and commit to focusing only on one thing until it goes off. Often this creates enough momentum to continue.</li>
+                <li><strong>Try <a class="jargon">environmental manipulation<span class="tooltip">Changing your physical surroundings to support better attention and focus</span></a>:</strong> Move to a different room, put on different music, or change your lighting. Your attention often responds to environmental shifts.</li>
+                <li><strong>Use <a class="jargon">attention anchors<span class="tooltip">Specific sensory inputs like background music, fidget tools, or physical positions that help maintain focus</span></a>:</strong> Background music, a <a class="jargon">fidget toy<span class="tooltip">Small objects that provide sensory input to help maintain attention and reduce restlessness</span></a>, or specific seating can provide just enough stimulation to help regulate attention without being distracting.</li>
+                <li><strong>Practice <a class="jargon">attention reset<span class="tooltip">Brief activities that help clear mental distractions and refocus: deep breathing, movement, or sensory grounding</span></a>:</strong> Take 10 deep breaths, do jumping jacks, or splash cold water on your face to reset your brain's attention system.</li>
+                <li><strong>Externalize distractions:</strong> Write down intrusive thoughts or interesting ideas so your brain doesn't have to hold onto them, freeing up <a class="jargon">working memory<span class="tooltip">The mental workspace that temporarily holds and manipulates information during thinking tasks</span></a> for the task at hand.</li>
+                <li><strong>Use <a class="jargon">attention cues<span class="tooltip">External signals that remind your brain what to focus on: visual reminders, verbal self-prompts, or physical positioning</span></a>:</strong> Say out loud what you're trying to focus on, or point to specific text while reading to help direct your attention.</li>
+            </ul>
+
+            <div class="highlight-box">
+                <p><strong>Emergency attention rescue:</strong> If completely scattered, try naming 5 things you can see, 4 things you can touch, 3 things you can hear. This <a class="jargon">grounding technique<span class="tooltip">Exercises that help bring your attention back to the present moment and current environment</span></a> can help gather your attention back to the present moment.</p>
+            </div>
+        </div>
+
+        <!-- Section 4: Long-term solutions -->
+        <div class="section long-term">
+            <h2>What Are Some Healthy Long-Term Solutions</h2>
+            <p>Building sustainable systems that work with your <a class="jargon">attention patterns<span class="tooltip">Your individual way of focusing, including when attention feels easier or harder to control</span></a> rather than fighting them:</p>
+
+            <ul>
+                <li><strong>Identify your <a class="jargon">attention rhythms<span class="tooltip">Your personal patterns of when attention feels easier or harder to control throughout the day</span></a>:</strong> Track when focusing feels easier versus harder (time of day, energy levels, environment) and schedule demanding tasks during your optimal attention windows.</li>
+                <li><strong>Create <a class="jargon">attention-friendly environments<span class="tooltip">Physical spaces designed to minimize distractions and support your specific attention needs</span></a>:</strong> Reduce visual clutter, control noise levels, and organize your workspace to minimize attention-stealing distractions.</li>
+                <li><strong>Use <a class="jargon">attention switching strategies<span class="tooltip">Techniques for deliberately moving your focus from one activity to another when hyperfocused or stuck</span></a>:</strong> Set timers to remind yourself to check in with time, use transition activities between tasks, or develop rituals that help you shift focus intentionally.</li>
+                <li><strong>Practice <a class="jargon">selective attention<span class="tooltip">The ability to focus on relevant information while ignoring distractions</span></a> training:</strong> Use apps, <a class="jargon">meditation<span class="tooltip">Mindfulness practices that can help train attention control and awareness</span></a>, or exercises that strengthen your ability to direct attention where you choose rather than where it wanders.</li>
+                <li><strong>Develop <a class="jargon">hyperfocus management<span class="tooltip">Strategies for benefiting from intense focus while preventing it from taking over your entire day</span></a>:</strong> Set boundaries around engaging activities, use body cues (hunger, thirst) as natural break reminders, and plan <a class="jargon">hyperfocus<span class="tooltip">Intense, sustained concentration on interesting activities, often to the exclusion of everything else</span></a> time intentionally.</li>
+                <li><strong>Build in <a class="jargon">attention breaks<span class="tooltip">Planned periods of mental rest that help prevent attention fatigue and overwhelm</span></a>:</strong> Schedule regular mental breaks, especially during tasks requiring <a class="jargon">sustained attention<span class="tooltip">The ability to maintain focus on a task or activity for extended periods</span></a>. Your attention system needs rest to function optimally.</li>
+                <li><strong>Use external <a class="jargon">attention supports<span class="tooltip">Tools and systems outside your brain that help direct and maintain focus: timers, reminders, organizational systems</span></a>:</strong> Timers, notification systems, <a class="jargon">body doubling<span class="tooltip">Working in the presence of another person whose focus and energy helps you maintain your own attention</span></a>, or accountability partners can provide the external structure your attention system needs.</li>
+                <li><strong>Consider medication:</strong> <a class="jargon">Stimulant medications<span class="tooltip">ADHD medications that increase dopamine and norepinephrine levels to improve attention regulation</span></a> can significantly improve attention regulation for many people with ADHD by increasing available <a class="jargon">dopamine<span class="tooltip">A brain chemical that helps with motivation, reward, and maintaining focus on activities</span></a> and helping with <a class="jargon">sustained attention<span class="tooltip">The ability to maintain focus on a task or activity for extended periods</span></a>.</li>
+            </ul>
+
+            <div class="learn-more" onclick="toggleLearnMore(this)">
+                <h3>Learn More: Advanced Attention Management ↓</h3>
+                <div class="learn-more-content">
+                    <p><strong><a class="jargon">Attention state monitoring<span class="tooltip">Learning to recognize when your attention feels scattered, hyperfocused, or optimally regulated</span></a>:</strong> Learn to recognize different <a class="jargon">attentional states<span class="tooltip">Different modes of focus: scattered, hyperfocused, optimal sustained attention, or attention fatigue</span></a> (scattered, hyperfocused, optimal) and develop specific strategies for each state rather than fighting them.</p>
+                    <p><strong>Interest cultivation:</strong> Find ways to make routine tasks more engaging through <a class="jargon">gamification<span class="tooltip">Adding game-like elements such as points, challenges, or rewards to make tasks more interesting</span></a>, social elements, variety, or connecting them to longer-term goals that interest you.</p>
+                    <p><strong>Professional accommodations:</strong> At work or school, you might request flexible scheduling, permission to use <a class="jargon">focus tools<span class="tooltip">Items like noise-canceling headphones, fidget devices, or standing desks that support attention regulation</span></a>, or alternative task presentation methods that work better with your <a class="jargon">attention patterns<span class="tooltip">Your individual way of focusing, including when attention feels easier or harder to control</span></a>.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 5: Medical intervention -->
+        <div class="section medical-intervention">
+            <h2>When Should I Consider Medical Intervention</h2>
+            <p>Consider professional support if <a class="jargon">attention regulation<span class="tooltip">The brain's ability to direct and sustain focus where you want it, when you want it</span></a> difficulties are significantly impacting your life:</p>
+
+            <ul>
+                <li>You're consistently unable to focus on work, school, or essential daily tasks despite trying various strategies</li>
+                <li>Attention difficulties are affecting your job performance, relationships, or academic success</li>
+                <li>You're experiencing significant distress or depression related to feeling unable to control your focus</li>
+                <li><a class="jargon">Hyperfocus episodes<span class="tooltip">Periods of intense, prolonged focus that become difficult to break away from</span></a> are interfering with basic needs like eating, sleeping, or social obligations</li>
+                <li>You're using substances (caffeine, alcohol, other drugs) to try to regulate your attention</li>
+                <li>Attention regulation problems are worsening over time or creating safety concerns (driving, work hazards)</li>
+            </ul>
+
+            <p>A healthcare provider familiar with ADHD can help evaluate whether medication, therapy, or other interventions might improve your <a class="jargon">attention control<span class="tooltip">Your ability to consciously direct and sustain focus where you choose</span></a>. Many people find that proper ADHD treatment dramatically improves their ability to regulate attention in daily activities.</p>
+
+            <div class="highlight-box">
+                <p><strong>Types of support that help:</strong> ADHD medication evaluation, <a class="jargon">cognitive behavioral therapy<span class="tooltip">Therapy focused on changing thought patterns and behaviors to improve functioning</span></a>, <a class="jargon">attention training programs<span class="tooltip">Structured exercises designed to improve focus, concentration, and attention control skills</span></a>, <a class="jargon">neurofeedback<span class="tooltip">Training that helps you learn to regulate brain activity and improve attention control</span></a>, or comprehensive ADHD assessment if you haven't been evaluated.</p>
+            </div>
+        </div>
+
+        <!-- Section 6: Validation -->
+        <div class="section validation">
+            <h2>You're Not Imagining This</h2>
+            <p><a class="jargon">Attention regulation<span class="tooltip">The brain's ability to direct and sustain focus where you want it, when you want it</span></a> differences are fundamental aspects of ADHD <a class="jargon">neurology<span class="tooltip">The structure and function of the nervous system, including brain differences</span></a>, not character flaws or lack of discipline. The challenges you experience with controlling your focus reflect genuine brain differences in how <a class="jargon">attention networks<span class="tooltip">Brain systems that work together to control where you focus and how long you maintain attention</span></a> function and respond to different types of stimulation.</p>
+
+            <p>Many successful people with ADHD continue to experience <a class="jargon">attention regulation<span class="tooltip">The brain's ability to direct and sustain focus where you want it, when you want it</span></a> challenges while building meaningful careers and relationships. The goal isn't achieving <a class="jargon">neurotypical<span class="tooltip">People whose brains develop and function in ways that align with societal expectations and norms</span></a> attention patterns - it's understanding your unique <a class="jargon">attention style<span class="tooltip">Your individual patterns of focus, including strengths like hyperfocus and challenges with routine tasks</span></a> and developing strategies that help you direct your focus more intentionally when needed.</p>
+
+            <p>The frustration of wanting to focus but feeling unable to control where your attention goes is a valid neurological experience. Your attention differences include strengths like <a class="jargon">hyperfocus abilities<span class="tooltip">The capacity for intense, sustained focus on engaging activities that can lead to exceptional productivity and creativity</span></a> and <a class="jargon">divergent thinking<span class="tooltip">The ability to think creatively and make unexpected connections between different ideas and concepts</span></a>, even when they create challenges in structured environments designed for different <a class="jargon">attention patterns<span class="tooltip">Your individual way of focusing, including when attention feels easier or harder to control</span></a>.</p>
+        </div>
+
+        <!-- Related struggles -->
+        <div class="related-struggles">
+            <h3>Related Struggles</h3>
+            <div class="struggle-tags">
+                <a href="{{ '/struggles/task-initiation-paralysis.html' | relative_url }}" class="struggle-tag">Task Initiation Paralysis</a>
+                <a href="{{ '/struggles/follow-through-completion-struggles.html' | relative_url }}" class="struggle-tag">Follow-Through Completion</a>
+                <a href="{{ '/struggles/working-memory-difficulties.html' | relative_url }}" class="struggle-tag">Working Memory</a>
+                <a href="{{ '/struggles/time-blindness.html' | relative_url }}" class="struggle-tag">Time Blindness</a>
+                <a href="{{ '/struggles/physical-restlessness.html' | relative_url }}" class="struggle-tag">Physical Restlessness</a>
+            </div>
+        </div>
     </div>
+</div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Add click listeners to all learn-more elements
-            const learnMoreElements = document.querySelectorAll('.learn-more');
-            
-            learnMoreElements.forEach(function(element) {
-                element.addEventListener('click', function(e) {
-                    // Don't toggle if clicking on jargon inside learn-more
-                    if (e.target.classList.contains('jargon')) {
-                        return;
-                    }
-                    
-                    this.classList.toggle('expanded');
-                    const arrow = this.querySelector('h3');
-                    if (this.classList.contains('expanded')) {
-                        arrow.innerHTML = arrow.innerHTML.replace('↓', '↑');
-                    } else {
-                        arrow.innerHTML = arrow.innerHTML.replace('↑', '↓');
-                    }
-                });
-            });
+<script>
+function toggleLearnMore(element) {
+    element.classList.toggle('expanded');
+    const arrow = element.querySelector('h3');
+    if (element.classList.contains('expanded')) {
+        arrow.innerHTML = arrow.innerHTML.replace('↓', '↑');
+    } else {
+        arrow.innerHTML = arrow.innerHTML.replace('↑', '↓');
+    }
+}
 
-            // Handle jargon clicks to prevent event bubbling
-            const jargonTerms = document.querySelectorAll('.jargon');
-            jargonTerms.forEach(function(jargon) {
-                jargon.addEventListener('click', function(e) {
-                    e.stopPropagation(); // Prevent bubbling to learn-more handler
-                });
-            });
+document.addEventListener('DOMContentLoaded', function() {
+    // Handle jargon clicks to prevent event bubbling
+    const jargonTerms = document.querySelectorAll('.jargon');
+    jargonTerms.forEach(function(jargon) {
+        jargon.addEventListener('click', function(e) {
+            e.stopPropagation(); // Prevent bubbling to learn-more handler
         });
-    </script>
-</body>
-</html>
+    });
+});
+</script>
