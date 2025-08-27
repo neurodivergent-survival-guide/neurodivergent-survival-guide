@@ -12,7 +12,8 @@ title: "Autism"
 
     body {
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+        font-weight: 500;
+        background: linear-gradient(135deg, #27ae60 0%, #196f3d 100%);
         color: #333;
         min-height: 100vh;
         line-height: 1.7;
@@ -77,15 +78,15 @@ title: "Autism"
     }
 
     .condition-intro {
-        background: #e3f2fd;
+        background: #d4edda;
         padding: 2rem;
-        border-radius: 15px;
+        border-radius: 16px;
         margin: 2rem 0;
-        border-left: 4px solid #0984e3;
+        border-left: 4px solid #27ae60;
     }
 
     .condition-intro h2 {
-        color: #0984e3;
+        color: #27ae60;
         margin-bottom: 1rem;
         font-size: 1.6rem;
     }
@@ -97,15 +98,15 @@ title: "Autism"
     }
 
     .reframe-box {
-        background: #e8f5e8;
+        background: #d4edda;
         padding: 1.5rem;
         border-radius: 12px;
         margin: 2rem 0;
-        border-left: 4px solid #00cec9;
+        border-left: 4px solid #27ae60;
     }
 
     .reframe-box h3 {
-        color: #00cec9;
+        color: #27ae60;
         margin-bottom: 1rem;
         font-size: 1.3rem;
     }
@@ -130,14 +131,14 @@ title: "Autism"
 
     .characteristic-card {
         background: white;
-        border-radius: 15px;
+        border-radius: 12px;
         padding: 1.8rem;
         box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-        border-top: 3px solid #0984e3;
+        border-top: 3px solid #27ae60;
     }
 
     .characteristic-card h4 {
-        color: #0984e3;
+        color: #27ae60;
         margin-bottom: 1rem;
         font-size: 1.2rem;
     }
@@ -161,7 +162,7 @@ title: "Autism"
     .struggles-section {
         background: #f8f9fa;
         padding: 2rem;
-        border-radius: 15px;
+        border-radius: 16px;
         margin: 2rem 0;
         border: 1px solid #e0e0e0;
     }
@@ -181,11 +182,11 @@ title: "Autism"
     .struggle-link {
         background: white;
         padding: 1rem 1.2rem;
-        border-radius: 10px;
+        border-radius: 8px;
         text-decoration: none;
         color: #333;
         transition: all 0.3s ease;
-        border-left: 3px solid #0984e3;
+        border-left: 3px solid #27ae60;
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
         min-height: 44px;
         display: flex;
@@ -195,7 +196,7 @@ title: "Autism"
 
     .struggle-link:hover {
         transform: translateY(-2px);
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
         text-decoration: none;
         color: #333;
     }
@@ -236,7 +237,7 @@ title: "Autism"
         background: #74b9ff;
         color: white;
         padding: 0.5rem 1rem;
-        border-radius: 20px;
+        border-radius: 8px;
         font-size: 0.85rem;
         text-decoration: none;
         transition: all 0.3s ease;
@@ -266,20 +267,74 @@ title: "Autism"
         font-size: 1.3rem;
     }
 
+    /* Focus states for accessibility */
+    .struggle-link:focus,
+    .cross-cutting-link:focus,
+    .jargon:focus,
+    .breadcrumb a:focus {
+        outline: 2px solid #fff;
+        outline-offset: 2px;
+    }
+
+    /* Motion accessibility */
+    @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+        }
+    }
+
+    /* Jargon styling - context-aware based on background */
     .jargon {
-        color: #e84393;
         text-decoration: none;
-        border-bottom: 1px dotted #e84393;
+        border-bottom: 1px dotted;
         position: relative;
         cursor: help;
         font-weight: 500;
     }
 
-    .jargon:hover {
+    /* Pink jargon for white backgrounds */
+    .content-card .jargon,
+    .characteristic-card .jargon,
+    .struggles-section .jargon {
+        color: #e84393;
+        border-bottom-color: #e84393;
+    }
+
+    .content-card .jargon:hover,
+    .characteristic-card .jargon:hover,
+    .struggles-section .jargon:hover {
         color: #fd79a8;
         border-bottom-color: #fd79a8;
     }
 
+    /* Bold black jargon for colored backgrounds */
+    .condition-intro .jargon,
+    .reframe-box .jargon,
+    .co-occurring .jargon {
+        color: #333;
+        font-weight: 600;
+        border-bottom-color: #333;
+    }
+
+    /* White jargon for gradient backgrounds only */
+    .header .jargon,
+    .breadcrumb .jargon {
+        color: white;
+        border-bottom-color: rgba(255, 255, 255, 0.7);
+        background: rgba(255, 255, 255, 0.1);
+        padding: 2px 6px;
+        border-radius: 4px;
+    }
+
+    .header .jargon:hover,
+    .breadcrumb .jargon:hover {
+        background: rgba(255, 255, 255, 0.2);
+        border-bottom-color: white;
+    }
+
+    /* Auto-sizing tooltips */
     .tooltip {
         visibility: hidden;
         opacity: 0;
@@ -327,7 +382,22 @@ title: "Autism"
         }
     }
 
+    /* Mobile-specific tooltip positioning */
     @media (max-width: 768px) {
+        .tooltip {
+            position: fixed !important;
+            bottom: 20px !important;
+            left: 20px !important;
+            right: 20px !important;
+            transform: none !important;
+            max-width: none !important;
+            width: auto !important;
+        }
+
+        .tooltip::after {
+            display: none !important;
+        }
+
         .header {
             padding: 1rem;
         }
@@ -381,21 +451,6 @@ title: "Autism"
             justify-content: center;
             text-align: center;
         }
-
-        .tooltip {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            right: 20px;
-            max-width: none;
-            width: auto;
-            transform: none;
-            border-radius: 12px;
-        }
-        
-        .tooltip::after {
-            display: none;
-        }
     }
 
     @media (max-width: 480px) {
@@ -418,6 +473,12 @@ title: "Autism"
         .characteristic-card {
             padding: 1.2rem;
         }
+
+        .tooltip {
+            left: 10px !important;
+            right: 10px !important;
+            bottom: 10px !important;
+        }
     }
 </style>
 
@@ -435,193 +496,195 @@ title: "Autism"
 </div>
 
 <div class="container">
-    <div class="content-card">
-        <div class="condition-intro">
-            <h2>What is Autism?</h2>
-            <p>Autism involves brain differences that create predictable friction with <a class="jargon">neurotypical<span class="tooltip">People whose brains develop and function in ways that align with societal expectations and norms</span></a>-designed social and <a class="jargon">sensory environments<span class="tooltip">Physical spaces and social contexts that include various sensory inputs like sounds, lights, textures, and social expectations</span></a>. Autistic people process social information, <a class="jargon">sensory input<span class="tooltip">Information received through the senses like sight, sound, touch, smell, taste, and body position</span></a>, and changes in routine differently than <a class="jargon">neurotypical<span class="tooltip">People whose brains develop and function in ways that align with societal expectations and norms</span></a> people, leading to both unique strengths and specific challenges in a world not designed for these differences.</p>
-            
-            <p>Autism isn't something you grow out of or fix - it's a fundamental aspect of how your brain processes the world. Understanding and accommodating these differences, rather than trying to eliminate them, leads to better outcomes and authentic self-acceptance.</p>
-        </div>
+    <main role="main" id="main-content">
+        <div class="content-card">
+            <div class="condition-intro">
+                <h2 id="what-is-autism">What is Autism?</h2>
+                <p>Autism involves brain differences that create predictable friction with <a class="jargon">neurotypical<span class="tooltip">People whose brains develop and function in ways that align with societal expectations and norms</span></a>-designed social and <a class="jargon">sensory environments<span class="tooltip">Physical spaces and social contexts that include various sensory inputs like sounds, lights, textures, and social expectations</span></a>. Autistic people process social information, <a class="jargon">sensory input<span class="tooltip">Information received through the senses like sight, sound, touch, smell, taste, and body position</span></a>, and changes in routine differently than <a class="jargon">neurotypical<span class="tooltip">People whose brains develop and function in ways that align with societal expectations and norms</span></a> people, leading to both unique strengths and specific challenges in a world not designed for these differences.</p>
+                
+                <p>Autism isn't something you grow out of or fix - it's a fundamental aspect of how your brain processes the world. Understanding and accommodating these differences, rather than trying to eliminate them, leads to better outcomes and authentic self-acceptance.</p>
+            </div>
 
-        <div class="reframe-box">
-            <h3>Reframing Autism</h3>
-            <p>Traditional descriptions focus on "deficits" and behaviors that differ from <a class="jargon">neurotypical<span class="tooltip">People whose brains develop and function in ways that align with societal expectations and norms</span></a> norms. A more helpful framework recognizes autism as neurological differences that create both challenges and strengths, depending on environmental support and understanding.</p>
-            
-            <p>Many struggles autistic people experience come from <a class="jargon">environmental mismatch<span class="tooltip">When environments are designed for neurotypical brains without considering neurodivergent needs</span></a> rather than inherent disability. With appropriate accommodations and understanding, autistic people can thrive while remaining authentically themselves.</p>
-        </div>
+            <div class="reframe-box">
+                <h3 id="reframing-autism">Reframing Autism</h3>
+                <p>Traditional descriptions focus on "deficits" and behaviors that differ from <a class="jargon">neurotypical<span class="tooltip">People whose brains develop and function in ways that align with societal expectations and norms</span></a> norms. A more helpful framework recognizes autism as neurological differences that create both challenges and strengths, depending on environmental support and understanding.</p>
+                
+                <p>Many struggles autistic people experience come from <a class="jargon">environmental mismatch<span class="tooltip">When environments are designed for neurotypical brains without considering neurodivergent needs</span></a> rather than inherent disability. With appropriate accommodations and understanding, autistic people can thrive while remaining authentically themselves.</p>
+            </div>
 
-        <div class="characteristics-grid">
-            <div class="characteristic-card">
-                <h4><a class="jargon">Social Communication<span class="tooltip">The complex system of verbal and nonverbal ways people share information and connect with each other</span></a> Differences</h4>
-                <p>Processing and expressing social information in ways that differ from <a class="jargon">neurotypical<span class="tooltip">People whose brains develop and function in ways that align with societal expectations and norms</span></a> expectations, not lacking social interest or <a class="jargon">empathy<span class="tooltip">The ability to understand and share the feelings of others</span></a>.</p>
+            <div class="characteristics-grid">
+                <div class="characteristic-card">
+                    <h4><a class="jargon">Social Communication<span class="tooltip">The complex system of verbal and nonverbal ways people share information and connect with each other</span></a> Differences</h4>
+                    <p>Processing and expressing social information in ways that differ from <a class="jargon">neurotypical<span class="tooltip">People whose brains develop and function in ways that align with societal expectations and norms</span></a> expectations, not lacking social interest or <a class="jargon">empathy<span class="tooltip">The ability to understand and share the feelings of others</span></a>.</p>
+                    <ul>
+                        <li>Direct, literal communication style</li>
+                        <li>Missing unspoken social rules or expectations</li>
+                        <li>Difficulty with nonverbal communication like <a class="jargon">eye contact<span class="tooltip">Direct gaze between people, often expected in neurotypical social interactions but can feel uncomfortable or overwhelming for autistic people</span></a></li>
+                        <li>Different patterns of <a class="jargon">social reciprocity<span class="tooltip">The back-and-forth exchange of social behaviors, emotions, and communication in relationships</span></a></li>
+                        <li>Challenges maintaining relationships without explicit guidance</li>
+                    </ul>
+                </div>
+
+                <div class="characteristic-card">
+                    <h4><a class="jargon">Sensory Processing<span class="tooltip">How the nervous system receives and responds to sensory information from the environment and body</span></a> Differences</h4>
+                    <p>Heightened or reduced sensitivity to sounds, textures, lights, and other <a class="jargon">sensory input<span class="tooltip">Information received through the senses like sight, sound, touch, smell, taste, and body position</span></a> that can significantly impact daily functioning.</p>
+                    <ul>
+                        <li><a class="jargon">Sensory overload<span class="tooltip">When the brain receives more sensory information than it can process, leading to overwhelm and distress</span></a> in busy environments</li>
+                        <li>Specific texture or sound <a class="jargon">aversions<span class="tooltip">Strong negative reactions to specific sensory inputs that feel uncomfortable or distressing</span></a></li>
+                        <li>Need for <a class="jargon">sensory regulation<span class="tooltip">Strategies to help the nervous system maintain an optimal level of alertness and calm</span></a> through movement or pressure</li>
+                        <li>Difficulty filtering background noise</li>
+                        <li><a class="jargon">Sensory seeking<span class="tooltip">Actively pursuing specific sensory experiences for regulation or pleasure</span></a> behaviors for regulation</li>
+                    </ul>
+                </div>
+
+                <div class="characteristic-card">
+                    <h4>Repetitive Behaviors and Interests</h4>
+                    <p>Patterns of behavior, interests, or activities that provide regulation, joy, and expertise, often misunderstood as restrictive.</p>
+                    <ul>
+                        <li>Intense <a class="jargon">special interests<span class="tooltip">Deep, passionate interests that bring joy, expertise, and often serve as a source of identity and regulation</span></a> that bring deep knowledge</li>
+                        <li><a class="jargon">Stimming<span class="tooltip">Self-stimulatory behaviors like rocking, hand-flapping, or repetitive movements that help with regulation and expression</span></a> for self-regulation and expression</li>
+                        <li>Need for predictable routines and structure</li>
+                        <li>Repetitive movements that aid concentration</li>
+                        <li>Detailed focus on specific topics or activities</li>
+                    </ul>
+                </div>
+
+                <div class="characteristic-card">
+                    <h4>Change and Transition Challenges</h4>
+                    <p>Difficulty adapting to unexpected changes or transitions between activities, requiring more processing time and support.</p>
+                    <ul>
+                        <li>Distress when plans change unexpectedly</li>
+                        <li>Need for advance notice of schedule changes</li>
+                        <li>Difficulty switching between tasks or activities</li>
+                        <li>Preference for familiar environments and routines</li>
+                        <li>Extended adjustment periods for new situations</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="struggles-section" role="region" aria-labelledby="struggles-heading">
+                <h3 id="struggles-heading">Autism-Related Struggles</h3>
+                <p style="margin-bottom: 1.5rem; color: #666;">Click on any struggle to learn what it feels like, why it happens, and what can help.</p>
+                
+                <div class="struggles-grid">
+                    <a href="{{ '/struggles/missing-social-cues.html' | relative_url }}" class="struggle-link">
+                        <div class="struggle-title">Missing Social Cues</div>
+                        <div class="struggle-description">When conversations have hidden meanings you don't catch</div>
+                    </a>
+
+                    <a href="{{ '/struggles/being-too-direct.html' | relative_url }}" class="struggle-link">
+                        <div class="struggle-title">Being Too Direct</div>
+                        <div class="struggle-description">When your honest communication style is seen as rude</div>
+                    </a>
+
+                    <a href="{{ '/struggles/nonverbal-communication-difficulties.html' | relative_url }}" class="struggle-link">
+                        <div class="struggle-title">Nonverbal Communication Difficulties</div>
+                        <div class="struggle-description">Trouble with <a class="jargon">eye contact<span class="tooltip">Direct gaze between people, often expected in neurotypical social interactions but can feel uncomfortable or overwhelming for autistic people</span></a>, body language, and facial expressions</div>
+                    </a>
+
+                    <a href="{{ '/struggles/social-reciprocity-challenges.html' | relative_url }}" class="struggle-link">
+                        <div class="struggle-title">Social Reciprocity Challenges</div>
+                        <div class="struggle-description">Difficulty with back-and-forth conversation flow</div>
+                    </a>
+
+                    <a href="{{ '/struggles/relationship-maintenance-struggles.html' | relative_url }}" class="struggle-link">
+                        <div class="struggle-title">Relationship Maintenance Struggles</div>
+                        <div class="struggle-description">Not knowing how to keep friendships going over time</div>
+                    </a>
+
+                    <a href="{{ '/struggles/special-interests-consuming-focus.html' | relative_url }}" class="struggle-link">
+                        <div class="struggle-title">Special Interests Consuming Focus</div>
+                        <div class="struggle-description">When intense interests take over your time and social life</div>
+                    </a>
+
+                    <a href="{{ '/struggles/routine-disruption-anxiety.html' | relative_url }}" class="struggle-link">
+                        <div class="struggle-title">Routine Disruption Anxiety</div>
+                        <div class="struggle-description">Distress when plans change unexpectedly</div>
+                    </a>
+
+                    <a href="{{ '/struggles/sensory-processing-challenges.html' | relative_url }}" class="struggle-link">
+                        <div class="struggle-title">Sensory Processing Challenges</div>
+                        <div class="struggle-description">Over- or under-responsivity to <a class="jargon">sensory input<span class="tooltip">Information received through the senses like sight, sound, touch, smell, taste, and body position</span></a></div>
+                    </a>
+
+                    <a href="{{ '/struggles/stimming-and-self-regulation.html' | relative_url }}" class="struggle-link">
+                        <div class="struggle-title">Stimming and Self-Regulation</div>
+                        <div class="struggle-description">Repetitive behaviors that help but may draw attention</div>
+                    </a>
+
+                    <a href="{{ '/struggles/change-and-transition-difficulties.html' | relative_url }}" class="struggle-link">
+                        <div class="struggle-title">Change and Transition Difficulties</div>
+                        <div class="struggle-description">Trouble adapting to new environments or schedules</div>
+                    </a>
+
+                    <a href="{{ '/struggles/face-blindness.html' | relative_url }}" class="struggle-link">
+                        <div class="struggle-title">Face Blindness</div>
+                        <div class="struggle-description">Difficulty recognizing faces, even of familiar people</div>
+                    </a>
+
+                    <a href="{{ '/struggles/alexithymia.html' | relative_url }}" class="struggle-link">
+                        <div class="struggle-title">Alexithymia</div>
+                        <div class="struggle-description">Trouble identifying and describing your emotions</div>
+                    </a>
+
+                    <a href="{{ '/struggles/autistic-inertia.html' | relative_url }}" class="struggle-link">
+                        <div class="struggle-title">Autistic Inertia</div>
+                        <div class="struggle-description">Difficulty starting or stopping activities once engaged</div>
+                    </a>
+
+                    <a href="{{ '/struggles/masking-burnout.html' | relative_url }}" class="struggle-link">
+                        <div class="struggle-title">Masking Burnout</div>
+                        <div class="struggle-description">Exhaustion from years of camouflaging your authentic self</div>
+                    </a>
+
+                    <a href="{{ '/struggles/late-diagnosis-grief.html' | relative_url }}" class="struggle-link">
+                        <div class="struggle-title">Late Diagnosis Grief</div>
+                        <div class="struggle-description">Processing missed opportunities after adult diagnosis</div>
+                    </a>
+
+                    <a href="{{ '/struggles/sensory-seeking-behaviors.html' | relative_url }}" class="struggle-link">
+                        <div class="struggle-title">Sensory Seeking Behaviors</div>
+                        <div class="struggle-description">Need for intense <a class="jargon">sensory input<span class="tooltip">Information received through the senses like sight, sound, touch, smell, taste, and body position</span></a> to feel regulated</div>
+                    </a>
+                </div>
+
+                <div class="cross-cutting-section">
+                    <h4>Related Struggles from Other Conditions</h4>
+                    <div class="cross-cutting-links">
+                        <a href="{{ '/struggles/time-blindness.html' | relative_url }}" class="cross-cutting-link">Time Blindness</a>
+                        <a href="{{ '/struggles/hyperfocus-episodes.html' | relative_url }}" class="cross-cutting-link">Hyperfocus Episodes</a>
+                        <a href="{{ '/struggles/rejection-sensitive-dysphoria.html' | relative_url }}" class="cross-cutting-link">Rejection Sensitive Dysphoria</a>
+                        <a href="{{ '/struggles/task-initiation-paralysis.html' | relative_url }}" class="cross-cutting-link">Task Initiation Paralysis</a>
+                        <a href="{{ '/struggles/identity-confusion-between-episodes.html' | relative_url }}" class="cross-cutting-link">Identity Confusion</a>
+                        <a href="{{ '/struggles/splitting-black-and-white-thinking.html' | relative_url }}" class="cross-cutting-link">All-or-Nothing Thinking</a>
+                        <a href="{{ '/struggles/fear-of-abandonment.html' | relative_url }}" class="cross-cutting-link">Fear of Abandonment</a>
+                        <a href="{{ '/struggles/checking-behaviors-never-complete.html' | relative_url }}" class="cross-cutting-link">Checking Behaviors</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="co-occurring">
+                <h3>Common Co-Occurring Conditions</h3>
+                <p>Autism frequently appears alongside other <a class="jargon">neurodivergent<span class="tooltip">Brain differences that create distinct patterns of thinking, processing, and behavior</span></a> conditions and mental health challenges. Understanding these connections can help you get comprehensive support:</p>
                 <ul>
-                    <li>Direct, literal communication style</li>
-                    <li>Missing unspoken social rules or expectations</li>
-                    <li>Difficulty with nonverbal communication like <a class="jargon">eye contact<span class="tooltip">Direct gaze between people, often expected in neurotypical social interactions but can feel uncomfortable or overwhelming for autistic people</span></a></li>
-                    <li>Different patterns of <a class="jargon">social reciprocity<span class="tooltip">The back-and-forth exchange of social behaviors, emotions, and communication in relationships</span></a></li>
-                    <li>Challenges maintaining relationships without explicit guidance</li>
+                    <li><strong>ADHD:</strong> Many autistic people also have ADHD, sharing <a class="jargon">executive function<span class="tooltip">The brain's management system that handles planning, organization, time management, task initiation, and follow-through</span></a> and <a class="jargon">attention regulation<span class="tooltip">The brain's ability to direct and sustain focus where you want it, when you want it</span></a> challenges</li>
+                    <li><strong><a class="jargon">Anxiety disorders<span class="tooltip">Conditions involving excessive worry, fear, or physical anxiety symptoms</span></a>:</strong> Social anxiety, generalized anxiety, and specific phobias are common</li>
+                    <li><strong>Depression:</strong> Often develops from years of misunderstanding, <a class="jargon">masking<span class="tooltip">Camouflaging natural neurodivergent behaviors and responses to appear more neurotypical</span></a>, or social rejection</li>
+                    <li><strong>OCD:</strong> Repetitive behaviors and need for certainty can overlap with OCD patterns</li>
+                    <li><strong>Eating disorders:</strong> <a class="jargon">Sensory issues<span class="tooltip">Difficulties processing sensory information that can make certain textures, sounds, or environments uncomfortable or overwhelming</span></a> with food textures and restrictive eating patterns</li>
+                    <li><strong>Sleep disorders:</strong> Irregular sleep patterns and difficulty with sleep hygiene</li>
                 </ul>
             </div>
 
-            <div class="characteristic-card">
-                <h4><a class="jargon">Sensory Processing<span class="tooltip">How the nervous system receives and responds to sensory information from the environment and body</span></a> Differences</h4>
-                <p>Heightened or reduced sensitivity to sounds, textures, lights, and other <a class="jargon">sensory input<span class="tooltip">Information received through the senses like sight, sound, touch, smell, taste, and body position</span></a> that can significantly impact daily functioning.</p>
-                <ul>
-                    <li><a class="jargon">Sensory overload<span class="tooltip">When the brain receives more sensory information than it can process, leading to overwhelm and distress</span></a> in busy environments</li>
-                    <li>Specific texture or sound aversions</li>
-                    <li>Need for <a class="jargon">sensory regulation<span class="tooltip">Strategies to help the nervous system maintain an optimal level of alertness and calm</span></a> through movement or pressure</li>
-                    <li>Difficulty filtering background noise</li>
-                    <li>Sensory seeking behaviors for regulation</li>
-                </ul>
-            </div>
-
-            <div class="characteristic-card">
-                <h4>Repetitive Behaviors and Interests</h4>
-                <p>Patterns of behavior, interests, or activities that provide regulation, joy, and expertise, often misunderstood as restrictive.</p>
-                <ul>
-                    <li>Intense <a class="jargon">special interests<span class="tooltip">Deep, passionate interests that bring joy, expertise, and often serve as a source of identity and regulation</span></a> that bring deep knowledge</li>
-                    <li><a class="jargon">Stimming<span class="tooltip">Self-stimulatory behaviors like rocking, hand-flapping, or repetitive movements that help with regulation and expression</span></a> for self-regulation and expression</li>
-                    <li>Need for predictable routines and structure</li>
-                    <li>Repetitive movements that aid concentration</li>
-                    <li>Detailed focus on specific topics or activities</li>
-                </ul>
-            </div>
-
-            <div class="characteristic-card">
-                <h4>Change and Transition Challenges</h4>
-                <p>Difficulty adapting to unexpected changes or transitions between activities, requiring more processing time and support.</p>
-                <ul>
-                    <li>Distress when plans change unexpectedly</li>
-                    <li>Need for advance notice of schedule changes</li>
-                    <li>Difficulty switching between tasks or activities</li>
-                    <li>Preference for familiar environments and routines</li>
-                    <li>Extended adjustment periods for new situations</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="struggles-section">
-            <h3>Autism-Related Struggles</h3>
-            <p style="margin-bottom: 1.5rem; color: #666;">Click on any struggle to learn what it feels like, why it happens, and what can help.</p>
-            
-            <div class="struggles-grid">
-                <a href="{{ '/struggles/missing-social-cues.html' | relative_url }}" class="struggle-link">
-                    <div class="struggle-title">Missing Social Cues</div>
-                    <div class="struggle-description">When conversations have hidden meanings you don't catch</div>
-                </a>
-
-                <a href="{{ '/struggles/being-too-direct.html' | relative_url }}" class="struggle-link">
-                    <div class="struggle-title">Being Too Direct</div>
-                    <div class="struggle-description">When your honest communication style is seen as rude</div>
-                </a>
-
-                <a href="{{ '/struggles/nonverbal-communication-difficulties.html' | relative_url }}" class="struggle-link">
-                    <div class="struggle-title">Nonverbal Communication Difficulties</div>
-                    <div class="struggle-description">Trouble with <a class="jargon">eye contact<span class="tooltip">Direct gaze between people, often expected in neurotypical social interactions but can feel uncomfortable or overwhelming for autistic people</span></a>, body language, and facial expressions</div>
-                </a>
-
-                <a href="{{ '/struggles/social-reciprocity-challenges.html' | relative_url }}" class="struggle-link">
-                    <div class="struggle-title">Social Reciprocity Challenges</div>
-                    <div class="struggle-description">Difficulty with back-and-forth conversation flow</div>
-                </a>
-
-                <a href="{{ '/struggles/relationship-maintenance-struggles.html' | relative_url }}" class="struggle-link">
-                    <div class="struggle-title">Relationship Maintenance Struggles</div>
-                    <div class="struggle-description">Not knowing how to keep friendships going over time</div>
-                </a>
-
-                <a href="{{ '/struggles/special-interests-consuming-focus.html' | relative_url }}" class="struggle-link">
-                    <div class="struggle-title">Special Interests Consuming Focus</div>
-                    <div class="struggle-description">When intense interests take over your time and social life</div>
-                </a>
-
-                <a href="{{ '/struggles/routine-disruption-anxiety.html' | relative_url }}" class="struggle-link">
-                    <div class="struggle-title">Routine Disruption Anxiety</div>
-                    <div class="struggle-description">Distress when plans change unexpectedly</div>
-                </a>
-
-                <a href="{{ '/struggles/sensory-processing-challenges.html' | relative_url }}" class="struggle-link">
-                    <div class="struggle-title">Sensory Processing Challenges</div>
-                    <div class="struggle-description">Over- or under-responsivity to <a class="jargon">sensory input<span class="tooltip">Information received through the senses like sight, sound, touch, smell, taste, and body position</span></a></div>
-                </a>
-
-                <a href="{{ '/struggles/stimming-and-self-regulation.html' | relative_url }}" class="struggle-link">
-                    <div class="struggle-title">Stimming and Self-Regulation</div>
-                    <div class="struggle-description">Repetitive behaviors that help but may draw attention</div>
-                </a>
-
-                <a href="{{ '/struggles/change-and-transition-difficulties.html' | relative_url }}" class="struggle-link">
-                    <div class="struggle-title">Change and Transition Difficulties</div>
-                    <div class="struggle-description">Trouble adapting to new environments or schedules</div>
-                </a>
-
-                <a href="{{ '/struggles/face-blindness.html' | relative_url }}" class="struggle-link">
-                    <div class="struggle-title">Face Blindness</div>
-                    <div class="struggle-description">Difficulty recognizing faces, even of familiar people</div>
-                </a>
-
-                <a href="{{ '/struggles/alexithymia.html' | relative_url }}" class="struggle-link">
-                    <div class="struggle-title">Alexithymia</div>
-                    <div class="struggle-description">Trouble identifying and describing your emotions</div>
-                </a>
-
-                <a href="{{ '/struggles/autistic-inertia.html' | relative_url }}" class="struggle-link">
-                    <div class="struggle-title">Autistic Inertia</div>
-                    <div class="struggle-description">Difficulty starting or stopping activities once engaged</div>
-                </a>
-
-                <a href="{{ '/struggles/masking-burnout.html' | relative_url }}" class="struggle-link">
-                    <div class="struggle-title">Masking Burnout</div>
-                    <div class="struggle-description">Exhaustion from years of camouflaging your authentic self</div>
-                </a>
-
-                <a href="{{ '/struggles/late-diagnosis-grief.html' | relative_url }}" class="struggle-link">
-                    <div class="struggle-title">Late Diagnosis Grief</div>
-                    <div class="struggle-description">Processing missed opportunities after adult diagnosis</div>
-                </a>
-
-                <a href="{{ '/struggles/sensory-seeking-behaviors.html' | relative_url }}" class="struggle-link">
-                    <div class="struggle-title">Sensory Seeking Behaviors</div>
-                    <div class="struggle-description">Need for intense <a class="jargon">sensory input<span class="tooltip">Information received through the senses like sight, sound, touch, smell, taste, and body position</span></a> to feel regulated</div>
-                </a>
-            </div>
-
-            <div class="cross-cutting-section">
-                <h4>Related Struggles from Other Conditions</h4>
-                <div class="cross-cutting-links">
-                    <a href="{{ '/struggles/time-blindness.html' | relative_url }}" class="cross-cutting-link">Time Blindness</a>
-                    <a href="{{ '/struggles/hyperfocus-episodes.html' | relative_url }}" class="cross-cutting-link">Hyperfocus Episodes</a>
-                    <a href="{{ '/struggles/rejection-sensitive-dysphoria.html' | relative_url }}" class="cross-cutting-link">Rejection Sensitive Dysphoria</a>
-                    <a href="{{ '/struggles/task-initiation-paralysis.html' | relative_url }}" class="cross-cutting-link">Task Initiation Paralysis</a>
-                    <a href="{{ '/struggles/identity-confusion-between-episodes.html' | relative_url }}" class="cross-cutting-link">Identity Confusion</a>
-                    <a href="{{ '/struggles/splitting-black-and-white-thinking.html' | relative_url }}" class="cross-cutting-link">All-or-Nothing Thinking</a>
-                    <a href="{{ '/struggles/fear-of-abandonment.html' | relative_url }}" class="cross-cutting-link">Fear of Abandonment</a>
-                    <a href="{{ '/struggles/checking-behaviors-never-complete.html' | relative_url }}" class="cross-cutting-link">Checking Behaviors</a>
+            <div style="background: #d4edda; padding: 1.5rem; border-radius: 12px; margin: 2rem 0; border-left: 4px solid #27ae60;">
+                <h3 style="color: #27ae60; margin-bottom: 1rem; font-size: 1.3rem;">Related Resources</h3>
+                <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                    <a href="{{ '/glossary/social-communication.html' | relative_url }}" style="color: #27ae60; text-decoration: none;">Social Communication →</a>
+                    <a href="{{ '/glossary/sensory-processing.html' | relative_url }}" style="color: #27ae60; text-decoration: none;">Sensory Processing →</a>
+                    <a href="{{ '/glossary/emotional-regulation.html' | relative_url }}" style="color: #27ae60; text-decoration: none;">Emotional Regulation →</a>
+                    <a href="{{ '/glossary/inertia-transitions.html' | relative_url }}" style="color: #27ae60; text-decoration: none;">Inertia and Transitions →</a>
                 </div>
             </div>
         </div>
-
-        <div class="co-occurring">
-            <h3>Common Co-Occurring Conditions</h3>
-            <p>Autism frequently appears alongside other <a class="jargon">neurodivergent<span class="tooltip">Brain differences that create distinct patterns of thinking, processing, and behavior</span></a> conditions and mental health challenges. Understanding these connections can help you get comprehensive support:</p>
-            <ul>
-                <li><strong>ADHD:</strong> Many autistic people also have ADHD, sharing <a class="jargon">executive function<span class="tooltip">The brain's management system that handles planning, organization, time management, task initiation, and follow-through</span></a> and <a class="jargon">attention regulation<span class="tooltip">The brain's ability to direct and sustain focus where you want it, when you want it</span></a> challenges</li>
-                <li><strong>Anxiety disorders:</strong> Social anxiety, generalized anxiety, and specific phobias are common</li>
-                <li><strong>Depression:</strong> Often develops from years of misunderstanding, <a class="jargon">masking<span class="tooltip">Camouflaging natural neurodivergent behaviors and responses to appear more neurotypical</span></a>, or social rejection</li>
-                <li><strong>OCD:</strong> Repetitive behaviors and need for certainty can overlap with OCD patterns</li>
-                <li><strong>Eating disorders:</strong> <a class="jargon">Sensory issues<span class="tooltip">Difficulties processing sensory information that can make certain textures, sounds, or environments uncomfortable or overwhelming</span></a> with food textures and restrictive eating patterns</li>
-                <li><strong>Sleep disorders:</strong> Irregular sleep patterns and difficulty with sleep hygiene</li>
-            </ul>
-        </div>
-
-        <div style="background: #e3f2fd; padding: 1.5rem; border-radius: 12px; margin: 2rem 0; border-left: 4px solid #0984e3;">
-            <h3 style="color: #0984e3; margin-bottom: 1rem; font-size: 1.3rem;">Related Resources</h3>
-            <div style="display: flex; flex-direction: column; gap: 0.5rem;">
-                <a href="{{ '/glossary/social-communication.html' | relative_url }}" style="color: #0984e3; text-decoration: none;">Social Communication →</a>
-                <a href="{{ '/glossary/sensory-processing.html' | relative_url }}" style="color: #0984e3; text-decoration: none;">Sensory Processing →</a>
-                <a href="{{ '/glossary/emotional-regulation.html' | relative_url }}" style="color: #0984e3; text-decoration: none;">Emotional Regulation →</a>
-                <a href="{{ '/glossary/inertia-transitions.html' | relative_url }}" style="color: #0984e3; text-decoration: none;">Inertia and Transitions →</a>
-            </div>
-        </div>
-    </div>
+    </main>
 </div>
