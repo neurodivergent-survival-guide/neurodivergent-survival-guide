@@ -223,18 +223,31 @@ title: "Attention Regulation"
     }
 
     .jargon {
-        color: white;
+        color: #e84393;
         text-decoration: none;
-        border-bottom: 1px dotted rgba(255, 255, 255, 0.8);
+        border-bottom: 1px dotted #e84393;
         position: relative;
         cursor: help;
         font-weight: 500;
+    }
+
+    .jargon:hover {
+        color: #fd79a8;
+        border-bottom-color: #fd79a8;
+    }
+
+    /* White jargon for purple gradient backgrounds */
+    .header .jargon,
+    .breadcrumb .jargon {
+        color: white;
+        border-bottom: 1px dotted rgba(255, 255, 255, 0.8);
         background: rgba(255, 255, 255, 0.2);
         padding: 2px 4px;
         border-radius: 3px;
     }
 
-    .jargon:hover {
+    .header .jargon:hover,
+    .breadcrumb .jargon:hover {
         color: white;
         border-bottom-color: white;
         background: rgba(255, 255, 255, 0.3);
