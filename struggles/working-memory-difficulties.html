@@ -1,8 +1,8 @@
+<!-- struggles/working-memory-difficulties.html -->
 ---
 layout: default
 title: "Working Memory Difficulties"
 ---
-<!-- struggles/working-memory-difficulties.html -->
 <style>
     * {
         margin: 0;
@@ -12,7 +12,8 @@ title: "Working Memory Difficulties"
 
     body {
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        background: linear-gradient(135deg, #ff7675 0%, #fd79a8 100%);
+        font-weight: 500;
+        background: linear-gradient(135deg, #d63031 0%, #a21f23 100%);
         color: #333;
         min-height: 100vh;
         line-height: 1.7;
@@ -34,7 +35,7 @@ title: "Working Memory Difficulties"
 
     .header p {
         color: rgba(255, 255, 255, 0.9);
-        font-size: 1.1rem;
+        font-size: 1.2rem;
     }
 
     .breadcrumb {
@@ -61,7 +62,7 @@ title: "Working Memory Difficulties"
     }
 
     .container {
-        max-width: 900px;
+        max-width: 1200px;
         margin: 0 auto;
         padding: 2rem;
         width: 100%;
@@ -76,73 +77,142 @@ title: "Working Memory Difficulties"
         margin-bottom: 2rem;
     }
 
-    .section {
-        background: white;
-        border-radius: 15px;
+    .what-section {
+        background: #ffe6e6;
         padding: 2rem;
+        border-radius: 16px;
         margin: 2rem 0;
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-        border-top: 3px solid #fd79a8;
+        border-left: 4px solid #d63031;
     }
 
-    .section h2 {
-        color: #fd79a8;
-        font-size: 1.4rem;
-        margin-bottom: 1.5rem;
-        font-weight: 600;
-    }
-
-    .section p {
-        color: #555;
+    .what-section h2 {
+        color: #d63031;
         margin-bottom: 1rem;
-        font-size: 1rem;
+        font-size: 1.6rem;
     }
 
-    .section ul {
-        padding-left: 1.5rem;
+    .what-section p {
+        margin-bottom: 1rem;
+        font-size: 1.05rem;
         color: #555;
-        margin: 1rem 0;
     }
 
-    .section li {
+    .why-section {
+        background: #ffeaa7;
+        padding: 2rem;
+        border-radius: 16px;
+        margin: 2rem 0;
+        border-left: 4px solid #f1c40f;
+    }
+
+    .why-section h2 {
+        color: #f39c12;
+        margin-bottom: 1rem;
+        font-size: 1.6rem;
+    }
+
+    .why-section p {
+        margin-bottom: 1rem;
+        font-size: 1.05rem;
+        color: #555;
+    }
+
+    .immediate-help {
+        background: #cce5ff;
+        padding: 2rem;
+        border-radius: 16px;
+        margin: 2rem 0;
+        border-left: 4px solid #007acc;
+    }
+
+    .immediate-help h2 {
+        color: #005599;
+        margin-bottom: 1rem;
+        font-size: 1.6rem;
+    }
+
+    .immediate-help ul {
+        color: #555;
+        padding-left: 1.2rem;
+    }
+
+    .immediate-help li {
         margin-bottom: 0.8rem;
         font-size: 0.95rem;
     }
 
-    .immediate-help {
-        background: #e8f5e8;
-        border-left-color: #00b894;
-    }
-
-    .immediate-help h2 {
-        color: #00b894;
-    }
-
     .long-term {
-        background: #e3f2fd;
-        border-left-color: #1976d2;
+        background: #d4edda;
+        padding: 2rem;
+        border-radius: 16px;
+        margin: 2rem 0;
+        border-left: 4px solid #28a745;
     }
 
     .long-term h2 {
-        color: #1976d2;
+        color: #155724;
+        margin-bottom: 1rem;
+        font-size: 1.6rem;
     }
 
-    .medical-intervention {
-        background: #fff3e0;
-        border-left-color: #f57c00;
+    .long-term ul {
+        color: #555;
+        padding-left: 1.2rem;
     }
 
-    .medical-intervention h2 {
-        color: #f57c00;
+    .long-term li {
+        margin-bottom: 0.8rem;
+        font-size: 0.95rem;
     }
 
-    .validation {
-        background: #f3e5f5;
-        border-left-color: #8e24aa;
+    .medical-section {
+        background: #d1f2eb;
+        padding: 2rem;
+        border-radius: 16px;
+        margin: 2rem 0;
+        border-left: 4px solid #17a2b8;
     }
 
-    .validation h2 {
-        color: #8e24aa;
+    .medical-section h2 {
+        color: #0c5460;
+        margin-bottom: 1rem;
+        font-size: 1.6rem;
+    }
+
+    .medical-section p {
+        margin-bottom: 1rem;
+        font-size: 1.05rem;
+        color: #555;
+    }
+
+    .medical-section ul {
+        color: #555;
+        padding-left: 1.2rem;
+    }
+
+    .medical-section li {
+        margin-bottom: 0.8rem;
+        font-size: 0.95rem;
+    }
+
+    .validation-section {
+        background: #e2e3ff;
+        padding: 2rem;
+        border-radius: 16px;
+        margin: 2rem 0;
+        border-left: 4px solid #6c5ce7;
+    }
+
+    .validation-section h2 {
+        color: #5a4fcf;
+        margin-bottom: 1rem;
+        font-size: 1.6rem;
+    }
+
+    .validation-section p {
+        margin-bottom: 1rem;
+        font-size: 1.05rem;
+        color: #555;
     }
 
     .learn-more {
@@ -203,7 +273,7 @@ title: "Working Memory Difficulties"
     }
 
     .struggle-tag {
-        background: #fd79a8;
+        background: #d63031;
         color: white;
         padding: 0.5rem 1rem;
         border-radius: 20px;
@@ -216,52 +286,98 @@ title: "Working Memory Difficulties"
     }
 
     .struggle-tag:hover {
-        background: #e84393;
+        background: #a21f23;
         color: white;
         text-decoration: none;
         transform: translateY(-1px);
     }
 
+    .highlight-box {
+        background: #fff8e1;
+        padding: 1rem;
+        border-radius: 8px;
+        border-left: 3px solid #ffc107;
+        margin: 1rem 0;
+    }
+
+    /* Focus states for accessibility */
+    .struggle-tag:focus,
+    .jargon:focus,
+    .breadcrumb a:focus {
+        outline: 2px solid #fff;
+        outline-offset: 2px;
+    }
+
+    /* Motion accessibility */
+    @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+        }
+    }
+
+    /* Jargon styling - context-aware based on background */
     .jargon {
-        color: #e84393;
         text-decoration: none;
-        border-bottom: 1px dotted #e84393;
+        border-bottom: 1px dotted;
         position: relative;
         cursor: help;
         font-weight: 500;
     }
 
-    .jargon:hover {
+    /* Pink jargon for white backgrounds */
+    .content-card .jargon,
+    .related-struggles .jargon {
+        color: #e84393;
+        border-bottom-color: #e84393;
+    }
+
+    .content-card .jargon:hover,
+    .related-struggles .jargon:hover {
         color: #fd79a8;
         border-bottom-color: #fd79a8;
     }
 
-    /* White jargon for purple gradient backgrounds */
+    /* Bold black jargon for colored backgrounds */
+    .what-section .jargon,
+    .why-section .jargon,
+    .immediate-help .jargon,
+    .long-term .jargon,
+    .medical-section .jargon,
+    .validation-section .jargon,
+    .highlight-box .jargon {
+        color: #333;
+        font-weight: 600;
+        border-bottom-color: #333;
+    }
+
+    /* White jargon for gradient backgrounds */
     .header .jargon,
     .breadcrumb .jargon,
     .learn-more .jargon,
     .learn-more-content .jargon {
         color: white;
-        border-bottom: 1px dotted rgba(255, 255, 255, 0.8);
-        background: rgba(255, 255, 255, 0.2);
-        padding: 2px 4px;
-        border-radius: 3px;
+        border-bottom-color: rgba(255, 255, 255, 0.7);
+        background: rgba(255, 255, 255, 0.1);
+        padding: 2px 6px;
+        border-radius: 4px;
     }
 
     .header .jargon:hover,
     .breadcrumb .jargon:hover,
     .learn-more .jargon:hover,
     .learn-more-content .jargon:hover {
-        color: white;
+        background: rgba(255, 255, 255, 0.2);
         border-bottom-color: white;
-        background: rgba(255, 255, 255, 0.3);
     }
 
+    /* Auto-sizing tooltips */
     .tooltip {
         visibility: hidden;
         opacity: 0;
         position: absolute;
-        bottom: 125%;
+        bottom: calc(100% + 8px);
         left: 50%;
         transform: translateX(-50%);
         background: #333;
@@ -279,6 +395,7 @@ title: "Working Memory Difficulties"
         white-space: normal;
         text-align: left;
         line-height: 1.5;
+        pointer-events: none;
     }
 
     .tooltip::after {
@@ -296,14 +413,6 @@ title: "Working Memory Difficulties"
         opacity: 1;
     }
 
-    .highlight-box {
-        background: #fff8e1;
-        padding: 1rem;
-        border-radius: 8px;
-        border-left: 3px solid #ffc107;
-        margin: 1rem 0;
-    }
-
     /* Mobile responsive tooltip adjustments */
     @media (max-width: 1024px) {
         .tooltip {
@@ -311,23 +420,22 @@ title: "Working Memory Difficulties"
         }
     }
 
+    /* Mobile-specific tooltip positioning */
     @media (max-width: 768px) {
         .tooltip {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            right: 20px;
-            max-width: none;
-            width: auto;
-            transform: none;
-            border-radius: 12px;
-        }
-        
-        .tooltip::after {
-            display: none;
+            position: fixed !important;
+            bottom: 20px !important;
+            left: 20px !important;
+            right: 20px !important;
+            transform: none !important;
+            max-width: none !important;
+            width: auto !important;
         }
 
-    @media (max-width: 768px) {
+        .tooltip::after {
+            display: none !important;
+        }
+
         .header {
             padding: 1rem;
         }
@@ -352,7 +460,12 @@ title: "Working Memory Difficulties"
             padding: 1.5rem;
         }
 
-        .section {
+        .what-section,
+        .why-section,
+        .immediate-help,
+        .long-term,
+        .medical-section,
+        .validation-section {
             padding: 1.5rem;
         }
 
@@ -379,8 +492,19 @@ title: "Working Memory Difficulties"
             padding: 1.2rem;
         }
 
-        .section {
+        .what-section,
+        .why-section,
+        .immediate-help,
+        .long-term,
+        .medical-section,
+        .validation-section {
             padding: 1.2rem;
+        }
+
+        .tooltip {
+            left: 10px !important;
+            right: 10px !important;
+            bottom: 10px !important;
         }
     }
 </style>
@@ -393,143 +517,141 @@ title: "Working Memory Difficulties"
 <div class="breadcrumb">
     <a href="{{ '/index.html' | relative_url }}">Home</a>
     <span>></span>
+    <a href="{{ '/struggles/index.html' | relative_url }}">Struggles</a>
+    <span>></span>
     <a href="{{ '/conditions/adhd.html' | relative_url }}">ADHD</a>
     <span>></span>
     Working Memory Difficulties
 </div>
 
 <div class="container">
-    <div class="content-card">
-        <!-- Section 1: What this feels like -->
-        <div class="section">
-            <h2>What This Feels Like</h2>
-            <p><a class="jargon">Working memory difficulties<span class="tooltip">Challenges with temporarily holding and manipulating information in your mind while working on tasks</span></a> often feel like having a mental workspace that's too small for the job you're trying to do. Many people describe it as feeling like they can only hold one or two pieces of information in their head at once before everything else falls out.</p>
+    <main role="main" id="main-content">
+        <div class="content-card">
+            <div class="what-section">
+                <h2 id="what-this-feels-like">What This Feels Like</h2>
+                <p><a class="jargon">Working memory difficulties<span class="tooltip">Challenges with temporarily holding and manipulating information in your mind while working on tasks</span></a> often feel like having a mental workspace that's too small for the job you're trying to do. Many people describe it as feeling like they can only hold one or two pieces of information in their head at once before everything else falls out.</p>
 
-            <p>You might walk into a room to get something and immediately forget what you came for. During conversations, you lose track of what you were going to say while listening to the other person. <a class="jargon">Multi-step instructions<span class="tooltip">Directions that involve several actions in sequence, which can overwhelm working memory capacity</span></a> feel overwhelming - you understand the first step but struggle to hold the remaining steps in mind while executing.</p>
+                <p>You might walk into a room to get something and immediately forget what you came for. During conversations, you lose track of what you were going to say while listening to the other person. <a class="jargon">Multi-step instructions<span class="tooltip">Directions involving several sequential actions that can overwhelm working memory capacity</span></a> feel overwhelming - you understand the first step but struggle to hold the remaining steps in mind while executing.</p>
 
-            <p>This creates a constant feeling of mental juggling where you're afraid to think about anything else because you might drop the information you're currently holding. <a class="jargon">Cognitive load<span class="tooltip">The amount of mental effort being used in your working memory during a task</span></a> feels heavy even during simple tasks, leaving you mentally exhausted from activities that seem effortless for others.</p>
+                <p>This creates a constant feeling of mental juggling where you're afraid to think about anything else because you might drop the information you're currently holding. <a class="jargon">Cognitive load<span class="tooltip">The amount of mental effort being used in your working memory during thinking tasks</span></a> feels heavy even during simple tasks, leaving you mentally exhausted from activities that seem effortless for others.</p>
 
-            <div class="highlight-box">
-                <p><strong>Common experiences:</strong> Forgetting instructions immediately after hearing them; losing your train of thought mid-sentence; needing to write everything down; feeling overwhelmed by tasks with multiple steps; forgetting what you're doing while doing it.</p>
+                <div class="highlight-box">
+                    <p><strong>Common experiences:</strong> Forgetting instructions immediately after hearing them; losing your train of thought mid-sentence; needing to write everything down; feeling overwhelmed by tasks with multiple steps; forgetting what you're doing while doing it.</p>
+                </div>
             </div>
-        </div>
 
-        <!-- Section 2: Why this might be happening -->
-        <div class="section">
-            <h2>Why This Might Be Happening</h2>
-            <p><a class="jargon">Working memory<span class="tooltip">The mental workspace that temporarily holds and manipulates information during thinking tasks</span></a> involves networks in the <a class="jargon">prefrontal cortex<span class="tooltip">Brain area responsible for executive functions including working memory and cognitive control</span></a> that temporarily store and manipulate information while you're using it. In <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> brains, these systems often have reduced capacity and are more easily overwhelmed by competing information.</p>
+            <div class="why-section">
+                <h2 id="why-this-happens">Why This Might Be Happening</h2>
+                <p><a class="jargon">Working memory<span class="tooltip">The mental workspace that temporarily holds and manipulates information during thinking tasks</span></a> involves networks in the <a class="jargon">prefrontal cortex<span class="tooltip">Brain area responsible for executive functions including working memory and cognitive control</span></a> that temporarily store and manipulate information while you're using it. In <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> brains, these systems often have reduced capacity and are more easily overwhelmed by competing information.</p>
 
-            <p>Your brain's <a class="jargon">attention regulation<span class="tooltip">The brain's ability to direct and sustain focus where you want it, when you want it</span></a> difficulties directly impact <a class="jargon">working memory<span class="tooltip">The mental workspace that temporarily holds and manipulates information during thinking tasks</span></a> function. When your attention gets pulled to distracting thoughts or environmental stimuli, it takes up precious <a class="jargon">cognitive resources<span class="tooltip">Mental energy and capacity available for thinking, processing, and remembering</span></a> that would otherwise be available for holding information in mind.</p>
+                <p>Your brain's <a class="jargon">attention regulation<span class="tooltip">The brain's ability to direct and sustain focus where you want it, when you want it</span></a> difficulties directly impact <a class="jargon">working memory<span class="tooltip">The mental workspace that temporarily holds and manipulates information during thinking tasks</span></a> function. When your attention gets pulled to distracting thoughts or environmental stimuli, it takes up precious <a class="jargon">cognitive resources<span class="tooltip">Mental energy and capacity available for thinking, processing, and remembering</span></a> that would otherwise be available for holding information in mind.</p>
 
-            <p><a class="jargon">Working memory<span class="tooltip">The mental workspace that temporarily holds and manipulates information during thinking tasks</span></a> is also closely connected to <a class="jargon">dopamine<span class="tooltip">A neurotransmitter that affects motivation, reward, and cognitive function including memory</span></a> function in the brain. The same <a class="jargon">neurotransmitter<span class="tooltip">Chemical messengers that carry signals between brain cells</span></a> differences that affect motivation and focus in <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> also impact your ability to maintain information in your mental workspace, especially during boring or unstimulating tasks.</p>
+                <p><a class="jargon">Working memory<span class="tooltip">The mental workspace that temporarily holds and manipulates information during thinking tasks</span></a> is also closely connected to <a class="jargon">dopamine<span class="tooltip">A neurotransmitter that affects motivation, reward, and cognitive function including memory</span></a> function in the brain. The same <a class="jargon">neurotransmitter<span class="tooltip">Chemical messengers that carry signals between brain cells</span></a> differences that affect motivation and focus in <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> also impact your ability to maintain information in your mental workspace, especially during boring or unstimulating tasks.</p>
 
-            <div class="learn-more" onclick="toggleLearnMore(this)">
-                <h3>Learn More: The Neuroscience of Working Memory in ADHD ↓</h3>
-                <div class="learn-more-content">
-                    <p><a class="jargon">Working memory<span class="tooltip">The mental workspace that temporarily holds and manipulates information during thinking tasks</span></a> involves coordination between the <a class="jargon">phonological loop<span class="tooltip">The part of working memory that temporarily stores verbal and auditory information</span></a> (for verbal information), <a class="jargon">visuospatial sketchpad<span class="tooltip">The part of working memory that temporarily stores visual and spatial information</span></a> (for visual information), and the <a class="jargon">central executive<span class="tooltip">The control system of working memory that directs attention and manages cognitive resources</span></a> (for managing and controlling these systems).</p>
-                    
-                    <p>Research shows that people with <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> typically show deficits particularly in the <a class="jargon">central executive<span class="tooltip">The control system of working memory that directs attention and manages cognitive resources</span></a> component, which affects their ability to actively manipulate information in mind and resist interference from irrelevant information. This explains why external distractions so easily disrupt <a class="jargon">working memory<span class="tooltip">The mental workspace that temporarily holds and manipulates information during thinking tasks</span></a> performance.</p>
+                <div class="learn-more" onclick="toggleLearnMore(this)">
+                    <h3>Learn More: The Neuroscience of Working Memory in ADHD ↓</h3>
+                    <div class="learn-more-content">
+                        <p><a class="jargon">Working memory<span class="tooltip">The mental workspace that temporarily holds and manipulates information during thinking tasks</span></a> involves coordination between the <a class="jargon">phonological loop<span class="tooltip">The part of working memory that temporarily stores verbal and auditory information</span></a> (for verbal information), <a class="jargon">visuospatial sketchpad<span class="tooltip">The part of working memory that temporarily stores visual and spatial information</span></a> (for visual information), and the <a class="jargon">central executive<span class="tooltip">The control system of working memory that directs attention and manages cognitive resources</span></a> (for managing and controlling these systems).</p>
+                        
+                        <p>Research shows that people with <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> typically show deficits particularly in the <a class="jargon">central executive<span class="tooltip">The control system of working memory that directs attention and manages cognitive resources</span></a> component, which affects their ability to actively manipulate information in mind and resist interference from irrelevant information. This explains why external distractions so easily disrupt <a class="jargon">working memory<span class="tooltip">The mental workspace that temporarily holds and manipulates information during thinking tasks</span></a> performance.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="immediate-help">
+                <h2 id="next-five-minutes">What Can Help You Through the Next 5 Minutes</h2>
+                <p>When your <a class="jargon">working memory<span class="tooltip">The mental workspace that temporarily holds and manipulates information during thinking tasks</span></a> feels overwhelmed right now, these strategies can help:</p>
+
+                <ul>
+                    <li><strong>Write everything down immediately:</strong> Don't trust your brain to hold information. Use paper, phone notes, or any available writing surface to <a class="jargon">externalize information<span class="tooltip">Getting information out of your head and into external storage to reduce cognitive load</span></a>.</li>
+                    <li><strong>Break tasks into single steps:</strong> Instead of trying to hold multiple instructions in mind, focus on only the very next action you need to take.</li>
+                    <li><strong>Say things out loud:</strong> <a class="jargon">Verbal rehearsal<span class="tooltip">Repeating information out loud to help maintain it in working memory</span></a> helps maintain information in your <a class="jargon">working memory<span class="tooltip">The mental workspace that temporarily holds and manipulates information during thinking tasks</span></a>. Narrate what you're doing or what you need to remember.</li>
+                    <li><strong>Reduce <a class="jargon">cognitive load<span class="tooltip">The amount of mental effort being used in your working memory during thinking tasks</span></a>:</strong> Close extra browser tabs, move to a quieter environment, or eliminate unnecessary decisions to free up mental space.</li>
+                    <li><strong>Use <a class="jargon">chunking<span class="tooltip">Grouping related information together to make it easier to remember and process</span></a>:</strong> Group related items together (phone numbers in chunks, grocery lists by store section) to reduce the number of separate items your brain needs to track.</li>
+                    <li><strong>Create physical reminders:</strong> Put objects in unusual places, set items by your exit, or use visual cues to remind yourself of things you need to remember.</li>
+                    <li><strong>Slow down deliberately:</strong> Rushing makes <a class="jargon">working memory<span class="tooltip">The mental workspace that temporarily holds and manipulates information during thinking tasks</span></a> problems worse. Take time to process information fully before moving to the next step.</li>
+                </ul>
+
+                <div class="highlight-box">
+                    <p><strong>Emergency memory aid:</strong> If you need to remember something important and have no way to write it down, create a weird mental image connecting it to where you are right now. The stranger the image, the more likely you'll remember it.</p>
+                </div>
+            </div>
+
+            <div class="long-term">
+                <h2 id="healthy-long-term-solutions">What Are Some Healthy Long-Term Solutions</h2>
+                <p>Building sustainable systems that support your <a class="jargon">working memory<span class="tooltip">The mental workspace that temporarily holds and manipulates information during thinking tasks</span></a> challenges:</p>
+
+                <ul>
+                    <li><strong>Develop comprehensive <a class="jargon">external memory systems<span class="tooltip">Tools and methods that store information outside your brain, reducing reliance on working memory</span></a>:</strong> Use note-taking apps, calendar systems, physical notebooks, and reminder systems to store information your brain can't reliably hold.</li>
+                    <li><strong>Practice <a class="jargon">information chunking<span class="tooltip">Breaking large amounts of information into smaller, related groups that are easier to process</span></a>:</strong> Learn to group related information together and break complex information into smaller, manageable pieces.</li>
+                    <li><strong>Build <a class="jargon">routine automation<span class="tooltip">Making repetitive tasks automatic so they require less working memory and cognitive resources</span></a>:</strong> Create consistent routines for common activities so they require less <a class="jargon">cognitive resources<span class="tooltip">Mental energy and capacity available for thinking, processing, and remembering</span></a> and mental tracking.</li>
+                    <li><strong>Use <a class="jargon">environmental supports<span class="tooltip">Physical and visual cues in your environment that help reduce memory burden</span></a>:</strong> Labels, visual organization, and strategic placement of items so your environment remembers for you.</li>
+                    <li><strong>Develop <a class="jargon">working memory training<span class="tooltip">Exercises and activities designed to strengthen your ability to hold and manipulate information in mind</span></a> activities:</strong> Practice <a class="jargon">dual n-back training<span class="tooltip">A cognitive exercise that challenges working memory by tracking visual and auditory sequences simultaneously</span></a>, <a class="jargon">mental math<span class="tooltip">Calculations done in your head, which can help strengthen working memory systems</span></a>, or memory games that specifically target <a class="jargon">working memory<span class="tooltip">The mental workspace that temporarily holds and manipulates information during thinking tasks</span></a> skills.</li>
+                    <li><strong>Learn <a class="jargon">cognitive load management<span class="tooltip">Strategies for managing how much mental effort you're using at once</span></a>:</strong> Identify what depletes your <a class="jargon">working memory<span class="tooltip">The mental workspace that temporarily holds and manipulates information during thinking tasks</span></a> most quickly and plan around these limitations.</li>
+                    <li><strong>Create <a class="jargon">processing protocols<span class="tooltip">Step-by-step approaches for handling complex information or multi-step tasks</span></a>:</strong> Develop standard approaches for handling emails, instructions, or complex information that reduce the burden on your <a class="jargon">working memory<span class="tooltip">The mental workspace that temporarily holds and manipulates information during thinking tasks</span></a>.</li>
+                    <li><strong>Consider medication evaluation:</strong> <a class="jargon">Stimulant medications<span class="tooltip">ADHD medications that can improve working memory and cognitive function</span></a> often significantly improve <a class="jargon">working memory<span class="tooltip">The mental workspace that temporarily holds and manipulates information during thinking tasks</span></a> capacity and reduce forgetfulness.</li>
+                </ul>
+
+                <div class="learn-more" onclick="toggleLearnMore(this)">
+                    <h3>Learn More: Advanced Working Memory Support ↓</h3>
+                    <div class="learn-more-content">
+                        <p><strong><a class="jargon">Dual coding theory<span class="tooltip">The idea that information processed through both verbal and visual channels is easier to remember</span></a> application:</strong> When possible, process information through multiple channels - read instructions while writing them down, or create visual representations of verbal information to strengthen retention.</p>
+                        
+                        <p><strong><a class="jargon">Metacognitive strategies<span class="tooltip">Thinking about your own thinking processes to better manage cognitive resources</span></a>:</strong> Learn to monitor your <a class="jargon">working memory<span class="tooltip">The mental workspace that temporarily holds and manipulates information during thinking tasks</span></a> load in real-time and recognize when you're approaching capacity limits. Develop strategies for reducing load before reaching overwhelm.</p>
+                        
+                        <p><strong>Professional accommodations:</strong> Request written instructions instead of verbal ones, permission to record meetings, or additional time for complex tasks that require significant <a class="jargon">working memory<span class="tooltip">The mental workspace that temporarily holds and manipulates information during thinking tasks</span></a> resources.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="medical-section">
+                <h2 id="medical-intervention">When Should I Consider Medical Intervention</h2>
+                <p>Consider professional support if <a class="jargon">working memory<span class="tooltip">The mental workspace that temporarily holds and manipulates information during thinking tasks</span></a> difficulties are significantly impacting your life:</p>
+
+                <ul>
+                    <li>You're consistently forgetting important instructions, appointments, or commitments despite using reminder systems</li>
+                    <li><a class="jargon">Memory problems<span class="tooltip">Difficulties with remembering information that affect daily functioning and quality of life</span></a> are affecting your work performance, relationships, or academic success</li>
+                    <li>You feel anxious or distressed about your ability to remember important information</li>
+                    <li>You're avoiding complex tasks or responsibilities because they overwhelm your <a class="jargon">working memory<span class="tooltip">The mental workspace that temporarily holds and manipulates information during thinking tasks</span></a> capacity</li>
+                    <li><a class="jargon">Information overload<span class="tooltip">Feeling overwhelmed when trying to process too much information at once</span></a> is preventing you from learning new skills or managing daily tasks</li>
+                    <li>Memory difficulties are creating safety concerns (forgetting to turn off appliances, missing medical appointments)</li>
+                </ul>
+
+                <p>Healthcare providers can help evaluate whether medication might improve <a class="jargon">working memory<span class="tooltip">The mental workspace that temporarily holds and manipulates information during thinking tasks</span></a> function and provide specialized strategies for managing <a class="jargon">cognitive load<span class="tooltip">The amount of mental effort being used in your working memory during thinking tasks</span></a>.</p>
+
+                <div class="highlight-box">
+                    <p><strong>Types of support that help:</strong> <a class="jargon">ADHD coaching<span class="tooltip">Specialized support focused on developing practical strategies for ADHD-related challenges</span></a> for <a class="jargon">memory strategies<span class="tooltip">Techniques and systems for improving information retention and recall</span></a>, <a class="jargon">occupational therapy<span class="tooltip">Therapy focused on developing skills for daily living and practical tasks</span></a> for <a class="jargon">cognitive rehabilitation<span class="tooltip">Training and strategies to improve cognitive function including memory</span></a>, medication evaluation, <a class="jargon">neuropsychological testing<span class="tooltip">Comprehensive assessment of cognitive abilities including working memory capacity</span></a> to understand your specific <a class="jargon">memory profile<span class="tooltip">Your individual pattern of memory strengths and challenges</span></a>, or <a class="jargon">cognitive behavioral therapy<span class="tooltip">Therapy focused on changing thought patterns and behaviors to improve functioning</span></a> for memory anxiety.</p>
+                </div>
+            </div>
+
+            <div class="validation-section">
+                <h2 id="youre-not-imagining-this">You're Not Imagining This</h2>
+                <p><a class="jargon">Working memory difficulties<span class="tooltip">Challenges with temporarily holding and manipulating information in your mind while working on tasks</span></a> are a core feature of <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a>, affecting up to 85% of people with the condition. Your forgetfulness and <a class="jargon">information processing<span class="tooltip">How your brain takes in, holds, and uses information during thinking tasks</span></a> challenges reflect real neurological differences, not carelessness or lack of intelligence.</p>
+
+                <p>Many brilliant people with <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> rely heavily on <a class="jargon">external memory aids<span class="tooltip">Tools and systems outside your brain that store and organize information</span></a> throughout their successful careers. The goal isn't to remember everything perfectly - it's to build systems that compensate for your brain's <a class="jargon">working memory<span class="tooltip">The mental workspace that temporarily holds and manipulates information during thinking tasks</span></a> limitations while allowing your other cognitive strengths to shine.</p>
+
+                <p>The frustration of "knowing you know something" but being unable to access it, or losing important information that you swore you'd remember, is a valid neurological experience. Your <a class="jargon">memory challenges<span class="tooltip">Difficulties with storing, maintaining, or retrieving information that affect daily functioning</span></a> don't reflect your intelligence or effort level - they reflect differences in how your brain temporarily stores and accesses information.</p>
+
+                <p>It's also important to recognize that <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> brains often have excellent <a class="jargon">long-term memory<span class="tooltip">The ability to store and retrieve information over extended periods</span></a> for interesting information while struggling specifically with <a class="jargon">working memory<span class="tooltip">The mental workspace that temporarily holds and manipulates information during thinking tasks</span></a> tasks. Your memory isn't broken - it works differently.</p>
+
+                <div class="highlight-box">
+                    <p><strong>Remember:</strong> Successful people with <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> don't succeed by overcoming their <a class="jargon">working memory<span class="tooltip">The mental workspace that temporarily holds and manipulates information during thinking tasks</span></a> limitations - they succeed by building systems that work with them.</p>
+                </div>
+            </div>
+
+            <div class="related-struggles">
+                <h3>Related Struggles</h3>
+                <div class="struggle-tags">
+                    <a href="{{ '/struggles/attention-regulation.html' | relative_url }}" class="struggle-tag">Attention Regulation</a>
+                    <a href="{{ '/struggles/task-initiation-paralysis.html' | relative_url }}" class="struggle-tag">Task Initiation Paralysis</a>
+                    <a href="{{ '/struggles/follow-through-completion.html' | relative_url }}" class="struggle-tag">Follow-Through Completion</a>
+                    <a href="{{ '/struggles/organization-and-planning-challenges.html' | relative_url }}" class="struggle-tag">Organization Challenges</a>
+                    <a href="{{ '/struggles/time-blindness.html' | relative_url }}" class="struggle-tag">Time Blindness</a>
+                    <a href="{{ '/struggles/executive-function-challenges.html' | relative_url }}" class="struggle-tag">Executive Function</a>
                 </div>
             </div>
         </div>
-
-        <!-- Section 3: Next 5 minutes -->
-        <div class="section immediate-help">
-            <h2>What Can Help You Through the Next 5 Minutes</h2>
-            <p>When your <a class="jargon">working memory<span class="tooltip">The mental workspace that temporarily holds and manipulates information during thinking tasks</span></a> feels overwhelmed right now, these strategies can help:</p>
-
-            <ul>
-                <li><strong>Write everything down immediately:</strong> Don't trust your brain to hold information. Use paper, phone notes, or any available writing surface to <a class="jargon">externalize information<span class="tooltip">Getting information out of your head and into external storage to reduce cognitive load</span></a>.</li>
-                <li><strong>Break tasks into single steps:</strong> Instead of trying to hold multiple instructions in mind, focus on only the very next action you need to take.</li>
-                <li><strong>Say things out loud:</strong> <a class="jargon">Verbal rehearsal<span class="tooltip">Repeating information out loud to help maintain it in working memory</span></a> helps maintain information in your <a class="jargon">working memory<span class="tooltip">The mental workspace that temporarily holds and manipulates information during thinking tasks</span></a>. Narrate what you're doing or what you need to remember.</li>
-                <li><strong>Reduce <a class="jargon">cognitive load<span class="tooltip">The amount of mental effort being used in your working memory during a task</span></a>:</strong> Close extra browser tabs, move to a quieter environment, or eliminate unnecessary decisions to free up mental space.</li>
-                <li><strong>Use <a class="jargon">chunking<span class="tooltip">Grouping related information together to make it easier to remember and process</span></a>:</strong> Group related items together (phone numbers in chunks, grocery lists by store section) to reduce the number of separate items your brain needs to track.</li>
-                <li><strong>Create physical reminders:</strong> Put objects in unusual places, set items by your exit, or use visual cues to remind yourself of things you need to remember.</li>
-                <li><strong>Slow down deliberately:</strong> Rushing makes <a class="jargon">working memory<span class="tooltip">The mental workspace that temporarily holds and manipulates information during thinking tasks</span></a> problems worse. Take time to process information fully before moving to the next step.</li>
-            </ul>
-
-            <div class="highlight-box">
-                <p><strong>Emergency memory aid:</strong> If you need to remember something important and have no way to write it down, create a weird mental image connecting it to where you are right now. The stranger the image, the more likely you'll remember it.</p>
-            </div>
-        </div>
-
-        <!-- Section 4: Long-term solutions -->
-        <div class="section long-term">
-            <h2>What Are Some Healthy Long-Term Solutions</h2>
-            <p>Building sustainable systems that support your <a class="jargon">working memory<span class="tooltip">The mental workspace that temporarily holds and manipulates information during thinking tasks</span></a> challenges:</p>
-
-            <ul>
-                <li><strong>Develop comprehensive <a class="jargon">external memory systems<span class="tooltip">Tools and methods that store information outside your brain, reducing reliance on working memory</span></a>:</strong> Use note-taking apps, calendar systems, physical notebooks, and reminder systems to store information your brain can't reliably hold.</li>
-                <li><strong>Practice <a class="jargon">information chunking<span class="tooltip">Breaking large amounts of information into smaller, related groups that are easier to process</span></a>:</strong> Learn to group related information together and break complex information into smaller, manageable pieces.</li>
-                <li><strong>Build <a class="jargon">routine automation<span class="tooltip">Making repetitive tasks automatic so they require less working memory and cognitive resources</span></a>:</strong> Create consistent routines for common activities so they require less <a class="jargon">cognitive resources<span class="tooltip">Mental energy and capacity available for thinking, processing, and remembering</span></a> and mental tracking.</li>
-                <li><strong>Use <a class="jargon">environmental supports<span class="tooltip">Physical and visual cues in your environment that help reduce memory burden</span></a>:</strong> Labels, visual organization, and strategic placement of items so your environment remembers for you.</li>
-                <li><strong>Develop <a class="jargon">working memory training<span class="tooltip">Exercises and activities designed to strengthen your ability to hold and manipulate information in mind</span></a> activities:</strong> Practice dual n-back training, <a class="jargon">mental math<span class="tooltip">Calculations done in your head, which can help strengthen working memory systems</span></a>, or memory games that specifically target <a class="jargon">working memory<span class="tooltip">The mental workspace that temporarily holds and manipulates information during thinking tasks</span></a> skills.</li>
-                <li><strong>Learn <a class="jargon">cognitive load management<span class="tooltip">Strategies for managing how much mental effort you're using at once</span></a>:</strong> Identify what depletes your <a class="jargon">working memory<span class="tooltip">The mental workspace that temporarily holds and manipulates information during thinking tasks</span></a> most quickly and plan around these limitations.</li>
-                <li><strong>Create <a class="jargon">processing protocols<span class="tooltip">Step-by-step approaches for handling complex information or multi-step tasks</span></a>:</strong> Develop standard approaches for handling emails, instructions, or complex information that reduce the burden on your <a class="jargon">working memory<span class="tooltip">The mental workspace that temporarily holds and manipulates information during thinking tasks</span></a>.</li>
-                <li><strong>Consider medication evaluation:</strong> <a class="jargon">Stimulant medications<span class="tooltip">ADHD medications that can improve working memory and cognitive function</span></a> often significantly improve <a class="jargon">working memory<span class="tooltip">The mental workspace that temporarily holds and manipulates information during thinking tasks</span></a> capacity and reduce forgetfulness.</li>
-            </ul>
-
-            <div class="learn-more" onclick="toggleLearnMore(this)">
-                <h3>Learn More: Advanced Working Memory Support ↓</h3>
-                <div class="learn-more-content">
-                    <p><strong><a class="jargon">Dual coding theory<span class="tooltip">The idea that information processed through both verbal and visual channels is easier to remember</span></a> application:</strong> When possible, process information through multiple channels - read instructions while writing them down, or create visual representations of verbal information to strengthen retention.</p>
-                    
-                    <p><strong><a class="jargon">Metacognitive strategies<span class="tooltip">Thinking about your own thinking processes to better manage cognitive resources</span></a>:</strong> Learn to monitor your <a class="jargon">working memory<span class="tooltip">The mental workspace that temporarily holds and manipulates information during thinking tasks</span></a> load in real-time and recognize when you're approaching capacity limits. Develop strategies for reducing load before reaching overwhelm.</p>
-                    
-                    <p><strong>Professional accommodations:</strong> Request written instructions instead of verbal ones, permission to record meetings, or additional time for complex tasks that require significant <a class="jargon">working memory<span class="tooltip">The mental workspace that temporarily holds and manipulates information during thinking tasks</span></a> resources.</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Section 5: Medical intervention -->
-        <div class="section medical-intervention">
-            <h2>When Should I Consider Medical Intervention</h2>
-            <p>Consider professional support if <a class="jargon">working memory<span class="tooltip">The mental workspace that temporarily holds and manipulates information during thinking tasks</span></a> difficulties are significantly impacting your life:</p>
-
-            <ul>
-                <li>You're consistently forgetting important instructions, appointments, or commitments despite using reminder systems</li>
-                <li><a class="jargon">Memory problems<span class="tooltip">Difficulties with remembering information that affect daily functioning</span></a> are affecting your work performance, relationships, or academic success</li>
-                <li>You feel anxious or distressed about your ability to remember important information</li>
-                <li>You're avoiding complex tasks or responsibilities because they overwhelm your <a class="jargon">working memory<span class="tooltip">The mental workspace that temporarily holds and manipulates information during thinking tasks</span></a> capacity</li>
-                <li><a class="jargon">Information overload<span class="tooltip">Feeling overwhelmed when trying to process too much information at once</span></a> is preventing you from learning new skills or managing daily tasks</li>
-                <li>Memory difficulties are creating safety concerns (forgetting to turn off appliances, missing medical appointments)</li>
-            </ul>
-
-            <p>Healthcare providers can help evaluate whether medication might improve <a class="jargon">working memory<span class="tooltip">The mental workspace that temporarily holds and manipulates information during thinking tasks</span></a> function and provide specialized strategies for managing <a class="jargon">cognitive load<span class="tooltip">The amount of mental effort being used in your working memory during a task</span></a>.</p>
-
-            <div class="highlight-box">
-                <p><strong>Types of support that help:</strong> <a class="jargon">ADHD coaching<span class="tooltip">Specialized support focused on developing practical strategies for ADHD-related challenges</span></a> for <a class="jargon">memory strategies<span class="tooltip">Techniques and systems for improving information retention and recall</span></a>, <a class="jargon">occupational therapy<span class="tooltip">Therapy focused on developing skills for daily living and practical tasks</span></a> for <a class="jargon">cognitive rehabilitation<span class="tooltip">Training and strategies to improve cognitive function including memory</span></a>, medication evaluation, <a class="jargon">neuropsychological testing<span class="tooltip">Comprehensive assessment of cognitive abilities including working memory capacity</span></a> to understand your specific <a class="jargon">memory profile<span class="tooltip">Your individual pattern of memory strengths and challenges</span></a>, or <a class="jargon">cognitive behavioral therapy<span class="tooltip">Therapy focused on changing thought patterns and behaviors to improve functioning</span></a> for memory anxiety.</p>
-            </div>
-        </div>
-
-        <!-- Section 6: Validation -->
-        <div class="section validation">
-            <h2>You're Not Imagining This</h2>
-            <p><a class="jargon">Working memory difficulties<span class="tooltip">Challenges with temporarily holding and manipulating information in your mind while working on tasks</span></a> are a core feature of <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a>, affecting up to 85% of people with the condition. Your forgetfulness and <a class="jargon">information processing<span class="tooltip">How your brain takes in, holds, and uses information</span></a> challenges reflect real neurological differences, not carelessness or lack of intelligence.</p>
-
-            <p>Many brilliant people with <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> rely heavily on <a class="jargon">external memory aids<span class="tooltip">Tools and systems outside your brain that store and organize information</span></a> throughout their successful careers. The goal isn't to remember everything perfectly - it's to build systems that compensate for your brain's <a class="jargon">working memory<span class="tooltip">The mental workspace that temporarily holds and manipulates information during thinking tasks</span></a> limitations while allowing your other cognitive strengths to shine.</p>
-
-            <p>The frustration of "knowing you know something" but being unable to access it, or losing important information that you swore you'd remember, is a valid neurological experience. Your <a class="jargon">memory challenges<span class="tooltip">Difficulties with storing, maintaining, or retrieving information</span></a> don't reflect your intelligence or effort level - they reflect differences in how your brain temporarily stores and accesses information.</p>
-
-            <p>It's also important to recognize that <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> brains often have excellent <a class="jargon">long-term memory<span class="tooltip">The ability to store and retrieve information over extended periods</span></a> for interesting information while struggling specifically with <a class="jargon">working memory<span class="tooltip">The mental workspace that temporarily holds and manipulates information during thinking tasks</span></a> tasks. Your memory isn't broken - it works differently.</p>
-
-            <div class="highlight-box">
-                <p><strong>Remember:</strong> Successful people with <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> don't succeed by overcoming their <a class="jargon">working memory<span class="tooltip">The mental workspace that temporarily holds and manipulates information during thinking tasks</span></a> limitations - they succeed by building systems that work with them.</p>
-            </div>
-        </div>
-
-        <div class="related-struggles">
-            <h3>Related Struggles</h3>
-            <div class="struggle-tags">
-                <a href="{{ '/struggles/attention-regulation.html' | relative_url }}" class="struggle-tag">Attention Regulation</a>
-                <a href="{{ '/struggles/task-initiation-paralysis.html' | relative_url }}" class="struggle-tag">Task Initiation Paralysis</a>
-                <a href="{{ '/struggles/follow-through-completion.html' | relative_url }}" class="struggle-tag">Follow-Through Completion</a>
-                <a href="{{ '/struggles/organization-and-planning-challenges.html' | relative_url }}" class="struggle-tag">Organization Challenges</a>
-                <a href="{{ '/struggles/time-blindness.html' | relative_url }}" class="struggle-tag">Time Blindness</a>
-                <a href="{{ '/struggles/executive-function-challenges.html' | relative_url }}" class="struggle-tag">Executive Function</a>
-            </div>
-        </div>
-    </div>
+    </main>
 </div>
 
 <script>
