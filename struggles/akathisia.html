@@ -1,8 +1,8 @@
+<!-- struggles/akathisia.html -->
 ---
 layout: default
 title: "Akathisia"
 ---
-<!-- struggles/akathisia.html -->
 <style>
     * {
         margin: 0;
@@ -35,7 +35,7 @@ title: "Akathisia"
 
     .header p {
         color: rgba(255, 255, 255, 0.9);
-        font-size: 1.1rem;
+        font-size: 1.2rem;
     }
 
     .breadcrumb {
@@ -62,7 +62,7 @@ title: "Akathisia"
     }
 
     .container {
-        max-width: 900px;
+        max-width: 1200px;
         margin: 0 auto;
         padding: 2rem;
         width: 100%;
@@ -77,73 +77,142 @@ title: "Akathisia"
         margin-bottom: 2rem;
     }
 
-    .section {
-        background: white;
-        border-radius: 12px;
+    .what-section {
+        background: #ffe6e6;
         padding: 2rem;
+        border-radius: 16px;
         margin: 2rem 0;
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-        border-top: 3px solid #d63031;
+        border-left: 4px solid #d63031;
     }
 
-    .section h2 {
+    .what-section h2 {
         color: #d63031;
-        font-size: 1.4rem;
-        margin-bottom: 1.5rem;
-        font-weight: 600;
-    }
-
-    .section p {
-        color: #555;
         margin-bottom: 1rem;
-        font-size: 1rem;
+        font-size: 1.6rem;
     }
 
-    .section ul {
-        padding-left: 1.5rem;
+    .what-section p {
+        margin-bottom: 1rem;
+        font-size: 1.05rem;
         color: #555;
-        margin: 1rem 0;
     }
 
-    .section li {
+    .why-section {
+        background: #ffeaa7;
+        padding: 2rem;
+        border-radius: 16px;
+        margin: 2rem 0;
+        border-left: 4px solid #f1c40f;
+    }
+
+    .why-section h2 {
+        color: #f39c12;
+        margin-bottom: 1rem;
+        font-size: 1.6rem;
+    }
+
+    .why-section p {
+        margin-bottom: 1rem;
+        font-size: 1.05rem;
+        color: #555;
+    }
+
+    .immediate-help {
+        background: #cce5ff;
+        padding: 2rem;
+        border-radius: 16px;
+        margin: 2rem 0;
+        border-left: 4px solid #007acc;
+    }
+
+    .immediate-help h2 {
+        color: #005599;
+        margin-bottom: 1rem;
+        font-size: 1.6rem;
+    }
+
+    .immediate-help ul {
+        color: #555;
+        padding-left: 1.2rem;
+    }
+
+    .immediate-help li {
         margin-bottom: 0.8rem;
         font-size: 0.95rem;
     }
 
-    .immediate-help {
-        background: #e8f5e8;
-        border-left-color: #00b894;
-    }
-
-    .immediate-help h2 {
-        color: #00b894;
-    }
-
     .long-term {
-        background: #e3f2fd;
-        border-left-color: #1976d2;
+        background: #d4edda;
+        padding: 2rem;
+        border-radius: 16px;
+        margin: 2rem 0;
+        border-left: 4px solid #28a745;
     }
 
     .long-term h2 {
-        color: #1976d2;
+        color: #155724;
+        margin-bottom: 1rem;
+        font-size: 1.6rem;
     }
 
-    .medical-intervention {
-        background: #fff3e0;
-        border-left-color: #f57c00;
+    .long-term ul {
+        color: #555;
+        padding-left: 1.2rem;
     }
 
-    .medical-intervention h2 {
-        color: #f57c00;
+    .long-term li {
+        margin-bottom: 0.8rem;
+        font-size: 0.95rem;
     }
 
-    .validation {
-        background: #f3e5f5;
-        border-left-color: #8e24aa;
+    .medical-section {
+        background: #d1f2eb;
+        padding: 2rem;
+        border-radius: 16px;
+        margin: 2rem 0;
+        border-left: 4px solid #17a2b8;
     }
 
-    .validation h2 {
-        color: #8e24aa;
+    .medical-section h2 {
+        color: #0c5460;
+        margin-bottom: 1rem;
+        font-size: 1.6rem;
+    }
+
+    .medical-section p {
+        margin-bottom: 1rem;
+        font-size: 1.05rem;
+        color: #555;
+    }
+
+    .medical-section ul {
+        color: #555;
+        padding-left: 1.2rem;
+    }
+
+    .medical-section li {
+        margin-bottom: 0.8rem;
+        font-size: 0.95rem;
+    }
+
+    .validation-section {
+        background: #e2e3ff;
+        padding: 2rem;
+        border-radius: 16px;
+        margin: 2rem 0;
+        border-left: 4px solid #6c5ce7;
+    }
+
+    .validation-section h2 {
+        color: #5a4fcf;
+        margin-bottom: 1rem;
+        font-size: 1.6rem;
+    }
+
+    .validation-section p {
+        margin-bottom: 1rem;
+        font-size: 1.05rem;
+        color: #555;
     }
 
     .learn-more {
@@ -207,7 +276,7 @@ title: "Akathisia"
         background: #d63031;
         color: white;
         padding: 0.5rem 1rem;
-        border-radius: 8px;
+        border-radius: 20px;
         font-size: 0.85rem;
         text-decoration: none;
         transition: all 0.3s ease;
@@ -221,6 +290,14 @@ title: "Akathisia"
         color: white;
         text-decoration: none;
         transform: translateY(-1px);
+    }
+
+    .highlight-box {
+        background: #fff8e1;
+        padding: 1rem;
+        border-radius: 8px;
+        border-left: 3px solid #ffc107;
+        margin: 1rem 0;
     }
 
     /* Focus states for accessibility */
@@ -251,24 +328,25 @@ title: "Akathisia"
 
     /* Pink jargon for white backgrounds */
     .content-card .jargon,
-    .section .jargon,
     .related-struggles .jargon {
         color: #e84393;
         border-bottom-color: #e84393;
     }
 
     .content-card .jargon:hover,
-    .section .jargon:hover,
     .related-struggles .jargon:hover {
         color: #fd79a8;
         border-bottom-color: #fd79a8;
     }
 
-    /* Bold black jargon for colored sections */
+    /* Bold black jargon for colored backgrounds */
+    .what-section .jargon,
+    .why-section .jargon,
     .immediate-help .jargon,
     .long-term .jargon,
-    .medical-intervention .jargon,
-    .validation .jargon {
+    .medical-section .jargon,
+    .validation-section .jargon,
+    .highlight-box .jargon {
         color: #333;
         font-weight: 600;
         border-bottom-color: #333;
@@ -335,14 +413,6 @@ title: "Akathisia"
         opacity: 1;
     }
 
-    .highlight-box {
-        background: #fff8e1;
-        padding: 1rem;
-        border-radius: 8px;
-        border-left: 3px solid #ffc107;
-        margin: 1rem 0;
-    }
-
     /* Mobile responsive tooltip adjustments */
     @media (max-width: 1024px) {
         .tooltip {
@@ -390,7 +460,12 @@ title: "Akathisia"
             padding: 1.5rem;
         }
 
-        .section {
+        .what-section,
+        .why-section,
+        .immediate-help,
+        .long-term,
+        .medical-section,
+        .validation-section {
             padding: 1.5rem;
         }
 
@@ -417,7 +492,12 @@ title: "Akathisia"
             padding: 1.2rem;
         }
 
-        .section {
+        .what-section,
+        .why-section,
+        .immediate-help,
+        .long-term,
+        .medical-section,
+        .validation-section {
             padding: 1.2rem;
         }
 
@@ -437,7 +517,7 @@ title: "Akathisia"
 <div class="breadcrumb">
     <a href="{{ '/index.html' | relative_url }}">Home</a>
     <span>></span>
-    <a href="{{ '/struggles/' | relative_url }}">Struggles</a>
+    <a href="{{ '/struggles/index.html' | relative_url }}">Struggles</a>
     <span>></span>
     Akathisia
 </div>
@@ -445,9 +525,8 @@ title: "Akathisia"
 <div class="container">
     <main role="main" id="main-content">
         <div class="content-card">
-            <!-- Section 1: What this feels like -->
-            <div class="section">
-                <h2>What This Feels Like</h2>
+            <div class="what-section">
+                <h2 id="what-this-feels-like">What This Feels Like</h2>
                 <p><a class="jargon">Akathisia<span class="tooltip">A movement disorder characterized by inner restlessness and an irresistible urge to move</span></a> is a <a class="jargon">movement disorder<span class="tooltip">Neurological conditions that affect the speed, fluency, quality, and ease of movement</span></a> that creates an overwhelming sense of inner restlessness and an irresistible urge to move. Unlike typical restlessness, this feels like your body is fighting against stillness at a cellular level.</p>
 
                 <p>Many people describe it as feeling like they need to "crawl out of their own skin" or that sitting still is physically painful. It's not anxiety in the traditional sense - it's a physical compulsion that feels like electricity or insects under your skin. You might find yourself pacing compulsively, rocking back and forth, or constantly shifting positions without relief.</p>
@@ -459,9 +538,8 @@ title: "Akathisia"
                 </div>
             </div>
 
-            <!-- Section 2: Why this might be happening -->
-            <div class="section">
-                <h2>Why This Might Be Happening</h2>
+            <div class="why-section">
+                <h2 id="why-this-happens">Why This Might Be Happening</h2>
                 <p><a class="jargon">Akathisia<span class="tooltip">A movement disorder characterized by inner restlessness and an irresistible urge to move</span></a> occurs when medications block <a class="jargon">dopamine receptors<span class="tooltip">Brain cell receptors that respond to dopamine, a neurotransmitter essential for movement control and motivation</span></a> in the brain areas that control movement. This creates a <a class="jargon">neurochemical imbalance<span class="tooltip">Disruption in the brain's chemical messaging systems that regulate movement and mood</span></a> that manifests as an irresistible urge to move. It's not psychological - it's a real neurological <a class="jargon">side effect<span class="tooltip">Unintended effects of medication that occur alongside the intended therapeutic effects</span></a>.</p>
 
                 <p>The brain's <a class="jargon">basal ganglia<span class="tooltip">Brain structures that help control movement, balance, and coordination</span></a> rely on precise <a class="jargon">dopamine<span class="tooltip">A neurotransmitter that helps control movement, motivation, and pleasure</span></a> signaling to regulate movement and stillness. When medications interfere with this system, particularly by blocking <a class="jargon">D2 dopamine receptors<span class="tooltip">Specific dopamine receptors in the brain that are crucial for movement control</span></a>, the brain loses its ability to feel comfortable at rest.</p>
@@ -478,9 +556,8 @@ title: "Akathisia"
                 </div>
             </div>
 
-            <!-- Section 3: Next 5 minutes -->
-            <div class="section immediate-help">
-                <h2>What Can Help You Through the Next 5 Minutes</h2>
+            <div class="immediate-help">
+                <h2 id="next-five-minutes">What Can Help You Through the Next 5 Minutes</h2>
                 <p>When you're experiencing <a class="jargon">akathisia<span class="tooltip">A movement disorder characterized by inner restlessness and an irresistible urge to move</span></a> right now, these strategies can provide some relief:</p>
 
                 <ul>
@@ -498,9 +575,8 @@ title: "Akathisia"
                 </div>
             </div>
 
-            <!-- Section 4: Long-term solutions -->
-            <div class="section long-term">
-                <h2>What Are Some Healthy Long-Term Solutions</h2>
+            <div class="long-term">
+                <h2 id="healthy-long-term-solutions">What Are Some Healthy Long-Term Solutions</h2>
                 <p>Managing <a class="jargon">akathisia<span class="tooltip">A movement disorder characterized by inner restlessness and an irresistible urge to move</span></a> requires medical intervention, but these approaches can help:</p>
 
                 <ul>
@@ -526,9 +602,8 @@ title: "Akathisia"
                 </div>
             </div>
 
-            <!-- Section 5: Medical intervention -->
-            <div class="section medical-intervention">
-                <h2>When Should I Consider Immediate Medical Intervention</h2>
+            <div class="medical-section">
+                <h2 id="medical-intervention">When Should I Consider Immediate Medical Intervention</h2>
                 <p>Seek immediate medical attention for <a class="jargon">akathisia<span class="tooltip">A movement disorder characterized by inner restlessness and an irresistible urge to move</span></a> in these situations:</p>
 
                 <ul>
@@ -547,9 +622,8 @@ title: "Akathisia"
                 </div>
             </div>
 
-            <!-- Section 6: Validation -->
-            <div class="section validation">
-                <h2>You're Not Imagining This</h2>
+            <div class="validation-section">
+                <h2 id="youre-not-imagining-this">You're Not Imagining This</h2>
                 <p><a class="jargon">Akathisia<span class="tooltip">A movement disorder characterized by inner restlessness and an irresistible urge to move</span></a> is a well-documented medical condition with specific <a class="jargon">diagnostic criteria<span class="tooltip">Standardized symptoms and signs that healthcare providers use to identify and diagnose conditions</span></a> and established treatments. The torment you're experiencing is real and valid - this isn't "just anxiety" or something you need to learn to live with indefinitely.</p>
 
                 <p>Many people with <a class="jargon">akathisia<span class="tooltip">A movement disorder characterized by inner restlessness and an irresistible urge to move</span></a> report feeling like they're "going crazy" or that others don't understand the intensity of their distress. Healthcare providers sometimes underestimate how unbearable this condition can be, but your suffering is legitimate and deserves proper treatment.</p>
