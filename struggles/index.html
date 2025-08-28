@@ -1,347 +1,764 @@
+<!-- struggles/index.html -->
 ---
 layout: default
-title: Daily Struggles
+title: "Daily Struggles"
 ---
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daily Struggles - Neurodivergent Survival Guide</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-weight: 500;
+        background: linear-gradient(135deg, #6b7280 0%, #4b5563 100%);
+        color: #333;
+        min-height: 100vh;
+        line-height: 1.7;
+    }
+
+    .header {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        padding: 3rem 2rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        text-align: center;
+    }
+
+    .header h1 {
+        color: white;
+        font-size: 3rem;
+        font-weight: 300;
+        margin-bottom: 0.5rem;
+    }
+
+    .header p {
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 1.2rem;
+    }
+
+    .breadcrumb {
+        background: rgba(255, 255, 255, 0.05);
+        padding: 0.8rem 2rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        text-align: center;
+    }
+
+    .breadcrumb a {
+        color: rgba(255, 255, 255, 0.8);
+        text-decoration: none;
+        font-size: 0.9rem;
+        font-weight: 500;
+    }
+
+    .breadcrumb a:hover {
+        color: white;
+        text-decoration: underline;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .intro-section {
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 20px;
+        padding: 2.5rem;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        margin-bottom: 3rem;
+        text-align: center;
+    }
+
+    .intro-section h2 {
+        color: #333;
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+    }
+
+    .intro-section p {
+        color: #555;
+        font-size: 1.1rem;
+        margin-bottom: 1.5rem;
+        line-height: 1.8;
+    }
+
+    .how-to-use {
+        background: #f8f9fa;
+        padding: 2rem;
+        border-radius: 16px;
+        margin-top: 2rem;
+    }
+
+    .how-to-use h3 {
+        color: #333;
+        margin-bottom: 1rem;
+        font-size: 1.3rem;
+    }
+
+    .usage-scenarios {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1.5rem;
+        margin-top: 1.5rem;
+    }
+
+    .scenario-card {
+        background: white;
+        padding: 1.5rem;
+        border-radius: 12px;
+        border-left: 4px solid #6b7280;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    .scenario-card h4 {
+        color: #333;
+        margin-bottom: 0.5rem;
+        font-size: 1.1rem;
+        font-weight: 600;
+    }
+
+    .scenario-card p {
+        color: #666;
+        margin-bottom: 0;
+        font-size: 0.95rem;
+    }
+
+    .category-section {
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 20px;
+        margin-bottom: 3rem;
+        overflow: hidden;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    }
+
+    .category-header {
+        background: linear-gradient(135deg, #6b7280, #4b5563);
+        color: white;
+        padding: 2rem;
+        text-align: center;
+    }
+
+    .category-header h2 {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+        font-weight: 300;
+    }
+
+    .category-header p {
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 1.1rem;
+    }
+
+    .struggles-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 1.5rem;
+        padding: 2.5rem;
+        background: #e5e7eb;
+    }
+
+    .struggle-card {
+        background: white;
+        border-radius: 12px;
+        padding: 1.5rem;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+        transition: all 0.3s ease;
+        text-decoration: none;
+        color: inherit;
+        border: 2px solid transparent;
+        min-height: 44px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .struggle-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        border-color: #6b7280;
+        text-decoration: none;
+        color: inherit;
+    }
+
+    .struggle-card h3 {
+        color: #333;
+        margin-bottom: 0.8rem;
+        font-size: 1.2rem;
+        font-weight: 600;
+    }
+
+    .struggle-card p {
+        color: #666;
+        margin-bottom: 1rem;
+        line-height: 1.6;
+        font-size: 0.95rem;
+        flex-grow: 1;
+    }
+
+    .condition-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.3rem;
+        margin-top: auto;
+    }
+
+    .condition-tag {
+        background: #e2e8f0;
+        color: #4a5568;
+        padding: 0.2rem 0.6rem;
+        border-radius: 12px;
+        font-size: 0.75rem;
+        font-weight: 500;
+    }
+
+    .condition-tag.adhd { background: #fee2e2; color: #dc2626; }
+    .condition-tag.autism { background: #d1fae5; color: #059669; }
+    .condition-tag.bipolar { background: #dbeafe; color: #2563eb; }
+    .condition-tag.bpd { background: #fef3c7; color: #d97706; }
+
+    /* Focus states for accessibility */
+    .struggle-card:focus,
+    .jargon:focus,
+    .breadcrumb a:focus {
+        outline: 2px solid #fff;
+        outline-offset: 2px;
+    }
+
+    /* Motion accessibility */
+    @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+        }
+    }
+
+    /* Jargon styling - context-aware based on background */
+    .jargon {
+        text-decoration: none;
+        border-bottom: 1px dotted;
+        position: relative;
+        cursor: help;
+        font-weight: 500;
+    }
+
+    /* Pink jargon for white backgrounds */
+    .intro-section .jargon,
+    .struggle-card .jargon,
+    .scenario-card .jargon,
+    .how-to-use .jargon {
+        color: #e84393;
+        border-bottom-color: #e84393;
+    }
+
+    .intro-section .jargon:hover,
+    .struggle-card .jargon:hover,
+    .scenario-card .jargon:hover,
+    .how-to-use .jargon:hover {
+        color: #fd79a8;
+        border-bottom-color: #fd79a8;
+    }
+
+    /* White jargon for gradient backgrounds */
+    .header .jargon,
+    .breadcrumb .jargon,
+    .category-header .jargon {
+        color: white;
+        border-bottom-color: rgba(255, 255, 255, 0.7);
+        background: rgba(255, 255, 255, 0.1);
+        padding: 2px 6px;
+        border-radius: 4px;
+    }
+
+    .header .jargon:hover,
+    .breadcrumb .jargon:hover,
+    .category-header .jargon:hover {
+        background: rgba(255, 255, 255, 0.2);
+        border-bottom-color: white;
+    }
+
+    /* Auto-sizing tooltips */
+    .tooltip {
+        visibility: hidden;
+        opacity: 0;
+        position: absolute;
+        bottom: calc(100% + 8px);
+        left: 50%;
+        transform: translateX(-50%);
+        background: #333;
+        color: white;
+        padding: 12px 16px;
+        border-radius: 8px;
+        font-size: 0.9rem;
+        font-weight: normal;
+        z-index: 1001;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        transition: opacity 0.3s, visibility 0.3s;
+        max-width: 800px;
+        min-width: 200px;
+        width: max-content;
+        white-space: normal;
+        text-align: left;
+        line-height: 1.5;
+        pointer-events: none;
+    }
+
+    .tooltip::after {
+        content: '';
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        border: 6px solid transparent;
+        border-top-color: #333;
+    }
+
+    .jargon:hover .tooltip {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    /* Mobile responsive tooltip adjustments */
+    @media (max-width: 1024px) {
+        .tooltip {
+            max-width: 400px;
+        }
+    }
+
+    /* Mobile-specific tooltip positioning */
+    @media (max-width: 768px) {
+        .tooltip {
+            position: fixed !important;
+            bottom: 20px !important;
+            left: 20px !important;
+            right: 20px !important;
+            transform: none !important;
+            max-width: none !important;
+            width: auto !important;
         }
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
+        .tooltip::after {
+            display: none !important;
         }
 
         .header {
-            text-align: center;
-            padding: 3rem 2rem;
-            background: rgba(255, 255, 255, 0.95);
-            margin-bottom: 2rem;
+            padding: 2rem 1rem;
         }
 
         .header h1 {
-            font-size: 3rem;
-            color: #2d3748;
-            margin-bottom: 0.5rem;
+            font-size: 2.5rem;
         }
 
-        .header p {
-            font-size: 1.2rem;
-            color: #666;
+        .container {
+            padding: 1rem;
         }
 
         .intro-section {
-            max-width: 800px;
-            margin: 0 auto 3rem;
-            padding: 2rem;
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 12px;
-        }
-
-        .intro-section p {
-            margin-bottom: 1.5rem;
-            font-size: 1.1rem;
-            line-height: 1.8;
-        }
-
-        .how-to-use {
-            background: rgba(255, 255, 255, 0.95);
-            margin-bottom: 2rem;
-            border-radius: 12px;
-            padding: 2rem;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-            margin-bottom: 3rem;
-        }
-
-        .how-to-use h2 {
-            color: #2d3748;
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
-        }
-
-        .usage-scenarios {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin-top: 1.5rem;
-        }
-
-        .scenario-card {
-            background: #f8f9ff;
             padding: 1.5rem;
-            border-radius: 8px;
-            border-left: 4px solid #74b9ff;
-        }
-
-        .scenario-card h3 {
-            color: #2d3748;
-            margin-bottom: 0.5rem;
-            font-size: 1.1rem;
-        }
-
-        .scenario-card p {
-            color: #666;
-            margin-bottom: 0;
-        }
-
-        .struggles-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        .category-section {
-            background: rgba(255, 255, 255, 0.95);
-            margin-bottom: 2rem;
-            border-radius: 12px;
-            overflow: hidden;
-        }
-
-        .category-section h2 {
-            background: linear-gradient(135deg, #74b9ff, #0984e3);
-            color: white;
-            padding: 1.5rem 2rem;
-            margin: 0;
-            font-size: 1.5rem;
-        }
-
-        .category-description {
-            padding: 1rem 2rem;
-            color: #666;
-            font-style: italic;
-            background: #f8f9ff;
-            border-bottom: 1px solid #e0e6ff;
         }
 
         .struggles-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            padding: 2rem;
-        }
-
-        .struggle-card {
-            background: white;
-            border-radius: 12px;
+            grid-template-columns: 1fr;
             padding: 1.5rem;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
-            text-decoration: none;
-            color: inherit;
+            gap: 1.2rem;
         }
 
-        .struggle-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-            border-color: #74b9ff;
-            text-decoration: none;
+        .usage-scenarios {
+            grid-template-columns: 1fr;
         }
 
-        .struggle-card h3 {
-            color: #2d3748;
-            margin-bottom: 0.5rem;
-            font-size: 1.2rem;
+        .category-header {
+            padding: 1.5rem;
         }
 
-        .struggle-card p {
-            color: #666;
-            margin-bottom: 1rem;
-            line-height: 1.6;
+        .category-header h2 {
+            font-size: 1.8rem;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .header h1 {
+            font-size: 2rem;
         }
 
-        .struggle-status {
-            display: inline-block;
-            padding: 0.3rem 0.8rem;
-            border-radius: 15px;
-            font-size: 0.85rem;
-            font-weight: 500;
+        .intro-section {
+            padding: 1.2rem;
         }
 
-        .available {
-            background: linear-gradient(135deg, #00b894, #00a085);
-            color: white;
+        .tooltip {
+            left: 10px !important;
+            right: 10px !important;
+            bottom: 10px !important;
         }
+    }
+</style>
 
-        .coming-soon {
-            background: linear-gradient(135deg, #fd79a8, #e84393);
-            color: white;
-        }
+<div class="breadcrumb">
+    <a href="{{ '/index.html' | relative_url }}">Home</a>
+</div>
 
-        .breadcrumb {
-            text-align: center;
-            padding: 1rem;
-            background: rgba(255, 255, 255, 0.8);
-            margin-bottom: 0;
-        }
+<div class="header">
+    <h1>Daily Struggles</h1>
+    <p>When your brain meets friction in daily life</p>
+</div>
 
-        .breadcrumb a {
-            color: #74b9ff;
-            text-decoration: none;
-            font-weight: 500;
-        }
+<div class="container">
+    <main role="main" id="main-content">
+        <div class="intro-section">
+            <h2>Find Your Specific Friction Points</h2>
+            <p>Daily struggles are those predictable moments where your <a class="jargon">neurodivergent<span class="tooltip">Brain differences that affect how you process information, communicate, and interact with the world</span></a> brain bumps up against a world designed for different wiring. These aren't personal failings - they're friction points where your brain works differently than expected.</p>
 
-        .breadcrumb a:hover {
-            text-decoration: underline;
-        }
+            <p>Each struggle offers practical strategies you can use right now, plus longer-term approaches for managing these challenges. Understanding your patterns helps you prepare, adapt, and realize you're not alone in these experiences.</p>
 
-        @media (max-width: 768px) {
-            .header h1 {
-                font-size: 2rem;
-            }
-            
-            .struggles-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-
-            .usage-scenarios {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
-</head>
-<body>
-    <div class="breadcrumb">
-        <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/">Home</a>
-    </div>
-
-    <div class="header">
-        <h1>Daily Struggles</h1>
-        <p>Specific situations where neurodivergent brains face friction</p>
-    </div>
-
-    <div class="intro-section">
-        <p>Daily struggles are the specific moments where neurodivergent brains bump up against a world designed for neurotypical functioning. These aren't character flaws or things to fix - they're predictable friction points that happen when different brain wiring meets standard expectations.</p>
-
-        <p>Understanding these struggles helps you recognize patterns, develop strategies, and realize you're not alone in these experiences. Each struggle page offers practical tools you can use right away, plus longer-term approaches for managing these challenges.</p>
-    </div>
-
-    <div class="how-to-use">
-        <h2>How to Use This Section</h2>
-        
-        <div class="usage-scenarios">
-            <div class="scenario-card">
-                <h3>When you're having a specific problem</h3>
-                <p>Browse the categories below to find the struggle that matches what you're experiencing right now. Get immediate help and longer-term strategies.</p>
-            </div>
-            
-            <div class="scenario-card">
-                <h3>When you want to understand patterns</h3>
-                <p>Look through multiple struggles to see which ones resonate. Understanding your pattern of difficulties can help you plan and prepare.</p>
-            </div>
-            
-            <div class="scenario-card">
-                <h3>When you're not sure where to start</h3>
-                <p>If nothing here feels right, try the <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/conditions/">Conditions</a> section or <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/glossary/">Glossary</a> instead.</p>
+            <div class="how-to-use">
+                <h3>How to Navigate This Section</h3>
+                
+                <div class="usage-scenarios">
+                    <div class="scenario-card">
+                        <h4>When you recognize the experience</h4>
+                        <p>Scan the descriptions below. When something makes you think "Yes, that's exactly what happens to me," click through for immediate and long-term help.</p>
+                    </div>
+                    
+                    <div class="scenario-card">
+                        <h4>When you're exploring patterns</h4>
+                        <p>Look at the <a class="jargon">condition tags<span class="tooltip">Labels showing which conditions commonly experience each type of struggle</span></a> to see which struggles often co-occur. Understanding your pattern helps with planning and self-advocacy.</p>
+                    </div>
+                    
+                    <div class="scenario-card">
+                        <h4>When nothing quite fits</h4>
+                        <p>Try browsing by condition in the <a href="{{ '/conditions/index.html' | relative_url }}">Conditions</a> section, or explore terminology in the <a href="{{ '/glossary/index.html' | relative_url }}">Glossary</a>.</p>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div class="struggles-container">
         <div class="category-section">
-            <h2>Internal Struggles</h2>
-            <div class="category-description">
-                What happens inside your head that makes daily life more difficult
+            <div class="category-header">
+                <h2>When Your Brain Won't Cooperate</h2>
+                <p>Struggles with getting started, staying focused, and mental processes</p>
             </div>
             
             <div class="struggles-grid">
-                <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/communication-issues.html" class="struggle-card">
+                <a href="{{ '/struggles/task-initiation-paralysis.html' | relative_url }}" class="struggle-card">
+                    <h3>Task Initiation Paralysis</h3>
+                    <p>You know exactly what needs to be done but can't make yourself start. Even simple tasks feel like hitting an invisible wall, no matter how much you want to begin.</p>
+                    <div class="condition-tags">
+                        <span class="condition-tag adhd">ADHD</span>
+                        <span class="condition-tag autism">Autism</span>
+                        <span class="condition-tag bpd">BPD</span>
+                    </div>
+                </a>
+                
+                <a href="{{ '/struggles/attention-regulation.html' | relative_url }}" class="struggle-card">
+                    <h3>Attention Regulation</h3>
+                    <p>Your focus either won't turn on when you need it or won't turn off when you don't. You might hyperfocus for hours or find your mind wandering constantly.</p>
+                    <div class="condition-tags">
+                        <span class="condition-tag adhd">ADHD</span>
+                        <span class="condition-tag autism">Autism</span>
+                    </div>
+                </a>
+
+                <a href="{{ '/struggles/working-memory-difficulties.html' | relative_url }}" class="struggle-card">
+                    <h3>Working Memory Difficulties</h3>
+                    <p>You walk into rooms and forget why you came. Instructions slip away while you're trying to follow them. Your mental workspace feels too small for the job you're doing.</p>
+                    <div class="condition-tags">
+                        <span class="condition-tag adhd">ADHD</span>
+                    </div>
+                </a>
+
+                <a href="{{ '/struggles/time-blindness.html' | relative_url }}" class="struggle-card">
+                    <h3>Time Blindness</h3>
+                    <p>Time feels slippery and unpredictable. Five minutes and five hours feel the same. You consistently underestimate how long tasks take or lose entire hours to focused work.</p>
+                    <div class="condition-tags">
+                        <span class="condition-tag adhd">ADHD</span>
+                        <span class="condition-tag autism">Autism</span>
+                    </div>
+                </a>
+
+                <a href="{{ '/struggles/executive-function-challenges.html' | relative_url }}" class="struggle-card">
+                    <h3>Executive Function Challenges</h3>
+                    <p>You have five different things you're supposed to be managing and you don't know which one to tackle first. Everything feels equally urgent and overwhelming, so you end up doing none of them.</p>
+                    <div class="condition-tags">
+                        <span class="condition-tag adhd">ADHD</span>
+                        <span class="condition-tag autism">Autism</span>
+                    </div>
+                </a>
+
+                <a href="{{ '/struggles/follow-through-completion.html' | relative_url }}" class="struggle-card">
+                    <h3>Follow-Through and Completion</h3>
+                    <p>Starting projects feels exciting, but finishing them is nearly impossible. You have dozens of partially completed tasks and struggle to push through the final steps.</p>
+                    <div class="condition-tags">
+                        <span class="condition-tag adhd">ADHD</span>
+                        <span class="condition-tag bpd">BPD</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="category-section">
+            <div class="category-header">
+                <h2>When Your Body and Senses Feel Wrong</h2>
+                <p>Physical discomfort, sensory overwhelm, and embodiment challenges</p>
+            </div>
+            
+            <div class="struggles-grid">
+                <a href="{{ '/struggles/sensory-overwhelm.html' | relative_url }}" class="struggle-card">
+                    <h3>Sensory Overwhelm</h3>
+                    <p>Lights feel too bright, sounds too loud, textures too rough. Normal environments become unbearable, and you need to escape or shut down to cope.</p>
+                    <div class="condition-tags">
+                        <span class="condition-tag autism">Autism</span>
+                        <span class="condition-tag adhd">ADHD</span>
+                    </div>
+                </a>
+
+                <a href="{{ '/struggles/sensory-seeking-behaviors.html' | relative_url }}" class="struggle-card">
+                    <h3>Sensory Seeking Behaviors</h3>
+                    <p>You crave intense coffee, loud music, spicy food, or need to touch everything. Others might see these behaviors as excessive, but you need strong sensory input to feel awake and regulated.</p>
+                    <div class="condition-tags">
+                        <span class="condition-tag autism">Autism</span>
+                        <span class="condition-tag adhd">ADHD</span>
+                    </div>
+                </a>
+
+                <a href="{{ '/struggles/physical-restlessness.html' | relative_url }}" class="struggle-card">
+                    <h3>Physical Restlessness</h3>
+                    <p>Your body won't stay still. You need to move, fidget, or pace constantly. Sitting through meetings or classes feels physically painful or impossible.</p>
+                    <div class="condition-tags">
+                        <span class="condition-tag adhd">ADHD</span>
+                    </div>
+                </a>
+
+                <a href="{{ '/struggles/special-interests-consuming-focus.html' | relative_url }}" class="struggle-card">
+                    <h3>Special Interests Consuming Focus</h3>
+                    <p>Your passion project has taken over your entire life. You can talk about it for hours but struggle to care about anything else. Friends and family feel neglected while you dive deeper into your obsession.</p>
+                    <div class="condition-tags">
+                        <span class="condition-tag autism">Autism</span>
+                    </div>
+                </a>
+
+                <a href="{{ '/struggles/sleep-disruption.html' | relative_url }}" class="struggle-card">
+                    <h3>Sleep Disruption</h3>
+                    <p>Your sleep schedule feels completely out of sync with the world. You might be a night owl forced into morning schedules, or your sleep is frequently interrupted and unrefreshing.</p>
+                    <div class="condition-tags">
+                        <span class="condition-tag adhd">ADHD</span>
+                        <span class="condition-tag autism">Autism</span>
+                        <span class="condition-tag bipolar">Bipolar</span>
+                    </div>
+                </a>
+
+                <a href="{{ '/struggles/akathisia.html' | relative_url }}" class="struggle-card">
+                    <h3>Akathisia</h3>
+                    <p>You feel like you need to crawl out of your own skin. An overwhelming inner restlessness makes it impossible to sit still, often as a side effect of medications.</p>
+                    <div class="condition-tags">
+                        <span class="condition-tag bipolar">Bipolar</span>
+                        <span class="condition-tag bpd">BPD</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="category-section">
+            <div class="category-header">
+                <h2>When Emotions Feel Too Big</h2>
+                <p>Overwhelming feelings, emotional regulation, and internal experiences</p>
+            </div>
+            
+            <div class="struggles-grid">
+                <a href="{{ '/struggles/emotional-dysregulation.html' | relative_url }}" class="struggle-card">
+                    <h3>Emotional Dysregulation</h3>
+                    <p>Your emotions feel too intense for the situation. Small frustrations become overwhelming, and you struggle to manage feelings that seem to have their own agenda.</p>
+                    <div class="condition-tags">
+                        <span class="condition-tag bpd">BPD</span>
+                        <span class="condition-tag adhd">ADHD</span>
+                        <span class="condition-tag bipolar">Bipolar</span>
+                    </div>
+                </a>
+
+                <a href="{{ '/struggles/rejection-sensitive-dysphoria.html' | relative_url }}" class="struggle-card">
+                    <h3>Rejection Sensitive Dysphoria</h3>
+                    <p>When your friend texts back slowly, you're convinced they hate you. A neutral email response feels like harsh criticism. Perceived rejection creates physical pain and overwhelming emotional spirals.</p>
+                    <div class="condition-tags">
+                        <span class="condition-tag adhd">ADHD</span>
+                        <span class="condition-tag bpd">BPD</span>
+                    </div>
+                </a>
+
+                <a href="{{ '/struggles/autistic-meltdowns.html' | relative_url }}" class="struggle-card">
+                    <h3>Autistic Meltdowns</h3>
+                    <p>Sometimes your system becomes completely overwhelmed and shuts down or explodes. These aren't tantrums - they're your nervous system reaching capacity and needing to reset.</p>
+                    <div class="condition-tags">
+                        <span class="condition-tag autism">Autism</span>
+                    </div>
+                </a>
+
+                <a href="{{ '/struggles/interrupting-and-blurting.html' | relative_url }}" class="struggle-card">
+                    <h3>Interrupting and Blurting</h3>
+                    <p>Words come out of your mouth before your brain approves them. You interrupt people mid-sentence or say things you immediately regret, even when you're trying to be polite.</p>
+                    <div class="condition-tags">
+                        <span class="condition-tag adhd">ADHD</span>
+                    </div>
+                </a>
+
+                <a href="{{ '/struggles/mood-swings.html' | relative_url }}" class="struggle-card">
+                    <h3>Mood Swings</h3>
+                    <p>Your emotional state can shift dramatically and unpredictably. You might feel fine one moment and devastated the next, often without clear external triggers.</p>
+                    <div class="condition-tags">
+                        <span class="condition-tag bipolar">Bipolar</span>
+                        <span class="condition-tag bpd">BPD</span>
+                        <span class="condition-tag adhd">ADHD</span>
+                    </div>
+                </a>
+
+                <a href="{{ '/struggles/elevated-mood-periods.html' | relative_url }}" class="struggle-card">
+                    <h3>Elevated Mood Periods</h3>
+                    <p>You feel invincible, need barely any sleep, and have a million amazing ideas all at once. Your confidence soars, spending increases, and everything seems possible until reality crashes back in.</p>
+                    <div class="condition-tags">
+                        <span class="condition-tag bipolar">Bipolar</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="category-section">
+            <div class="category-header">
+                <h2>When Communication Feels Impossible</h2>
+                <p>Social interactions, misunderstandings, and connection challenges</p>
+            </div>
+            
+            <div class="struggles-grid">
+                <a href="{{ '/struggles/communication-issues.html' | relative_url }}" class="struggle-card">
                     <h3>Communication Issues</h3>
-                    <p>Conversations feel complicated, exhausting, or confusing in ways others don't seem to experience</p>
-                    <span class="struggle-status available">Available</span>
-                </a>
-                
-                <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/executive-function.html" class="struggle-card">
-                    <h3>Executive Function</h3>
-                    <p>Starting tasks, finishing projects, and organizing your day feels impossibly difficult</p>
-                    <span class="struggle-status coming-soon">Coming Soon</span>
-                </a>
-                
-                <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/emotional-regulation.html" class="struggle-card">
-                    <h3>Emotional Regulation</h3>
-                    <p>Your feelings feel too big, too intense, or change too quickly for the situation</p>
-                    <span class="struggle-status coming-soon">Coming Soon</span>
-                </a>
-                
-                <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/sensory-processing.html" class="struggle-card">
-                    <h3>Sensory Processing</h3>
-                    <p>Lights, sounds, textures, or crowds feel overwhelming or uncomfortable</p>
-                    <span class="struggle-status coming-soon">Coming Soon</span>
+                    <p>Conversations feel like navigating a minefield of unwritten rules. You might say the wrong thing, miss social cues, or struggle to express what you actually mean.</p>
+                    <div class="condition-tags">
+                        <span class="condition-tag autism">Autism</span>
+                        <span class="condition-tag adhd">ADHD</span>
+                    </div>
                 </a>
 
-                <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/time-management.html" class="struggle-card">
-                    <h3>Time Management</h3>
-                    <p>Time feels slippery - you lose track of it, underestimate tasks, or feel constantly behind</p>
-                    <span class="struggle-status coming-soon">Coming Soon</span>
+                <a href="{{ '/struggles/social-masking.html' | relative_url }}" class="struggle-card">
+                    <h3>Social Masking</h3>
+                    <p>You perform a version of yourself that feels acceptable to others, but it's exhausting and inauthentic. The real you feels hidden behind a carefully constructed persona.</p>
+                    <div class="condition-tags">
+                        <span class="condition-tag autism">Autism</span>
+                        <span class="condition-tag adhd">ADHD</span>
+                        <span class="condition-tag bpd">BPD</span>
+                    </div>
                 </a>
 
-                <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/attention-focus.html" class="struggle-card">
-                    <h3>Attention and Focus</h3>
-                    <p>You can't focus when you need to, or you hyperfocus and lose track of everything else</p>
-                    <span class="struggle-status coming-soon">Coming Soon</span>
+                <a href="{{ '/struggles/hyperfocus-episodes.html' | relative_url }}" class="struggle-card">
+                    <h3>Hyperfocus Episodes</h3>
+                    <p>You start working on something interesting and suddenly six hours have vanished. You forgot to eat, drink, pee, or acknowledge that other humans exist. Time becomes meaningless when your brain locks onto something engaging.</p>
+                    <div class="condition-tags">
+                        <span class="condition-tag adhd">ADHD</span>
+                        <span class="condition-tag autism">Autism</span>
+                    </div>
+                </a>
+
+                <a href="{{ '/struggles/relationship-patterns.html' | relative_url }}" class="struggle-card">
+                    <h3>Relationship Patterns</h3>
+                    <p>Your relationships follow predictable but difficult patterns. You might get too close too fast, push people away when you need them most, or struggle with boundaries.</p>
+                    <div class="condition-tags">
+                        <span class="condition-tag bpd">BPD</span>
+                        <span class="condition-tag bipolar">Bipolar</span>
+                    </div>
+                </a>
+
+                <a href="{{ '/struggles/fear-of-abandonment.html' | relative_url }}" class="struggle-card">
+                    <h3>Fear of Abandonment</h3>
+                    <p>Every delayed text response means they hate you. When people seem distant, you panic that they're about to leave forever. You might push people away first to avoid the pain of being left.</p>
+                    <div class="condition-tags">
+                        <span class="condition-tag bpd">BPD</span>
+                    </div>
+                </a>
+
+                <a href="{{ '/struggles/being-too-direct.html' | relative_url }}" class="struggle-card">
+                    <h3>Being Too Direct</h3>
+                    <p>You say exactly what you mean and people call you rude or blunt. Small talk feels pointless, so you skip straight to the real conversation. Others seem offended by your honest communication style.</p>
+                    <div class="condition-tags">
+                        <span class="condition-tag autism">Autism</span>
+                    </div>
                 </a>
             </div>
         </div>
 
         <div class="category-section">
-            <h2>External Challenges</h2>
-            <div class="category-description">
-                When your brain differences create friction with other people or environments
+            <div class="category-header">
+                <h2>When the World Fights Back</h2>
+                <p>Environmental challenges, systems, and external expectations</p>
             </div>
             
             <div class="struggles-grid">
-                <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/workplace-difficulties.html" class="struggle-card">
-                    <h3>Workplace Difficulties</h3>
-                    <p>Office environments, meetings, and professional expectations feel impossible to navigate</p>
-                    <span class="struggle-status coming-soon">Coming Soon</span>
+                <a href="{{ '/struggles/workplace-accommodations.html' | relative_url }}" class="struggle-card">
+                    <h3>Workplace Accommodations</h3>
+                    <p>Open offices, meetings, and standard work expectations feel impossible to navigate. You need different conditions to do your best work but struggle to ask for or get them.</p>
+                    <div class="condition-tags">
+                        <span class="condition-tag autism">Autism</span>
+                        <span class="condition-tag adhd">ADHD</span>
+                    </div>
                 </a>
-                
-                <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/relationship-challenges.html" class="struggle-card">
-                    <h3>Relationship Challenges</h3>
-                    <p>Friendships, family, or romantic relationships involve constant misunderstandings</p>
-                    <span class="struggle-status coming-soon">Coming Soon</span>
-                </a>
-                
-                <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/public-spaces.html" class="struggle-card">
-                    <h3>Public Spaces</h3>
-                    <p>Grocery stores, restaurants, and busy places feel overwhelming or anxiety-provoking</p>
-                    <span class="struggle-status coming-soon">Coming Soon</span>
-                </a>
-                
-                <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/routine-disruptions.html" class="struggle-card">
+
+                <a href="{{ '/struggles/routine-disruptions.html' | relative_url }}" class="struggle-card">
                     <h3>Routine Disruptions</h3>
-                    <p>Changes to your schedule or unexpected events throw off your entire day or week</p>
-                    <span class="struggle-status coming-soon">Coming Soon</span>
+                    <p>Unexpected changes throw off your entire system. What seems like minor schedule shifts to others can derail your whole day or week, leaving you feeling dysregulated.</p>
+                    <div class="condition-tags">
+                        <span class="condition-tag autism">Autism</span>
+                        <span class="condition-tag adhd">ADHD</span>
+                    </div>
                 </a>
 
-                <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/medical-healthcare.html" class="struggle-card">
-                    <h3>Medical and Healthcare</h3>
-                    <p>Doctor appointments, medical procedures, and healthcare systems feel impossible to navigate</p>
-                    <span class="struggle-status coming-soon">Coming Soon</span>
+                <a href="{{ '/struggles/missing-social-cues.html' | relative_url }}" class="struggle-card">
+                    <h3>Missing Social Cues</h3>
+                    <p>Conversations have hidden meanings you completely miss. People seem irritated and you have no idea what you did wrong. Everyone else appears to be following an invisible script.</p>
+                    <div class="condition-tags">
+                        <span class="condition-tag autism">Autism</span>
+                    </div>
                 </a>
 
-                <a href="https://neurodivergent-survival-guide.github.io/neurodivergent-survival-guide/struggles/financial-planning.html" class="struggle-card">
-                    <h3>Financial Planning</h3>
-                    <p>Managing money, budgets, and financial decisions feels overwhelming or confusing</p>
-                    <span class="struggle-status coming-soon">Coming Soon</span>
+                <a href="{{ '/struggles/public-spaces-overwhelm.html' | relative_url }}" class="struggle-card">
+                    <h3>Public Spaces Overwhelm</h3>
+                    <p>Grocery stores, restaurants, and busy places feel like assault courses for your nervous system. The combination of sounds, lights, and people becomes unbearable quickly.</p>
+                    <div class="condition-tags">
+                        <span class="condition-tag autism">Autism</span>
+                        <span class="condition-tag adhd">ADHD</span>
+                    </div>
+                </a>
+
+                <a href="{{ '/struggles/organization-and-planning-challenges.html' | relative_url }}" class="struggle-card">
+                    <h3>Organization and Planning Challenges</h3>
+                    <p>Keeping track of belongings, appointments, and responsibilities feels like an impossible juggling act. Traditional organization systems don't work for your brain.</p>
+                    <div class="condition-tags">
+                        <span class="condition-tag adhd">ADHD</span>
+                        <span class="condition-tag autism">Autism</span>
+                    </div>
+                </a>
+
+                <a href="{{ '/struggles/financial-executive-function.html' | relative_url }}" class="struggle-card">
+                    <h3>Financial Executive Function</h3>
+                    <p>Managing money, budgeting, and financial planning overwhelm your executive function. Bills pile up, spending feels impulsive, and long-term financial health seems impossible.</p>
+                    <div class="condition-tags">
+                        <span class="condition-tag adhd">ADHD</span>
+                        <span class="condition-tag bpd">BPD</span>
+                        <span class="condition-tag bipolar">Bipolar</span>
+                    </div>
                 </a>
             </div>
         </div>
-    </div>
-</body>
-</html>
+    </main>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Handle jargon clicks to prevent event bubbling
+    const jargonTerms = document.querySelectorAll('.jargon');
+    jargonTerms.forEach(function(jargon) {
+        jargon.addEventListener('click', function(e) {
+            e.stopPropagation();
+        });
+    });
+});
+</script>
