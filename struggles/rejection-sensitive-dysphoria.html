@@ -1,0 +1,551 @@
+---
+layout: struggle
+title: "Rejection Sensitive Dysphoria"
+slug: rejection-sensitive-dysphoria
+---
+
+<!-- /struggles/rejection-sensitive-dysphoria.html -->
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-weight: 500;
+        background: linear-gradient(135deg, #d63031 0%, #a21f23 100%);
+        color: #333;
+        min-height: 100vh;
+        line-height: 1.7;
+    }
+
+    .header {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        padding: 1.5rem 2rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .header h1 {
+        color: white;
+        font-size: 2.5rem;
+        font-weight: 300;
+        margin-bottom: 0.5rem;
+    }
+
+    .header p {
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 1.2rem;
+    }
+
+    .breadcrumb {
+        background: rgba(255, 255, 255, 0.05);
+        padding: 0.8rem 2rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    .breadcrumb a {
+        color: rgba(255, 255, 255, 0.8);
+        text-decoration: none;
+        font-size: 0.9rem;
+    }
+
+    .breadcrumb a:hover {
+        color: white;
+    }
+
+    .breadcrumb span {
+        color: rgba(255, 255, 255, 0.6);
+        margin: 0 0.5rem;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .content-card {
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 20px;
+        padding: 2.5rem;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        margin-bottom: 2rem;
+    }
+
+    .what-section {
+        background: #ffe6e6;
+        padding: 2rem;
+        border-radius: 16px;
+        margin: 2rem 0;
+        border-left: 4px solid #d63031;
+    }
+
+    .what-section h2 {
+        color: #d63031;
+        margin-bottom: 1rem;
+        font-size: 1.6rem;
+    }
+
+    .what-section p {
+        margin-bottom: 1rem;
+        font-size: 1.05rem;
+        color: #555;
+    }
+
+    .why-section {
+        background: #ffeaa7;
+        padding: 2rem;
+        border-radius: 16px;
+        margin: 2rem 0;
+        border-left: 4px solid #f1c40f;
+    }
+
+    .why-section h2 {
+        color: #f39c12;
+        margin-bottom: 1rem;
+        font-size: 1.6rem;
+    }
+
+    .why-section p {
+        margin-bottom: 1rem;
+        font-size: 1.05rem;
+        color: #555;
+    }
+
+    .immediate-help {
+        background: #cce5ff;
+        padding: 2rem;
+        border-radius: 16px;
+        margin: 2rem 0;
+        border-left: 4px solid #007acc;
+    }
+
+    .immediate-help h2 {
+        color: #005599;
+        margin-bottom: 1rem;
+        font-size: 1.6rem;
+    }
+
+    .immediate-help p {
+        margin-bottom: 1rem;
+        font-size: 1.05rem;
+        color: #555;
+    }
+
+    .long-term {
+        background: #d4edda;
+        padding: 2rem;
+        border-radius: 16px;
+        margin: 2rem 0;
+        border-left: 4px solid #28a745;
+    }
+
+    .long-term h2 {
+        color: #155724;
+        margin-bottom: 1rem;
+        font-size: 1.6rem;
+    }
+
+    .long-term p {
+        margin-bottom: 1rem;
+        font-size: 1.05rem;
+        color: #555;
+    }
+
+    .medical-section {
+        background: #d1f2eb;
+        padding: 2rem;
+        border-radius: 16px;
+        margin: 2rem 0;
+        border-left: 4px solid #17a2b8;
+    }
+
+    .medical-section h2 {
+        color: #0c5460;
+        margin-bottom: 1rem;
+        font-size: 1.6rem;
+    }
+
+    .medical-section p {
+        margin-bottom: 1rem;
+        font-size: 1.05rem;
+        color: #555;
+    }
+
+    .validation-section {
+        background: #e2e3ff;
+        padding: 2rem;
+        border-radius: 16px;
+        margin: 2rem 0;
+        border-left: 4px solid #6c5ce7;
+    }
+
+    .validation-section h2 {
+        color: #5a4fcf;
+        margin-bottom: 1rem;
+        font-size: 1.6rem;
+    }
+
+    .validation-section p {
+        margin-bottom: 1rem;
+        font-size: 1.05rem;
+        color: #555;
+    }
+
+    .related-struggles {
+        background: #f8f9fa;
+        padding: 1.5rem;
+        border-radius: 12px;
+        margin: 2rem 0;
+        border: 1px solid #e0e0e0;
+    }
+
+    .related-struggles h3 {
+        color: #333;
+        margin-bottom: 1rem;
+        font-size: 1.2rem;
+    }
+
+    .struggle-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        justify-content: center;
+    }
+
+    .struggle-tag {
+        background: #d63031;
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .struggle-tag:hover {
+        background: #a21f23;
+        color: white;
+        text-decoration: none;
+        transform: translateY(-1px);
+    }
+
+    .struggle-tag:focus {
+        outline: 2px solid #fff;
+        outline-offset: 2px;
+    }
+
+    .learn-more {
+        background: linear-gradient(45deg, #a29bfe, #6c5ce7);
+        color: white;
+        padding: 1.5rem;
+        border-radius: 12px;
+        margin: 1.5rem 0;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .learn-more h3 {
+        margin-bottom: 1rem;
+        font-size: 1.2rem;
+        color: white;
+    }
+
+    .learn-more:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    .learn-more-content {
+        display: none;
+        margin-top: 1rem;
+        padding-top: 1rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.3);
+        color: white;
+    }
+
+    .learn-more-content p {
+        color: white;
+        margin-bottom: 1rem;
+    }
+
+    .learn-more.expanded .learn-more-content {
+        display: block;
+    }
+
+    /* Jargon styling - context-aware based on background */
+    .jargon {
+        text-decoration: none;
+        border-bottom: 1px dotted;
+        position: relative;
+        cursor: help;
+        font-weight: 500;
+    }
+
+    /* Pink jargon for white backgrounds */
+    .content-card .jargon,
+    .related-struggles .jargon {
+        color: #e84393;
+        border-bottom-color: #e84393;
+    }
+
+    .content-card .jargon:hover,
+    .related-struggles .jargon:hover {
+        color: #fd79a8;
+        border-bottom-color: #fd79a8;
+    }
+
+    /* Bold black jargon for colored backgrounds */
+    .what-section .jargon,
+    .why-section .jargon,
+    .immediate-help .jargon,
+    .long-term .jargon,
+    .medical-section .jargon,
+    .validation-section .jargon {
+        color: #333;
+        font-weight: 600;
+        border-bottom-color: #333;
+    }
+
+    /* White jargon for gradient backgrounds */
+    .header .jargon,
+    .breadcrumb .jargon,
+    .learn-more .jargon,
+    .learn-more-content .jargon {
+        color: white;
+        border-bottom-color: rgba(255, 255, 255, 0.7);
+        background: rgba(255, 255, 255, 0.1);
+        padding: 2px 6px;
+        border-radius: 4px;
+    }
+
+    .header .jargon:hover,
+    .breadcrumb .jargon:hover,
+    .learn-more .jargon:hover,
+    .learn-more-content .jargon:hover {
+        background: rgba(255, 255, 255, 0.2);
+        border-bottom-color: white;
+    }
+
+    /* Auto-sizing tooltips */
+    .tooltip {
+        visibility: hidden;
+        opacity: 0;
+        position: absolute;
+        bottom: calc(100% + 8px);
+        left: 50%;
+        transform: translateX(-50%);
+        background: #333;
+        color: white;
+        padding: 12px 16px;
+        border-radius: 8px;
+        font-size: 0.9rem;
+        font-weight: normal;
+        z-index: 1001;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        transition: opacity 0.3s, visibility 0.3s;
+        max-width: 800px;
+        min-width: 200px;
+        width: max-content;
+        white-space: normal;
+        text-align: left;
+        line-height: 1.5;
+        pointer-events: none;
+    }
+
+    .tooltip::after {
+        content: '';
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        border: 6px solid transparent;
+        border-top-color: #333;
+    }
+
+    .jargon:hover .tooltip {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    /* Mobile responsive tooltip adjustments */
+    @media (max-width: 1024px) {
+        .tooltip {
+            max-width: 400px;
+        }
+    }
+
+    /* Mobile-specific tooltip positioning */
+    @media (max-width: 768px) {
+        .tooltip {
+            position: fixed !important;
+            bottom: 20px !important;
+            left: 20px !important;
+            right: 20px !important;
+            transform: none !important;
+            max-width: none !important;
+            width: auto !important;
+        }
+
+        .tooltip::after {
+            display: none !important;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .tooltip {
+            left: 10px !important;
+            right: 10px !important;
+            bottom: 10px !important;
+        }
+    }
+
+    /* Mobile adjustments */
+    @media (max-width: 768px) {
+        .struggle-tags {
+            flex-direction: column;
+        }
+        
+        .struggle-tag {
+            justify-content: center;
+            text-align: center;
+        }
+    }
+
+    /* Focus states for accessibility */
+    .struggle-tag:focus,
+    .jargon:focus,
+    .breadcrumb a:focus {
+        outline: 2px solid #fff;
+        outline-offset: 2px;
+    }
+
+    /* Motion accessibility */
+    @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+        }
+    }
+</style>
+
+<div class="header">
+    <h1>Rejection Sensitive Dysphoria</h1>
+    <p>When social interactions feel like emotional minefields</p>
+</div>
+
+<div class="breadcrumb">
+    <a href="{{ '/index.html' | relative_url }}">Home</a>
+    <span>></span>
+    <a href="{{ '/struggles/index.html' | relative_url }}">Struggles</a>
+    <span>></span>
+    <a href="{{ '/conditions/adhd.html' | relative_url }}">ADHD</a>
+    <span>></span>
+    Rejection Sensitive Dysphoria
+</div>
+
+<div class="container">
+    <main role="main" id="main-content">
+        <div class="content-card">
+            <div class="what-section">
+                <h2 id="what-this-feels-like">What This Feels Like</h2>
+                <p><a class="jargon">Rejection Sensitive Dysphoria<span class="tooltip">Intense emotional response to perceived or real rejection, criticism, or failure that feels disproportionate to the situation</span></a> exists on a spectrum from subtle to overwhelming. Sometimes it's dramatic - constructive feedback feels like a personal attack, and the pain hits like a punch to the chest. But more often, it's quieter and more insidious.</p>
+
+                <p>Many people with <a class="jargon">RSD<span class="tooltip">Rejection Sensitive Dysphoria - extreme emotional sensitivity to rejection or criticism</span></a> describe a constant background hum of social vigilance. You might find yourself automatically saying yes to things you don't want to do, constantly monitoring others' moods for signs of displeasure, or carefully crafting messages to avoid any possibility of seeming demanding or needy.</p>
+
+                <p>The chronic form often looks like: replaying conversations to check for mistakes, second-guessing your interpretations of social cues, exhaustion from <a class="jargon">people-pleasing<span class="tooltip">Automatically prioritizing others' comfort over your own needs to avoid potential conflict or rejection</span></a>, or a quietly building anxiety that someone won't be there when you need them. You might notice yourself pre-emptively distancing from people or over-explaining your requests to head off potential criticism.</p>
+
+                <p>Sometimes it's not about obvious rejection at all. It's the way your stomach drops when someone doesn't respond to your text as enthusiastically as usual. It's interpreting someone's busy day as evidence they're pulling away from you. It's that persistent voice whispering that you're too much, too needy, too difficult to love consistently.</p>
+            </div>
+
+            <div class="why-section">
+                <h2 id="why-this-happens">Why This Might Be Happening</h2>
+                <p><a class="jargon">RSD<span class="tooltip">Rejection Sensitive Dysphoria - extreme emotional sensitivity to rejection or criticism</span></a> appears to be linked to differences in how <a class="jargon">neurodivergent<span class="tooltip">Having a brain that functions differently from what's considered typical, including conditions like ADHD, autism, and others</span></a> brains process <a class="jargon">dopamine<span class="tooltip">A neurotransmitter involved in motivation, reward, and emotional regulation</span></a> and handle emotional regulation. Many researchers believe it's particularly common in people with <a class="jargon">ADHD<span class="tooltip">Attention Deficit Hyperactivity Disorder - a neurodevelopmental condition affecting attention, impulse control, and activity levels</span></a>, though it can occur with other conditions too.</p>
+                
+                <p>Your brain might be wired to be hypervigilant for social threats - an evolutionary advantage that helped our ancestors survive in groups, but becomes overwhelming in modern social situations. The same <a class="jargon">executive function<span class="tooltip">Mental skills including working memory, flexible thinking, and self-control</span></a> challenges that affect other areas of life can also impact how you process and respond to social information.</p>
+                
+                <p>Past experiences of actual rejection or criticism - especially during childhood - can amplify this response. If you've received a lot of negative feedback about <a class="jargon">ADHD symptoms<span class="tooltip">Behaviors like hyperactivity, inattention, or impulsivity that are part of having an ADHD brain</span></a> or other <a class="jargon">neurodivergent traits<span class="tooltip">Characteristics associated with neurological differences like stimming, intense interests, or processing differences</span></a>, your brain may have learned to be on high alert for signs of disapproval.</p>
+
+                <p>The chronic people-pleasing often develops as a protective strategy. If rejection feels unbearable, it makes sense that your brain would try to prevent it by making you as agreeable and accommodating as possible. But this creates its own exhaustion and often leads to relationships based on who you think you need to be, not who you actually are.</p>
+            </div>
+
+            <div class="immediate-help">
+                <h2 id="next-five-minutes">What Can Help You Through the Next 5 Minutes</h2>
+                
+                <p><strong>For intense episodes:</strong> Put your feet flat on the floor, hold an ice cube, or splash cold water on your wrists. This helps signal to your <a class="jargon">fight-or-flight system<span class="tooltip">Your body's automatic reaction to perceived threats, causing physical and emotional arousal</span></a> that you're safe. Try <a class="jargon">box breathing<span class="tooltip">Breathing technique where you inhale for 4 counts, hold for 4, exhale for 4, hold for 4, and repeat</span></a> and postpone any big decisions until the intensity passes.</p>
+                
+                <p><strong>For the chronic hum:</strong> Notice if you're currently scanning for signs of rejection or automatically adjusting your behavior to avoid potential conflict. Can you give yourself permission to be a little less careful right now? Maybe send that text without over-editing it, or ask for what you need without three disclaimers.</p>
+                
+                <p><strong>Reality check questions:</strong> Is there actual evidence this person is rejecting me, or am I filling in gaps with my fears? If my best friend told me this exact situation, what would I tell them? What's the most boring, neutral explanation for what just happened?</p>
+                
+                <p><strong>Name what's happening:</strong> "I'm having an <a class="jargon">RSD response<span class="tooltip">The brain's overprotective reaction to perceived social threat, not an accurate reading of reality</span></a> right now" - whether it's intense panic or that familiar social anxiety creep. Sometimes labeling the experience can reduce its power and help you remember this is your brain trying to protect you, not an accurate read of the situation.</p>
+            </div>
+
+            <div class="long-term">
+                <h2 id="long-term-solutions">What Are Some Healthy Long-term Solutions</h2>
+                
+                <p><strong>Build your awareness:</strong> Start noticing both your dramatic <a class="jargon">RSD episodes<span class="tooltip">Intense emotional reactions to perceived rejection or criticism</span></a> and your subtle patterns. Do you automatically over-explain requests? Constantly check others' facial expressions? Feel exhausted after social interactions from trying so hard to avoid rejection? <a class="jargon">Self-awareness<span class="tooltip">Understanding your own thoughts, feelings, and behaviors</span></a> of these patterns is the first step to changing them.</p>
+                
+                <p><strong>Practice deliberate authenticity:</strong> Experiment with being slightly less careful in low-stakes interactions. Send a text without re-reading it five times. Express a preference without immediately offering alternatives. Start small and notice that most people don't actually reject you for being human.</p>
+                
+                <p><strong>Create reality check systems:</strong> Develop relationships with trusted people who can help you assess whether your interpretation of a situation is accurate. Ask them to help you distinguish between RSD responses and legitimate relationship concerns.</p>
+                
+                <p><strong>Address the people-pleasing cycle:</strong> Many people with RSD exhaust themselves trying to be perfect to avoid rejection. Work on setting small boundaries and saying no to low-stakes requests. Your relationships will be healthier when they're based on who you actually are, not who you think you need to be to avoid abandonment.</p>
+                
+                <p><strong>Challenge <a class="jargon">cognitive distortions<span class="tooltip">Thinking patterns that aren't based in reality, like assuming the worst interpretation of neutral events</span></a>:</strong> Practice catching yourself in <a class="jargon">mind reading<span class="tooltip">Assuming you know what others are thinking without evidence</span></a> (assuming you know why someone acted a certain way) and <a class="jargon">catastrophizing<span class="tooltip">Immediately jumping to worst-case scenarios about relationships or social situations</span></a> (assuming the worst possible outcome).</p>
+
+                <p><strong>Consider professional support:</strong> <a class="jargon">ADHD medications<span class="tooltip">Stimulant and non-stimulant medications that can help with attention, impulse control, and emotional regulation</span></a> sometimes help with emotional regulation, and therapists who understand neurodivergence can help you develop specific strategies without trying to make you "less sensitive."</p>
+            </div>
+
+            <div class="medical-section">
+                <h2 id="medical-intervention">When Should I Consider Medical Intervention</h2>
+                
+                <p><strong>Seek immediate help if:</strong> You're having thoughts of self-harm, substance use is becoming your primary coping method, or you're unable to maintain basic daily functioning due to RSD responses.</p>
+                
+                <p><strong>Consider professional support if:</strong> RSD is significantly impacting your relationships, work, or education. If you're avoiding social situations entirely, having frequent intense episodes, or if your coping strategies aren't working anymore. Also consider help if the chronic <a class="jargon">hypervigilance<span class="tooltip">Constantly scanning your environment for potential threats or signs of rejection</span></a> is leaving you exhausted most of the time.</p>
+                
+                <p><strong>Medical evaluation might help if:</strong> You haven't been evaluated for underlying conditions like <a class="jargon">ADHD<span class="tooltip">Attention Deficit Hyperactivity Disorder - often includes emotional dysregulation as a core feature</span></a>, <a class="jargon">anxiety disorders<span class="tooltip">Mental health conditions involving excessive worry, fear, or avoidance</span></a>, or other <a class="jargon">neurodivergent conditions<span class="tooltip">Brain differences like autism, ADHD, or other neurological variations</span></a> that might be contributing to your RSD experiences.</p>
+            </div>
+
+            <div class="validation-section">
+                <h2 id="validation">You're Not Imagining This</h2>
+                
+                <p>RSD is real, and it's not a character flaw. Your emotional responses aren't "too much" - they're a predictable result of how your brain processes social information. The chronic vigilance isn't paranoia - it's your brain trying to protect you from pain it has learned to expect.</p>
+                
+                <p>You're not broken for feeling things intensely or for working so hard to be acceptable that you exhaust yourself. <a class="jargon">Neurotypical<span class="tooltip">Having a brain that functions in ways considered typical by society</span></a> people often don't understand how devastating these experiences can feel, which can make you doubt yourself. Trust your experience.</p>
+                
+                <p>The same sensitivity that makes rejection feel unbearable often comes with increased empathy, creativity, and ability to deeply connect with others. You're learning to manage a challenging aspect of a brain that likely has many strengths. It's possible to honor your sensitivity while also learning to trust that you don't need to be perfect to be lovable.</p>
+            </div>
+
+            <div class="related-struggles">
+                <h3>Related Struggles</h3>
+                <div class="struggle-tags">
+                    <a href="{{ '/struggles/emotional-dysregulation.html' | relative_url }}" class="struggle-tag">Emotional Dysregulation</a>
+                    <a href="{{ '/struggles/social-anxiety.html' | relative_url }}" class="struggle-tag">Social Anxiety</a>
+                    <a href="{{ '/struggles/perfectionism.html' | relative_url }}" class="struggle-tag">Perfectionism</a>
+                    <a href="{{ '/struggles/people-pleasing.html' | relative_url }}" class="struggle-tag">People-Pleasing</a>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+<script>
+function toggleLearnMore(element) {
+    element.classList.toggle('expanded');
+}
+</script>
