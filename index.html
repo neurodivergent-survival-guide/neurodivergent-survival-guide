@@ -216,9 +216,6 @@ title: "The Neurodivergent Survival Guide"
         grid-template-columns: repeat(2, 1fr);
         gap: 2rem;
         margin: 3rem 0;
-        max-width: 800px;
-        margin-left: auto;
-        margin-right: auto;
     }
 
     .section-card {
@@ -415,6 +412,44 @@ title: "The Neurodivergent Survival Guide"
         box-shadow: 0 8px 25px rgba(72, 219, 251, 0.3);
     }
 
+    .tip-jar {
+        background: rgba(255, 248, 240, 0.95);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        padding: 2rem;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+        text-align: center;
+        margin: 3rem 0;
+        border: 1px solid rgba(255, 165, 0, 0.2);
+        border-left: 4px solid #ff7675;
+    }
+
+    .tip-jar h3 {
+        color: #ff7675;
+        margin-bottom: 1rem;
+        font-size: 1.3rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+    }
+
+    .tip-jar p {
+        color: var(--text-secondary);
+        margin-bottom: 1rem;
+        font-size: 0.95rem;
+    }
+
+    .tip-jar .kofi-info {
+        background: rgba(255, 255, 255, 0.8);
+        padding: 1rem;
+        border-radius: 12px;
+        margin: 1.5rem 0;
+        font-weight: 600;
+        color: #333;
+        border: 2px solid rgba(255, 118, 117, 0.3);
+    }
+
     .disclaimer {
         background: rgba(255, 242, 242, 0.9);
         backdrop-filter: blur(10px);
@@ -583,13 +618,13 @@ title: "The Neurodivergent Survival Guide"
         .intro-section,
         .how-it-works,
         .quick-access,
+        .tip-jar,
         .footer-note {
             padding: 1.5rem;
         }
 
         .main-sections {
             grid-template-columns: 1fr;
-            max-width: none;
         }
 
         .workflow-steps {
@@ -617,6 +652,7 @@ title: "The Neurodivergent Survival Guide"
         .intro-section,
         .how-it-works,
         .quick-access,
+        .tip-jar,
         .footer-note {
             padding: 1.2rem;
         }
@@ -676,6 +712,18 @@ title: "The Neurodivergent Survival Guide"
             </div>
         </div>
 
+        <div class="tip-jar">
+            <h3>❤️ Support This Resource</h3>
+            <p>This guide represents hundreds of hours of research, lived experience, and careful writing to help our community navigate daily challenges. If these resources have helped you understand yourself better or made your day a little easier, consider supporting the project.</p>
+            <p><strong>All donations help:</strong> Keep this resource completely free • Cover hosting and maintenance costs • Fund ongoing research and content updates • Allow more time for creating new resources</p>
+            <div class="kofi-info">
+                <a href="https://ko-fi.com/neurodivergent_survival_guide" target="_blank" style="text-decoration: none; color: #333; font-weight: 600;">
+                    <strong>Ko-fi.com/neurodivergent_survival_guide</strong>
+                </a>
+            </div>
+            <p style="font-style: italic; color: #666; font-size: 0.9rem;">This guide will always remain free regardless of donations. Support only if this resource has genuinely helped you.</p>
+        </div>
+
         <div class="how-it-works">
             <h2>How This Guide Works</h2>
             <div class="workflow-steps">
@@ -718,20 +766,127 @@ title: "The Neurodivergent Survival Guide"
         if (event.key === 'Enter') {
             const searchTerm = event.target.value.toLowerCase().trim();
             
-            // Simple routing based on common search terms
+            // Comprehensive routing based on project spec
             const routes = {
+                // Conditions
                 'autism': 'conditions/autism.html',
                 'adhd': 'conditions/adhd.html',
                 'bipolar': 'conditions/bipolar.html',
-                'bpd': 'conditions/bpd.html',
+                'bpd': 'conditions/borderline-personality-disorder.html',
+                'borderline': 'conditions/borderline-personality-disorder.html',
                 'ocd': 'conditions/ocd.html',
-                'communication': 'struggles/communication-issues.html',
-                'task initiation': 'struggles/task-initiation-paralysis.html',
-                'working memory': 'struggles/working-memory-difficulties.html',
+                
+                // Autism struggles
+                'social cues': 'struggles/missing-social-cues.html',
+                'missing social cues': 'struggles/missing-social-cues.html',
+                'too direct': 'struggles/being-too-direct.html',
+                'blunt': 'struggles/being-too-direct.html',
+                'nonverbal communication': 'struggles/nonverbal-communication-difficulties.html',
+                'eye contact': 'struggles/nonverbal-communication-difficulties.html',
+                'body language': 'struggles/nonverbal-communication-difficulties.html',
+                'social reciprocity': 'struggles/social-reciprocity-challenges.html',
+                'conversation': 'struggles/social-reciprocity-challenges.html',
+                'relationship maintenance': 'struggles/relationship-maintenance-struggles.html',
+                'friendships': 'struggles/relationship-maintenance-struggles.html',
+                'special interests': 'struggles/special-interests-consuming-focus.html',
+                'routine disruption': 'struggles/routine-disruption-anxiety.html',
+                'schedule change': 'struggles/routine-disruption-anxiety.html',
                 'sensory': 'struggles/sensory-processing-challenges.html',
-                'executive function': 'struggles/executive-function-challenges.html',
+                'sensory processing': 'struggles/sensory-processing-challenges.html',
+                'akathisia': 'struggles/akathisia.html',
+                'restless': 'struggles/akathisia.html',
+                'stimming': 'struggles/stimming-and-self-regulation.html',
+                'self regulation': 'struggles/stimming-and-self-regulation.html',
+                'transitions': 'struggles/change-and-transition-difficulties.html',
+                'change': 'struggles/change-and-transition-difficulties.html',
+                'face blindness': 'struggles/face-blindness.html',
+                'prosopagnosia': 'struggles/face-blindness.html',
+                'alexithymia': 'struggles/alexithymia.html',
+                'emotions': 'struggles/alexithymia.html',
+                'autistic inertia': 'struggles/autistic-inertia.html',
+                'inertia': 'struggles/autistic-inertia.html',
+                'masking': 'struggles/masking-burnout.html',
+                'masking burnout': 'struggles/masking-burnout.html',
+                'late diagnosis': 'struggles/late-diagnosis-grief.html',
+                'sensory seeking': 'struggles/sensory-seeking-behaviors.html',
+                
+                // ADHD struggles  
+                'task initiation': 'struggles/task-initiation-paralysis.html',
+                'starting tasks': 'struggles/task-initiation-paralysis.html',
+                'paralysis': 'struggles/task-initiation-paralysis.html',
+                'attention': 'struggles/attention-regulation.html',
+                'focus': 'struggles/attention-regulation.html',
+                'follow through': 'struggles/follow-through-completion.html',
+                'completion': 'struggles/follow-through-completion.html',
+                'finishing': 'struggles/follow-through-completion.html',
+                'organization': 'struggles/organization-and-planning-challenges.html',
+                'planning': 'struggles/organization-and-planning-challenges.html',
+                'time blindness': 'struggles/time-blindness.html',
+                'time': 'struggles/time-blindness.html',
+                'working memory': 'struggles/working-memory-difficulties.html',
+                'memory': 'struggles/working-memory-difficulties.html',
+                'physical restlessness': 'struggles/physical-restlessness.html',
+                'hyperactivity': 'struggles/physical-restlessness.html',
+                'fidgeting': 'struggles/physical-restlessness.html',
                 'interrupting': 'struggles/interrupting-and-blurting.html',
-                'waiting': 'struggles/impatience-with-waiting.html'
+                'blurting': 'struggles/interrupting-and-blurting.html',
+                'waiting': 'struggles/impatience-with-waiting.html',
+                'impatience': 'struggles/impatience-with-waiting.html',
+                'impulsive decisions': 'struggles/impulsive-decision-making.html',
+                'impulsivity': 'struggles/impulsive-decision-making.html',
+                'rejection sensitive': 'struggles/rejection-sensitive-dysphoria.html',
+                'rsd': 'struggles/rejection-sensitive-dysphoria.html',
+                'emotional dysregulation': 'struggles/emotional-dysregulation.html',
+                'emotions': 'struggles/emotional-dysregulation.html',
+                'hyperfocus': 'struggles/hyperfocus-episodes.html',
+                'sleep': 'struggles/sleep-rhythm-disruption.html',
+                'object permanence': 'struggles/object-permanence-issues.html',
+                'interest based': 'struggles/interest-based-nervous-system.html',
+                'motivation': 'struggles/interest-based-nervous-system.html',
+                
+                // Bipolar struggles
+                'mania': 'struggles/elevated-mood-periods.html',
+                'manic': 'struggles/elevated-mood-periods.html',
+                'hypomania': 'struggles/elevated-mood-periods.html',
+                'elevated mood': 'struggles/elevated-mood-periods.html',
+                'racing thoughts': 'struggles/racing-thoughts-flight-of-ideas.html',
+                'flight of ideas': 'struggles/racing-thoughts-flight-of-ideas.html',
+                'grandiosity': 'struggles/grandiosity-inflated-self-esteem.html',
+                'depression': 'struggles/persistent-low-mood.html',
+                'low mood': 'struggles/persistent-low-mood.html',
+                'anhedonia': 'struggles/anhedonia.html',
+                'suicidal': 'struggles/suicidal-ideation.html',
+                'mixed states': 'struggles/mixed-states.html',
+                'rapid cycling': 'struggles/rapid-cycling-patterns.html',
+                
+                // BPD struggles
+                'abandonment': 'struggles/fear-of-abandonment.html',
+                'fear of abandonment': 'struggles/fear-of-abandonment.html',
+                'unstable relationships': 'struggles/unstable-interpersonal-relationships.html',
+                'identity': 'struggles/identity-disturbance.html',
+                'identity confusion': 'struggles/identity-disturbance.html',
+                'emptiness': 'struggles/chronic-feelings-of-emptiness.html',
+                'anger': 'struggles/inappropriate-intense-anger.html',
+                'dissociation': 'struggles/stress-related-dissociation-paranoia.html',
+                'flashbacks': 'struggles/emotional-flashbacks.html',
+                'favorite person': 'struggles/favorite-person-dynamics.html',
+                'splitting': 'struggles/splitting-black-and-white-thinking.html',
+                'black and white': 'struggles/splitting-black-and-white-thinking.html',
+                'shame': 'struggles/shame-spirals.html',
+                'self harm': 'struggles/recurrent-suicidal-behaviors-self-harm.html',
+                
+                // OCD struggles
+                'intrusive thoughts': 'struggles/intrusive-thoughts-images-urges.html',
+                'unwanted thoughts': 'struggles/intrusive-thoughts-images-urges.html',
+                'compulsions': 'struggles/repetitive-behaviors-mental-acts.html',
+                'rituals': 'struggles/repetitive-behaviors-mental-acts.html',
+                'pure o': 'struggles/pure-o-mental-compulsions.html',
+                'mental compulsions': 'struggles/pure-o-mental-compulsions.html',
+                'scrupulosity': 'struggles/moral-scrupulosity.html',
+                'moral ocd': 'struggles/moral-scrupulosity.html',
+                'contamination': 'struggles/contamination-beyond-germs.html',
+                'checking': 'struggles/checking-behaviors-never-complete.html',
+                'avoidance': 'struggles/avoidance-behaviors-lifestyle-restrictions.html'
             };
             
             // Find matching route
