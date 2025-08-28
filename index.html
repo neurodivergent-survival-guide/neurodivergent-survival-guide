@@ -213,9 +213,12 @@ title: "The Neurodivergent Survival Guide"
 
     .main-sections {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        grid-template-columns: repeat(2, 1fr);
         gap: 2rem;
         margin: 3rem 0;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
     }
 
     .section-card {
@@ -252,10 +255,6 @@ title: "The Neurodivergent Survival Guide"
         background: linear-gradient(90deg, var(--rainbow-3), var(--rainbow-5));
     }
 
-    .glossary-card::before {
-        background: linear-gradient(90deg, var(--rainbow-2), var(--rainbow-6));
-    }
-
     .section-card:hover {
         transform: translateY(-5px);
         box-shadow: 0 20px 45px rgba(0, 0, 0, 0.12);
@@ -286,10 +285,6 @@ title: "The Neurodivergent Survival Guide"
 
     .struggles-card .card-icon {
         background: linear-gradient(45deg, var(--rainbow-3), var(--rainbow-5));
-    }
-
-    .glossary-card .card-icon {
-        background: linear-gradient(45deg, var(--rainbow-2), var(--rainbow-6));
     }
 
     .section-card h3 {
@@ -594,6 +589,7 @@ title: "The Neurodivergent Survival Guide"
 
         .main-sections {
             grid-template-columns: 1fr;
+            max-width: none;
         }
 
         .workflow-steps {
@@ -657,7 +653,7 @@ title: "The Neurodivergent Survival Guide"
                 <div class="card-icon">🧠</div>
                 <h3>Understand Your Brain</h3>
                 <p>Comprehensive guides to how different neurotypes create friction in daily life. Learn about the broader patterns that might explain multiple struggles you're experiencing.</p>
-                <div class="section-examples">Autism • ADHD • Bipolar • BPD</div>
+                <div class="section-examples">Autism • ADHD • Bipolar • BPD • OCD</div>
             </a>
 
             <a href="{{ '/struggles/index.html' | relative_url }}" class="section-card struggles-card">
@@ -666,25 +662,17 @@ title: "The Neurodivergent Survival Guide"
                 <p>Practical guides for specific situations that create challenges. Each includes what it feels like, why it happens, and immediate + long-term strategies that actually work.</p>
                 <div class="section-examples">Communication • Executive function • Sensory overload • Emotional regulation</div>
             </a>
-
-            <a href="{{ '/glossary/index.html' | relative_url }}" class="section-card glossary-card">
-                <div class="card-icon">📚</div>
-                <h3>Learn the Language</h3>
-                <p>Definitions and explanations of terms that help you understand and communicate about your experiences. Build vocabulary for self-advocacy and connection with others.</p>
-                <div class="section-examples">Masking • Stimming • Alexithymia • Echolalia</div>
-            </a>
         </div>
 
         <div class="quick-access">
             <h3>Popular Starting Points</h3>
             <p style="color: #666; margin-bottom: 1.5rem;">Jump directly to commonly accessed topics</p>
             <div class="quick-links">
-                <a href="{{ '/struggles/communication-issues.html' | relative_url }}" class="quick-link">Communication Issues</a>
+                <a href="{{ '/struggles/task-initiation-paralysis.html' | relative_url }}" class="quick-link">Task Initiation Paralysis</a>
                 <a href="{{ '/conditions/autism.html' | relative_url }}" class="quick-link">Autism Guide</a>
-                <a href="{{ '/glossary/masking.html' | relative_url }}" class="quick-link">What is Masking?</a>
-                <a href="{{ '/glossary/stimming.html' | relative_url }}" class="quick-link">What is Stimming?</a>
                 <a href="{{ '/conditions/adhd.html' | relative_url }}" class="quick-link">ADHD Guide</a>
-                <a href="{{ '/struggles/executive-function.html' | relative_url }}" class="quick-link">Executive Function</a>
+                <a href="{{ '/struggles/working-memory-difficulties.html' | relative_url }}" class="quick-link">Working Memory Difficulties</a>
+                <a href="{{ '/conditions/bipolar.html' | relative_url }}" class="quick-link">Bipolar Guide</a>
             </div>
         </div>
 
@@ -736,13 +724,12 @@ title: "The Neurodivergent Survival Guide"
                 'adhd': 'conditions/adhd.html',
                 'bipolar': 'conditions/bipolar.html',
                 'bpd': 'conditions/bpd.html',
+                'ocd': 'conditions/ocd.html',
                 'communication': 'struggles/communication-issues.html',
-                'masking': 'glossary/masking.html',
-                'stimming': 'glossary/stimming.html',
-                'echolalia': 'glossary/echolalia.html',
-                'alexithymia': 'glossary/alexithymia.html',
-                'sensory': 'struggles/sensory-processing.html',
-                'executive function': 'struggles/executive-function.html',
+                'task initiation': 'struggles/task-initiation-paralysis.html',
+                'working memory': 'struggles/working-memory-difficulties.html',
+                'sensory': 'struggles/sensory-processing-challenges.html',
+                'executive function': 'struggles/executive-function-challenges.html',
                 'interrupting': 'struggles/interrupting-and-blurting.html',
                 'waiting': 'struggles/impatience-with-waiting.html'
             };
@@ -762,10 +749,8 @@ title: "The Neurodivergent Survival Guide"
                 // If no specific match, route to appropriate section
                 if (searchTerm.includes('condition') || searchTerm.includes('brain') || searchTerm.includes('neurotype')) {
                     window.location.href = 'conditions/index.html';
-                } else if (searchTerm.includes('struggle') || searchTerm.includes('daily') || searchTerm.includes('friction')) {
-                    window.location.href = 'struggles/index.html';
                 } else {
-                    window.location.href = 'glossary/index.html';
+                    window.location.href = 'struggles/index.html';
                 }
             }
         }
