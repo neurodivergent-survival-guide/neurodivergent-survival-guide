@@ -215,9 +215,58 @@ title: "Impatience with Waiting"
         color: #555;
     }
 
+    .related-struggles {
+        background: #f8f9fa;
+        padding: 1.5rem;
+        border-radius: 12px;
+        margin: 2rem 0;
+        border: 1px solid #e0e0e0;
+    }
+
+    .related-struggles h3 {
+        color: #333;
+        margin-bottom: 1rem;
+        font-size: 1.2rem;
+    }
+
+    .struggle-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .struggle-tag {
+        background: #d63031;
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+    }
+
+    .struggle-tag:hover {
+        background: #a21f23;
+        color: white;
+        text-decoration: none;
+        transform: translateY(-1px);
+    }
+
+    .highlight-box {
+        background: #fff8e1;
+        padding: 1rem;
+        border-radius: 8px;
+        border-left: 3px solid #ffc107;
+        margin: 1rem 0;
+    }
+
     /* Focus states for accessibility */
     .jargon:focus,
-    .breadcrumb a:focus {
+    .breadcrumb a:focus,
+    .struggle-tag:focus {
         outline: 2px solid #fff;
         outline-offset: 2px;
     }
@@ -257,7 +306,8 @@ title: "Impatience with Waiting"
     .immediate-help .jargon,
     .long-term .jargon,
     .medical-section .jargon,
-    .validation-section .jargon {
+    .validation-section .jargon,
+    .highlight-box .jargon {
         color: #333;
         font-weight: 600;
         border-bottom-color: #333;
@@ -374,6 +424,15 @@ title: "Impatience with Waiting"
         .medical-section,
         .validation-section {
             padding: 1.5rem;
+        }
+
+        .struggle-tags {
+            flex-direction: column;
+        }
+
+        .struggle-tag {
+            justify-content: center;
+            text-align: center;
         }
     }
 
@@ -509,9 +568,6 @@ title: "Impatience with Waiting"
                     <a href="{{ '/struggles/rejection-sensitive-dysphoria.html' | relative_url }}" class="struggle-tag">Rejection Sensitive Dysphoria</a>
                 </div>
             </div>
-        </div>
-    </main>
-</div>
         </div>
     </main>
 </div>
