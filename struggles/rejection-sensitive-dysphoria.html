@@ -140,6 +140,16 @@ slug: rejection-sensitive-dysphoria
         color: #555;
     }
 
+    .immediate-help ul {
+        color: #555;
+        padding-left: 1.2rem;
+    }
+
+    .immediate-help li {
+        margin-bottom: 0.8rem;
+        font-size: 0.95rem;
+    }
+
     .long-term {
         background: #d4edda;
         padding: 2rem;
@@ -160,6 +170,16 @@ slug: rejection-sensitive-dysphoria
         color: #555;
     }
 
+    .long-term ul {
+        color: #555;
+        padding-left: 1.2rem;
+    }
+
+    .long-term li {
+        margin-bottom: 0.8rem;
+        font-size: 0.95rem;
+    }
+
     .medical-section {
         background: #d1f2eb;
         padding: 2rem;
@@ -178,6 +198,16 @@ slug: rejection-sensitive-dysphoria
         margin-bottom: 1rem;
         font-size: 1.05rem;
         color: #555;
+    }
+
+    .medical-section ul {
+        color: #555;
+        padding-left: 1.2rem;
+    }
+
+    .medical-section li {
+        margin-bottom: 0.8rem;
+        font-size: 0.95rem;
     }
 
     .validation-section {
@@ -286,6 +316,14 @@ slug: rejection-sensitive-dysphoria
         display: block;
     }
 
+    .highlight-box {
+        background: #fff8e1;
+        padding: 1rem;
+        border-radius: 8px;
+        border-left: 3px solid #ffc107;
+        margin: 1rem 0;
+    }
+
     /* Jargon styling - context-aware based on background */
     .jargon {
         text-decoration: none;
@@ -314,7 +352,8 @@ slug: rejection-sensitive-dysphoria
     .immediate-help .jargon,
     .long-term .jargon,
     .medical-section .jargon,
-    .validation-section .jargon {
+    .validation-section .jargon,
+    .highlight-box .jargon {
         color: #333;
         font-weight: 600;
         border-bottom-color: #333;
@@ -403,25 +442,76 @@ slug: rejection-sensitive-dysphoria
         .tooltip::after {
             display: none !important;
         }
+
+        .header {
+            padding: 1rem;
+        }
+
+        .header h1 {
+            font-size: 2rem;
+        }
+
+        .header p {
+            font-size: 1rem;
+        }
+
+        .breadcrumb {
+            padding: 0.6rem 1rem;
+        }
+
+        .container {
+            padding: 1rem;
+        }
+
+        .content-card {
+            padding: 1.5rem;
+        }
+
+        .what-section,
+        .why-section,
+        .immediate-help,
+        .long-term,
+        .medical-section,
+        .validation-section {
+            padding: 1.5rem;
+        }
+
+        .struggle-tags {
+            flex-direction: column;
+        }
+
+        .struggle-tag {
+            justify-content: center;
+            text-align: center;
+        }
     }
 
     @media (max-width: 480px) {
+        .header h1 {
+            font-size: 1.8rem;
+        }
+
+        .header p {
+            font-size: 0.9rem;
+        }
+
+        .content-card {
+            padding: 1.2rem;
+        }
+
+        .what-section,
+        .why-section,
+        .immediate-help,
+        .long-term,
+        .medical-section,
+        .validation-section {
+            padding: 1.2rem;
+        }
+
         .tooltip {
             left: 10px !important;
             right: 10px !important;
             bottom: 10px !important;
-        }
-    }
-
-    /* Mobile adjustments */
-    @media (max-width: 768px) {
-        .struggle-tags {
-            flex-direction: column;
-        }
-        
-        .struggle-tag {
-            justify-content: center;
-            text-align: center;
         }
     }
 
@@ -481,44 +571,67 @@ slug: rejection-sensitive-dysphoria
                 <p>Past experiences of actual rejection or criticism - especially during childhood - can amplify this response. If you've received a lot of negative feedback about <a class="jargon">ADHD symptoms<span class="tooltip">Behaviors like hyperactivity, inattention, or impulsivity that are part of having an ADHD brain</span></a> or other <a class="jargon">neurodivergent traits<span class="tooltip">Characteristics associated with neurological differences like stimming, intense interests, or processing differences</span></a>, your brain may have learned to be on high alert for signs of disapproval.</p>
 
                 <p>The chronic people-pleasing often develops as a protective strategy. If rejection feels unbearable, it makes sense that your brain would try to prevent it by making you as agreeable and accommodating as possible. But this creates its own exhaustion and often leads to relationships based on who you think you need to be, not who you actually are.</p>
+
+                <div class="learn-more" onclick="toggleLearnMore(this)">
+                    <h3>Learn More: The Neuroscience Behind RSD ↓</h3>
+                    <div class="learn-more-content">
+                        <p>RSD appears to involve differences in <a class="jargon">limbic system<span class="tooltip">Brain regions that process emotions and threat detection, including the amygdala and hippocampus</span></a> reactivity and <a class="jargon">prefrontal cortex<span class="tooltip">Brain area responsible for executive functions including emotional regulation and social processing</span></a> regulation. Research suggests that <a class="jargon">ADHD<span class="tooltip">Attention Deficit Hyperactivity Disorder - a neurodevelopmental condition affecting attention, impulse control, and activity levels</span></a> brains may have heightened <a class="jargon">amygdala<span class="tooltip">Brain structure that detects threats and triggers emotional responses, particularly fear and rejection</span></a> responses to social threats while having less <a class="jargon">prefrontal<span class="tooltip">The front part of the brain responsible for higher-order thinking and emotional control</span></a> capacity to regulate these intense emotions.</p>
+                        
+                        <p>The <a class="jargon">dopamine dysregulation<span class="tooltip">Imbalanced dopamine activity that affects emotional stability and social reward processing</span></a> common in <a class="jargon">ADHD<span class="tooltip">Attention Deficit Hyperactivity Disorder - a neurodevelopmental condition affecting attention, impulse control, and activity levels</span></a> may also contribute to RSD. <a class="jargon">Dopamine<span class="tooltip">A neurotransmitter involved in motivation, reward, and emotional regulation</span></a> helps regulate both emotional intensity and <a class="jargon">social reward processing<span class="tooltip">How the brain interprets and responds to positive and negative social interactions</span></a> - differences in this system could make social rejection feel disproportionately painful while making social approval feel less rewarding.</p>
+                    </div>
+                </div>
             </div>
 
             <div class="immediate-help">
                 <h2 id="next-five-minutes">What Can Help You Through the Next 5 Minutes</h2>
+                <p>When RSD hits right now, these strategies can help you get through the immediate crisis:</p>
                 
-                <p><strong>For intense episodes:</strong> Put your feet flat on the floor, hold an ice cube, or splash cold water on your wrists. This helps signal to your <a class="jargon">fight-or-flight system<span class="tooltip">Your body's automatic reaction to perceived threats, causing physical and emotional arousal</span></a> that you're safe. Try <a class="jargon">box breathing<span class="tooltip">Breathing technique where you inhale for 4 counts, hold for 4, exhale for 4, hold for 4, and repeat</span></a> and postpone any big decisions until the intensity passes.</p>
-                
-                <p><strong>For the chronic hum:</strong> Notice if you're currently scanning for signs of rejection or automatically adjusting your behavior to avoid potential conflict. Can you give yourself permission to be a little less careful right now? Maybe send that text without over-editing it, or ask for what you need without three disclaimers.</p>
-                
-                <p><strong>Reality check questions:</strong> Is there actual evidence this person is rejecting me, or am I filling in gaps with my fears? If my best friend told me this exact situation, what would I tell them? What's the most boring, neutral explanation for what just happened?</p>
-                
-                <p><strong>Name what's happening:</strong> "I'm having an <a class="jargon">RSD response<span class="tooltip">The brain's overprotective reaction to perceived social threat, not an accurate reading of reality</span></a> right now" - whether it's intense panic or that familiar social anxiety creep. Sometimes labeling the experience can reduce its power and help you remember this is your brain trying to protect you, not an accurate read of the situation.</p>
+                <ul>
+                    <li><strong>For intense episodes:</strong> Put your feet flat on the floor, hold an ice cube, or splash cold water on your wrists. This helps signal to your <a class="jargon">fight-or-flight system<span class="tooltip">Your body's automatic reaction to perceived threats, causing physical and emotional arousal</span></a> that you're safe. Try <a class="jargon">box breathing<span class="tooltip">Breathing technique where you inhale for 4 counts, hold for 4, exhale for 4, hold for 4, and repeat</span></a> and postpone any big decisions until the intensity passes.</li>
+                    <li><strong>For the chronic hum:</strong> Notice if you're currently scanning for signs of rejection or automatically adjusting your behavior to avoid potential conflict. Can you give yourself permission to be a little less careful right now?</li>
+                    <li><strong>Reality check questions:</strong> Is there actual evidence this person is rejecting me, or am I filling in gaps with my fears? If my best friend told me this exact situation, what would I tell them?</li>
+                    <li><strong>Name what's happening:</strong> "I'm having an <a class="jargon">RSD response<span class="tooltip">The brain's overprotective reaction to perceived social threat, not an accurate reading of reality</span></a> right now" - whether it's intense panic or that familiar social anxiety creep. Sometimes labeling the experience can reduce its power.</li>
+                    <li><strong>Reach out strategically:</strong> If possible, contact someone who understands RSD and can provide perspective without judgment. Sometimes we need external validation that we're not actually being rejected.</li>
+                </ul>
+
+                <div class="highlight-box">
+                    <p><strong>Emergency reality check:</strong> What's the most boring, neutral explanation for what just happened? If this person were distracted by work stress, personal issues, or just having a busy day, would their behavior make perfect sense?</p>
+                </div>
             </div>
 
             <div class="long-term">
                 <h2 id="long-term-solutions">What Are Some Healthy Long-term Solutions</h2>
+                <p>Building sustainable systems that work with your <a class="jargon">RSD<span class="tooltip">Rejection Sensitive Dysphoria - extreme emotional sensitivity to rejection or criticism</span></a> patterns rather than fighting them:</p>
                 
-                <p><strong>Build your awareness:</strong> Start noticing both your dramatic <a class="jargon">RSD episodes<span class="tooltip">Intense emotional reactions to perceived rejection or criticism</span></a> and your subtle patterns. Do you automatically over-explain requests? Constantly check others' facial expressions? Feel exhausted after social interactions from trying so hard to avoid rejection? <a class="jargon">Self-awareness<span class="tooltip">Understanding your own thoughts, feelings, and behaviors</span></a> of these patterns is the first step to changing them.</p>
-                
-                <p><strong>Practice deliberate authenticity:</strong> Experiment with being slightly less careful in low-stakes interactions. Send a text without re-reading it five times. Express a preference without immediately offering alternatives. Start small and notice that most people don't actually reject you for being human.</p>
-                
-                <p><strong>Create reality check systems:</strong> Develop relationships with trusted people who can help you assess whether your interpretation of a situation is accurate. Ask them to help you distinguish between RSD responses and legitimate relationship concerns.</p>
-                
-                <p><strong>Address the people-pleasing cycle:</strong> Many people with RSD exhaust themselves trying to be perfect to avoid rejection. Work on setting small boundaries and saying no to low-stakes requests. Your relationships will be healthier when they're based on who you actually are, not who you think you need to be to avoid abandonment.</p>
-                
-                <p><strong>Challenge <a class="jargon">cognitive distortions<span class="tooltip">Thinking patterns that aren't based in reality, like assuming the worst interpretation of neutral events</span></a>:</strong> Practice catching yourself in <a class="jargon">mind reading<span class="tooltip">Assuming you know what others are thinking without evidence</span></a> (assuming you know why someone acted a certain way) and <a class="jargon">catastrophizing<span class="tooltip">Immediately jumping to worst-case scenarios about relationships or social situations</span></a> (assuming the worst possible outcome).</p>
+                <ul>
+                    <li><strong>Build your awareness:</strong> Start noticing both your dramatic <a class="jargon">RSD episodes<span class="tooltip">Intense emotional reactions to perceived rejection or criticism</span></a> and your subtle patterns. Do you automatically over-explain requests? Constantly check others' facial expressions? Feel exhausted after social interactions from trying so hard to avoid rejection?</li>
+                    <li><strong>Practice deliberate authenticity:</strong> Experiment with being slightly less careful in low-stakes interactions. Send a text without re-reading it five times. Express a preference without immediately offering alternatives. Start small and notice that most people don't actually reject you for being human.</li>
+                    <li><strong>Create reality check systems:</strong> Develop relationships with trusted people who can help you assess whether your interpretation of a situation is accurate. Ask them to help you distinguish between RSD responses and legitimate relationship concerns.</li>
+                    <li><strong>Address the <a class="jargon">people-pleasing<span class="tooltip">Automatically prioritizing others' comfort over your own needs to avoid potential conflict or rejection</span></a> cycle:</strong> Many people with RSD exhaust themselves trying to be perfect to avoid rejection. Work on setting small boundaries and saying no to low-stakes requests.</li>
+                    <li><strong>Challenge <a class="jargon">cognitive distortions<span class="tooltip">Thinking patterns that aren't based in reality, like assuming the worst interpretation of neutral events</span></a>:</strong> Practice catching yourself in <a class="jargon">mind reading<span class="tooltip">Assuming you know what others are thinking without evidence</span></a> and <a class="jargon">catastrophizing<span class="tooltip">Immediately jumping to worst-case scenarios about relationships or social situations</span></a>. Most social interactions have mundane explanations.</li>
+                    <li><strong>Develop <a class="jargon">emotional regulation<span class="tooltip">Skills for managing intense emotions when they arise, including breathing techniques and grounding exercises</span></a> skills:</strong> Learn techniques for managing intense emotions when they do arise - <a class="jargon">mindfulness<span class="tooltip">Awareness practices that help you observe thoughts and feelings without being overwhelmed by them</span></a>, <a class="jargon">grounding exercises<span class="tooltip">Techniques that help bring your attention back to the present moment when emotions feel overwhelming</span></a>, or professional therapy approaches like <a class="jargon">DBT<span class="tooltip">Dialectical Behavior Therapy - therapy skills for managing intense emotions and improving relationships</span></a>.</li>
+                    <li><strong>Consider professional support:</strong> <a class="jargon">ADHD medications<span class="tooltip">Stimulant and non-stimulant medications that can help with attention, impulse control, and emotional regulation</span></a> sometimes help with emotional regulation, and therapists who understand neurodivergence can help you develop specific strategies.</li>
+                </ul>
 
-                <p><strong>Consider professional support:</strong> <a class="jargon">ADHD medications<span class="tooltip">Stimulant and non-stimulant medications that can help with attention, impulse control, and emotional regulation</span></a> sometimes help with emotional regulation, and therapists who understand neurodivergence can help you develop specific strategies without trying to make you "less sensitive."</p>
+                <div class="highlight-box">
+                    <p><strong>Remember:</strong> Your relationships will be healthier when they're based on who you actually are, not who you think you need to be to avoid abandonment. Authentic connection requires some risk of rejection, but it also creates much more meaningful relationships.</p>
+                </div>
             </div>
 
             <div class="medical-section">
                 <h2 id="medical-intervention">When Should I Consider Medical Intervention</h2>
+                <p>Consider professional support if <a class="jargon">RSD<span class="tooltip">Rejection Sensitive Dysphoria - extreme emotional sensitivity to rejection or criticism</span></a> is significantly impacting your life:</p>
                 
-                <p><strong>Seek immediate help if:</strong> You're having thoughts of self-harm, substance use is becoming your primary coping method, or you're unable to maintain basic daily functioning due to RSD responses.</p>
-                
-                <p><strong>Consider professional support if:</strong> RSD is significantly impacting your relationships, work, or education. If you're avoiding social situations entirely, having frequent intense episodes, or if your coping strategies aren't working anymore. Also consider help if the chronic <a class="jargon">hypervigilance<span class="tooltip">Constantly scanning your environment for potential threats or signs of rejection</span></a> is leaving you exhausted most of the time.</p>
-                
-                <p><strong>Medical evaluation might help if:</strong> You haven't been evaluated for underlying conditions like <a class="jargon">ADHD<span class="tooltip">Attention Deficit Hyperactivity Disorder - often includes emotional dysregulation as a core feature</span></a>, <a class="jargon">anxiety disorders<span class="tooltip">Mental health conditions involving excessive worry, fear, or avoidance</span></a>, or other <a class="jargon">neurodivergent conditions<span class="tooltip">Brain differences like autism, ADHD, or other neurological variations</span></a> that might be contributing to your RSD experiences.</p>
+                <ul>
+                    <li><strong>Seek immediate help if:</strong> You're having thoughts of self-harm, substance use is becoming your primary coping method, or you're unable to maintain basic daily functioning due to RSD responses.</li>
+                    <li><strong>Consider professional support if:</strong> RSD is significantly impacting your relationships, work, or education. If you're avoiding social situations entirely, having frequent intense episodes, or if your coping strategies aren't working anymore.</li>
+                    <li><strong>Chronic exhaustion:</strong> If the constant <a class="jargon">hypervigilance<span class="tooltip">Constantly scanning your environment for potential threats or signs of rejection</span></a> and people-pleasing is leaving you exhausted most of the time, professional support can help you develop more sustainable patterns.</li>
+                    <li><strong>Medical evaluation might help if:</strong> You haven't been evaluated for underlying conditions like <a class="jargon">ADHD<span class="tooltip">Attention Deficit Hyperactivity Disorder - often includes emotional dysregulation as a core feature</span></a>, <a class="jargon">anxiety disorders<span class="tooltip">Mental health conditions involving excessive worry, fear, or avoidance</span></a>, or other <a class="jargon">neurodivergent conditions<span class="tooltip">Brain differences like autism, ADHD, or other neurological variations</span></a> that might be contributing to your RSD experiences.</li>
+                </ul>
+
+                <div class="highlight-box">
+                    <p><strong>Types of support that help:</strong> <a class="jargon">ADHD<span class="tooltip">Attention Deficit Hyperactivity Disorder - often includes emotional dysregulation as a core feature</span></a> medication evaluation, <a class="jargon">DBT therapy<span class="tooltip">Dialectical Behavior Therapy - teaches specific skills for managing intense emotions and improving relationships</span></a>, <a class="jargon">trauma-informed therapy<span class="tooltip">Therapy approaches that understand how past experiences of rejection or criticism contribute to current RSD</span></a>, or comprehensive neurodivergent-affirming assessment if you haven't been evaluated.</p>
+                </div>
             </div>
 
             <div class="validation-section">
@@ -547,5 +660,21 @@ slug: rejection-sensitive-dysphoria
 <script>
 function toggleLearnMore(element) {
     element.classList.toggle('expanded');
+    const arrow = element.querySelector('h3');
+    if (element.classList.contains('expanded')) {
+        arrow.innerHTML = arrow.innerHTML.replace('↓', '↑');
+    } else {
+        arrow.innerHTML = arrow.innerHTML.replace('↑', '↓');
+    }
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Handle jargon clicks to prevent event bubbling
+    const jargonTerms = document.querySelectorAll('.jargon');
+    jargonTerms.forEach(function(jargon) {
+        jargon.addEventListener('click', function(e) {
+            e.stopPropagation(); // Prevent bubbling to learn-more handler
+        });
+    });
+});
 </script>
