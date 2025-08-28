@@ -53,9 +53,15 @@ The site will be available at the local web address shown in your terminal.
 └── assets/             # Stylesheets and scripts
 ```
 
-## Contributing
+## User Feedback
 
-This resource prioritizes lived neurodivergent experience and clinical accuracy. New content should follow established content standards and technical implementation guidelines.
+Users can request new struggle pages or suggest additional coping strategies through feedback channels. The resource prioritizes lived neurodivergent experience and clinical accuracy when evaluating suggestions.
+
+**What we're looking for:**
+- Requests for missing struggles or scenarios
+- Additional coping strategies that have worked for you
+- Corrections or clarifications for existing content
+- Accessibility improvements or usability feedback
 
 ## Content Framework
 
