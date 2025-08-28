@@ -1,6 +1,7 @@
 ---
 layout: default
 ---
+<!-- _layouts/condition.html -->
 {{ content }}
 
 {% if page.condition %}
@@ -28,30 +29,28 @@ layout: default
   }
   
   .condition-navigation .nav-link {
-    background: {{ colors.primary }};
-    color: white;
+    background: white;
+    color: {{ colors.primary }};
     padding: 0.8rem 1.5rem;
     border-radius: 25px;
     text-decoration: none;
     font-weight: 500;
     transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   }
   
   .condition-navigation .nav-link:hover {
-    background: {{ colors.secondary }};
+    background: rgba(255, 255, 255, 0.95);
+    color: {{ colors.secondary }};
     transform: translateY(-1px);
-    color: white;
     text-decoration: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   }
   
   .condition-navigation .nav-link.disabled {
-    background: rgba(255, 255, 255, 0.2);
-    color: rgba(255, 255, 255, 0.5);
-  }
-  
-  .condition-navigation .nav-position {
-    color: rgba(255, 255, 255, 0.8);
-    font-size: 0.9rem;
+    background: rgba(255, 255, 255, 0.3);
+    color: rgba(255, 255, 255, 0.7);
+    box-shadow: none;
   }
   
   @media (max-width: 768px) {
@@ -66,12 +65,10 @@ layout: default
 
 {% assign conditions = site.data.conditions | sort: 'name' %}
 {% assign current_index = -1 %}
-{% for condition in conditions %}
   {% if condition.slug == page.slug %}
     {% assign current_index = forloop.index0 %}
     {% break %}
   {% endif %}
-{% endfor %}
 
 <div class="condition-navigation">
   <div class="nav-container">
@@ -82,9 +79,6 @@ layout: default
     {% else %}
       <span class="nav-link disabled">← Previous Condition</span>
     {% endif %}
-    
-    {% assign position = current_index | plus: 1 %}
-    <span class="nav-position">{{ page.title }} ({{ position }} of {{ conditions.size }} conditions)</span>
     
     {% assign next_index = current_index | plus: 1 %}
     {% if next_index < conditions.size %}
