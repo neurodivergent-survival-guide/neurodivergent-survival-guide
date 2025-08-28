@@ -1,8 +1,8 @@
+<!-- struggles/attention-regulation.html -->
 ---
 layout: default
 title: "Attention Regulation"
 ---
-<!-- struggles/attention-regulation.html -->
 <style>
     * {
         margin: 0;
@@ -35,7 +35,7 @@ title: "Attention Regulation"
 
     .header p {
         color: rgba(255, 255, 255, 0.9);
-        font-size: 1.1rem;
+        font-size: 1.2rem;
     }
 
     .breadcrumb {
@@ -62,7 +62,7 @@ title: "Attention Regulation"
     }
 
     .container {
-        max-width: 900px;
+        max-width: 1200px;
         margin: 0 auto;
         padding: 2rem;
         width: 100%;
@@ -77,73 +77,142 @@ title: "Attention Regulation"
         margin-bottom: 2rem;
     }
 
-    .section {
-        background: white;
-        border-radius: 12px;
+    .what-section {
+        background: #ffe6e6;
         padding: 2rem;
+        border-radius: 16px;
         margin: 2rem 0;
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-        border-top: 3px solid #d63031;
+        border-left: 4px solid #d63031;
     }
 
-    .section h2 {
+    .what-section h2 {
         color: #d63031;
-        font-size: 1.4rem;
-        margin-bottom: 1.5rem;
-        font-weight: 600;
-    }
-
-    .section p {
-        color: #555;
         margin-bottom: 1rem;
-        font-size: 1rem;
+        font-size: 1.6rem;
     }
 
-    .section ul {
-        padding-left: 1.5rem;
+    .what-section p {
+        margin-bottom: 1rem;
+        font-size: 1.05rem;
         color: #555;
-        margin: 1rem 0;
     }
 
-    .section li {
+    .why-section {
+        background: #ffeaa7;
+        padding: 2rem;
+        border-radius: 16px;
+        margin: 2rem 0;
+        border-left: 4px solid #f1c40f;
+    }
+
+    .why-section h2 {
+        color: #f39c12;
+        margin-bottom: 1rem;
+        font-size: 1.6rem;
+    }
+
+    .why-section p {
+        margin-bottom: 1rem;
+        font-size: 1.05rem;
+        color: #555;
+    }
+
+    .immediate-help {
+        background: #cce5ff;
+        padding: 2rem;
+        border-radius: 16px;
+        margin: 2rem 0;
+        border-left: 4px solid #007acc;
+    }
+
+    .immediate-help h2 {
+        color: #005599;
+        margin-bottom: 1rem;
+        font-size: 1.6rem;
+    }
+
+    .immediate-help ul {
+        color: #555;
+        padding-left: 1.2rem;
+    }
+
+    .immediate-help li {
         margin-bottom: 0.8rem;
         font-size: 0.95rem;
     }
 
-    .immediate-help {
-        background: #e8f5e8;
-        border-left-color: #00b894;
-    }
-
-    .immediate-help h2 {
-        color: #00b894;
-    }
-
     .long-term {
-        background: #e3f2fd;
-        border-left-color: #1976d2;
+        background: #d4edda;
+        padding: 2rem;
+        border-radius: 16px;
+        margin: 2rem 0;
+        border-left: 4px solid #28a745;
     }
 
     .long-term h2 {
-        color: #1976d2;
+        color: #155724;
+        margin-bottom: 1rem;
+        font-size: 1.6rem;
     }
 
-    .medical-intervention {
-        background: #fff3e0;
-        border-left-color: #f57c00;
+    .long-term ul {
+        color: #555;
+        padding-left: 1.2rem;
     }
 
-    .medical-intervention h2 {
-        color: #f57c00;
+    .long-term li {
+        margin-bottom: 0.8rem;
+        font-size: 0.95rem;
     }
 
-    .validation {
-        background: #f3e5f5;
-        border-left-color: #8e24aa;
+    .medical-section {
+        background: #d1f2eb;
+        padding: 2rem;
+        border-radius: 16px;
+        margin: 2rem 0;
+        border-left: 4px solid #17a2b8;
     }
 
-    .validation h2 {
-        color: #8e24aa;
+    .medical-section h2 {
+        color: #0c5460;
+        margin-bottom: 1rem;
+        font-size: 1.6rem;
+    }
+
+    .medical-section p {
+        margin-bottom: 1rem;
+        font-size: 1.05rem;
+        color: #555;
+    }
+
+    .medical-section ul {
+        color: #555;
+        padding-left: 1.2rem;
+    }
+
+    .medical-section li {
+        margin-bottom: 0.8rem;
+        font-size: 0.95rem;
+    }
+
+    .validation-section {
+        background: #e2e3ff;
+        padding: 2rem;
+        border-radius: 16px;
+        margin: 2rem 0;
+        border-left: 4px solid #6c5ce7;
+    }
+
+    .validation-section h2 {
+        color: #5a4fcf;
+        margin-bottom: 1rem;
+        font-size: 1.6rem;
+    }
+
+    .validation-section p {
+        margin-bottom: 1rem;
+        font-size: 1.05rem;
+        color: #555;
     }
 
     .learn-more {
@@ -207,7 +276,7 @@ title: "Attention Regulation"
         background: #d63031;
         color: white;
         padding: 0.5rem 1rem;
-        border-radius: 8px;
+        border-radius: 20px;
         font-size: 0.85rem;
         text-decoration: none;
         transition: all 0.3s ease;
@@ -221,6 +290,14 @@ title: "Attention Regulation"
         color: white;
         text-decoration: none;
         transform: translateY(-1px);
+    }
+
+    .highlight-box {
+        background: #fff8e1;
+        padding: 1rem;
+        border-radius: 8px;
+        border-left: 3px solid #ffc107;
+        margin: 1rem 0;
     }
 
     /* Focus states for accessibility */
@@ -251,24 +328,25 @@ title: "Attention Regulation"
 
     /* Pink jargon for white backgrounds */
     .content-card .jargon,
-    .section .jargon,
     .related-struggles .jargon {
         color: #e84393;
         border-bottom-color: #e84393;
     }
 
     .content-card .jargon:hover,
-    .section .jargon:hover,
     .related-struggles .jargon:hover {
         color: #fd79a8;
         border-bottom-color: #fd79a8;
     }
 
-    /* Bold black jargon for colored sections */
+    /* Bold black jargon for colored backgrounds */
+    .what-section .jargon,
+    .why-section .jargon,
     .immediate-help .jargon,
     .long-term .jargon,
-    .medical-intervention .jargon,
-    .validation .jargon {
+    .medical-section .jargon,
+    .validation-section .jargon,
+    .highlight-box .jargon {
         color: #333;
         font-weight: 600;
         border-bottom-color: #333;
@@ -335,14 +413,6 @@ title: "Attention Regulation"
         opacity: 1;
     }
 
-    .highlight-box {
-        background: #fff8e1;
-        padding: 1rem;
-        border-radius: 8px;
-        border-left: 3px solid #ffc107;
-        margin: 1rem 0;
-    }
-
     /* Mobile responsive tooltip adjustments */
     @media (max-width: 1024px) {
         .tooltip {
@@ -390,7 +460,12 @@ title: "Attention Regulation"
             padding: 1.5rem;
         }
 
-        .section {
+        .what-section,
+        .why-section,
+        .immediate-help,
+        .long-term,
+        .medical-section,
+        .validation-section {
             padding: 1.5rem;
         }
 
@@ -417,7 +492,12 @@ title: "Attention Regulation"
             padding: 1.2rem;
         }
 
-        .section {
+        .what-section,
+        .why-section,
+        .immediate-help,
+        .long-term,
+        .medical-section,
+        .validation-section {
             padding: 1.2rem;
         }
 
@@ -437,6 +517,8 @@ title: "Attention Regulation"
 <div class="breadcrumb">
     <a href="{{ '/index.html' | relative_url }}">Home</a>
     <span>></span>
+    <a href="{{ '/struggles/index.html' | relative_url }}">Struggles</a>
+    <span>></span>
     <a href="{{ '/conditions/adhd.html' | relative_url }}">ADHD</a>
     <span>></span>
     Attention Regulation
@@ -445,9 +527,8 @@ title: "Attention Regulation"
 <div class="container">
     <main role="main" id="main-content">
         <div class="content-card">
-            <!-- Section 1: What this feels like -->
-            <div class="section">
-                <h2>What This Feels Like</h2>
+            <div class="what-section">
+                <h2 id="what-this-feels-like">What This Feels Like</h2>
                 <p><a class="jargon">Attention regulation<span class="tooltip">The brain's ability to direct and sustain focus where you want it, when you want it</span></a> issues often feel like having a spotlight that either shines too intensely in one direction or bounces around uncontrollably. Many people describe their attention as either completely absorbed by something interesting or impossible to focus on anything at all - with very little middle ground between these extremes.</p>
 
                 <p>You might find yourself reading the same paragraph five times without absorbing any information, while later that day becoming so engrossed in a video or project that hours pass without notice. During boring tasks, your mind might wander constantly to more interesting thoughts, making it nearly impossible to concentrate on what's in front of you.</p>
@@ -459,27 +540,25 @@ title: "Attention Regulation"
                 </div>
             </div>
 
-            <!-- Section 2: Why this might be happening -->
-            <div class="section">
-                <h2>Why This Might Be Happening</h2>
+            <div class="why-section">
+                <h2 id="why-this-happens">Why This Might Be Happening</h2>
                 <p>Attention regulation involves complex brain networks that manage where you direct your focus and how long you sustain it. In <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> brains, these systems work differently, particularly in areas involving <a class="jargon">dopamine<span class="tooltip">A brain chemical that helps with motivation, reward, and maintaining focus on activities</span></a> regulation and <a class="jargon">executive function<span class="tooltip">Mental skills that help you plan, focus, remember instructions, and manage multiple tasks</span></a>.</p>
 
-                <p>ADHD attention operates on an <a class="jargon">interest-based nervous system<span class="tooltip">A brain that functions optimally when tasks are interesting, challenging, urgent, or novel</span></a> - your brain allocates attention based on what's engaging rather than what's important. Tasks that lack novelty, challenge, or personal interest may not generate enough <a class="jargon">neural activation<span class="tooltip">The brain activity needed to engage attention and maintain focus</span></a> to sustain focus, while highly interesting activities can capture attention so completely that it becomes difficult to shift focus elsewhere.</p>
+                <p><a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> attention operates on an <a class="jargon">interest-based nervous system<span class="tooltip">A brain that functions optimally when tasks are interesting, challenging, urgent, or novel</span></a> - your brain allocates attention based on what's engaging rather than what's important. Tasks that lack novelty, challenge, or personal interest may not generate enough <a class="jargon">neural activation<span class="tooltip">The brain activity needed to engage attention and maintain focus</span></a> to sustain focus, while highly interesting activities can capture attention so completely that it becomes difficult to shift focus elsewhere.</p>
 
-                <p>The ADHD brain also shows differences in <a class="jargon">default mode network<span class="tooltip">Brain networks that are active during rest and mind-wandering, which can compete with focused attention</span></a> activity, which can make your mind more prone to wandering and internal distraction. This isn't about lacking willpower - it's about having different neurological patterns for <a class="jargon">attention allocation<span class="tooltip">How your brain decides what to focus on and for how long</span></a>.</p>
+                <p>The <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> brain also shows differences in <a class="jargon">default mode network<span class="tooltip">Brain networks that are active during rest and mind-wandering, which can compete with focused attention</span></a> activity, which can make your mind more prone to wandering and internal distraction. This isn't about lacking willpower - it's about having different neurological patterns for <a class="jargon">attention allocation<span class="tooltip">How your brain decides what to focus on and for how long</span></a>.</p>
 
                 <div class="learn-more" onclick="toggleLearnMore(this)">
                     <h3>Learn More: The Neuroscience of ADHD Attention ↓</h3>
                     <div class="learn-more-content">
-                        <p>ADHD involves differences in <a class="jargon">prefrontal cortex<span class="tooltip">Brain area responsible for executive functions including attention control and focus regulation</span></a> functioning, particularly in circuits that regulate <a class="jargon">dopamine<span class="tooltip">A brain chemical that helps with motivation, reward, and maintaining focus on activities</span></a> and <a class="jargon">norepinephrine<span class="tooltip">A brain chemical that helps with alertness, attention, and arousal</span></a>. These <a class="jargon">neurotransmitters<span class="tooltip">Chemical messengers that carry signals between brain cells</span></a> are crucial for maintaining sustained attention and filtering out irrelevant information.</p>
-                        <p>Research shows that ADHD brains may have lower baseline levels of these <a class="jargon">neurotransmitters<span class="tooltip">Chemical messengers that carry signals between brain cells</span></a>, making it harder to engage attention on low-stimulation tasks while seeking out higher-stimulation activities to achieve optimal <a class="jargon">cognitive arousal<span class="tooltip">The level of brain activation needed for optimal functioning and attention</span></a>.</p>
+                        <p><a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> involves differences in <a class="jargon">prefrontal cortex<span class="tooltip">Brain area responsible for executive functions including attention control and focus regulation</span></a> functioning, particularly in circuits that regulate <a class="jargon">dopamine<span class="tooltip">A brain chemical that helps with motivation, reward, and maintaining focus on activities</span></a> and <a class="jargon">norepinephrine<span class="tooltip">A brain chemical that helps with alertness, attention, and arousal</span></a>. These <a class="jargon">neurotransmitters<span class="tooltip">Chemical messengers that carry signals between brain cells</span></a> are crucial for maintaining sustained attention and filtering out irrelevant information.</p>
+                        <p>Research shows that <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> brains may have lower baseline levels of these <a class="jargon">neurotransmitters<span class="tooltip">Chemical messengers that carry signals between brain cells</span></a>, making it harder to engage attention on low-stimulation tasks while seeking out higher-stimulation activities to achieve optimal <a class="jargon">cognitive arousal<span class="tooltip">The level of brain activation needed for optimal functioning and attention</span></a>.</p>
                     </div>
                 </div>
             </div>
 
-            <!-- Section 3: Next 5 minutes -->
-            <div class="section immediate-help">
-                <h2>What Can Help You Through the Next 5 Minutes</h2>
+            <div class="immediate-help">
+                <h2 id="next-five-minutes">What Can Help You Through the Next 5 Minutes</h2>
                 <p>When your attention feels scattered or stuck right now, these strategies can help regain some control:</p>
 
                 <ul>
@@ -496,9 +575,8 @@ title: "Attention Regulation"
                 </div>
             </div>
 
-            <!-- Section 4: Long-term solutions -->
-            <div class="section long-term">
-                <h2>What Are Some Healthy Long-Term Solutions</h2>
+            <div class="long-term">
+                <h2 id="healthy-long-term-solutions">What Are Some Healthy Long-Term Solutions</h2>
                 <p>Building sustainable systems that work with your <a class="jargon">attention patterns<span class="tooltip">Your individual way of focusing, including when attention feels easier or harder to control</span></a> rather than fighting them:</p>
 
                 <ul>
@@ -509,7 +587,7 @@ title: "Attention Regulation"
                     <li><strong>Develop <a class="jargon">hyperfocus management<span class="tooltip">Strategies for benefiting from intense focus while preventing it from taking over your entire day</span></a>:</strong> Set boundaries around engaging activities, use body cues (hunger, thirst) as natural break reminders, and plan <a class="jargon">hyperfocus<span class="tooltip">Intense, sustained concentration on interesting activities, often to the exclusion of everything else</span></a> time intentionally.</li>
                     <li><strong>Build in <a class="jargon">attention breaks<span class="tooltip">Planned periods of mental rest that help prevent attention fatigue and overwhelm</span></a>:</strong> Schedule regular mental breaks, especially during tasks requiring <a class="jargon">sustained attention<span class="tooltip">The ability to maintain focus on a task or activity for extended periods</span></a>. Your attention system needs rest to function optimally.</li>
                     <li><strong>Use external <a class="jargon">attention supports<span class="tooltip">Tools and systems outside your brain that help direct and maintain focus: timers, reminders, organizational systems</span></a>:</strong> Timers, notification systems, <a class="jargon">body doubling<span class="tooltip">Working in the presence of another person whose focus and energy helps you maintain your own attention</span></a>, or accountability partners can provide the external structure your attention system needs.</li>
-                    <li><strong>Consider medication:</strong> <a class="jargon">Stimulant medications<span class="tooltip">ADHD medications that increase dopamine and norepinephrine levels to improve attention regulation</span></a> can significantly improve attention regulation for many people with ADHD by increasing available <a class="jargon">dopamine<span class="tooltip">A brain chemical that helps with motivation, reward, and maintaining focus on activities</span></a> and helping with <a class="jargon">sustained attention<span class="tooltip">The ability to maintain focus on a task or activity for extended periods</span></a>.</li>
+                    <li><strong>Consider medication:</strong> <a class="jargon">Stimulant medications<span class="tooltip">ADHD medications that increase dopamine and norepinephrine levels to improve attention regulation</span></a> can significantly improve attention regulation for many people with <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> by increasing available <a class="jargon">dopamine<span class="tooltip">A brain chemical that helps with motivation, reward, and maintaining focus on activities</span></a> and helping with <a class="jargon">sustained attention<span class="tooltip">The ability to maintain focus on a task or activity for extended periods</span></a>.</li>
                 </ul>
 
                 <div class="learn-more" onclick="toggleLearnMore(this)">
@@ -522,9 +600,8 @@ title: "Attention Regulation"
                 </div>
             </div>
 
-            <!-- Section 5: Medical intervention -->
-            <div class="section medical-intervention">
-                <h2>When Should I Consider Medical Intervention</h2>
+            <div class="medical-section">
+                <h2 id="medical-intervention">When Should I Consider Medical Intervention</h2>
                 <p>Consider professional support if <a class="jargon">attention regulation<span class="tooltip">The brain's ability to direct and sustain focus where you want it, when you want it</span></a> difficulties are significantly impacting your life:</p>
 
                 <ul>
@@ -536,24 +613,22 @@ title: "Attention Regulation"
                     <li>Attention regulation problems are worsening over time or creating safety concerns (driving, work hazards)</li>
                 </ul>
 
-                <p>A healthcare provider familiar with ADHD can help evaluate whether medication, therapy, or other interventions might improve your <a class="jargon">attention control<span class="tooltip">Your ability to consciously direct and sustain focus where you choose</span></a>. Many people find that proper ADHD treatment dramatically improves their ability to regulate attention in daily activities.</p>
+                <p>A healthcare provider familiar with <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> can help evaluate whether medication, therapy, or other interventions might improve your <a class="jargon">attention control<span class="tooltip">Your ability to consciously direct and sustain focus where you choose</span></a>. Many people find that proper <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> treatment dramatically improves their ability to regulate attention in daily activities.</p>
 
                 <div class="highlight-box">
-                    <p><strong>Types of support that help:</strong> ADHD medication evaluation, <a class="jargon">cognitive behavioral therapy<span class="tooltip">Therapy focused on changing thought patterns and behaviors to improve functioning</span></a>, <a class="jargon">attention training programs<span class="tooltip">Structured exercises designed to improve focus, concentration, and attention control skills</span></a>, <a class="jargon">neurofeedback<span class="tooltip">Training that helps you learn to regulate brain activity and improve attention control</span></a>, or comprehensive ADHD assessment if you haven't been evaluated.</p>
+                    <p><strong>Types of support that help:</strong> <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> medication evaluation, <a class="jargon">cognitive behavioral therapy<span class="tooltip">Therapy focused on changing thought patterns and behaviors to improve functioning</span></a>, <a class="jargon">attention training programs<span class="tooltip">Structured exercises designed to improve focus, concentration, and attention control skills</span></a>, <a class="jargon">neurofeedback<span class="tooltip">Training that helps you learn to regulate brain activity and improve attention control</span></a>, or comprehensive <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> assessment if you haven't been evaluated.</p>
                 </div>
             </div>
 
-            <!-- Section 6: Validation -->
-            <div class="section validation">
-                <h2>You're Not Imagining This</h2>
-                <p><a class="jargon">Attention regulation<span class="tooltip">The brain's ability to direct and sustain focus where you want it, when you want it</span></a> differences are fundamental aspects of ADHD <a class="jargon">neurology<span class="tooltip">The structure and function of the nervous system, including brain differences</span></a>, not character flaws or lack of discipline. The challenges you experience with controlling your focus reflect genuine brain differences in how <a class="jargon">attention networks<span class="tooltip">Brain systems that work together to control where you focus and how long you maintain attention</span></a> function and respond to different types of stimulation.</p>
+            <div class="validation-section">
+                <h2 id="youre-not-imagining-this">You're Not Imagining This</h2>
+                <p><a class="jargon">Attention regulation<span class="tooltip">The brain's ability to direct and sustain focus where you want it, when you want it</span></a> differences are fundamental aspects of <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> <a class="jargon">neurology<span class="tooltip">The structure and function of the nervous system, including brain differences</span></a>, not character flaws or lack of discipline. The challenges you experience with controlling your focus reflect genuine brain differences in how <a class="jargon">attention networks<span class="tooltip">Brain systems that work together to control where you focus and how long you maintain attention</span></a> function and respond to different types of stimulation.</p>
 
-                <p>Many successful people with ADHD continue to experience <a class="jargon">attention regulation<span class="tooltip">The brain's ability to direct and sustain focus where you want it, when you want it</span></a> challenges while building meaningful careers and relationships. The goal isn't achieving <a class="jargon">neurotypical<span class="tooltip">People whose brains develop and function in ways that align with societal expectations and norms</span></a> attention patterns - it's understanding your unique <a class="jargon">attention style<span class="tooltip">Your individual patterns of focus, including strengths like hyperfocus and challenges with routine tasks</span></a> and developing strategies that help you direct your focus more intentionally when needed.</p>
+                <p>Many successful people with <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> continue to experience <a class="jargon">attention regulation<span class="tooltip">The brain's ability to direct and sustain focus where you want it, when you want it</span></a> challenges while building meaningful careers and relationships. The goal isn't achieving <a class="jargon">neurotypical<span class="tooltip">People whose brains develop and function in ways that align with societal expectations and norms</span></a> attention patterns - it's understanding your unique <a class="jargon">attention style<span class="tooltip">Your individual patterns of focus, including strengths like hyperfocus and challenges with routine tasks</span></a> and developing strategies that help you direct your focus more intentionally when needed.</p>
 
                 <p>The frustration of wanting to focus but feeling unable to control where your attention goes is a valid neurological experience. Your attention differences include strengths like <a class="jargon">hyperfocus abilities<span class="tooltip">The capacity for intense, sustained focus on engaging activities that can lead to exceptional productivity and creativity</span></a> and <a class="jargon">divergent thinking<span class="tooltip">The ability to think creatively and make unexpected connections between different ideas and concepts</span></a>, even when they create challenges in structured environments designed for different <a class="jargon">attention patterns<span class="tooltip">Your individual way of focusing, including when attention feels easier or harder to control</span></a>.</p>
             </div>
 
-            <!-- Related struggles -->
             <div class="related-struggles">
                 <h3>Related Struggles</h3>
                 <div class="struggle-tags">
