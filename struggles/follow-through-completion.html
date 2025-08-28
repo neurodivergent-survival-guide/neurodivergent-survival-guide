@@ -1,8 +1,8 @@
+<!-- struggles/follow-through-completion.html -->
 ---
 layout: default
 title: "Follow-Through Completion"
 ---
-<!-- struggles/follow-through-completion.html -->
 <style>
     * {
         margin: 0;
@@ -35,7 +35,7 @@ title: "Follow-Through Completion"
 
     .header p {
         color: rgba(255, 255, 255, 0.9);
-        font-size: 1.1rem;
+        font-size: 1.2rem;
     }
 
     .breadcrumb {
@@ -62,7 +62,7 @@ title: "Follow-Through Completion"
     }
 
     .container {
-        max-width: 900px;
+        max-width: 1200px;
         margin: 0 auto;
         padding: 2rem;
         width: 100%;
@@ -77,73 +77,142 @@ title: "Follow-Through Completion"
         margin-bottom: 2rem;
     }
 
-    .section {
-        background: white;
-        border-radius: 12px;
+    .what-section {
+        background: #ffe6e6;
         padding: 2rem;
+        border-radius: 16px;
         margin: 2rem 0;
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-        border-top: 3px solid #d63031;
+        border-left: 4px solid #d63031;
     }
 
-    .section h2 {
+    .what-section h2 {
         color: #d63031;
-        font-size: 1.4rem;
-        margin-bottom: 1.5rem;
-        font-weight: 600;
-    }
-
-    .section p {
-        color: #555;
         margin-bottom: 1rem;
-        font-size: 1rem;
+        font-size: 1.6rem;
     }
 
-    .section ul {
-        padding-left: 1.5rem;
+    .what-section p {
+        margin-bottom: 1rem;
+        font-size: 1.05rem;
         color: #555;
-        margin: 1rem 0;
     }
 
-    .section li {
+    .why-section {
+        background: #ffeaa7;
+        padding: 2rem;
+        border-radius: 16px;
+        margin: 2rem 0;
+        border-left: 4px solid #f1c40f;
+    }
+
+    .why-section h2 {
+        color: #f39c12;
+        margin-bottom: 1rem;
+        font-size: 1.6rem;
+    }
+
+    .why-section p {
+        margin-bottom: 1rem;
+        font-size: 1.05rem;
+        color: #555;
+    }
+
+    .immediate-help {
+        background: #cce5ff;
+        padding: 2rem;
+        border-radius: 16px;
+        margin: 2rem 0;
+        border-left: 4px solid #007acc;
+    }
+
+    .immediate-help h2 {
+        color: #005599;
+        margin-bottom: 1rem;
+        font-size: 1.6rem;
+    }
+
+    .immediate-help ul {
+        color: #555;
+        padding-left: 1.2rem;
+    }
+
+    .immediate-help li {
         margin-bottom: 0.8rem;
         font-size: 0.95rem;
     }
 
-    .immediate-help {
-        background: #e8f5e8;
-        border-left-color: #00b894;
-    }
-
-    .immediate-help h2 {
-        color: #00b894;
-    }
-
     .long-term {
-        background: #e3f2fd;
-        border-left-color: #1976d2;
+        background: #d4edda;
+        padding: 2rem;
+        border-radius: 16px;
+        margin: 2rem 0;
+        border-left: 4px solid #28a745;
     }
 
     .long-term h2 {
-        color: #1976d2;
+        color: #155724;
+        margin-bottom: 1rem;
+        font-size: 1.6rem;
     }
 
-    .medical-intervention {
-        background: #fff3e0;
-        border-left-color: #f57c00;
+    .long-term ul {
+        color: #555;
+        padding-left: 1.2rem;
     }
 
-    .medical-intervention h2 {
-        color: #f57c00;
+    .long-term li {
+        margin-bottom: 0.8rem;
+        font-size: 0.95rem;
     }
 
-    .validation {
-        background: #f3e5f5;
-        border-left-color: #8e24aa;
+    .medical-section {
+        background: #d1f2eb;
+        padding: 2rem;
+        border-radius: 16px;
+        margin: 2rem 0;
+        border-left: 4px solid #17a2b8;
     }
 
-    .validation h2 {
-        color: #8e24aa;
+    .medical-section h2 {
+        color: #0c5460;
+        margin-bottom: 1rem;
+        font-size: 1.6rem;
+    }
+
+    .medical-section p {
+        margin-bottom: 1rem;
+        font-size: 1.05rem;
+        color: #555;
+    }
+
+    .medical-section ul {
+        color: #555;
+        padding-left: 1.2rem;
+    }
+
+    .medical-section li {
+        margin-bottom: 0.8rem;
+        font-size: 0.95rem;
+    }
+
+    .validation-section {
+        background: #e2e3ff;
+        padding: 2rem;
+        border-radius: 16px;
+        margin: 2rem 0;
+        border-left: 4px solid #6c5ce7;
+    }
+
+    .validation-section h2 {
+        color: #5a4fcf;
+        margin-bottom: 1rem;
+        font-size: 1.6rem;
+    }
+
+    .validation-section p {
+        margin-bottom: 1rem;
+        font-size: 1.05rem;
+        color: #555;
     }
 
     .learn-more {
@@ -207,7 +276,7 @@ title: "Follow-Through Completion"
         background: #d63031;
         color: white;
         padding: 0.5rem 1rem;
-        border-radius: 8px;
+        border-radius: 20px;
         font-size: 0.85rem;
         text-decoration: none;
         transition: all 0.3s ease;
@@ -221,6 +290,14 @@ title: "Follow-Through Completion"
         color: white;
         text-decoration: none;
         transform: translateY(-1px);
+    }
+
+    .highlight-box {
+        background: #fff8e1;
+        padding: 1rem;
+        border-radius: 8px;
+        border-left: 3px solid #ffc107;
+        margin: 1rem 0;
     }
 
     /* Focus states for accessibility */
@@ -251,24 +328,25 @@ title: "Follow-Through Completion"
 
     /* Pink jargon for white backgrounds */
     .content-card .jargon,
-    .section .jargon,
     .related-struggles .jargon {
         color: #e84393;
         border-bottom-color: #e84393;
     }
 
     .content-card .jargon:hover,
-    .section .jargon:hover,
     .related-struggles .jargon:hover {
         color: #fd79a8;
         border-bottom-color: #fd79a8;
     }
 
-    /* Bold black jargon for colored sections */
+    /* Bold black jargon for colored backgrounds */
+    .what-section .jargon,
+    .why-section .jargon,
     .immediate-help .jargon,
     .long-term .jargon,
-    .medical-intervention .jargon,
-    .validation .jargon {
+    .medical-section .jargon,
+    .validation-section .jargon,
+    .highlight-box .jargon {
         color: #333;
         font-weight: 600;
         border-bottom-color: #333;
@@ -335,14 +413,6 @@ title: "Follow-Through Completion"
         opacity: 1;
     }
 
-    .highlight-box {
-        background: #fff8e1;
-        padding: 1rem;
-        border-radius: 8px;
-        border-left: 3px solid #ffc107;
-        margin: 1rem 0;
-    }
-
     /* Mobile responsive tooltip adjustments */
     @media (max-width: 1024px) {
         .tooltip {
@@ -390,7 +460,12 @@ title: "Follow-Through Completion"
             padding: 1.5rem;
         }
 
-        .section {
+        .what-section,
+        .why-section,
+        .immediate-help,
+        .long-term,
+        .medical-section,
+        .validation-section {
             padding: 1.5rem;
         }
 
@@ -417,7 +492,12 @@ title: "Follow-Through Completion"
             padding: 1.2rem;
         }
 
-        .section {
+        .what-section,
+        .why-section,
+        .immediate-help,
+        .long-term,
+        .medical-section,
+        .validation-section {
             padding: 1.2rem;
         }
 
@@ -437,6 +517,8 @@ title: "Follow-Through Completion"
 <div class="breadcrumb">
     <a href="{{ '/index.html' | relative_url }}">Home</a>
     <span>></span>
+    <a href="{{ '/struggles/index.html' | relative_url }}">Struggles</a>
+    <span>></span>
     <a href="{{ '/conditions/adhd.html' | relative_url }}">ADHD</a>
     <span>></span>
     Follow-Through Completion
@@ -445,9 +527,8 @@ title: "Follow-Through Completion"
 <div class="container">
     <main role="main" id="main-content">
         <div class="content-card">
-            <!-- Section 1: What this feels like -->
-            <div class="section">
-                <h2>What This Feels Like</h2>
+            <div class="what-section">
+                <h2 id="what-this-feels-like">What This Feels Like</h2>
                 <p><a class="jargon">Follow-through completion<span class="tooltip">The ability to finish tasks and projects once you've started them</span></a> difficulties often feel like hitting an invisible wall somewhere between starting a project and actually finishing it. Many people describe getting 70-90% of the way through tasks before their brain seems to abandon ship entirely.</p>
 
                 <p>You might experience genuine enthusiasm and momentum at the beginning of projects, making substantial progress and feeling confident about completion. Then, seemingly without warning, the task that felt engaging yesterday now feels impossible to continue. You know exactly what needs to be done to finish, but your brain refuses to cooperate.</p>
@@ -459,12 +540,11 @@ title: "Follow-Through Completion"
                 </div>
             </div>
 
-            <!-- Section 2: Why this might be happening -->
-            <div class="section">
-                <h2>Why This Might Be Happening</h2>
+            <div class="why-section">
+                <h2 id="why-this-happens">Why This Might Be Happening</h2>
                 <p>Follow-through completion involves sustaining motivation and <a class="jargon">executive function<span class="tooltip">Mental skills that help you plan, focus, remember instructions, and manage multiple tasks</span></a> through the less exciting phases of a project. In <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> brains, this creates predictable challenges related to how your brain processes novelty, reward, and sustained effort.</p>
 
-                <p>The ADHD brain's <a class="jargon">interest-based nervous system<span class="tooltip">A brain that functions optimally when tasks are interesting, challenging, urgent, or novel</span></a> means you need tasks to remain engaging to maintain motivation. Once the novelty wears off and a project becomes routine or predictable, your brain may experience what feels like a "motivation crash." This happens even when you logically want to finish and understand the importance of completion.</p>
+                <p>The <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> brain's <a class="jargon">interest-based nervous system<span class="tooltip">A brain that functions optimally when tasks are interesting, challenging, urgent, or novel</span></a> means you need tasks to remain engaging to maintain motivation. Once the novelty wears off and a project becomes routine or predictable, your brain may experience what feels like a "motivation crash." This happens even when you logically want to finish and understand the importance of completion.</p>
 
                 <p>Additionally, the final phases of projects often require different cognitive skills than the initial creative or problem-solving phases. Tasks like proofreading, formatting, or administrative wrap-up demand sustained attention to detail when your <a class="jargon">executive function<span class="tooltip">Mental skills that help you plan, focus, remember instructions, and manage multiple tasks</span></a> resources may already be depleted from the earlier work.</p>
 
@@ -478,9 +558,8 @@ title: "Follow-Through Completion"
                 </div>
             </div>
 
-            <!-- Section 3: Next 5 minutes -->
-            <div class="section immediate-help">
-                <h2>What Can Help You Through the Next 5 Minutes</h2>
+            <div class="immediate-help">
+                <h2 id="next-five-minutes">What Can Help You Through the Next 5 Minutes</h2>
                 <p>When you're stalled on completing something right now, these strategies can help break through the completion barrier:</p>
 
                 <ul>
@@ -498,9 +577,8 @@ title: "Follow-Through Completion"
                 </div>
             </div>
 
-            <!-- Section 4: Long-term solutions -->
-            <div class="section long-term">
-                <h2>What Are Some Healthy Long-Term Solutions</h2>
+            <div class="long-term">
+                <h2 id="healthy-long-term-solutions">What Are Some Healthy Long-Term Solutions</h2>
                 <p>Building systems that support completion while working with your <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> brain patterns:</p>
 
                 <ul>
@@ -526,9 +604,8 @@ title: "Follow-Through Completion"
                 </div>
             </div>
 
-            <!-- Section 5: Medical intervention -->
-            <div class="section medical-intervention">
-                <h2>When Should I Consider Medical Intervention</h2>
+            <div class="medical-section">
+                <h2 id="medical-intervention">When Should I Consider Medical Intervention</h2>
                 <p>Consider professional support if completion difficulties are significantly impacting your life:</p>
 
                 <ul>
@@ -540,17 +617,16 @@ title: "Follow-Through Completion"
                     <li><a class="jargon">Completion anxiety<span class="tooltip">Fear of judgment or criticism that makes finishing and sharing work feel dangerous</span></a> is preventing you from finishing school assignments, work projects, or creative endeavors</li>
                 </ul>
 
-                <p>A healthcare provider familiar with ADHD can help evaluate whether medication, therapy, or other interventions might help. Many people find that proper ADHD treatment significantly improves their ability to sustain motivation through completion phases.</p>
+                <p>A healthcare provider familiar with <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> can help evaluate whether medication, therapy, or other interventions might help. Many people find that proper <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> treatment significantly improves their ability to sustain motivation through completion phases.</p>
 
                 <div class="highlight-box">
                     <p><strong>Types of support that help:</strong> <a class="jargon">ADHD coaching<span class="tooltip">Specialized support focused on developing practical strategies for ADHD-related challenges</span></a> for completion strategies, <a class="jargon">cognitive-behavioral therapy<span class="tooltip">Therapy focused on changing thought patterns and behaviors to improve functioning</span></a> for <a class="jargon">perfectionism<span class="tooltip">Setting unrealistically high standards that often prevent completion</span></a> and <a class="jargon">completion anxiety<span class="tooltip">Fear of judgment or criticism that makes finishing and sharing work feel dangerous</span></a>, medication evaluation, or <a class="jargon">project management support<span class="tooltip">Help developing systems and strategies for planning and completing complex projects</span></a>.</p>
                 </div>
             </div>
 
-            <!-- Section 6: Validation -->
-            <div class="section validation">
-                <h2>You're Not Imagining This</h2>
-                <p>Completion difficulties are one of the most common and frustrating aspects of ADHD. The gap between your intentions and your ability to follow through isn't about laziness, lack of commitment, or character flaws. It's about how your brain manages motivation, attention, and effort over extended periods.</p>
+            <div class="validation-section">
+                <h2 id="youre-not-imagining-this">You're Not Imagining This</h2>
+                <p>Completion difficulties are one of the most common and frustrating aspects of <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a>. The gap between your intentions and your ability to follow through isn't about laziness, lack of commitment, or character flaws. It's about how your brain manages motivation, attention, and effort over extended periods.</p>
 
                 <p>Many highly successful people with <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> continue to struggle with completion throughout their lives. They succeed by building systems that support completion, finding collaborators who complement their strengths, and accepting that their <a class="jargon">project management style<span class="tooltip">Your individual approach to planning, executing, and completing work</span></a> might look different from <a class="jargon">neurotypical<span class="tooltip">People whose brains develop and function in ways that align with societal expectations and norms</span></a> patterns.</p>
 
