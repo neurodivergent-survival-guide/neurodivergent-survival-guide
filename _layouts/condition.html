@@ -65,12 +65,10 @@ layout: default
 
 {% assign conditions = site.data.conditions | sort: 'name' %}
 {% assign current_index = -1 %}
-{% for condition in conditions %}
   {% if condition.slug == page.slug %}
     {% assign current_index = forloop.index0 %}
     {% break %}
   {% endif %}
-{% endfor %}
 
 <div class="condition-navigation">
   <div class="nav-container">
