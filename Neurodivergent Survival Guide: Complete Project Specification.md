@@ -1,5 +1,19 @@
 # **Neurodivergent Survival Guide: Complete Project Specification**
 
+## **INDEX PAGES**
+
+**Main Site Index** - /index.html
+Primary landing page introducing the site's purpose and navigation to all major sections.
+
+**Conditions Index** - /conditions/index.html
+Entry point to all neurodivergent condition pages with overview and navigation guidance.
+
+**Struggles Index** - /struggles/index.html
+Comprehensive directory of daily friction points organized by experiential categories.
+
+**Glossary Index** - /glossary/index.html
+Navigation hub for all terminology and concept cluster pages.
+
 ## **CONDITION PAGES**
 
 **AUTISM** - /conditions/autism.html
@@ -67,6 +81,12 @@ Processing missed opportunities and identity reconstruction after adult diagnosi
 **Sensory Seeking Behaviors** - /struggles/sensory-seeking-behaviors.html
 Need for intense sensory input to feel regulated and alert. Page helps distinguish between seeking and overwhelm while finding healthy outlets.
 
+**Medication Sensitivity Management** - /struggles/medication-sensitivity-management.html
+Navigating heightened sensitivity to psychiatric medications and managing treatments for co-occurring conditions. Page covers starting low, going slow, and working with providers who understand autistic medication responses.
+
+**Autism Workplace Advocacy** - /struggles/autism-workplace-advocacy.html
+Securing reasonable accommodations for sensory needs, communication preferences, and routine requirements in work environments. Page provides scripts, legal frameworks, and autism-specific accommodation strategies.
+
 ## **ADHD STRUGGLES**
 
 **Task Initiation Paralysis** - /struggles/task-initiation-paralysis.html
@@ -116,6 +136,12 @@ Forgetting about things when they're not visible or immediately present. Page of
 
 **Interest-Based Nervous System** - /struggles/interest-based-nervous-system.html
 Functioning best with activities that are interesting, challenging, urgent, or novel. Page helps you understand and work with your motivation patterns.
+
+**Stimulant Medication Management** - /struggles/stimulant-medication-management.html
+Dealing with appetite suppression, sleep disruption, crash periods, and tolerance concerns with ADHD medications. Page covers timing strategies, side effect management, and communication with prescribers.
+
+**ADHD Workplace Advocacy** - /struggles/adhd-workplace-advocacy.html
+Requesting accommodations for time management, organization, and attention challenges in professional settings. Page includes accommodation examples, ADA guidance, and strategies for explaining ADHD needs to employers.
 
 ## **BIPOLAR STRUGGLES**
 
@@ -173,6 +199,12 @@ Impact of mood episodes on family, friends, and romantic relationships. Page off
 **Financial Consequences Manic Spending** - /struggles/financial-consequences-manic-spending.html
 Dealing with debt or poor financial decisions made during episodes. Page covers financial safety planning and recovery from money-related episode consequences.
 
+**Mood Stabilizer Side Effects** - /struggles/mood-stabilizer-side-effects.html
+Managing weight gain, cognitive dulling, tremors, and other side effects from lithium, anticonvulsants, and antipsychotics. Page covers side effect management and balancing medication benefits with quality of life.
+
+**Bipolar Workplace Advocacy** - /struggles/bipolar-workplace-advocacy.html
+Navigating disclosure decisions and requesting episode-related accommodations while managing mental health stigma. Page addresses FMLA, schedule flexibility, and creating supportive work environments.
+
 ## **BORDERLINE PERSONALITY DISORDER STRUGGLES**
 
 **Fear of Abandonment** - /struggles/fear-of-abandonment.html
@@ -220,6 +252,12 @@ Overwhelming feelings of being fundamentally flawed or bad. Page validates shame
 **Hypervigilance to Rejection Cues** - /struggles/hypervigilance-to-rejection-cues.html
 Constantly scanning for signs that others might leave or reject you. Page addresses anxiety management and realistic assessment of social situations.
 
+**Off-Label Medication Navigation** - /struggles/off-label-medication-navigation.html
+Working with providers to find helpful medications when no specific BPD treatments exist. Page covers trial-and-error processes, managing expectations, and advocating for medication support alongside therapy.
+
+**BPD Stigma and Advocacy** - /struggles/bpd-stigma-and-advocacy.html
+Overcoming provider bias and accessing quality treatment despite BPD stigma in healthcare settings. Page provides strategies for finding informed providers and self-advocacy in medical contexts.
+
 ## **OCD STRUGGLES**
 
 **Intrusive Thoughts Images Urges** - /struggles/intrusive-thoughts-images-urges.html
@@ -252,6 +290,12 @@ Limiting activities to avoid triggering obsessions or compulsions. Page covers g
 **Secondary Depression from Shame Exhaustion** - /struggles/secondary-depression-from-shame-exhaustion.html
 Mood problems that develop from the burden of living with OCD. Page addresses the emotional toll of OCD and integrated treatment approaches.
 
+**SSRI Sexual and Emotional Side Effects** - /struggles/ssri-sexual-emotional-side-effects.html
+Managing sexual dysfunction, emotional blunting, and other SSRI side effects while maintaining OCD symptom control. Page covers side effect mitigation strategies and medication adjustment discussions.
+
+**OCD Accommodation Advocacy** - /struggles/ocd-accommodation-advocacy.html
+Requesting workplace and educational accommodations for compulsions, avoidance behaviors, and time-related needs without disclosing specific obsessions. Page provides professional language and accommodation frameworks.
+
 ## **CROSS-CUTTING STRUGGLES**
 
 **Executive Function Challenges** - /struggles/executive-function-challenges.html
@@ -261,7 +305,10 @@ Difficulty with planning, organization, working memory, and cognitive flexibilit
 Sleep problems that occur across multiple neurodivergent conditions. Page covers sleep hygiene approaches that work with different brain types.
 
 **Medication Management** - /struggles/medication-management.html
-Dealing with psychiatric medications across differen
+Dealing with psychiatric medications across different conditions. Page covers adherence strategies, side effect monitoring, and provider communication.
+
+**Substance Use as Coping** - /struggles/substance-use-as-coping.html
+Using alcohol, cannabis, or other substances to manage neurodivergent-specific challenges. Page addresses harm reduction, recognizing problematic patterns, and finding alternative coping strategies.
 
 # **GLOSSARY CONCEPT CLUSTERS**
 
@@ -327,10 +374,9 @@ Explains emergency mental health situations and safety planning. Defines crisis 
 
 ---
 
-**GLOSSARY PAGE COUNT:** 20 concept cluster pages
-
 **TOTAL PROJECT PAGE COUNT:** 
+- 4 index pages
 - 5 condition pages
-- 74 struggle pages  
+- 84 struggle pages (74 original + 10 new)
 - 20 glossary pages
-- **Total: 99 pages**
+- **Total: 113 pages**
