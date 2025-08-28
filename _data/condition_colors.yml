@@ -1,0 +1,29 @@
+adhd:
+  gradient_start: "#d63031"
+  gradient_end: "#a21f23"
+  primary: "#d63031"
+  secondary: "#a21f23"
+  
+autism:
+  gradient_start: "#27ae60"
+  gradient_end: "#196f3d"
+  primary: "#27ae60"
+  secondary: "#196f3d"
+  
+bipolar:
+  gradient_start: "#74b9ff"
+  gradient_end: "#0984e3"
+  primary: "#74b9ff"
+  secondary: "#0984e3"
+  
+borderline-personality-disorder:
+  gradient_start: "#f39c12"
+  gradient_end: "#d68910"
+  primary: "#f39c12"
+  secondary: "#d68910"
+  
+ocd:
+  gradient_start: "#9b59b6"
+  gradient_end: "#7d3c98"
+  primary: "#9b59b6"
+  secondary: "#7d3c98"
