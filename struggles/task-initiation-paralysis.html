@@ -1,8 +1,8 @@
+<!-- struggles/task-initiation-paralysis.html -->
 ---
 layout: default
 title: "Task Initiation Paralysis"
 ---
-<!-- struggles/task-initiation-paralysis.html -->
 <style>
     * {
         margin: 0;
@@ -12,7 +12,8 @@ title: "Task Initiation Paralysis"
 
     body {
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        background: linear-gradient(135deg, #ff7675 0%, #fd79a8 100%);
+        font-weight: 500;
+        background: linear-gradient(135deg, #d63031 0%, #a21f23 100%);
         color: #333;
         min-height: 100vh;
         line-height: 1.7;
@@ -34,7 +35,7 @@ title: "Task Initiation Paralysis"
 
     .header p {
         color: rgba(255, 255, 255, 0.9);
-        font-size: 1.1rem;
+        font-size: 1.2rem;
     }
 
     .breadcrumb {
@@ -61,7 +62,7 @@ title: "Task Initiation Paralysis"
     }
 
     .container {
-        max-width: 900px;
+        max-width: 1200px;
         margin: 0 auto;
         padding: 2rem;
         width: 100%;
@@ -76,73 +77,142 @@ title: "Task Initiation Paralysis"
         margin-bottom: 2rem;
     }
 
-    .section {
-        background: white;
-        border-radius: 15px;
+    .what-section {
+        background: #ffe6e6;
         padding: 2rem;
+        border-radius: 16px;
         margin: 2rem 0;
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-        border-top: 3px solid #fd79a8;
+        border-left: 4px solid #d63031;
     }
 
-    .section h2 {
-        color: #fd79a8;
-        font-size: 1.4rem;
-        margin-bottom: 1.5rem;
-        font-weight: 600;
-    }
-
-    .section p {
-        color: #555;
+    .what-section h2 {
+        color: #d63031;
         margin-bottom: 1rem;
-        font-size: 1rem;
+        font-size: 1.6rem;
     }
 
-    .section ul {
-        padding-left: 1.5rem;
+    .what-section p {
+        margin-bottom: 1rem;
+        font-size: 1.05rem;
         color: #555;
-        margin: 1rem 0;
     }
 
-    .section li {
+    .why-section {
+        background: #ffeaa7;
+        padding: 2rem;
+        border-radius: 16px;
+        margin: 2rem 0;
+        border-left: 4px solid #f1c40f;
+    }
+
+    .why-section h2 {
+        color: #f39c12;
+        margin-bottom: 1rem;
+        font-size: 1.6rem;
+    }
+
+    .why-section p {
+        margin-bottom: 1rem;
+        font-size: 1.05rem;
+        color: #555;
+    }
+
+    .immediate-help {
+        background: #cce5ff;
+        padding: 2rem;
+        border-radius: 16px;
+        margin: 2rem 0;
+        border-left: 4px solid #007acc;
+    }
+
+    .immediate-help h2 {
+        color: #005599;
+        margin-bottom: 1rem;
+        font-size: 1.6rem;
+    }
+
+    .immediate-help ul {
+        color: #555;
+        padding-left: 1.2rem;
+    }
+
+    .immediate-help li {
         margin-bottom: 0.8rem;
         font-size: 0.95rem;
     }
 
-    .immediate-help {
-        background: #e8f5e8;
-        border-left-color: #00b894;
-    }
-
-    .immediate-help h2 {
-        color: #00b894;
-    }
-
     .long-term {
-        background: #e3f2fd;
-        border-left-color: #1976d2;
+        background: #d4edda;
+        padding: 2rem;
+        border-radius: 16px;
+        margin: 2rem 0;
+        border-left: 4px solid #28a745;
     }
 
     .long-term h2 {
-        color: #1976d2;
+        color: #155724;
+        margin-bottom: 1rem;
+        font-size: 1.6rem;
     }
 
-    .medical-intervention {
-        background: #fff3e0;
-        border-left-color: #f57c00;
+    .long-term ul {
+        color: #555;
+        padding-left: 1.2rem;
     }
 
-    .medical-intervention h2 {
-        color: #f57c00;
+    .long-term li {
+        margin-bottom: 0.8rem;
+        font-size: 0.95rem;
     }
 
-    .validation {
-        background: #f3e5f5;
-        border-left-color: #8e24aa;
+    .medical-section {
+        background: #d1f2eb;
+        padding: 2rem;
+        border-radius: 16px;
+        margin: 2rem 0;
+        border-left: 4px solid #17a2b8;
     }
 
-    .validation h2 {
-        color: #8e24aa;
+    .medical-section h2 {
+        color: #0c5460;
+        margin-bottom: 1rem;
+        font-size: 1.6rem;
+    }
+
+    .medical-section p {
+        margin-bottom: 1rem;
+        font-size: 1.05rem;
+        color: #555;
+    }
+
+    .medical-section ul {
+        color: #555;
+        padding-left: 1.2rem;
+    }
+
+    .medical-section li {
+        margin-bottom: 0.8rem;
+        font-size: 0.95rem;
+    }
+
+    .validation-section {
+        background: #e2e3ff;
+        padding: 2rem;
+        border-radius: 16px;
+        margin: 2rem 0;
+        border-left: 4px solid #6c5ce7;
+    }
+
+    .validation-section h2 {
+        color: #5a4fcf;
+        margin-bottom: 1rem;
+        font-size: 1.6rem;
+    }
+
+    .validation-section p {
+        margin-bottom: 1rem;
+        font-size: 1.05rem;
+        color: #555;
     }
 
     .learn-more {
@@ -203,7 +273,7 @@ title: "Task Initiation Paralysis"
     }
 
     .struggle-tag {
-        background: #fd79a8;
+        background: #d63031;
         color: white;
         padding: 0.5rem 1rem;
         border-radius: 20px;
@@ -216,48 +286,98 @@ title: "Task Initiation Paralysis"
     }
 
     .struggle-tag:hover {
-        background: #e84393;
+        background: #a21f23;
         color: white;
         text-decoration: none;
         transform: translateY(-1px);
     }
 
+    .highlight-box {
+        background: #fff8e1;
+        padding: 1rem;
+        border-radius: 8px;
+        border-left: 3px solid #ffc107;
+        margin: 1rem 0;
+    }
+
+    /* Focus states for accessibility */
+    .struggle-tag:focus,
+    .jargon:focus,
+    .breadcrumb a:focus {
+        outline: 2px solid #fff;
+        outline-offset: 2px;
+    }
+
+    /* Motion accessibility */
+    @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+        }
+    }
+
+    /* Jargon styling - context-aware based on background */
     .jargon {
-        color: #e84393;
         text-decoration: none;
-        border-bottom: 1px dotted #e84393;
+        border-bottom: 1px dotted;
         position: relative;
         cursor: help;
         font-weight: 500;
     }
 
-    .jargon:hover {
+    /* Pink jargon for white backgrounds */
+    .content-card .jargon,
+    .related-struggles .jargon {
+        color: #e84393;
+        border-bottom-color: #e84393;
+    }
+
+    .content-card .jargon:hover,
+    .related-struggles .jargon:hover {
         color: #fd79a8;
         border-bottom-color: #fd79a8;
     }
 
-    /* White jargon for purple gradient backgrounds */
+    /* Bold black jargon for colored backgrounds */
+    .what-section .jargon,
+    .why-section .jargon,
+    .immediate-help .jargon,
+    .long-term .jargon,
+    .medical-section .jargon,
+    .validation-section .jargon,
+    .highlight-box .jargon {
+        color: #333;
+        font-weight: 600;
+        border-bottom-color: #333;
+    }
+
+    /* White jargon for gradient backgrounds */
     .header .jargon,
-    .breadcrumb .jargon {
+    .breadcrumb .jargon,
+    .learn-more .jargon,
+    .learn-more-content .jargon {
         color: white;
-        border-bottom: 1px dotted rgba(255, 255, 255, 0.8);
-        background: rgba(255, 255, 255, 0.2);
-        padding: 2px 4px;
-        border-radius: 3px;
+        border-bottom-color: rgba(255, 255, 255, 0.7);
+        background: rgba(255, 255, 255, 0.1);
+        padding: 2px 6px;
+        border-radius: 4px;
     }
 
     .header .jargon:hover,
-    .breadcrumb .jargon:hover {
-        color: white;
+    .breadcrumb .jargon:hover,
+    .learn-more .jargon:hover,
+    .learn-more-content .jargon:hover {
+        background: rgba(255, 255, 255, 0.2);
         border-bottom-color: white;
-        background: rgba(255, 255, 255, 0.3);
     }
 
+    /* Auto-sizing tooltips */
     .tooltip {
         visibility: hidden;
         opacity: 0;
         position: absolute;
-        bottom: 125%;
+        bottom: calc(100% + 8px);
         left: 50%;
         transform: translateX(-50%);
         background: #333;
@@ -275,6 +395,7 @@ title: "Task Initiation Paralysis"
         white-space: normal;
         text-align: left;
         line-height: 1.5;
+        pointer-events: none;
     }
 
     .tooltip::after {
@@ -292,14 +413,6 @@ title: "Task Initiation Paralysis"
         opacity: 1;
     }
 
-    .highlight-box {
-        background: #fff8e1;
-        padding: 1rem;
-        border-radius: 8px;
-        border-left: 3px solid #ffc107;
-        margin: 1rem 0;
-    }
-
     /* Mobile responsive tooltip adjustments */
     @media (max-width: 1024px) {
         .tooltip {
@@ -307,7 +420,22 @@ title: "Task Initiation Paralysis"
         }
     }
 
+    /* Mobile-specific tooltip positioning */
     @media (max-width: 768px) {
+        .tooltip {
+            position: fixed !important;
+            bottom: 20px !important;
+            left: 20px !important;
+            right: 20px !important;
+            transform: none !important;
+            max-width: none !important;
+            width: auto !important;
+        }
+
+        .tooltip::after {
+            display: none !important;
+        }
+
         .header {
             padding: 1rem;
         }
@@ -332,7 +460,12 @@ title: "Task Initiation Paralysis"
             padding: 1.5rem;
         }
 
-        .section {
+        .what-section,
+        .why-section,
+        .immediate-help,
+        .long-term,
+        .medical-section,
+        .validation-section {
             padding: 1.5rem;
         }
 
@@ -359,8 +492,19 @@ title: "Task Initiation Paralysis"
             padding: 1.2rem;
         }
 
-        .section {
+        .what-section,
+        .why-section,
+        .immediate-help,
+        .long-term,
+        .medical-section,
+        .validation-section {
             padding: 1.2rem;
+        }
+
+        .tooltip {
+            left: 10px !important;
+            right: 10px !important;
+            bottom: 10px !important;
         }
     }
 </style>
@@ -373,143 +517,141 @@ title: "Task Initiation Paralysis"
 <div class="breadcrumb">
     <a href="{{ '/index.html' | relative_url }}">Home</a>
     <span>></span>
+    <a href="{{ '/struggles/index.html' | relative_url }}">Struggles</a>
+    <span>></span>
     <a href="{{ '/conditions/adhd.html' | relative_url }}">ADHD</a>
     <span>></span>
     Task Initiation Paralysis
 </div>
 
 <div class="container">
-    <div class="content-card">
-        <!-- Section 1: What this feels like -->
-        <div class="section">
-            <h2>What This Feels Like</h2>
-            <p><a class="jargon">Task initiation paralysis<span class="tooltip">Knowing what needs to be done but being unable to begin, despite wanting to</span></a> often feels like having a clear view of what needs to be done but hitting an invisible wall when trying to start. Many people describe it as knowing they should do something, wanting to do it, but feeling physically or mentally unable to begin.</p>
+    <main role="main" id="main-content">
+        <div class="content-card">
+            <div class="what-section">
+                <h2 id="what-this-feels-like">What This Feels Like</h2>
+                <p><a class="jargon">Task initiation paralysis<span class="tooltip">Knowing what needs to be done but being unable to begin, despite wanting to</span></a> often feels like having a clear view of what needs to be done but hitting an invisible wall when trying to start. Many people describe it as knowing they should do something, wanting to do it, but feeling physically or mentally unable to begin.</p>
 
-            <p>It might feel like sitting in front of your computer for hours, opening and closing the same document without typing a word. Or standing in your kitchen knowing you need to cook dinner but being unable to take the first step toward the stove. The task itself isn't necessarily difficult - sometimes it's something you've done hundreds of times before.</p>
+                <p>It might feel like sitting in front of your computer for hours, opening and closing the same document without typing a word. Or standing in your kitchen knowing you need to cook dinner but being unable to take the first step toward the stove. The task itself isn't necessarily difficult - sometimes it's something you've done hundreds of times before.</p>
 
-            <p>This often comes with intense frustration and self-criticism. You might think "Why can't I just do this simple thing?" or "Everyone else seems to start tasks easily." The inability to start can feel like laziness or lack of willpower, especially when others don't understand the genuine <a class="jargon">neurological barrier<span class="tooltip">Real brain differences that create obstacles to starting tasks, not character flaws or lack of motivation</span></a> you're experiencing.</p>
+                <p>This often comes with intense frustration and self-criticism. You might think "Why can't I just do this simple thing?" or "Everyone else seems to start tasks easily." The inability to start can feel like laziness or lack of willpower, especially when others don't understand the genuine <a class="jargon">neurological barrier<span class="tooltip">Real brain differences that create obstacles to starting tasks, not character flaws or lack of motivation</span></a> you're experiencing.</p>
 
-            <div class="highlight-box">
-                <p><strong>Common experiences:</strong> <a class="jargon">Procrastinating<span class="tooltip">Delaying tasks not out of laziness but due to brain differences in task initiation</span></a> on tasks you actually want to complete, feeling paralyzed by large projects, spending hours "getting ready" to start but never beginning, needing external pressure or deadlines to begin anything.</p>
+                <div class="highlight-box">
+                    <p><strong>Common experiences:</strong> <a class="jargon">Procrastinating<span class="tooltip">Delaying tasks not out of laziness but due to brain differences in task initiation</span></a> on tasks you actually want to complete, feeling paralyzed by large projects, spending hours "getting ready" to start but never beginning, needing external pressure or deadlines to begin anything.</p>
+                </div>
             </div>
-        </div>
 
-        <!-- Section 2: Why this might be happening -->
-        <div class="section">
-            <h2>Why This Might Be Happening</h2>
-            <p>Task initiation involves several brain systems working together - <a class="jargon">executive function<span class="tooltip">Mental skills that help you plan, focus, remember instructions, and manage multiple tasks</span></a>, <a class="jargon">motivation networks<span class="tooltip">Brain circuits that generate the drive to start and complete activities</span></a>, and <a class="jargon">attention regulation<span class="tooltip">The brain's ability to direct and sustain focus where you want it, when you want it</span></a>. In <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> brains, these systems work differently, creating genuine barriers to getting started.</p>
+            <div class="why-section">
+                <h2 id="why-this-happens">Why This Might Be Happening</h2>
+                <p>Task initiation involves several brain systems working together - <a class="jargon">executive function<span class="tooltip">Mental skills that help you plan, focus, remember instructions, and manage multiple tasks</span></a>, <a class="jargon">motivation networks<span class="tooltip">Brain circuits that generate the drive to start and complete activities</span></a>, and <a class="jargon">attention regulation<span class="tooltip">The brain's ability to direct and sustain focus where you want it, when you want it</span></a>. In <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> brains, these systems work differently, creating genuine barriers to getting started.</p>
 
-            <p>The ADHD brain often operates on an <a class="jargon">interest-based nervous system<span class="tooltip">A brain that functions optimally when tasks are interesting, challenging, urgent, or novel</span></a> rather than an importance-based one. This means your brain prioritizes what's engaging over what's important. Tasks that aren't immediately interesting, novel, challenging, or urgent may not generate enough <a class="jargon">dopamine<span class="tooltip">A brain chemical that helps with motivation, reward, and starting activities</span></a> to overcome the startup barrier.</p>
+                <p>The <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> brain often operates on an <a class="jargon">interest-based nervous system<span class="tooltip">A brain that functions optimally when tasks are interesting, challenging, urgent, or novel</span></a> rather than an importance-based one. This means your brain prioritizes what's engaging over what's important. Tasks that aren't immediately interesting, novel, challenging, or urgent may not generate enough <a class="jargon">dopamine<span class="tooltip">A brain chemical that helps with motivation, reward, and starting activities</span></a> to overcome the startup barrier.</p>
 
-            <p>Additionally, many people with ADHD experience <a class="jargon">analysis paralysis<span class="tooltip">Getting stuck overthinking how to approach a task instead of starting it</span></a> when facing tasks with multiple possible approaches. The brain gets caught in planning loops, trying to find the "perfect" way to begin, which prevents actual starting.</p>
+                <p>Additionally, many people with <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> experience <a class="jargon">analysis paralysis<span class="tooltip">Getting stuck overthinking how to approach a task instead of starting it</span></a> when facing tasks with multiple possible approaches. The brain gets caught in planning loops, trying to find the "perfect" way to begin, which prevents actual starting.</p>
 
-            <div class="learn-more" onclick="toggleLearnMore(this)">
-                <h3>Learn More: The Neuroscience Behind Task Initiation ↓</h3>
-                <div class="learn-more-content">
-                    <p>Task initiation relies heavily on the brain's <a class="jargon">prefrontal cortex<span class="tooltip">Brain area responsible for executive functions including planning and task initiation</span></a>, which manages <a class="jargon">executive functions<span class="tooltip">Mental skills that help you plan, focus, remember instructions, and manage multiple tasks</span></a>. In ADHD, this area shows differences in <a class="jargon">dopamine<span class="tooltip">A brain chemical that helps with motivation, reward, and starting activities</span></a> availability and <a class="jargon">neural connectivity<span class="tooltip">How different brain regions communicate and work together</span></a>. The <a class="jargon">anterior cingulate cortex<span class="tooltip">Brain region involved in effort allocation and overcoming mental inertia</span></a>, which helps with effort allocation and overcoming inertia, also shows different activation patterns.</p>
-                    
-                    <p>Research suggests that ADHD brains need higher levels of stimulation to activate the <a class="jargon">reward pathways<span class="tooltip">Brain circuits that generate motivation and drive to engage in activities</span></a> necessary for task initiation. This isn't about motivation or willpower - it's about having different <a class="jargon">neurochemical thresholds<span class="tooltip">The level of brain chemical activity needed to trigger action and engagement</span></a> for engaging the brain's "go" system.</p>
+                <div class="learn-more" onclick="toggleLearnMore(this)">
+                    <h3>Learn More: The Neuroscience Behind Task Initiation ↓</h3>
+                    <div class="learn-more-content">
+                        <p>Task initiation relies heavily on the brain's <a class="jargon">prefrontal cortex<span class="tooltip">Brain area responsible for executive functions including planning and task initiation</span></a>, which manages <a class="jargon">executive functions<span class="tooltip">Mental skills that help you plan, focus, remember instructions, and manage multiple tasks</span></a>. In <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a>, this area shows differences in <a class="jargon">dopamine<span class="tooltip">A brain chemical that helps with motivation, reward, and starting activities</span></a> availability and <a class="jargon">neural connectivity<span class="tooltip">How different brain regions communicate and work together</span></a>. The <a class="jargon">anterior cingulate cortex<span class="tooltip">Brain region involved in effort allocation and overcoming mental inertia</span></a>, which helps with effort allocation and overcoming inertia, also shows different activation patterns.</p>
+                        
+                        <p>Research suggests that <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> brains need higher levels of stimulation to activate the <a class="jargon">reward pathways<span class="tooltip">Brain circuits that generate motivation and drive to engage in activities</span></a> necessary for task initiation. This isn't about motivation or willpower - it's about having different <a class="jargon">neurochemical thresholds<span class="tooltip">The level of brain chemical activity needed to trigger action and engagement</span></a> for engaging the brain's "go" system.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="immediate-help">
+                <h2 id="next-five-minutes">What Can Help You Through the Next 5 Minutes</h2>
+                <p>When you're stuck right now, these strategies can help break through the initiation barrier:</p>
+
+                <ul>
+                    <li><strong>Make it tiny:</strong> Commit to just one small action, like opening a document or gathering materials. Often starting creates <a class="jargon">momentum<span class="tooltip">The psychological and neurological boost that comes from beginning a task, making continuation easier</span></a>.</li>
+                    <li><strong>Try the <a class="jargon">Pomodoro Technique<span class="tooltip">Working in focused 25-minute intervals followed by short breaks</span></a>:</strong> Set a timer for 25 minutes and commit to working just until it rings. The <a class="jargon">time-boxing<span class="tooltip">Setting a specific, limited time period to work on something</span></a> makes starting feel less overwhelming.</li>
+                    <li><strong>Change your environment:</strong> Move to a different room, go to a coffee shop, or work standing up. Environmental shifts can reset your brain's <a class="jargon">activation state<span class="tooltip">Your brain's current level of alertness and readiness to engage with tasks</span></a>.</li>
+                    <li><strong>Set a timer for 2 minutes:</strong> Tell yourself you only have to work for 2 minutes. This makes starting feel less overwhelming and often leads to continuing.</li>
+                    <li><strong>Use <a class="jargon">body doubling<span class="tooltip">Working in the presence of another person whose focus and energy helps you maintain your own focus</span></a>:</strong> Work alongside someone else (virtually or in person). <a class="jargon">Body doubling<span class="tooltip">Working in the presence of another person whose focus and energy helps you maintain your own focus</span></a> provides external <a class="jargon">activation energy<span class="tooltip">The mental and emotional boost needed to overcome task initiation barriers</span></a> that many <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> brains need to get started.</li>
+                    <li><strong>Try the "just one thing" rule:</strong> Commit to doing one related action - organizing your desk, making a list, or reading one paragraph.</li>
+                    <li><strong>Address basic needs first:</strong> Check if you're hungry, thirsty, or need to move your body. Physical discomfort can make initiation harder.</li>
+                </ul>
+
+                <div class="highlight-box">
+                    <p><strong>Emergency hack:</strong> Text someone what you're about to do. The <a class="jargon">social accountability<span class="tooltip">The motivation that comes from others being aware of your goals and progress</span></a> may provide enough external motivation to overcome the internal barrier.</p>
+                </div>
+            </div>
+
+            <div class="long-term">
+                <h2 id="healthy-long-term-solutions">What Are Some Healthy Long-Term Solutions</h2>
+                <p>Building sustainable systems that work with your <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> brain rather than against it:</p>
+
+                <ul>
+                    <li><strong>Create <a class="jargon">initiation rituals<span class="tooltip">Consistent routines that signal to your brain that it's time to work</span></a>:</strong> Develop consistent routines that signal "work time" to your brain - specific music, location, or preparation sequence.</li>
+                    <li><strong>Use external structure:</strong> Schedule tasks with specific start times, use accountability partners, or work with <a class="jargon">body doubling<span class="tooltip">Working in the presence of another person whose focus and energy helps you maintain your own focus</span></a> regularly.</li>
+                    <li><strong>Build <a class="jargon">parallel play<span class="tooltip">Working on separate tasks in the same space as someone else, providing gentle accountability without social pressure</span></a> with a partner:</strong> Work on separate tasks in the same space as someone you're comfortable with. This creates gentle <a class="jargon">social accountability<span class="tooltip">The motivation that comes from others being aware of your goals and progress</span></a> without pressure to interact or perform.</li>
+                    <li><strong>Break projects into <a class="jargon">micro-tasks<span class="tooltip">Very small, specific actions that take 2-5 minutes each, making large projects feel manageable</span></a>:</strong> Large projects feel overwhelming. Create task lists with tiny, specific actions that take 2-5 minutes each.</li>
+                    <li><strong>Identify your optimal times:</strong> Notice when task initiation feels easier (morning vs. afternoon, after coffee, etc.) and schedule important tasks then.</li>
+                    <li><strong>Build in rewards:</strong> Plan something enjoyable after starting or completing tasks. Your brain needs positive <a class="jargon">reinforcement<span class="tooltip">Rewards that help your brain learn to repeat helpful behaviors</span></a>.</li>
+                    <li><strong>Address <a class="jargon">perfectionism<span class="tooltip">Setting unrealistically high standards that often prevent starting because the outcome might not be perfect</span></a>:</strong> Practice "good enough" standards. <a class="jargon">Perfectionism<span class="tooltip">Setting unrealistically high standards that often prevent starting because the outcome might not be perfect</span></a> often disguises itself as inability to start.</li>
+                    <li><strong>Consider medication:</strong> <a class="jargon">Stimulant medications<span class="tooltip">ADHD medications that increase dopamine levels to improve task initiation and motivation</span></a> can significantly improve task initiation for many people with <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> by addressing the underlying <a class="jargon">dopamine<span class="tooltip">A brain chemical that helps with motivation, reward, and starting activities</span></a> differences.</li>
+                </ul>
+
+                <div class="learn-more" onclick="toggleLearnMore(this)">
+                    <h3>Learn More: Advanced Strategies ↓</h3>
+                    <div class="learn-more-content">
+                        <p><strong>The <a class="jargon">Implementation Intention<span class="tooltip">If-then planning that helps the brain automatically trigger actions in specific situations</span></a> technique:</strong> Instead of "I will do this task," create if-then plans: "If it's 2 PM, then I will open my laptop and start the first bullet point of my project."</p>
+                        
+                        <p><strong><a class="jargon">Energy management<span class="tooltip">Matching your task demands to your current mental and physical energy levels</span></a>:</strong> Track your energy patterns and match tasks to your capacity. Some people need high-stimulation environments to start, others need complete quiet.</p>
+                        
+                        <p><strong>Accommodation requests:</strong> At work or school, you might request flexible start times, permission to work in different locations, or <a class="jargon">project management support<span class="tooltip">Help breaking down large projects into manageable steps with external accountability</span></a>.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="medical-section">
+                <h2 id="medical-intervention">When Should I Consider Medical Intervention</h2>
+                <p>Consider professional support if <a class="jargon">task initiation<span class="tooltip">The ability to begin tasks and activities when needed</span></a> problems are significantly impacting your life:</p>
+
+                <ul>
+                    <li>You're frequently missing work deadlines or failing to complete important responsibilities</li>
+                    <li><a class="jargon">Task initiation paralysis<span class="tooltip">Knowing what needs to be done but being unable to begin, despite wanting to</span></a> is affecting your relationships, education, or employment</li>
+                    <li>You're experiencing significant distress or depression related to your inability to start tasks</li>
+                    <li>Basic <a class="jargon">self-care tasks<span class="tooltip">Essential daily activities like showering, eating, cleaning, and paying bills</span></a> (showering, eating, paying bills) are consistently difficult to initiate</li>
+                    <li>You're using substances to help you start tasks or cope with the frustration</li>
+                    <li>Task initiation problems are worsening over time despite trying various strategies</li>
+                </ul>
+
+                <p>A healthcare provider familiar with <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> can help evaluate whether medication, therapy, or other interventions might help. Many people find that proper <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> treatment dramatically improves their ability to start tasks.</p>
+
+                <div class="highlight-box">
+                    <p><strong>Types of support that help:</strong> <a class="jargon">ADHD coaching<span class="tooltip">Specialized support focused on developing practical strategies for ADHD-related challenges</span></a>, <a class="jargon">cognitive-behavioral therapy<span class="tooltip">Therapy focused on changing thought patterns and behaviors to improve functioning</span></a>, medication evaluation, <a class="jargon">occupational therapy<span class="tooltip">Therapy focused on developing skills for daily living and work tasks</span></a> for <a class="jargon">executive function<span class="tooltip">Mental skills that help you plan, focus, remember instructions, and manage multiple tasks</span></a> skills, or comprehensive <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> assessment if you haven't been evaluated.</p>
+                </div>
+            </div>
+
+            <div class="validation-section">
+                <h2 id="youre-not-imagining-this">You're Not Imagining This</h2>
+                <p><a class="jargon">Task initiation paralysis<span class="tooltip">Knowing what needs to be done but being unable to begin, despite wanting to</span></a> is a real neurological experience, not a character flaw or lack of motivation. Your brain literally processes task initiation differently than <a class="jargon">neurotypical<span class="tooltip">People whose brains develop and function in ways that align with societal expectations and norms</span></a> brains, and this creates genuine barriers that willpower alone can't overcome.</p>
+
+                <p>Many people with <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> describe feeling like they're "broken" or "lazy" because they struggle to start tasks that seem simple to others. This isn't true. You're dealing with differences in <a class="jargon">brain chemistry<span class="tooltip">The balance of neurotransmitters and other chemicals that affect brain function</span></a> and <a class="jargon">neural connectivity<span class="tooltip">How different brain regions communicate and work together</span></a> that affect motivation and activation systems.</p>
+
+                <p>It's also important to know that task initiation difficulties can vary dramatically from day to day. You might start tasks easily when you're interested or have external pressure, then struggle with the exact same type of task on a different day. This inconsistency is part of <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a>, not evidence that you're not trying hard enough.</p>
+
+                <p>Understanding that this is a <a class="jargon">neurological difference<span class="tooltip">Variation in brain structure and function that affects how you process information and respond to tasks</span></a>, not a moral failing, can help reduce the self-criticism that often makes the problem worse. With the right strategies and support, most people can significantly improve their ability to start tasks while accepting that some days will be harder than others.</p>
+
+                <div class="highlight-box">
+                    <p><strong>Remember:</strong> Millions of people with <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> experience this exact struggle. You're part of a community that understands what you're going through, and many have found effective ways to work with their brains rather than against them.</p>
+                </div>
+            </div>
+
+            <div class="related-struggles">
+                <h3>Related Struggles</h3>
+                <div class="struggle-tags">
+                    <a href="{{ '/struggles/follow-through-completion.html' | relative_url }}" class="struggle-tag">Follow-Through Completion</a>
+                    <a href="{{ '/struggles/time-blindness.html' | relative_url }}" class="struggle-tag">Time Blindness</a>
+                    <a href="{{ '/struggles/organization-and-planning-challenges.html' | relative_url }}" class="struggle-tag">Organization Challenges</a>
+                    <a href="{{ '/struggles/working-memory-difficulties.html' | relative_url }}" class="struggle-tag">Working Memory</a>
+                    <a href="{{ '/struggles/interest-based-nervous-system.html' | relative_url }}" class="struggle-tag">Interest-Based System</a>
+                    <a href="{{ '/struggles/executive-function-challenges.html' | relative_url }}" class="struggle-tag">Executive Function</a>
                 </div>
             </div>
         </div>
-
-        <!-- Section 3: Next 5 minutes -->
-        <div class="section immediate-help">
-            <h2>What Can Help You Through the Next 5 Minutes</h2>
-            <p>When you're stuck right now, these strategies can help break through the initiation barrier:</p>
-
-            <ul>
-                <li><strong>Make it tiny:</strong> Commit to just one small action, like opening a document or gathering materials. Often starting creates <a class="jargon">momentum<span class="tooltip">The psychological and neurological boost that comes from beginning a task, making continuation easier</span></a>.</li>
-                <li><strong>Try the <a class="jargon">Pomodoro Technique<span class="tooltip">Working in focused 25-minute intervals followed by short breaks</span></a>:</strong> Set a timer for 25 minutes and commit to working just until it rings. The <a class="jargon">time-boxing<span class="tooltip">Setting a specific, limited time period to work on something</span></a> makes starting feel less overwhelming.</li>
-                <li><strong>Change your environment:</strong> Move to a different room, go to a coffee shop, or work standing up. Environmental shifts can reset your brain's <a class="jargon">activation state<span class="tooltip">Your brain's current level of alertness and readiness to engage with tasks</span></a>.</li>
-                <li><strong>Set a timer for 2 minutes:</strong> Tell yourself you only have to work for 2 minutes. This makes starting feel less overwhelming and often leads to continuing.</li>
-                <li><strong>Use <a class="jargon">body doubling<span class="tooltip">Working in the presence of another person whose focus and energy helps you maintain your own focus</span></a>:</strong> Work alongside someone else (virtually or in person). <a class="jargon">Body doubling<span class="tooltip">Working in the presence of another person whose focus and energy helps you maintain your own focus</span></a> provides external <a class="jargon">activation energy<span class="tooltip">The mental and emotional boost needed to overcome task initiation barriers</span></a> that many ADHD brains need to get started.</li>
-                <li><strong>Try the "just one thing" rule:</strong> Commit to doing one related action - organizing your desk, making a list, or reading one paragraph.</li>
-                <li><strong>Address basic needs first:</strong> Check if you're hungry, thirsty, or need to move your body. Physical discomfort can make initiation harder.</li>
-            </ul>
-
-            <div class="highlight-box">
-                <p><strong>Emergency hack:</strong> Text someone what you're about to do. The <a class="jargon">social accountability<span class="tooltip">The motivation that comes from others being aware of your goals and progress</span></a> may provide enough external motivation to overcome the internal barrier.</p>
-            </div>
-        </div>
-
-        <!-- Section 4: Long-term solutions -->
-        <div class="section long-term">
-            <h2>What Are Some Healthy Long-Term Solutions</h2>
-            <p>Building sustainable systems that work with your ADHD brain rather than against it:</p>
-
-            <ul>
-                <li><strong>Create <a class="jargon">initiation rituals<span class="tooltip">Consistent routines that signal to your brain that it's time to work</span></a>:</strong> Develop consistent routines that signal "work time" to your brain - specific music, location, or preparation sequence.</li>
-                <li><strong>Use external structure:</strong> Schedule tasks with specific start times, use accountability partners, or work with <a class="jargon">body doubling<span class="tooltip">Working in the presence of another person whose focus and energy helps you maintain your own focus</span></a> regularly.</li>
-                <li><strong>Build <a class="jargon">parallel play<span class="tooltip">Working on separate tasks in the same space as someone else, providing gentle accountability without social pressure</span></a> with a partner:</strong> Work on separate tasks in the same space as someone you're comfortable with. This creates gentle <a class="jargon">social accountability<span class="tooltip">The motivation that comes from others being aware of your goals and progress</span></a> without pressure to interact or perform.</li>
-                <li><strong>Break projects into <a class="jargon">micro-tasks<span class="tooltip">Very small, specific actions that take 2-5 minutes each, making large projects feel manageable</span></a>:</strong> Large projects feel overwhelming. Create task lists with tiny, specific actions that take 2-5 minutes each.</li>
-                <li><strong>Identify your optimal times:</strong> Notice when task initiation feels easier (morning vs. afternoon, after coffee, etc.) and schedule important tasks then.</li>
-                <li><strong>Build in rewards:</strong> Plan something enjoyable after starting or completing tasks. Your brain needs positive <a class="jargon">reinforcement<span class="tooltip">Rewards that help your brain learn to repeat helpful behaviors</span></a>.</li>
-                <li><strong>Address <a class="jargon">perfectionism<span class="tooltip">Setting unrealistically high standards that often prevent starting because the outcome might not be perfect</span></a>:</strong> Practice "good enough" standards. <a class="jargon">Perfectionism<span class="tooltip">Setting unrealistically high standards that often prevent starting because the outcome might not be perfect</span></a> often disguises itself as inability to start.</li>
-                <li><strong>Consider medication:</strong> <a class="jargon">Stimulant medications<span class="tooltip">ADHD medications that increase dopamine levels to improve task initiation and motivation</span></a> can significantly improve task initiation for many people with ADHD by addressing the underlying <a class="jargon">dopamine<span class="tooltip">A brain chemical that helps with motivation, reward, and starting activities</span></a> differences.</li>
-            </ul>
-
-            <div class="learn-more" onclick="toggleLearnMore(this)">
-                <h3>Learn More: Advanced Strategies ↓</h3>
-                <div class="learn-more-content">
-                    <p><strong>The <a class="jargon">Implementation Intention<span class="tooltip">If-then planning that helps the brain automatically trigger actions in specific situations</span></a> technique:</strong> Instead of "I will do this task," create if-then plans: "If it's 2 PM, then I will open my laptop and start the first bullet point of my project."</p>
-                    
-                    <p><strong><a class="jargon">Energy management<span class="tooltip">Matching your task demands to your current mental and physical energy levels</span></a>:</strong> Track your energy patterns and match tasks to your capacity. Some people need high-stimulation environments to start, others need complete quiet.</p>
-                    
-                    <p><strong>Accommodation requests:</strong> At work or school, you might request flexible start times, permission to work in different locations, or <a class="jargon">project management support<span class="tooltip">Help breaking down large projects into manageable steps with external accountability</span></a>.</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Section 5: Medical intervention -->
-        <div class="section medical-intervention">
-            <h2>When Should I Consider Medical Intervention</h2>
-            <p>Consider professional support if <a class="jargon">task initiation<span class="tooltip">The ability to begin tasks and activities when needed</span></a> problems are significantly impacting your life:</p>
-
-            <ul>
-                <li>You're frequently missing work deadlines or failing to complete important responsibilities</li>
-                <li><a class="jargon">Task initiation paralysis<span class="tooltip">Knowing what needs to be done but being unable to begin, despite wanting to</span></a> is affecting your relationships, education, or employment</li>
-                <li>You're experiencing significant distress or depression related to your inability to start tasks</li>
-                <li>Basic <a class="jargon">self-care tasks<span class="tooltip">Essential daily activities like showering, eating, cleaning, and paying bills</span></a> (showering, eating, paying bills) are consistently difficult to initiate</li>
-                <li>You're using substances to help you start tasks or cope with the frustration</li>
-                <li>Task initiation problems are worsening over time despite trying various strategies</li>
-            </ul>
-
-            <p>A healthcare provider familiar with ADHD can help evaluate whether medication, therapy, or other interventions might help. Many people find that proper ADHD treatment dramatically improves their ability to start tasks.</p>
-
-            <div class="highlight-box">
-                <p><strong>Types of support that help:</strong> <a class="jargon">ADHD coaching<span class="tooltip">Specialized support focused on developing practical strategies for ADHD-related challenges</span></a>, <a class="jargon">cognitive-behavioral therapy<span class="tooltip">Therapy focused on changing thought patterns and behaviors to improve functioning</span></a>, medication evaluation, <a class="jargon">occupational therapy<span class="tooltip">Therapy focused on developing skills for daily living and work tasks</span></a> for <a class="jargon">executive function<span class="tooltip">Mental skills that help you plan, focus, remember instructions, and manage multiple tasks</span></a> skills, or comprehensive ADHD assessment if you haven't been evaluated.</p>
-            </div>
-        </div>
-
-        <!-- Section 6: Validation -->
-        <div class="section validation">
-            <h2>You're Not Imagining This</h2>
-            <p><a class="jargon">Task initiation paralysis<span class="tooltip">Knowing what needs to be done but being unable to begin, despite wanting to</span></a> is a real neurological experience, not a character flaw or lack of motivation. Your brain literally processes task initiation differently than <a class="jargon">neurotypical<span class="tooltip">People whose brains develop and function in ways that align with societal expectations and norms</span></a> brains, and this creates genuine barriers that willpower alone can't overcome.</p>
-
-            <p>Many people with ADHD describe feeling like they're "broken" or "lazy" because they struggle to start tasks that seem simple to others. This isn't true. You're dealing with differences in <a class="jargon">brain chemistry<span class="tooltip">The balance of neurotransmitters and other chemicals that affect brain function</span></a> and <a class="jargon">neural connectivity<span class="tooltip">How different brain regions communicate and work together</span></a> that affect motivation and activation systems.</p>
-
-            <p>It's also important to know that task initiation difficulties can vary dramatically from day to day. You might start tasks easily when you're interested or have external pressure, then struggle with the exact same type of task on a different day. This inconsistency is part of ADHD, not evidence that you're not trying hard enough.</p>
-
-            <p>Understanding that this is a <a class="jargon">neurological difference<span class="tooltip">Variation in brain structure and function that affects how you process information and respond to tasks</span></a>, not a moral failing, can help reduce the self-criticism that often makes the problem worse. With the right strategies and support, most people can significantly improve their ability to start tasks while accepting that some days will be harder than others.</p>
-
-            <div class="highlight-box">
-                <p><strong>Remember:</strong> Millions of people with ADHD experience this exact struggle. You're part of a community that understands what you're going through, and many have found effective ways to work with their brains rather than against them.</p>
-            </div>
-        </div>
-
-        <div class="related-struggles">
-            <h3>Related Struggles</h3>
-            <div class="struggle-tags">
-                <a href="{{ '/struggles/follow-through-completion-struggles.html' | relative_url }}" class="struggle-tag">Follow-Through Completion</a>
-                <a href="{{ '/struggles/time-blindness.html' | relative_url }}" class="struggle-tag">Time Blindness</a>
-                <a href="{{ '/struggles/organization-and-planning-challenges.html' | relative_url }}" class="struggle-tag">Organization Challenges</a>
-                <a href="{{ '/struggles/working-memory-difficulties.html' | relative_url }}" class="struggle-tag">Working Memory</a>
-                <a href="{{ '/struggles/interest-based-nervous-system.html' | relative_url }}" class="struggle-tag">Interest-Based System</a>
-                <a href="{{ '/struggles/executive-function-challenges.html' | relative_url }}" class="struggle-tag">Executive Function</a>
-            </div>
-        </div>
-    </div>
+    </main>
 </div>
 
 <script>
