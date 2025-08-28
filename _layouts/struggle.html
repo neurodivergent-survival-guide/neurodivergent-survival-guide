@@ -1,10 +1,70 @@
 ---
 layout: default
 ---
-
 {{ content }}
 
-{% assign struggles = site.data.struggles | sort: 'name' %}
+{% if page.condition %}
+  {% assign colors = site.data.condition_colors[page.condition] %}
+{% else %}
+  {% assign colors = site.data.condition_colors['adhd'] %}
+{% endif %}
+
+<style>
+  .struggle-navigation {
+    background: linear-gradient(135deg, {{ colors.gradient_start }}, {{ colors.gradient_end }});
+    color: white;
+    padding: 1rem 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    margin-top: 2rem;
+  }
+  
+  .struggle-navigation .nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+  
+  .struggle-navigation .nav-link {
+    background: {{ colors.primary }};
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+  }
+  
+  .struggle-navigation .nav-link:hover {
+    background: {{ colors.secondary }};
+    transform: translateY(-1px);
+    color: white;
+    text-decoration: none;
+  }
+  
+  .struggle-navigation .nav-link.disabled {
+    background: rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.5);
+  }
+  
+  .struggle-navigation .nav-position {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.9rem;
+  }
+  
+  @media (max-width: 768px) {
+    .struggle-navigation .nav-container {
+      flex-direction: column;
+      gap: 1rem;
+      text-align: center;
+      padding: 0 1rem;
+    }
+  }
+</style>
+
+{% assign struggles = site.data.struggles %}
 {% assign current_index = -1 %}
 {% for struggle in struggles %}
   {% if struggle.slug == page.slug %}
@@ -13,25 +73,25 @@ layout: default
   {% endif %}
 {% endfor %}
 
-<div style="background: #fff; padding: 1rem 0; border-top: 1px solid #e0e0e0; margin-top: 2rem;">
-  <div style="display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 2rem;">
+<div class="struggle-navigation">
+  <div class="nav-container">
     {% if current_index > 0 %}
       {% assign prev_index = current_index | minus: 1 %}
       {% assign prev_struggle = struggles[prev_index] %}
-      <a href="{{ '/struggles/' | append: prev_struggle.slug | append: '.html' | relative_url }}" style="background: #74b9ff; color: white; padding: 0.8rem 1.5rem; border-radius: 25px; text-decoration: none; font-weight: 500;">← Previous: {{ prev_struggle.name }}</a>
+      <a href="{{ '/struggles/' | append: prev_struggle.slug | append: '.html' | relative_url }}" class="nav-link">← Previous: {{ prev_struggle.name }}</a>
     {% else %}
-      <span style="background: #ddd; color: #999; padding: 0.8rem 1.5rem; border-radius: 25px;">← Previous Struggle</span>
+      <span class="nav-link disabled">← Previous Struggle</span>
     {% endif %}
     
     {% assign position = current_index | plus: 1 %}
-    <span style="color: #666; font-size: 0.9rem;">{{ page.title }} ({{ position }} of {{ struggles.size }} struggles)</span>
+    <span class="nav-position">{{ page.title }} ({{ position }} of {{ struggles.size }} struggles)</span>
     
     {% assign next_index = current_index | plus: 1 %}
     {% if next_index < struggles.size %}
       {% assign next_struggle = struggles[next_index] %}
-      <a href="{{ '/struggles/' | append: next_struggle.slug | append: '.html' | relative_url }}" style="background: #74b9ff; color: white; padding: 0.8rem 1.5rem; border-radius: 25px; text-decoration: none; font-weight: 500;">Next: {{ next_struggle.name }} →</a>
+      <a href="{{ '/struggles/' | append: next_struggle.slug | append: '.html' | relative_url }}" class="nav-link">Next: {{ next_struggle.name }} →</a>
     {% else %}
-      <span style="background: #ddd; color: #999; padding: 0.8rem 1.5rem; border-radius: 25px;">Next Struggle →</span>
+      <span class="nav-link disabled">Next Struggle →</span>
     {% endif %}
   </div>
 </div>
