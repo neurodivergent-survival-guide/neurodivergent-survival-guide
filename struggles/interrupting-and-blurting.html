@@ -215,9 +215,50 @@ title: "Interrupting and Blurting"
         color: #555;
     }
 
+    .related-struggles {
+        background: #f8f9fa;
+        padding: 1.5rem;
+        border-radius: 12px;
+        margin: 2rem 0;
+        border: 1px solid #e0e0e0;
+    }
+
+    .related-struggles h3 {
+        color: #333;
+        margin-bottom: 1rem;
+        font-size: 1.2rem;
+    }
+
+    .struggle-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .struggle-tag {
+        background: #d63031;
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+    }
+
+    .struggle-tag:hover {
+        background: #a21f23;
+        color: white;
+        text-decoration: none;
+        transform: translateY(-1px);
+    }
+
     /* Focus states for accessibility */
     .jargon:focus,
-    .breadcrumb a:focus {
+    .breadcrumb a:focus,
+    .struggle-tag:focus {
         outline: 2px solid #fff;
         outline-offset: 2px;
     }
@@ -257,9 +298,7 @@ title: "Interrupting and Blurting"
     .immediate-help .jargon,
     .long-term .jargon,
     .medical-section .jargon,
-    .validation-section .jargon,
-    .disclaimer .jargon,
-    .crisis-resources .jargon {
+    .validation-section .jargon {
         color: #333;
         font-weight: 600;
         border-bottom-color: #333;
@@ -378,9 +417,13 @@ title: "Interrupting and Blurting"
             padding: 1.5rem;
         }
 
-        .disclaimer,
-        .crisis-resources {
-            padding: 1.2rem;
+        .struggle-tags {
+            flex-direction: column;
+        }
+
+        .struggle-tag {
+            justify-content: center;
+            text-align: center;
         }
     }
 
@@ -505,5 +548,18 @@ title: "Interrupting and Blurting"
 
                 <p>The goal isn't perfect conversation behavior - it's reducing the frequency enough that relationships stay healthy while you remain authentically yourself. Your enthusiasm and quick thinking are strengths that don't need to be eliminated, just channeled more skillfully.</p>
             </div>
+
+            <div class="related-struggles">
+                <h3>Related Struggles</h3>
+                <div class="struggle-tags">
+                    <a href="{{ '/struggles/impulsive-decision-making.html' | relative_url }}" class="struggle-tag">Impulsive Decision-Making</a>
+                    <a href="{{ '/struggles/emotional-dysregulation.html' | relative_url }}" class="struggle-tag">Emotional Dysregulation</a>
+                    <a href="{{ '/struggles/physical-restlessness.html' | relative_url }}" class="struggle-tag">Physical Restlessness</a>
+                    <a href="{{ '/struggles/rejection-sensitive-dysphoria.html' | relative_url }}" class="struggle-tag">Rejection Sensitive Dysphoria</a>
+                    <a href="{{ '/struggles/attention-regulation.html' | relative_url }}" class="struggle-tag">Attention Regulation</a>
+                    <a href="{{ '/struggles/interest-based-nervous-system.html' | relative_url }}" class="struggle-tag">Interest-Based Nervous System</a>
+                </div>
+            </div>
+        </div>
     </main>
 </div>
