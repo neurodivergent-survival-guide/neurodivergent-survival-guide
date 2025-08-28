@@ -57,6 +57,9 @@ Distress when plans change unexpectedly or your schedule gets disrupted. Page of
 **Sensory Processing Challenges** - /struggles/sensory-processing-challenges.html
 Over- or under-responsivity to sounds, textures, lights, and other sensory input. Page covers identifying triggers and creating sensory-friendly environments.
 
+**Akathisia** - /struggles/akathisia.html
+Inner restlessness and overwhelming urge to move that feels impossible to satisfy. Page covers recognizing this neurological condition, distinguishing it from typical restlessness, and strategies for managing movement needs while addressing potential medication causes.
+
 **Stimming and Self-Regulation** - /struggles/stimming-and-self-regulation.html
 Repetitive behaviors that help you regulate but may draw unwanted attention. Page validates stimming while offering strategies for different social contexts.
 
