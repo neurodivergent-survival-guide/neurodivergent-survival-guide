@@ -1,0 +1,697 @@
+---
+layout: struggle
+title: "Emotional Dysregulation"
+slug: emotional-dysregulation
+---
+
+<!-- /struggles/emotional-dysregulation.html -->
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-weight: 500;
+        background: linear-gradient(135deg, #d63031 0%, #a21f23 100%);
+        color: #333;
+        min-height: 100vh;
+        line-height: 1.7;
+    }
+
+    .header {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        padding: 1.5rem 2rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .header h1 {
+        color: white;
+        font-size: 2.5rem;
+        font-weight: 300;
+        margin-bottom: 0.5rem;
+    }
+
+    .header p {
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 1.2rem;
+    }
+
+    .breadcrumb {
+        background: rgba(255, 255, 255, 0.05);
+        padding: 0.8rem 2rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    .breadcrumb a {
+        color: rgba(255, 255, 255, 0.8);
+        text-decoration: none;
+        font-size: 0.9rem;
+    }
+
+    .breadcrumb a:hover {
+        color: white;
+    }
+
+    .breadcrumb span {
+        color: rgba(255, 255, 255, 0.6);
+        margin: 0 0.5rem;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .content-card {
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 20px;
+        padding: 2.5rem;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        margin-bottom: 2rem;
+    }
+
+    .what-section {
+        background: #ffe6e6;
+        padding: 2rem;
+        border-radius: 16px;
+        margin: 2rem 0;
+        border-left: 4px solid #d63031;
+    }
+
+    .what-section h2 {
+        color: #d63031;
+        margin-bottom: 1rem;
+        font-size: 1.6rem;
+    }
+
+    .what-section p {
+        margin-bottom: 1rem;
+        font-size: 1.05rem;
+        color: #555;
+    }
+
+    .why-section {
+        background: #ffeaa7;
+        padding: 2rem;
+        border-radius: 16px;
+        margin: 2rem 0;
+        border-left: 4px solid #f1c40f;
+    }
+
+    .why-section h2 {
+        color: #f39c12;
+        margin-bottom: 1rem;
+        font-size: 1.6rem;
+    }
+
+    .why-section p {
+        margin-bottom: 1rem;
+        font-size: 1.05rem;
+        color: #555;
+    }
+
+    .immediate-help {
+        background: #cce5ff;
+        padding: 2rem;
+        border-radius: 16px;
+        margin: 2rem 0;
+        border-left: 4px solid #007acc;
+    }
+
+    .immediate-help h2 {
+        color: #005599;
+        margin-bottom: 1rem;
+        font-size: 1.6rem;
+    }
+
+    .immediate-help p {
+        margin-bottom: 1rem;
+        font-size: 1.05rem;
+        color: #555;
+    }
+
+    .immediate-help ul {
+        color: #555;
+        padding-left: 1.2rem;
+    }
+
+    .immediate-help li {
+        margin-bottom: 0.8rem;
+        font-size: 0.95rem;
+    }
+
+    .long-term {
+        background: #d4edda;
+        padding: 2rem;
+        border-radius: 16px;
+        margin: 2rem 0;
+        border-left: 4px solid #28a745;
+    }
+
+    .long-term h2 {
+        color: #155724;
+        margin-bottom: 1rem;
+        font-size: 1.6rem;
+    }
+
+    .long-term p {
+        margin-bottom: 1rem;
+        font-size: 1.05rem;
+        color: #555;
+    }
+
+    .long-term ul {
+        color: #555;
+        padding-left: 1.2rem;
+    }
+
+    .long-term li {
+        margin-bottom: 0.8rem;
+        font-size: 0.95rem;
+    }
+
+    .medical-section {
+        background: #d1f2eb;
+        padding: 2rem;
+        border-radius: 16px;
+        margin: 2rem 0;
+        border-left: 4px solid #17a2b8;
+    }
+
+    .medical-section h2 {
+        color: #0c5460;
+        margin-bottom: 1rem;
+        font-size: 1.6rem;
+    }
+
+    .medical-section p {
+        margin-bottom: 1rem;
+        font-size: 1.05rem;
+        color: #555;
+    }
+
+    .medical-section ul {
+        color: #555;
+        padding-left: 1.2rem;
+    }
+
+    .medical-section li {
+        margin-bottom: 0.8rem;
+        font-size: 0.95rem;
+    }
+
+    .validation-section {
+        background: #e2e3ff;
+        padding: 2rem;
+        border-radius: 16px;
+        margin: 2rem 0;
+        border-left: 4px solid #6c5ce7;
+    }
+
+    .validation-section h2 {
+        color: #5a4fcf;
+        margin-bottom: 1rem;
+        font-size: 1.6rem;
+    }
+
+    .validation-section p {
+        margin-bottom: 1rem;
+        font-size: 1.05rem;
+        color: #555;
+    }
+
+    .related-struggles {
+        background: #f8f9fa;
+        padding: 1.5rem;
+        border-radius: 12px;
+        margin: 2rem 0;
+        border: 1px solid #e0e0e0;
+    }
+
+    .related-struggles h3 {
+        color: #333;
+        margin-bottom: 1rem;
+        font-size: 1.2rem;
+    }
+
+    .struggle-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        justify-content: center;
+    }
+
+    .struggle-tag {
+        background: #d63031;
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .struggle-tag:hover {
+        background: #a21f23;
+        color: white;
+        text-decoration: none;
+        transform: translateY(-1px);
+    }
+
+    .struggle-tag:focus {
+        outline: 2px solid #fff;
+        outline-offset: 2px;
+    }
+
+    .learn-more {
+        background: linear-gradient(45deg, #a29bfe, #6c5ce7);
+        color: white;
+        padding: 1.5rem;
+        border-radius: 12px;
+        margin: 1.5rem 0;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .learn-more h3 {
+        margin-bottom: 1rem;
+        font-size: 1.2rem;
+        color: white;
+    }
+
+    .learn-more:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    .learn-more-content {
+        display: none;
+        margin-top: 1rem;
+        padding-top: 1rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.3);
+        color: white;
+    }
+
+    .learn-more-content p {
+        color: white;
+        margin-bottom: 1rem;
+    }
+
+    .learn-more.expanded .learn-more-content {
+        display: block;
+    }
+
+    .highlight-box {
+        background: #fff8e1;
+        padding: 1rem;
+        border-radius: 8px;
+        border-left: 3px solid #ffc107;
+        margin: 1rem 0;
+    }
+
+    /* Jargon styling - context-aware based on background */
+    .jargon {
+        text-decoration: none;
+        border-bottom: 1px dotted;
+        position: relative;
+        cursor: help;
+        font-weight: 500;
+    }
+
+    /* Pink jargon for white backgrounds */
+    .content-card .jargon,
+    .related-struggles .jargon {
+        color: #e84393;
+        border-bottom-color: #e84393;
+    }
+
+    .content-card .jargon:hover,
+    .related-struggles .jargon:hover {
+        color: #fd79a8;
+        border-bottom-color: #fd79a8;
+    }
+
+    /* Bold black jargon for colored backgrounds */
+    .what-section .jargon,
+    .why-section .jargon,
+    .immediate-help .jargon,
+    .long-term .jargon,
+    .medical-section .jargon,
+    .validation-section .jargon,
+    .highlight-box .jargon {
+        color: #333;
+        font-weight: 600;
+        border-bottom-color: #333;
+    }
+
+    /* White jargon for gradient backgrounds */
+    .header .jargon,
+    .breadcrumb .jargon,
+    .learn-more .jargon,
+    .learn-more-content .jargon {
+        color: white;
+        border-bottom-color: rgba(255, 255, 255, 0.7);
+        background: rgba(255, 255, 255, 0.1);
+        padding: 2px 6px;
+        border-radius: 4px;
+    }
+
+    .header .jargon:hover,
+    .breadcrumb .jargon:hover,
+    .learn-more .jargon:hover,
+    .learn-more-content .jargon:hover {
+        background: rgba(255, 255, 255, 0.2);
+        border-bottom-color: white;
+    }
+
+    /* Auto-sizing tooltips */
+    .tooltip {
+        visibility: hidden;
+        opacity: 0;
+        position: absolute;
+        bottom: calc(100% + 8px);
+        left: 50%;
+        transform: translateX(-50%);
+        background: #333;
+        color: white;
+        padding: 12px 16px;
+        border-radius: 8px;
+        font-size: 0.9rem;
+        font-weight: normal;
+        z-index: 1001;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        transition: opacity 0.3s, visibility 0.3s;
+        max-width: 800px;
+        min-width: 200px;
+        width: max-content;
+        white-space: normal;
+        text-align: left;
+        line-height: 1.5;
+        pointer-events: none;
+    }
+
+    .tooltip::after {
+        content: '';
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        border: 6px solid transparent;
+        border-top-color: #333;
+    }
+
+    .jargon:hover .tooltip {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    /* Mobile responsive tooltip adjustments */
+    @media (max-width: 1024px) {
+        .tooltip {
+            max-width: 400px;
+        }
+    }
+
+    /* Mobile-specific tooltip positioning */
+    @media (max-width: 768px) {
+        .tooltip {
+            position: fixed !important;
+            bottom: 20px !important;
+            left: 20px !important;
+            right: 20px !important;
+            transform: none !important;
+            max-width: none !important;
+            width: auto !important;
+        }
+
+        .tooltip::after {
+            display: none !important;
+        }
+
+        .header {
+            padding: 1rem;
+        }
+
+        .header h1 {
+            font-size: 2rem;
+        }
+
+        .header p {
+            font-size: 1rem;
+        }
+
+        .breadcrumb {
+            padding: 0.6rem 1rem;
+        }
+
+        .container {
+            padding: 1rem;
+        }
+
+        .content-card {
+            padding: 1.5rem;
+        }
+
+        .what-section,
+        .why-section,
+        .immediate-help,
+        .long-term,
+        .medical-section,
+        .validation-section {
+            padding: 1.5rem;
+        }
+
+        .struggle-tags {
+            flex-direction: column;
+        }
+
+        .struggle-tag {
+            justify-content: center;
+            text-align: center;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .header h1 {
+            font-size: 1.8rem;
+        }
+
+        .header p {
+            font-size: 0.9rem;
+        }
+
+        .content-card {
+            padding: 1.2rem;
+        }
+
+        .what-section,
+        .why-section,
+        .immediate-help,
+        .long-term,
+        .medical-section,
+        .validation-section {
+            padding: 1.2rem;
+        }
+
+        .tooltip {
+            left: 10px !important;
+            right: 10px !important;
+            bottom: 10px !important;
+        }
+    }
+
+    /* Focus states for accessibility */
+    .struggle-tag:focus,
+    .jargon:focus,
+    .breadcrumb a:focus {
+        outline: 2px solid #fff;
+        outline-offset: 2px;
+    }
+
+    /* Motion accessibility */
+    @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+        }
+    }
+</style>
+
+<div class="header">
+    <h1>Emotional Dysregulation</h1>
+    <p>When emotions feel too big for your body and mind to contain</p>
+</div>
+
+<div class="breadcrumb">
+    <a href="{{ '/index.html' | relative_url }}">Home</a>
+    <span>></span>
+    <a href="{{ '/struggles/index.html' | relative_url }}">Struggles</a>
+    <span>></span>
+    <a href="{{ '/conditions/adhd.html' | relative_url }}">ADHD</a>
+    <span>></span>
+    Emotional Dysregulation
+</div>
+
+<div class="container">
+    <main role="main" id="main-content">
+        <div class="content-card">
+            <div class="what-section">
+                <h2 id="what-this-feels-like">What This Feels Like</h2>
+                <p><a class="jargon">Emotional dysregulation<span class="tooltip">Difficulty managing the intensity, duration, or appropriateness of emotional responses to situations</span></a> often feels like your emotions are too big for your body to contain. Sometimes it's dramatic - exploding in anger over something small, crying uncontrollably at work, or feeling joy so intense it's almost manic. But more often, it's a persistent struggle with emotions that feel disproportionate to the situation or impossible to control.</p>
+
+                <p>Many people describe it as having emotions that go from zero to one hundred instantly, with no middle ground. You might feel perfectly fine one moment and overwhelmed the next, triggered by something that wouldn't bother most people. Or you might find yourself stuck in emotional states - unable to shake off irritation, sadness lingering for days after a minor disappointment, or anxiety that persists long after the stressful situation has passed.</p>
+
+                <p>The experience often includes intense physical sensations: your chest feeling tight with anger, <a class="jargon">overwhelm<span class="tooltip">The feeling of being completely flooded by emotions, thoughts, or sensations beyond your ability to cope</span></a> making you feel dizzy or nauseous, or excitement making you feel like you might burst out of your skin. Sometimes emotions feel so intense that you can't think clearly, make decisions, or access your usual coping skills.</p>
+
+                <p>Many people also struggle with <a class="jargon">emotional numbness<span class="tooltip">Periods where emotions feel muted, distant, or completely absent as a protective response to overwhelm</span></a> - periods where emotions feel completely shut off or muted, which can be just as distressing as feeling too much. This emotional extremes often leaves you feeling exhausted, like you're constantly riding an emotional roller coaster with no way to get off.</p>
+
+                <p>The unpredictability can be particularly challenging. You might handle a genuine crisis with perfect calm but fall apart completely when your coffee order is wrong. The disconnect between the trigger and your response often leads to shame, confusion, and others not understanding why you're "overreacting" to seemingly minor situations.</p>
+            </div>
+
+            <div class="why-section">
+                <h2 id="why-this-happens">Why This Might Be Happening</h2>
+                <p><a class="jargon">Emotional dysregulation<span class="tooltip">Difficulty managing the intensity, duration, or appropriateness of emotional responses to situations</span></a> is closely connected to differences in <a class="jargon">executive functioning<span class="tooltip">Mental skills that include emotional regulation, impulse control, working memory, and flexible thinking</span></a>, particularly the brain's ability to manage and modulate emotional responses. In <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> brains, this system works differently from the start.</p>
+
+                <p>The <a class="jargon">prefrontal cortex<span class="tooltip">Brain region responsible for executive functions including emotional regulation and impulse control</span></a>, which helps regulate emotions, may not communicate as effectively with the <a class="jargon">limbic system<span class="tooltip">Brain structures that process emotions, including the amygdala and hippocampus</span></a> - the brain's emotional processing center. This means intense emotions can flood your system before your brain's regulatory mechanisms kick in.</p>
+
+                <p><a class="jargon">Dopamine<span class="tooltip">A neurotransmitter involved in motivation, reward processing, and emotional regulation</span></a> and <a class="jargon">norepinephrine<span class="tooltip">A neurotransmitter that affects alertness, arousal, and emotional intensity</span></a> differences in <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> brains also affect emotional intensity and regulation. These <a class="jargon">neurotransmitter imbalances<span class="tooltip">Differences in brain chemical levels that can affect emotional stability and regulation</span></a> can make emotions feel more intense and harder to manage than they do for <a class="jargon">neurotypical<span class="tooltip">Having a brain that functions in ways considered typical by society</span></a> brains.</p>
+
+                <p>Many people with <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> also experience <a class="jargon">rejection sensitive dysphoria<span class="tooltip">Intense emotional response to perceived or real rejection, criticism, or failure</span></a>, which can make social and interpersonal emotions particularly intense and difficult to regulate. The fear of rejection or criticism can amplify emotional responses far beyond what the situation might normally warrant.</p>
+
+                <p>Stress, fatigue, hunger, or being overwhelmed can make emotional regulation even more challenging. When your <a class="jargon">cognitive resources<span class="tooltip">Mental energy available for thinking, decision-making, and self-control</span></a> are depleted, the brain has less capacity for managing emotional responses, leading to more intense reactions to smaller triggers.</p>
+
+                <p>Additionally, many people with <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> grew up receiving criticism for their emotional responses, leading to shame about feeling things intensely. This shame can create a cycle where intense emotions trigger more intense emotions about having intense emotions, making regulation even more difficult.</p>
+
+                <div class="learn-more" onclick="toggleLearnMore(this)">
+                    <h3>Learn More: The Neuroscience of Emotional Regulation ↓</h3>
+                    <div class="learn-more-content">
+                        <p>Emotional regulation involves complex networks connecting the <a class="jargon">prefrontal cortex<span class="tooltip">Brain region responsible for executive functions including emotional regulation and impulse control</span></a>, <a class="jargon">anterior cingulate cortex<span class="tooltip">Brain region involved in emotional processing and conflict resolution</span></a>, and <a class="jargon">limbic structures<span class="tooltip">Deep brain regions including the amygdala and hippocampus that process emotions and memory</span></a>. In <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a>, these networks show different patterns of <a class="jargon">connectivity<span class="tooltip">How well different brain regions communicate and coordinate with each other</span></a> and activation.</p>
+                        
+                        <p>Research suggests that <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> brains may have a more reactive <a class="jargon">amygdala<span class="tooltip">Brain structure that processes fear, threat detection, and emotional intensity</span></a> - the brain's alarm system - combined with less efficient <a class="jargon">top-down control<span class="tooltip">The brain's ability to use higher-order thinking to manage automatic emotional responses</span></a> from the <a class="jargon">prefrontal cortex<span class="tooltip">Brain region responsible for executive functions including emotional regulation and impulse control</span></a>. This creates a neurological environment where emotions feel more intense and are harder to modulate.</p>
+                        
+                        <p>The <a class="jargon">HPA axis<span class="tooltip">Hypothalamic-pituitary-adrenal axis - the body's stress response system that affects emotional reactivity</span></a> (the body's stress response system) may also be more sensitive in people with <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a>, leading to stronger physiological responses to emotional triggers and making it harder to return to baseline after emotional events.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="immediate-help">
+                <h2 id="next-five-minutes">What Can Help You Through the Next 5 Minutes</h2>
+                <p>When you're in the middle of intense emotions right now, these strategies can help you get through the immediate experience:</p>
+                
+                <ul>
+                    <li><strong>Use <a class="jargon">grounding techniques<span class="tooltip">Exercises that help bring your attention back to the present moment and your physical environment</span></a>:</strong> Name 5 things you can see, 4 things you can touch, 3 things you can hear. This helps interrupt the emotional spiral and bring you back to the present.</li>
+                    <li><strong>Try temperature regulation:</strong> Hold ice cubes, splash cold water on your face, or use a heating pad. Physical temperature changes can help regulate your nervous system and reduce emotional intensity.</li>
+                    <li><strong>Focus on breathing:</strong> Try <a class="jargon">box breathing<span class="tooltip">Breathing technique where you inhale for 4 counts, hold for 4, exhale for 4, hold for 4, and repeat</span></a> or breathe out longer than you breathe in. This activates your <a class="jargon">parasympathetic nervous system<span class="tooltip">The body's rest and digest system that helps calm intense emotional and physical arousal</span></a> and can reduce emotional intensity.</li>
+                    <li><strong>Move your body:</strong> Do jumping jacks, go for a walk, or stretch. Physical movement can help process and release some of the intense energy that comes with big emotions.</li>
+                    <li><strong>Give yourself permission:</strong> Say "It's okay that I'm feeling this intensely right now. This will pass." Fighting against intense emotions often makes them stronger.</li>
+                    <li><strong>Use <a class="jargon">emotional labeling<span class="tooltip">Identifying and naming specific emotions, which can help reduce their intensity</span></a>:</strong> Try to name the specific emotion you're experiencing. Research shows that labeling emotions can actually reduce their intensity by engaging the more rational parts of your brain.</li>
+                    <li><strong>Create safety:</strong> Remove yourself from triggers if possible, dim lights, reduce noise, or find a quiet space where you can feel the emotions without additional stimulation.</li>
+                </ul>
+
+                <div class="highlight-box">
+                    <p><strong>Emergency calm-down kit:</strong> Keep items that help you regulate easily accessible - fidget toys, essential oils, calming music, or photos that make you feel safe. Having these ready reduces the thinking required when you're emotionally flooded.</p>
+                </div>
+            </div>
+
+            <div class="long-term">
+                <h2 id="long-term-solutions">What Are Some Healthy Long-term Solutions</h2>
+                <p>Building sustainable systems that work with your <a class="jargon">emotional intensity<span class="tooltip">The natural depth and strength of your emotional experiences</span></a> rather than trying to suppress it:</p>
+                
+                <ul>
+                    <li><strong>Develop <a class="jargon">emotional awareness<span class="tooltip">The ability to recognize, understand, and name your emotions as they arise</span></a>:</strong> Practice checking in with yourself throughout the day. What are you feeling? Where do you feel it in your body? What might have triggered it? Awareness is the first step to regulation.</li>
+                    <li><strong>Identify your <a class="jargon">emotional patterns<span class="tooltip">Recurring triggers, responses, and cycles in your emotional experiences</span></a>:</strong> Track what situations, times of day, or physical states make emotional regulation harder. When do you feel most emotionally stable? Use this information to plan and prepare.</li>
+                    <li><strong>Build a <a class="jargon">regulation toolbox<span class="tooltip">A collection of strategies and techniques you can use to manage intense emotions when they arise</span></a>:</strong> Develop multiple strategies that work for different types of emotions and situations. What helps with anger might not help with overwhelm. Having options prevents you from feeling stuck.</li>
+                    <li><strong>Practice <a class="jargon">co-regulation<span class="tooltip">Using the calm presence of others to help stabilize your own emotional state</span></a>:</strong> Spend time with people whose emotional energy feels calming to you. Sometimes we need to borrow stability from others while we're building our own regulation skills.</li>
+                    <li><strong>Address basic needs proactively:</strong> <a class="jargon">Emotional dysregulation<span class="tooltip">Difficulty managing the intensity, duration, or appropriateness of emotional responses to situations</span></a> gets worse when you're hungry, tired, or stressed. Protecting sleep, nutrition, and rest isn't selfish - it's essential for emotional stability.</li>
+                    <li><strong>Create <a class="jargon">emotional safety plans<span class="tooltip">Predetermined strategies for handling intense emotions, including who to contact and what techniques to use</span></a>:</strong> Plan ahead for intense emotions. Who can you call? What techniques work best? What should you avoid doing? Making these decisions when you're calm helps you in crisis moments.</li>
+                    <li><strong>Learn <a class="jargon">distress tolerance<span class="tooltip">Skills for getting through intense emotions without making them worse or acting destructively</span></a> skills:</strong> Sometimes the goal isn't to feel better immediately but to get through intense emotions without making things worse. <a class="jargon">DBT<span class="tooltip">Dialectical Behavior Therapy - teaches specific skills for managing intense emotions and improving emotional regulation</span></a> and <a class="jargon">mindfulness<span class="tooltip">Practices that help you observe emotions without being overwhelmed by them</span></a> teach these skills.</li>
+                    <li><strong>Consider medication:</strong> <a class="jargon">ADHD medications<span class="tooltip">Stimulant and non-stimulant medications that can help improve emotional regulation by affecting neurotransmitter levels</span></a> can significantly improve emotional regulation for many people by supporting better <a class="jargon">prefrontal cortex<span class="tooltip">Brain region responsible for executive functions including emotional regulation and impulse control</span></a> functioning.</li>
+                </ul>
+
+                <div class="highlight-box">
+                    <p><strong>Remember:</strong> <a class="jargon">Emotional intensity<span class="tooltip">The natural depth and strength of your emotional experiences</span></a> can be a strength when channeled well. Many people with <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> have exceptional empathy, creativity, and passion. The goal isn't to feel less - it's to have more choice in how you respond to your feelings.</p>
+                </div>
+            </div>
+
+            <div class="medical-section">
+                <h2 id="medical-intervention">When Should I Consider Medical Intervention</h2>
+                <p>Consider professional support if <a class="jargon">emotional dysregulation<span class="tooltip">Difficulty managing the intensity, duration, or appropriateness of emotional responses to situations</span></a> is significantly impacting your life:</p>
+                
+                <ul>
+                    <li><strong>Seek immediate help if:</strong> You're having thoughts of self-harm, using substances to numb emotions, or if emotional responses are creating safety concerns for yourself or others.</li>
+                    <li><strong>Relationships are suffering:</strong> If intense emotions are damaging important relationships through frequent conflicts, emotional outbursts, or withdrawal from people you care about.</li>
+                    <li><strong>Work or school impact:</strong> If emotional responses are affecting your performance, causing you to miss work/school, or creating problems with colleagues or supervisors.</li>
+                    <li><strong>Physical symptoms:</strong> If intense emotions are causing physical problems like chronic headaches, stomach issues, sleep problems, or other health concerns.</li>
+                    <li><strong>Emotional exhaustion:</strong> If the constant intensity of emotions is leaving you feeling depleted, hopeless, or unable to engage with life in ways that matter to you.</li>
+                    <li><strong>Coping strategies aren't working:</strong> If you've tried various techniques and they're not providing enough relief, or if your emotions feel increasingly out of control despite your efforts.</li>
+                </ul>
+
+                <div class="highlight-box">
+                    <p><strong>Types of support that help:</strong> <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> medication evaluation, <a class="jargon">DBT<span class="tooltip">Dialectical Behavior Therapy - teaches specific skills for managing intense emotions and improving emotional regulation</span></a> for emotion regulation skills, <a class="jargon">trauma-informed therapy<span class="tooltip">Therapy approaches that understand how past experiences can contribute to current emotional struggles</span></a>, <a class="jargon">mindfulness-based interventions<span class="tooltip">Therapies that teach awareness and acceptance of emotions without being overwhelmed by them</span></a>, or comprehensive mental health evaluation to rule out other contributing conditions.</p>
+                </div>
+            </div>
+
+            <div class="validation-section">
+                <h2 id="validation">You're Not Imagining This</h2>
+                
+                <p><a class="jargon">Emotional dysregulation<span class="tooltip">Difficulty managing the intensity, duration, or appropriateness of emotional responses to situations</span></a> reflects real differences in brain functioning, not character weaknesses or lack of self-control. Your brain processes and experiences emotions differently than <a class="jargon">neurotypical<span class="tooltip">Having a brain that functions in ways considered typical by society</span></a> brains, creating genuine challenges that willpower alone can't resolve.</p>
+                
+                <p>You're not "too sensitive" or "overreacting." Your emotional responses make complete sense given how your brain works. The intensity you experience is real and valid, even when others don't understand it or when the trigger seems small to outside observers.</p>
+                
+                <p>Many people with <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> describe feeling like they're "too much" for others, but your <a class="jargon">emotional intensity<span class="tooltip">The natural depth and strength of your emotional experiences</span></a> often comes with incredible strengths. You likely feel joy more intensely too, have deep empathy for others, and can be passionate and enthusiastic in ways that inspire people around you.</p>
+
+                <p>The unpredictability of <a class="jargon">emotional dysregulation<span class="tooltip">Difficulty managing the intensity, duration, or appropriateness of emotional responses to situations</span></a> - handling big crises well but falling apart over small things - is a common pattern, not evidence that you're broken or faking. Your brain's regulation system works differently, and that affects how it responds to different types and sizes of stressors.</p>
+
+                <p>Learning to work with your <a class="jargon">emotional intensity<span class="tooltip">The natural depth and strength of your emotional experiences</span></a> rather than against it often leads to better outcomes than trying to suppress or minimize your natural emotional responses. You deserve support and understanding as you develop skills to manage the more challenging aspects while embracing the strengths that come with feeling deeply.</p>
+            </div>
+
+            <div class="related-struggles">
+                <h3>Related Struggles</h3>
+                <div class="struggle-tags">
+                    <a href="{{ '/struggles/rejection-sensitive-dysphoria.html' | relative_url }}" class="struggle-tag">RSD</a>
+                    <a href="{{ '/struggles/impulsive-decision-making.html' | relative_url }}" class="struggle-tag">Impulsive Decisions</a>
+                    <a href="{{ '/struggles/social-anxiety.html' | relative_url }}" class="struggle-tag">Social Anxiety</a>
+                    <a href="{{ '/struggles/attention-regulation.html' | relative_url }}" class="struggle-tag">Attention Regulation</a>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+<script>
+function toggleLearnMore(element) {
+    element.classList.toggle('expanded');
+    const arrow = element.querySelector('h3');
+    if (element.classList.contains('expanded')) {
+        arrow.innerHTML = arrow.innerHTML.replace('↓', '↑');
+    } else {
+        arrow.innerHTML = arrow.innerHTML.replace('↑', '↓');
+    }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Handle jargon clicks to prevent event bubbling
+    const jargonTerms = document.querySelectorAll('.jargon');
+    jargonTerms.forEach(function(jargon) {
+        jargon.addEventListener('click', function(e) {
+            e.stopPropagation(); // Prevent bubbling to learn-more handler
+        });
+    });
+});
+</script>
