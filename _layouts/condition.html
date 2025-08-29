@@ -727,39 +727,7 @@ layout: default
                 </div>
             </div>
 
-            <div class="support-resources">
-                <h3>Professional Support</h3>
-                <p>{{ page.condition_key | capitalize }} often benefits from specialized professional support. Consider connecting with:</p>
-                
-                <div class="support-grid">
-                    <div class="support-card">
-                        <h4>Therapy Options</h4>
-                        <ul>
-                            {% for therapy in page.therapy_types %}
-                            <li>{{ therapy }}</li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-                    
-                    <div class="support-card">
-                        <h4>Medical Support</h4>
-                        <ul>
-                            {% for medical in page.medical_support %}
-                            <li>{{ medical }}</li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-                    
-                    <div class="support-card">
-                        <h4>Community Resources</h4>
-                        <ul>
-                            {% for resource in page.community_resources %}
-                            <li>{{ resource }}</li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-                </div>
-            </div>
+
         </div>
     </main>
 </div>
