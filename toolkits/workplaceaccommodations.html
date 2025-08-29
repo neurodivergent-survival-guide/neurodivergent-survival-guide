@@ -1,0 +1,678 @@
+---
+layout: toolkit
+title: "Workplace Accommodation Toolkit"
+slug: workplace-accommodations
+---
+
+<!-- /toolkits/workplace-accommodations.html -->
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-weight: 500;
+        background: linear-gradient(135deg, #6c7b95 0%, #4a5568 100%);
+        color: #333;
+        min-height: 100vh;
+        line-height: 1.6;
+    }
+
+    .header {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        padding: 1.5rem 2rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .header h1 {
+        color: white;
+        font-size: 2.5rem;
+        font-weight: 400;
+        margin-bottom: 0.5rem;
+    }
+
+    .header p {
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 1.2rem;
+        font-weight: 400;
+    }
+
+    .breadcrumb {
+        background: rgba(255, 255, 255, 0.05);
+        padding: 0.8rem 2rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    .breadcrumb a {
+        color: rgba(255, 255, 255, 0.8);
+        text-decoration: none;
+        font-size: 0.9rem;
+    }
+
+    .breadcrumb a:hover {
+        color: white;
+    }
+
+    .breadcrumb span {
+        color: rgba(255, 255, 255, 0.6);
+        margin: 0 0.5rem;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .content-card {
+        background: rgba(255, 255, 255, 0.98);
+        border-radius: 16px;
+        padding: 3rem;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        margin-bottom: 2rem;
+    }
+
+    .section {
+        padding: 2rem;
+        border-radius: 12px;
+        margin: 2rem 0;
+        border-left: 4px solid;
+    }
+
+    .section h2 {
+        margin-bottom: 1.2rem;
+        font-size: 1.6rem;
+        font-weight: 600;
+    }
+
+    .section p {
+        margin-bottom: 1rem;
+        font-size: 1.05rem;
+        line-height: 1.7;
+    }
+
+    .section ul {
+        margin-bottom: 1rem;
+        padding-left: 1.8rem;
+    }
+
+    .section li {
+        margin-bottom: 0.8rem;
+        font-size: 1.05rem;
+        line-height: 1.6;
+    }
+
+    /* System Overview - Red */
+    .system-overview {
+        border-left-color: #e74c3c;
+        background: #fef2f2;
+    }
+
+    .system-overview h2 {
+        color: #c0392b;
+    }
+
+    .system-overview p,
+    .system-overview li {
+        color: #7f1d1d;
+    }
+
+    /* Strategic Preparation - Yellow */
+    .strategic-preparation {
+        border-left-color: #f1c40f;
+        background: #fefbea;
+    }
+
+    .strategic-preparation h2 {
+        color: #f39c12;
+    }
+
+    .strategic-preparation p,
+    .strategic-preparation li {
+        color: #8b7355;
+    }
+
+    /* Implementation Process - Blue */
+    .implementation-process {
+        border-left-color: #3498db;
+        background: #ebf3fd;
+    }
+
+    .implementation-process h2 {
+        color: #2980b9;
+    }
+
+    .implementation-process p,
+    .implementation-process li {
+        color: #34495e;
+    }
+
+    /* Common Obstacles - Green */
+    .common-obstacles {
+        border-left-color: #27ae60;
+        background: #eafaf1;
+    }
+
+    .common-obstacles h2 {
+        color: #229954;
+    }
+
+    .common-obstacles p,
+    .common-obstacles li {
+        color: #2d5016;
+    }
+
+    /* Resources & Templates - Purple */
+    .resources-templates {
+        border-left-color: #9b59b6;
+        background: #f4f1ff;
+    }
+
+    .resources-templates h2 {
+        color: #8e44ad;
+    }
+
+    .resources-templates p,
+    .resources-templates li {
+        color: #4a5568;
+    }
+
+    .highlight-box {
+        background: #fff8dc;
+        padding: 1.2rem;
+        border-radius: 8px;
+        border-left: 3px solid #f39c12;
+        margin: 1.5rem 0;
+        font-weight: 500;
+    }
+
+    .script-box {
+        background: #f0f8ff;
+        padding: 1.5rem;
+        border-radius: 8px;
+        border: 1px solid #4a90b8;
+        margin: 1rem 0;
+        font-family: Georgia, serif;
+        font-style: italic;
+    }
+
+    .warning-box {
+        background: #ffe6e6;
+        padding: 1.2rem;
+        border-radius: 8px;
+        border-left: 3px solid #e74c3c;
+        margin: 1.5rem 0;
+    }
+
+    .success-box {
+        background: #e8f5e8;
+        padding: 1.2rem;
+        border-radius: 8px;
+        border-left: 3px solid #27ae60;
+        margin: 1.5rem 0;
+    }
+
+    .checklist {
+        list-style: none;
+        padding-left: 0;
+    }
+
+    .checklist li {
+        margin-bottom: 0.8rem;
+        font-size: 1.05rem;
+        line-height: 1.6;
+        padding-left: 1.5rem;
+        position: relative;
+    }
+
+    .checklist li::before {
+        content: '☐';
+        position: absolute;
+        left: 0;
+        color: #4a5568;
+        font-size: 1.1rem;
+    }
+
+    /* Jargon styling for professional context */
+    .jargon {
+        text-decoration: none;
+        border-bottom: 1px dotted #4a90b8;
+        position: relative;
+        cursor: help;
+        font-weight: 500;
+        color: #2c3e50;
+    }
+
+    .jargon:hover {
+        color: #3498db;
+        border-bottom-color: #3498db;
+    }
+
+    /* Auto-sizing tooltips */
+    .tooltip {
+        visibility: hidden;
+        opacity: 0;
+        position: absolute;
+        bottom: calc(100% + 8px);
+        left: 50%;
+        transform: translateX(-50%);
+        background: #2c3e50;
+        color: white;
+        padding: 12px 16px;
+        border-radius: 8px;
+        font-size: 0.9rem;
+        font-weight: normal;
+        z-index: 1001;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        transition: opacity 0.3s, visibility 0.3s;
+        max-width: 800px;
+        min-width: 200px;
+        width: max-content;
+        white-space: normal;
+        text-align: left;
+        line-height: 1.5;
+        pointer-events: none;
+    }
+
+    .tooltip::after {
+        content: '';
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        border: 6px solid transparent;
+        border-top-color: #2c3e50;
+    }
+
+    .jargon:hover .tooltip {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    /* Mobile responsive tooltip adjustments */
+    @media (max-width: 1024px) {
+        .tooltip {
+            max-width: 400px;
+        }
+    }
+
+    /* Mobile-specific tooltip positioning */
+    @media (max-width: 768px) {
+        .tooltip {
+            position: fixed !important;
+            bottom: 20px !important;
+            left: 20px !important;
+            right: 20px !important;
+            transform: none !important;
+            max-width: none !important;
+            width: auto !important;
+            z-index: 9999 !important;
+        }
+
+        .tooltip::after {
+            display: none !important;
+        }
+
+        .container {
+            padding: 1rem;
+        }
+
+        .content-card {
+            padding: 1.5rem;
+        }
+
+        .section {
+            padding: 1.5rem;
+        }
+    }
+
+    /* Focus states for accessibility */
+    .jargon:focus,
+    .breadcrumb a:focus {
+        outline: 2px solid #3498db;
+        outline-offset: 2px;
+    }
+
+    /* Professional styling adjustments */
+    h3 {
+        margin: 1.5rem 0 1rem 0;
+        font-weight: 600;
+        font-size: 1.2rem;
+    }
+
+    /* Section-specific h3 colors to match h2 */
+    .system-overview h3 {
+        color: #c0392b; /* Red to match h2 */
+    }
+
+    .strategic-preparation h3 {
+        color: #f39c12; /* Yellow to match h2 */
+    }
+
+    .implementation-process h3 {
+        color: #2980b9; /* Blue to match h2 */
+    }
+
+    .common-obstacles h3 {
+        color: #229954; /* Green to match h2 */
+    }
+
+    .resources-templates h3 {
+        color: #8e44ad; /* Purple to match h2 */
+    }
+
+    /* Complementary colors for highlight boxes within each section */
+    .system-overview .highlight-box {
+        border-left-color: #27ae60; /* Green - complement to red */
+    }
+
+    .strategic-preparation .highlight-box,
+    .strategic-preparation .success-box {
+        border-left-color: #9b59b6; /* Purple - complement to yellow */
+    }
+
+    .implementation-process .highlight-box {
+        border-left-color: #e67e22; /* Orange - complement to blue */
+    }
+
+    .common-obstacles .warning-box {
+        border-left-color: #e74c3c; /* Red - complement to green */
+    }
+
+    .resources-templates .success-box {
+        border-left-color: #f1c40f; /* Yellow - complement to purple */
+    }
+
+    strong {
+        font-weight: 600;
+    }
+
+    .section-intro {
+        font-size: 1.1rem;
+        color: #34495e;
+        border-left: 3px solid #bdc3c7;
+        padding-left: 1rem;
+        margin-bottom: 1.5rem;
+        font-style: italic;
+    }
+</style>
+
+<div class="header">
+    <h1>Workplace Accommodation Toolkit</h1>
+    <p>Strategic guidance for securing effective workplace accommodations</p>
+</div>
+
+<div class="breadcrumb">
+    <a href="{{ '/index.html' | relative_url }}">Home</a>
+    <span>></span>
+    <a href="{{ '/toolkits/index.html' | relative_url }}">Toolkits</a>
+    <span>></span>
+    Workplace Accommodations
+</div>
+
+<div class="container">
+    <main role="main" id="main-content">
+        <div class="content-card">
+            <div class="section-intro">
+                This toolkit provides strategic guidance for navigating workplace accommodation requests under federal disability law. Use this resource to build a professional, legally sound approach to securing the workplace modifications you need to perform effectively.
+            </div>
+
+            <div class="section system-overview">
+                <h2>System Overview</h2>
+                <p>Understanding the legal framework and organizational context is essential for successful accommodation requests. The <a class="jargon">Americans with Disabilities Act (ADA)<span class="tooltip">Federal law requiring employers with 15+ employees to provide reasonable accommodations for qualified individuals with disabilities</span></a> creates specific rights and obligations that form the foundation of your request.</p>
+
+                <h3>Your Absolute Legal Rights (No Employer Discretion):</h3>
+                <ul>
+                    <li><strong>Right to request accommodation:</strong> You can request workplace modifications without fear of legal retaliation - this right exists regardless of whether your request is ultimately granted.</li>
+                    <li><strong>Right to interactive process:</strong> Once you request accommodation, employers MUST discuss options with you in good faith - they cannot ignore your request or refuse to engage.</li>
+                    <li><strong>Zero financial responsibility:</strong> Employers must pay for all approved accommodations - they cannot require you to cover any costs, share expenses, or provide your own equipment.</li>
+                    <li><strong>Medical privacy protection:</strong> You only have to disclose functional limitations relevant to your job - employers cannot demand your complete medical history or diagnosis details.</li>
+                    <li><strong>Protection from obvious retaliation:</strong> Employers cannot fire, demote, or formally discipline you specifically for requesting accommodations.</li>
+                </ul>
+
+                <div class="highlight-box">
+                    <strong>Critical Financial Protection:</strong> The ADA places the entire financial burden for workplace accommodations on employers. They cannot ask you to pay for any portion of accommodation costs, suggest you purchase your own equipment, or claim accommodations are "too expensive" unless they meet the very high legal standard for undue hardship. This protection is absolute and has no exceptions.
+                </div>
+
+                <h3>What Employers MUST Do (Legal Requirements):</h3>
+                <ul>
+                    <li><strong>Engage promptly:</strong> Respond to accommodation requests within reasonable timeframe (typically 2-4 weeks)</li>
+                    <li><strong>Consider reasonable options:</strong> Evaluate modifications that don't create <a class="jargon">undue hardship<span class="tooltip">Significant difficulty or expense relative to the employer's size, resources, and business nature - high legal bar to prove</span></a> (high legal standard)</li>
+                    <li><strong>Pay for accommodations:</strong> Cannot require you to cover costs of workplace modifications</li>
+                    <li><strong>Provide effective solution:</strong> Accommodation must actually address your functional limitations, not just token gestures</li>
+                </ul>
+
+                <h3>Where Employers Have Wiggle Room:</h3>
+                <ul>
+                    <li><strong>Choice of accommodation:</strong> They can choose among multiple effective options - you don't get to dictate the specific solution</li>
+                    <li><strong>"Essential functions" determination:</strong> They can argue certain tasks are core to the job and cannot be modified</li>
+                    <li><strong>Undue hardship claims:</strong> Large employers rarely win this, but small companies have more leeway to claim financial burden</li>
+                    <li><strong>Timeline flexibility:</strong> "Reasonable" timeframe is vague - they can slow-walk the process without clear violation</li>
+                </ul>
+
+                <h3>Practical Reality Check:</h3>
+                <ul>
+                    <li><strong>Subtle retaliation happens:</strong> Changed assignments, social isolation, or "performance concerns" are hard to prove as retaliation</li>
+                    <li><strong>Manager attitudes vary:</strong> Some supervisors may view accommodation requests as personal attacks on their management or team fairness</li>
+                    <li><strong>Colleague resentment exists:</strong> Coworkers may perceive accommodations as "special treatment" - this isn't illegal but affects workplace dynamics</li>
+                    <li><strong>Documentation is your protection:</strong> Without written records, proving legal violations becomes nearly impossible</li>
+                </ul>
+
+                <div class="warning-box">
+                    <strong>Documentation Strategy:</strong> Force all important accommodation discussions into email channels. After any verbal meetings or conversations, immediately send follow-up emails summarizing what was discussed and asking for confirmation: "To ensure we're aligned, here's my understanding of our conversation... Please confirm this is accurate." This creates legal proof of what was agreed to and prevents later denial or memory disputes.
+                </div>
+
+                <h3>What Qualifies as Disability:</h3>
+                <ul>
+                    <li>Physical or mental impairment that substantially limits major life activities</li>
+                    <li>History of such impairment (even if currently managed with treatment)</li>
+                    <li>Being regarded by others as having such impairment</li>
+                </ul>
+
+                <div class="highlight-box">
+                    <strong>Key Insight:</strong> You don't need a formal diagnosis to request accommodations, but healthcare provider documentation significantly strengthens your position and clarifies specific functional limitations.
+                </div>
+            </div>
+
+            <div class="section strategic-preparation">
+                <h2>Strategic Preparation</h2>
+                <p>Thorough preparation before initiating accommodation requests significantly increases success rates and professional outcomes. This phase involves documentation gathering, situational analysis, and strategic planning.</p>
+
+                <h3>Document Your Situation:</h3>
+                <ul>
+                    <li><strong>Identify specific workplace barriers:</strong> Catalog exactly which job requirements, environment factors, or workplace policies create challenges for your disability.</li>
+                    <li><strong>Track performance impacts:</strong> Document how these barriers affect your work quality, productivity, or attendance without accommodation.</li>
+                    <li><strong>Research effective solutions:</strong> Identify specific accommodations that would address your barriers based on research and successful examples.</li>
+                    <li><strong>Assess company culture:</strong> Evaluate your organization's history with flexibility, employee support, and accommodation requests.</li>
+                </ul>
+
+                <h3>Gather Medical Documentation:</h3>
+                <ul>
+                    <li>Obtain comprehensive evaluation or diagnosis from qualified healthcare provider</li>
+                    <li>Request <a class="jargon">functional capacity evaluation<span class="tooltip">Assessment by healthcare provider describing specific work limitations and recommended accommodations</span></a> that focuses on workplace limitations</li>
+                    <li>Work with provider to emphasize functional impacts rather than diagnostic labels</li>
+                    <li>Ensure documentation addresses specific workplace challenges you've identified</li>
+                </ul>
+
+                <h3>Strategic Considerations:</h3>
+                <ul>
+                    <li><strong>Timing assessment:</strong> Choose periods of stable performance and low organizational stress</li>
+                    <li><strong>Stakeholder analysis:</strong> Identify decision-makers, potential allies, and sources of resistance</li>
+                    <li><strong>Cost-benefit preparation:</strong> Research accommodation costs and implementation requirements to demonstrate business case</li>
+                    <li><strong>Alternative solutions:</strong> Develop multiple options that achieve the same functional outcomes</li>
+                </ul>
+
+                <div class="success-box">
+                    <strong>Preparation Success Factor:</strong> Companies respond better to accommodation requests that demonstrate business benefits and include specific implementation plans rather than general requests for help.
+                </div>
+            </div>
+
+            <div class="section implementation-process">
+                <h2>Implementation Process</h2>
+                <p>Follow this systematic approach to navigate accommodation requests professionally and effectively. Each step builds toward successful implementation while maintaining legal protections.</p>
+
+                <h3>Phase 1: Initial Request</h3>
+                <ul>
+                    <li><strong>Submit written request:</strong> Send formal email to both direct supervisor and HR specifying this is an <a class="jargon">ADA accommodation request<span class="tooltip">Formal request for workplace modifications under Americans with Disabilities Act</span></a></li>
+                    <li><strong>Request meeting:</strong> Ask for face-to-face discussion within reasonable timeframe (typically 1-2 weeks)</li>
+                    <li><strong>Provide overview:</strong> Include general description of accommodation needs without detailed medical information</li>
+                </ul>
+
+                <div class="script-box">
+                    <strong>Initial Request Email Template:</strong><br><br>
+                    
+                    Subject: Request for ADA Workplace Accommodation<br><br>
+                    
+                    Dear [Manager/HR Representative],<br><br>
+                    
+                    I am writing to request reasonable workplace accommodations under the Americans with Disabilities Act. I have a disability that affects my ability to [specific work functions], and I believe workplace modifications would improve my performance and productivity.<br><br>
+                    
+                    I would like to schedule a meeting to discuss potential accommodations and begin the interactive process. I have researched several solutions that would be effective and minimally disruptive to operations.<br><br>
+                    
+                    Please let me know your availability for a meeting within the next two weeks. I am committed to finding solutions that meet both my functional needs and the company's business requirements.<br><br>
+                    
+                    Thank you for your consideration.<br><br>
+                    
+                    Best regards,<br>
+                    [Your name]
+                </div>
+
+                <h3>Phase 2: Interactive Process Meeting</h3>
+                <ul>
+                    <li><strong>Present business case:</strong> Frame accommodations as productivity solutions rather than personal needs</li>
+                    <li><strong>Offer specific proposals:</strong> Come with 2-3 concrete accommodation options with implementation details</li>
+                    <li><strong>Demonstrate flexibility:</strong> Show willingness to consider alternative approaches that achieve same functional outcomes</li>
+                    <li><strong>Document discussion:</strong> Request written summary of meeting outcomes and next steps</li>
+                </ul>
+
+                <h3>Phase 3: Documentation and Approval</h3>
+                <ul>
+                    <li><strong>Provide requested medical information:</strong> Submit only job-related functional limitations through proper HR channels</li>
+                    <li><strong>Negotiate implementation details:</strong> Work collaboratively on timeline, responsibilities, and success metrics</li>
+                    <li><strong>Secure written agreement:</strong> Ensure final accommodation plan is documented in writing</li>
+                    <li><strong>Establish review process:</strong> Set up periodic evaluation and adjustment procedures</li>
+                </ul>
+
+                <div class="highlight-box">
+                    <strong>Professional Communication Strategy:</strong> Focus on business outcomes - "This modification will enable me to complete projects more efficiently" rather than "I need help because of my disability."
+                </div>
+            </div>
+
+            <div class="section common-obstacles">
+                <h2>Common Obstacles</h2>
+                <p>Accommodation requests face predictable challenges. Understanding these obstacles and having response strategies prepared increases your success rate and maintains professional relationships.</p>
+
+                <h3>Manager Pushback and Resistance:</h3>
+                <ul>
+                    <li><strong>"We don't have budget for accommodations":</strong> Remind them that many effective accommodations are low or no cost, and employers are legally required to provide reasonable accommodations regardless of budget preferences.</li>
+                    <li><strong>"This will set a bad precedent":</strong> Explain that accommodations are individualized based on specific functional needs, not blanket changes to company policy.</li>
+                    <li><strong>"Your work seems fine to me":</strong> Provide specific examples of how accommodation would improve measurable outcomes like accuracy, efficiency, or consistency.</li>
+                    <li><strong>"Can't you just try harder?":</strong> Clarify that accommodation addresses neurological differences, not effort levels - comparable to providing glasses for vision impairment.</li>
+                </ul>
+
+                <h3>HR Department Confusion:</h3>
+                <ul>
+                    <li><strong>Lack of ADA knowledge:</strong> Provide educational resources or suggest they consult with <a class="jargon">Job Accommodation Network (JAN)<span class="tooltip">Free federal service providing accommodation guidance and ADA technical assistance</span></a></li>
+                    <li><strong>Excessive medical information requests:</strong> Know that you only need to provide job-related functional limitations, not complete medical history</li>
+                    <li><strong>Delayed response:</strong> ADA requires "prompt" response - follow up weekly if no communication after initial request</li>
+                </ul>
+
+                <h3>Inadequate Accommodation Offers:</h3>
+                <ul>
+                    <li><strong>Token gestures:</strong> If proposed accommodations don't address your actual functional limitations, explain specifically why they're insufficient</li>
+                    <li><strong>"Trial period" delays:</strong> While reasonable trial periods are normal, indefinite delays without implementation are not acceptable</li>
+                    <li><strong>Partial solutions:</strong> You can accept partial accommodations while continuing to negotiate for additional needed modifications</li>
+                </ul>
+
+                <h3>Workplace Stigma and Relationship Impacts:</h3>
+                <ul>
+                    <li><strong>Colleague resentment:</strong> Focus conversations on business necessity rather than fairness concerns</li>
+                    <li><strong>Changed expectations:</strong> Clearly define how accommodations affect (or don't affect) your core job responsibilities</li>
+                    <li><strong>Performance scrutiny:</strong> Document your improved performance outcomes with accommodations in place</li>
+                </ul>
+
+                <div class="warning-box">
+                    <strong>Red Flag:</strong> If you experience retaliation, documentation becomes critical. Keep detailed records of any negative treatment following your accommodation request and contact legal resources immediately.
+                </div>
+            </div>
+
+            <div class="section resources-templates">
+                <h2>Resources & Templates</h2>
+                <p>Practical tools, template letters, and external resources to support your accommodation request process and ongoing workplace advocacy.</p>
+
+                <h3>Documentation Checklist:</h3>
+                <ul class="checklist">
+                    <li>Initial written accommodation request with date and recipients</li>
+                    <li>Medical documentation focusing on workplace functional limitations</li>
+                    <li>Meeting notes and written summaries of all discussions</li>
+                    <li>Proposed accommodation details including costs and implementation plans</li>
+                    <li>Company responses, decisions, and any denials with stated reasons</li>
+                    <li>Implementation timeline with assigned responsibilities</li>
+                    <li>Effectiveness tracking and adjustment requests</li>
+                    <li>Any retaliation or negative treatment documentation</li>
+                </ul>
+
+                <h3>Common Accommodations by Need:</h3>
+                <ul>
+                    <li><strong>Attention and focus:</strong> Quiet workspace, noise-canceling equipment, written instructions, deadline extensions</li>
+                    <li><strong>Executive function:</strong> Project management tools, regular check-ins, task prioritization assistance, flexible deadlines</li>
+                    <li><strong>Sensory processing:</strong> Lighting adjustments, temperature control, reduced interruptions, alternative workspace</li>
+                    <li><strong>Social communication:</strong> Email rather than phone communication, advance notice of meetings, written agendas</li>
+                    <li><strong>Schedule and routine:</strong> Flexible start times, work-from-home options, compressed work weeks, consistent schedules</li>
+                </ul>
+
+                <h3>External Support Resources:</h3>
+                <ul>
+                    <li><strong>Job Accommodation Network (JAN):</strong> askjan.org - Free consultation on specific accommodations and ADA requirements</li>
+                    <li><strong>Equal Employment Opportunity Commission (EEOC):</strong> eeoc.gov - Official guidance on ADA processes and employee rights</li>
+                    <li><strong>State disability rights agencies:</strong> Each state has protection and advocacy organizations - search "[your state] disability rights" for local resources</li>
+                    <li><strong>Regional ADA centers:</strong> Ten federally-funded centers provide technical assistance and training in your geographic area</li>
+                    <li><strong>Local legal aid organizations:</strong> Many areas offer employment law assistance for qualifying individuals - search "[your city] legal aid employment"</li>
+                    <li><strong>Bar association referral services:</strong> State bar associations maintain directories of employment attorneys with disability law experience</li>
+                </ul>
+
+                <h3>Professional Development Resources:</h3>
+                <ul>
+                    <li><strong>Disability advocacy organizations:</strong> Industry-specific guidance and networking opportunities</li>
+                    <li><strong>Employee resource groups:</strong> Internal company groups focused on disability inclusion</li>
+                    <li><strong>Professional associations:</strong> Career-specific accommodation examples and mentorship</li>
+                    <li><strong>Continuing education:</strong> ADA updates, disability inclusion training, leadership development</li>
+                </ul>
+
+                <div class="success-box">
+                    <strong>Success Tracking:</strong> Document measurable improvements in productivity, quality, attendance, or job satisfaction following accommodation implementation. This data supports future requests and demonstrates business value.
+                </div>
+
+                <div class="script-box">
+                    <strong>Follow-Up Documentation Email:</strong><br><br>
+                    
+                    Thank you for our productive discussion about workplace accommodations. To ensure we're aligned on next steps, here's my understanding of our conversation:<br><br>
+                    
+                    • Accommodations under consideration: [List specific items discussed]<br>
+                    • Implementation timeline: [Dates and milestones]<br>
+                    • Documentation requirements: [What you need to provide]<br>
+                    • Success metrics: [How effectiveness will be measured]<br><br>
+                    
+                    Please confirm this summary is accurate and let me know if any corrections are needed. I appreciate your collaborative approach to finding solutions that work for everyone.<br><br>
+                    
+                    I look forward to implementing these modifications and demonstrating their positive impact on my contributions to the team.
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('Workplace Accommodation Toolkit loaded');
+});
+</script>
