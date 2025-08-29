@@ -57,12 +57,14 @@ layout: default
             {% endif %}
         {% endfor %}
         
+        {% if total_struggles > 0 %}
         <div class="progress-indicator">
             <p>{{ available_struggles }} of {{ total_struggles }} struggle guides available</p>
             <div class="progress-bar">
                 <div class="progress-fill" style="width: {{ available_struggles | times: 100 | divided_by: total_struggles }}%"></div>
             </div>
         </div>
+        {% endif %}
     </div>
 
     <div class="cross-cutting-section">
