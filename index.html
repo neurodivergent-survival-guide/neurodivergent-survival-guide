@@ -213,9 +213,12 @@ title: "The Neurodivergent Survival Guide"
 
     .main-sections {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(3, 1fr);
         gap: 2rem;
         margin: 3rem 0;
+        max-width: 1000px;
+        margin-left: auto;
+        margin-right: auto;
     }
 
     .section-card {
@@ -252,6 +255,10 @@ title: "The Neurodivergent Survival Guide"
         background: linear-gradient(90deg, var(--rainbow-3), var(--rainbow-5));
     }
 
+    .toolkits-card::before {
+        background: linear-gradient(90deg, #8b7355, #5d4037);
+    }
+
     .section-card:hover {
         transform: translateY(-5px);
         box-shadow: 0 20px 45px rgba(0, 0, 0, 0.12);
@@ -282,6 +289,10 @@ title: "The Neurodivergent Survival Guide"
 
     .struggles-card .card-icon {
         background: linear-gradient(45deg, var(--rainbow-3), var(--rainbow-5));
+    }
+
+    .toolkits-card .card-icon {
+        background: linear-gradient(45deg, #8b7355, #5d4037);
     }
 
     .section-card h3 {
@@ -625,6 +636,7 @@ title: "The Neurodivergent Survival Guide"
 
         .main-sections {
             grid-template-columns: 1fr;
+            max-width: none;
         }
 
         .workflow-steps {
@@ -697,6 +709,13 @@ title: "The Neurodivergent Survival Guide"
                 <h3>Navigate Daily Friction</h3>
                 <p>Practical guides for specific situations that create challenges. Each includes what it feels like, why it happens, and immediate + long-term strategies that actually work.</p>
                 <div class="section-examples">Communication • Executive function • Sensory overload • Emotional regulation</div>
+            </a>
+
+            <a href="{{ '/toolkits/index.html' | relative_url }}" class="section-card toolkits-card">
+                <div class="card-icon">💼</div>
+                <h3>Strategic System Navigation</h3>
+                <p>Step-by-step guidance for advocating within institutional systems. Professional tools for workplace accommodations, healthcare navigation, and legal advocacy.</p>
+                <div class="section-examples">Workplace advocacy • Healthcare systems • Educational accommodations • Financial management</div>
             </a>
         </div>
 
@@ -775,6 +794,16 @@ title: "The Neurodivergent Survival Guide"
                 'bpd': 'conditions/borderline-personality-disorder.html',
                 'borderline': 'conditions/borderline-personality-disorder.html',
                 'ocd': 'conditions/ocd.html',
+                
+                // Toolkits
+                'toolkit': 'toolkits/index.html',
+                'toolkits': 'toolkits/index.html',
+                'workplace': 'toolkits/workplace-accommodations.html',
+                'accommodation': 'toolkits/workplace-accommodations.html',
+                'education': 'toolkits/educational-accommodations.html',
+                'healthcare': 'toolkits/healthcare-advocacy.html',
+                'evaluation': 'toolkits/evaluation-preparation.html',
+                'financial': 'toolkits/financial-management.html',
                 
                 // Autism struggles
                 'social cues': 'struggles/missing-social-cues.html',
@@ -904,6 +933,8 @@ title: "The Neurodivergent Survival Guide"
                 // If no specific match, route to appropriate section
                 if (searchTerm.includes('condition') || searchTerm.includes('brain') || searchTerm.includes('neurotype')) {
                     window.location.href = 'conditions/index.html';
+                } else if (searchTerm.includes('toolkit') || searchTerm.includes('advocacy') || searchTerm.includes('system')) {
+                    window.location.href = 'toolkits/index.html';
                 } else {
                     window.location.href = 'struggles/index.html';
                 }
