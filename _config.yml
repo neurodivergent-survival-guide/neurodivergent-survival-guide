@@ -29,7 +29,7 @@ sass:
 # Defaults
 defaults:
   - scope:
-      path: ""
+      path: "conditions"
       type: "pages"
     values:
-      layout: "default"
+      layout: "condition"
