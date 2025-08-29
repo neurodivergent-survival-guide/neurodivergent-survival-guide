@@ -8,7 +8,7 @@ adhd:
   - slug: "attention-regulation"
     title: "Attention Regulation"
     description: "Difficulty controlling where your focus goes"
-  - slug: "follow-through-completion-struggles"
+  - slug: "follow-through-completion"
     title: "Follow-Through Completion Struggles"
     description: "Starting projects but not finishing them"
   - slug: "organization-and-planning-challenges"
@@ -112,9 +112,9 @@ autism:
   - slug: "sensory-seeking-behaviors"
     title: "Sensory Seeking Behaviors"
     description: "Need for intense sensory input to feel regulated and alert"
-  - slug: "autism-medication-sensitivity"
-    title: "Autism Medication Sensitivity"
-    description: "Heightened sensitivity to psychiatric medications and unusual responses to standard doses"
+  - slug: "medication-sensitivity-management"
+    title: "Medication Sensitivity Management"
+    description: "Navigating heightened sensitivity to psychiatric medications and managing treatments for co-occurring conditions"
 
 bipolar:
   - slug: "elevated-mood-periods"
