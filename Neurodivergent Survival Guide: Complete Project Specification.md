@@ -1,9 +1,10 @@
 # **Neurodivergent Survival Guide: Complete Project Specification**
+*Updated to reflect Toolkit Framework and Design Standards*
 
 ## **INDEX PAGES**
 
 **Main Site Index** - /index.html
-Primary landing page introducing the site's purpose and navigation to all major sections.
+Primary landing page introducing the site's purpose and navigation to all major sections. Features 3-card layout: Conditions, Struggles, and Toolkits.
 
 **Conditions Index** - /conditions/index.html
 Entry point to all neurodivergent condition pages with overview and navigation guidance.
@@ -11,8 +12,8 @@ Entry point to all neurodivergent condition pages with overview and navigation g
 **Struggles Index** - /struggles/index.html
 Comprehensive directory of daily friction points organized by experiential categories.
 
-**Glossary Index** - /glossary/index.html
-Navigation hub for all terminology and concept cluster pages.
+**Toolkits Index** - /toolkits/index.html
+Professional strategic resources for navigating institutional systems. Features mottled leather briefcase aesthetic with brown gradient palette.
 
 ## **CONDITION PAGES**
 
@@ -30,6 +31,23 @@ Pattern of instability in relationships, self-image, and emotions with marked im
 
 **OCD** - /conditions/ocd.html
 Obsessive thoughts and compulsive behaviors that interfere with daily life and cause significant distress. Page covers different presentations, common themes, and links to all OCD-related struggles.
+
+## **TOOLKIT PAGES**
+
+**Workplace Accommodations Toolkit** - /toolkits/workplace-accommodations.html
+Strategic guidance for navigating ADA accommodation requests, including legal rights, documentation requirements, professional scripts, and escalation procedures.
+
+**Educational Accommodations Toolkit** - /toolkits/educational-accommodations.html
+Comprehensive guidance for IEP and 504 plan processes, special education law navigation, evaluation requests, and academic accommodation advocacy.
+
+**Healthcare Advocacy Toolkit** - /toolkits/healthcare-advocacy.html
+System navigation for medical appointments, provider selection, insurance authorization, and securing neurodivergent-affirming healthcare.
+
+**ADHD/Autism Evaluation Preparation Toolkit** - /toolkits/evaluation-preparation.html
+Strategic preparation for comprehensive diagnostic evaluations, including provider selection, documentation gathering, and appointment optimization.
+
+**Financial Management for Executive Dysfunction Toolkit** - /toolkits/financial-management.html
+Practical systems for managing money with ADHD and autism brains, including automation strategies, banking solutions, and sustainable financial planning.
 
 ## **AUTISM STRUGGLES**
 
@@ -84,11 +102,8 @@ Processing missed opportunities and identity reconstruction after adult diagnosi
 **Sensory Seeking Behaviors** - /struggles/sensory-seeking-behaviors.html
 Need for intense sensory input to feel regulated and alert. Page helps distinguish between seeking and overwhelm while finding healthy outlets.
 
-**Medication Sensitivity Management** - /struggles/medication-sensitivity-management.html
-Navigating heightened sensitivity to psychiatric medications and managing treatments for co-occurring conditions. Page covers starting low, going slow, and working with providers who understand autistic medication responses.
-
-**Autism Workplace Advocacy** - /struggles/autism-workplace-advocacy.html
-Securing reasonable accommodations for sensory needs, communication preferences, and routine requirements in work environments. Page provides scripts, legal frameworks, and autism-specific accommodation strategies.
+**Autism Medication Sensitivity** - /struggles/autism-medication-sensitivity.html
+Heightened sensitivity to psychiatric medications and unusual responses to standard doses. Page covers starting low, going slow, and working with providers who understand autistic medication responses.
 
 ## **ADHD STRUGGLES**
 
@@ -140,11 +155,14 @@ Forgetting about things when they're not visible or immediately present. Page of
 **Interest-Based Nervous System** - /struggles/interest-based-nervous-system.html
 Functioning best with activities that are interesting, challenging, urgent, or novel. Page helps you understand and work with your motivation patterns.
 
-**Stimulant Medication Management** - /struggles/stimulant-medication-management.html
-Dealing with appetite suppression, sleep disruption, crash periods, and tolerance concerns with ADHD medications. Page covers timing strategies, side effect management, and communication with prescribers.
+**Stimulant Appetite Suppression** - /struggles/stimulant-appetite-suppression.html
+Loss of appetite and eating difficulties while taking ADHD medications. Page covers maintaining nutrition, eating strategies, and working with providers on appetite-related concerns.
 
-**ADHD Workplace Advocacy** - /struggles/adhd-workplace-advocacy.html
-Requesting accommodations for time management, organization, and attention challenges in professional settings. Page includes accommodation examples, ADA guidance, and strategies for explaining ADHD needs to employers.
+**Stimulant Sleep Disruption** - /struggles/stimulant-sleep-disruption.html
+Insomnia and sleep difficulties caused by ADHD medications. Page addresses timing strategies, sleep hygiene modifications, and medication adjustment discussions.
+
+**Stimulant Crash and Rebound** - /struggles/stimulant-crash-and-rebound.html
+Evening mood drops and symptom return as medication wears off. Page covers timing adjustments, bridging strategies, and crash management techniques.
 
 ## **BIPOLAR STRUGGLES**
 
@@ -190,8 +208,14 @@ Experiencing depression and mania symptoms simultaneously. Page explains this co
 **Rapid Cycling Patterns** - /struggles/rapid-cycling-patterns.html
 Frequent mood episode changes that disrupt stability. Page covers pattern recognition and lifestyle modifications to reduce cycling frequency.
 
-**Medication Side Effect Management** - /struggles/medication-side-effect-management.html
-Dealing with the physical and cognitive effects of mood stabilizers. Page addresses common concerns and working with healthcare providers on medication decisions.
+**Lithium Side Effects** - /struggles/lithium-side-effects.html
+Managing hand tremors, thirst, weight gain, and cognitive effects from lithium treatment. Page covers side effect management and working with providers on dosing adjustments.
+
+**Anticonvulsant Side Effects** - /struggles/anticonvulsant-side-effects.html
+Dealing with cognitive dulling, hair loss, weight changes, and other effects from medications like lamotrigine and valproate. Page addresses quality of life balance with mood stability.
+
+**Antipsychotic Side Effects** - /struggles/antipsychotic-side-effects.html
+Managing sedation, movement disorders, metabolic changes, and other effects from medications like quetiapine and aripiprazole used in bipolar treatment.
 
 **Identity Confusion Between Episodes** - /struggles/identity-confusion-between-episodes.html
 Feeling unsure of your "real" self across different mood states. Page explores identity integration and maintaining sense of self through mood changes.
@@ -201,12 +225,6 @@ Impact of mood episodes on family, friends, and romantic relationships. Page off
 
 **Financial Consequences Manic Spending** - /struggles/financial-consequences-manic-spending.html
 Dealing with debt or poor financial decisions made during episodes. Page covers financial safety planning and recovery from money-related episode consequences.
-
-**Mood Stabilizer Side Effects** - /struggles/mood-stabilizer-side-effects.html
-Managing weight gain, cognitive dulling, tremors, and other side effects from lithium, anticonvulsants, and antipsychotics. Page covers side effect management and balancing medication benefits with quality of life.
-
-**Bipolar Workplace Advocacy** - /struggles/bipolar-workplace-advocacy.html
-Navigating disclosure decisions and requesting episode-related accommodations while managing mental health stigma. Page addresses FMLA, schedule flexibility, and creating supportive work environments.
 
 ## **BORDERLINE PERSONALITY DISORDER STRUGGLES**
 
@@ -255,11 +273,8 @@ Overwhelming feelings of being fundamentally flawed or bad. Page validates shame
 **Hypervigilance to Rejection Cues** - /struggles/hypervigilance-to-rejection-cues.html
 Constantly scanning for signs that others might leave or reject you. Page addresses anxiety management and realistic assessment of social situations.
 
-**Off-Label Medication Navigation** - /struggles/off-label-medication-navigation.html
-Working with providers to find helpful medications when no specific BPD treatments exist. Page covers trial-and-error processes, managing expectations, and advocating for medication support alongside therapy.
-
-**BPD Stigma and Advocacy** - /struggles/bpd-stigma-and-advocacy.html
-Overcoming provider bias and accessing quality treatment despite BPD stigma in healthcare settings. Page provides strategies for finding informed providers and self-advocacy in medical contexts.
+**BPD Medication Trial Management** - /struggles/bpd-medication-trial-management.html
+Working with providers on off-label medications when no specific BPD treatments exist. Page covers trial-and-error processes, managing expectations, and advocating for medication support alongside therapy.
 
 ## **OCD STRUGGLES**
 
@@ -293,14 +308,71 @@ Limiting activities to avoid triggering obsessions or compulsions. Page covers g
 **Secondary Depression from Shame Exhaustion** - /struggles/secondary-depression-from-shame-exhaustion.html
 Mood problems that develop from the burden of living with OCD. Page addresses the emotional toll of OCD and integrated treatment approaches.
 
-**SSRI Sexual and Emotional Side Effects** - /struggles/ssri-sexual-emotional-side-effects.html
-Managing sexual dysfunction, emotional blunting, and other SSRI side effects while maintaining OCD symptom control. Page covers side effect mitigation strategies and medication adjustment discussions.
+**SSRI Sexual Side Effects** - /struggles/ssri-sexual-side-effects.html
+Sexual dysfunction and decreased libido from OCD medications. Page covers managing intimate relationships, alternative treatments, and medication adjustment strategies.
 
-**OCD Accommodation Advocacy** - /struggles/ocd-accommodation-advocacy.html
-Requesting workplace and educational accommodations for compulsions, avoidance behaviors, and time-related needs without disclosing specific obsessions. Page provides professional language and accommodation frameworks.
+**SSRI Emotional Blunting** - /struggles/ssri-emotional-blunting.html
+Feeling emotionally numb or disconnected while on antidepressants for OCD. Page addresses maintaining emotional connection and treatment balance discussions.
 
-**TOTAL PROJECT PAGE COUNT:** 
+## **DESIGN FRAMEWORK SPECIFICATIONS**
+
+### **Struggle Page Framework (Mandatory)**
+1. What this feels like (phenomenology)
+2. Why this might be happening (mechanisms)
+3. What can help you through the next 5 minutes (immediate interventions)
+4. What are some healthy long-term solutions (sustainable approaches)
+5. When should I consider medical intervention (red flags)
+6. You're not imagining this (validation)
+7. Related Struggles (4-5 cross-links with condition-colored pills)
+
+### **Toolkit Framework (Mandatory Rainbow Spectrum)**
+1. **System Overview** (Red #e74c3c) - Legal/regulatory framework
+2. **Strategic Preparation** (Yellow #f1c40f) - Documentation and planning
+3. **Implementation Process** (Blue #3498db) - Step-by-step procedures
+4. **Common Obstacles** (Green #27ae60) - Predictable challenges
+5. **Resources & Templates** (Purple #9b59b6) - Tools and external support
+
+### **Jargon Requirements**
+**Struggle Pages:** 20+ tooltips including neurodivergent terminology AND NT social code-switching terms that invalidate ND experiences
+**Toolkit Pages:** 15+ tooltips focusing on legal, professional, and institutional terminology with concrete definitions
+**Consistency Rule:** Once a term is jargon, it's always jargon throughout the page
+
+### **Mobile Responsive Standards**
+- 44px minimum touch targets
+- Fixed bottom bar tooltip positioning on mobile (768px breakpoint)
+- Single column layout on mobile for all grid systems
+- Responsive typography scaling
+
+### **Voice and Tone Standards**
+**Struggle Pages:** Warm, validating, phenomenology-first approach using "many people experience" language
+**Toolkit Pages:** Professional strategic consultation tone focusing on legal protections and bureaucratic navigation
+**Both:** 5th grade reading level with respect for reader intelligence
+
+**UPDATED PROJECT TOTALS:**
 - 4 index pages
-- 5 condition pages
-- 84 struggle pages (74 original + 10 new)
-- **Total: 93 pages**
+- 5 condition pages  
+- 5 toolkit pages *(NEW)*
+- 87 struggle pages *(revised count)*
+- **Total: 101 pages**
+
+## **PRIORITY IMPLEMENTATION ORDER**
+
+**Phase 1: Core Framework**
+- Task Initiation Paralysis (struggle template)
+- Akathisia (medication side effect template) 
+- Object Permanence Issues, Interest-Based Nervous System, Rejection Sensitive Dysphoria
+- Workplace Accommodations Toolkit (toolkit template)
+- Toolkit Design Guide and Index Page
+
+**Phase 2: Essential Templates**
+- ADHD Condition Page (condition template)
+- Educational Accommodations Toolkit (second toolkit)
+- 2-3 additional struggle pages for design consistency
+
+**Phase 3: Systematic Expansion**
+- Remaining condition pages
+- Remaining toolkit pages
+- Individual medication side effect struggles
+- Cross-condition struggle validation
+
+This updated specification reflects all architectural decisions, design standards, and content frameworks established during the toolkit development process.
