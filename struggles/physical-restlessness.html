@@ -386,7 +386,7 @@ slug: physical-restlessness
         border-radius: 8px;
         font-size: 0.9rem;
         font-weight: normal;
-        z-index: 1001;
+        z-index: 9999;
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
         transition: opacity 0.3s, visibility 0.3s;
         max-width: 800px;
@@ -434,6 +434,16 @@ slug: physical-restlessness
 
         .tooltip::after {
             display: none !important;
+        }
+
+        /* Remove transforms on mobile to prevent positioning context issues */
+        .learn-more:hover {
+            transform: none;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .struggle-tag:hover {
+            transform: none;
         }
 
         .header {
@@ -647,7 +657,6 @@ slug: physical-restlessness
                     <a href="{{ '/struggles/akathisia.html' | relative_url }}" class="struggle-tag">Akathisia</a>
                     <a href="{{ '/struggles/executive-function-challenges.html' | relative_url }}" class="struggle-tag">Executive Function</a>
                     <a href="{{ '/struggles/social-masking.html' | relative_url }}" class="struggle-tag">Social Masking</a>
-                    <a href="{{ '/struggles/workplace-accommodations.html' | relative_url }}" class="struggle-tag">Workplace Accommodations</a>
                 </div>
             </div>
         </div>
