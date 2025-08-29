@@ -19,6 +19,7 @@ exclude:
   - README.md
   - "Neurodivergent Survival Guide: Complete Project Specification.md"
   - "Handoff Doc.md"
+  - "Toolkit Design Guide & Content Outlines.md"
 
 # Sass
 sass:
