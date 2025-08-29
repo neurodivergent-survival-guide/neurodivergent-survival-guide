@@ -122,25 +122,6 @@ layout: default
         margin-bottom: 0.8rem;
     }
 
-    .highlight-box {
-        background: {{ colors.light_bg | default: '#ffeaa7' }};
-        padding: 1.5rem;
-        border-radius: 12px;
-        margin: 2rem 0;
-        border-left: 4px solid {{ colors.primary }};
-    }
-
-    .highlight-box h3, .highlight-box strong {
-        color: {{ colors.primary }};
-        margin-bottom: 1rem;
-        font-size: 1.3rem;
-    }
-
-    .highlight-box p {
-        color: #555;
-        margin-bottom: 0.8rem;
-    }
-
     .characteristics-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -383,24 +364,6 @@ layout: default
         border-bottom: none;
     }
 
-    /* Focus states for accessibility */
-    .struggle-link:focus,
-    .cross-cutting-link:focus,
-    .jargon:focus,
-    .breadcrumb a:focus {
-        outline: 2px solid #fff;
-        outline-offset: 2px;
-    }
-
-    /* Motion accessibility */
-    @media (prefers-reduced-motion: reduce) {
-        *, *::before, *::after {
-            animation-duration: 0.01ms !important;
-            animation-iteration-count: 1 !important;
-            transition-duration: 0.01ms !important;
-        }
-    }
-
     /* Jargon styling - context-aware based on background */
     .jargon {
         text-decoration: none;
@@ -430,7 +393,6 @@ layout: default
     /* Bold black jargon for colored backgrounds */
     .condition-intro .jargon,
     .reframe-box .jargon,
-    .highlight-box .jargon,
     .support-resources .jargon,
     .co-occurring .jargon {
         color: #333;
@@ -537,6 +499,24 @@ layout: default
         box-shadow: none;
     }
 
+    /* Focus states for accessibility */
+    .struggle-link:focus,
+    .cross-cutting-link:focus,
+    .jargon:focus,
+    .breadcrumb a:focus {
+        outline: 2px solid #fff;
+        outline-offset: 2px;
+    }
+
+    /* Motion accessibility */
+    @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+        }
+    }
+
     /* Mobile responsive tooltip adjustments */
     @media (max-width: 1024px) {
         .tooltip {
@@ -589,10 +569,6 @@ layout: default
         }
 
         .reframe-box {
-            padding: 1.2rem;
-        }
-
-        .highlight-box {
             padding: 1.2rem;
         }
 
@@ -651,10 +627,6 @@ layout: default
             padding: 1.2rem;
         }
 
-        .highlight-box {
-            padding: 1.2rem;
-        }
-
         .characteristic-card {
             padding: 1.2rem;
         }
@@ -684,34 +656,6 @@ layout: default
     <main role="main" id="main-content">
         <div class="content-card">
             {{ content }}
-
-            <div class="struggles-section" role="region" aria-labelledby="struggles-heading">
-                <h3 id="struggles-heading">{{ page.title }}-Related Struggles</h3>
-                <p style="margin-bottom: 1.5rem; color: #666;">Click on any struggle to learn what it feels like, why it happens, and what can help.</p>
-                
-                <div class="struggles-grid">
-                    {% assign condition_struggles = site.data.struggle_order[page.condition_key] %}
-                    {% for struggle in condition_struggles %}
-                        {% assign struggle_path = '/struggles/' | append: struggle.slug | append: '.html' %}
-                        {% assign struggle_page = site.pages | where: "url", struggle_path | first %}
-                        
-                        <div class="struggle-card {{ page.condition }} {% unless struggle_page %}coming-soon{% endunless %}">
-                            {% if struggle_page %}
-                                <a href="{{ struggle_path | relative_url }}" class="struggle-link">
-                                    <div class="struggle-title">{{ struggle.title }}</div>
-                                    <div class="struggle-description">{{ struggle.description }}</div>
-                                </a>
-                            {% else %}
-                                <div class="coming-soon-content">
-                                    <div class="struggle-title">{{ struggle.title }}</div>
-                                    <div class="struggle-description">{{ struggle.description }}</div>
-                                    <span class="coming-soon-badge">Coming Soon</span>
-                                </div>
-                            {% endif %}
-                        </div>
-                    {% endfor %}
-                </div>
-            </div>
         </div>
     </main>
 </div>
