@@ -183,6 +183,8 @@ layout: default
         margin-bottom: 0.5rem;
         font-size: 0.95rem;
     }
+
+    .struggles-section {
         background: #f8f9fa;
         padding: 2rem;
         border-radius: 16px;
@@ -190,7 +192,7 @@ layout: default
         border: 1px solid #e0e0e0;
     }
 
-    .struggles-section h2 {
+    .struggles-section h3 {
         color: #333;
         margin-bottom: 1.5rem;
         font-size: 1.4rem;
@@ -277,72 +279,58 @@ layout: default
         letter-spacing: 0.5px;
     }
 
-
-
     .cross-cutting-section {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        color: white;
-        padding: 2rem;
-        border-radius: 15px;
-        margin-bottom: 3rem;
+        background: #f0f8ff;
+        padding: 1.5rem;
+        border-radius: 12px;
+        margin: 1.5rem 0;
+        border-left: 4px solid #74b9ff;
     }
 
-    .cross-cutting-section h2 {
-        color: white;
+    .cross-cutting-section h4 {
+        color: #74b9ff;
         margin-bottom: 1rem;
-    }
-
-    .cross-cutting-section p {
-        margin-bottom: 2rem;
         font-size: 1.1rem;
-        opacity: 0.9;
     }
 
-    .cross-cutting-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 1rem;
+    .cross-cutting-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
     }
 
     .cross-cutting-link {
-        background: rgba(255, 255, 255, 0.1);
-        padding: 1.5rem;
-        border-radius: 10px;
+        background: #74b9ff;
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 8px;
+        font-size: 0.85rem;
         text-decoration: none;
-        color: white;
-        transition: background 0.2s ease, transform 0.2s ease;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
+        transition: all 0.3s ease;
         min-height: 44px;
-        position: relative;
+        display: flex;
+        align-items: center;
     }
 
-    .cross-cutting-link:not(.cross-cutting-coming-soon):hover {
-        background: rgba(255, 255, 255, 0.2);
-        transform: translateY(-2px);
+    .cross-cutting-link:hover {
+        background: #0984e3;
         color: white;
+        text-decoration: none;
+        transform: translateY(-1px);
     }
 
-    .cross-cutting-coming-soon {
-        opacity: 0.6;
-        cursor: default;
+    .co-occurring {
+        background: #fff3e0;
+        padding: 1.5rem;
+        border-radius: 12px;
+        margin: 2rem 0;
+        border-left: 4px solid #ff9800;
     }
 
-    .cross-cutting-link h3 {
-        margin-bottom: 0.5rem;
-        font-size: 1.1rem;
-    }
-
-    .cross-cutting-link p {
-        margin-bottom: 0;
-        font-size: 0.9rem;
-        opacity: 0.9;
-    }
-
-    .cross-cutting-coming-soon .coming-soon-badge {
-        background: rgba(255, 255, 255, 0.3);
-        color: white;
+    .co-occurring h3 {
+        color: #f57c00;
+        margin-bottom: 1rem;
+        font-size: 1.3rem;
     }
 
     .support-resources {
@@ -351,7 +339,7 @@ layout: default
         border-radius: 15px;
     }
 
-    .support-resources h2 {
+    .support-resources h3 {
         margin-bottom: 1rem;
         color: #2c3e50;
     }
@@ -375,7 +363,7 @@ layout: default
         box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     }
 
-    .support-card h3 {
+    .support-card h4 {
         margin-bottom: 1rem;
         color: #2c3e50;
     }
@@ -425,21 +413,26 @@ layout: default
     /* Pink jargon for white backgrounds */
     .content-card .jargon,
     .support-card .jargon,
-    .struggles-section .jargon {
+    .struggles-section .jargon,
+    .characteristic-card .jargon {
         color: #e84393;
         border-bottom-color: #e84393;
     }
 
     .content-card .jargon:hover,
     .support-card .jargon:hover,
-    .struggles-section .jargon:hover {
+    .struggles-section .jargon:hover,
+    .characteristic-card .jargon:hover {
         color: #fd79a8;
         border-bottom-color: #fd79a8;
     }
 
     /* Bold black jargon for colored backgrounds */
+    .condition-intro .jargon,
+    .reframe-box .jargon,
     .highlight-box .jargon,
-    .support-resources .jargon {
+    .support-resources .jargon,
+    .co-occurring .jargon {
         color: #333;
         font-weight: 600;
         border-bottom-color: #333;
@@ -591,6 +584,14 @@ layout: default
             padding: 1.5rem;
         }
 
+        .condition-intro {
+            padding: 1.5rem;
+        }
+
+        .reframe-box {
+            padding: 1.2rem;
+        }
+
         .highlight-box {
             padding: 1.2rem;
         }
@@ -599,11 +600,12 @@ layout: default
             grid-template-columns: 1fr;
         }
 
-        .cross-cutting-grid {
-            grid-template-columns: 1fr;
+        .cross-cutting-links {
+            flex-direction: column;
         }
 
         .cross-cutting-link {
+            justify-content: center;
             text-align: center;
         }
 
@@ -641,7 +643,19 @@ layout: default
             padding: 1.2rem;
         }
 
+        .condition-intro {
+            padding: 1.2rem;
+        }
+
+        .reframe-box {
+            padding: 1.2rem;
+        }
+
         .highlight-box {
+            padding: 1.2rem;
+        }
+
+        .characteristic-card {
             padding: 1.2rem;
         }
 
@@ -672,7 +686,7 @@ layout: default
             {{ content }}
 
             <div class="struggles-section" role="region" aria-labelledby="struggles-heading">
-                <h2 id="struggles-heading">{{ page.title }}-Related Struggles</h2>
+                <h3 id="struggles-heading">{{ page.title }}-Related Struggles</h3>
                 <p style="margin-bottom: 1.5rem; color: #666;">Click on any struggle to learn what it feels like, why it happens, and what can help.</p>
                 
                 <div class="struggles-grid">
@@ -698,46 +712,28 @@ layout: default
                     {% endfor %}
                 </div>
 
-
-
                 <div class="cross-cutting-section">
-                    <h2>Cross-Cutting Concerns</h2>
-                    <p>These struggles span multiple neurodivergent conditions and often interact with each other:</p>
-                    
-                    <div class="cross-cutting-grid">
-                        {% assign cross_cutting_links = "perfectionism-paralysis,emotional-dysregulation,social-masking-exhaustion" | split: "," %}
-                        {% assign cross_cutting_titles = "Perfectionism Paralysis,Emotional Dysregulation,Social Masking Exhaustion" | split: "," %}
-                        {% assign cross_cutting_descriptions = "When impossibly high standards prevent starting or completing tasks,Intense emotions that feel overwhelming or disproportionate,Fatigue from hiding neurodivergent traits in social situations" | split: "," %}
-                        
-                        {% for i in (0..2) %}
-                            {% assign link_slug = cross_cutting_links[i] %}
-                            {% assign link_path = '/struggles/' | append: link_slug | append: '.html' %}
-                            {% assign link_page = site.pages | where: "url", link_path | first %}
-                            
-                            {% if link_page %}
-                                <a href="{{ link_path | relative_url }}" class="cross-cutting-link">
-                                    <h3>{{ cross_cutting_titles[i] }}</h3>
-                                    <p>{{ cross_cutting_descriptions[i] }}</p>
-                                </a>
-                            {% else %}
-                                <div class="cross-cutting-link cross-cutting-coming-soon">
-                                    <h3>{{ cross_cutting_titles[i] }}</h3>
-                                    <p>{{ cross_cutting_descriptions[i] }}</p>
-                                    <span class="coming-soon-badge">Coming Soon</span>
-                                </div>
-                            {% endif %}
-                        {% endfor %}
+                    <h4>Related Struggles from Other Conditions</h4>
+                    <div class="cross-cutting-links">
+                        <a href="{{ '/struggles/sensory-processing-challenges.html' | relative_url }}" class="cross-cutting-link">Sensory Processing Challenges</a>
+                        <a href="{{ '/struggles/masking-burnout.html' | relative_url }}" class="cross-cutting-link">Masking Burnout</a>
+                        <a href="{{ '/struggles/routine-disruption-anxiety.html' | relative_url }}" class="cross-cutting-link">Routine Disruption Anxiety</a>
+                        <a href="{{ '/struggles/alexithymia.html' | relative_url }}" class="cross-cutting-link">Alexithymia</a>
+                        <a href="{{ '/struggles/mixed-states.html' | relative_url }}" class="cross-cutting-link">Mixed States</a>
+                        <a href="{{ '/struggles/identity-confusion-between-episodes.html' | relative_url }}" class="cross-cutting-link">Identity Confusion</a>
+                        <a href="{{ '/struggles/fear-of-abandonment.html' | relative_url }}" class="cross-cutting-link">Fear of Abandonment</a>
+                        <a href="{{ '/struggles/checking-behaviors-never-complete.html' | relative_url }}" class="cross-cutting-link">Checking Behaviors Never Complete</a>
                     </div>
                 </div>
             </div>
 
             <div class="support-resources">
-                <h2>Professional Support</h2>
+                <h3>Professional Support</h3>
                 <p>{{ page.condition_key | capitalize }} often benefits from specialized professional support. Consider connecting with:</p>
                 
                 <div class="support-grid">
                     <div class="support-card">
-                        <h3>Therapy Options</h3>
+                        <h4>Therapy Options</h4>
                         <ul>
                             {% for therapy in page.therapy_types %}
                             <li>{{ therapy }}</li>
@@ -746,7 +742,7 @@ layout: default
                     </div>
                     
                     <div class="support-card">
-                        <h3>Medical Support</h3>
+                        <h4>Medical Support</h4>
                         <ul>
                             {% for medical in page.medical_support %}
                             <li>{{ medical }}</li>
@@ -755,7 +751,7 @@ layout: default
                     </div>
                     
                     <div class="support-card">
-                        <h3>Community Resources</h3>
+                        <h4>Community Resources</h4>
                         <ul>
                             {% for resource in page.community_resources %}
                             <li>{{ resource }}</li>
