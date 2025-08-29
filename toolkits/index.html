@@ -1,0 +1,309 @@
+---
+layout: toolkit-index
+title: "Toolkits"
+slug: toolkits-index
+---
+
+<!-- /toolkits/index.html -->
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-weight: 500;
+        background: linear-gradient(135deg, #8b7355 0%, #5d4037 100%);
+        color: #333;
+        min-height: 100vh;
+        line-height: 1.6;
+    }
+
+    .header {
+        background: rgba(245, 245, 220, 0.1);
+        backdrop-filter: blur(10px);
+        padding: 2rem 2rem 1.5rem;
+        border-bottom: 1px solid rgba(245, 245, 220, 0.2);
+    }
+
+    .header h1 {
+        color: #f5f5dc;
+        font-size: 2.8rem;
+        font-weight: 400;
+        margin-bottom: 0.5rem;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    }
+
+    .header p {
+        color: rgba(245, 245, 220, 0.9);
+        font-size: 1.3rem;
+        font-weight: 400;
+        margin-bottom: 1rem;
+    }
+
+    .header .subtitle {
+        color: rgba(245, 245, 220, 0.8);
+        font-size: 1rem;
+        font-style: italic;
+        font-weight: 400;
+    }
+
+    .breadcrumb {
+        background: rgba(245, 245, 220, 0.05);
+        padding: 0.8rem 2rem;
+        border-bottom: 1px solid rgba(245, 245, 220, 0.1);
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    .breadcrumb a {
+        color: rgba(245, 245, 220, 0.8);
+        text-decoration: none;
+        font-size: 0.9rem;
+    }
+
+    .breadcrumb a:hover {
+        color: #f5f5dc;
+    }
+
+    .breadcrumb span {
+        color: rgba(245, 245, 220, 0.6);
+        margin: 0 0.5rem;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .content-card {
+        background: rgba(245, 245, 220, 0.98);
+        border-radius: 16px;
+        padding: 3rem;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        margin-bottom: 2rem;
+    }
+
+    .intro-section {
+        background: #f4f1e8;
+        padding: 2rem;
+        border-radius: 12px;
+        margin-bottom: 2.5rem;
+        border-left: 4px solid #8b7355;
+    }
+
+    .intro-section h2 {
+        color: #5d4037;
+        margin-bottom: 1rem;
+        font-size: 1.6rem;
+        font-weight: 600;
+    }
+
+    .intro-section p {
+        color: #6d4c41;
+        margin-bottom: 1rem;
+        font-size: 1.1rem;
+        line-height: 1.7;
+    }
+
+    .toolkit-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 2rem;
+        margin: 2rem 0;
+    }
+
+    .toolkit-card {
+        background: linear-gradient(135deg, #e8ddd4 0%, #d7ccc8 100%);
+        border-radius: 12px;
+        padding: 2rem;
+        border: 1px solid #a1887f;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        color: inherit;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .toolkit-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: var(--accent-color);
+    }
+
+    .toolkit-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+        text-decoration: none;
+        color: inherit;
+    }
+
+    .toolkit-card h3 {
+        color: #3e2723;
+        font-size: 1.4rem;
+        font-weight: 600;
+        margin-bottom: 0.8rem;
+    }
+
+    .toolkit-card p {
+        color: #5d4037;
+        font-size: 1rem;
+        line-height: 1.6;
+        margin-bottom: 1rem;
+    }
+
+    .toolkit-card .toolkit-type {
+        color: #795548;
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+    }
+
+    .toolkit-card .key-features {
+        color: #6d4c41;
+        font-size: 0.9rem;
+        font-style: italic;
+    }
+
+    /* Accent colors for different toolkit types */
+    .workplace-card { --accent-color: #e74c3c; }
+    .education-card { --accent-color: #f1c40f; }
+    .healthcare-card { --accent-color: #3498db; }
+    .evaluation-card { --accent-color: #27ae60; }
+    .financial-card { --accent-color: #9b59b6; }
+
+    /* Mobile adjustments */
+    @media (max-width: 768px) {
+        .toolkit-grid {
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+
+        .container {
+            padding: 1rem;
+        }
+
+        .content-card {
+            padding: 1.5rem;
+        }
+
+        .toolkit-card {
+            padding: 1.5rem;
+        }
+
+        .header {
+            padding: 1.5rem 1rem 1rem;
+        }
+
+        .header h1 {
+            font-size: 2.2rem;
+        }
+    }
+
+    /* Focus states for accessibility */
+    .toolkit-card:focus {
+        outline: 2px solid #f5f5dc;
+        outline-offset: 2px;
+    }
+
+    .breadcrumb a:focus {
+        outline: 2px solid #f5f5dc;
+        outline-offset: 2px;
+    }
+
+    /* Motion accessibility */
+    @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+        }
+    }
+</style>
+
+<div class="header">
+    <h1>Neurodivergent Toolkits</h1>
+    <p>Strategic resources for navigating institutional systems</p>
+    <div class="subtitle">Professional guidance for advocacy, documentation, and systemic change</div>
+</div>
+
+<div class="breadcrumb">
+    <a href="{{ '/index.html' | relative_url }}">Home</a>
+    <span>></span>
+    Toolkits
+</div>
+
+<div class="container">
+    <main role="main" id="main-content">
+        <div class="content-card">
+            <div class="intro-section">
+                <h2>Strategic System Navigation</h2>
+                <p>These toolkits provide step-by-step guidance for navigating complex institutional systems that were designed by and for neurotypical people. Each toolkit focuses on concrete implementation strategies, legal protections, and professional communication techniques that work in bureaucratic environments.</p>
+                
+                <p>Unlike our struggle pages which offer emotional support and understanding, these toolkits function as strategic consultations - providing the specific knowledge, scripts, and procedures you need to advocate effectively within legal, educational, healthcare, and financial systems.</p>
+            </div>
+
+            <div class="toolkit-grid">
+                <a href="{{ '/toolkits/workplace-accommodations.html' | relative_url }}" class="toolkit-card workplace-card">
+                    <div class="toolkit-type">Legal Advocacy</div>
+                    <h3>Workplace Accommodations</h3>
+                    <p>Navigate ADA accommodation requests with strategic legal guidance. Includes communication scripts, documentation requirements, and escalation procedures for securing effective workplace modifications.</p>
+                    <div class="key-features">Legal rights • Business case development • Professional scripts</div>
+                </a>
+
+                <a href="{{ '/toolkits/educational-accommodations.html' | relative_url }}" class="toolkit-card education-card">
+                    <div class="toolkit-type">Educational Advocacy</div>
+                    <h3>Educational Accommodations</h3>
+                    <p>Master IEP and 504 plan processes with comprehensive guidance on special education law, evaluation requests, and academic accommodation implementation.</p>
+                    <div class="key-features">IDEA & Section 504 • IEP meetings • Academic advocacy</div>
+                </a>
+
+                <a href="{{ '/toolkits/healthcare-advocacy.html' | relative_url }}" class="toolkit-card healthcare-card">
+                    <div class="toolkit-type">Medical System Navigation</div>
+                    <h3>Healthcare Advocacy</h3>
+                    <p>Navigate medical systems effectively with provider selection strategies, insurance authorization guides, and communication techniques for neurodivergent-affirming care.</p>
+                    <div class="key-features">Provider selection • Insurance navigation • Medical advocacy</div>
+                </a>
+
+                <a href="{{ '/toolkits/evaluation-preparation.html' | relative_url }}" class="toolkit-card evaluation-card">
+                    <div class="toolkit-type">Assessment Preparation</div>
+                    <h3>ADHD/Autism Evaluation Preparation</h3>
+                    <p>Prepare systematically for comprehensive neurodevelopmental evaluations with documentation strategies, provider selection, and appointment optimization techniques.</p>
+                    <div class="key-features">Evaluation prep • Provider selection • Documentation strategies</div>
+                </a>
+
+                <a href="{{ '/toolkits/financial-management.html' | relative_url }}" class="toolkit-card financial-card">
+                    <div class="toolkit-type">Life Systems</div>
+                    <h3>Financial Management for Executive Dysfunction</h3>
+                    <p>Build sustainable financial systems that work with ADHD and autism brains. Covers automation strategies, banking solutions, and money management for neurodivergent people.</p>
+                    <div class="key-features">Financial automation • Executive function support • Money management</div>
+                </a>
+            </div>
+
+            <div class="intro-section">
+                <h2>How to Use These Resources</h2>
+                <p>Each toolkit follows a systematic five-section framework: System Overview (understanding the legal/institutional context), Strategic Preparation (documentation and planning), Implementation Process (step-by-step procedures), Common Obstacles (predictable challenges and responses), and Resources & Templates (practical tools and external support).</p>
+                
+                <p>These resources emphasize documentation, paper trails, and professional communication techniques that protect your interests while working within existing institutional frameworks. They complement our struggle pages by providing concrete implementation strategies rather than emotional support.</p>
+            </div>
+        </div>
+    </main>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('Toolkit index page loaded');
+});
+</script>
