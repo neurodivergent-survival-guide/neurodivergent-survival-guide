@@ -8,6 +8,10 @@ slug: adhd
 ---
 <!-- /conditions/adhd.html -->
 
+<p>Page title: {{ page.title }}</p>
+<p>Condition key: {{ page.condition_key }}</p>
+<p>Data exists: {% if site.data.struggle_order %}YES{% else %}NO{% endif %}</p>
+
 <div class="condition-intro">
     <h2 id="what-is-adhd">What is ADHD?</h2>
     <p><a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> involves brain differences in <a class="jargon">attention regulation<span class="tooltip">The brain's ability to direct and sustain focus where you want it, when you want it</span></a>, <a class="jargon">impulse control<span class="tooltip">The ability to pause and think before acting on immediate urges or responses</span></a>, and <a class="jargon">executive function<span class="tooltip">The brain's management system that handles planning, organization, time management, task initiation, and follow-through</span></a>. These differences create predictable friction with environments designed for <a class="jargon">neurotypical<span class="tooltip">People whose brains develop and function in ways that align with societal expectations and norms</span></a> attention patterns and organization systems.</p>
