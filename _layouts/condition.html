@@ -3,6 +3,27 @@ layout: default
 ---
 <!-- /_layouts/condition.html -->
 
+{% if page.condition %}
+  {% assign colors = site.data.condition_colors[page.condition] %}
+{% else %}
+  {% assign colors = site.data.condition_colors['adhd'] %}
+{% endif %}
+
+<div class="condition-header-gradient">
+    <div class="condition-header">
+        <nav class="breadcrumbs">
+            <a href="{{ '/' | relative_url }}">Home</a> → 
+            <a href="{{ '/conditions/' | relative_url }}">Conditions</a> → 
+            <span>{{ page.title }}</span>
+        </nav>
+        
+        <div class="condition-title">
+            <h1>{{ page.title }}</h1>
+            <p class="condition-subtitle">{{ page.subtitle }}</p>
+        </div>
+    </div>
+</div>
+
 <div class="condition-container">
     <div class="condition-header">
         <nav class="breadcrumbs">
@@ -168,6 +189,36 @@ layout: default
 </div>
 
 <style>
+.condition-header-gradient {
+    background: linear-gradient(135deg, {{ colors.gradient_start }}, {{ colors.gradient_end }});
+    color: white;
+    min-height: 200px;
+}
+
+.condition-header {
+    padding: 1.5rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.breadcrumbs {
+    margin-bottom: 1rem;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.9rem;
+}
+
+.breadcrumbs a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+}
+
+.breadcrumbs a:hover {
+    color: white;
+}
+
+.breadcrumbs span {
+    color: rgba(255, 255, 255, 0.6);
+}
 .condition-container {
     max-width: 1200px;
     margin: 0 auto;
@@ -206,12 +257,27 @@ layout: default
 }
 
 .condition-overview {
-    background: #f8f9fa;
-    padding: 2rem;
-    border-radius: 10px;
-    margin-bottom: 3rem;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 2.5rem;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
     font-size: 1.1rem;
     line-height: 1.6;
+}
+
+.highlight-box {
+    background: {{ colors.light_bg | default: '#f8f9fa' }};
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin: 2rem 0;
+    border-left: 4px solid {{ colors.primary }};
+}
+
+.highlight-box strong {
+    color: {{ colors.primary }};
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
 }
 
 .struggles-section {
@@ -334,21 +400,9 @@ layout: default
     border-radius: 4px;
 }
 
-/* Condition-specific colors */
-.struggle-card.adhd:not(.coming-soon) {
-    border-left: 4px solid #d63031;
-}
-
-.struggle-card.autism:not(.coming-soon) {
-    border-left: 4px solid #27ae60;
-}
-
-.struggle-card.bipolar:not(.coming-soon) {
-    border-left: 4px solid #74b9ff;
-}
-
-.struggle-card.borderline:not(.coming-soon) {
-    border-left: 4px solid #f39c12;
+/* Condition-specific colors for struggle cards */
+.struggle-card.{{ page.condition }}:not(.coming-soon) {
+    border-left: 4px solid {{ colors.primary }};
 }
 
 .struggle-card.coming-soon {
@@ -513,7 +567,34 @@ layout: default
     box-shadow: none;
 }
 
-/* Mobile responsiveness */
+/* Jargon styling for gradient background */
+.condition-header .jargon {
+    color: white;
+    border-bottom-color: rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 0.1);
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+.condition-header .jargon:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-bottom-color: white;
+}
+
+/* Mobile responsiveness for new header */
+@media (max-width: 768px) {
+    .condition-header {
+        padding: 1rem;
+    }
+    
+    .condition-title h1 {
+        font-size: 2rem;
+    }
+    
+    .condition-subtitle {
+        font-size: 1rem;
+    }
+}
 @media (max-width: 768px) {
     .condition-container {
         padding: 1rem;
