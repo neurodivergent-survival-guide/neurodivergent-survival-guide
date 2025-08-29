@@ -102,8 +102,8 @@ Processing missed opportunities and identity reconstruction after adult diagnosi
 **Sensory Seeking Behaviors** - /struggles/sensory-seeking-behaviors.html
 Need for intense sensory input to feel regulated and alert. Page helps distinguish between seeking and overwhelm while finding healthy outlets.
 
-**Autism Medication Sensitivity** - /struggles/autism-medication-sensitivity.html
-Heightened sensitivity to psychiatric medications and unusual responses to standard doses. Page covers starting low, going slow, and working with providers who understand autistic medication responses.
+**Medication Sensitivity Management** - /struggles/medication-sensitivity-management.html
+Navigating heightened sensitivity to psychiatric medications and managing treatments for co-occurring conditions. Page covers starting low, going slow, and working with providers who understand autistic medication responses.
 
 ## **ADHD STRUGGLES**
 
@@ -317,13 +317,13 @@ Feeling emotionally numb or disconnected while on antidepressants for OCD. Page 
 ## **DESIGN FRAMEWORK SPECIFICATIONS**
 
 ### **Struggle Page Framework (Mandatory)**
-1. What this feels like (phenomenology)
-2. Why this might be happening (mechanisms)
-3. What can help you through the next 5 minutes (immediate interventions)
+1. What this feels like (phenomenology, not clinical description)
+2. Why this might be happening (mechanisms without excessive technical detail)
+3. What can help you through the next 5 minutes (immediate, safe interventions)
 4. What are some healthy long-term solutions (sustainable approaches)
-5. When should I consider medical intervention (red flags)
-6. You're not imagining this (validation)
-7. Related Struggles (4-5 cross-links with condition-colored pills)
+5. When should I consider medical intervention (clear red flags)
+6. You're not imagining this (validation and normalization)
+7. Related Struggles (cross-links to 4 or 5 related struggle pages from the same or related conditions)
 
 ### **Toolkit Framework (Mandatory Rainbow Spectrum)**
 1. **System Overview** (Red #e74c3c) - Legal/regulatory framework
@@ -351,9 +351,9 @@ Feeling emotionally numb or disconnected while on antidepressants for OCD. Page 
 **UPDATED PROJECT TOTALS:**
 - 4 index pages
 - 5 condition pages  
-- 5 toolkit pages *(NEW)*
-- 87 struggle pages *(revised count)*
-- **Total: 101 pages**
+- 5 toolkit pages
+- 83 struggle pages *(revised count)*
+- **Total: 97 pages**
 
 ## **PRIORITY IMPLEMENTATION ORDER**
 
