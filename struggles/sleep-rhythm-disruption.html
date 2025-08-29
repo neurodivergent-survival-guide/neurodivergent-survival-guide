@@ -1,0 +1,711 @@
+---
+layout: struggle
+title: "Sleep Rhythm Disruption"
+slug: sleep-rhythm-disruption
+---
+
+<!-- /struggles/sleep-rhythm-disruption.html -->
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-weight: 500;
+        background: linear-gradient(135deg, #d63031 0%, #a21f23 100%);
+        color: #333;
+        min-height: 100vh;
+        line-height: 1.7;
+    }
+
+    .header {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        padding: 1.5rem 2rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .header h1 {
+        color: white;
+        font-size: 2.5rem;
+        font-weight: 300;
+        margin-bottom: 0.5rem;
+    }
+
+    .header p {
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 1.2rem;
+    }
+
+    .breadcrumb {
+        background: rgba(255, 255, 255, 0.05);
+        padding: 0.8rem 2rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    .breadcrumb a {
+        color: rgba(255, 255, 255, 0.8);
+        text-decoration: none;
+        font-size: 0.9rem;
+    }
+
+    .breadcrumb a:hover {
+        color: white;
+    }
+
+    .breadcrumb span {
+        color: rgba(255, 255, 255, 0.6);
+        margin: 0 0.5rem;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .content-card {
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 20px;
+        padding: 2.5rem;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        margin-bottom: 2rem;
+    }
+
+    .what-section {
+        background: #ffe6e6;
+        padding: 2rem;
+        border-radius: 16px;
+        margin: 2rem 0;
+        border-left: 4px solid #d63031;
+    }
+
+    .what-section h2 {
+        color: #d63031;
+        margin-bottom: 1rem;
+        font-size: 1.6rem;
+    }
+
+    .what-section p {
+        margin-bottom: 1rem;
+        font-size: 1.05rem;
+        color: #555;
+    }
+
+    .why-section {
+        background: #ffeaa7;
+        padding: 2rem;
+        border-radius: 16px;
+        margin: 2rem 0;
+        border-left: 4px solid #f1c40f;
+    }
+
+    .why-section h2 {
+        color: #f39c12;
+        margin-bottom: 1rem;
+        font-size: 1.6rem;
+    }
+
+    .why-section p {
+        margin-bottom: 1rem;
+        font-size: 1.05rem;
+        color: #555;
+    }
+
+    .immediate-help {
+        background: #cce5ff;
+        padding: 2rem;
+        border-radius: 16px;
+        margin: 2rem 0;
+        border-left: 4px solid #007acc;
+    }
+
+    .immediate-help h2 {
+        color: #005599;
+        margin-bottom: 1rem;
+        font-size: 1.6rem;
+    }
+
+    .immediate-help p {
+        margin-bottom: 1rem;
+        font-size: 1.05rem;
+        color: #555;
+    }
+
+    .immediate-help ul {
+        color: #555;
+        padding-left: 1.2rem;
+    }
+
+    .immediate-help li {
+        margin-bottom: 0.8rem;
+        font-size: 0.95rem;
+    }
+
+    .long-term {
+        background: #d4edda;
+        padding: 2rem;
+        border-radius: 16px;
+        margin: 2rem 0;
+        border-left: 4px solid #28a745;
+    }
+
+    .long-term h2 {
+        color: #155724;
+        margin-bottom: 1rem;
+        font-size: 1.6rem;
+    }
+
+    .long-term p {
+        margin-bottom: 1rem;
+        font-size: 1.05rem;
+        color: #555;
+    }
+
+    .long-term ul {
+        color: #555;
+        padding-left: 1.2rem;
+    }
+
+    .long-term li {
+        margin-bottom: 0.8rem;
+        font-size: 0.95rem;
+    }
+
+    .medical-section {
+        background: #d1f2eb;
+        padding: 2rem;
+        border-radius: 16px;
+        margin: 2rem 0;
+        border-left: 4px solid #17a2b8;
+    }
+
+    .medical-section h2 {
+        color: #0c5460;
+        margin-bottom: 1rem;
+        font-size: 1.6rem;
+    }
+
+    .medical-section p {
+        margin-bottom: 1rem;
+        font-size: 1.05rem;
+        color: #555;
+    }
+
+    .medical-section ul {
+        color: #555;
+        padding-left: 1.2rem;
+    }
+
+    .medical-section li {
+        margin-bottom: 0.8rem;
+        font-size: 0.95rem;
+    }
+
+    .validation-section {
+        background: #e2e3ff;
+        padding: 2rem;
+        border-radius: 16px;
+        margin: 2rem 0;
+        border-left: 4px solid #6c5ce7;
+    }
+
+    .validation-section h2 {
+        color: #5a4fcf;
+        margin-bottom: 1rem;
+        font-size: 1.6rem;
+    }
+
+    .validation-section p {
+        margin-bottom: 1rem;
+        font-size: 1.05rem;
+        color: #555;
+    }
+
+    .related-struggles {
+        background: #f8f9fa;
+        padding: 1.5rem;
+        border-radius: 12px;
+        margin: 2rem 0;
+        border: 1px solid #e0e0e0;
+    }
+
+    .related-struggles h3 {
+        color: #333;
+        margin-bottom: 1rem;
+        font-size: 1.2rem;
+    }
+
+    .struggle-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        justify-content: center;
+    }
+
+    .struggle-tag {
+        background: #d63031;
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .struggle-tag:hover {
+        background: #a21f23;
+        color: white;
+        text-decoration: none;
+        transform: translateY(-1px);
+    }
+
+    .struggle-tag:focus {
+        outline: 2px solid #fff;
+        outline-offset: 2px;
+    }
+
+    .learn-more {
+        background: linear-gradient(45deg, #a29bfe, #6c5ce7);
+        color: white;
+        padding: 1.5rem;
+        border-radius: 12px;
+        margin: 1.5rem 0;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .learn-more h3 {
+        margin-bottom: 1rem;
+        font-size: 1.2rem;
+        color: white;
+    }
+
+    .learn-more:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    .learn-more-content {
+        display: none;
+        margin-top: 1rem;
+        padding-top: 1rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.3);
+        color: white;
+    }
+
+    .learn-more-content p {
+        color: white;
+        margin-bottom: 1rem;
+    }
+
+    .learn-more.expanded .learn-more-content {
+        display: block;
+    }
+
+    .highlight-box {
+        background: #fff8e1;
+        padding: 1rem;
+        border-radius: 8px;
+        border-left: 3px solid #ffc107;
+        margin: 1rem 0;
+    }
+
+    /* Jargon styling - context-aware based on background */
+    .jargon {
+        text-decoration: none;
+        border-bottom: 1px dotted;
+        position: relative;
+        cursor: help;
+        font-weight: 500;
+    }
+
+    /* Pink jargon for white backgrounds */
+    .content-card .jargon,
+    .related-struggles .jargon {
+        color: #e84393;
+        border-bottom-color: #e84393;
+    }
+
+    .content-card .jargon:hover,
+    .related-struggles .jargon:hover {
+        color: #fd79a8;
+        border-bottom-color: #fd79a8;
+    }
+
+    /* Bold black jargon for colored backgrounds */
+    .what-section .jargon,
+    .why-section .jargon,
+    .immediate-help .jargon,
+    .long-term .jargon,
+    .medical-section .jargon,
+    .validation-section .jargon,
+    .highlight-box .jargon {
+        color: #333;
+        font-weight: 600;
+        border-bottom-color: #333;
+    }
+
+    /* White jargon for gradient backgrounds */
+    .header .jargon,
+    .breadcrumb .jargon,
+    .learn-more .jargon,
+    .learn-more-content .jargon {
+        color: white;
+        border-bottom-color: rgba(255, 255, 255, 0.7);
+        background: rgba(255, 255, 255, 0.1);
+        padding: 2px 6px;
+        border-radius: 4px;
+    }
+
+    .header .jargon:hover,
+    .breadcrumb .jargon:hover,
+    .learn-more .jargon:hover,
+    .learn-more-content .jargon:hover {
+        background: rgba(255, 255, 255, 0.2);
+        border-bottom-color: white;
+    }
+
+    /* Auto-sizing tooltips */
+    .tooltip {
+        visibility: hidden;
+        opacity: 0;
+        position: absolute;
+        bottom: calc(100% + 8px);
+        left: 50%;
+        transform: translateX(-50%);
+        background: #333;
+        color: white;
+        padding: 12px 16px;
+        border-radius: 8px;
+        font-size: 0.9rem;
+        font-weight: normal;
+        z-index: 1001;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        transition: opacity 0.3s, visibility 0.3s;
+        max-width: 800px;
+        min-width: 200px;
+        width: max-content;
+        white-space: normal;
+        text-align: left;
+        line-height: 1.5;
+        pointer-events: none;
+    }
+
+    .tooltip::after {
+        content: '';
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        border: 6px solid transparent;
+        border-top-color: #333;
+    }
+
+    .jargon:hover .tooltip {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    /* Mobile responsive tooltip adjustments */
+    @media (max-width: 1024px) {
+        .tooltip {
+            max-width: 400px;
+        }
+    }
+
+    /* Mobile-specific tooltip positioning */
+    @media (max-width: 768px) {
+        .tooltip {
+            position: fixed !important;
+            bottom: 20px !important;
+            left: 20px !important;
+            right: 20px !important;
+            transform: none !important;
+            max-width: none !important;
+            width: auto !important;
+            z-index: 9999 !important; /* Higher z-index to escape all containers */
+        }
+
+        .tooltip::after {
+            display: none !important;
+        }
+        
+        /* Prevent Learn More sections from creating positioning context for tooltips */
+        .learn-more {
+            transform: none;
+        }
+        
+        .learn-more:hover {
+            transform: none;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+    }
+
+        .header {
+            padding: 1rem;
+        }
+
+        .header h1 {
+            font-size: 2rem;
+        }
+
+        .header p {
+            font-size: 1rem;
+        }
+
+        .breadcrumb {
+            padding: 0.6rem 1rem;
+        }
+
+        .container {
+            padding: 1rem;
+        }
+
+        .content-card {
+            padding: 1.5rem;
+        }
+
+        .what-section,
+        .why-section,
+        .immediate-help,
+        .long-term,
+        .medical-section,
+        .validation-section {
+            padding: 1.5rem;
+        }
+
+        .struggle-tags {
+            flex-direction: column;
+        }
+
+        .struggle-tag {
+            justify-content: center;
+            text-align: center;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .header h1 {
+            font-size: 1.8rem;
+        }
+
+        .header p {
+            font-size: 0.9rem;
+        }
+
+        .content-card {
+            padding: 1.2rem;
+        }
+
+        .what-section,
+        .why-section,
+        .immediate-help,
+        .long-term,
+        .medical-section,
+        .validation-section {
+            padding: 1.2rem;
+        }
+
+        .tooltip {
+            left: 10px !important;
+            right: 10px !important;
+            bottom: 10px !important;
+        }
+    }
+
+    /* Focus states for accessibility */
+    .struggle-tag:focus,
+    .jargon:focus,
+    .breadcrumb a:focus {
+        outline: 2px solid #fff;
+        outline-offset: 2px;
+    }
+
+    /* Motion accessibility */
+    @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+        }
+    }
+</style>
+
+<div class="header">
+    <h1>Sleep Rhythm Disruption</h1>
+    <p>When your natural rhythms clash with the world's expectations</p>
+</div>
+
+<div class="breadcrumb">
+    <a href="{{ '/index.html' | relative_url }}">Home</a>
+    <span>></span>
+    <a href="{{ '/struggles/index.html' | relative_url }}">Struggles</a>
+    <span>></span>
+    <a href="{{ '/conditions/adhd.html' | relative_url }}">ADHD</a>
+    <span>></span>
+    Sleep Rhythm Disruption
+</div>
+
+<div class="container">
+    <main role="main" id="main-content">
+        <div class="content-card">
+            <div class="what-section">
+                <h2 id="what-this-feels-like">What This Feels Like</h2>
+                <p><a class="jargon">Sleep rhythm disruption<span class="tooltip">Difficulty aligning your natural sleep-wake cycle with conventional schedules and maintaining consistent sleep quality</span></a> often feels like living in the wrong time zone in your own life. Many people describe feeling most alert and creative late at night when they're supposed to be winding down, while mornings feel like swimming through fog even after what should have been adequate sleep.</p>
+
+                <p>Sometimes it's dramatic - lying awake until 3 AM with a racing mind despite physical exhaustion, or falling into bed at a reasonable hour only to stare at the ceiling for hours. But more often, it's subtler: feeling tired but wired at bedtime, waking up groggy no matter how many hours you've slept, or finding yourself most productive during hours when the rest of the world is sleeping.</p>
+
+                <p>Many people with <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> experience <a class="jargon">revenge bedtime procrastination<span class="tooltip">Staying up late to reclaim personal time and autonomy after a day of meeting others' demands and expectations</span></a> - staying up past your intended bedtime not because you're not tired, but because nighttime feels like the only time that truly belongs to you. After a day of forcing your brain to focus on tasks that don't interest you, the evening becomes precious space for doing what you actually want to do.</p>
+
+                <p>The physical experience can include lying in bed with your body feeling heavy and tired but your mind spinning with thoughts, ideas, worries, or random observations. Or feeling like you're falling asleep only to jolt awake with sudden alertness. Some people describe it as having a <a class="jargon">hyperactive brain<span class="tooltip">Mental restlessness and racing thoughts that continue even when the body is ready for sleep</span></a> in a tired body.</p>
+
+                <p><a class="jargon">Sleep quality issues<span class="tooltip">Problems with the depth, continuity, or restorative nature of sleep even when duration seems adequate</span></a> are equally common. You might sleep for eight hours but wake up feeling like you barely rested. Dreams might be vivid and exhausting, you might wake frequently throughout the night, or you might sleep deeply but never feel like you reach truly restorative <a class="jargon">deep sleep<span class="tooltip">The most restorative stage of sleep necessary for physical and mental recovery</span></a>.</p>
+
+                <p><a class="jargon">Hyperfocus episodes<span class="tooltip">Periods of intense concentration that make you lose awareness of time and basic needs like sleep</span></a> can completely obliterate sleep awareness. You might start a project in the evening and suddenly notice birds chirping outside, realizing you've accidentally stayed awake all night. The intense engagement makes time disappear and overrides your body's sleep signals.</p>
+            </div>
+
+            <div class="why-section">
+                <h2 id="why-this-happens">Why This Might Be Happening</h2>
+                <p>Sleep rhythm disruption in <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> reflects several intersecting neurological differences. Many people with <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> have naturally delayed <a class="jargon">circadian rhythms<span class="tooltip">Your body's internal 24-hour clock that regulates sleep-wake cycles and other biological processes</span></a> - their brains are wired to feel alert later and sleep later than conventional schedules demand.</p>
+
+                <p>The <a class="jargon">executive function<span class="tooltip">Mental skills including planning, time management, and self-regulation needed for healthy sleep routines</span></a> challenges that affect other areas of life also impact sleep. Going to bed requires a complex series of <a class="jargon">task-switching<span class="tooltip">The ability to move attention between different activities, like stopping engaging activities to begin sleep preparations</span></a> and planning - stopping engaging activities, completing bedtime routines, and transitioning from active to rest mode. These transitions can be particularly difficult for <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> brains to execute consistently.</p>
+
+                <p><a class="jargon">Stimulant medications<span class="tooltip">ADHD medications that increase alertness and focus but can interfere with sleep if taken too late in the day</span></a> commonly used to treat <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> can also disrupt sleep patterns, either by extending alertness too late in the day or creating <a class="jargon">rebound effects<span class="tooltip">Temporary worsening of ADHD symptoms including restlessness and racing thoughts when medication wears off</span></a> when they wear off - sometimes leading to racing thoughts or physical restlessness just when you're trying to wind down.</p>
+
+                <p>Many people with <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> also experience <a class="jargon">comorbid conditions<span class="tooltip">Additional mental health conditions that commonly occur alongside ADHD</span></a> like <a class="jargon">anxiety<span class="tooltip">Excessive worry and fear that can make falling asleep or staying asleep difficult</span></a> or <a class="jargon">depression<span class="tooltip">Mental health condition that can disrupt sleep patterns, quality, and timing</span></a> that independently disrupt sleep patterns. The interaction between multiple conditions can create complex sleep challenges that don't respond to simple interventions.</p>
+
+                <p>The brain's <a class="jargon">arousal regulation<span class="tooltip">The nervous system's ability to adjust alertness levels appropriately for different activities and times of day</span></a> system may also work differently in <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a>. Some people have difficulty achieving the calm, low-stimulation state necessary for sleep, while others experience such dramatic drops in <a class="jargon">dopamine<span class="tooltip">A neurotransmitter involved in motivation, mood regulation, and sleep-wake cycles</span></a> and <a class="jargon">norepinephrine<span class="tooltip">A neurotransmitter that affects alertness and can influence sleep quality</span></a> as evening approaches that they feel compelled to seek stimulating activities to feel normal.</p>
+
+                <div class="learn-more" onclick="toggleLearnMore(this)">
+                    <h3>Learn More: The Science of ADHD Sleep ↓</h3>
+                    <div class="learn-more-content">
+                        <p>Research consistently shows that people with <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> have significantly different <a class="jargon">circadian rhythm<span class="tooltip">Your body's internal 24-hour clock that regulates sleep-wake cycles and other biological processes</span></a> patterns than <a class="jargon">neurotypical<span class="tooltip">Having a brain that functions in ways considered typical by society</span></a> individuals. <a class="jargon">Melatonin production<span class="tooltip">The body's natural production of the hormone that signals sleepiness and regulates circadian rhythms</span></a> often begins later in the evening and may be less robust, leading to delayed sleep onset and difficulty feeling naturally drowsy at conventional bedtimes.</p>
+                        
+                        <p>The <a class="jargon">suprachiasmatic nucleus<span class="tooltip">Brain region that acts as the master circadian clock, regulating sleep-wake cycles and other daily rhythms</span></a>, which serves as the brain's master clock, may show different sensitivity to light and <a class="jargon">environmental cues<span class="tooltip">External signals like light, temperature, and social schedules that help regulate circadian rhythms</span></a> in people with <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a>. Additionally, <a class="jargon">sleep architecture<span class="tooltip">The structure and patterns of different sleep stages throughout the night</span></a> studies show that <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> brains may spend different amounts of time in various <a class="jargon">sleep stages<span class="tooltip">Different phases of sleep including light sleep, deep sleep, and REM sleep, each serving different restorative functions</span></a>, potentially affecting sleep quality even when duration is adequate.</p>
+                        
+                        <p>The relationship between <a class="jargon">dopamine regulation<span class="tooltip">The brain's management of dopamine levels, which affects mood, motivation, and circadian rhythms</span></a> and sleep is particularly complex in <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a>. <a class="jargon">Dopaminergic pathways<span class="tooltip">Brain circuits that use dopamine to regulate reward, motivation, and attention</span></a> play significant roles in both <a class="jargon">circadian regulation<span class="tooltip">The body's system for maintaining proper sleep-wake timing</span></a> and <a class="jargon">sleep-wake homeostasis<span class="tooltip">The body's system for balancing sleep need and wakefulness over time</span></a>. Differences in these systems may create the characteristic pattern of feeling most alert when sleep pressure should be highest.</p>
+                        
+                        <p>Emerging research also suggests that <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> brains may be more susceptible to <a class="jargon">social jet lag<span class="tooltip">The misalignment between your natural circadian preferences and social or work schedule demands</span></a> - the misalignment between natural sleep preferences and social demands. This chronic misalignment can worsen both sleep quality and <a class="jargon">ADHD symptoms<span class="tooltip">The attention, hyperactivity, and executive function challenges that characterize ADHD</span></a>, creating a cycle where poor sleep makes <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> symptoms worse, which then makes healthy sleep even more difficult to achieve.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="immediate-help">
+                <h2 id="next-five-minutes">What Can Help You Through the Next 5 Minutes</h2>
+                <p>When you're lying in bed unable to sleep, or when sleep anxiety is building right now:</p>
+                
+                <ul>
+                    <li><strong>Get out of bed if you can't sleep:</strong> After 20-30 minutes of lying awake, move to a different room and do a quiet, non-stimulating activity until you feel drowsy. Staying in bed while awake can create <a class="jargon">sleep anxiety<span class="tooltip">Worry and stress specifically about falling asleep or sleep quality that paradoxically makes sleep more difficult</span></a>.</li>
+                    <li><strong>Try <a class="jargon">progressive muscle relaxation<span class="tooltip">Systematically tensing and releasing different muscle groups to promote physical and mental relaxation</span></a>:</strong> Start with your toes and work up through your body, tensing each muscle group for 5 seconds then releasing. This gives your mind something to focus on while promoting physical relaxation.</li>
+                    <li><strong>Use the <a class="jargon">4-7-8 breathing technique<span class="tooltip">Breathing pattern of inhaling for 4 counts, holding for 7, and exhaling for 8 to activate the relaxation response</span></a>:</strong> Breathe in for 4 counts, hold for 7, exhale for 8. This activates your <a class="jargon">parasympathetic nervous system<span class="tooltip">The body's rest and digest system that promotes calm and sleepiness</span></a> and can help reduce the mental arousal that's keeping you awake.</li>
+                    <li><strong>Practice thought redirection:</strong> If your mind is racing, try counting backwards from 100 by threes, or imagine describing a peaceful scene in detail. Give your <a class="jargon">racing thoughts<span class="tooltip">Rapid, often anxious thinking that can interfere with falling asleep</span></a> something specific but boring to focus on.</li>
+                    <li><strong>Address <a class="jargon">hyperfocus hangover<span class="tooltip">Physical and mental exhaustion following intense concentration that can paradoxically make sleep difficult</span></a>:</strong> If you're wired from a late <a class="jargon">hyperfocus session<span class="tooltip">Period of intense concentration that may have activated your nervous system</span></a>, you might need more active wind-down - journaling, gentle stretching, or other activities that help transition from high mental arousal to rest mode.</li>
+                    <li><strong>Check your environment:</strong> Is it too warm, too bright, or too noisy? <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> brains are often more sensitive to environmental factors that can interfere with sleep.</li>
+                </ul>
+
+                <div class="highlight-box">
+                    <p><strong>For racing minds:</strong> Keep a notebook by your bed to write down thoughts, worries, or ideas. Getting them out of your head and onto paper can help your brain release them and settle into sleep mode.</p>
+                </div>
+            </div>
+
+            <div class="long-term">
+                <h2 id="long-term-solutions">What Are Some Healthy Long-term Solutions</h2>
+                <p>Building sustainable sleep systems that work with your <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> brain rather than against it:</p>
+                
+                <ul>
+                    <li><strong>Honor your <a class="jargon">chronotype<span class="tooltip">Your natural preference for when to sleep and wake, which may be later than conventional schedules</span></a> when possible:</strong> If you're naturally a night owl, see if you can adjust your schedule rather than fighting your biology. Many people with <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> function better with later bedtimes and wake times.</li>
+                    <li><strong>Create <a class="jargon">transition rituals<span class="tooltip">Consistent routines that signal to your brain that it's time to begin winding down for sleep</span></a>:</strong> Develop consistent wind-down routines that help your brain shift from active to rest mode. This might include dimming lights, specific music, reading, or other calming activities that signal bedtime approaching.</li>
+                    <li><strong>Manage <a class="jargon">stimulation levels<span class="tooltip">The amount of mental and sensory input your brain receives, which affects your ability to wind down for sleep</span></a> in the evening:</strong> <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> brains often need either very low stimulation OR very specific types of stimulation to wind down. Experiment with what works - complete quiet, white noise, audiobooks, or gentle background activity.</li>
+                    <li><strong>Address <a class="jargon">medication timing<span class="tooltip">When you take ADHD medications in relation to your desired sleep time</span></a>:</strong> Work with your prescriber to optimize when you take <a class="jargon">stimulant medications<span class="tooltip">ADHD medications that increase alertness and can affect sleep if taken too late</span></a>. Sometimes splitting doses or adjusting timing can improve sleep without compromising daytime function.</li>
+                    <li><strong>Build in protected <a class="jargon">personal time<span class="tooltip">Time set aside specifically for your interests and preferences without external demands</span></a>:</strong> If you experience <a class="jargon">revenge bedtime procrastination<span class="tooltip">Staying up late to reclaim personal time after a day of meeting others' demands</span></a>, create intentional space earlier in the day for activities you enjoy. This reduces the need to steal sleep time for personal fulfillment.</li>
+                    <li><strong>Use <a class="jargon">light therapy<span class="tooltip">Strategic exposure to bright light in the morning and darkness in the evening to help regulate circadian rhythms</span></a> strategically:</strong> Bright light in the morning (especially sunlight) and dimmer light in the evening can help shift your <a class="jargon">circadian clock<span class="tooltip">Your brain's internal timing system that regulates when you feel alert or sleepy</span></a> earlier if needed. Blue light blocking glasses in the evening may also help.</li>
+                    <li><strong>Develop <a class="jargon">sleep debt management<span class="tooltip">Strategies for handling the accumulated effects of insufficient sleep without creating worse patterns</span></a>:</strong> When you do have poor sleep, plan easier days and avoid making up for it with behaviors that worsen sleep patterns (excessive caffeine, daytime napping too late, or going to bed much earlier and lying awake).</li>
+                    <li><strong>Address <a class="jargon">comorbid conditions<span class="tooltip">Other mental health conditions like anxiety or depression that commonly occur with ADHD and can affect sleep</span></a>:</strong> Treat underlying <a class="jargon">anxiety<span class="tooltip">Excessive worry that can make falling asleep difficult</span></a>, <a class="jargon">depression<span class="tooltip">Mental health condition that can disrupt sleep timing and quality</span></a>, or other conditions that might be contributing to sleep difficulties. Sometimes sleep improves dramatically when co-occurring conditions are addressed.</li>
+                </ul>
+
+                <div class="highlight-box">
+                    <p><strong>Work with your biology:</strong> Instead of forcing yourself into conventional sleep schedules that don't fit your brain, see if you can create lifestyle and work arrangements that accommodate your natural <a class="jargon">sleep-wake preferences<span class="tooltip">Your individual patterns of when you naturally feel alert versus sleepy</span></a>. Many people find their <a class="jargon">ADHD symptoms<span class="tooltip">Challenges with attention, hyperactivity, and executive function</span></a> improve dramatically when they sleep according to their natural rhythms.</p>
+                </div>
+            </div>
+
+            <div class="medical-section">
+                <h2 id="medical-intervention">When Should I Consider Medical Intervention</h2>
+                <p>Consider professional support if sleep rhythm disruption is significantly impacting your life:</p>
+                
+                <ul>
+                    <li><strong>Chronic sleep deprivation:</strong> If you're consistently getting less than 6 hours of sleep, or if poor sleep quality is leaving you exhausted despite adequate time in bed.</li>
+                    <li><strong>Daytime functioning impact:</strong> If sleep problems are significantly affecting your ability to work, maintain relationships, drive safely, or handle daily responsibilities.</li>
+                    <li><strong>Physical health consequences:</strong> If sleep disruption is contributing to frequent illness, <a class="jargon">chronic pain<span class="tooltip">Persistent physical discomfort that can be worsened by poor sleep quality</span></a>, weight changes, or other physical health problems.</li>
+                    <li><strong>Mental health impact:</strong> If poor sleep is worsening <a class="jargon">depression<span class="tooltip">Mental health condition that both affects and is affected by sleep patterns</span></a>, <a class="jargon">anxiety<span class="tooltip">Worry and fear that can be dramatically worsened by sleep deprivation</span></a>, or other mental health conditions, or if you're experiencing mood instability primarily related to sleep issues.</li>
+                    <li><strong><a class="jargon">Sleep disorder<span class="tooltip">Medical conditions like sleep apnea, restless leg syndrome, or periodic limb movement that require specific treatment</span></a> symptoms:</strong> If you have loud snoring, breathing interruptions during sleep, restless legs, or other signs of specific sleep disorders that commonly co-occur with <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a>.</li>
+                    <li><strong>Medication conflicts:</strong> If your <a class="jargon">ADHD medications<span class="tooltip">Stimulant or non-stimulant medications used to treat ADHD symptoms</span></a> are significantly disrupting sleep and lifestyle adjustments aren't helping.</li>
+                    <li><strong>Safety concerns:</strong> If you're falling asleep while driving, operating machinery, or in other dangerous situations due to <a class="jargon">excessive daytime sleepiness<span class="tooltip">Overwhelming tiredness during the day that impairs functioning and creates safety risks</span></a>.</li>
+                </ul>
+
+                <div class="highlight-box">
+                    <p><strong>Types of support that help:</strong> <a class="jargon">Sleep medicine specialists<span class="tooltip">Doctors who specialize in diagnosing and treating sleep disorders</span></a> familiar with <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a>, <a class="jargon">sleep studies<span class="tooltip">Medical tests that monitor your sleep patterns and breathing to identify specific sleep disorders</span></a> to rule out other conditions, <a class="jargon">cognitive-behavioral therapy for insomnia<span class="tooltip">Specialized therapy focused specifically on improving sleep patterns and addressing sleep-related anxiety</span></a> (CBT-I), medication adjustments, or <a class="jargon">circadian rhythm therapy<span class="tooltip">Treatments that help align your internal clock with your desired sleep schedule</span></a> using light therapy or <a class="jargon">melatonin supplementation<span class="tooltip">Taking synthetic melatonin to help regulate sleep timing, often under medical supervision</span></a>.</p>
+                </div>
+            </div>
+
+            <div class="validation-section">
+                <h2 id="validation">You're Not Imagining This</h2>
+                
+                <p>Sleep rhythm disruption in <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> reflects real neurological differences, not poor sleep habits or lack of discipline. Your brain's <a class="jargon">circadian system<span class="tooltip">Internal biological clock that regulates sleep-wake cycles and other daily rhythms</span></a> works differently than <a class="jargon">neurotypical<span class="tooltip">Having a brain that functions in ways considered typical by society</span></a> brains, creating genuine challenges with conventional sleep schedules and expectations.</p>
+                
+                <p>The advice to "just go to bed earlier" or "stop using screens" often doesn't work for <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> brains the same way it does for others. Your sleep challenges aren't about lacking willpower or being irresponsible - they reflect differences in brain chemistry, <a class="jargon">executive function<span class="tooltip">Mental skills needed to execute complex routines like consistent bedtime preparations</span></a>, and <a class="jargon">arousal regulation<span class="tooltip">Your nervous system's ability to appropriately adjust alertness levels for sleep</span></a> that require different approaches.</p>
+                
+                <p>Many people with <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> describe feeling like they're living in the wrong time zone, and this is often literally true - your natural <a class="jargon">chronotype<span class="tooltip">Your genetic predisposition for specific sleep and wake times</span></a> may be significantly later than what society expects. You're not broken for feeling most alert and creative late at night; you're responding to your authentic <a class="jargon">biological rhythms<span class="tooltip">Natural cycles in your body that regulate energy, alertness, and sleepiness</span></a>.</p>
+
+                <p>The connection between sleep and every other aspect of <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> is profound. Poor sleep makes attention, emotional regulation, and impulse control significantly worse, while good sleep can dramatically improve your ability to manage other <a class="jargon">ADHD challenges<span class="tooltip">The various struggles that come with having an ADHD brain in a neurotypical world</span></a>. This means that addressing sleep isn't just about feeling rested - it's about giving yourself the best possible foundation for managing everything else.</p>
+
+                <p>Your frustration with sleep difficulties is completely understandable, especially when you see how much better you function with good sleep but feel unable to achieve it consistently. Remember that sleep is often one of the most challenging aspects of <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> to manage, and even small improvements in sleep patterns can create significant improvements in overall quality of life and <a class="jargon">symptom management<span class="tooltip">Your ability to cope with and reduce the impact of ADHD-related challenges</span></a>.</p>
+            </div>
+
+            <div class="related-struggles">
+                <h3>Related Struggles</h3>
+                <div class="struggle-tags">
+                    <a href="{{ '/struggles/time-blindness.html' | relative_url }}" class="struggle-tag">Time Blindness</a>
+                    <a href="{{ '/struggles/hyperfocus-episodes.html' | relative_url }}" class="struggle-tag">Hyperfocus Episodes</a>
+                    <a href="{{ '/struggles/executive-dysfunction.html' | relative_url }}" class="struggle-tag">Executive Dysfunction</a>
+                    <a href="{{ '/struggles/emotional-dysregulation.html' | relative_url }}" class="struggle-tag">Emotional Dysregulation</a>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+<script>
+function toggleLearnMore(element) {
+    element.classList.toggle('expanded');
+    const arrow = element.querySelector('h3');
+    if (element.classList.contains('expanded')) {
+        arrow.innerHTML = arrow.innerHTML.replace('↓', '↑');
+    } else {
+        arrow.innerHTML = arrow.innerHTML.replace('↑', '↓');
+    }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Handle jargon clicks to prevent event bubbling
+    const jargonTerms = document.querySelectorAll('.jargon');
+    jargonTerms.forEach(function(jargon) {
+        jargon.addEventListener('click', function(e) {
+            e.stopPropagation(); // Prevent bubbling to learn-more handler
+        });
+    });
+});
+</script>
