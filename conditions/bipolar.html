@@ -203,6 +203,16 @@ slug: bipolar
         color: #333;
     }
 
+    .struggle-link.coming-soon {
+        opacity: 0.6;
+        cursor: not-allowed;
+    }
+
+    .struggle-link.coming-soon:hover {
+        transform: none;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+
     .struggle-title {
         font-weight: 600;
         margin-bottom: 0.5rem;
@@ -213,6 +223,16 @@ slug: bipolar
         font-size: 0.85rem;
         color: #666;
         line-height: 1.5;
+    }
+
+    .coming-soon-badge {
+        background: #ffc107;
+        color: #333;
+        padding: 2px 8px;
+        border-radius: 12px;
+        font-size: 0.75rem;
+        margin-left: 8px;
+        font-weight: 500;
     }
 
     .cross-cutting-section {
@@ -419,7 +439,7 @@ slug: bipolar
         .container {
             padding: 1rem;
         }
-        
+
         .content-card {
             padding: 1.5rem;
         }
@@ -503,14 +523,14 @@ slug: bipolar
             <div class="condition-intro">
                 <h2 id="what-is-bipolar">What is Bipolar?</h2>
                 <p><a class="jargon">Bipolar<span class="tooltip">A neurological condition involving significant shifts between periods of elevated mood and depression</span></a> involves significant shifts between periods of elevated mood (<a class="jargon">mania<span class="tooltip">Distinct period of abnormally elevated, expansive, or irritable mood lasting at least one week</span></a> or <a class="jargon">hypomania<span class="tooltip">A milder form of mania lasting at least four days with elevated mood but less severe impairment</span></a>) and periods of <a class="jargon">depression<span class="tooltip">Persistent low mood or loss of interest lasting at least two weeks, significantly impacting daily functioning</span></a>. These aren't just mood swings - they're distinct <a class="jargon">episodes<span class="tooltip">Discrete periods of altered mood, energy, and behavior that are clearly different from your baseline functioning</span></a> that can last days to months, affecting energy, sleep, thinking, and behavior in ways that create friction with environments designed for emotional stability.</p>
-                
+
                 <p>People with <a class="jargon">bipolar<span class="tooltip">A neurological condition involving significant shifts between periods of elevated mood and depression</span></a> often describe their emotional range as operating at intensities that others might not experience. This can mean profound lows, extraordinary highs, and everything in between - sometimes creating challenges, sometimes offering remarkable depth and insight.</p>
             </div>
 
             <div class="reframe-box">
                 <h3 id="reframing-bipolar">Reframing Bipolar</h3>
                 <p>Traditional descriptions focus on <a class="jargon">bipolar<span class="tooltip">A neurological condition involving significant shifts between periods of elevated mood and depression</span></a> as a "disorder" of extreme mood swings. A more nuanced understanding recognizes it as a neurological difference where <a class="jargon">mood episodes<span class="tooltip">Distinct periods of altered mood, energy, and behavior that are different from your baseline</span></a> operate with greater intensity and duration than typical emotional responses.</p>
-                
+
                 <p>Think of it like having an emotional system that doesn't have a "medium" setting - when it moves, it moves significantly. This creates genuine challenges during <a class="jargon">episodes<span class="tooltip">Discrete periods of altered mood, energy, and behavior that are clearly different from your baseline functioning</span></a>, but it can also lead to extraordinary creativity, <a class="jargon">empathy<span class="tooltip">The ability to understand and share the feelings of others</span></a>, and insight during stable periods. The goal isn't to eliminate these patterns but to understand and manage them safely.</p>
             </div>
 
@@ -561,157 +581,4 @@ slug: bipolar
                     <ul>
                         <li>Rebuilding relationships affected during <a class="jargon">episodes<span class="tooltip">Discrete periods of altered mood, energy, and behavior that are clearly different from your baseline functioning</span></a></li>
                         <li>Managing consequences of episode decisions</li>
-                        <li>Maintaining <a class="jargon">medication<span class="tooltip">Pharmaceutical treatments that help stabilize mood and prevent episodes</span></a> and <a class="jargon">therapy<span class="tooltip">Professional counseling to develop coping strategies and understand patterns</span></a> routines</li>
-                        <li>Developing episode recognition and prevention strategies</li>
-                        <li>Often the times of greatest insight and creativity</li>
-                        <li>Working on identity integration across <a class="jargon">mood states<span class="tooltip">Different emotional and cognitive conditions that occur during various phases of bipolar</span></a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="struggles-section" role="region" aria-labelledby="struggles-heading">
-                <h3 id="struggles-heading">Bipolar-Related Struggles</h3>
-                <p style="margin-bottom: 1.5rem; color: #666;">Click on any struggle to learn what it feels like, why it happens, and what can help.</p>
-                
-                <div class="struggles-grid">
-                    <a href="{{ '/struggles/elevated-mood-periods.html' | relative_url }}" class="struggle-link">
-                        <div class="struggle-title">Elevated Mood Periods</div>
-                        <div class="struggle-description">Times of unusually high energy, mood, or activity levels that can be both exhilarating and challenging to manage safely</div>
-                    </a>
-
-                    <a href="{{ '/struggles/decreased-need-for-sleep.html' | relative_url }}" class="struggle-link">
-                        <div class="struggle-title">Decreased Need for Sleep</div>
-                        <div class="struggle-description">Feeling rested on much less sleep than usual during mood episodes</div>
-                    </a>
-
-                    <a href="{{ '/struggles/racing-thoughts-flight-of-ideas.html' | relative_url }}" class="struggle-link">
-                        <div class="struggle-title">Racing Thoughts Flight of Ideas</div>
-                        <div class="struggle-description">Mind moving too fast to follow or communicate clearly</div>
-                    </a>
-
-                    <a href="{{ '/struggles/grandiosity-inflated-self-esteem.html' | relative_url }}" class="struggle-link">
-                        <div class="struggle-title">Grandiosity Inflated Self-Esteem</div>
-                        <div class="struggle-description">Unrealistic beliefs about your abilities or importance during episodes</div>
-                    </a>
-
-                    <a href="{{ '/struggles/increased-goal-directed-activity.html' | relative_url }}" class="struggle-link">
-                        <div class="struggle-title">Increased Goal-Directed Activity</div>
-                        <div class="struggle-description">Excessive involvement in activities during manic periods that may lead to overcommitment or poor outcomes</div>
-                    </a>
-
-                    <a href="{{ '/struggles/poor-judgment-during-episodes.html' | relative_url }}" class="struggle-link">
-                        <div class="struggle-title">Poor Judgment During Episodes</div>
-                        <div class="struggle-description">Making decisions that seem reasonable at the time but have negative consequences</div>
-                    </a>
-
-                    <a href="{{ '/struggles/persistent-low-mood.html' | relative_url }}" class="struggle-link">
-                        <div class="struggle-title">Persistent Low Mood</div>
-                        <div class="struggle-description">Extended periods of sadness, hopelessness, or emotional numbness</div>
-                    </a>
-
-                    <a href="{{ '/struggles/anhedonia.html' | relative_url }}" class="struggle-link">
-                        <div class="struggle-title">Anhedonia</div>
-                        <div class="struggle-description">Loss of interest or pleasure in activities you normally enjoy</div>
-                    </a>
-
-                    <a href="{{ '/struggles/sleep-disturbances.html' | relative_url }}" class="struggle-link">
-                        <div class="struggle-title">Sleep Disturbances</div>
-                        <div class="struggle-description">Difficulty falling asleep, staying asleep, or sleeping too much during mood episodes</div>
-                    </a>
-
-                    <a href="{{ '/struggles/fatigue-energy-loss.html' | relative_url }}" class="struggle-link">
-                        <div class="struggle-title">Fatigue Energy Loss</div>
-                        <div class="struggle-description">Physical and mental exhaustion that doesn't improve with rest</div>
-                    </a>
-
-                    <a href="{{ '/struggles/concentration-difficulties.html' | relative_url }}" class="struggle-link">
-                        <div class="struggle-title">Concentration Difficulties</div>
-                        <div class="struggle-description">Problems with focus, memory, and decision-making during mood episodes</div>
-                    </a>
-
-                    <a href="{{ '/struggles/suicidal-ideation.html' | relative_url }}" class="struggle-link">
-                        <div class="struggle-title">Suicidal Ideation</div>
-                        <div class="struggle-description">Thoughts of death or self-harm during depressive episodes</div>
-                    </a>
-
-                    <a href="{{ '/struggles/mixed-states.html' | relative_url }}" class="struggle-link">
-                        <div class="struggle-title">Mixed States</div>
-                        <div class="struggle-description">Experiencing depression and mania symptoms simultaneously</div>
-                    </a>
-
-                    <a href="{{ '/struggles/rapid-cycling-patterns.html' | relative_url }}" class="struggle-link">
-                        <div class="struggle-title">Rapid Cycling Patterns</div>
-                        <div class="struggle-description">Frequent mood episode changes that disrupt stability and predictability</div>
-                    </a>
-
-                    <a href="{{ '/struggles/medication-side-effect-management.html' | relative_url }}" class="struggle-link">
-                        <div class="struggle-title">Medication Side Effect Management</div>
-                        <div class="struggle-description">Dealing with the physical and cognitive effects of mood stabilizers and other psychiatric medications</div>
-                    </a>
-
-                    <a href="{{ '/struggles/identity-confusion-between-episodes.html' | relative_url }}" class="struggle-link">
-                        <div class="struggle-title">Identity Confusion Between Episodes</div>
-                        <div class="struggle-description">Feeling unsure of your "real" self across different mood states</div>
-                    </a>
-
-                    <a href="{{ '/struggles/relationship-strain-from-mood-volatility.html' | relative_url }}" class="struggle-link">
-                        <div class="struggle-title">Relationship Strain from Mood Volatility</div>
-                        <div class="struggle-description">Impact of mood episodes on family, friends, and romantic relationships</div>
-                    </a>
-
-                    <a href="{{ '/struggles/financial-consequences-manic-spending.html' | relative_url }}" class="struggle-link">
-                        <div class="struggle-title">Financial Consequences Manic Spending</div>
-                        <div class="struggle-description">Dealing with debt or poor financial decisions made during episodes</div>
-                    </a>
-
-                    <a href="{{ '/struggles/mood-stabilizer-side-effects.html' | relative_url }}" class="struggle-link">
-                        <div class="struggle-title">Mood Stabilizer Side Effects</div>
-                        <div class="struggle-description">Managing weight gain, cognitive dulling, tremors, and other side effects from lithium, anticonvulsants, and antipsychotics</div>
-                    </a>
-
-                    <a href="{{ '/struggles/bipolar-workplace-advocacy.html' | relative_url }}" class="struggle-link">
-                        <div class="struggle-title">Bipolar Workplace Advocacy</div>
-                        <div class="struggle-description">Navigating disclosure decisions and requesting episode-related accommodations while managing mental health stigma</div>
-                    </a>
-                </div>
-
-                <div class="cross-cutting-section">
-                    <h4>Related Struggles from Other Conditions</h4>
-                    <div class="cross-cutting-links">
-                        <a href="{{ '/struggles/task-initiation-paralysis.html' | relative_url }}" class="cross-cutting-link">Task Initiation Paralysis</a>
-                        <a href="{{ '/struggles/attention-regulation.html' | relative_url }}" class="cross-cutting-link">Attention Regulation</a>
-                        <a href="{{ '/struggles/rejection-sensitive-dysphoria.html' | relative_url }}" class="cross-cutting-link">Rejection Sensitive Dysphoria</a>
-                        <a href="{{ '/struggles/sensory-processing-challenges.html' | relative_url }}" class="cross-cutting-link">Sensory Processing Challenges</a>
-                        <a href="{{ '/struggles/masking-burnout.html' | relative_url }}" class="cross-cutting-link">Masking Burnout</a>
-                        <a href="{{ '/struggles/emotional-flashbacks.html' | relative_url }}" class="cross-cutting-link">Emotional Flashbacks</a>
-                        <a href="{{ '/struggles/identity-disturbance.html' | relative_url }}" class="cross-cutting-link">Identity Disturbance</a>
-                        <a href="{{ '/struggles/fear-of-abandonment.html' | relative_url }}" class="cross-cutting-link">Fear of Abandonment</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="co-occurring">
-                <h3>Common Co-Occurring Conditions</h3>
-                <p><a class="jargon">Bipolar<span class="tooltip">A neurological condition involving significant shifts between periods of elevated mood and depression</span></a> frequently occurs alongside other <a class="jargon">neurodivergent<span class="tooltip">Brain differences that create distinct patterns of thinking, processing, and behavior</span></a> conditions and mental health differences. Understanding these connections can help you get comprehensive support:</p>
-                <ul>
-                    <li><strong>ADHD:</strong> Overlap in <a class="jargon">executive function<span class="tooltip">The brain's management system that handles planning, organization, time management, task initiation, and follow-through</span></a> challenges and <a class="jargon">emotional intensity<span class="tooltip">Emotions that feel overwhelming, intense, or disproportionate compared to typical responses</span></a></li>
-                    <li><strong><a class="jargon">Anxiety disorders<span class="tooltip">Conditions involving excessive worry, fear, or physical anxiety symptoms</span></a>:</strong> Particularly during depressive phases</li>
-                    <li><strong><a class="jargon">Substance use disorders<span class="tooltip">Problematic use of alcohol or drugs, often as attempts to self-medicate mood symptoms</span></a>:</strong> Often as self-medication during episodes</li>
-                    <li><strong>Eating disorders:</strong> Changes in appetite and eating patterns during <a class="jargon">mood episodes<span class="tooltip">Distinct periods of altered mood, energy, and behavior that are different from your baseline</span></a></li>
-                    <li><strong><a class="jargon">Borderline personality disorder<span class="tooltip">A condition involving intense emotions, unstable relationships, and difficulty with sense of self</span></a>:</strong> Shared <a class="jargon">emotional intensity<span class="tooltip">Emotions that feel overwhelming, intense, or disproportionate compared to typical responses</span></a> patterns</li>
-                    <li><strong>Sleep disorders:</strong> <a class="jargon">Circadian rhythm<span class="tooltip">Your body's internal clock that regulates sleep-wake cycles and other biological processes</span></a> disruption during episodes</li>
-                </ul>
-            </div>
-
-            <div style="background: #e3f2fd; padding: 1.5rem; border-radius: 12px; margin: 2rem 0; border-left: 4px solid #74b9ff;">
-                <h3 style="color: #74b9ff; margin-bottom: 1rem; font-size: 1.3rem;">Related Resources</h3>
-                <div style="display: flex; flex-direction: column; gap: 0.5rem;">
-                    <a href="{{ '/glossary/mood-episodes.html' | relative_url }}" style="color: #74b9ff; text-decoration: none;">Mood Episodes →</a>
-                    <a href="{{ '/glossary/emotional-regulation.html' | relative_url }}" style="color: #74b9ff; text-decoration: none;">Emotional Regulation →</a>
-                    <a href="{{ '/glossary/sleep-circadian.html' | relative_url }}" style="color: #74b9ff; text-decoration: none;">Sleep and Circadian Rhythms →</a>
-                    <a href="{{ '/glossary/medication-treatment.html' | relative_url }}" style="color: #74b9ff; text-decoration: none;">Medication and Treatment →</a>
-                </div>
-            </div>
-        </div>
-    </main>
-</div>
+                        <li>Maintaining <a class="jargon">medication<span class="tooltip">Pharmaceutical treatments that help stabilize mood and prevent episodes</s
