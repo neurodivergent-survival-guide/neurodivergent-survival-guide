@@ -178,7 +178,7 @@ bipolar:
     title: "Financial Consequences Manic Spending"
     description: "Dealing with debt or poor financial decisions made during episodes"
 
-borderline:
+bpd:
   - slug: "fear-of-abandonment"
     title: "Fear of Abandonment"
     description: "Intense anxiety about being left alone or rejected by important people"
