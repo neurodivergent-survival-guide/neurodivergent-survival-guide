@@ -1,0 +1,38 @@
+# Color system for conditions - used by layouts for dynamic theming
+# Based on Enhanced Neurodivergent Survival Guide Color Standards
+# Primary/secondary are full strength, container backgrounds are tinted
+
+adhd:
+  primary: "#d63031"
+  secondary: "#b71c1c"
+  gradient_start: "#d63031"
+  gradient_end: "#b71c1c"
+  container_background: "#ffebee"
+
+autism:
+  primary: "#27ae60"
+  secondary: "#196f3d"
+  gradient_start: "#27ae60"
+  gradient_end: "#196f3d"
+  container_background: "#d4edda"
+
+bipolar:
+  primary: "#74b9ff"
+  secondary: "#0984e3"
+  gradient_start: "#74b9ff"
+  gradient_end: "#0984e3"
+  container_background: "#e3f2fd"
+
+bpd:
+  primary: "#f39c12"
+  secondary: "#d68910"
+  gradient_start: "#f39c12"
+  gradient_end: "#d68910"
+  container_background: "#fef9e7"
+
+ocd:
+  primary: "#9b59b6"
+  secondary: "#8e44ad"
+  gradient_start: "#9b59b6"
+  gradient_end: "#8e44ad"
+  container_background: "#f4f1ff"
