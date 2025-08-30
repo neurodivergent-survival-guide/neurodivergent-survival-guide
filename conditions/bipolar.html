@@ -289,6 +289,60 @@ slug: bipolar
         font-size: 1.3rem;
     }
 
+    /* Support Resources */
+    .support-resources {
+        margin: 2rem 0;
+    }
+
+    .support-resources h3 {
+        color: #333;
+        margin-bottom: 1rem;
+        font-size: 1.5rem;
+    }
+
+    .support-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.5rem;
+        margin-top: 1.5rem;
+    }
+
+    .support-card {
+        background: #ffffff;
+        border: 1px solid #e9ecef;
+        border-radius: 8px;
+        padding: 1.5rem;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .support-card h4 {
+        color: #74b9ff;
+        margin-top: 0;
+        margin-bottom: 1rem;
+        font-size: 1.1rem;
+    }
+
+    .support-card ul {
+        margin: 0;
+        padding-left: 1.2rem;
+    }
+
+    .support-card li {
+        margin-bottom: 0.75rem;
+        line-height: 1.5;
+    }
+
+    .support-card a {
+        color: #667eea;
+        text-decoration: none;
+        font-weight: 500;
+    }
+
+    .support-card a:hover {
+        color: #5a67d8;
+        text-decoration: underline;
+    }
+
     /* Focus states for accessibility */
     .struggle-link:focus,
     .cross-cutting-link:focus,
@@ -639,13 +693,37 @@ slug: bipolar
                 </ul>
             </div>
 
-            <div style="background: #e3f2fd; padding: 1.5rem; border-radius: 12px; margin: 2rem 0; border-left: 4px solid #74b9ff;">
-                <h3 style="color: #74b9ff; margin-bottom: 1rem; font-size: 1.3rem;">Related Resources</h3>
-                <div style="display: flex; flex-direction: column; gap: 0.5rem;">
-                    <a href="{{ '/glossary/mood-episodes.html' | relative_url }}" style="color: #74b9ff; text-decoration: none;">Mood Episodes →</a>
-                    <a href="{{ '/glossary/emotional-regulation.html' | relative_url }}" style="color: #74b9ff; text-decoration: none;">Emotional Regulation →</a>
-                    <a href="{{ '/glossary/sleep-circadian.html' | relative_url }}" style="color: #74b9ff; text-decoration: none;">Sleep and Circadian Rhythms →</a>
-                    <a href="{{ '/glossary/medication-treatment.html' | relative_url }}" style="color: #74b9ff; text-decoration: none;">Medication and Treatment →</a>
+            <div class="support-resources">
+                <h3>Professional Support</h3>
+                <p>Bipolar often benefits from specialized professional support. Here are specific resources to connect with bipolar-experienced providers and communities:</p>
+
+                <div class="support-grid">
+                    <div class="support-card">
+                        <h4>Finding Bipolar Therapists</h4>
+                        <ul>
+                            <li><a href="https://www.psychologytoday.com/us/therapists/bipolar-disorder" target="_blank" rel="noopener">Psychology Today Bipolar Provider Search</a> - Filter by bipolar specialty and insurance</li>
+                            <li><a href="https://www.dbsalliance.org/support/chapters-and-support-groups/" target="_blank" rel="noopener">DBSA Support Groups</a> - Depression and Bipolar Support Alliance local chapters</li>
+                            <li><a href="https://www.nami.org/find-support" target="_blank" rel="noopener">NAMI Local Support</a> - National Alliance on Mental Illness bipolar resources and support groups</li>
+                        </ul>
+                    </div>
+
+                    <div class="support-card">
+                        <h4>Medical & Self-Help Resources</h4>
+                        <ul>
+                            <li><a href="https://www.cci.health.wa.gov.au/Resources/Looking-After-Yourself/Bipolar" target="_blank" rel="noopener">CCI Bipolar Workbooks</a> - Free evidence-based self-help modules and worksheets</li>
+                            <li><a href="https://www.nimh.nih.gov/health/topics/bipolar-disorder" target="_blank" rel="noopener">NIMH Bipolar Information</a> - Research-based treatment and medication guides</li>
+                            <li><a href="https://www.dbsalliance.org/wellness-tracker/" target="_blank" rel="noopener">DBSA Wellness Tracker</a> - Free mood and medication tracking tools</li>
+                        </ul>
+                    </div>
+
+                    <div class="support-card">
+                        <h4>Community & Advocacy</h4>
+                        <ul>
+                            <li><a href="https://www.dbsalliance.org/" target="_blank" rel="noopener">Depression and Bipolar Support Alliance</a> - Peer support and educational resources</li>
+                            <li><a href="https://www.reddit.com/r/BipolarReddit/" target="_blank" rel="noopener">r/BipolarReddit Community</a> - Active discussions on bipolar life and management strategies</li>
+                            <li><a href="https://www.bpso.org/" target="_blank" rel="noopener">Bipolar Support Organization</a> - Online support groups and educational resources</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
