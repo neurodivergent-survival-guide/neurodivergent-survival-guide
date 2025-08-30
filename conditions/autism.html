@@ -203,6 +203,16 @@ slug: autism
         color: #333;
     }
 
+    .struggle-link.coming-soon {
+        opacity: 0.6;
+        cursor: not-allowed;
+    }
+
+    .struggle-link.coming-soon:hover {
+        transform: none;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+
     .struggle-title {
         font-weight: 600;
         margin-bottom: 0.5rem;
@@ -213,6 +223,16 @@ slug: autism
         font-size: 0.85rem;
         color: #666;
         line-height: 1.5;
+    }
+
+    .coming-soon-badge {
+        background: #ffc107;
+        color: #333;
+        padding: 2px 8px;
+        border-radius: 12px;
+        font-size: 0.75rem;
+        margin-left: 8px;
+        font-weight: 500;
     }
 
     .cross-cutting-section {
@@ -419,7 +439,7 @@ slug: autism
         .container {
             padding: 1rem;
         }
-        
+
         .content-card {
             padding: 1.5rem;
         }
@@ -503,14 +523,14 @@ slug: autism
             <div class="condition-intro">
                 <h2 id="what-is-autism">What is Autism?</h2>
                 <p>Autism involves brain differences that create predictable friction with <a class="jargon">neurotypical<span class="tooltip">People whose brains develop and function in ways that align with societal expectations and norms</span></a>-designed social and <a class="jargon">sensory environments<span class="tooltip">Physical spaces and social contexts that include various sensory inputs like sounds, lights, textures, and social expectations</span></a>. Autistic people process social information, <a class="jargon">sensory input<span class="tooltip">Information received through the senses like sight, sound, touch, smell, taste, and body position</span></a>, and changes in routine differently than <a class="jargon">neurotypical<span class="tooltip">People whose brains develop and function in ways that align with societal expectations and norms</span></a> people, leading to both unique strengths and specific challenges in a world not designed for these differences.</p>
-                
+
                 <p>Autism isn't something you grow out of or fix - it's a fundamental aspect of how your brain processes the world. Understanding and accommodating these differences, rather than trying to eliminate them, leads to better outcomes and authentic self-acceptance.</p>
             </div>
 
             <div class="reframe-box">
                 <h3 id="reframing-autism">Reframing Autism</h3>
                 <p>Traditional descriptions focus on "deficits" and behaviors that differ from <a class="jargon">neurotypical<span class="tooltip">People whose brains develop and function in ways that align with societal expectations and norms</span></a> norms. A more helpful framework recognizes autism as neurological differences that create both challenges and strengths, depending on environmental support and understanding.</p>
-                
+
                 <p>Many struggles autistic people experience come from <a class="jargon">environmental mismatch<span class="tooltip">When environments are designed for neurotypical brains without considering neurodivergent needs</span></a> rather than inherent disability. With appropriate accommodations and understanding, autistic people can thrive while remaining authentically themselves.</p>
             </div>
 
@@ -567,102 +587,23 @@ slug: autism
             <div class="struggles-section" role="region" aria-labelledby="struggles-heading">
                 <h3 id="struggles-heading">Autism-Related Struggles</h3>
                 <p style="margin-bottom: 1.5rem; color: #666;">Click on any struggle to learn what it feels like, why it happens, and what can help.</p>
-                
+
                 <div class="struggles-grid">
-                    <a href="{{ '/struggles/missing-social-cues.html' | relative_url }}" class="struggle-link">
-                        <div class="struggle-title">Missing Social Cues</div>
-                        <div class="struggle-description">When conversations have hidden meanings you don't catch</div>
-                    </a>
-
-                    <a href="{{ '/struggles/being-too-direct.html' | relative_url }}" class="struggle-link">
-                        <div class="struggle-title">Being Too Direct</div>
-                        <div class="struggle-description">When your honest communication style is seen as rude</div>
-                    </a>
-
-                    <a href="{{ '/struggles/nonverbal-communication-difficulties.html' | relative_url }}" class="struggle-link">
-                        <div class="struggle-title">Nonverbal Communication Difficulties</div>
-                        <div class="struggle-description">Trouble with eye contact, body language, and facial expressions</div>
-                    </a>
-
-                    <a href="{{ '/struggles/social-reciprocity-challenges.html' | relative_url }}" class="struggle-link">
-                        <div class="struggle-title">Social Reciprocity Challenges</div>
-                        <div class="struggle-description">Difficulty with back-and-forth conversation flow</div>
-                    </a>
-
-                    <a href="{{ '/struggles/relationship-maintenance-struggles.html' | relative_url }}" class="struggle-link">
-                        <div class="struggle-title">Relationship Maintenance Struggles</div>
-                        <div class="struggle-description">Not knowing how to keep friendships going over time</div>
-                    </a>
-
-                    <a href="{{ '/struggles/special-interests-consuming-focus.html' | relative_url }}" class="struggle-link">
-                        <div class="struggle-title">Special Interests Consuming Focus</div>
-                        <div class="struggle-description">When intense interests take over your time and social life</div>
-                    </a>
-
-                    <a href="{{ '/struggles/routine-disruption-anxiety.html' | relative_url }}" class="struggle-link">
-                        <div class="struggle-title">Routine Disruption Anxiety</div>
-                        <div class="struggle-description">Distress when plans change unexpectedly</div>
-                    </a>
-
-                    <a href="{{ '/struggles/sensory-processing-challenges.html' | relative_url }}" class="struggle-link">
-                        <div class="struggle-title">Sensory Processing Challenges</div>
-                        <div class="struggle-description">Over- or under-responsivity to sounds, textures, lights, and other sensory input</div>
-                    </a>
-
-                    <a href="{{ '/struggles/akathisia.html' | relative_url }}" class="struggle-link">
-                        <div class="struggle-title">Akathisia</div>
-                        <div class="struggle-description">Inner restlessness and overwhelming urge to move that feels impossible to satisfy</div>
-                    </a>
-                   
-                    <a href="{{ '/struggles/stimming-and-self-regulation.html' | relative_url }}" class="struggle-link">
-                        <div class="struggle-title">Stimming and Self-Regulation</div>
-                        <div class="struggle-description">Repetitive behaviors that help you regulate but may draw attention</div>
-                    </a>
-
-                    <a href="{{ '/struggles/change-and-transition-difficulties.html' | relative_url }}" class="struggle-link">
-                        <div class="struggle-title">Change and Transition Difficulties</div>
-                        <div class="struggle-description">Trouble adapting to new environments, schedules, or life changes</div>
-                    </a>
-
-                    <a href="{{ '/struggles/face-blindness.html' | relative_url }}" class="struggle-link">
-                        <div class="struggle-title">Face Blindness</div>
-                        <div class="struggle-description">Difficulty recognizing faces, even of familiar people</div>
-                    </a>
-
-                    <a href="{{ '/struggles/alexithymia.html' | relative_url }}" class="struggle-link">
-                        <div class="struggle-title">Alexithymia</div>
-                        <div class="struggle-description">Trouble identifying and describing your own emotions</div>
-                    </a>
-
-                    <a href="{{ '/struggles/autistic-inertia.html' | relative_url }}" class="struggle-link">
-                        <div class="struggle-title">Autistic Inertia</div>
-                        <div class="struggle-description">Difficulty starting or stopping activities once you're engaged or stuck</div>
-                    </a>
-
-                    <a href="{{ '/struggles/masking-burnout.html' | relative_url }}" class="struggle-link">
-                        <div class="struggle-title">Masking Burnout</div>
-                        <div class="struggle-description">Exhaustion from years of camouflaging your authentic self</div>
-                    </a>
-
-                    <a href="{{ '/struggles/late-diagnosis-grief.html' | relative_url }}" class="struggle-link">
-                        <div class="struggle-title">Late Diagnosis Grief</div>
-                        <div class="struggle-description">Processing missed opportunities and identity reconstruction after adult diagnosis</div>
-                    </a>
-
-                    <a href="{{ '/struggles/sensory-seeking-behaviors.html' | relative_url }}" class="struggle-link">
-                        <div class="struggle-title">Sensory Seeking Behaviors</div>
-                        <div class="struggle-description">Need for intense sensory input to feel regulated and alert</div>
-                    </a>
-
-                    <a href="{{ '/struggles/medication-sensitivity-management.html' | relative_url }}" class="struggle-link">
-                        <div class="struggle-title">Medication Sensitivity Management</div>
-                        <div class="struggle-description">Navigating heightened sensitivity to psychiatric medications and managing treatments for co-occurring conditions</div>
-                    </a>
-
-                    <a href="{{ '/struggles/autism-workplace-advocacy.html' | relative_url }}" class="struggle-link">
-                        <div class="struggle-title">Autism Workplace Advocacy</div>
-                        <div class="struggle-description">Securing reasonable accommodations for sensory needs, communication preferences, and routine requirements in work environments</div>
-                    </a>
+                    {% assign condition_struggles = site.data.struggle_order[page.condition] %}
+                    {% for struggle in condition_struggles %}
+                        {% assign struggle_page = site.pages | where: "slug", struggle.slug | first %}
+                        {% if struggle_page %}
+                            <a href="{{ '/struggles/' | append: struggle.slug | append: '.html' | relative_url }}" class="struggle-link">
+                        {% else %}
+                            <div class="struggle-link coming-soon">
+                        {% endif %}
+                                <div class="struggle-title">
+                                    {{ struggle.title }}
+                                    {% unless struggle_page %}<span class="coming-soon-badge">Coming Soon</span>{% endunless %}
+                                </div>
+                                <div class="struggle-description">{{ struggle.description }}</div>
+                        {% if struggle_page %}</a>{% else %}</div>{% endif %}
+                    {% endfor %}
                 </div>
 
                 <div class="cross-cutting-section">
@@ -705,3 +646,59 @@ slug: autism
         </div>
     </main>
 </div>
+
+<script>
+// Mobile touch optimization for jargon tooltips
+document.addEventListener('DOMContentLoaded', function() {
+    const jargonElements = document.querySelectorAll('.jargon');
+    let activeTooltip = null;
+    
+    jargonElements.forEach(function(jargon) {
+        jargon.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Close any previously active tooltip
+            if (activeTooltip && activeTooltip !== this) {
+                activeTooltip.querySelector('.tooltip').style.visibility = 'hidden';
+                activeTooltip.querySelector('.tooltip').style.opacity = '0';
+            }
+            
+            const tooltip = this.querySelector('.tooltip');
+            
+            if (tooltip.style.visibility === 'visible') {
+                tooltip.style.visibility = 'hidden';
+                tooltip.style.opacity = '0';
+                activeTooltip = null;
+            } else {
+                tooltip.style.visibility = 'visible';
+                tooltip.style.opacity = '1';
+                activeTooltip = this;
+            }
+        });
+    });
+    
+    // Close tooltips when clicking outside
+    document.addEventListener('click', function(e) {
+        if (!e.target.closest('.jargon') && activeTooltip) {
+            activeTooltip.querySelector('.tooltip').style.visibility = 'hidden';
+            activeTooltip.querySelector('.tooltip').style.opacity = '0';
+            activeTooltip = null;
+        }
+    });
+    
+    // Keyboard accessibility for tooltips
+    jargonElements.forEach(function(jargon) {
+        jargon.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                this.click();
+            }
+            if (e.key === 'Escape' && activeTooltip === this) {
+                this.querySelector('.tooltip').style.visibility = 'hidden';
+                this.querySelector('.tooltip').style.opacity = '0';
+                activeTooltip = null;
+            }
+        });
+    });
+});
+</script>
