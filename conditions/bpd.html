@@ -2,9 +2,9 @@
 layout: default
 title: "Borderline Personality Disorder"
 condition: bpd
-slug: borderline-personality-disorder
+slug: bpd
 ---
-<!-- conditions/borderline-personality-disorder.html -->
+<!-- conditions/bpd.html -->
 <style>
     * {
         margin: 0;
@@ -15,17 +15,17 @@ slug: borderline-personality-disorder
     body {
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         font-weight: 500;
-        background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
+        background: linear-gradient(135deg, #f39c12 0%, #d68910 100%);
         color: #333;
         min-height: 100vh;
         line-height: 1.7;
     }
 
     .header {
-        background: rgba(0, 0, 0, 0.1);
+        background: rgba(255, 255, 255, 0.1);
         backdrop-filter: blur(10px);
         padding: 1.5rem 2rem;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     }
 
     .header h1 {
@@ -41,9 +41,9 @@ slug: borderline-personality-disorder
     }
 
     .breadcrumb {
-        background: rgba(0, 0, 0, 0.05);
+        background: rgba(255, 255, 255, 0.05);
         padding: 0.8rem 2rem;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         overflow-x: auto;
         white-space: nowrap;
     }
@@ -217,6 +217,10 @@ slug: borderline-personality-disorder
         font-weight: 600;
         margin-bottom: 0.5rem;
         font-size: 0.95rem;
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 0.5rem;
     }
 
     .struggle-description {
@@ -231,20 +235,20 @@ slug: borderline-personality-disorder
         padding: 2px 8px;
         border-radius: 12px;
         font-size: 0.75rem;
-        margin-left: 8px;
         font-weight: 500;
+        white-space: nowrap;
     }
 
     .cross-cutting-section {
-        background: #f0f8ff;
+        background: #fef9e7;
         padding: 1.5rem;
         border-radius: 12px;
         margin: 1.5rem 0;
-        border-left: 4px solid #74b9ff;
+        border-left: 4px solid #f39c12;
     }
 
     .cross-cutting-section h4 {
-        color: #74b9ff;
+        color: #f39c12;
         margin-bottom: 1rem;
         font-size: 1.1rem;
     }
@@ -256,7 +260,7 @@ slug: borderline-personality-disorder
     }
 
     .cross-cutting-link {
-        background: #74b9ff;
+        background: #d68910;
         color: white;
         padding: 0.5rem 1rem;
         border-radius: 8px;
@@ -269,40 +273,44 @@ slug: borderline-personality-disorder
     }
 
     .cross-cutting-link:hover {
-        background: #0984e3;
+        background: #b7791f;
         color: white;
         text-decoration: none;
         transform: translateY(-1px);
     }
 
     .co-occurring {
-        background: #fff3e0;
+        background: #fef9e7;
         padding: 1.5rem;
         border-radius: 12px;
         margin: 2rem 0;
-        border-left: 4px solid #ff9800;
+        border-left: 4px solid #f39c12;
     }
 
     .co-occurring h3 {
-        color: #f57c00;
+        color: #f39c12;
         margin-bottom: 1rem;
         font-size: 1.3rem;
     }
 
-    /* Support Resources */
+    /* Support Resources - matches autism page style */
     .support-resources {
+        background: #fef9e7;
+        padding: 2rem;
+        border-radius: 16px;
         margin: 2rem 0;
+        border-left: 4px solid #f39c12;
     }
 
     .support-resources h3 {
-        color: #333;
+        color: #f39c12;
         margin-bottom: 1rem;
         font-size: 1.5rem;
     }
 
     .support-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        grid-template-columns: 1fr;
         gap: 1.5rem;
         margin-top: 1.5rem;
     }
@@ -388,13 +396,15 @@ slug: borderline-personality-disorder
     /* Bold black jargon for colored backgrounds */
     .condition-intro .jargon,
     .reframe-box .jargon,
-    .co-occurring .jargon {
+    .co-occurring .jargon,
+    .support-resources .jargon,
+    .cross-cutting-section .jargon {
         color: #333;
         font-weight: 600;
         border-bottom-color: #333;
     }
 
-    /* White jargon for gradient backgrounds */
+    /* White jargon for gradient backgrounds only */
     .header .jargon,
     .breadcrumb .jargon {
         color: white;
@@ -526,11 +536,6 @@ slug: borderline-personality-disorder
         .cross-cutting-link {
             justify-content: center;
             text-align: center;
-        }
-
-        .support-grid {
-            grid-template-columns: 1fr;
-            gap: 1rem;
         }
     }
 
@@ -702,7 +707,7 @@ slug: borderline-personality-disorder
                         <h4>Finding BPD Therapists</h4>
                         <ul>
                             <li><a href="https://www.psychologytoday.com/us/therapists/borderline-personality-bpd" target="_blank" rel="noopener">Psychology Today BPD Provider Search</a> - Filter by BPD specialty and DBT training</li>
-                            <li><a href="https://dbt-lbc.org/DBT-Programs/" target="_blank" rel="noopener">DBT-Linehan Board Certified Providers</a> - Directory of DBT-trained professionals</li>
+                            <li><a href="https://dbt-lbc.org/consumers/find-a-certified-clinician/" target="_blank" rel="noopener">DBT-Linehan Board Certified Providers</a> - Directory of DBT-trained professionals</li>
                             <li><a href="https://www.nami.org/find-support" target="_blank" rel="noopener">NAMI Local Support</a> - National Alliance on Mental Illness BPD resources and support groups</li>
                         </ul>
                     </div>
@@ -710,18 +715,18 @@ slug: borderline-personality-disorder
                     <div class="support-card">
                         <h4>Self-Help & Educational Resources</h4>
                         <ul>
-                            <li><a href="https://www.neabpd.org/" target="_blank" rel="noopener">National Education Alliance BPD</a> - Free family education and support resources</li>
+                            <li><a href="https://www.borderlinepersonalitydisorder.org/" target="_blank" rel="noopener">National Education Alliance BPD</a> - Evidence-based Family Connections program and educational resources</li>
                             <li><a href="https://www.dbtselfhelp.com/" target="_blank" rel="noopener">DBT Self-Help</a> - Free DBT skills and worksheets for emotional regulation</li>
-                            <li><a href="https://www.borderlinepersonalitydisorder.org/" target="_blank" rel="noopener">BPD Resource Center</a> - Evidence-based information and coping strategies</li>
+                            <li><a href="https://familiesforbpdresearch.org/" target="_blank" rel="noopener">Families for BPD Research</a> - Research-focused organization supporting BPD study funding</li>
                         </ul>
                     </div>
 
                     <div class="support-card">
                         <h4>Community & Peer Support</h4>
                         <ul>
+                            <li><a href="https://emotionsmatterbpd.org/peer-support-groups-registration" target="_blank" rel="noopener">Emotions Matter Peer Support Groups</a> - Peer-led BPD support groups by people with lived experience</li>
+                            <li><a href="https://www.bpdfamily.com/" target="_blank" rel="noopener">BPD Family Community</a> - Support community for families endorsed by BPD book authors</li>
                             <li><a href="https://www.reddit.com/r/BorderlinePDisorder/" target="_blank" rel="noopener">r/BorderlinePDisorder Community</a> - Peer support and lived experience discussions</li>
-                            <li><a href="https://www.mighty.com/topic/borderline-personality-disorder/" target="_blank" rel="noopener">The Mighty BPD Community</a> - Articles and community support from people living with BPD</li>
-                            <li><a href="https://www.supportgroups.com/borderline-personality-disorder" target="_blank" rel="noopener">BPD Support Groups</a> - Online and local support group directory</li>
                         </ul>
                     </div>
                 </div>
