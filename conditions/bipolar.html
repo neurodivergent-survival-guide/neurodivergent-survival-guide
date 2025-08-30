@@ -581,4 +581,129 @@ slug: bipolar
                     <ul>
                         <li>Rebuilding relationships affected during <a class="jargon">episodes<span class="tooltip">Discrete periods of altered mood, energy, and behavior that are clearly different from your baseline functioning</span></a></li>
                         <li>Managing consequences of episode decisions</li>
-                        <li>Maintaining <a class="jargon">medication<span class="tooltip">Pharmaceutical treatments that help stabilize mood and prevent episodes</s
+                        <li>Maintaining <a class="jargon">medication<span class="tooltip">Pharmaceutical treatments that help stabilize mood and prevent episodes</span></a> and <a class="jargon">therapy<span class="tooltip">Professional counseling to develop coping strategies and understand patterns</span></a> routines</li>
+                        <li>Developing episode recognition and prevention strategies</li>
+                        <li>Often the times of greatest insight and creativity</li>
+                        <li>Working on identity integration across <a class="jargon">mood states<span class="tooltip">Different emotional and cognitive conditions that occur during various phases of bipolar</span></a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="struggles-section" role="region" aria-labelledby="struggles-heading">
+                <h3 id="struggles-heading">Bipolar-Related Struggles</h3>
+                <p style="margin-bottom: 1.5rem; color: #666;">Click on any struggle to learn what it feels like, why it happens, and what can help.</p>
+
+                <div class="struggles-grid">
+                    {% assign condition_struggles = site.data.struggle_order[page.condition] %}
+                    {% for struggle in condition_struggles %}
+                        {% assign struggle_page = site.pages | where: "slug", struggle.slug | first %}
+                        {% if struggle_page %}
+                            <a href="{{ '/struggles/' | append: struggle.slug | append: '.html' | relative_url }}" class="struggle-link">
+                        {% else %}
+                            <div class="struggle-link coming-soon">
+                        {% endif %}
+                                <div class="struggle-title">
+                                    {{ struggle.title }}
+                                    {% unless struggle_page %}<span class="coming-soon-badge">Coming Soon</span>{% endunless %}
+                                </div>
+                                <div class="struggle-description">{{ struggle.description }}</div>
+                        {% if struggle_page %}</a>{% else %}</div>{% endif %}
+                    {% endfor %}
+                </div>
+
+                <div class="cross-cutting-section">
+                    <h4>Related Struggles from Other Conditions</h4>
+                    <div class="cross-cutting-links">
+                        <a href="{{ '/struggles/task-initiation-paralysis.html' | relative_url }}" class="cross-cutting-link">Task Initiation Paralysis</a>
+                        <a href="{{ '/struggles/attention-regulation.html' | relative_url }}" class="cross-cutting-link">Attention Regulation</a>
+                        <a href="{{ '/struggles/rejection-sensitive-dysphoria.html' | relative_url }}" class="cross-cutting-link">Rejection Sensitive Dysphoria</a>
+                        <a href="{{ '/struggles/sensory-processing-challenges.html' | relative_url }}" class="cross-cutting-link">Sensory Processing Challenges</a>
+                        <a href="{{ '/struggles/masking-burnout.html' | relative_url }}" class="cross-cutting-link">Masking Burnout</a>
+                        <a href="{{ '/struggles/emotional-flashbacks.html' | relative_url }}" class="cross-cutting-link">Emotional Flashbacks</a>
+                        <a href="{{ '/struggles/identity-disturbance.html' | relative_url }}" class="cross-cutting-link">Identity Disturbance</a>
+                        <a href="{{ '/struggles/fear-of-abandonment.html' | relative_url }}" class="cross-cutting-link">Fear of Abandonment</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="co-occurring">
+                <h3>Common Co-Occurring Conditions</h3>
+                <p><a class="jargon">Bipolar<span class="tooltip">A neurological condition involving significant shifts between periods of elevated mood and depression</span></a> frequently occurs alongside other <a class="jargon">neurodivergent<span class="tooltip">Brain differences that create distinct patterns of thinking, processing, and behavior</span></a> conditions and mental health differences. Understanding these connections can help you get comprehensive support:</p>
+                <ul>
+                    <li><strong>ADHD:</strong> Overlap in <a class="jargon">executive function<span class="tooltip">The brain's management system that handles planning, organization, time management, task initiation, and follow-through</span></a> challenges and <a class="jargon">emotional intensity<span class="tooltip">Emotions that feel overwhelming, intense, or disproportionate compared to typical responses</span></a></li>
+                    <li><strong><a class="jargon">Anxiety disorders<span class="tooltip">Conditions involving excessive worry, fear, or physical anxiety symptoms</span></a>:</strong> Particularly during depressive phases</li>
+                    <li><strong><a class="jargon">Substance use disorders<span class="tooltip">Problematic use of alcohol or drugs, often as attempts to self-medicate mood symptoms</span></a>:</strong> Often as self-medication during episodes</li>
+                    <li><strong>Eating disorders:</strong> Changes in appetite and eating patterns during <a class="jargon">mood episodes<span class="tooltip">Distinct periods of altered mood, energy, and behavior that are different from your baseline</span></a></li>
+                    <li><strong><a class="jargon">Borderline personality disorder<span class="tooltip">A condition involving intense emotions, unstable relationships, and difficulty with sense of self</span></a>:</strong> Shared <a class="jargon">emotional intensity<span class="tooltip">Emotions that feel overwhelming, intense, or disproportionate compared to typical responses</span></a> patterns</li>
+                    <li><strong>Sleep disorders:</strong> <a class="jargon">Circadian rhythm<span class="tooltip">Your body's internal clock that regulates sleep-wake cycles and other biological processes</span></a> disruption during episodes</li>
+                </ul>
+            </div>
+
+            <div style="background: #e3f2fd; padding: 1.5rem; border-radius: 12px; margin: 2rem 0; border-left: 4px solid #74b9ff;">
+                <h3 style="color: #74b9ff; margin-bottom: 1rem; font-size: 1.3rem;">Related Resources</h3>
+                <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                    <a href="{{ '/glossary/mood-episodes.html' | relative_url }}" style="color: #74b9ff; text-decoration: none;">Mood Episodes →</a>
+                    <a href="{{ '/glossary/emotional-regulation.html' | relative_url }}" style="color: #74b9ff; text-decoration: none;">Emotional Regulation →</a>
+                    <a href="{{ '/glossary/sleep-circadian.html' | relative_url }}" style="color: #74b9ff; text-decoration: none;">Sleep and Circadian Rhythms →</a>
+                    <a href="{{ '/glossary/medication-treatment.html' | relative_url }}" style="color: #74b9ff; text-decoration: none;">Medication and Treatment →</a>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+<script>
+// Mobile touch optimization for jargon tooltips
+document.addEventListener('DOMContentLoaded', function() {
+    const jargonElements = document.querySelectorAll('.jargon');
+    let activeTooltip = null;
+    
+    jargonElements.forEach(function(jargon) {
+        jargon.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Close any previously active tooltip
+            if (activeTooltip && activeTooltip !== this) {
+                activeTooltip.querySelector('.tooltip').style.visibility = 'hidden';
+                activeTooltip.querySelector('.tooltip').style.opacity = '0';
+            }
+            
+            const tooltip = this.querySelector('.tooltip');
+            
+            if (tooltip.style.visibility === 'visible') {
+                tooltip.style.visibility = 'hidden';
+                tooltip.style.opacity = '0';
+                activeTooltip = null;
+            } else {
+                tooltip.style.visibility = 'visible';
+                tooltip.style.opacity = '1';
+                activeTooltip = this;
+            }
+        });
+    });
+    
+    // Close tooltips when clicking outside
+    document.addEventListener('click', function(e) {
+        if (!e.target.closest('.jargon') && activeTooltip) {
+            activeTooltip.querySelector('.tooltip').style.visibility = 'hidden';
+            activeTooltip.querySelector('.tooltip').style.opacity = '0';
+            activeTooltip = null;
+        }
+    });
+    
+    // Keyboard accessibility for tooltips
+    jargonElements.forEach(function(jargon) {
+        jargon.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                this.click();
+            }
+            if (e.key === 'Escape' && activeTooltip === this) {
+                this.querySelector('.tooltip').style.visibility = 'hidden';
+                this.querySelector('.tooltip').style.opacity = '0';
+                activeTooltip = null;
+            }
+        });
+    });
+});
+</script>
