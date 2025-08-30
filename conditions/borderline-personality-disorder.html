@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "Borderline Personality Disorder"
-condition: borderline-personality-disorder
+condition: borderline
 slug: borderline-personality-disorder
 ---
 <!-- conditions/borderline-personality-disorder.html -->
@@ -203,6 +203,16 @@ slug: borderline-personality-disorder
         color: #333;
     }
 
+    .struggle-link.coming-soon {
+        opacity: 0.6;
+        cursor: not-allowed;
+    }
+
+    .struggle-link.coming-soon:hover {
+        transform: none;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+
     .struggle-title {
         font-weight: 600;
         margin-bottom: 0.5rem;
@@ -213,6 +223,16 @@ slug: borderline-personality-disorder
         font-size: 0.85rem;
         color: #666;
         line-height: 1.5;
+    }
+
+    .coming-soon-badge {
+        background: #ffc107;
+        color: #333;
+        padding: 2px 8px;
+        border-radius: 12px;
+        font-size: 0.75rem;
+        margin-left: 8px;
+        font-weight: 500;
     }
 
     .cross-cutting-section {
@@ -267,6 +287,60 @@ slug: borderline-personality-disorder
         color: #f57c00;
         margin-bottom: 1rem;
         font-size: 1.3rem;
+    }
+
+    /* Support Resources */
+    .support-resources {
+        margin: 2rem 0;
+    }
+
+    .support-resources h3 {
+        color: #333;
+        margin-bottom: 1rem;
+        font-size: 1.5rem;
+    }
+
+    .support-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.5rem;
+        margin-top: 1.5rem;
+    }
+
+    .support-card {
+        background: #ffffff;
+        border: 1px solid #e9ecef;
+        border-radius: 8px;
+        padding: 1.5rem;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .support-card h4 {
+        color: #f39c12;
+        margin-top: 0;
+        margin-bottom: 1rem;
+        font-size: 1.1rem;
+    }
+
+    .support-card ul {
+        margin: 0;
+        padding-left: 1.2rem;
+    }
+
+    .support-card li {
+        margin-bottom: 0.75rem;
+        line-height: 1.5;
+    }
+
+    .support-card a {
+        color: #667eea;
+        text-decoration: none;
+        font-weight: 500;
+    }
+
+    .support-card a:hover {
+        color: #5a67d8;
+        text-decoration: underline;
     }
 
     /* Focus states for accessibility */
@@ -419,7 +493,7 @@ slug: borderline-personality-disorder
         .container {
             padding: 1rem;
         }
-        
+
         .content-card {
             padding: 1.5rem;
         }
@@ -452,6 +526,11 @@ slug: borderline-personality-disorder
         .cross-cutting-link {
             justify-content: center;
             text-align: center;
+        }
+
+        .support-grid {
+            grid-template-columns: 1fr;
+            gap: 1rem;
         }
     }
 
@@ -503,14 +582,14 @@ slug: borderline-personality-disorder
             <div class="condition-intro">
                 <h2 id="what-is-bpd">What is Borderline Personality Disorder?</h2>
                 <p><a class="jargon">BPD<span class="tooltip">Borderline Personality Disorder - a condition involving intense emotions, unstable relationships, and difficulty with sense of self</span></a> involves intense emotional responses and relationship patterns that developed as protective strategies against <a class="jargon">abandonment<span class="tooltip">Being left alone or rejected by important people in your life</span></a> - real or perceived. People with <a class="jargon">BPD<span class="tooltip">Borderline Personality Disorder - a condition involving intense emotions, unstable relationships, and difficulty with sense of self</span></a> often experience emotions at amplified intensities and have learned to be <a class="jargon">hypervigilant<span class="tooltip">State of enhanced alertness where you constantly scan for potential threats or dangers</span></a> about relationship threats, leading to behaviors that others might find confusing or overwhelming.</p>
-                
+
                 <p>These patterns typically emerge from early experiences where emotional safety was uncertain. The brain learned to scan constantly for signs of rejection and respond strongly to maintain connection or protect against <a class="jargon">abandonment<span class="tooltip">Being left alone or rejected by important people in your life</span></a> pain. What looks like chaos from the outside often makes perfect sense from the inside.</p>
             </div>
 
             <div class="reframe-box">
                 <h3 id="reframing-bpd">Reframing BPD</h3>
                 <p>Traditional descriptions focus on <a class="jargon">BPD<span class="tooltip">Borderline Personality Disorder - a condition involving intense emotions, unstable relationships, and difficulty with sense of self</span></a> as "unstable" or "difficult" behavior. A more understanding framework recognizes it as an <a class="jargon">attachment system<span class="tooltip">The brain patterns that govern how we connect with and respond to important relationships</span></a> that learned to expect <a class="jargon">abandonment<span class="tooltip">Being left alone or rejected by important people in your life</span></a> and developed intense responses to prevent it.</p>
-                
+
                 <p>Think of it like having an emotional smoke detector that's extremely sensitive. It goes off at the first hint of relationship danger, triggering responses designed to either pull people closer or push them away before they can leave first. The <a class="jargon">splitting<span class="tooltip">Seeing people and situations as all good or all bad with little middle ground</span></a>, the threats to leave, the intense emotions - these aren't character flaws, they're protective strategies that made sense in earlier contexts but now create the very <a class="jargon">abandonment<span class="tooltip">Being left alone or rejected by important people in your life</span></a> they're trying to prevent.</p>
             </div>
 
@@ -571,92 +650,23 @@ slug: borderline-personality-disorder
             <div class="struggles-section" role="region" aria-labelledby="struggles-heading">
                 <h3 id="struggles-heading">BPD-Related Struggles</h3>
                 <p style="margin-bottom: 1.5rem; color: #666;">Click on any struggle to learn what it feels like, why it happens, and what can help.</p>
-                
+
                 <div class="struggles-grid">
-                    <a href="{{ '/struggles/fear-of-abandonment.html' | relative_url }}" class="struggle-link">
-                        <div class="struggle-title">Fear of Abandonment</div>
-                        <div class="struggle-description">Intense anxiety about being left alone or rejected by important people</div>
-                    </a>
-
-                    <a href="{{ '/struggles/unstable-interpersonal-relationships.html' | relative_url }}" class="struggle-link">
-                        <div class="struggle-title">Unstable Interpersonal Relationships</div>
-                        <div class="struggle-description">Relationships that alternate between extremes of closeness and conflict</div>
-                    </a>
-
-                    <a href="{{ '/struggles/identity-disturbance.html' | relative_url }}" class="struggle-link">
-                        <div class="struggle-title">Identity Disturbance</div>
-                        <div class="struggle-description">Unclear or rapidly changing sense of who you are</div>
-                    </a>
-
-                    <a href="{{ '/struggles/impulsivity-potentially-damaging.html' | relative_url }}" class="struggle-link">
-                        <div class="struggle-title">Impulsive Actions</div>
-                        <div class="struggle-description">Acting quickly in ways that could harm your finances, relationships, or safety</div>
-                    </a>
-
-                    <a href="{{ '/struggles/recurrent-suicidal-behaviors-self-harm.html' | relative_url }}" class="struggle-link">
-                        <div class="struggle-title">Self-Harm and Suicidal Thoughts</div>
-                        <div class="struggle-description">Repeated thoughts or actions involving self-injury or suicide</div>
-                    </a>
-
-                    <a href="{{ '/struggles/affective-instability.html' | relative_url }}" class="struggle-link">
-                        <div class="struggle-title">Rapid Mood Changes</div>
-                        <div class="struggle-description">Intense mood changes that feel overwhelming and unpredictable</div>
-                    </a>
-
-                    <a href="{{ '/struggles/chronic-feelings-of-emptiness.html' | relative_url }}" class="struggle-link">
-                        <div class="struggle-title">Chronic Feelings of Emptiness</div>
-                        <div class="struggle-description">Persistent sense of inner void or meaninglessness</div>
-                    </a>
-
-                    <a href="{{ '/struggles/inappropriate-intense-anger.html' | relative_url }}" class="struggle-link">
-                        <div class="struggle-title">Intense Anger</div>
-                        <div class="struggle-description">Anger responses that feel too big for the situation</div>
-                    </a>
-
-                    <a href="{{ '/struggles/stress-related-dissociation-paranoia.html' | relative_url }}" class="struggle-link">
-                        <div class="struggle-title">Dissociation and Paranoia</div>
-                        <div class="struggle-description">Feeling disconnected from yourself or suspicious of others during high stress</div>
-                    </a>
-
-                    <a href="{{ '/struggles/emotional-flashbacks.html' | relative_url }}" class="struggle-link">
-                        <div class="struggle-title">Emotional Flashbacks</div>
-                        <div class="struggle-description">Suddenly re-experiencing intense emotions from past traumatic situations</div>
-                    </a>
-
-                    <a href="{{ '/struggles/favorite-person-dynamics.html' | relative_url }}" class="struggle-link">
-                        <div class="struggle-title">Favorite Person Dynamics</div>
-                        <div class="struggle-description">Intense attachment to one person that affects your emotional stability</div>
-                    </a>
-
-                    <a href="{{ '/struggles/splitting-black-and-white-thinking.html' | relative_url }}" class="struggle-link">
-                        <div class="struggle-title">All-or-Nothing Thinking</div>
-                        <div class="struggle-description">Seeing people and situations as all good or all bad</div>
-                    </a>
-
-                    <a href="{{ '/struggles/identity-diffusion-in-relationships.html' | relative_url }}" class="struggle-link">
-                        <div class="struggle-title">Identity Diffusion in Relationships</div>
-                        <div class="struggle-description">Losing sense of yourself when in close relationships</div>
-                    </a>
-
-                    <a href="{{ '/struggles/shame-spirals.html' | relative_url }}" class="struggle-link">
-                        <div class="struggle-title">Shame Spirals</div>
-                        <div class="struggle-description">Overwhelming feelings of being fundamentally flawed or bad</div>
-                    </a>
-
-                    <a href="{{ '/struggles/hypervigilance-to-rejection-cues.html' | relative_url }}" class="struggle-link">
-                        <div class="struggle-title">Hypervigilance to Rejection Cues</div>
-                        <div class="struggle-description">Constantly scanning for signs that others might leave or reject you</div>
-                    </a>
-
-                    <a href="{{ '/struggles/off-label-medication-navigation.html' | relative_url }}" class="struggle-link">
-                        <div class="struggle-title">Off-Label Medication Navigation</div>
-                        <div class="struggle-description">Working with providers to find helpful medications when no specific BPD treatments exist</div>
-                    </a>
-
-                    <a href="{{ '/struggles/bpd-stigma-and-advocacy.html' | relative_url }}" class="struggle-link">
-                        <div class="struggle-title">BPD Stigma and Advocacy</div>
-                        <div class="struggle-description">Overcoming provider bias and accessing quality treatment despite BPD stigma in healthcare settings</div>
-                    </a>
+                    {% assign condition_struggles = site.data.struggle_order[page.condition] %}
+                    {% for struggle in condition_struggles %}
+                        {% assign struggle_page = site.pages | where: "slug", struggle.slug | first %}
+                        {% if struggle_page %}
+                            <a href="{{ '/struggles/' | append: struggle.slug | append: '.html' | relative_url }}" class="struggle-link">
+                        {% else %}
+                            <div class="struggle-link coming-soon">
+                        {% endif %}
+                                <div class="struggle-title">
+                                    {{ struggle.title }}
+                                    {% unless struggle_page %}<span class="coming-soon-badge">Coming Soon</span>{% endunless %}
+                                </div>
+                                <div class="struggle-description">{{ struggle.description }}</div>
+                        {% if struggle_page %}</a>{% else %}</div>{% endif %}
+                    {% endfor %}
                 </div>
 
                 <div class="cross-cutting-section">
@@ -677,21 +687,101 @@ slug: borderline-personality-disorder
             <div class="co-occurring">
                 <h3>Common Co-Occurring Conditions</h3>
                 <p><a class="jargon">BPD<span class="tooltip">Borderline Personality Disorder - a condition involving intense emotions, unstable relationships, and difficulty with sense of self</span></a> frequently occurs alongside other mental health conditions, often reflecting the <a class="jargon">complex trauma<span class="tooltip">Repeated exposure to traumatic events, often in relationships, that affects development and emotional regulation</span></a> and attachment disruption that can contribute to its development. Understanding these connections helps create comprehensive treatment approaches.</p>
-                
+
                 <p><strong>Frequently co-occurring:</strong> <a class="jargon">PTSD<span class="tooltip">Post-Traumatic Stress Disorder - condition that develops after experiencing or witnessing traumatic events</span></a> and <a class="jargon">complex trauma<span class="tooltip">Repeated exposure to traumatic events, often in relationships, that affects development and emotional regulation</span></a> (reflecting early adverse experiences), depression (particularly during identity crises), <a class="jargon">anxiety disorders<span class="tooltip">Conditions involving excessive worry, fear, or physical anxiety symptoms</span></a> (from <a class="jargon">hypervigilance<span class="tooltip">State of enhanced alertness where you constantly scan for potential threats or dangers</span></a> to <a class="jargon">abandonment<span class="tooltip">Being left alone or rejected by important people in your life</span></a>), eating disorders (often as emotional regulation attempts), substance use (frequently as self-medication), and ADHD (overlap in <a class="jargon">emotional dysregulation<span class="tooltip">Difficulty managing emotional responses - emotions feel too intense, change too quickly, or last too long</span></a> and impulsivity).</p>
-                
+
                 <p><strong>Individual variation:</strong> <a class="jargon">BPD<span class="tooltip">Borderline Personality Disorder - a condition involving intense emotions, unstable relationships, and difficulty with sense of self</span></a> presents very differently across individuals - some people have predominantly relationship struggles, others focus more on <a class="jargon">identity confusion<span class="tooltip">Uncertainty about who you are, what you believe, or what you want from life</span></a> or emotional overwhelm. Response to different therapeutic approaches varies, with <a class="jargon">DBT<span class="tooltip">Dialectical Behavior Therapy - evidence-based treatment focusing on emotion regulation and interpersonal skills</span></a>, DBT-informed therapy, and <a class="jargon">trauma-focused therapies<span class="tooltip">Therapeutic approaches designed to help process and heal from traumatic experiences</span></a> showing strong evidence for helping people build more stable, fulfilling lives.</p>
             </div>
 
-            <div style="background: #fef9e7; padding: 1.5rem; border-radius: 12px; margin: 2rem 0; border-left: 4px solid #f39c12;">
-                <h3 style="color: #f39c12; margin-bottom: 1rem; font-size: 1.3rem;">Related Resources</h3>
-                <div style="display: flex; flex-direction: column; gap: 0.5rem;">
-                    <a href="{{ '/glossary/relationship-dynamics.html' | relative_url }}" style="color: #f39c12; text-decoration: none;">Relationship Dynamics →</a>
-                    <a href="{{ '/glossary/emotional-regulation.html' | relative_url }}" style="color: #f39c12; text-decoration: none;">Emotional Regulation →</a>
-                    <a href="{{ '/glossary/identity-self-concept.html' | relative_url }}" style="color: #f39c12; text-decoration: none;">Identity and Self-Concept →</a>
-                    <a href="{{ '/glossary/trauma-dissociation.html' | relative_url }}" style="color: #f39c12; text-decoration: none;">Trauma and Dissociation →</a>
+            <div class="support-resources">
+                <h3>Professional Support</h3>
+                <p>BPD often benefits from specialized trauma-informed and DBT-trained professional support. Here are specific resources to connect with BPD-experienced providers and communities:</p>
+
+                <div class="support-grid">
+                    <div class="support-card">
+                        <h4>Finding BPD Therapists</h4>
+                        <ul>
+                            <li><a href="https://www.psychologytoday.com/us/therapists/borderline-personality-bpd" target="_blank" rel="noopener">Psychology Today BPD Provider Search</a> - Filter by BPD specialty and DBT training</li>
+                            <li><a href="https://dbt-lbc.org/DBT-Programs/" target="_blank" rel="noopener">DBT-Linehan Board Certified Providers</a> - Directory of DBT-trained professionals</li>
+                            <li><a href="https://www.nami.org/find-support" target="_blank" rel="noopener">NAMI Local Support</a> - National Alliance on Mental Illness BPD resources and support groups</li>
+                        </ul>
+                    </div>
+
+                    <div class="support-card">
+                        <h4>Self-Help & Educational Resources</h4>
+                        <ul>
+                            <li><a href="https://www.neabpd.org/" target="_blank" rel="noopener">National Education Alliance BPD</a> - Free family education and support resources</li>
+                            <li><a href="https://www.dbtselfhelp.com/" target="_blank" rel="noopener">DBT Self-Help</a> - Free DBT skills and worksheets for emotional regulation</li>
+                            <li><a href="https://www.borderlinepersonalitydisorder.org/" target="_blank" rel="noopener">BPD Resource Center</a> - Evidence-based information and coping strategies</li>
+                        </ul>
+                    </div>
+
+                    <div class="support-card">
+                        <h4>Community & Peer Support</h4>
+                        <ul>
+                            <li><a href="https://www.reddit.com/r/BorderlinePDisorder/" target="_blank" rel="noopener">r/BorderlinePDisorder Community</a> - Peer support and lived experience discussions</li>
+                            <li><a href="https://www.mighty.com/topic/borderline-personality-disorder/" target="_blank" rel="noopener">The Mighty BPD Community</a> - Articles and community support from people living with BPD</li>
+                            <li><a href="https://www.supportgroups.com/borderline-personality-disorder" target="_blank" rel="noopener">BPD Support Groups</a> - Online and local support group directory</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
     </main>
 </div>
+
+<script>
+// Mobile touch optimization for jargon tooltips
+document.addEventListener('DOMContentLoaded', function() {
+    const jargonElements = document.querySelectorAll('.jargon');
+    let activeTooltip = null;
+    
+    jargonElements.forEach(function(jargon) {
+        jargon.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Close any previously active tooltip
+            if (activeTooltip && activeTooltip !== this) {
+                activeTooltip.querySelector('.tooltip').style.visibility = 'hidden';
+                activeTooltip.querySelector('.tooltip').style.opacity = '0';
+            }
+            
+            const tooltip = this.querySelector('.tooltip');
+            
+            if (tooltip.style.visibility === 'visible') {
+                tooltip.style.visibility = 'hidden';
+                tooltip.style.opacity = '0';
+                activeTooltip = null;
+            } else {
+                tooltip.style.visibility = 'visible';
+                tooltip.style.opacity = '1';
+                activeTooltip = this;
+            }
+        });
+    });
+    
+    // Close tooltips when clicking outside
+    document.addEventListener('click', function(e) {
+        if (!e.target.closest('.jargon') && activeTooltip) {
+            activeTooltip.querySelector('.tooltip').style.visibility = 'hidden';
+            activeTooltip.querySelector('.tooltip').style.opacity = '0';
+            activeTooltip = null;
+        }
+    });
+    
+    // Keyboard accessibility for tooltips
+    jargonElements.forEach(function(jargon) {
+        jargon.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                this.click();
+            }
+            if (e.key === 'Escape' && activeTooltip === this) {
+                this.querySelector('.tooltip').style.visibility = 'hidden';
+                this.querySelector('.tooltip').style.opacity = '0';
+                activeTooltip = null;
+            }
+        });
+    });
+});
+</script>
