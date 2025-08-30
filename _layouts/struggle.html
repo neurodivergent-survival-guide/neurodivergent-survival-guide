@@ -1,13 +1,13 @@
 ---
 layout: default
 ---
-{{ content }}
-
 {% if page.condition %}
   {% assign colors = site.data.condition_colors[page.condition] %}
 {% else %}
   {% assign colors = site.data.condition_colors['adhd'] %}
 {% endif %}
+
+{{ content }}
 
 <style>
   .struggle-navigation {
