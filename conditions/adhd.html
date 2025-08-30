@@ -289,6 +289,60 @@ slug: adhd
         font-size: 1.3rem;
     }
 
+    /* Support Resources */
+    .support-resources {
+        margin: 2rem 0;
+    }
+
+    .support-resources h3 {
+        color: #333;
+        margin-bottom: 1rem;
+        font-size: 1.5rem;
+    }
+
+    .support-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.5rem;
+        margin-top: 1.5rem;
+    }
+
+    .support-card {
+        background: #ffffff;
+        border: 1px solid #e9ecef;
+        border-radius: 8px;
+        padding: 1.5rem;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .support-card h4 {
+        color: #d63031;
+        margin-top: 0;
+        margin-bottom: 1rem;
+        font-size: 1.1rem;
+    }
+
+    .support-card ul {
+        margin: 0;
+        padding-left: 1.2rem;
+    }
+
+    .support-card li {
+        margin-bottom: 0.75rem;
+        line-height: 1.5;
+    }
+
+    .support-card a {
+        color: #667eea;
+        text-decoration: none;
+        font-weight: 500;
+    }
+
+    .support-card a:hover {
+        color: #5a67d8;
+        text-decoration: underline;
+    }
+
     /* Focus states for accessibility */
     .struggle-link:focus,
     .cross-cutting-link:focus,
@@ -638,13 +692,37 @@ slug: adhd
                 </ul>
             </div>
 
-            <div style="background: #fff8e1; padding: 1.5rem; border-radius: 12px; margin: 2rem 0; border-left: 4px solid #d63031;">
-                <h3 style="color: #d63031; margin-bottom: 1rem; font-size: 1.3rem;">Related Resources</h3>
-                <div style="display: flex; flex-direction: column; gap: 0.5rem;">
-                    <a href="{{ '/glossary/executive-function.html' | relative_url }}" style="color: #d63031; text-decoration: none;">Executive Function →</a>
-                    <a href="{{ '/glossary/attention-regulation.html' | relative_url }}" style="color: #d63031; text-decoration: none;">Attention Regulation →</a>
-                    <a href="{{ '/glossary/rejection-sensitivity.html' | relative_url }}" style="color: #d63031; text-decoration: none;">Rejection Sensitivity →</a>
-                    <a href="{{ '/glossary/dopamine-motivation.html' | relative_url }}" style="color: #d63031; text-decoration: none;">Dopamine and Motivation →</a>
+            <div class="support-resources">
+                <h3>Professional Support</h3>
+                <p>ADHD often benefits from specialized professional support. Here are specific resources to connect with ADHD-experienced providers and communities:</p>
+
+                <div class="support-grid">
+                    <div class="support-card">
+                        <h4>Finding ADHD Therapists</h4>
+                        <ul>
+                            <li><a href="https://www.psychologytoday.com/us/therapists/adhd" target="_blank" rel="noopener">Psychology Today ADHD Provider Search</a> - Filter by ADHD specialty and insurance</li>
+                            <li><a href="https://chadd.org/for-professionals/professional-directory/" target="_blank" rel="noopener">CHADD Professional Directory</a> - ADHD-specialized mental health providers</li>
+                            <li><a href="https://www.cci.health.wa.gov.au/Resources/Looking-After-Yourself/Attention-and-Concentration" target="_blank" rel="noopener">CCI CBT Worksheets</a> - Free ADHD-specific CBT resources</li>
+                        </ul>
+                    </div>
+
+                    <div class="support-card">
+                        <h4>Medical & Medication Support</h4>
+                        <ul>
+                            <li><a href="https://chadd.org/about-adhd/medication-management/" target="_blank" rel="noopener">CHADD Medication Hub</a> - Comprehensive medication guides and research</li>
+                            <li><a href="https://www.additudemag.com/medication/" target="_blank" rel="noopener">ADDitude Medication Center</a> - Side effects, dosing, and titration guides</li>
+                            <li><a href="https://www.apsard.org/find-a-provider" target="_blank" rel="noopener">APSARD Provider Network</a> - Medical professionals specializing in ADHD</li>
+                        </ul>
+                    </div>
+
+                    <div class="support-card">
+                        <h4>Community & Advocacy</h4>
+                        <ul>
+                            <li><a href="https://chadd.org/affiliates/" target="_blank" rel="noopener">CHADD Local Chapters</a> - In-person support groups and advocacy training</li>
+                            <li><a href="https://www.additudemag.com/forums/" target="_blank" rel="noopener">ADDitude Community Forums</a> - Active discussions on ADHD life strategies</li>
+                            <li><a href="https://www.reddit.com/r/ADHD/" target="_blank" rel="noopener">r/ADHD Community</a> - Peer support and daily tips from 1.5M+ members</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
