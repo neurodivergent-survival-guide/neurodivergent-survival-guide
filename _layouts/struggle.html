@@ -1,6 +1,44 @@
 ---
 layout: default
 ---
+
+<!-- SEO Meta Tags -->
+<meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ page.title }} - {{ page.subtitle }}{% endif %}">
+<meta name="keywords" content="{{ page.condition }}, {{ page.title | downcase }}, neurodivergent, mental health, coping strategies, {% if page.search_terms %}{{ page.search_terms | join: ', ' }}{% endif %}">
+<link rel="canonical" href="{{ site.url }}{{ page.url }}">
+
+<!-- Open Graph Tags -->
+<meta property="og:title" content="{{ page.title }}{% if page.subtitle %} - {{ page.subtitle }}{% endif %}">
+<meta property="og:description" content="{% if page.description %}{{ page.description }}{% else %}{{ page.title }} - {{ page.subtitle }}{% endif %}">
+<meta property="og:type" content="article">
+<meta property="og:url" content="{{ site.url }}{{ page.url }}">
+<meta property="og:site_name" content="The Neurodivergent Survival Guide">
+
+<!-- Twitter Card Tags -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ page.title }}{% if page.subtitle %} - {{ page.subtitle }}{% endif %}">
+<meta name="twitter:description" content="{% if page.description %}{{ page.description }}{% else %}{{ page.title }} - {{ page.subtitle }}{% endif %}">
+
+<!-- Schema.org Structured Data -->
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "HealthTopicSummary",
+    "name": "{{ page.title }}",
+    "description": "{% if page.description %}{{ page.description }}{% else %}{{ page.title }} - {{ page.subtitle }}{% endif %}",
+    "url": "{{ site.url }}{{ page.url }}",
+    "dateModified": "{{ page.last_modified_at | default: site.time | date_to_xmlschema }}",
+    "publisher": {
+        "@type": "Organization",
+        "name": "The Neurodivergent Survival Guide"
+    },
+    "about": {
+        "@type": "MedicalCondition",
+        "name": "{% if page.condition == 'adhd' %}ADHD{% elsif page.condition == 'autism' %}Autism{% elsif page.condition == 'bipolar' %}Bipolar Disorder{% elsif page.condition == 'bpd' %}Borderline Personality Disorder{% elsif page.condition == 'ocd' %}OCD{% endif %}"
+    }
+}
+</script>
+
 {% if page.condition %}
   {% assign colors = site.data.condition_colors[page.condition] %}
 {% else %}
@@ -185,7 +223,7 @@ layout: default
     .toc-header {
         display: flex;
         align-items: center;
-        justify-content: between;
+        justify-content: space-between;
         color: #4a5568;
         font-weight: 600;
         font-size: 1rem;
@@ -211,8 +249,8 @@ layout: default
 
     .toc-links {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 0.75rem;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 0.5rem;
     }
 
     .toc-link {
@@ -626,6 +664,10 @@ layout: default
         .tooltip {
             max-width: 400px;
         }
+        
+        .toc-links {
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        }
     }
 
     /* Mobile-specific tooltip positioning */
@@ -652,6 +694,10 @@ layout: default
         }
 
         .struggle-tag:hover {
+            transform: none;
+        }
+
+        .toc-card:hover {
             transform: none;
         }
 
@@ -696,6 +742,10 @@ layout: default
             justify-content: center;
             text-align: center;
         }
+
+        .toc-links {
+            grid-template-columns: 1fr;
+        }
     }
 
     @media (max-width: 480px) {
@@ -725,12 +775,17 @@ layout: default
             right: 10px !important;
             bottom: 10px !important;
         }
+
+        .table-of-contents {
+            padding: 0 1rem;
+        }
     }
 
     /* Focus states for accessibility */
     .struggle-tag:focus,
     .jargon:focus,
-    .breadcrumb a:focus {
+    .breadcrumb a:focus,
+    .toc-link:focus {
         outline: 2px solid #fff;
         outline-offset: 2px;
     }
@@ -795,6 +850,10 @@ layout: default
             text-align: center;
             padding: 0 1rem;
         }
+
+        .struggle-navigation .nav-link:hover {
+            transform: none;
+        }
     }
 </style>
 
@@ -846,7 +905,17 @@ layout: default
 
 <div class="container">
     <main role="main" id="main-content">
-        {{ content }}
+        <!-- Only display content if status is published or not set -->
+        {% unless page.status == 'draft' %}
+            {{ content }}
+        {% else %}
+            <div class="content-card">
+                <div class="what-section">
+                    <h2>Page Under Development</h2>
+                    <p>This struggle page is currently being developed and is not yet available. Please check back later or browse our other available resources.</p>
+                </div>
+            </div>
+        {% endunless %}
     </main>
 </div>
 
@@ -857,12 +926,19 @@ layout: default
 
 {% comment %}
 Flatten the struggle_order data structure into a single array for navigation
+Only include published struggles (exclude those with status: draft)
 {% endcomment %}
 {% assign all_struggles = '' | split: '' %}
 {% for condition_data in site.data.struggle_order %}
   {% assign condition_struggles = condition_data[1] %}
   {% for struggle in condition_struggles %}
-    {% assign all_struggles = all_struggles | push: struggle %}
+    {% comment %}Find the actual page and check its status{% endcomment %}
+    {% assign struggle_page = site.pages | where: "slug", struggle.slug | first %}
+    {% if struggle_page %}
+      {% unless struggle_page.status == 'draft' %}
+        {% assign all_struggles = all_struggles | push: struggle %}
+      {% endunless %}
+    {% endif %}
   {% endfor %}
 {% endfor %}
 
