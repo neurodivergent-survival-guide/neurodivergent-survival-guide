@@ -1,686 +1,134 @@
 ---
 layout: struggle
 title: "Physical Restlessness"
+subtitle: "When your body needs to move to help your brain function"
 slug: physical-restlessness
+condition: adhd
 ---
+
 <!-- struggles/physical-restlessness.html -->
-<style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
 
-    body {
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        font-weight: 500;
-        background: linear-gradient(135deg, #d63031 0%, #a21f23 100%);
-        color: #333;
-        min-height: 100vh;
-        line-height: 1.7;
-    }
+<div class="content-card">
+    <div class="what-section">
+        <h2 id="what-this-feels-like">What This Feels Like</h2>
+        <p><a class="jargon">Physical restlessness<span class="tooltip">The need to move your body, fidget, or change positions frequently to maintain focus and comfort</span></a> often feels like having energy constantly bubbling under your skin that needs to escape through movement. Many people describe it as feeling like they'll "crawl out of their skin" if they have to sit still for extended periods.</p>
 
-    .header {
-        background: rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(10px);
-        padding: 1.5rem 2rem;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    }
+        <p>You might find yourself constantly shifting positions, bouncing your leg, clicking pens, or playing with whatever objects are within reach. During long meetings or classes, the need to move can become so overwhelming that it's difficult to focus on anything else. <a class="jargon">Fidgeting<span class="tooltip">Small, repetitive movements that help regulate attention and nervous energy</span></a> isn't optional - it feels necessary for your brain to function properly.</p>
 
-    .header h1 {
-        color: white;
-        font-size: 2.5rem;
-        font-weight: 300;
-        margin-bottom: 0.5rem;
-    }
+        <p>This restlessness often varies throughout the day and can be affected by factors like stress, medication timing, caffeine intake, or how much <a class="jargon">mental stimulation<span class="tooltip">Cognitive engagement and challenge that affects your brain's arousal level</span></a> you're getting from your current activity. Sometimes the movement need feels gentle and manageable, other times it feels urgent and impossible to ignore.</p>
 
-    .header p {
-        color: rgba(255, 255, 255, 0.9);
-        font-size: 1.2rem;
-    }
+        <div class="highlight-box">
+            <p><strong>Common experiences:</strong> Leg bouncing, pen clicking, hair twirling; feeling trapped in still environments; pacing while thinking or talking; needing to stand and move during long conversations; using movement to help concentrate.</p>
+        </div>
+    </div>
 
-    .breadcrumb {
-        background: rgba(255, 255, 255, 0.05);
-        padding: 0.8rem 2rem;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        overflow-x: auto;
-        white-space: nowrap;
-    }
+    <div class="why-section">
+        <h2 id="why-this-happens">Why This Might Be Happening</h2>
+        <p><a class="jargon">Physical restlessness<span class="tooltip">The need to move your body, fidget, or change positions frequently to maintain focus and comfort</span></a> in <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> serves important neurological functions. Movement helps regulate your brain's <a class="jargon">arousal level<span class="tooltip">Your brain's current state of alertness and activation</span></a> and can actually improve focus and <a class="jargon">cognitive performance<span class="tooltip">How well your brain processes information, maintains attention, and executes tasks</span></a> for many people with <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a>.</p>
 
-    .breadcrumb a {
-        color: rgba(255, 255, 255, 0.8);
-        text-decoration: none;
-        font-size: 0.9rem;
-    }
+        <p>Your brain uses <a class="jargon">proprioceptive input<span class="tooltip">Sensory feedback from muscles and joints that helps you know where your body is in space</span></a> and <a class="jargon">vestibular stimulation<span class="tooltip">Input from your inner ear that affects balance and spatial awareness</span></a> from movement to help maintain optimal <a class="jargon">cognitive arousal<span class="tooltip">The level of brain activation needed for optimal functioning and attention</span></a>. <a class="jargon">Fidgeting<span class="tooltip">Small, repetitive movements that help regulate attention and nervous energy</span></a> and restless movement provide the sensory input your <a class="jargon">nervous system<span class="tooltip">Your brain, spinal cord, and nerves that control movement and sensation</span></a> needs to stay alert and focused.</p>
 
-    .breadcrumb a:hover {
-        color: white;
-    }
+        <p>The <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> brain often seeks additional <a class="jargon">sensory stimulation<span class="tooltip">Input from touch, movement, sound, or other senses that help regulate brain function</span></a> to reach optimal functioning. <a class="jargon">Hyperactivity<span class="tooltip">Excessive movement and restlessness that's driven by neurological differences, not behavior choices</span></a> isn't about having too much energy - it's about your brain's attempt to regulate itself through movement and <a class="jargon">sensory seeking<span class="tooltip">Actively pursuing sensory experiences to help your nervous system function optimally</span></a>.</p>
 
-    .breadcrumb span {
-        color: rgba(255, 255, 255, 0.6);
-        margin: 0 0.5rem;
-    }
+        <div class="learn-more" onclick="toggleLearnMore(this)">
+            <h3>Learn More: The Neuroscience of Movement and ADHD ↓</h3>
+            <div class="learn-more-content">
+                <p><a class="jargon">Physical restlessness<span class="tooltip">The need to move your body, fidget, or change positions frequently to maintain focus and comfort</span></a> involves the <a class="jargon">reticular activating system<span class="tooltip">Brain network that controls arousal, alertness, and the sleep-wake cycle</span></a>, which helps regulate your brain's overall activation level. Movement provides input to this system that helps maintain optimal <a class="jargon">cognitive arousal<span class="tooltip">The level of brain activation needed for optimal functioning and attention</span></a>.</p>
 
-    .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 2rem;
-        width: 100%;
-        box-sizing: border-box;
-    }
-
-    .content-card {
-        background: rgba(255, 255, 255, 0.95);
-        border-radius: 20px;
-        padding: 2.5rem;
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-        margin-bottom: 2rem;
-    }
-
-    .what-section {
-        background: #ffe6e6;
-        padding: 2rem;
-        border-radius: 16px;
-        margin: 2rem 0;
-        border-left: 4px solid #d63031;
-    }
-
-    .what-section h2 {
-        color: #d63031;
-        margin-bottom: 1rem;
-        font-size: 1.6rem;
-    }
-
-    .what-section p {
-        margin-bottom: 1rem;
-        font-size: 1.05rem;
-        color: #555;
-    }
-
-    .why-section {
-        background: #ffeaa7;
-        padding: 2rem;
-        border-radius: 16px;
-        margin: 2rem 0;
-        border-left: 4px solid #f1c40f;
-    }
-
-    .why-section h2 {
-        color: #f39c12;
-        margin-bottom: 1rem;
-        font-size: 1.6rem;
-    }
-
-    .why-section p {
-        margin-bottom: 1rem;
-        font-size: 1.05rem;
-        color: #555;
-    }
-
-    .immediate-help {
-        background: #cce5ff;
-        padding: 2rem;
-        border-radius: 16px;
-        margin: 2rem 0;
-        border-left: 4px solid #007acc;
-    }
-
-    .immediate-help h2 {
-        color: #005599;
-        margin-bottom: 1rem;
-        font-size: 1.6rem;
-    }
-
-    .immediate-help ul {
-        color: #555;
-        padding-left: 1.2rem;
-    }
-
-    .immediate-help li {
-        margin-bottom: 0.8rem;
-        font-size: 0.95rem;
-    }
-
-    .long-term {
-        background: #d4edda;
-        padding: 2rem;
-        border-radius: 16px;
-        margin: 2rem 0;
-        border-left: 4px solid #28a745;
-    }
-
-    .long-term h2 {
-        color: #155724;
-        margin-bottom: 1rem;
-        font-size: 1.6rem;
-    }
-
-    .long-term ul {
-        color: #555;
-        padding-left: 1.2rem;
-    }
-
-    .long-term li {
-        margin-bottom: 0.8rem;
-        font-size: 0.95rem;
-    }
-
-    .medical-section {
-        background: #d1f2eb;
-        padding: 2rem;
-        border-radius: 16px;
-        margin: 2rem 0;
-        border-left: 4px solid #17a2b8;
-    }
-
-    .medical-section h2 {
-        color: #0c5460;
-        margin-bottom: 1rem;
-        font-size: 1.6rem;
-    }
-
-    .medical-section p {
-        margin-bottom: 1rem;
-        font-size: 1.05rem;
-        color: #555;
-    }
-
-    .medical-section ul {
-        color: #555;
-        padding-left: 1.2rem;
-    }
-
-    .medical-section li {
-        margin-bottom: 0.8rem;
-        font-size: 0.95rem;
-    }
-
-    .validation-section {
-        background: #e2e3ff;
-        padding: 2rem;
-        border-radius: 16px;
-        margin: 2rem 0;
-        border-left: 4px solid #6c5ce7;
-    }
-
-    .validation-section h2 {
-        color: #5a4fcf;
-        margin-bottom: 1rem;
-        font-size: 1.6rem;
-    }
-
-    .validation-section p {
-        margin-bottom: 1rem;
-        font-size: 1.05rem;
-        color: #555;
-    }
-
-    .learn-more {
-        background: linear-gradient(45deg, #a29bfe, #6c5ce7);
-        color: white;
-        padding: 1.5rem;
-        border-radius: 12px;
-        margin: 1.5rem 0;
-        cursor: pointer;
-        transition: all 0.3s ease;
-    }
-
-    .learn-more h3 {
-        margin-bottom: 1rem;
-        font-size: 1.2rem;
-        color: white;
-    }
-
-    .learn-more:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-    }
-
-    .learn-more-content {
-        display: none;
-        margin-top: 1rem;
-        padding-top: 1rem;
-        border-top: 1px solid rgba(255, 255, 255, 0.3);
-        color: white;
-    }
-
-    .learn-more-content p {
-        color: white;
-    }
-
-    .learn-more.expanded .learn-more-content {
-        display: block;
-    }
-
-    .related-struggles {
-        background: #f8f9fa;
-        padding: 1.5rem;
-        border-radius: 12px;
-        margin: 2rem 0;
-        border: 1px solid #e0e0e0;
-    }
-
-    .related-struggles h3 {
-        color: #333;
-        margin-bottom: 1rem;
-        font-size: 1.2rem;
-    }
-
-    .struggle-tags {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-        justify-content: center;
-    }
-
-    .struggle-tag {
-        background: #d63031;
-        color: white;
-        padding: 0.5rem 1rem;
-        border-radius: 20px;
-        font-size: 0.85rem;
-        text-decoration: none;
-        transition: all 0.3s ease;
-        min-height: 44px;
-        display: flex;
-        align-items: center;
-    }
-
-    .struggle-tag:hover {
-        background: #a21f23;
-        color: white;
-        text-decoration: none;
-        transform: translateY(-1px);
-    }
-
-    .highlight-box {
-        background: #fff8e1;
-        padding: 1rem;
-        border-radius: 8px;
-        border-left: 3px solid #ffc107;
-        margin: 1rem 0;
-    }
-
-    /* Focus states for accessibility */
-    .jargon:focus,
-    .breadcrumb a:focus,
-    .struggle-tag:focus {
-        outline: 2px solid #fff;
-        outline-offset: 2px;
-    }
-
-    /* Motion accessibility */
-    @media (prefers-reduced-motion: reduce) {
-        *, *::before, *::after {
-            animation-duration: 0.01ms !important;
-            animation-iteration-count: 1 !important;
-            transition-duration: 0.01ms !important;
-        }
-    }
-
-    /* Jargon styling - context-aware based on background */
-    .jargon {
-        text-decoration: none;
-        border-bottom: 1px dotted;
-        position: relative;
-        cursor: help;
-        font-weight: 500;
-    }
-
-    /* Pink jargon for white backgrounds */
-    .content-card .jargon {
-        color: #e84393;
-        border-bottom-color: #e84393;
-    }
-
-    .content-card .jargon:hover {
-        color: #fd79a8;
-        border-bottom-color: #fd79a8;
-    }
-
-    /* Bold black jargon for colored backgrounds */
-    .what-section .jargon,
-    .why-section .jargon,
-    .immediate-help .jargon,
-    .long-term .jargon,
-    .medical-section .jargon,
-    .validation-section .jargon,
-    .highlight-box .jargon {
-        color: #333;
-        font-weight: 600;
-        border-bottom-color: #333;
-    }
-
-    /* White jargon for gradient backgrounds */
-    .header .jargon,
-    .breadcrumb .jargon,
-    .learn-more .jargon,
-    .learn-more-content .jargon {
-        color: white;
-        border-bottom-color: rgba(255, 255, 255, 0.7);
-        background: rgba(255, 255, 255, 0.1);
-        padding: 2px 6px;
-        border-radius: 4px;
-    }
-
-    .header .jargon:hover,
-    .breadcrumb .jargon:hover,
-    .learn-more .jargon:hover,
-    .learn-more-content .jargon:hover {
-        background: rgba(255, 255, 255, 0.2);
-        border-bottom-color: white;
-    }
-
-    /* Auto-sizing tooltips */
-    .tooltip {
-        visibility: hidden;
-        opacity: 0;
-        position: absolute;
-        bottom: calc(100% + 8px);
-        left: 50%;
-        transform: translateX(-50%);
-        background: #333;
-        color: white;
-        padding: 12px 16px;
-        border-radius: 8px;
-        font-size: 0.9rem;
-        font-weight: normal;
-        z-index: 9999;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-        transition: opacity 0.3s, visibility 0.3s;
-        max-width: 800px;
-        min-width: 200px;
-        width: max-content;
-        white-space: normal;
-        text-align: left;
-        line-height: 1.5;
-        pointer-events: none;
-    }
-
-    .tooltip::after {
-        content: '';
-        position: absolute;
-        top: 100%;
-        left: 50%;
-        transform: translateX(-50%);
-        border: 6px solid transparent;
-        border-top-color: #333;
-    }
-
-    .jargon:hover .tooltip {
-        visibility: visible;
-        opacity: 1;
-    }
-
-    /* Mobile responsive tooltip adjustments */
-    @media (max-width: 1024px) {
-        .tooltip {
-            max-width: 400px;
-        }
-    }
-
-    /* Mobile-specific tooltip positioning */
-    @media (max-width: 768px) {
-        .tooltip {
-            position: fixed !important;
-            bottom: 20px !important;
-            left: 20px !important;
-            right: 20px !important;
-            transform: none !important;
-            max-width: none !important;
-            width: auto !important;
-        }
-
-        .tooltip::after {
-            display: none !important;
-        }
-
-        /* Remove transforms on mobile to prevent positioning context issues */
-        .learn-more:hover {
-            transform: none;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-        }
-
-        .struggle-tag:hover {
-            transform: none;
-        }
-
-        .header {
-            padding: 1rem;
-        }
-
-        .header h1 {
-            font-size: 2rem;
-        }
-
-        .header p {
-            font-size: 1rem;
-        }
-
-        .breadcrumb {
-            padding: 0.6rem 1rem;
-        }
-
-        .container {
-            padding: 1rem;
-        }
-
-        .content-card {
-            padding: 1.5rem;
-        }
-
-        .what-section,
-        .why-section,
-        .immediate-help,
-        .long-term,
-        .medical-section,
-        .validation-section {
-            padding: 1.5rem;
-        }
-
-        .struggle-tags {
-            flex-direction: column;
-        }
-
-        .struggle-tag {
-            justify-content: center;
-            text-align: center;
-        }
-    }
-
-    @media (max-width: 480px) {
-        .header h1 {
-            font-size: 1.8rem;
-        }
-
-        .header p {
-            font-size: 0.9rem;
-        }
-
-        .content-card {
-            padding: 1.2rem;
-        }
-
-        .what-section,
-        .why-section,
-        .immediate-help,
-        .long-term,
-        .medical-section,
-        .validation-section {
-            padding: 1.2rem;
-        }
-
-        .tooltip {
-            left: 10px !important;
-            right: 10px !important;
-            bottom: 10px !important;
-        }
-    }
-</style>
-
-<div class="header">
-    <h1>Physical Restlessness</h1>
-    <p>When your body needs to move to help your brain function</p>
-</div>
-
-<div class="breadcrumb">
-    <a href="{{ '/index.html' | relative_url }}">Home</a>
-    <span>></span>
-    <a href="{{ '/struggles/index.html' | relative_url }}">Struggles</a>
-    <span>></span>
-    <a href="{{ '/conditions/adhd.html' | relative_url }}">ADHD</a>
-    <span>></span>
-    Physical Restlessness
-</div>
-
-<div class="container">
-    <main role="main" id="main-content">
-        <div class="content-card">
-            <div class="what-section">
-                <h2 id="what-this-feels-like">What This Feels Like</h2>
-                <p><a class="jargon">Physical restlessness<span class="tooltip">The need to move your body, fidget, or change positions frequently to maintain focus and comfort</span></a> often feels like having energy constantly bubbling under your skin that needs to escape through movement. Many people describe it as feeling like they'll "crawl out of their skin" if they have to sit still for extended periods.</p>
-
-                <p>You might find yourself constantly shifting positions, bouncing your leg, clicking pens, or playing with whatever objects are within reach. During long meetings or classes, the need to move can become so overwhelming that it's difficult to focus on anything else. <a class="jargon">Fidgeting<span class="tooltip">Small, repetitive movements that help regulate attention and nervous energy</span></a> isn't optional - it feels necessary for your brain to function properly.</p>
-
-                <p>This restlessness often varies throughout the day and can be affected by factors like stress, medication timing, caffeine intake, or how much <a class="jargon">mental stimulation<span class="tooltip">Cognitive engagement and challenge that affects your brain's arousal level</span></a> you're getting from your current activity. Sometimes the movement need feels gentle and manageable, other times it feels urgent and impossible to ignore.</p>
-
-                <div class="highlight-box">
-                    <p><strong>Common experiences:</strong> Leg bouncing, pen clicking, hair twirling; feeling trapped in still environments; pacing while thinking or talking; needing to stand and move during long conversations; using movement to help concentrate.</p>
-                </div>
-            </div>
-
-            <div class="why-section">
-                <h2 id="why-this-happens">Why This Might Be Happening</h2>
-                <p><a class="jargon">Physical restlessness<span class="tooltip">The need to move your body, fidget, or change positions frequently to maintain focus and comfort</span></a> in <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> serves important neurological functions. Movement helps regulate your brain's <a class="jargon">arousal level<span class="tooltip">Your brain's current state of alertness and activation</span></a> and can actually improve focus and <a class="jargon">cognitive performance<span class="tooltip">How well your brain processes information, maintains attention, and executes tasks</span></a> for many people with <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a>.</p>
-
-                <p>Your brain uses <a class="jargon">proprioceptive input<span class="tooltip">Sensory feedback from muscles and joints that helps you know where your body is in space</span></a> and <a class="jargon">vestibular stimulation<span class="tooltip">Input from your inner ear that affects balance and spatial awareness</span></a> from movement to help maintain optimal <a class="jargon">cognitive arousal<span class="tooltip">The level of brain activation needed for optimal functioning and attention</span></a>. <a class="jargon">Fidgeting<span class="tooltip">Small, repetitive movements that help regulate attention and nervous energy</span></a> and restless movement provide the sensory input your <a class="jargon">nervous system<span class="tooltip">Your brain, spinal cord, and nerves that control movement and sensation</span></a> needs to stay alert and focused.</p>
-
-                <p>The <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> brain often seeks additional <a class="jargon">sensory stimulation<span class="tooltip">Input from touch, movement, sound, or other senses that help regulate brain function</span></a> to reach optimal functioning. <a class="jargon">Hyperactivity<span class="tooltip">Excessive movement and restlessness that's driven by neurological differences, not behavior choices</span></a> isn't about having too much energy - it's about your brain's attempt to regulate itself through movement and <a class="jargon">sensory seeking<span class="tooltip">Actively pursuing sensory experiences to help your nervous system function optimally</span></a>.</p>
-
-                <div class="learn-more" onclick="toggleLearnMore(this)">
-                    <h3>Learn More: The Neuroscience of Movement and ADHD ↓</h3>
-                    <div class="learn-more-content">
-                        <p><a class="jargon">Physical restlessness<span class="tooltip">The need to move your body, fidget, or change positions frequently to maintain focus and comfort</span></a> involves the <a class="jargon">reticular activating system<span class="tooltip">Brain network that controls arousal, alertness, and the sleep-wake cycle</span></a>, which helps regulate your brain's overall activation level. Movement provides input to this system that helps maintain optimal <a class="jargon">cognitive arousal<span class="tooltip">The level of brain activation needed for optimal functioning and attention</span></a>.</p>
-                        
-                        <p>Research shows that <a class="jargon">fidgeting<span class="tooltip">Small, repetitive movements that help regulate attention and nervous energy</span></a> can actually improve <a class="jargon">working memory<span class="tooltip">The mental workspace that temporarily holds and manipulates information during thinking tasks</span></a> performance and attention in people with <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a>. The movement helps activate <a class="jargon">prefrontal cortex<span class="tooltip">Brain area responsible for executive functions including attention and working memory</span></a> networks needed for <a class="jargon">executive function<span class="tooltip">Mental skills that help you plan, focus, remember instructions, and manage multiple tasks</span></a>.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="immediate-help">
-                <h2 id="next-five-minutes">What Can Help You Through the Next 5 Minutes</h2>
-                <p>When you need to move your body right now but are in a situation that requires stillness:</p>
-
-                <ul>
-                    <li><strong>Use <a class="jargon">discrete fidgeting<span class="tooltip">Small movements that help you self-regulate without drawing attention from others</span></a>:</strong> Try toe wiggling in shoes, <a class="jargon">isometric exercises<span class="tooltip">Muscle contractions without visible movement, like pressing palms together</span></a> (pressing palms together under desk), or silent finger exercises.</li>
-                    <li><strong>Engage your <a class="jargon">core muscles<span class="tooltip">Deep abdominal and back muscles that provide stability and can be activated while sitting</span></a>:</strong> Gently engage your abdominal muscles or practice <a class="jargon">postural adjustments<span class="tooltip">Small changes in how you sit or stand that provide proprioceptive input</span></a> while seated to get <a class="jargon">proprioceptive input<span class="tooltip">Sensory feedback from muscles and joints that helps you know where your body is in space</span></a>.</li>
-                    <li><strong>Use <a class="jargon">fidget tools<span class="tooltip">Objects designed to provide sensory input and movement while maintaining focus</span></a>:</strong> Stress balls, fidget cubes, worry stones, or even a paperclip can provide the <a class="jargon">tactile stimulation<span class="tooltip">Touch-based sensory input that can help regulate your nervous system</span></a> your hands need.</li>
-                    <li><strong>Take movement micro-breaks:</strong> Stand up and stretch for 30 seconds, do a few jumping jacks in a bathroom, or walk around the block if possible.</li>
-                    <li><strong>Change your position frequently:</strong> If you must sit, alternate between different sitting positions, use a <a class="jargon">stability ball<span class="tooltip">Exercise ball used as a seat that provides vestibular input and allows for small movements</span></a>, or stand when possible.</li>
-                    <li><strong>Use <a class="jargon">bilateral movement<span class="tooltip">Activities that engage both sides of your body simultaneously, which can be calming for the nervous system</span></a>:</strong> Cross-lateral movements like marching in place or alternating heel-toe can provide <a class="jargon">neurological regulation<span class="tooltip">Helping your nervous system reach an optimal state of activation and calm</span></a>.</li>
-                    <li><strong>Practice <a class="jargon">mindful movement<span class="tooltip">Paying attention to your body's movement needs and responding to them consciously</span></a>:</strong> Notice what type of movement your body is craving and try to provide it in the most socially appropriate way possible.</li>
-                </ul>
-
-                <div class="highlight-box">
-                    <p><strong>Emergency stillness strategy:</strong> If you absolutely must be still, try the "invisible workout" - tense and release muscle groups in sequence, or practice slow, deep breathing while pressing your feet firmly into the floor for <a class="jargon">proprioceptive input<span class="tooltip">Sensory feedback from muscles and joints that helps you know where your body is in space</span></a>.</p>
-                </div>
-            </div>
-
-            <div class="long-term">
-                <h2 id="healthy-long-term-solutions">What Are Some Healthy Long-Term Solutions</h2>
-                <p>Building sustainable approaches to meeting your body's <a class="jargon">movement needs<span class="tooltip">Your nervous system's requirement for physical activity to maintain optimal function</span></a> across different environments:</p>
-
-                <ul>
-                    <li><strong>Advocate for <a class="jargon">movement accommodations<span class="tooltip">Adjustments to work or school environments that allow for necessary movement</span></a>:</strong> Request standing desks, permission to pace during meetings, or breaks for movement during long activities.</li>
-                    <li><strong>Create <a class="jargon">movement-friendly environments<span class="tooltip">Spaces designed to allow and encourage movement while maintaining productivity</span></a>:</strong> Set up your workspace to allow for standing, walking, or <a class="jargon">fidgeting<span class="tooltip">Small, repetitive movements that help regulate attention and nervous energy</span></a> without disruption.</li>
-                    <li><strong>Schedule regular <a class="jargon">movement breaks<span class="tooltip">Planned periods of physical activity that help prevent restlessness from building up</span></a>:</strong> Build movement into your daily schedule rather than waiting until restlessness becomes overwhelming.</li>
-                    <li><strong>Develop a <a class="jargon">fidget toolkit<span class="tooltip">Collection of tactile and movement tools appropriate for different situations</span></a>:</strong> Have appropriate <a class="jargon">fidget tools<span class="tooltip">Objects designed to provide sensory input and movement while maintaining focus</span></a> for different environments - quiet ones for meetings, satisfying ones for home use.</li>
-                    <li><strong>Use <a class="jargon">exercise as medication<span class="tooltip">Regular physical activity that helps regulate ADHD symptoms and restlessness</span></a>:</strong> Regular cardiovascular exercise can reduce overall restlessness and improve <a class="jargon">attention regulation<span class="tooltip">The brain's ability to direct and sustain focus where you want it, when you want it</span></a> throughout the day.</li>
-                    <li><strong>Practice <a class="jargon">movement meditation<span class="tooltip">Mindfulness practices that incorporate movement, like walking meditation or mindful stretching</span></a>:</strong> Walking meditation, yoga, or <a class="jargon">tai chi<span class="tooltip">Gentle movement practice that combines physical activity with mindfulness</span></a> can help regulate your <a class="jargon">nervous system<span class="tooltip">Your brain, spinal cord, and nerves that control movement and sensation</span></a> while meeting movement needs.</li>
-                    <li><strong>Educate your social circle:</strong> Help family, friends, and colleagues understand that your movement needs are neurological, not behavioral choices or rudeness.</li>
-                    <li><strong>Consider medication timing:</strong> <a class="jargon">Stimulant medications<span class="tooltip">ADHD medications that can affect restlessness levels throughout the day</span></a> can sometimes increase or decrease restlessness depending on timing and dosage.</li>
-                </ul>
-
-                <div class="learn-more" onclick="toggleLearnMore(this)">
-                    <h3>Learn More: Advanced Movement Integration Strategies ↓</h3>
-                    <div class="learn-more-content">
-                        <p><strong><a class="jargon">Sensory diet<span class="tooltip">A planned schedule of sensory activities designed to help your nervous system maintain optimal function</span></a> development:</strong> Work with an <a class="jargon">occupational therapist<span class="tooltip">Healthcare professional who helps people develop skills for daily living and sensory regulation</span></a> to create a personalized plan for meeting your <a class="jargon">sensory needs<span class="tooltip">Your individual requirements for touch, movement, and other sensory input</span></a> throughout the day.</p>
-                        
-                        <p><strong><a class="jargon">Workplace ergonomics<span class="tooltip">Designing work environments to support your body's natural needs and movement patterns</span></a>:</strong> Explore options like treadmill desks, stability balls, <a class="jargon">adjustable workstations<span class="tooltip">Work surfaces that can be changed for sitting, standing, or other positions</span></a>, or jobs that naturally incorporate movement.</p>
-                        
-                        <p><strong><a class="jargon">Hyperactivity reframing<span class="tooltip">Understanding physical restlessness as a neurological need rather than a behavior problem</span></a>:</strong> Recognize that your movement needs represent your brain's attempt to optimize its function, not lack of self-control or disrespect for social norms.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="medical-section">
-                <h2 id="medical-intervention">When Should I Consider Medical Intervention</h2>
-                <p>Consider professional support if <a class="jargon">physical restlessness<span class="tooltip">The need to move your body, fidget, or change positions frequently to maintain focus and comfort</span></a> is significantly impacting your life:</p>
-
-                <ul>
-                    <li>Restlessness is so severe that it interferes with work, school, or social activities</li>
-                    <li>You're experiencing social consequences or relationship problems due to <a class="jargon">hyperactivity<span class="tooltip">Excessive movement and restlessness that's driven by neurological differences, not behavior choices</span></a></li>
-                    <li>Movement needs are preventing you from participating in necessary activities (driving long distances, medical appointments, meetings)</li>
-                    <li>You're using substances to try to calm your restlessness or increase your ability to sit still</li>
-                    <li><a class="jargon">Restless leg syndrome<span class="tooltip">A neurological condition causing uncomfortable sensations in legs and an irresistible urge to move them</span></a> or other <a class="jargon">movement disorders<span class="tooltip">Neurological conditions that affect the speed, fluency, quality, and ease of movement</span></a> are disrupting your sleep or daily functioning</li>
-                    <li>Physical restlessness has worsened suddenly, which might indicate medication <a class="jargon">side effects<span class="tooltip">Unintended effects of medication that occur alongside the intended therapeutic effects</span></a> or other medical issues</li>
-                </ul>
-
-                <p>Healthcare providers can help evaluate whether medication adjustments might help balance restlessness with other symptoms, and provide strategies for accommodating your <a class="jargon">movement needs<span class="tooltip">Your nervous system's requirement for physical activity to maintain optimal function</span></a>.</p>
-
-                <div class="highlight-box">
-                    <p><strong>Types of support that help:</strong> <a class="jargon">ADHD coaching<span class="tooltip">Specialized support focused on developing practical strategies for ADHD-related challenges</span></a> for <a class="jargon">movement integration<span class="tooltip">Incorporating appropriate movement into daily life and work routines</span></a>, <a class="jargon">occupational therapy<span class="tooltip">Therapy focused on developing skills for daily living and sensory regulation</span></a> for <a class="jargon">sensory regulation<span class="tooltip">Strategies for managing how your nervous system processes sensory input including movement needs</span></a>, medication evaluation for <a class="jargon">hyperactivity management<span class="tooltip">Medical approaches to balancing movement needs with daily functioning requirements</span></a>, or <a class="jargon">movement therapy<span class="tooltip">Therapeutic approaches that use physical activity and movement to improve function and well-being</span></a>.</p>
-                </div>
-            </div>
-
-            <div class="validation-section">
-                <h2 id="youre-not-imagining-this">You're Not Imagining This</h2>
-                <p><a class="jargon">Physical restlessness<span class="tooltip">The need to move your body, fidget, or change positions frequently to maintain focus and comfort</span></a> and <a class="jargon">hyperactivity<span class="tooltip">Excessive movement and restlessness that's driven by neurological differences, not behavior choices</span></a> are neurological features of <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a>, not character flaws or lack of self-control. Your body's need to move serves important functions for your brain's optimal operation.</p>
-
-                <p>Many successful people with <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> continue to need movement throughout their lives and build careers and relationships that accommodate this neurological difference. The goal isn't to eliminate your <a class="jargon">movement needs<span class="tooltip">Your nervous system's requirement for physical activity to maintain optimal function</span></a> - it's to find socially appropriate ways to meet them.</p>
-
-                <p>Society often treats stillness as a sign of maturity, attention, or respect, but for <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> brains, appropriate movement often enhances rather than detracts from cognitive performance. Your <a class="jargon">fidgeting<span class="tooltip">Small, repetitive movements that help regulate attention and nervous energy</span></a> and restlessness represent your brain's attempt to optimize its function, not disrespect or inattention.</p>
-
-                <p>The shame many people feel about needing to move, especially in professional or academic settings, can lead to <a class="jargon">masking<span class="tooltip">Suppressing natural neurological needs and behaviors to appear more socially acceptable</span></a> that actually reduces your cognitive performance. Understanding that movement is a legitimate <a class="jargon">neurological accommodation<span class="tooltip">Adjustments that support your brain's natural patterns and needs</span></a> can help you advocate for what you need.</p>
-
-                <div class="highlight-box">
-                    <p><strong>Remember:</strong> Your movement isn't disruptive behavior - it's a neurological tool that helps your brain function optimally. Focus on finding movement solutions that work for both you and your environment rather than trying to eliminate the need entirely.</p>
-                </div>
-            </div>
-
-            <div class="related-struggles">
-                <h3>Related Struggles</h3>
-                <div class="struggle-tags">
-                    <a href="{{ '/struggles/attention-regulation.html' | relative_url }}" class="struggle-tag">Attention Regulation</a>
-                    <a href="{{ '/struggles/sensory-overload.html' | relative_url }}" class="struggle-tag">Sensory Overload</a>
-                    <a href="{{ '/struggles/akathisia.html' | relative_url }}" class="struggle-tag">Akathisia</a>
-                    <a href="{{ '/struggles/executive-function-challenges.html' | relative_url }}" class="struggle-tag">Executive Function</a>
-                    <a href="{{ '/struggles/social-masking.html' | relative_url }}" class="struggle-tag">Social Masking</a>
-                </div>
+                <p>Research shows that <a class="jargon">fidgeting<span class="tooltip">Small, repetitive movements that help regulate attention and nervous energy</span></a> can actually improve <a class="jargon">working memory<span class="tooltip">The mental workspace that temporarily holds and manipulates information during thinking tasks</span></a> performance and attention in people with <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a>. The movement helps activate <a class="jargon">prefrontal cortex<span class="tooltip">Brain area responsible for executive functions including attention and working memory</span></a> networks needed for <a class="jargon">executive function<span class="tooltip">Mental skills that help you plan, focus, remember instructions, and manage multiple tasks</span></a>.</p>
             </div>
         </div>
-    </main>
+    </div>
+
+    <div class="immediate-help">
+        <h2 id="next-five-minutes">What Can Help You Through the Next 5 Minutes</h2>
+        <p>When you need to move your body right now but are in a situation that requires stillness:</p>
+
+        <ul>
+            <li><strong>Use <a class="jargon">discrete fidgeting<span class="tooltip">Small movements that help you self-regulate without drawing attention from others</span></a>:</strong> Try toe wiggling in shoes, <a class="jargon">isometric exercises<span class="tooltip">Muscle contractions without visible movement, like pressing palms together</span></a> (pressing palms together under desk), or silent finger exercises.</li>
+            <li><strong>Engage your <a class="jargon">core muscles<span class="tooltip">Deep abdominal and back muscles that provide stability and can be activated while sitting</span></a>:</strong> Gently engage your abdominal muscles or practice <a class="jargon">postural adjustments<span class="tooltip">Small changes in how you sit or stand that provide proprioceptive input</span></a> while seated to get <a class="jargon">proprioceptive input<span class="tooltip">Sensory feedback from muscles and joints that helps you know where your body is in space</span></a>.</li>
+            <li><strong>Use <a class="jargon">fidget tools<span class="tooltip">Objects designed to provide sensory input and movement while maintaining focus</span></a>:</strong> Stress balls, fidget cubes, worry stones, or even a paperclip can provide the <a class="jargon">tactile stimulation<span class="tooltip">Touch-based sensory input that can help regulate your nervous system</span></a> your hands need.</li>
+            <li><strong>Take movement micro-breaks:</strong> Stand up and stretch for 30 seconds, do a few jumping jacks in a bathroom, or walk around the block if possible.</li>
+            <li><strong>Change your position frequently:</strong> If you must sit, alternate between different sitting positions, use a <a class="jargon">stability ball<span class="tooltip">Exercise ball used as a seat that provides vestibular input and allows for small movements</span></a>, or stand when possible.</li>
+            <li><strong>Use <a class="jargon">bilateral movement<span class="tooltip">Activities that engage both sides of your body simultaneously, which can be calming for the nervous system</span></a>:</strong> Cross-lateral movements like marching in place or alternating heel-toe can provide <a class="jargon">neurological regulation<span class="tooltip">Helping your nervous system reach an optimal state of activation and calm</span></a>.</li>
+            <li><strong>Practice <a class="jargon">mindful movement<span class="tooltip">Paying attention to your body's movement needs and responding to them consciously</span></a>:</strong> Notice what type of movement your body is craving and try to provide it in the most socially appropriate way possible.</li>
+        </ul>
+
+        <div class="highlight-box">
+            <p><strong>Emergency stillness strategy:</strong> If you absolutely must be still, try the "invisible workout" - tense and release muscle groups in sequence, or practice slow, deep breathing while pressing your feet firmly into the floor for <a class="jargon">proprioceptive input<span class="tooltip">Sensory feedback from muscles and joints that helps you know where your body is in space</span></a>.</p>
+        </div>
+    </div>
+
+    <div class="long-term">
+        <h2 id="healthy-long-term-solutions">What Are Some Healthy Long-Term Solutions</h2>
+        <p>Building sustainable approaches to meeting your body's <a class="jargon">movement needs<span class="tooltip">Your nervous system's requirement for physical activity to maintain optimal function</span></a> across different environments:</p>
+
+        <ul>
+            <li><strong>Advocate for <a class="jargon">movement accommodations<span class="tooltip">Adjustments to work or school environments that allow for necessary movement</span></a>:</strong> Request standing desks, permission to pace during meetings, or breaks for movement during long activities.</li>
+            <li><strong>Create <a class="jargon">movement-friendly environments<span class="tooltip">Spaces designed to allow and encourage movement while maintaining productivity</span></a>:</strong> Set up your workspace to allow for standing, walking, or <a class="jargon">fidgeting<span class="tooltip">Small, repetitive movements that help regulate attention and nervous energy</span></a> without disruption.</li>
+            <li><strong>Schedule regular <a class="jargon">movement breaks<span class="tooltip">Planned periods of physical activity that help prevent restlessness from building up</span></a>:</strong> Build movement into your daily schedule rather than waiting until restlessness becomes overwhelming.</li>
+            <li><strong>Develop a <a class="jargon">fidget toolkit<span class="tooltip">Collection of tactile and movement tools appropriate for different situations</span></a>:</strong> Have appropriate <a class="jargon">fidget tools<span class="tooltip">Objects designed to provide sensory input and movement while maintaining focus</span></a> for different environments - quiet ones for meetings, satisfying ones for home use.</li>
+            <li><strong>Use <a class="jargon">exercise as medication<span class="tooltip">Regular physical activity that helps regulate ADHD symptoms and restlessness</span></a>:</strong> Regular cardiovascular exercise can reduce overall restlessness and improve <a class="jargon">attention regulation<span class="tooltip">The brain's ability to direct and sustain focus where you want it, when you want it</span></a> throughout the day.</li>
+            <li><strong>Practice <a class="jargon">movement meditation<span class="tooltip">Mindfulness practices that incorporate movement, like walking meditation or mindful stretching</span></a>:</strong> Walking meditation, yoga, or <a class="jargon">tai chi<span class="tooltip">Gentle movement practice that combines physical activity with mindfulness</span></a> can help regulate your <a class="jargon">nervous system<span class="tooltip">Your brain, spinal cord, and nerves that control movement and sensation</span></a> while meeting movement needs.</li>
+            <li><strong>Educate your social circle:</strong> Help family, friends, and colleagues understand that your movement needs are neurological, not behavioral choices or rudeness.</li>
+            <li><strong>Consider medication timing:</strong> <a class="jargon">Stimulant medications<span class="tooltip">ADHD medications that can affect restlessness levels throughout the day</span></a> can sometimes increase or decrease restlessness depending on timing and dosage.</li>
+        </ul>
+
+        <div class="learn-more" onclick="toggleLearnMore(this)">
+            <h3>Learn More: Advanced Movement Integration Strategies ↓</h3>
+            <div class="learn-more-content">
+                <p><strong><a class="jargon">Sensory diet<span class="tooltip">A planned schedule of sensory activities designed to help your nervous system maintain optimal function</span></a> development:</strong> Work with an <a class="jargon">occupational therapist<span class="tooltip">Healthcare professional who helps people develop skills for daily living and sensory regulation</span></a> to create a personalized plan for meeting your <a class="jargon">sensory needs<span class="tooltip">Your individual requirements for touch, movement, and other sensory input</span></a> throughout the day.</p>
+
+                <p><strong><a class="jargon">Workplace ergonomics<span class="tooltip">Designing work environments to support your body's natural needs and movement patterns</span></a>:</strong> Explore options like treadmill desks, stability balls, <a class="jargon">adjustable workstations<span class="tooltip">Work surfaces that can be changed for sitting, standing, or other positions</span></a>, or jobs that naturally incorporate movement.</p>
+
+                <p><strong><a class="jargon">Hyperactivity reframing<span class="tooltip">Understanding physical restlessness as a neurological need rather than a behavior problem</span></a>:</strong> Recognize that your movement needs represent your brain's attempt to optimize its function, not lack of self-control or disrespect for social norms.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="medical-section">
+        <h2 id="medical-intervention">When Should I Consider Medical Intervention</h2>
+        <p>Consider professional support if <a class="jargon">physical restlessness<span class="tooltip">The need to move your body, fidget, or change positions frequently to maintain focus and comfort</span></a> is significantly impacting your life:</p>
+
+        <ul>
+            <li>Restlessness is so severe that it interferes with work, school, or social activities</li>
+            <li>You're experiencing social consequences or relationship problems due to <a class="jargon">hyperactivity<span class="tooltip">Excessive movement and restlessness that's driven by neurological differences, not behavior choices</span></a></li>
+            <li>Movement needs are preventing you from participating in necessary activities (driving long distances, medical appointments, meetings)</li>
+            <li>You're using substances to try to calm your restlessness or increase your ability to sit still</li>
+            <li><a class="jargon">Restless leg syndrome<span class="tooltip">A neurological condition causing uncomfortable sensations in legs and an irresistible urge to move them</span></a> or other <a class="jargon">movement disorders<span class="tooltip">Neurological conditions that affect the speed, fluency, quality, and ease of movement</span></a> are disrupting your sleep or daily functioning</li>
+            <li>Physical restlessness has worsened suddenly, which might indicate medication <a class="jargon">side effects<span class="tooltip">Unintended effects of medication that occur alongside the intended therapeutic effects</span></a> or other medical issues</li>
+        </ul>
+
+        <p>Healthcare providers can help evaluate whether medication adjustments might help balance restlessness with other symptoms, and provide strategies for accommodating your <a class="jargon">movement needs<span class="tooltip">Your nervous system's requirement for physical activity to maintain optimal function</span></a>.</p>
+
+        <div class="highlight-box">
+            <p><strong>Types of support that help:</strong> <a class="jargon">ADHD coaching<span class="tooltip">Specialized support focused on developing practical strategies for ADHD-related challenges</span></a> for <a class="jargon">movement integration<span class="tooltip">Incorporating appropriate movement into daily life and work routines</span></a>, <a class="jargon">occupational therapy<span class="tooltip">Therapy focused on developing skills for daily living and sensory regulation</span></a> for <a class="jargon">sensory regulation<span class="tooltip">Strategies for managing how your nervous system processes sensory input including movement needs</span></a>, medication evaluation for <a class="jargon">hyperactivity management<span class="tooltip">Medical approaches to balancing movement needs with daily functioning requirements</span></a>, or <a class="jargon">movement therapy<span class="tooltip">Therapeutic approaches that use physical activity and movement to improve function and well-being</span></a>.</p>
+        </div>
+    </div>
+
+    <div class="validation-section">
+        <h2 id="youre-not-imagining-this">You're Not Imagining This</h2>
+        <p><a class="jargon">Physical restlessness<span class="tooltip">The need to move your body, fidget, or change positions frequently to maintain focus and comfort</span></a> and <a class="jargon">hyperactivity<span class="tooltip">Excessive movement and restlessness that's driven by neurological differences, not behavior choices</span></a> are neurological features of <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a>, not character flaws or lack of self-control. Your body's need to move serves important functions for your brain's optimal operation.</p>
+
+        <p>Many successful people with <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> continue to need movement throughout their lives and build careers and relationships that accommodate this neurological difference. The goal isn't to eliminate your <a class="jargon">movement needs<span class="tooltip">Your nervous system's requirement for physical activity to maintain optimal function</span></a> - it's to find socially appropriate ways to meet them.</p>
+
+        <p>Society often treats stillness as a sign of maturity, attention, or respect, but for <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> brains, appropriate movement often enhances rather than detracts from cognitive performance. Your <a class="jargon">fidgeting<span class="tooltip">Small, repetitive movements that help regulate attention and nervous energy</span></a> and restlessness represent your brain's attempt to optimize its function, not disrespect or inattention.</p>
+
+        <p>The shame many people feel about needing to move, especially in professional or academic settings, can lead to <a class="jargon">masking<span class="tooltip">Suppressing natural neurological needs and behaviors to appear more socially acceptable</span></a> that actually reduces your cognitive performance. Understanding that movement is a legitimate <a class="jargon">neurological accommodation<span class="tooltip">Adjustments that support your brain's natural patterns and needs</span></a> can help you advocate for what you need.</p>
+
+        <div class="highlight-box">
+            <p><strong>Remember:</strong> Your movement isn't disruptive behavior - it's a neurological tool that helps your brain function optimally. Focus on finding movement solutions that work for both you and your environment rather than trying to eliminate the need entirely.</p>
+        </div>
+    </div>
+
+    <div class="related-struggles">
+        <h3>Related Struggles</h3>
+        <div class="struggle-tags">
+            <a href="{{ '/struggles/attention-regulation.html' | relative_url }}" class="struggle-tag">Attention Regulation</a>
+            <a href="{{ '/struggles/sensory-overload.html' | relative_url }}" class="struggle-tag">Sensory Overload</a>
+            <a href="{{ '/struggles/akathisia.html' | relative_url }}" class="struggle-tag">Akathisia</a>
+            <a href="{{ '/struggles/executive-function-challenges.html' | relative_url }}" class="struggle-tag">Executive Function</a>
+            <a href="{{ '/struggles/social-masking.html' | relative_url }}" class="struggle-tag">Social Masking</a>
+        </div>
+    </div>
 </div>
-
-<script>
-function toggleLearnMore(element) {
-    element.classList.toggle('expanded');
-    const arrow = element.querySelector('h3');
-    if (element.classList.contains('expanded')) {
-        arrow.innerHTML = arrow.innerHTML.replace('↓', '↑');
-    } else {
-        arrow.innerHTML = arrow.innerHTML.replace('↑', '↓');
-    }
-}
-
-document.addEventListener('DOMContentLoaded', function() {
-    // Handle jargon clicks to prevent event bubbling
-    const jargonTerms = document.querySelectorAll('.jargon');
-    jargonTerms.forEach(function(jargon) {
-        jargon.addEventListener('click', function(e) {
-            e.stopPropagation(); // Prevent bubbling to learn-more handler
-        });
-    });
-});
-</script>
