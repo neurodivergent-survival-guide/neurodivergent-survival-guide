@@ -743,6 +743,60 @@ layout: default
             transition-duration: 0.01ms !important;
         }
     }
+
+    /* Navigation-specific styles */
+    .struggle-navigation {
+        background: linear-gradient(135deg, {{ colors.gradient_start }}, {{ colors.gradient_end }});
+        color: white;
+        padding: 1rem 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+        margin-top: 2rem;
+    }
+
+    .struggle-navigation .nav-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+    }
+
+    .struggle-navigation .nav-link {
+        background: {{ colors.primary }};
+        color: white;
+        padding: 0.8rem 1.5rem;
+        border-radius: 25px;
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.3s ease;
+    }
+
+    .struggle-navigation .nav-link:hover {
+        background: {{ colors.secondary }};
+        transform: translateY(-1px);
+        color: white;
+        text-decoration: none;
+    }
+
+    .struggle-navigation .nav-link.disabled {
+        background: rgba(255, 255, 255, 0.2);
+        color: rgba(255, 255, 255, 0.5);
+    }
+
+    .struggle-navigation .nav-position {
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+        .struggle-navigation .nav-container {
+            flex-direction: column;
+            gap: 1rem;
+            text-align: center;
+            padding: 0 1rem;
+        }
+    }
 </style>
 
 <div class="header">
