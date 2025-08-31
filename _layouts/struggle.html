@@ -808,12 +808,25 @@ layout: default
     }
 
     .struggle-navigation .nav-container {
-        display: flex;
-        justify-content: space-between;
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
         align-items: center;
         max-width: 1200px;
         margin: 0 auto;
         padding: 0 2rem;
+        gap: 1rem;
+    }
+    
+    .struggle-navigation .nav-container > *:first-child {
+        justify-self: start;
+    }
+    
+    .struggle-navigation .nav-container > *:nth-child(2) {
+        justify-self: center;
+    }
+    
+    .struggle-navigation .nav-container > *:last-child {
+        justify-self: end;
     }
 
     .struggle-navigation .nav-link {
@@ -958,7 +971,7 @@ Find the current struggle's position in the flattened array
     {% if current_index > 0 %}
       {% assign prev_index = current_index | minus: 1 %}
       {% assign prev_struggle = all_struggles[prev_index] %}
-      <a href="{{ '/struggles/' | append: prev_struggle.slug | append: '.html' | relative_url }}" class="nav-link">← Previous: {{ prev_struggle.title }}</a>
+      <a href="{{ '/struggles/' | append: prev_struggle.slug | append: '.html' | relative_url }}" class="nav-link">← {{ prev_struggle.title }}</a>
     {% else %}
       <span class="nav-link disabled">← Previous Struggle</span>
     {% endif %}
@@ -968,7 +981,7 @@ Find the current struggle's position in the flattened array
     {% assign next_index = current_index | plus: 1 %}
     {% if next_index < all_struggles.size %}
       {% assign next_struggle = all_struggles[next_index] %}
-      <a href="{{ '/struggles/' | append: next_struggle.slug | append: '.html' | relative_url }}" class="nav-link">Next: {{ next_struggle.title }} →</a>
+      <a href="{{ '/struggles/' | append: next_struggle.slug | append: '.html' | relative_url }}" class="nav-link">{{ next_struggle.title }} →</a>
     {% else %}
       <span class="nav-link disabled">Next Struggle →</span>
     {% endif %}
