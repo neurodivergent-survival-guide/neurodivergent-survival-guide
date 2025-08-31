@@ -49,16 +49,13 @@ Strategic preparation for comprehensive diagnostic evaluations, including provid
 **Financial Management for Executive Dysfunction Toolkit** - /toolkits/financial-management.html
 Practical systems for managing money with ADHD and autism brains, including automation strategies, banking solutions, and sustainable financial planning.
 
-## **AUTISM STRUGGLES**
+## **AUTISM STRUGGLES** (Revised with Consolidations)
 
 **Missing Social Cues** - /struggles/missing-social-cues.html
-When conversations have hidden meanings you don't catch. Page covers recognizing when this happens and strategies for navigating social situations when explicit communication isn't available.
+When conversations have hidden meanings you don't catch, including nonverbal communication like body language, facial expressions, and eye contact challenges. Page covers recognizing when this happens and strategies for navigating social situations when explicit communication isn't available.
 
 **Being Too Direct** - /struggles/being-too-direct.html
 When your honest communication style is seen as rude or blunt. Page addresses how to maintain authenticity while understanding neurotypical communication expectations.
-
-**Nonverbal Communication Difficulties** - /struggles/nonverbal-communication-difficulties.html
-Trouble with eye contact, body language, and facial expressions. Page explains why this happens and offers alternatives to traditional nonverbal communication.
 
 **Social Reciprocity Challenges** - /struggles/social-reciprocity-challenges.html
 Difficulty with back-and-forth conversation flow and social give-and-take. Page covers understanding social rhythms and finding your communication style.
@@ -69,8 +66,8 @@ Not knowing how to keep friendships and relationships going over time. Page prov
 **Special Interests Consuming Focus** - /struggles/special-interests-consuming-focus.html
 When intense interests take over your time and social life. Page balances honoring your passions with managing their impact on daily functioning.
 
-**Routine Disruption Anxiety** - /struggles/routine-disruption-anxiety.html
-Distress when plans change unexpectedly or your schedule gets disrupted. Page offers coping strategies for handling uncertainty and building flexibility.
+**Change and Routine Disruption** - /struggles/change-and-routine-disruption.html
+Distress when plans change unexpectedly, schedules get disrupted, or life transitions occur. Page offers coping strategies for handling uncertainty and building flexibility while honoring your need for predictability.
 
 **Sensory Processing Challenges** - /struggles/sensory-processing-challenges.html
 Over- or under-responsivity to sounds, textures, lights, and other sensory input. Page covers identifying triggers and creating sensory-friendly environments.
@@ -78,11 +75,8 @@ Over- or under-responsivity to sounds, textures, lights, and other sensory input
 **Akathisia** - /struggles/akathisia.html
 Inner restlessness and overwhelming urge to move that feels impossible to satisfy. Page covers recognizing this neurological condition, distinguishing it from typical restlessness, and strategies for managing movement needs while addressing potential medication causes.
 
-**Stimming and Self-Regulation** - /struggles/stimming-and-self-regulation.html
-Repetitive behaviors that help you regulate but may draw unwanted attention. Page validates stimming while offering strategies for different social contexts.
-
-**Change and Transition Difficulties** - /struggles/change-and-transition-difficulties.html
-Trouble adapting to new environments, schedules, or life changes. Page provides frameworks for managing transitions and reducing associated stress.
+**Stimming and Sensory Regulation** - /struggles/stimming-and-sensory-regulation.html
+Repetitive behaviors and sensory-seeking activities that help you regulate but may draw unwanted attention. Page validates both stimming and sensory seeking while offering strategies for different social contexts and finding healthy sensory outlets.
 
 **Face Blindness** - /struggles/face-blindness.html
 Difficulty recognizing faces, even of familiar people. Page offers practical workarounds and social strategies for navigating this challenge.
@@ -98,9 +92,6 @@ Exhaustion from years of camouflaging your authentic self. Page validates this e
 
 **Late Diagnosis Grief** - /struggles/late-diagnosis-grief.html
 Processing missed opportunities and identity reconstruction after adult diagnosis. Page addresses the complex emotions and practical considerations of late recognition.
-
-**Sensory Seeking Behaviors** - /struggles/sensory-seeking-behaviors.html
-Need for intense sensory input to feel regulated and alert. Page helps distinguish between seeking and overwhelm while finding healthy outlets.
 
 **Medication Sensitivity Management** - /struggles/medication-sensitivity-management.html
 Navigating heightened sensitivity to psychiatric medications and managing treatments for co-occurring conditions. Page covers starting low, going slow, and working with providers who understand autistic medication responses.
