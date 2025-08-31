@@ -1,702 +1,130 @@
 ---
 layout: struggle
 title: "Impulsive Decision-Making"
+subtitle: "When the urge to act feels stronger than the ability to pause"
 slug: impulsive-decision-making
+condition: adhd
 ---
 
 <!-- /struggles/impulsive-decision-making.html -->
 
-<style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
+<div class="content-card">
+    <div class="what-section">
+        <h2 id="what-this-feels-like">What This Feels Like</h2>
+        <p><a class="jargon">Impulsive decision-making<span class="tooltip">Acting quickly on urges or ideas without fully considering consequences or alternatives</span></a> can range from dramatic life-changing choices to countless small decisions throughout the day. Sometimes it's quitting a job in a moment of frustration, making a major purchase you can't afford, or sending a text you immediately regret. But more often, it's a constant stream of smaller impulses that add up over time.</p>
 
-    body {
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        font-weight: 500;
-        background: linear-gradient(135deg, #d63031 0%, #a21f23 100%);
-        color: #333;
-        min-height: 100vh;
-        line-height: 1.7;
-    }
+        <p>Many people describe it as feeling like their brain jumps straight from thought to action, bypassing the pause where most people would consider consequences. You might find yourself agreeing to commitments you don't have time for, interrupting conversations because your thoughts feel urgent, or starting new projects while abandoning others half-finished.</p>
 
-    .header {
-        background: rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(10px);
-        padding: 1.5rem 2rem;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    }
+        <p>The experience often involves an intense urge that feels almost physical - like pressure building up that needs immediate release. Waiting or deliberating can feel genuinely uncomfortable, even painful. This isn't about being reckless or uncaring about consequences; it's about having a brain that prioritizes immediate action over <a class="jargon">deliberative thinking<span class="tooltip">Taking time to weigh options, consider consequences, and think through decisions carefully</span></a>.</p>
 
-    .header h1 {
-        color: white;
-        font-size: 2.5rem;
-        font-weight: 300;
-        margin-bottom: 0.5rem;
-    }
+        <p>Sometimes the decisions themselves aren't necessarily bad - you might impulsively book a trip that turns out wonderful, or spontaneously help someone in need. But the pattern of acting without pause can create chaos in your life, damage relationships, or lead to financial and professional consequences that feel devastating when you look back with clearer perspective.</p>
 
-    .header p {
-        color: rgba(255, 255, 255, 0.9);
-        font-size: 1.2rem;
-    }
+        <p>Many people also experience <a class="jargon">decision fatigue<span class="tooltip">Mental exhaustion from making too many choices, which can lead to either avoiding decisions or making increasingly impulsive ones</span></a> alongside impulsivity - becoming so overwhelmed by choices that you either freeze completely or make snap decisions just to escape the discomfort of uncertainty.</p>
+    </div>
 
-    .breadcrumb {
-        background: rgba(255, 255, 255, 0.05);
-        padding: 0.8rem 2rem;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        overflow-x: auto;
-        white-space: nowrap;
-    }
+    <div class="why-section">
+        <h2 id="why-this-happens">Why This Might Be Happening</h2>
+        <p>Impulsive decision-making is strongly linked to differences in <a class="jargon">executive functioning<span class="tooltip">Mental skills that include impulse control, working memory, flexible thinking, and self-regulation</span></a>, particularly <a class="jargon">inhibitory control<span class="tooltip">The brain's ability to suppress or delay immediate impulses in favor of more considered responses</span></a> - your brain's ability to hit the pause button between impulse and action. In <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> brains, this system works differently.</p>
 
-    .breadcrumb a {
-        color: rgba(255, 255, 255, 0.8);
-        text-decoration: none;
-        font-size: 0.9rem;
-    }
+        <p>The <a class="jargon">prefrontal cortex<span class="tooltip">Brain region responsible for executive functions including decision-making, impulse control, and planning</span></a>, which manages thoughtful decision-making and impulse control, may not communicate as efficiently with other brain regions. This means the <a class="jargon">limbic system<span class="tooltip">Brain structures involved in emotion and immediate reward processing</span></a> - which processes immediate rewards and emotional responses - can override careful planning more easily.</p>
 
-    .breadcrumb a:hover {
-        color: white;
-    }
+        <p><a class="jargon">Dopamine regulation<span class="tooltip">The brain's management of dopamine, a neurotransmitter involved in motivation, reward, and impulse control</span></a> differences also play a significant role. <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> brains often seek immediate <a class="jargon">dopamine hits<span class="tooltip">Quick bursts of the reward neurotransmitter that come from novel experiences or immediate gratification</span></a> and may struggle with <a class="jargon">delayed gratification<span class="tooltip">The ability to wait for better outcomes rather than taking immediate but smaller rewards</span></a> because future rewards feel less motivating than they do to <a class="jargon">neurotypical<span class="tooltip">Having a brain that functions in ways considered typical by society</span></a> brains.</p>
 
-    .breadcrumb span {
-        color: rgba(255, 255, 255, 0.6);
-        margin: 0 0.5rem;
-    }
+        <p>Stress, fatigue, and emotional overwhelm can make impulsive decision-making worse. When your <a class="jargon">cognitive resources<span class="tooltip">Mental energy available for thinking, planning, and self-control</span></a> are depleted, the brain defaults to quicker, more automatic responses. This is why you might notice more impulsive choices when you're tired, stressed, or dealing with multiple demands.</p>
 
-    .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 2rem;
-        width: 100%;
-        box-sizing: border-box;
-    }
+        <p>Many people with <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> also experience <a class="jargon">time blindness<span class="tooltip">Difficulty accurately perceiving the passage of time or estimating how long tasks will take</span></a>, which can make it harder to fully grasp long-term consequences. Future impacts feel abstract and distant, while present urges feel immediate and compelling.</p>
 
-    .content-card {
-        background: rgba(255, 255, 255, 0.95);
-        border-radius: 20px;
-        padding: 2.5rem;
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-        margin-bottom: 2rem;
-    }
-
-    .what-section {
-        background: #ffe6e6;
-        padding: 2rem;
-        border-radius: 16px;
-        margin: 2rem 0;
-        border-left: 4px solid #d63031;
-    }
-
-    .what-section h2 {
-        color: #d63031;
-        margin-bottom: 1rem;
-        font-size: 1.6rem;
-    }
-
-    .what-section p {
-        margin-bottom: 1rem;
-        font-size: 1.05rem;
-        color: #555;
-    }
-
-    .why-section {
-        background: #ffeaa7;
-        padding: 2rem;
-        border-radius: 16px;
-        margin: 2rem 0;
-        border-left: 4px solid #f1c40f;
-    }
-
-    .why-section h2 {
-        color: #f39c12;
-        margin-bottom: 1rem;
-        font-size: 1.6rem;
-    }
-
-    .why-section p {
-        margin-bottom: 1rem;
-        font-size: 1.05rem;
-        color: #555;
-    }
-
-    .immediate-help {
-        background: #cce5ff;
-        padding: 2rem;
-        border-radius: 16px;
-        margin: 2rem 0;
-        border-left: 4px solid #007acc;
-    }
-
-    .immediate-help h2 {
-        color: #005599;
-        margin-bottom: 1rem;
-        font-size: 1.6rem;
-    }
-
-    .immediate-help p {
-        margin-bottom: 1rem;
-        font-size: 1.05rem;
-        color: #555;
-    }
-
-    .immediate-help ul {
-        color: #555;
-        padding-left: 1.2rem;
-    }
-
-    .immediate-help li {
-        margin-bottom: 0.8rem;
-        font-size: 0.95rem;
-    }
-
-    .long-term {
-        background: #d4edda;
-        padding: 2rem;
-        border-radius: 16px;
-        margin: 2rem 0;
-        border-left: 4px solid #28a745;
-    }
-
-    .long-term h2 {
-        color: #155724;
-        margin-bottom: 1rem;
-        font-size: 1.6rem;
-    }
-
-    .long-term p {
-        margin-bottom: 1rem;
-        font-size: 1.05rem;
-        color: #555;
-    }
-
-    .long-term ul {
-        color: #555;
-        padding-left: 1.2rem;
-    }
-
-    .long-term li {
-        margin-bottom: 0.8rem;
-        font-size: 0.95rem;
-    }
-
-    .medical-section {
-        background: #d1f2eb;
-        padding: 2rem;
-        border-radius: 16px;
-        margin: 2rem 0;
-        border-left: 4px solid #17a2b8;
-    }
-
-    .medical-section h2 {
-        color: #0c5460;
-        margin-bottom: 1rem;
-        font-size: 1.6rem;
-    }
-
-    .medical-section p {
-        margin-bottom: 1rem;
-        font-size: 1.05rem;
-        color: #555;
-    }
-
-    .medical-section ul {
-        color: #555;
-        padding-left: 1.2rem;
-    }
-
-    .medical-section li {
-        margin-bottom: 0.8rem;
-        font-size: 0.95rem;
-    }
-
-    .validation-section {
-        background: #e2e3ff;
-        padding: 2rem;
-        border-radius: 16px;
-        margin: 2rem 0;
-        border-left: 4px solid #6c5ce7;
-    }
-
-    .validation-section h2 {
-        color: #5a4fcf;
-        margin-bottom: 1rem;
-        font-size: 1.6rem;
-    }
-
-    .validation-section p {
-        margin-bottom: 1rem;
-        font-size: 1.05rem;
-        color: #555;
-    }
-
-    .related-struggles {
-        background: #f8f9fa;
-        padding: 1.5rem;
-        border-radius: 12px;
-        margin: 2rem 0;
-        border: 1px solid #e0e0e0;
-    }
-
-    .related-struggles h3 {
-        color: #333;
-        margin-bottom: 1rem;
-        font-size: 1.2rem;
-    }
-
-    .struggle-tags {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-        justify-content: center;
-    }
-
-    .struggle-tag {
-        background: #d63031;
-        color: white;
-        padding: 0.5rem 1rem;
-        border-radius: 20px;
-        font-size: 0.85rem;
-        text-decoration: none;
-        transition: all 0.3s ease;
-        min-height: 44px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-    }
-
-    .struggle-tag:hover {
-        background: #a21f23;
-        color: white;
-        text-decoration: none;
-        transform: translateY(-1px);
-    }
-
-    .struggle-tag:focus {
-        outline: 2px solid #fff;
-        outline-offset: 2px;
-    }
-
-    .learn-more {
-        background: linear-gradient(45deg, #a29bfe, #6c5ce7);
-        color: white;
-        padding: 1.5rem;
-        border-radius: 12px;
-        margin: 1.5rem 0;
-        cursor: pointer;
-        transition: all 0.3s ease;
-    }
-
-    .learn-more h3 {
-        margin-bottom: 1rem;
-        font-size: 1.2rem;
-        color: white;
-    }
-
-    .learn-more:hover {
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-    }
-
-    /* Mobile transform override to prevent positioning context issues */
-    @media (max-width: 768px) {
-        .learn-more:hover {
-            transform: none !important;
-        }
-    }
-
-    .learn-more-content {
-        display: none;
-        margin-top: 1rem;
-        padding-top: 1rem;
-        border-top: 1px solid rgba(255, 255, 255, 0.3);
-        color: white;
-    }
-
-    .learn-more-content p {
-        color: white;
-        margin-bottom: 1rem;
-    }
-
-    .learn-more.expanded .learn-more-content {
-        display: block;
-    }
-
-    .highlight-box {
-        background: #fff8e1;
-        padding: 1rem;
-        border-radius: 8px;
-        border-left: 3px solid #ffc107;
-        margin: 1rem 0;
-    }
-
-    /* Jargon styling - context-aware based on background */
-    .jargon {
-        text-decoration: none;
-        border-bottom: 1px dotted;
-        position: relative;
-        cursor: help;
-        font-weight: 500;
-    }
-
-    /* Pink jargon for white backgrounds */
-    .content-card .jargon,
-    .related-struggles .jargon {
-        color: #e84393;
-        border-bottom-color: #e84393;
-    }
-
-    .content-card .jargon:hover,
-    .related-struggles .jargon:hover {
-        color: #fd79a8;
-        border-bottom-color: #fd79a8;
-    }
-
-    /* Bold black jargon for colored backgrounds */
-    .what-section .jargon,
-    .why-section .jargon,
-    .immediate-help .jargon,
-    .long-term .jargon,
-    .medical-section .jargon,
-    .validation-section .jargon,
-    .highlight-box .jargon {
-        color: #333;
-        font-weight: 600;
-        border-bottom-color: #333;
-    }
-
-    /* White jargon for gradient backgrounds */
-    .header .jargon,
-    .breadcrumb .jargon,
-    .learn-more .jargon,
-    .learn-more-content .jargon {
-        color: white;
-        border-bottom-color: rgba(255, 255, 255, 0.7);
-        background: rgba(255, 255, 255, 0.1);
-        padding: 2px 6px;
-        border-radius: 4px;
-    }
-
-    .header .jargon:hover,
-    .breadcrumb .jargon:hover,
-    .learn-more .jargon:hover,
-    .learn-more-content .jargon:hover {
-        background: rgba(255, 255, 255, 0.2);
-        border-bottom-color: white;
-    }
-
-    /* Auto-sizing tooltips */
-    .tooltip {
-        visibility: hidden;
-        opacity: 0;
-        position: absolute;
-        bottom: calc(100% + 8px);
-        left: 50%;
-        transform: translateX(-50%);
-        background: #333;
-        color: white;
-        padding: 12px 16px;
-        border-radius: 8px;
-        font-size: 0.9rem;
-        font-weight: normal;
-        z-index: 9999;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-        transition: opacity 0.3s, visibility 0.3s;
-        max-width: 800px;
-        min-width: 200px;
-        width: max-content;
-        white-space: normal;
-        text-align: left;
-        line-height: 1.5;
-        pointer-events: none;
-    }
-
-    .tooltip::after {
-        content: '';
-        position: absolute;
-        top: 100%;
-        left: 50%;
-        transform: translateX(-50%);
-        border: 6px solid transparent;
-        border-top-color: #333;
-    }
-
-    .jargon:hover .tooltip {
-        visibility: visible;
-        opacity: 1;
-    }
-
-    /* Mobile responsive tooltip adjustments */
-    @media (max-width: 1024px) {
-        .tooltip {
-            max-width: 400px;
-        }
-    }
-
-    /* Mobile-specific tooltip positioning */
-    @media (max-width: 768px) {
-        .tooltip {
-            position: fixed !important;
-            bottom: 20px !important;
-            left: 20px !important;
-            right: 20px !important;
-            transform: none !important;
-            max-width: none !important;
-            width: auto !important;
-        }
-
-        .tooltip::after {
-            display: none !important;
-        }
-
-        .header {
-            padding: 1rem;
-        }
-
-        .header h1 {
-            font-size: 2rem;
-        }
-
-        .header p {
-            font-size: 1rem;
-        }
-
-        .breadcrumb {
-            padding: 0.6rem 1rem;
-        }
-
-        .container {
-            padding: 1rem;
-        }
-
-        .content-card {
-            padding: 1.5rem;
-        }
-
-        .what-section,
-        .why-section,
-        .immediate-help,
-        .long-term,
-        .medical-section,
-        .validation-section {
-            padding: 1.5rem;
-        }
-
-        .struggle-tags {
-            flex-direction: column;
-        }
-
-        .struggle-tag {
-            justify-content: center;
-            text-align: center;
-        }
-    }
-
-    @media (max-width: 480px) {
-        .header h1 {
-            font-size: 1.8rem;
-        }
-
-        .header p {
-            font-size: 0.9rem;
-        }
-
-        .content-card {
-            padding: 1.2rem;
-        }
-
-        .what-section,
-        .why-section,
-        .immediate-help,
-        .long-term,
-        .medical-section,
-        .validation-section {
-            padding: 1.2rem;
-        }
-
-        .tooltip {
-            left: 10px !important;
-            right: 10px !important;
-            bottom: 10px !important;
-        }
-    }
-
-    /* Focus states for accessibility */
-    .struggle-tag:focus,
-    .jargon:focus,
-    .breadcrumb a:focus {
-        outline: 2px solid #fff;
-        outline-offset: 2px;
-    }
-
-    /* Motion accessibility */
-    @media (prefers-reduced-motion: reduce) {
-        *, *::before, *::after {
-            animation-duration: 0.01ms !important;
-            animation-iteration-count: 1 !important;
-            transition-duration: 0.01ms !important;
-        }
-    }
-</style>
-
-<div class="header">
-    <h1>Impulsive Decision-Making</h1>
-    <p>When the urge to act feels stronger than the ability to pause</p>
-</div>
-
-<div class="breadcrumb">
-    <a href="{{ '/index.html' | relative_url }}">Home</a>
-    <span>></span>
-    <a href="{{ '/struggles/index.html' | relative_url }}">Struggles</a>
-    <span>></span>
-    <a href="{{ '/conditions/adhd.html' | relative_url }}">ADHD</a>
-    <span>></span>
-    Impulsive Decision-Making
-</div>
-
-<div class="container">
-    <main role="main" id="main-content">
-        <div class="content-card">
-            <div class="what-section">
-                <h2 id="what-this-feels-like">What This Feels Like</h2>
-                <p><a class="jargon">Impulsive decision-making<span class="tooltip">Acting quickly on urges or ideas without fully considering consequences or alternatives</span></a> can range from dramatic life-changing choices to countless small decisions throughout the day. Sometimes it's quitting a job in a moment of frustration, making a major purchase you can't afford, or sending a text you immediately regret. But more often, it's a constant stream of smaller impulses that add up over time.</p>
-
-                <p>Many people describe it as feeling like their brain jumps straight from thought to action, bypassing the pause where most people would consider consequences. You might find yourself agreeing to commitments you don't have time for, interrupting conversations because your thoughts feel urgent, or starting new projects while abandoning others half-finished.</p>
-
-                <p>The experience often involves an intense urge that feels almost physical - like pressure building up that needs immediate release. Waiting or deliberating can feel genuinely uncomfortable, even painful. This isn't about being reckless or uncaring about consequences; it's about having a brain that prioritizes immediate action over <a class="jargon">deliberative thinking<span class="tooltip">Taking time to weigh options, consider consequences, and think through decisions carefully</span></a>.</p>
-
-                <p>Sometimes the decisions themselves aren't necessarily bad - you might impulsively book a trip that turns out wonderful, or spontaneously help someone in need. But the pattern of acting without pause can create chaos in your life, damage relationships, or lead to financial and professional consequences that feel devastating when you look back with clearer perspective.</p>
-
-                <p>Many people also experience <a class="jargon">decision fatigue<span class="tooltip">Mental exhaustion from making too many choices, which can lead to either avoiding decisions or making increasingly impulsive ones</span></a> alongside impulsivity - becoming so overwhelmed by choices that you either freeze completely or make snap decisions just to escape the discomfort of uncertainty.</p>
-            </div>
-
-            <div class="why-section">
-                <h2 id="why-this-happens">Why This Might Be Happening</h2>
-                <p>Impulsive decision-making is strongly linked to differences in <a class="jargon">executive functioning<span class="tooltip">Mental skills that include impulse control, working memory, flexible thinking, and self-regulation</span></a>, particularly <a class="jargon">inhibitory control<span class="tooltip">The brain's ability to suppress or delay immediate impulses in favor of more considered responses</span></a> - your brain's ability to hit the pause button between impulse and action. In <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> brains, this system works differently.</p>
-
-                <p>The <a class="jargon">prefrontal cortex<span class="tooltip">Brain region responsible for executive functions including decision-making, impulse control, and planning</span></a>, which manages thoughtful decision-making and impulse control, may not communicate as efficiently with other brain regions. This means the <a class="jargon">limbic system<span class="tooltip">Brain structures involved in emotion and immediate reward processing</span></a> - which processes immediate rewards and emotional responses - can override careful planning more easily.</p>
-
-                <p><a class="jargon">Dopamine regulation<span class="tooltip">The brain's management of dopamine, a neurotransmitter involved in motivation, reward, and impulse control</span></a> differences also play a significant role. <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> brains often seek immediate <a class="jargon">dopamine hits<span class="tooltip">Quick bursts of the reward neurotransmitter that come from novel experiences or immediate gratification</span></a> and may struggle with <a class="jargon">delayed gratification<span class="tooltip">The ability to wait for better outcomes rather than taking immediate but smaller rewards</span></a> because future rewards feel less motivating than they do to <a class="jargon">neurotypical<span class="tooltip">Having a brain that functions in ways considered typical by society</span></a> brains.</p>
-
-                <p>Stress, fatigue, and emotional overwhelm can make impulsive decision-making worse. When your <a class="jargon">cognitive resources<span class="tooltip">Mental energy available for thinking, planning, and self-control</span></a> are depleted, the brain defaults to quicker, more automatic responses. This is why you might notice more impulsive choices when you're tired, stressed, or dealing with multiple demands.</p>
-
-                <p>Many people with <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> also experience <a class="jargon">time blindness<span class="tooltip">Difficulty accurately perceiving the passage of time or estimating how long tasks will take</span></a>, which can make it harder to fully grasp long-term consequences. Future impacts feel abstract and distant, while present urges feel immediate and compelling.</p>
-
-                <div class="learn-more" onclick="toggleLearnMore(this)">
-                    <h3>Learn More: The Neuroscience of Impulse Control ↓</h3>
-                    <div class="learn-more-content">
-                        <p>Impulse control involves complex interactions between the <a class="jargon">prefrontal cortex<span class="tooltip">Brain region responsible for executive functions including decision-making, impulse control, and planning</span></a> and <a class="jargon">subcortical structures<span class="tooltip">Deeper brain regions that process emotions, rewards, and automatic responses</span></a> like the <a class="jargon">anterior cingulate cortex<span class="tooltip">Brain region involved in conflict monitoring and self-control</span></a> and <a class="jargon">nucleus accumbens<span class="tooltip">Brain structure central to reward processing and motivation</span></a>. In <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a>, these networks show different patterns of <a class="jargon">neural connectivity<span class="tooltip">How different brain regions communicate and coordinate with each other</span></a> and activation.</p>
-                        
-                        <p>A key factor in <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> impulsivity is <a class="jargon">hypofrontality<span class="tooltip">Reduced activity or functioning in the prefrontal cortex, leading to weakened executive control and impulse regulation</span></a> - decreased activity in the <a class="jargon">prefrontal cortex<span class="tooltip">Brain region responsible for executive functions including decision-making, impulse control, and planning</span></a>. This creates a neurological environment where immediate gratification feels especially compelling while the mechanisms for pause and reflection are less robust. The <a class="jargon">reward system<span class="tooltip">Brain circuitry that responds to immediate rewards and novel experiences</span></a> can essentially overpower weakened executive control.</p>
-                        
-                        <p><a class="jargon">Hypofrontality<span class="tooltip">Reduced activity or functioning in the prefrontal cortex, leading to weakened executive control and impulse regulation</span></a> also helps explain why people with <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> have higher rates of <a class="jargon">addiction<span class="tooltip">Compulsive engagement with substances or behaviors despite harmful consequences</span></a>. When the prefrontal "brakes" are weakened, exposure to addictive substances or behaviors can create an obsessive, almost unstoppable drive toward immediate reward. The weakened executive control makes it extremely difficult to consider long-term consequences or maintain abstinence when faced with triggers.</p>
-                        
-                        <p>The <a class="jargon">dopaminergic pathways<span class="tooltip">Brain circuits that use dopamine to regulate motivation, reward processing, and executive control</span></a> that help balance immediate desires with long-term goals also function differently, which may explain why <a class="jargon">stimulant medications<span class="tooltip">ADHD medications that increase dopamine and norepinephrine availability in the brain</span></a> can significantly improve impulse control for many people with <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> by strengthening prefrontal function.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="immediate-help">
-                <h2 id="next-five-minutes">What Can Help You Through the Next 5 Minutes</h2>
-                <p>When you're feeling the urge to make a quick decision right now, these strategies can help create space for more thoughtful choice-making:</p>
+        <div class="learn-more" onclick="toggleLearnMore(this)">
+            <h3>Learn More: The Neuroscience of Impulse Control ↓</h3>
+            <div class="learn-more-content">
+                <p>Impulse control involves complex interactions between the <a class="jargon">prefrontal cortex<span class="tooltip">Brain region responsible for executive functions including decision-making, impulse control, and planning</span></a> and <a class="jargon">subcortical structures<span class="tooltip">Deeper brain regions that process emotions, rewards, and automatic responses</span></a> like the <a class="jargon">anterior cingulate cortex<span class="tooltip">Brain region involved in conflict monitoring and self-control</span></a> and <a class="jargon">nucleus accumbens<span class="tooltip">Brain structure central to reward processing and motivation</span></a>. In <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a>, these networks show different patterns of <a class="jargon">neural connectivity<span class="tooltip">How different brain regions communicate and coordinate with each other</span></a> and activation.</p>
                 
-                <ul>
-                    <li><strong>Use the <a class="jargon">10-10-10 rule<span class="tooltip">Ask yourself: How will I feel about this decision in 10 minutes, 10 months, and 10 years?</span></a>:</strong> Ask yourself how you'll feel about this decision in 10 minutes, 10 months, and 10 years. This helps your brain connect present actions to future consequences.</li>
-                    <li><strong>Create physical distance:</strong> Step away from your computer, put your phone in another room, or leave the store. Physical space often creates mental space for better decision-making.</li>
-                    <li><strong>Set a <a class="jargon">cooling-off period<span class="tooltip">A predetermined amount of time to wait before making important decisions</span></a>:</strong> Tell yourself you'll wait 24 hours (or even just 30 minutes) before acting on this impulse. Often the urgency fades with time.</li>
-                    <li><strong>Text someone first:</strong> Send a quick message to a trusted friend describing what you want to do. Sometimes just articulating the decision helps you see it more clearly.</li>
-                    <li><strong>Use the <a class="jargon">STOP technique<span class="tooltip">Stop what you're doing, Take a breath, Observe your thoughts and feelings, Proceed mindfully</span></a>:</strong> Stop what you're doing, Take a deep breath, Observe what you're thinking and feeling, then Proceed with intention rather than impulse.</li>
-                    <li><strong>Check your basic needs:</strong> Are you hungry, tired, stressed, or overwhelmed? <a class="jargon">Decision fatigue<span class="tooltip">Mental exhaustion from making too many choices, which can lead to either avoiding decisions or making increasingly impulsive ones</span></a> and impulse control get worse when your basic needs aren't met.</li>
-                    <li><strong>Ask "What would I advise a friend?"</strong> We often give others better advice than we follow ourselves. This mental shift can provide clearer perspective on your situation.</li>
-                </ul>
-
-                <div class="highlight-box">
-                    <p><strong>Emergency brake:</strong> If the impulse involves money, relationships, or major life changes, use a <a class="jargon">pre-commitment strategy<span class="tooltip">Setting up barriers ahead of time to prevent impulsive decisions in vulnerable moments</span></a>: remove apps from your phone, give your credit cards to someone else, or create obstacles that force you to slow down.</p>
-                </div>
-            </div>
-
-            <div class="long-term">
-                <h2 id="long-term-solutions">What Are Some Healthy Long-term Solutions</h2>
-                <p>Building sustainable systems that work with your <a class="jargon">impulsive tendencies<span class="tooltip">Natural inclinations toward quick action that can be channeled constructively rather than eliminated</span></a> rather than constantly fighting them:</p>
+                <p>A key factor in <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> impulsivity is <a class="jargon">hypofrontality<span class="tooltip">Reduced activity or functioning in the prefrontal cortex, leading to weakened executive control and impulse regulation</span></a> - decreased activity in the <a class="jargon">prefrontal cortex<span class="tooltip">Brain region responsible for executive functions including decision-making, impulse control, and planning</span></a>. This creates a neurological environment where immediate gratification feels especially compelling while the mechanisms for pause and reflection are less robust. The <a class="jargon">reward system<span class="tooltip">Brain circuitry that responds to immediate rewards and novel experiences</span></a> can essentially overpower weakened executive control.</p>
                 
-                <ul>
-                    <li><strong>Design your environment:</strong> Remove temptations and create <a class="jargon">friction<span class="tooltip">Intentional obstacles that slow down impulsive actions to create space for better decisions</span></a> for impulsive decisions. Unsubscribe from shopping emails, use apps that delay social media posts, or keep credit cards in inconvenient locations.</li>
-                    <li><strong>Create <a class="jargon">decision frameworks<span class="tooltip">Pre-established criteria and processes for making choices that reduce reliance on in-the-moment judgment</span></a>:</strong> Develop specific criteria for different types of decisions before you need them. What makes a good financial decision? When is it okay to say yes to social commitments? Having frameworks reduces <a class="jargon">decision fatigue<span class="tooltip">Mental exhaustion from making too many choices, which can lead to either avoiding decisions or making increasingly impulsive ones</span></a>.</li>
-                    <li><strong>Use <a class="jargon">implementation intentions<span class="tooltip">If-then plans that specify what you'll do in specific situations, reducing the need for in-the-moment decision-making</span></a>:</strong> Create "if-then" plans for common impulsive situations. "If I want to buy something over $50, then I'll wait 48 hours." "If I feel like quitting something, then I'll talk to three people first."</li>
-                    <li><strong>Channel impulses constructively:</strong> Find positive outlets for your <a class="jargon">impulsive energy<span class="tooltip">The drive for immediate action that can be redirected toward beneficial activities</span></a> - creative projects, physical exercise, or helping others. Sometimes the problem isn't the impulse itself but where it's directed.</li>
-                    <li><strong>Practice <a class="jargon">mindful awareness<span class="tooltip">Noticing thoughts, feelings, and urges without immediately acting on them</span></a>:</strong> Learn to recognize the physical sensations that come before impulsive decisions. The more aware you become of your patterns, the more choice you have in responding to them.</li>
-                    <li><strong>Build in <a class="jargon">accountability systems<span class="tooltip">External structures or people that help you stick to your intended decision-making process</span></a>:</strong> Work with trusted friends, family, or <a class="jargon">ADHD coaches<span class="tooltip">Professionals who specialize in helping people with ADHD develop practical life management skills</span></a> who can help you think through major decisions without judgment.</li>
-                    <li><strong>Address underlying needs:</strong> Often impulsive decisions are trying to meet legitimate needs - for novelty, control, connection, or relief from discomfort. Find healthier ways to meet these needs proactively.</li>
-                    <li><strong>Consider medication:</strong> <a class="jargon">Stimulant medications<span class="tooltip">ADHD medications that increase dopamine and norepinephrine availability, often improving impulse control</span></a> can significantly improve <a class="jargon">inhibitory control<span class="tooltip">The brain's ability to suppress or delay immediate impulses in favor of more considered responses</span></a> for many people with <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> by improving <a class="jargon">prefrontal cortex<span class="tooltip">Brain region responsible for executive functions including decision-making, impulse control, and planning</span></a> functioning.</li>
-                </ul>
-
-                <div class="highlight-box">
-                    <p><strong>Reframe impulsivity as a strength:</strong> Your ability to act quickly can be a tremendous asset in the right contexts - crisis situations, creative work, or opportunities that require rapid response. The goal isn't to eliminate impulsivity but to gain more choice about when and how you use it.</p>
-                </div>
-            </div>
-
-            <div class="medical-section">
-                <h2 id="medical-intervention">When Should I Consider Medical Intervention</h2>
-                <p>Consider professional support if impulsive decision-making is creating significant problems in your life:</p>
+                <p><a class="jargon">Hypofrontality<span class="tooltip">Reduced activity or functioning in the prefrontal cortex, leading to weakened executive control and impulse regulation</span></a> also helps explain why people with <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> have higher rates of <a class="jargon">addiction<span class="tooltip">Compulsive engagement with substances or behaviors despite harmful consequences</span></a>. When the prefrontal "brakes" are weakened, exposure to addictive substances or behaviors can create an obsessive, almost unstoppable drive toward immediate reward. The weakened executive control makes it extremely difficult to consider long-term consequences or maintain abstinence when faced with triggers.</p>
                 
-                <ul>
-                    <li><strong>Financial consequences:</strong> If impulsive spending is creating debt, jeopardizing your housing or basic needs, or causing significant relationship conflict around money.</li>
-                    <li><strong>Relationship impact:</strong> If impulsive decisions are damaging important relationships - quitting jobs suddenly, making commitments you can't keep, or saying things you regret in emotional moments.</li>
-                    <li><strong>Safety concerns:</strong> If impulsivity involves risky behaviors like <a class="jargon">substance use<span class="tooltip">Using drugs or alcohol impulsively as a way to cope with emotions or seek immediate relief</span></a>, dangerous driving, or sexual behaviors that could harm you or others.</li>
-                    <li><strong>Legal or professional problems:</strong> If impulsive actions are creating legal issues or jeopardizing your career - workplace conflicts, contractual problems, or other professional consequences.</li>
-                    <li><strong>Emotional aftermath:</strong> If the pattern of impulsive decisions followed by regret is creating shame, depression, or <a class="jargon">anxiety disorders<span class="tooltip">Mental health conditions that can both contribute to and result from patterns of impulsive decision-making</span></a>.</li>
-                    <li><strong>Escalating patterns:</strong> If your impulsive decisions are becoming more frequent, more dramatic, or harder to control despite your efforts to manage them.</li>
-                </ul>
-
-                <div class="highlight-box">
-                    <p><strong>Types of support that help:</strong> <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> medication evaluation, <a class="jargon">cognitive-behavioral therapy<span class="tooltip">Therapy focused on changing thought patterns and behaviors, including impulse control strategies</span></a>, <a class="jargon">dialectical behavior therapy<span class="tooltip">Therapy that teaches specific skills for managing emotions and impulsive behaviors</span></a> for <a class="jargon">emotion regulation<span class="tooltip">Skills for managing intense emotions that often trigger impulsive decisions</span></a> skills, or <a class="jargon">ADHD coaching<span class="tooltip">Specialized support focused on developing practical strategies for ADHD-related challenges</span></a> for practical <a class="jargon">decision-making frameworks<span class="tooltip">Pre-established criteria and processes for making choices that reduce reliance on in-the-moment judgment</span></a>.</p>
-                </div>
-            </div>
-
-            <div class="validation-section">
-                <h2 id="validation">You're Not Imagining This</h2>
-                
-                <p>Impulsive decision-making reflects real differences in brain functioning, not character flaws or lack of self-discipline. Your brain processes <a class="jargon">immediate rewards<span class="tooltip">Present-moment benefits that feel more compelling than future consequences to ADHD brains</span></a> and future consequences differently than <a class="jargon">neurotypical<span class="tooltip">Having a brain that functions in ways considered typical by society</span></a> brains, creating genuine challenges with traditional approaches to decision-making.</p>
-                
-                <p>Many successful people with <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> continue to make some impulsive decisions while building careers and relationships they value. The goal isn't perfect impulse control - it's developing enough awareness and systems to make impulsive choices that align with your values and long-term goals.</p>
-                
-                <p>Your impulsivity also likely comes with strengths that <a class="jargon">neurotypical<span class="tooltip">Having a brain that functions in ways considered typical by society</span></a> people may lack: spontaneity, ability to seize opportunities quickly, responsiveness to immediate needs, and creative problem-solving under pressure. Learning to harness these qualities while building better <a class="jargon">decision-making frameworks<span class="tooltip">Pre-established criteria and processes for making choices that reduce reliance on in-the-moment judgment</span></a> is often more effective than trying to suppress your natural tendencies.</p>
-
-                <p>The shame and regret that often follow impulsive decisions can create a cycle where you feel worse about yourself, which then leads to more impulsive choices seeking relief. Breaking this cycle starts with understanding that your brain works differently, not defectively.</p>
-            </div>
-
-            <div class="related-struggles">
-                <h3>Related Struggles</h3>
-                <div class="struggle-tags">
-                    <a href="{{ '/struggles/emotional-dysregulation.html' | relative_url }}" class="struggle-tag">Emotional Dysregulation</a>
-                    <a href="{{ '/struggles/organization-and-planning-challenges.html' | relative_url }}" class="struggle-tag">Planning Challenges</a>
-                    <a href="{{ '/struggles/time-blindness.html' | relative_url }}" class="struggle-tag">Time Blindness</a>
-                    <a href="{{ '/struggles/rejection-sensitive-dysphoria.html' | relative_url }}" class="struggle-tag">RSD</a>
-                    <a href="{{ '/struggles/working-memory-difficulties.html' | relative_url }}" class="struggle-tag">Working Memory</a>
-                </div>
+                <p>The <a class="jargon">dopaminergic pathways<span class="tooltip">Brain circuits that use dopamine to regulate motivation, reward processing, and executive control</span></a> that help balance immediate desires with long-term goals also function differently, which may explain why <a class="jargon">stimulant medications<span class="tooltip">ADHD medications that increase dopamine and norepinephrine availability in the brain</span></a> can significantly improve impulse control for many people with <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> by strengthening prefrontal function.</p>
             </div>
         </div>
-    </main>
+    </div>
+
+    <div class="immediate-help">
+        <h2 id="next-five-minutes">What Can Help You Through the Next 5 Minutes</h2>
+        <p>When you're feeling the urge to make a quick decision right now, these strategies can help create space for more thoughtful choice-making:</p>
+        
+        <ul>
+            <li><strong>Use the <a class="jargon">10-10-10 rule<span class="tooltip">Ask yourself: How will I feel about this decision in 10 minutes, 10 months, and 10 years?</span></a>:</strong> Ask yourself how you'll feel about this decision in 10 minutes, 10 months, and 10 years. This helps your brain connect present actions to future consequences.</li>
+            <li><strong>Create physical distance:</strong> Step away from your computer, put your phone in another room, or leave the store. Physical space often creates mental space for better decision-making.</li>
+            <li><strong>Set a <a class="jargon">cooling-off period<span class="tooltip">A predetermined amount of time to wait before making important decisions</span></a>:</strong> Tell yourself you'll wait 24 hours (or even just 30 minutes) before acting on this impulse. Often the urgency fades with time.</li>
+            <li><strong>Text someone first:</strong> Send a quick message to a trusted friend describing what you want to do. Sometimes just articulating the decision helps you see it more clearly.</li>
+            <li><strong>Use the <a class="jargon">STOP technique<span class="tooltip">Stop what you're doing, Take a breath, Observe your thoughts and feelings, Proceed mindfully</span></a>:</strong> Stop what you're doing, Take a deep breath, Observe what you're thinking and feeling, then Proceed with intention rather than impulse.</li>
+            <li><strong>Check your basic needs:</strong> Are you hungry, tired, stressed, or overwhelmed? <a class="jargon">Decision fatigue<span class="tooltip">Mental exhaustion from making too many choices, which can lead to either avoiding decisions or making increasingly impulsive ones</span></a> and impulse control get worse when your basic needs aren't met.</li>
+            <li><strong>Ask "What would I advise a friend?"</strong> We often give others better advice than we follow ourselves. This mental shift can provide clearer perspective on your situation.</li>
+        </ul>
+
+        <div class="highlight-box">
+            <p><strong>Emergency brake:</strong> If the impulse involves money, relationships, or major life changes, use a <a class="jargon">pre-commitment strategy<span class="tooltip">Setting up barriers ahead of time to prevent impulsive decisions in vulnerable moments</span></a>: remove apps from your phone, give your credit cards to someone else, or create obstacles that force you to slow down.</p>
+        </div>
+    </div>
+
+    <div class="long-term">
+        <h2 id="long-term-solutions">What Are Some Healthy Long-term Solutions</h2>
+        <p>Building sustainable systems that work with your <a class="jargon">impulsive tendencies<span class="tooltip">Natural inclinations toward quick action that can be channeled constructively rather than eliminated</span></a> rather than constantly fighting them:</p>
+        
+        <ul>
+            <li><strong>Design your environment:</strong> Remove temptations and create <a class="jargon">friction<span class="tooltip">Intentional obstacles that slow down impulsive actions to create space for better decisions</span></a> for impulsive decisions. Unsubscribe from shopping emails, use apps that delay social media posts, or keep credit cards in inconvenient locations.</li>
+            <li><strong>Create <a class="jargon">decision frameworks<span class="tooltip">Pre-established criteria and processes for making choices that reduce reliance on in-the-moment judgment</span></a>:</strong> Develop specific criteria for different types of decisions before you need them. What makes a good financial decision? When is it okay to say yes to social commitments? Having frameworks reduces <a class="jargon">decision fatigue<span class="tooltip">Mental exhaustion from making too many choices, which can lead to either avoiding decisions or making increasingly impulsive ones</span></a>.</li>
+            <li><strong>Use <a class="jargon">implementation intentions<span class="tooltip">If-then plans that specify what you'll do in specific situations, reducing the need for in-the-moment decision-making</span></a>:</strong> Create "if-then" plans for common impulsive situations. "If I want to buy something over $50, then I'll wait 48 hours." "If I feel like quitting something, then I'll talk to three people first."</li>
+            <li><strong>Channel impulses constructively:</strong> Find positive outlets for your <a class="jargon">impulsive energy<span class="tooltip">The drive for immediate action that can be redirected toward beneficial activities</span></a> - creative projects, physical exercise, or helping others. Sometimes the problem isn't the impulse itself but where it's directed.</li>
+            <li><strong>Practice <a class="jargon">mindful awareness<span class="tooltip">Noticing thoughts, feelings, and urges without immediately acting on them</span></a>:</strong> Learn to recognize the physical sensations that come before impulsive decisions. The more aware you become of your patterns, the more choice you have in responding to them.</li>
+            <li><strong>Build in <a class="jargon">accountability systems<span class="tooltip">External structures or people that help you stick to your intended decision-making process</span></a>:</strong> Work with trusted friends, family, or <a class="jargon">ADHD coaches<span class="tooltip">Professionals who specialize in helping people with ADHD develop practical life management skills</span></a> who can help you think through major decisions without judgment.</li>
+            <li><strong>Address underlying needs:</strong> Often impulsive decisions are trying to meet legitimate needs - for novelty, control, connection, or relief from discomfort. Find healthier ways to meet these needs proactively.</li>
+            <li><strong>Consider medication:</strong> <a class="jargon">Stimulant medications<span class="tooltip">ADHD medications that increase dopamine and norepinephrine availability, often improving impulse control</span></a> can significantly improve <a class="jargon">inhibitory control<span class="tooltip">The brain's ability to suppress or delay immediate impulses in favor of more considered responses</span></a> for many people with <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> by improving <a class="jargon">prefrontal cortex<span class="tooltip">Brain region responsible for executive functions including decision-making, impulse control, and planning</span></a> functioning.</li>
+        </ul>
+
+        <div class="highlight-box">
+            <p><strong>Reframe impulsivity as a strength:</strong> Your ability to act quickly can be a tremendous asset in the right contexts - crisis situations, creative work, or opportunities that require rapid response. The goal isn't to eliminate impulsivity but to gain more choice about when and how you use it.</p>
+        </div>
+    </div>
+
+    <div class="medical-section">
+        <h2 id="medical-intervention">When Should I Consider Medical Intervention</h2>
+        <p>Consider professional support if impulsive decision-making is creating significant problems in your life:</p>
+        
+        <ul>
+            <li><strong>Financial consequences:</strong> If impulsive spending is creating debt, jeopardizing your housing or basic needs, or causing significant relationship conflict around money.</li>
+            <li><strong>Relationship impact:</strong> If impulsive decisions are damaging important relationships - quitting jobs suddenly, making commitments you can't keep, or saying things you regret in emotional moments.</li>
+            <li><strong>Safety concerns:</strong> If impulsivity involves risky behaviors like <a class="jargon">substance use<span class="tooltip">Using drugs or alcohol impulsively as a way to cope with emotions or seek immediate relief</span></a>, dangerous driving, or sexual behaviors that could harm you or others.</li>
+            <li><strong>Legal or professional problems:</strong> If impulsive actions are creating legal issues or jeopardizing your career - workplace conflicts, contractual problems, or other professional consequences.</li>
+            <li><strong>Emotional aftermath:</strong> If the pattern of impulsive decisions followed by regret is creating shame, depression, or <a class="jargon">anxiety disorders<span class="tooltip">Mental health conditions that can both contribute to and result from patterns of impulsive decision-making</span></a>.</li>
+            <li><strong>Escalating patterns:</strong> If your impulsive decisions are becoming more frequent, more dramatic, or harder to control despite your efforts to manage them.</li>
+        </ul>
+
+        <div class="highlight-box">
+            <p><strong>Types of support that help:</strong> <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> medication evaluation, <a class="jargon">cognitive-behavioral therapy<span class="tooltip">Therapy focused on changing thought patterns and behaviors, including impulse control strategies</span></a>, <a class="jargon">dialectical behavior therapy<span class="tooltip">Therapy that teaches specific skills for managing emotions and impulsive behaviors</span></a> for <a class="jargon">emotion regulation<span class="tooltip">Skills for managing intense emotions that often trigger impulsive decisions</span></a> skills, or <a class="jargon">ADHD coaching<span class="tooltip">Specialized support focused on developing practical strategies for ADHD-related challenges</span></a> for practical <a class="jargon">decision-making frameworks<span class="tooltip">Pre-established criteria and processes for making choices that reduce reliance on in-the-moment judgment</span></a>.</p>
+        </div>
+    </div>
+
+    <div class="validation-section">
+        <h2 id="validation">You're Not Imagining This</h2>
+        
+        <p>Impulsive decision-making reflects real differences in brain functioning, not character flaws or lack of self-discipline. Your brain processes <a class="jargon">immediate rewards<span class="tooltip">Present-moment benefits that feel more compelling than future consequences to ADHD brains</span></a> and future consequences differently than <a class="jargon">neurotypical<span class="tooltip">Having a brain that functions in ways considered typical by society</span></a> brains, creating genuine challenges with traditional approaches to decision-making.</p>
+        
+        <p>Many successful people with <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder - brain differences affecting attention, impulse control, and executive function</span></a> continue to make some impulsive decisions while building careers and relationships they value. The goal isn't perfect impulse control - it's developing enough awareness and systems to make impulsive choices that align with your values and long-term goals.</p>
+        
+        <p>Your impulsivity also likely comes with strengths that <a class="jargon">neurotypical<span class="tooltip">Having a brain that functions in ways considered typical by society</span></a> people may lack: spontaneity, ability to seize opportunities quickly, responsiveness to immediate needs, and creative problem-solving under pressure. Learning to harness these qualities while building better <a class="jargon">decision-making frameworks<span class="tooltip">Pre-established criteria and processes for making choices that reduce reliance on in-the-moment judgment</span></a> is often more effective than trying to suppress your natural tendencies.</p>
+
+        <p>The shame and regret that often follow impulsive decisions can create a cycle where you feel worse about yourself, which then leads to more impulsive choices seeking relief. Breaking this cycle starts with understanding that your brain works differently, not defectively.</p>
+    </div>
+
+    <div class="related-struggles">
+        <h3>Related Struggles</h3>
+        <div class="struggle-tags">
+            <a href="{{ '/struggles/emotional-dysregulation.html' | relative_url }}" class="struggle-tag">Emotional Dysregulation</a>
+            <a href="{{ '/struggles/organization-and-planning-challenges.html' | relative_url }}" class="struggle-tag">Planning Challenges</a>
+            <a href="{{ '/struggles/time-blindness.html' | relative_url }}" class="struggle-tag">Time Blindness</a>
+            <a href="{{ '/struggles/rejection-sensitive-dysphoria.html' | relative_url }}" class="struggle-tag">RSD</a>
+            <a href="{{ '/struggles/working-memory-difficulties.html' | relative_url }}" class="struggle-tag">Working Memory</a>
+        </div>
+    </div>
 </div>
-
-<script>
-function toggleLearnMore(element) {
-    element.classList.toggle('expanded');
-    const arrow = element.querySelector('h3');
-    if (element.classList.contains('expanded')) {
-        arrow.innerHTML = arrow.innerHTML.replace('↓', '↑');
-    } else {
-        arrow.innerHTML = arrow.innerHTML.replace('↑', '↓');
-    }
-}
-
-document.addEventListener('DOMContentLoaded', function() {
-    // Handle jargon clicks to prevent event bubbling
-    const jargonTerms = document.querySelectorAll('.jargon');
-    jargonTerms.forEach(function(jargon) {
-        jargon.addEventListener('click', function(e) {
-            e.stopPropagation(); // Prevent bubbling to learn-more handler
-        });
-    });
-});
-</script>
