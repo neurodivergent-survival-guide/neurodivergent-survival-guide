@@ -1,641 +1,128 @@
 ---
 layout: struggle
 title: "Stimulant Appetite Suppression"
+subtitle: "When ADHD medications reduce your appetite and make eating challenging"
 slug: stimulant-appetite-suppression
 condition: adhd
 ---
+
 <!-- struggles/stimulant-appetite-suppression.html -->
-<style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
 
-    body {
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        line-height: 1.6;
-        color: #333;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        min-height: 100vh;
-    }
+<div class="content-card">
+    <div class="what-section">
+        <h2 id="what-this-feels-like">What This Feels Like</h2>
+        <p>The thought of food becomes neutral at best, actively unappealing at worst. Your stomach might feel persistently full or queasy, even when you haven't eaten in hours. Meal times that once felt automatic now require conscious effort and planning. You might find yourself reaching lunchtime having forgotten to eat breakfast, or realizing at dinnertime that you've only had a cup of coffee all day.</p>
 
-    .header {
-        background: rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(10px);
-        padding: 2rem;
-        text-align: center;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    }
+        <p>Food that used to be appealing loses its draw entirely. Even <a class="jargon">favorite foods<span class="tooltip">Foods that previously brought pleasure or comfort but now seem unappetizing due to medication effects</span></a> might look uninteresting or trigger mild nausea. Your body's <a class="jargon">hunger cues<span class="tooltip">Physical sensations like stomach growling or low energy that normally signal the need to eat</span></a> become muted or disappear completely, leaving you dependent on clocks and reminders rather than natural appetite to know when to eat.</p>
 
-    .header h1 {
-        color: white;
-        font-size: 2.5rem;
-        font-weight: 300;
-        margin-bottom: 0.5rem;
-    }
+        <p>The physical sensations vary - some people experience active nausea, others just complete indifference to food. You might feel full after just a few bites, or find that textures and flavors seem more intense or off-putting than usual. Swallowing might feel effortful, and the social aspects of eating - sharing meals, trying new restaurants - can become stressful rather than enjoyable.</p>
 
-    .header p {
-        color: rgba(255, 255, 255, 0.9);
-        font-size: 1.1rem;
-    }
+        <p>This isn't just "not being hungry." It's a <a class="jargon">medication-induced appetite suppression<span class="tooltip">A common side effect of stimulant medications where the brain's appetite regulation is temporarily altered</span></a> that can make maintaining adequate nutrition feel like a chore. You're caught between needing the medication for focus and daily functioning, and needing food for physical health and energy.</p>
+    </div>
 
-    .breadcrumb {
-        background: rgba(255, 255, 255, 0.05);
-        padding: 1rem 2rem;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        overflow-x: auto;
-        white-space: nowrap;
-    }
+    <div class="why-section">
+        <h2 id="why-this-happens">Why This Might Be Happening</h2>
+        <p><a class="jargon">Stimulant medications<span class="tooltip">ADHD medications like Adderall, Ritalin, Concerta, and Vyvanse that increase dopamine and norepinephrine</span></a> affect the same brain regions that regulate appetite and reward-seeking behavior. The <a class="jargon">dopamine pathways<span class="tooltip">Neural circuits that control motivation, reward, and pleasure responses, including the drive to seek food</span></a> that help you focus and maintain attention also play a crucial role in making food feel rewarding and desirable.</p>
 
-    .breadcrumb a {
-        color: rgba(255, 255, 255, 0.8);
-        text-decoration: none;
-        font-size: 0.9rem;
-    }
+        <p>When stimulants increase <a class="jargon">dopamine availability<span class="tooltip">The amount of dopamine neurotransmitter available in brain synapses to transmit signals</span></a> in your brain, they can temporarily reduce the reward value of eating. Your <a class="jargon">hypothalamus<span class="tooltip">The brain region that regulates hunger, satiety, and energy balance</span></a> - the appetite control center - receives altered signals about energy needs and food motivation. This isn't a sign that the medication is wrong for you; it's a predictable physiological response.</p>
 
-    .breadcrumb a:hover {
-        color: white;
-    }
+        <div class="learn-more" onclick="toggleLearnMore(this)">
+            <h3>Learn More: The Science of Stimulants and Appetite ↓</h3>
+            <div class="learn-more-content">
+                <p><a class="jargon">Amphetamine-based medications<span class="tooltip">ADHD medications like Adderall and Vyvanse that contain amphetamine compounds</span></a> and <a class="jargon">methylphenidate-based medications<span class="tooltip">ADHD medications like Ritalin and Concerta that contain methylphenidate</span></a> work by blocking the reuptake of dopamine and norepinephrine, making these neurotransmitters more available in brain synapses. This mechanism improves focus and impulse control, but also affects the <a class="jargon">mesolimbic pathway<span class="tooltip">The brain reward system that processes pleasure and motivation, including food-seeking behavior</span></a> that makes food rewarding.</p>
 
-    .breadcrumb span {
-        color: rgba(255, 255, 255, 0.6);
-        margin: 0 0.5rem;
-    }
+                <p>The appetite suppression typically peaks 2-4 hours after taking the medication, coinciding with maximum blood levels. Your <a class="jargon">ghrelin levels<span class="tooltip">The 'hunger hormone' produced by the stomach that signals the brain when it's time to eat</span></a> - the hormone that signals hunger - may be suppressed, while <a class="jargon">leptin sensitivity<span class="tooltip">How well your brain responds to leptin, the hormone that signals fullness and satiety</span></a> might be increased, making you feel full sooner and for longer periods.</p>
 
-    .container {
-        max-width: 1000px;
-        margin: 0 auto;
-        padding: 2rem;
-    }
+                <p>Individual responses vary based on factors like <a class="jargon">medication type<span class="tooltip">Different stimulant medications have varying effects on appetite, with some causing more suppression than others</span></a>, dosage, timing, your baseline metabolism, and genetic factors affecting drug metabolism. Some people experience significant appetite suppression that lasts all day, while others notice only mild effects during peak medication hours.</p>
 
-    .struggle-content {
-        background: rgba(255, 255, 255, 0.95);
-        border-radius: 20px;
-        padding: 3rem;
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-        margin-bottom: 2rem;
-    }
-
-    /* Section styling with colors */
-    .what-section {
-        background: #ffe6e6;
-        padding: 2rem;
-        border-radius: 12px;
-        margin: 2rem 0;
-        border-left: 4px solid #d63031;
-    }
-
-    .what-section h2 {
-        color: #d63031;
-        margin-bottom: 1rem;
-        font-size: 1.8rem;
-    }
-
-    .why-section {
-        background: #ffeaa7;
-        padding: 2rem;
-        border-radius: 12px;
-        margin: 2rem 0;
-        border-left: 4px solid #f1c40f;
-    }
-
-    .why-section h2 {
-        color: #f39c12;
-        margin-bottom: 1rem;
-        font-size: 1.8rem;
-    }
-
-    .immediate-help {
-        background: #cce5ff;
-        padding: 2rem;
-        border-radius: 12px;
-        margin: 2rem 0;
-        border-left: 4px solid #007acc;
-    }
-
-    .immediate-help h2 {
-        color: #005599;
-        margin-bottom: 1rem;
-        font-size: 1.8rem;
-    }
-
-    .long-term {
-        background: #d4edda;
-        padding: 2rem;
-        border-radius: 12px;
-        margin: 2rem 0;
-        border-left: 4px solid #28a745;
-    }
-
-    .long-term h2 {
-        color: #155724;
-        margin-bottom: 1rem;
-        font-size: 1.8rem;
-    }
-
-    .medical-section {
-        background: #d1f2eb;
-        padding: 2rem;
-        border-radius: 12px;
-        margin: 2rem 0;
-        border-left: 4px solid #17a2b8;
-    }
-
-    .medical-section h2 {
-        color: #0c5460;
-        margin-bottom: 1rem;
-        font-size: 1.8rem;
-    }
-
-    .validation-section {
-        background: #e2e3ff;
-        padding: 2rem;
-        border-radius: 12px;
-        margin: 2rem 0;
-        border-left: 4px solid #6c5ce7;
-    }
-
-    .validation-section h2 {
-        color: #5a4fcf;
-        margin-bottom: 1rem;
-        font-size: 1.8rem;
-    }
-
-    .related-struggles {
-        background: #f8f9fa;
-        border: 1px solid #e0e0e0;
-        padding: 2rem;
-        border-radius: 12px;
-        margin: 2rem 0;
-    }
-
-    .related-struggles h2 {
-        color: #333;
-        margin-bottom: 1rem;
-        font-size: 1.8rem;
-    }
-
-    .struggle-tags {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-        justify-content: center;
-    }
-
-    .struggle-tag {
-        background: #d63031;
-        color: white;
-        padding: 0.5rem 1rem;
-        border-radius: 20px;
-        font-size: 0.85rem;
-        text-decoration: none;
-        min-height: 44px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        transition: all 0.3s ease;
-    }
-
-    .struggle-tag:hover {
-        background: #b71c1c;
-        transform: translateY(-1px);
-        text-decoration: none;
-        color: white;
-    }
-
-    .highlight-box {
-        background: #fff8e1;
-        padding: 1rem;
-        border-radius: 8px;
-        border-left: 3px solid #ffc107;
-        margin: 1rem 0;
-    }
-
-    .learn-more {
-        background: linear-gradient(45deg, #a29bfe, #6c5ce7);
-        color: white;
-        padding: 1.5rem;
-        border-radius: 12px;
-        margin: 1.5rem 0;
-        cursor: pointer;
-        transition: all 0.3s ease;
-    }
-
-    .learn-more:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-    }
-
-    .learn-more h3 {
-        margin: 0 0 0.5rem 0;
-        font-size: 1.2rem;
-    }
-
-    .learn-more-content {
-        display: none;
-        margin-top: 1rem;
-        padding-top: 1rem;
-        border-top: 1px solid rgba(255, 255, 255, 0.3);
-    }
-
-    .learn-more.expanded .learn-more-content {
-        display: block;
-    }
-
-    /* Focus states for accessibility */
-    .struggle-tag:focus {
-        outline: 2px solid #fff;
-        outline-offset: 2px;
-    }
-
-    /* Jargon styling - context-aware based on background */
-    .jargon {
-        text-decoration: none;
-        border-bottom: 1px dotted;
-        position: relative;
-        cursor: help;
-        font-weight: 500;
-    }
-
-    /* Pink jargon for white backgrounds */
-    .struggle-content .jargon {
-        color: #e84393;
-        border-bottom-color: #e84393;
-    }
-
-    .struggle-content .jargon:hover {
-        color: #fd79a8;
-        border-bottom-color: #fd79a8;
-    }
-
-    /* Bold black jargon for colored backgrounds */
-    .what-section .jargon,
-    .why-section .jargon,
-    .immediate-help .jargon,
-    .long-term .jargon,
-    .medical-section .jargon,
-    .validation-section .jargon {
-        color: #333;
-        font-weight: 600;
-        border-bottom-color: #333;
-    }
-
-    /* White jargon for gradient backgrounds */
-    .header .jargon,
-    .breadcrumb .jargon,
-    .learn-more .jargon,
-    .learn-more-content .jargon {
-        color: white;
-        border-bottom-color: rgba(255, 255, 255, 0.7);
-        background: rgba(255, 255, 255, 0.1);
-        padding: 2px 6px;
-        border-radius: 4px;
-    }
-
-    .header .jargon:hover,
-    .breadcrumb .jargon:hover,
-    .learn-more .jargon:hover,
-    .learn-more-content .jargon:hover {
-        background: rgba(255, 255, 255, 0.2);
-        border-bottom-color: white;
-    }
-
-    /* Auto-sizing tooltips */
-    .tooltip {
-        visibility: hidden;
-        opacity: 0;
-        position: absolute;
-        bottom: calc(100% + 8px);
-        left: 50%;
-        transform: translateX(-50%);
-        background: #333;
-        color: white;
-        padding: 12px 16px;
-        border-radius: 8px;
-        font-size: 0.9rem;
-        font-weight: normal;
-        z-index: 1001;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-        transition: opacity 0.3s, visibility 0.3s;
-        max-width: 800px;
-        min-width: 200px;
-        width: max-content;
-        white-space: normal;
-        text-align: left;
-        line-height: 1.5;
-        pointer-events: none;
-    }
-
-    .tooltip::after {
-        content: '';
-        position: absolute;
-        top: 100%;
-        left: 50%;
-        transform: translateX(-50%);
-        border: 6px solid transparent;
-        border-top-color: #333;
-    }
-
-    .jargon:hover .tooltip {
-        visibility: visible;
-        opacity: 1;
-    }
-
-    /* Mobile responsive tooltip adjustments */
-    @media (max-width: 1024px) {
-        .tooltip {
-            max-width: 400px;
-        }
-    }
-
-    /* Mobile-specific tooltip positioning */
-    @media (max-width: 768px) {
-        .tooltip {
-            position: fixed !important;
-            bottom: 20px !important;
-            left: 20px !important;
-            right: 20px !important;
-            transform: none !important;
-            max-width: none !important;
-            width: auto !important;
-            z-index: 9999 !important;
-        }
-
-        .tooltip::after {
-            display: none !important;
-        }
-
-        .header {
-            padding: 1rem;
-        }
-
-        .header h1 {
-            font-size: 2rem;
-        }
-
-        .container {
-            padding: 1rem;
-        }
-
-        .struggle-content {
-            padding: 1.5rem;
-        }
-
-        .what-section,
-        .why-section,
-        .immediate-help,
-        .long-term,
-        .medical-section,
-        .validation-section,
-        .related-struggles {
-            padding: 1.5rem;
-            margin: 1rem 0;
-        }
-
-        .struggle-tags {
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .struggle-tag {
-            width: 100%;
-            max-width: 280px;
-            justify-content: center;
-        }
-    }
-
-    @media (max-width: 480px) {
-        .header h1 {
-            font-size: 1.8rem;
-        }
-
-        .struggle-content {
-            padding: 1.2rem;
-        }
-
-        .what-section,
-        .why-section,
-        .immediate-help,
-        .long-term,
-        .medical-section,
-        .validation-section {
-            padding: 1.2rem;
-        }
-    }
-</style>
-
-<div class="header">
-    <h1>Stimulant Appetite Suppression</h1>
-    <p>When ADHD medications reduce your appetite and make eating challenging</p>
-</div>
-
-<div class="breadcrumb">
-    <a href="{{ '/index.html' | relative_url }}">Home</a>
-    <span>></span>
-    <a href="{{ '/struggles/index.html' | relative_url }}">Struggles</a>
-    <span>></span>
-    Stimulant Appetite Suppression
-</div>
-
-<div class="container">
-    <div class="struggle-content">
-        <div class="what-section">
-            <h2>What this feels like</h2>
-            <p>The thought of food becomes neutral at best, actively unappealing at worst. Your stomach might feel persistently full or queasy, even when you haven't eaten in hours. Meal times that once felt automatic now require conscious effort and planning. You might find yourself reaching lunchtime having forgotten to eat breakfast, or realizing at dinnertime that you've only had a cup of coffee all day.</p>
-
-            <p>Food that used to be appealing loses its draw entirely. Even <a class="jargon">favorite foods<span class="tooltip">Foods that previously brought pleasure or comfort but now seem unappetizing due to medication effects</span></a> might look uninteresting or trigger mild nausea. Your body's <a class="jargon">hunger cues<span class="tooltip">Physical sensations like stomach growling or low energy that normally signal the need to eat</span></a> become muted or disappear completely, leaving you dependent on clocks and reminders rather than natural appetite to know when to eat.</p>
-
-            <p>The physical sensations vary - some people experience active nausea, others just complete indifference to food. You might feel full after just a few bites, or find that textures and flavors seem more intense or off-putting than usual. Swallowing might feel effortful, and the social aspects of eating - sharing meals, trying new restaurants - can become stressful rather than enjoyable.</p>
-
-            <p>This isn't just "not being hungry." It's a <a class="jargon">medication-induced appetite suppression<span class="tooltip">A common side effect of stimulant medications where the brain's appetite regulation is temporarily altered</span></a> that can make maintaining adequate nutrition feel like a chore. You're caught between needing the medication for focus and daily functioning, and needing food for physical health and energy.</p>
-        </div>
-
-        <div class="why-section">
-            <h2>Why this might be happening</h2>
-            <p><a class="jargon">Stimulant medications<span class="tooltip">ADHD medications like Adderall, Ritalin, Concerta, and Vyvanse that increase dopamine and norepinephrine</span></a> affect the same brain regions that regulate appetite and reward-seeking behavior. The <a class="jargon">dopamine pathways<span class="tooltip">Neural circuits that control motivation, reward, and pleasure responses, including the drive to seek food</span></a> that help you focus and maintain attention also play a crucial role in making food feel rewarding and desirable.</p>
-
-            <p>When stimulants increase <a class="jargon">dopamine availability<span class="tooltip">The amount of dopamine neurotransmitter available in brain synapses to transmit signals</span></a> in your brain, they can temporarily reduce the reward value of eating. Your <a class="jargon">hypothalamus<span class="tooltip">The brain region that regulates hunger, satiety, and energy balance</span></a> - the appetite control center - receives altered signals about energy needs and food motivation. This isn't a sign that the medication is wrong for you; it's a predictable physiological response.</p>
-
-            <div class="learn-more" onclick="toggleLearnMore(this)">
-                <h3>The Science of Stimulants and Appetite ↓</h3>
-                <div class="learn-more-content">
-                    <p><a class="jargon">Amphetamine-based medications<span class="tooltip">ADHD medications like Adderall and Vyvanse that contain amphetamine compounds</span></a> and <a class="jargon">methylphenidate-based medications<span class="tooltip">ADHD medications like Ritalin and Concerta that contain methylphenidate</span></a> work by blocking the reuptake of dopamine and norepinephrine, making these neurotransmitters more available in brain synapses. This mechanism improves focus and impulse control, but also affects the <a class="jargon">mesolimbic pathway<span class="tooltip">The brain reward system that processes pleasure and motivation, including food-seeking behavior</span></a> that makes food rewarding.</p>
-
-                    <p>The appetite suppression typically peaks 2-4 hours after taking the medication, coinciding with maximum blood levels. Your <a class="jargon">ghrelin levels<span class="tooltip">The 'hunger hormone' produced by the stomach that signals the brain when it's time to eat</span></a> - the hormone that signals hunger - may be suppressed, while <a class="jargon">leptin sensitivity<span class="tooltip">How well your brain responds to leptin, the hormone that signals fullness and satiety</span></a> might be increased, making you feel full sooner and for longer periods.</p>
-
-                    <p>Individual responses vary based on factors like <a class="jargon">medication type<span class="tooltip">Different stimulant medications have varying effects on appetite, with some causing more suppression than others</span></a>, dosage, timing, your baseline metabolism, and genetic factors affecting drug metabolism. Some people experience significant appetite suppression that lasts all day, while others notice only mild effects during peak medication hours.</p>
-
-                    <p>The good news is that <a class="jargon">tolerance to appetite suppression<span class="tooltip">The tendency for appetite side effects to diminish over time as the body adjusts to the medication</span></a> often develops over weeks to months, meaning the effect may lessen as your body adapts to the medication, even while the cognitive benefits continue.</p>
-                </div>
+                <p>The good news is that <a class="jargon">tolerance to appetite suppression<span class="tooltip">The tendency for appetite side effects to diminish over time as the body adjusts to the medication</span></a> often develops over weeks to months, meaning the effect may lessen as your body adapts to the medication, even while the cognitive benefits continue.</p>
             </div>
-
-            <p>Timing matters significantly. The appetite suppression typically corresponds with <a class="jargon">peak medication levels<span class="tooltip">The time period when the medication reaches its highest concentration in your bloodstream</span></a> in your system, which can last 4-12 hours depending on whether you're taking <a class="jargon">immediate-release<span class="tooltip">Short-acting ADHD medications that work for 4-5 hours</span></a> or <a class="jargon">extended-release formulations<span class="tooltip">Long-acting ADHD medications designed to work for 8-12 hours</span></a>. This creates a daily pattern where your natural appetite may return in the evening as the medication wears off, but by then you may have missed multiple meals.</p>
-
-            <p>Individual factors like your baseline eating patterns, stress levels, sleep quality, and other medications can influence how severely the appetite suppression affects you. Some people adapt within a few weeks, while others continue to experience significant effects that require ongoing management strategies.</p>
         </div>
 
-        <div class="immediate-help">
-            <h2>What can help you through the next 5 minutes</h2>
-            <p>If you're feeling lightheaded, weak, or realizing you haven't eaten all day, start with immediate safety and basic nutrition:</p>
+        <p>Timing matters significantly. The appetite suppression typically corresponds with <a class="jargon">peak medication levels<span class="tooltip">The time period when the medication reaches its highest concentration in your bloodstream</span></a> in your system, which can last 4-12 hours depending on whether you're taking <a class="jargon">immediate-release<span class="tooltip">Short-acting ADHD medications that work for 4-5 hours</span></a> or <a class="jargon">extended-release formulations<span class="tooltip">Long-acting ADHD medications designed to work for 8-12 hours</span></a>. This creates a daily pattern where your natural appetite may return in the evening as the medication wears off, but by then you may have missed multiple meals.</p>
 
-            <div class="highlight-box">
-                <strong>Immediate nutrition options:</strong> Protein smoothie, Greek yogurt with honey, banana with peanut butter, or a handful of nuts. Choose calorie-dense foods that don't require extensive chewing or large volumes.
-            </div>
+        <p>Individual factors like your baseline eating patterns, stress levels, sleep quality, and other medications can influence how severely the appetite suppression affects you. Some people adapt within a few weeks, while others continue to experience significant effects that require ongoing management strategies.</p>
+    </div>
 
-            <p><strong>Check your body's current state.</strong> Are you experiencing <a class="jargon">hypoglycemic symptoms<span class="tooltip">Low blood sugar symptoms like shakiness, dizziness, irritability, or difficulty concentrating</span></a> like shakiness, difficulty concentrating (beyond your usual ADHD), or mood irritability? These signal urgent need for quick-acting carbohydrates like fruit juice or crackers.</p>
+    <div class="immediate-help">
+        <h2 id="next-five-minutes">What Can Help You Through the Next 5 Minutes</h2>
+        <p>If you're feeling lightheaded, weak, or realizing you haven't eaten all day, start with immediate safety and basic nutrition:</p>
 
-            <p><strong>Start small and liquid.</strong> When solid food feels overwhelming, liquids are often more tolerable. Milk, protein shakes, fruit smoothies, or even soup can provide necessary calories and nutrients without triggering nausea. <a class="jargon">Liquid calories<span class="tooltip">Nutritional calories consumed in liquid form, often easier to consume when appetite is suppressed</span></a> bypass some of the aversion to solid foods.</p>
-
-            <p><strong>Set a phone alarm for 2 hours from now.</strong> Don't rely on hunger cues that aren't working. Create external reminders to check in with your body and consume something, even if it's small. This prevents the cycle of going too long without eating and then feeling worse.</p>
-
-            <p><strong>Keep emergency snacks accessible.</strong> Trail mix, energy bars, or crackers with cheese - foods that don't require preparation and provide <a class="jargon">balanced macronutrients<span class="tooltip">A combination of protein, carbohydrates, and fats that provide sustained energy</span></a>. Having options immediately available removes the decision-making barrier when appetite is low.</p>
-
-            <p><strong>Address nausea if present.</strong> Ginger tea, peppermint, or crackers can help settle your stomach. Sometimes the appetite suppression comes with mild nausea that makes eating feel impossible, but settling the stomach first can open up more food options.</p>
+        <div class="highlight-box">
+            <p><strong>Immediate nutrition options:</strong> Protein smoothie, Greek yogurt with honey, banana with peanut butter, or a handful of nuts. Choose calorie-dense foods that don't require extensive chewing or large volumes.</p>
         </div>
 
-        <div class="long-term">
-            <h2>What are some healthy long-term solutions</h2>
-            <p>Managing stimulant-induced appetite suppression requires strategic planning around your medication schedule and maximizing nutrition during the windows when eating is more tolerable.</p>
+        <ul>
+            <li><strong>Check your body's current state:</strong> Are you experiencing <a class="jargon">hypoglycemic symptoms<span class="tooltip">Low blood sugar symptoms like shakiness, dizziness, irritability, or difficulty concentrating</span></a> like shakiness, difficulty concentrating (beyond your usual ADHD), or mood irritability? These signal urgent need for quick-acting carbohydrates like fruit juice or crackers.</li>
+            <li><strong>Start small and liquid:</strong> When solid food feels overwhelming, liquids are often more tolerable. Milk, protein shakes, fruit smoothies, or even soup can provide necessary calories and nutrients without triggering nausea. <a class="jargon">Liquid calories<span class="tooltip">Nutritional calories consumed in liquid form, often easier to consume when appetite is suppressed</span></a> bypass some of the aversion to solid foods.</li>
+            <li><strong>Set a phone alarm for 2 hours from now:</strong> Don't rely on hunger cues that aren't working. Create external reminders to check in with your body and consume something, even if it's small. This prevents the cycle of going too long without eating and then feeling worse.</li>
+            <li><strong>Keep emergency snacks accessible:</strong> Trail mix, energy bars, or crackers with cheese - foods that don't require preparation and provide <a class="jargon">balanced macronutrients<span class="tooltip">A combination of protein, carbohydrates, and fats that provide sustained energy</span></a>. Having options immediately available removes the decision-making barrier when appetite is low.</li>
+            <li><strong>Address nausea if present:</strong> Ginger tea, peppermint, or crackers can help settle your stomach. Sometimes the appetite suppression comes with mild nausea that makes eating feel impossible, but settling the stomach first can open up more food options.</li>
+        </ul>
+    </div>
 
-            <p><strong>Time your eating around medication.</strong> Many people find success eating a substantial breakfast before taking their morning dose, then focusing on <a class="jargon">nutrient-dense foods<span class="tooltip">Foods that provide high amounts of vitamins, minerals, and other nutrients relative to their calorie content</span></a> during brief appetite windows throughout the day. Plan your largest meal for when the medication effects are wearing off, typically evening hours.</p>
+    <div class="long-term">
+        <h2 id="long-term-solutions">What Are Some Healthy Long-term Solutions</h2>
+        <p>Managing stimulant-induced appetite suppression requires strategic planning around your medication schedule and maximizing nutrition during the windows when eating is more tolerable.</p>
 
-            <div class="highlight-box">
-                <strong>Strategic eating schedule:</strong> Large breakfast pre-medication, liquid nutrition during peak effects (smoothies, protein shakes), substantial dinner as medication wears off, and late-evening snacks if needed.
-            </div>
+        <ul>
+            <li><strong>Time your eating around medication:</strong> Many people find success eating a substantial breakfast before taking their morning dose, then focusing on <a class="jargon">nutrient-dense foods<span class="tooltip">Foods that provide high amounts of vitamins, minerals, and other nutrients relative to their calorie content</span></a> during brief appetite windows throughout the day. Plan your largest meal for when the medication effects are wearing off, typically evening hours.</li>
+            <li><strong>Focus on calorie and nutrient density:</strong> When you can only eat small amounts, make every bite count. <a class="jargon">Calorie-dense foods<span class="tooltip">Foods that provide many calories in small volumes, like nuts, seeds, avocados, and nut butters</span></a> like nuts, nut butters, seeds, avocados, and healthy oils can provide necessary energy without requiring large volumes of food. Add protein powder to everything possible - smoothies, oatmeal, pancakes.</li>
+            <li><strong>Supplement strategically:</strong> Work with your healthcare provider to identify potential nutritional gaps. <a class="jargon">B-complex vitamins<span class="tooltip">Group of vitamins essential for energy metabolism and nervous system function</span></a>, vitamin D, iron, and omega-3 fatty acids are commonly affected when overall food intake decreases. A high-quality multivitamin can provide insurance against deficiencies.</li>
+            <li><strong>Establish eating routines independent of hunger:</strong> Schedule meals and snacks like any other important appointment. Use phone alarms, meal prep on weekends, and keep convenient backup options available. Treat eating as <a class="jargon">medical maintenance<span class="tooltip">Essential self-care activities required for health, like taking medications or monitoring vital signs</span></a> rather than something you do only when hungry.</li>
+            <li><strong>Experiment with food forms and textures:</strong> Some people find that changing how food is presented helps - smoothies instead of salads, soup instead of sandwiches, or cold foods instead of hot. Temperature, texture, and visual presentation can all affect tolerance when appetite is suppressed.</li>
+            <li><strong>Address the social and emotional aspects:</strong> Eating disorders and <a class="jargon">disordered eating patterns<span class="tooltip">Irregular eating behaviors that may not meet full criteria for eating disorders but still impact health</span></a> can develop when appetite suppression combines with weight loss or food anxiety. If you find yourself avoiding social eating situations, feeling anxious about food, or if others express concern about your eating or weight loss, seek support early.</li>
+            <li><strong>Work with your prescriber on timing and formulation:</strong> Sometimes switching from <a class="jargon">extended-release<span class="tooltip">Long-acting medications that release slowly throughout the day</span></a> to <a class="jargon">immediate-release<span class="tooltip">Short-acting medications taken multiple times per day</span></a> formulations allows for planned eating breaks between doses. <a class="jargon">Dose timing adjustments<span class="tooltip">Changes to when medications are taken during the day to optimize benefits while minimizing side effects</span></a> or splitting doses might create better windows for eating.</li>
+        </ul>
 
-            <p><strong>Focus on calorie and nutrient density.</strong> When you can only eat small amounts, make every bite count. <a class="jargon">Calorie-dense foods<span class="tooltip">Foods that provide many calories in small volumes, like nuts, seeds, avocados, and nut butters</span></a> like nuts, nut butters, seeds, avocados, and healthy oils can provide necessary energy without requiring large volumes of food. Add protein powder to everything possible - smoothies, oatmeal, pancakes.</p>
+        <div class="highlight-box">
+            <p><strong>Strategic eating schedule:</strong> Large breakfast pre-medication, liquid nutrition during peak effects (smoothies, protein shakes), substantial dinner as medication wears off, and late-evening snacks if needed.</p>
+        </div>
+    </div>
 
-            <p><strong>Supplement strategically.</strong> Work with your healthcare provider to identify potential nutritional gaps. <a class="jargon">B-complex vitamins<span class="tooltip">Group of vitamins essential for energy metabolism and nervous system function</span></a>, vitamin D, iron, and omega-3 fatty acids are commonly affected when overall food intake decreases. A high-quality multivitamin can provide insurance against deficiencies.</p>
+    <div class="medical-section">
+        <h2 id="medical-intervention">When Should I Consider Medical Intervention</h2>
+        <p>While appetite suppression is a common and expected side effect of stimulant medications, certain signs indicate the need for medical evaluation and possible intervention.</p>
 
-            <p><strong>Establish eating routines independent of hunger.</strong> Schedule meals and snacks like any other important appointment. Use phone alarms, meal prep on weekends, and keep convenient backup options available. Treat eating as <a class="jargon">medical maintenance<span class="tooltip">Essential self-care activities required for health, like taking medications or monitoring vital signs</span></a> rather than something you do only when hungry.</p>
-
-            <p><strong>Experiment with food forms and textures.</strong> Some people find that changing how food is presented helps - smoothies instead of salads, soup instead of sandwiches, or cold foods instead of hot. Temperature, texture, and visual presentation can all affect tolerance when appetite is suppressed.</p>
-
-            <p><strong>Address the social and emotional aspects.</strong> Eating disorders and <a class="jargon">disordered eating patterns<span class="tooltip">Irregular eating behaviors that may not meet full criteria for eating disorders but still impact health</span></a> can develop when appetite suppression combines with weight loss or food anxiety. If you find yourself avoiding social eating situations, feeling anxious about food, or if others express concern about your eating or weight loss, seek support early.</p>
-
-            <p><strong>Work with your prescriber on timing and formulation.</strong> Sometimes switching from <a class="jargon">extended-release<span class="tooltip">Long-acting medications that release slowly throughout the day</span></a> to <a class="jargon">immediate-release<span class="tooltip">Short-acting medications taken multiple times per day</span></a> formulations allows for planned eating breaks between doses. <a class="jargon">Dose timing adjustments<span class="tooltip">Changes to when medications are taken during the day to optimize benefits while minimizing side effects</span></a> or splitting doses might create better windows for eating.</p>
+        <div class="highlight-box">
+            <p><strong>Seek immediate medical attention if:</strong> Significant weight loss (more than 5% of body weight), signs of malnutrition, persistent nausea/vomiting, dizziness or fainting, or if you're going multiple days with minimal food intake.</p>
         </div>
 
-        <div class="medical-section">
-            <h2>When should I consider medical intervention</h2>
-            <p>While appetite suppression is a common and expected side effect of stimulant medications, certain signs indicate the need for medical evaluation and possible intervention.</p>
+        <ul>
+            <li><strong>Weight loss requiring attention:</strong> <a class="jargon">Unintended weight loss<span class="tooltip">Weight loss that occurs without trying to lose weight, which can indicate inadequate nutrition</span></a> of more than 5-10% of your body weight, or any weight loss if you were already underweight, warrants medical evaluation. Children and adolescents require particularly close monitoring, as appetite suppression can affect growth and development.</li>
+            <li><strong>Signs of nutritional deficiency:</strong> Persistent fatigue beyond normal ADHD symptoms, frequent illness, poor wound healing, hair loss, or changes in skin, nail, or dental health can indicate <a class="jargon">malnutrition<span class="tooltip">Insufficient intake of nutrients needed for health and normal body function</span></a>. Blood work can identify specific deficiencies before they become severe.</li>
+            <li><strong>Impact on daily functioning:</strong> If appetite suppression is causing significant problems with work, relationships, or quality of life, or if you're developing anxiety around food or eating, intervention is needed. The medication should improve your overall functioning, not create new impairments.</li>
+            <li><strong>Medication adjustment options to discuss:</strong> <a class="jargon">Dose reduction<span class="tooltip">Lowering the medication dose to reduce side effects while maintaining therapeutic benefits</span></a>, <a class="jargon">timing changes<span class="tooltip">Adjusting when medications are taken to optimize benefits and minimize side effects</span></a>, <a class="jargon">formulation switches<span class="tooltip">Changing between different forms of the same medication, such as immediate-release vs extended-release</span></a>, or <a class="jargon">medication switches<span class="tooltip">Changing to a different ADHD medication that may have less appetite suppression</span></a></li>
+        </ul>
 
-            <div class="highlight-box">
-                <strong>Seek immediate medical attention if:</strong> Significant weight loss (more than 5% of body weight), signs of malnutrition, persistent nausea/vomiting, dizziness or fainting, or if you're going multiple days with minimal food intake.
-            </div>
+        <p>Your doctor might recommend <a class="jargon">appetite stimulants<span class="tooltip">Medications specifically designed to increase appetite and food intake</span></a>, nutritional counseling, or working with a dietitian who understands medication side effects. <a class="jargon">Medical nutrition therapy<span class="tooltip">Evidence-based nutrition intervention provided by registered dietitians to address specific medical conditions</span></a> can provide personalized strategies for maintaining adequate nutrition despite appetite suppression.</p>
 
-            <p><strong>Weight loss requiring attention.</strong> <a class="jargon">Unintended weight loss<span class="tooltip">Weight loss that occurs without trying to lose weight, which can indicate inadequate nutrition</span></a> of more than 5-10% of your body weight, or any weight loss if you were already underweight, warrants medical evaluation. Children and adolescents require particularly close monitoring, as appetite suppression can affect growth and development.</p>
+        <p>Don't stop medication without medical guidance. Suddenly discontinuing stimulant medication can cause <a class="jargon">rebound symptoms<span class="tooltip">Return of ADHD symptoms, sometimes temporarily worse than baseline, when medication is stopped</span></a> and potentially dangerous changes in appetite and mood. Work with your prescriber to find solutions that maintain ADHD treatment while addressing appetite concerns.</p>
+    </div>
 
-            <p><strong>Signs of nutritional deficiency.</strong> Persistent fatigue beyond normal ADHD symptoms, frequent illness, poor wound healing, hair loss, or changes in skin, nail, or dental health can indicate <a class="jargon">malnutrition<span class="tooltip">Insufficient intake of nutrients needed for health and normal body function</span></a>. Blood work can identify specific deficiencies before they become severe.</p>
+    <div class="validation-section">
+        <h2 id="validation">You're Not Imagining This</h2>
+        <p>Stimulant-induced appetite suppression affects the majority of people taking these medications - you're experiencing a well-documented, physiological side effect, not a personal failing or weakness. This isn't about lacking willpower to eat or being "too picky" about food.</p>
 
-            <p><strong>Impact on daily functioning.</strong> If appetite suppression is causing significant problems with work, relationships, or quality of life, or if you're developing anxiety around food or eating, intervention is needed. The medication should improve your overall functioning, not create new impairments.</p>
+        <p>The challenge you're facing is real and significant. <a class="jargon">Appetite suppression<span class="tooltip">Reduced desire to eat caused by medication effects on brain chemistry</span></a> can feel isolating, especially when others don't understand why you can't "just eat something." Your brain's reward and motivation systems are temporarily altered by medication - this is neurochemistry, not choice.</p>
 
-            <p><strong>Medication adjustment options to discuss:</strong></p>
-            <ul>
-                <li><strong><a class="jargon">Dose reduction<span class="tooltip">Lowering the medication dose to reduce side effects while maintaining therapeutic benefits</span></a>:</strong> Sometimes a slightly lower dose provides sufficient ADHD symptom control with less appetite suppression</li>
-                <li><strong><a class="jargon">Timing changes<span class="tooltip">Adjusting when medications are taken to optimize benefits and minimize side effects</span></a>:</strong> Taking medication with food, adjusting dose timing, or using dose breaks strategically</li>
-                <li><strong><a class="jargon">Formulation switches<span class="tooltip">Changing between different forms of the same medication, such as immediate-release vs extended-release</span></a>:</strong> Different formulations of the same medication can have varying effects on appetite</li>
-                <li><strong><a class="jargon">Medication switches<span class="tooltip">Changing to a different ADHD medication that may have less appetite suppression</span></a>:</strong> Some stimulants cause less appetite suppression than others; non-stimulant options may also be considered</li>
-            </ul>
+        <p>Many people struggle with the balance between needing medication for daily functioning and managing unwanted side effects. You're not being dramatic if this is affecting your quality of life, relationships, or ability to maintain your health. Both your ADHD symptoms and your nutritional needs deserve attention and care.</p>
 
-            <p><strong>Additional interventions.</strong> Your doctor might recommend <a class="jargon">appetite stimulants<span class="tooltip">Medications specifically designed to increase appetite and food intake</span></a>, nutritional counseling, or working with a dietitian who understands medication side effects. <a class="jargon">Medical nutrition therapy<span class="tooltip">Evidence-based nutrition intervention provided by registered dietitians to address specific medical conditions</span></a> can provide personalized strategies for maintaining adequate nutrition despite appetite suppression.</p>
+        <p>It's common to feel frustrated when the medication that helps you focus and function also creates new challenges around basic needs like eating. This represents the complex reality of managing ADHD with medication - benefits and side effects often coexist, requiring ongoing adjustment and self-advocacy.</p>
 
-            <p><strong>Don't stop medication without medical guidance.</strong> Suddenly discontinuing stimulant medication can cause <a class="jargon">rebound symptoms<span class="tooltip">Return of ADHD symptoms, sometimes temporarily worse than baseline, when medication is stopped</span></a> and potentially dangerous changes in appetite and mood. Work with your prescriber to find solutions that maintain ADHD treatment while addressing appetite concerns.</p>
-        </div>
+        <p>Your experience matters, and finding solutions that work for your body and lifestyle is part of comprehensive ADHD care. You deserve support in managing both your core symptoms and medication side effects. Working with healthcare providers who understand these challenges can help you find approaches that maintain the benefits of treatment while minimizing impacts on your nutrition and overall wellbeing.</p>
 
-        <div class="validation-section">
-            <h2>You're not imagining this</h2>
-            <p>Stimulant-induced appetite suppression affects the majority of people taking these medications - you're experiencing a well-documented, physiological side effect, not a personal failing or weakness. This isn't about lacking willpower to eat or being "too picky" about food.</p>
+        <p>If people around you are minimizing this struggle or suggesting you "just need to eat more," they may not understand how significantly medication can affect basic physiological processes. Your lived experience of appetite suppression is valid, and seeking help to manage it is appropriate medical self-care.</p>
+    </div>
 
-            <p>The challenge you're facing is real and significant. <a class="jargon">Appetite suppression<span class="tooltip">Reduced desire to eat caused by medication effects on brain chemistry</span></a> can feel isolating, especially when others don't understand why you can't "just eat something." Your brain's reward and motivation systems are temporarily altered by medication - this is neurochemistry, not choice.</p>
-
-            <p>Many people struggle with the balance between needing medication for daily functioning and managing unwanted side effects. You're not being dramatic if this is affecting your quality of life, relationships, or ability to maintain your health. Both your ADHD symptoms and your nutritional needs deserve attention and care.</p>
-
-            <p>It's common to feel frustrated when the medication that helps you focus and function also creates new challenges around basic needs like eating. This represents the complex reality of managing ADHD with medication - benefits and side effects often coexist, requiring ongoing adjustment and self-advocacy.</p>
-
-            <p>Your experience matters, and finding solutions that work for your body and lifestyle is part of comprehensive ADHD care. You deserve support in managing both your core symptoms and medication side effects. Working with healthcare providers who understand these challenges can help you find approaches that maintain the benefits of treatment while minimizing impacts on your nutrition and overall wellbeing.</p>
-
-            <p>If people around you are minimizing this struggle or suggesting you "just need to eat more," they may not understand how significantly medication can affect basic physiological processes. Your lived experience of appetite suppression is valid, and seeking help to manage it is appropriate medical self-care.</p>
-        </div>
-
-        <div class="related-struggles">
-            <h2>Related Struggles</h2>
-            <div class="struggle-tags">
-                <a href="{{ '/struggles/stimulant-sleep-disruption.html' | relative_url }}" class="struggle-tag">Stimulant Sleep Disruption</a>
-                <a href="{{ '/struggles/medication-timing-and-daily-structure.html' | relative_url }}" class="struggle-tag">Medication Timing and Daily Structure</a>
-                <a href="{{ '/struggles/executive-dysfunction-self-care.html' | relative_url }}" class="struggle-tag">Executive Dysfunction Self-Care</a>
-                <a href="{{ '/struggles/hyperfocus-episodes.html' | relative_url }}" class="struggle-tag">Hyperfocus Episodes</a>
-                <a href="{{ '/struggles/emotional-dysregulation.html' | relative_url }}" class="struggle-tag">Emotional Dysregulation</a>
-            </div>
+    <div class="related-struggles">
+        <h3>Related Struggles</h3>
+        <div class="struggle-tags">
+            <a href="{{ '/struggles/stimulant-sleep-disruption.html' | relative_url }}" class="struggle-tag">Stimulant Sleep Disruption</a>
+            <a href="{{ '/struggles/medication-timing-and-daily-structure.html' | relative_url }}" class="struggle-tag">Medication Timing and Daily Structure</a>
+            <a href="{{ '/struggles/executive-dysfunction-self-care.html' | relative_url }}" class="struggle-tag">Executive Dysfunction Self-Care</a>
+            <a href="{{ '/struggles/hyperfocus-episodes.html' | relative_url }}" class="struggle-tag">Hyperfocus Episodes</a>
+            <a href="{{ '/struggles/emotional-dysregulation.html' | relative_url }}" class="struggle-tag">Emotional Dysregulation</a>
         </div>
     </div>
 </div>
-
-<script>
-// Learn more toggle functionality
-function toggleLearnMore(element) {
-    element.classList.toggle('expanded');
-    const arrow = element.querySelector('h3');
-    if (element.classList.contains('expanded')) {
-        arrow.innerHTML = arrow.innerHTML.replace('↓', '↑');
-    } else {
-        arrow.innerHTML = arrow.innerHTML.replace('↑', '↓');
-    }
-}
-
-// Mobile touch optimization for jargon tooltips
-document.addEventListener('DOMContentLoaded', function() {
-    const jargonElements = document.querySelectorAll('.jargon');
-    let activeTooltip = null;
-    
-    jargonElements.forEach(function(jargon) {
-        jargon.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            // Close any previously active tooltip
-            if (activeTooltip && activeTooltip !== this) {
-                activeTooltip.querySelector('.tooltip').style.visibility = 'hidden';
-                activeTooltip.querySelector('.tooltip').style.opacity = '0';
-            }
-            
-            const tooltip = this.querySelector('.tooltip');
-            
-            if (tooltip.style.visibility === 'visible') {
-                tooltip.style.visibility = 'hidden';
-                tooltip.style.opacity = '0';
-                activeTooltip = null;
-            } else {
-                tooltip.style.visibility = 'visible';
-                tooltip.style.opacity = '1';
-                activeTooltip = this;
-            }
-        });
-    });
-    
-    // Close tooltips when clicking outside
-    document.addEventListener('click', function(e) {
-        if (!e.target.closest('.jargon') && activeTooltip) {
-            activeTooltip.querySelector('.tooltip').style.visibility = 'hidden';
-            activeTooltip.querySelector('.tooltip').style.opacity = '0';
-            activeTooltip = null;
-        }
-    });
-    
-    // Keyboard accessibility for tooltips
-    jargonElements.forEach(function(jargon) {
-        jargon.addEventListener('keydown', function(e) {
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                this.click();
-            }
-            if (e.key === 'Escape' && activeTooltip === this) {
-                this.querySelector('.tooltip').style.visibility = 'hidden';
-                this.querySelector('.tooltip').style.opacity = '0';
-                activeTooltip = null;
-            }
-        });
-    });
-});
-</script>
