@@ -145,6 +145,8 @@ title: "The Neurodivergent Survival Guide"
         max-width: 500px;
         margin: 2rem auto 0;
         position: relative;
+        z-index: 999999;
+        isolation: isolate;
     }
 
     .search-box {
@@ -288,6 +290,8 @@ title: "The Neurodivergent Survival Guide"
         margin-bottom: 3rem;
         text-align: center;
         border: 1px solid rgba(255, 255, 255, 0.2);
+        position: relative;
+        z-index: 1;
     }
 
     .intro-section h2 {
@@ -910,12 +914,15 @@ async function initializeSearch() {
 
 function setupSearchInterface() {
     const searchBox = document.getElementById('searchBox');
-    const searchResults = document.getElementById('searchResults');
+    let searchResults = document.getElementById('searchResults');
     
     if (!searchBox || !searchResults) {
         console.error('Search elements not found');
         return;
     }
+    
+    // Move search results to body to escape all stacking contexts
+    document.body.appendChild(searchResults);
     
     let searchTimeout;
     
@@ -950,7 +957,7 @@ function setupSearchInterface() {
     
     // Hide results when clicking outside
     document.addEventListener('click', function(e) {
-        if (!e.target.closest('.search-section')) {
+        if (!e.target.closest('.search-section') && !e.target.closest('.search-results')) {
             hideSearchResults();
         }
     });
