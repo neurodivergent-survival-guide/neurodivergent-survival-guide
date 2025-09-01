@@ -1084,9 +1084,13 @@ document.addEventListener('DOMContentLoaded', function() {
             const targetId = this.getAttribute('href');
             const targetElement = document.querySelector(targetId);
             if (targetElement) {
-                // Calculate position with offset to account for fixed headers and padding
+                // Calculate position with offset to account for headers and padding
                 const elementPosition = targetElement.offsetTop;
-                const offsetPosition = elementPosition - 100; // 100px offset for better visual positioning
+                
+                // Use different offsets for mobile vs desktop
+                const isMobile = window.innerWidth <= 768;
+                const offset = isMobile ? 200 : 170; // Larger offsets 
+                const offsetPosition = elementPosition - offset;
                 
                 window.scrollTo({
                     top: offsetPosition,
