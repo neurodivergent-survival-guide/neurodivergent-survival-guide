@@ -1,6 +1,7 @@
 ---
 layout: default
 ---
+<!-- File: _layouts/struggle.html -->
 
 <!-- SEO Meta Tags -->
 <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ page.title }} - {{ page.subtitle }}{% endif %}">
@@ -570,6 +571,8 @@ layout: default
         position: relative;
         cursor: help;
         font-weight: 500;
+        display: inline;
+        tabindex: 0;
     }
 
     /* Pink jargon for white backgrounds */
@@ -670,8 +673,9 @@ layout: default
         }
     }
 
-    /* Mobile-specific tooltip positioning */
+    /* Mobile-specific styling */
     @media (max-width: 768px) {
+        /* Fixed position tooltips for mobile */
         .tooltip {
             position: fixed !important;
             bottom: 20px !important;
@@ -681,24 +685,31 @@ layout: default
             max-width: none !important;
             width: auto !important;
             z-index: 9999 !important;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+            border-radius: 12px;
         }
 
         .tooltip::after {
             display: none !important;
         }
-
-        /* Remove transforms on mobile to prevent positioning context issues */
-        .learn-more:hover {
-            transform: none;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        
+        /* Add close indicator for mobile tooltips */
+        .tooltip::before {
+            content: "✕ Tap anywhere to close";
+            display: block;
+            font-size: 0.75rem;
+            opacity: 0.8;
+            margin-bottom: 0.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            text-align: center;
         }
 
-        .struggle-tag:hover {
-            transform: none;
-        }
-
+        /* Disable hover transforms on mobile */
+        .learn-more:hover,
+        .struggle-tag:hover,
         .toc-card:hover {
-            transform: none;
+            transform: none !important;
         }
 
         .header {
@@ -991,6 +1002,14 @@ Find the current struggle's position in the flattened array
 </div>
 
 <script>
+// Mobile detection utility
+function isMobileDevice() {
+    return window.innerWidth <= 768 || 
+           'ontouchstart' in window || 
+           navigator.maxTouchPoints > 0 ||
+           /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+}
+
 // Table of Contents toggle functionality
 function toggleTOC() {
     const content = document.getElementById('toc-content');
@@ -1016,84 +1035,163 @@ function toggleLearnMore(element) {
     }
 }
 
-// Mobile touch optimization for jargon tooltips
 document.addEventListener('DOMContentLoaded', function() {
     const jargonElements = document.querySelectorAll('.jargon');
     let activeTooltip = null;
-    
-    jargonElements.forEach(function(jargon) {
-        jargon.addEventListener('click', function(e) {
-            e.preventDefault();
+
+    // Enhanced mobile detection and tooltip handling
+    function handleTooltips() {
+        const isMobile = isMobileDevice();
+        
+        jargonElements.forEach(function(jargon) {
+            // Set accessibility attributes
+            jargon.setAttribute('tabindex', '0');
+            jargon.setAttribute('role', 'button');
+            jargon.setAttribute('aria-label', 'Show definition');
             
-            // Close any previously active tooltip
-            if (activeTooltip && activeTooltip !== this) {
-                activeTooltip.querySelector('.tooltip').style.visibility = 'hidden';
-                activeTooltip.querySelector('.tooltip').style.opacity = '0';
+            if (isMobile) {
+                // Mobile: Touch-based interaction
+                jargon.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    // Close any previously active tooltip
+                    if (activeTooltip && activeTooltip !== this) {
+                        const prevTooltip = activeTooltip.querySelector('.tooltip');
+                        if (prevTooltip) {
+                            prevTooltip.style.visibility = 'hidden';
+                            prevTooltip.style.opacity = '0';
+                        }
+                    }
+                    
+                    const tooltip = this.querySelector('.tooltip');
+                    if (tooltip) {
+                        if (tooltip.style.visibility === 'visible') {
+                            tooltip.style.visibility = 'hidden';
+                            tooltip.style.opacity = '0';
+                            activeTooltip = null;
+                        } else {
+                            tooltip.style.visibility = 'visible';
+                            tooltip.style.opacity = '1';
+                            activeTooltip = this;
+                        }
+                    }
+                });
+            } else {
+                // Desktop: Keep hover behavior, add click for accessibility
+                jargon.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    const tooltip = this.querySelector('.tooltip');
+                    if (tooltip) {
+                        if (tooltip.style.visibility === 'visible') {
+                            tooltip.style.visibility = 'hidden';
+                            tooltip.style.opacity = '0';
+                        } else {
+                            tooltip.style.visibility = 'visible';
+                            tooltip.style.opacity = '1';
+                        }
+                    }
+                });
             }
             
-            const tooltip = this.querySelector('.tooltip');
-            
-            if (tooltip.style.visibility === 'visible') {
+            // Keyboard accessibility for all devices
+            jargon.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    this.click();
+                }
+                if (e.key === 'Escape') {
+                    const tooltip = this.querySelector('.tooltip');
+                    if (tooltip) {
+                        tooltip.style.visibility = 'hidden';
+                        tooltip.style.opacity = '0';
+                        activeTooltip = null;
+                    }
+                }
+            });
+        });
+
+        // Close tooltips when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.jargon') && activeTooltip) {
+                const tooltip = activeTooltip.querySelector('.tooltip');
+                if (tooltip) {
+                    tooltip.style.visibility = 'hidden';
+                    tooltip.style.opacity = '0';
+                    activeTooltip = null;
+                }
+            }
+        });
+    }
+
+    // Initialize tooltip handling
+    handleTooltips();
+
+    // Re-initialize on window resize
+    window.addEventListener('resize', function() {
+        // Clean up any active tooltips when switching between mobile/desktop
+        if (activeTooltip) {
+            const tooltip = activeTooltip.querySelector('.tooltip');
+            if (tooltip) {
                 tooltip.style.visibility = 'hidden';
                 tooltip.style.opacity = '0';
                 activeTooltip = null;
-            } else {
-                tooltip.style.visibility = 'visible';
-                tooltip.style.opacity = '1';
-                activeTooltip = this;
             }
-        });
-    });
-    
-    // Close tooltips when clicking outside
-    document.addEventListener('click', function(e) {
-        if (!e.target.closest('.jargon') && activeTooltip) {
-            activeTooltip.querySelector('.tooltip').style.visibility = 'hidden';
-            activeTooltip.querySelector('.tooltip').style.opacity = '0';
-            activeTooltip = null;
         }
-    });
-    
-    // Keyboard accessibility for tooltips
-    jargonElements.forEach(function(jargon) {
-        jargon.addEventListener('keydown', function(e) {
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                this.click();
-            }
-            if (e.key === 'Escape' && activeTooltip === this) {
-                this.querySelector('.tooltip').style.visibility = 'hidden';
-                this.querySelector('.tooltip').style.opacity = '0';
-                activeTooltip = null;
-            }
-        });
+        // Re-initialize after a brief delay to account for layout changes
+        setTimeout(handleTooltips, 100);
     });
 
-    // Handle jargon clicks to prevent event bubbling with learn-more sections
-    const jargonTerms = document.querySelectorAll('.jargon');
-    jargonTerms.forEach(function(jargon) {
-        jargon.addEventListener('click', function(e) {
-            e.stopPropagation(); // Prevent bubbling to learn-more handler
-        });
-    });
-
-    // Smooth scrolling for TOC links with proper offset
+    // Smooth scrolling for TOC links with dynamic offset calculation
     document.querySelectorAll('.toc-link').forEach(function(link) {
         link.addEventListener('click', function(e) {
             e.preventDefault();
+            
             const targetId = this.getAttribute('href');
             const targetElement = document.querySelector(targetId);
+            
             if (targetElement) {
-                // Calculate position with offset to account for headers and padding
-                const elementPosition = targetElement.offsetTop;
+                // Calculate dynamic offset based on visible elements
+                let totalOffset = 20; // Base padding
                 
-                // Use different offsets for mobile vs desktop
-                const isMobile = window.innerWidth <= 768;
-                const offset = isMobile ? 250 : 170; // Larger offsets 
-                const offsetPosition = elementPosition - offset;
+                const header = document.querySelector('.header');
+                const breadcrumb = document.querySelector('.breadcrumb');
+                const toc = document.querySelector('.table-of-contents');
+                
+                // Add heights of sticky/fixed elements
+                if (header && window.getComputedStyle(header).position !== 'static') {
+                    totalOffset += header.offsetHeight;
+                }
+                
+                if (breadcrumb && window.getComputedStyle(breadcrumb).position !== 'static') {
+                    totalOffset += breadcrumb.offsetHeight;
+                }
+                
+                // Add some buffer for the TOC (but don't count full height)
+                if (toc) {
+                    totalOffset += Math.min(toc.offsetHeight * 0.2, 50);
+                }
+
+                // Additional offset for mobile
+                if (isMobileDevice()) {
+                    totalOffset += 30;
+                }
+
+                const elementPosition = targetElement.offsetTop;
+                const finalPosition = Math.max(0, elementPosition - totalOffset);
+                
+                console.log('TOC Scroll Debug:', {
+                    targetId: targetId,
+                    elementPosition: elementPosition,
+                    totalOffset: totalOffset,
+                    finalPosition: finalPosition,
+                    isMobile: isMobileDevice()
+                });
                 
                 window.scrollTo({
-                    top: offsetPosition,
+                    top: finalPosition,
                     behavior: 'smooth'
                 });
             }
