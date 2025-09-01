@@ -876,8 +876,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 async function initializeSearch() {
     try {
-        // Load the search index
-        const response = await fetch('/search-index.json');
+        // Load the search index - use Jekyll's relative_url filter to handle subpaths
+        const response = await fetch('{{ "/search-index.json" | relative_url }}');
         searchIndex = await response.json();
         
         // Configure Fuse.js for fuzzy search
