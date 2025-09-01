@@ -1153,30 +1153,30 @@ document.addEventListener('DOMContentLoaded', function() {
             const targetElement = document.querySelector(targetId);
             
             if (targetElement) {
-                // Calculate dynamic offset based on visible elements
-                let totalOffset = 20; // Base padding
+                // Calculate offset based on ALL elements above content (they all push content down)
+                let totalOffset = 50; // Base padding for breathing room
                 
                 const header = document.querySelector('.header');
                 const breadcrumb = document.querySelector('.breadcrumb');
                 const toc = document.querySelector('.table-of-contents');
                 
-                // Add heights of sticky/fixed elements
-                if (header && window.getComputedStyle(header).position !== 'static') {
+                // Always add heights since they all take up space above content
+                if (header) {
                     totalOffset += header.offsetHeight;
                 }
                 
-                if (breadcrumb && window.getComputedStyle(breadcrumb).position !== 'static') {
+                if (breadcrumb) {
                     totalOffset += breadcrumb.offsetHeight;
                 }
                 
-                // Add some buffer for the TOC (but don't count full height)
+                // Add buffer space after TOC for visual separation
                 if (toc) {
-                    totalOffset += Math.min(toc.offsetHeight * 0.2, 170);
+                    totalOffset += 60; // Fixed buffer after TOC
                 }
 
-                // Additional offset for mobile
+                // Additional offset for mobile due to smaller screens
                 if (isMobileDevice()) {
-                    totalOffset += 100;
+                    totalOffset += 40;
                 }
 
                 const elementPosition = targetElement.offsetTop;
@@ -1185,6 +1185,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.log('TOC Scroll Debug:', {
                     targetId: targetId,
                     elementPosition: elementPosition,
+                    headerHeight: header ? header.offsetHeight : 0,
+                    breadcrumbHeight: breadcrumb ? breadcrumb.offsetHeight : 0,
                     totalOffset: totalOffset,
                     finalPosition: finalPosition,
                     isMobile: isMobileDevice()
