@@ -858,7 +858,9 @@ layout: default
 
     @media (max-width: 768px) {
         .struggle-navigation .nav-container {
+            display: flex;
             flex-direction: column;
+            align-items: center;
             gap: 1rem;
             text-align: center;
             padding: 0 1rem;
@@ -1084,7 +1086,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (targetElement) {
                 // Calculate position with offset to account for fixed headers and padding
                 const elementPosition = targetElement.offsetTop;
-                const offsetPosition = elementPosition - 170; // 100px offset for better visual positioning
+                const offsetPosition = elementPosition - 100; // 100px offset for better visual positioning
                 
                 window.scrollTo({
                     top: offsetPosition,
