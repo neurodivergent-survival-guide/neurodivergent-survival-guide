@@ -1,9 +1,16 @@
- ---
+---
 layout: default
 ---
 <!-- File: _layouts/struggle.html -->
 
-<!-- SEO Meta Tags -->
+{% if page.condition %}
+  {% assign colors = site.data.condition_colors[page.condition] %}
+{% else %}
+  {% assign colors = site.data.condition_colors['adhd'] %}
+{% endif %}
+
+<!-- SEO Meta Tags - These should go in the head section -->
+{% capture meta_tags %}
 <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ page.title }} - {{ page.subtitle }}{% endif %}">
 <meta name="keywords" content="{{ page.condition }}, {{ page.title | downcase }}, neurodivergent, mental health, coping strategies, {% if page.search_terms %}{{ page.search_terms | join: ', ' }}{% endif %}">
 <link rel="canonical" href="{{ site.url }}{{ page.url }}">
@@ -39,11 +46,11 @@ layout: default
     }
 }
 </script>
+{% endcapture %}
 
-{% if page.condition %}
-  {% assign colors = site.data.condition_colors[page.condition] %}
-{% else %}
-  {% assign colors = site.data.condition_colors['adhd'] %}
+<!-- Add meta tags to head if possible -->
+{% if jekyll.environment == "production" %}
+  {% comment %}In production, you'll need to add these to _includes/head.html{% endcomment %}
 {% endif %}
 
 <style>
@@ -81,30 +88,12 @@ layout: default
             display: none !important;
         }
         
-        .content-card {
-            background: white !important;
-            border: none !important;
-            box-shadow: none !important;
-            padding: 0 !important;
-            margin: 0 !important;
-        }
-        
         .what-section, .why-section, .immediate-help, .long-term, .medical-section, .validation-section {
             background: white !important;
             border: 2pt solid #333 !important;
             margin: 12pt 0 !important;
             padding: 8pt !important;
             page-break-inside: avoid;
-        }
-        
-        .learn-more {
-            background: #f5f5f5 !important;
-            border: 1pt solid #666 !important;
-            padding: 6pt !important;
-        }
-        
-        .learn-more-content {
-            display: block !important;
         }
         
         .jargon {
@@ -131,28 +120,6 @@ layout: default
         .jargon .tooltip::after {
             content: ") ";
             border: none !important;
-        }
-        
-        .related-struggles {
-            background: #f0f0f0 !important;
-            border: 1pt solid #666 !important;
-        }
-        
-        .struggle-tag {
-            background: #ddd !important;
-            color: black !important;
-            border: 1pt solid #666 !important;
-            display: inline-block !important;
-            margin: 2pt !important;
-        }
-        
-        h1, h2, h3 {
-            page-break-after: avoid;
-        }
-        
-        p, li {
-            orphans: 3;
-            widows: 3;
         }
     }
 
@@ -228,13 +195,11 @@ layout: default
         color: #4a5568;
         font-weight: 600;
         font-size: 1rem;
-        margin-bottom: 0;
     }
 
     .toc-toggle {
         color: #718096;
         font-size: 0.9rem;
-        margin-left: 0.5rem;
     }
 
     .toc-content {
@@ -286,7 +251,6 @@ layout: default
         margin: 0 auto;
         padding: 2rem;
         width: 100%;
-        box-sizing: border-box;
     }
 
     .content-card {
@@ -306,6 +270,7 @@ layout: default
         border-top: 1px solid rgba(255, 255, 255, 0.1);
     }
 
+    /* Section Styles */
     .what-section {
         background: #ffe6e6;
         padding: 2rem;
@@ -318,23 +283,6 @@ layout: default
         color: #d63031;
         margin-bottom: 1rem;
         font-size: 1.6rem;
-    }
-
-    .what-section p {
-        margin-bottom: 1rem;
-        font-size: 1.05rem;
-        color: #555;
-    }
-
-    .what-section ul {
-        margin-bottom: 1rem;
-        padding-left: 1.5rem;
-    }
-
-    .what-section li {
-        margin-bottom: 0.8rem;
-        font-size: 1.05rem;
-        color: #555;
     }
 
     .why-section {
@@ -351,12 +299,6 @@ layout: default
         font-size: 1.6rem;
     }
 
-    .why-section p {
-        margin-bottom: 1rem;
-        font-size: 1.05rem;
-        color: #555;
-    }
-
     .immediate-help {
         background: #cce5ff;
         padding: 2rem;
@@ -369,23 +311,6 @@ layout: default
         color: #005599;
         margin-bottom: 1rem;
         font-size: 1.6rem;
-    }
-
-    .immediate-help p {
-        margin-bottom: 1rem;
-        font-size: 1.05rem;
-        color: #555;
-    }
-
-    .immediate-help ul {
-        color: #555;
-        padding-left: 1.2rem;
-        margin-bottom: 1rem;
-    }
-
-    .immediate-help li {
-        margin-bottom: 0.8rem;
-        font-size: 0.95rem;
     }
 
     .long-term {
@@ -402,23 +327,6 @@ layout: default
         font-size: 1.6rem;
     }
 
-    .long-term p {
-        margin-bottom: 1rem;
-        font-size: 1.05rem;
-        color: #555;
-    }
-
-    .long-term ul {
-        color: #555;
-        padding-left: 1.2rem;
-        margin-bottom: 1rem;
-    }
-
-    .long-term li {
-        margin-bottom: 0.8rem;
-        font-size: 0.95rem;
-    }
-
     .medical-section {
         background: #d1f2eb;
         padding: 2rem;
@@ -431,23 +339,6 @@ layout: default
         color: #0c5460;
         margin-bottom: 1rem;
         font-size: 1.6rem;
-    }
-
-    .medical-section p {
-        margin-bottom: 1rem;
-        font-size: 1.05rem;
-        color: #555;
-    }
-
-    .medical-section ul {
-        color: #555;
-        padding-left: 1.2rem;
-        margin-bottom: 1rem;
-    }
-
-    .medical-section li {
-        margin-bottom: 0.8rem;
-        font-size: 0.95rem;
     }
 
     .validation-section {
@@ -464,10 +355,37 @@ layout: default
         font-size: 1.6rem;
     }
 
+    /* Common section styling */
+    .what-section p,
+    .why-section p,
+    .immediate-help p,
+    .long-term p,
+    .medical-section p,
     .validation-section p {
         margin-bottom: 1rem;
         font-size: 1.05rem;
         color: #555;
+    }
+
+    .what-section ul,
+    .why-section ul,
+    .immediate-help ul,
+    .long-term ul,
+    .medical-section ul,
+    .validation-section ul {
+        color: #555;
+        padding-left: 1.2rem;
+        margin-bottom: 1rem;
+    }
+
+    .what-section li,
+    .why-section li,
+    .immediate-help li,
+    .long-term li,
+    .medical-section li,
+    .validation-section li {
+        margin-bottom: 0.8rem;
+        font-size: 0.95rem;
     }
 
     .related-struggles {
@@ -513,19 +431,6 @@ layout: default
         transform: translateY(-1px);
     }
 
-    .struggle-tag:focus {
-        outline: 2px solid #fff;
-        outline-offset: 2px;
-    }
-
-    .highlight-box {
-        background: #fff8e1;
-        padding: 1rem;
-        border-radius: 8px;
-        border-left: 3px solid #ffc107;
-        margin: 1rem 0;
-    }
-
     .learn-more {
         background: linear-gradient(45deg, #a29bfe, #6c5ce7);
         color: white;
@@ -552,7 +457,6 @@ layout: default
         margin-top: 1rem;
         padding-top: 1rem;
         border-top: 1px solid rgba(255, 255, 255, 0.3);
-        color: white;
     }
 
     .learn-more-content p {
@@ -564,46 +468,34 @@ layout: default
         display: block;
     }
 
-    /* Jargon styling - context-aware based on background */
+    /* Jargon styling - simplified */
     .jargon {
+        color: #e84393;
         text-decoration: none;
-        border-bottom: 1px dotted;
+        border-bottom: 1px dotted #e84393;
         position: relative;
         cursor: help;
         font-weight: 500;
-        display: inline;
         tabindex: 0;
     }
 
-    /* Pink jargon for white backgrounds */
-    .content-card .jargon,
-    .related-struggles .jargon {
-        color: #e84393;
-        border-bottom-color: #e84393;
-    }
-
-    .content-card .jargon:hover,
-    .related-struggles .jargon:hover {
+    .jargon:hover {
         color: #fd79a8;
         border-bottom-color: #fd79a8;
     }
 
-    /* Bold black jargon for colored backgrounds */
+    /* Context-specific jargon colors */
     .what-section .jargon,
     .why-section .jargon,
     .immediate-help .jargon,
     .long-term .jargon,
     .medical-section .jargon,
-    .validation-section .jargon,
-    .highlight-box .jargon {
+    .validation-section .jargon {
         color: #333;
         font-weight: 600;
         border-bottom-color: #333;
     }
 
-    /* White jargon for gradient backgrounds */
-    .header .jargon,
-    .breadcrumb .jargon,
     .learn-more .jargon,
     .learn-more-content .jargon {
         color: white;
@@ -613,15 +505,7 @@ layout: default
         border-radius: 4px;
     }
 
-    .header .jargon:hover,
-    .breadcrumb .jargon:hover,
-    .learn-more .jargon:hover,
-    .learn-more-content .jargon:hover {
-        background: rgba(255, 255, 255, 0.2);
-        border-bottom-color: white;
-    }
-
-    /* Auto-sizing tooltips */
+    /* Simplified tooltip system */
     .tooltip {
         visibility: hidden;
         opacity: 0;
@@ -638,8 +522,7 @@ layout: default
         z-index: 1001;
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
         transition: opacity 0.3s, visibility 0.3s;
-        max-width: 800px;
-        min-width: 200px;
+        max-width: 300px;
         width: max-content;
         white-space: normal;
         text-align: left;
@@ -662,155 +545,7 @@ layout: default
         opacity: 1;
     }
 
-    /* Mobile responsive tooltip adjustments */
-    @media (max-width: 1024px) {
-        .tooltip {
-            max-width: 400px;
-        }
-        
-        .toc-links {
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        }
-    }
-
-    /* Mobile-specific styling */
-    @media (max-width: 768px) {
-        /* Fixed position tooltips for mobile */
-        .tooltip {
-            position: fixed !important;
-            bottom: 20px !important;
-            left: 20px !important;
-            right: 20px !important;
-            transform: none !important;
-            max-width: none !important;
-            width: auto !important;
-            z-index: 9999 !important;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
-            border-radius: 12px;
-        }
-
-        .tooltip::after {
-            display: none !important;
-        }
-        
-        /* Add close indicator for mobile tooltips */
-        .tooltip::before {
-            content: "✕ Tap anywhere to close";
-            display: block;
-            font-size: 0.75rem;
-            opacity: 0.8;
-            margin-bottom: 0.5rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-            text-align: center;
-        }
-
-        /* Disable hover transforms on mobile */
-        .learn-more:hover,
-        .struggle-tag:hover,
-        .toc-card:hover {
-            transform: none !important;
-        }
-
-        .header {
-            padding: 1rem;
-        }
-
-        .header h1 {
-            font-size: 2rem;
-        }
-
-        .header p {
-            font-size: 1rem;
-        }
-
-        .breadcrumb {
-            padding: 0.6rem 1rem;
-        }
-
-        .container {
-            padding: 1rem;
-        }
-
-        .content-card {
-            padding: 1.5rem;
-        }
-
-        .what-section,
-        .why-section,
-        .immediate-help,
-        .long-term,
-        .medical-section,
-        .validation-section {
-            padding: 1.5rem;
-        }
-
-        .struggle-tags {
-            flex-direction: column;
-        }
-
-        .struggle-tag {
-            justify-content: center;
-            text-align: center;
-        }
-
-        .toc-links {
-            grid-template-columns: 1fr;
-        }
-    }
-
-    @media (max-width: 480px) {
-        .header h1 {
-            font-size: 1.8rem;
-        }
-
-        .header p {
-            font-size: 0.9rem;
-        }
-
-        .content-card {
-            padding: 1.2rem;
-        }
-
-        .what-section,
-        .why-section,
-        .immediate-help,
-        .long-term,
-        .medical-section,
-        .validation-section {
-            padding: 1.2rem;
-        }
-
-        .tooltip {
-            left: 10px !important;
-            right: 10px !important;
-            bottom: 10px !important;
-        }
-
-        .table-of-contents {
-            padding: 0 1rem;
-        }
-    }
-
-    /* Focus states for accessibility */
-    .struggle-tag:focus,
-    .jargon:focus,
-    .breadcrumb a:focus,
-    .toc-link:focus {
-        outline: 2px solid #fff;
-        outline-offset: 2px;
-    }
-
-    /* Motion accessibility */
-    @media (prefers-reduced-motion: reduce) {
-        *, *::before, *::after {
-            animation-duration: 0.01ms !important;
-            animation-iteration-count: 1 !important;
-            transition-duration: 0.01ms !important;
-        }
-    }
-
-    /* Navigation-specific styles */
+    /* Navigation styles */
     .struggle-navigation {
         background: linear-gradient(135deg, {{ colors.gradient_start }}, {{ colors.gradient_end }});
         color: white;
@@ -867,7 +602,75 @@ layout: default
         font-size: 0.9rem;
     }
 
+    /* Mobile responsive design */
     @media (max-width: 768px) {
+        .tooltip {
+            position: fixed !important;
+            bottom: 20px !important;
+            left: 20px !important;
+            right: 20px !important;
+            transform: none !important;
+            max-width: none !important;
+            z-index: 9999 !important;
+            border-radius: 12px;
+        }
+
+        .tooltip::after {
+            display: none !important;
+        }
+        
+        .tooltip::before {
+            content: "✕ Tap anywhere to close";
+            display: block;
+            font-size: 0.75rem;
+            opacity: 0.8;
+            margin-bottom: 0.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            text-align: center;
+        }
+
+        .header {
+            padding: 1rem;
+        }
+
+        .header h1 {
+            font-size: 2rem;
+        }
+
+        .header p {
+            font-size: 1rem;
+        }
+
+        .breadcrumb {
+            padding: 0.6rem 1rem;
+        }
+
+        .container {
+            padding: 1rem;
+        }
+
+        .content-card {
+            padding: 1.5rem;
+        }
+
+        .what-section,
+        .why-section,
+        .immediate-help,
+        .long-term,
+        .medical-section,
+        .validation-section {
+            padding: 1.5rem;
+        }
+
+        .toc-links {
+            grid-template-columns: 1fr;
+        }
+
+        .struggle-tags {
+            flex-direction: column;
+        }
+
         .struggle-navigation .nav-container {
             display: flex;
             flex-direction: column;
@@ -877,8 +680,53 @@ layout: default
             padding: 0 1rem;
         }
 
+        /* Remove hover transforms on mobile */
+        .toc-card:hover,
+        .learn-more:hover,
+        .struggle-tag:hover,
         .struggle-navigation .nav-link:hover {
-            transform: none;
+            transform: none !important;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .header h1 {
+            font-size: 1.8rem;
+        }
+
+        .content-card {
+            padding: 1.2rem;
+        }
+
+        .what-section,
+        .why-section,
+        .immediate-help,
+        .long-term,
+        .medical-section,
+        .validation-section {
+            padding: 1.2rem;
+        }
+
+        .table-of-contents {
+            padding: 0 1rem;
+        }
+    }
+
+    /* Focus states for accessibility */
+    .struggle-tag:focus,
+    .jargon:focus,
+    .breadcrumb a:focus,
+    .toc-link:focus {
+        outline: 2px solid #fff;
+        outline-offset: 2px;
+    }
+
+    /* Motion accessibility */
+    @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
         }
     }
 </style>
@@ -1002,15 +850,12 @@ Find the current struggle's position in the flattened array
 </div>
 
 <script>
-// Mobile detection utility
-function isMobileDevice() {
-    return window.innerWidth <= 768 || 
-           'ontouchstart' in window || 
-           navigator.maxTouchPoints > 0 ||
-           /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+// Simple mobile detection
+function isMobile() {
+    return window.innerWidth <= 768;
 }
 
-// Table of Contents toggle functionality
+// Table of Contents toggle
 function toggleTOC() {
     const content = document.getElementById('toc-content');
     const toggle = document.getElementById('toc-toggle');
@@ -1024,7 +869,7 @@ function toggleTOC() {
     }
 }
 
-// Learn more toggle functionality
+// Learn more toggle
 function toggleLearnMore(element) {
     element.classList.toggle('expanded');
     const arrow = element.querySelector('h3');
@@ -1036,67 +881,46 @@ function toggleLearnMore(element) {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-    const jargonElements = document.querySelectorAll('.jargon');
     let activeTooltip = null;
 
-    // Enhanced mobile detection and tooltip handling
-    function handleTooltips() {
-        const isMobile = isMobileDevice();
+    // Tooltip handling
+    function initializeTooltips() {
+        const jargonElements = document.querySelectorAll('.jargon');
         
         jargonElements.forEach(function(jargon) {
-            // Set accessibility attributes
             jargon.setAttribute('tabindex', '0');
             jargon.setAttribute('role', 'button');
             jargon.setAttribute('aria-label', 'Show definition');
             
-            if (isMobile) {
-                // Mobile: Touch-based interaction
-                jargon.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    
-                    // Close any previously active tooltip
-                    if (activeTooltip && activeTooltip !== this) {
-                        const prevTooltip = activeTooltip.querySelector('.tooltip');
-                        if (prevTooltip) {
-                            prevTooltip.style.visibility = 'hidden';
-                            prevTooltip.style.opacity = '0';
-                        }
+            // Click handler for both mobile and desktop
+            jargon.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                // Close any active tooltip
+                if (activeTooltip && activeTooltip !== this) {
+                    const prevTooltip = activeTooltip.querySelector('.tooltip');
+                    if (prevTooltip) {
+                        prevTooltip.style.visibility = 'hidden';
+                        prevTooltip.style.opacity = '0';
                     }
-                    
-                    const tooltip = this.querySelector('.tooltip');
-                    if (tooltip) {
-                        if (tooltip.style.visibility === 'visible') {
-                            tooltip.style.visibility = 'hidden';
-                            tooltip.style.opacity = '0';
-                            activeTooltip = null;
-                        } else {
-                            tooltip.style.visibility = 'visible';
-                            tooltip.style.opacity = '1';
-                            activeTooltip = this;
-                        }
+                }
+                
+                const tooltip = this.querySelector('.tooltip');
+                if (tooltip) {
+                    if (tooltip.style.visibility === 'visible') {
+                        tooltip.style.visibility = 'hidden';
+                        tooltip.style.opacity = '0';
+                        activeTooltip = null;
+                    } else {
+                        tooltip.style.visibility = 'visible';
+                        tooltip.style.opacity = '1';
+                        activeTooltip = this;
                     }
-                });
-            } else {
-                // Desktop: Keep hover behavior, add click for accessibility
-                jargon.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    
-                    const tooltip = this.querySelector('.tooltip');
-                    if (tooltip) {
-                        if (tooltip.style.visibility === 'visible') {
-                            tooltip.style.visibility = 'hidden';
-                            tooltip.style.opacity = '0';
-                        } else {
-                            tooltip.style.visibility = 'visible';
-                            tooltip.style.opacity = '1';
-                        }
-                    }
-                });
-            }
+                }
+            });
             
-            // Keyboard accessibility for all devices
+            // Keyboard accessibility
             jargon.addEventListener('keydown', function(e) {
                 if (e.key === 'Enter' || e.key === ' ') {
                     e.preventDefault();
@@ -1126,25 +950,10 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Initialize tooltip handling
-    handleTooltips();
+    // Initialize tooltips
+    initializeTooltips();
 
-    // Re-initialize on window resize
-    window.addEventListener('resize', function() {
-        // Clean up any active tooltips when switching between mobile/desktop
-        if (activeTooltip) {
-            const tooltip = activeTooltip.querySelector('.tooltip');
-            if (tooltip) {
-                tooltip.style.visibility = 'hidden';
-                tooltip.style.opacity = '0';
-                activeTooltip = null;
-            }
-        }
-        // Re-initialize after a brief delay to account for layout changes
-        setTimeout(handleTooltips, 100);
-    });
-
-    // Smooth scrolling for TOC links with dynamic offset calculation
+    // Simplified TOC scroll with reliable offset
     document.querySelectorAll('.toc-link').forEach(function(link) {
         link.addEventListener('click', function(e) {
             e.preventDefault();
@@ -1153,49 +962,13 @@ document.addEventListener('DOMContentLoaded', function() {
             const targetElement = document.querySelector(targetId);
             
             if (targetElement) {
-                // Calculate offset based on ALL elements above content (they all push content down)
-                let totalOffset = 50; // Base padding for breathing room
-                
-                const header = document.querySelector('.header');
-                const breadcrumb = document.querySelector('.breadcrumb');
-                const toc = document.querySelector('.table-of-contents');
-                
-                // Always add heights since they all take up space above content
-                if (header) {
-                    totalOffset += header.offsetHeight;
-                }
-                
-                if (breadcrumb) {
-                    totalOffset += breadcrumb.offsetHeight;
-                }
-                
-                // Add buffer space after TOC for visual separation
-                if (toc) {
-                    totalOffset += 60; // Fixed buffer after TOC
-                }
-
-                // Additional offset for mobile due to smaller screens
-                if (isMobileDevice()) {
-                    totalOffset += 70;
-                } /*else {
-                    totalOffset += 140;
-                }*/
-
-                const elementPosition = targetElement.offsetTop;
-                const finalPosition = Math.max(0, elementPosition - totalOffset);
-                
-                console.log('TOC Scroll Debug:', {
-                    targetId: targetId,
-                    elementPosition: elementPosition,
-                    headerHeight: header ? header.offsetHeight : 0,
-                    breadcrumbHeight: breadcrumb ? breadcrumb.offsetHeight : 0,
-                    totalOffset: totalOffset,
-                    finalPosition: finalPosition,
-                    isMobile: isMobileDevice()
-                });
+                // Simple, reliable offset calculation
+                const offset = isMobile() ? 120 : 180;
+                const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+                const scrollPosition = elementPosition - offset;
                 
                 window.scrollTo({
-                    top: finalPosition,
+                    top: Math.max(0, scrollPosition),
                     behavior: 'smooth'
                 });
             }
