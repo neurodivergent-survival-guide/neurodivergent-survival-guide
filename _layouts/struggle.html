@@ -954,7 +954,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize tooltips
     initializeTooltips();
 
-    // TOC scroll with visual mobile debugging
+    // TOC scroll with perfect positioning for both mobile and desktop
     document.querySelectorAll('.toc-link').forEach(function(link) {
         link.addEventListener('click', function(e) {
             e.preventDefault();
@@ -966,22 +966,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 let finalPosition;
                 
                 if (isMobile()) {
-                    // Mobile: Larger offset to hit top of section headers
+                    // Mobile: 475px offset hits section headers perfectly
                     const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
-                    finalPosition = elementPosition - 480; // Increased from 160px
-                    
-                    // Visual debug - shows on page for 3 seconds
-                    const debugDiv = document.createElement('div');
-                    debugDiv.style.cssText = `
-                        position: fixed; top: 10px; left: 10px; right: 10px;
-                        background: red; color: white; padding: 10px; 
-                        border-radius: 8px; z-index: 10000; font-size: 12px;
-                    `;
-                    debugDiv.innerHTML = `Mobile Debug: Target=${targetId}, Offset=260px, ScrollTo=${finalPosition}`;
-                    document.body.appendChild(debugDiv);
-                    setTimeout(() => debugDiv.remove(), 3000);
+                    finalPosition = elementPosition - 475;
                 } else {
-                    // Desktop: Fixed offset (working perfectly)
+                    // Desktop: 220px offset hits section headers perfectly
                     const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
                     finalPosition = elementPosition - 220;
                 }
