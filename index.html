@@ -265,6 +265,24 @@ title: "The Neurodivergent Survival Guide"
         font-style: italic;
     }
 
+    .crisis-resources {
+        background: #fff5f5 !important;
+        border-left: 4px solid #dc2626 !important;
+        padding: 16px !important;
+        margin: 0 !important;
+    }
+
+    .crisis-resources a[href^="tel:"] {
+        color: #dc2626 !important;
+        text-decoration: none !important;
+        font-weight: 600 !important;
+        font-size: 1.1rem !important;
+    }
+
+    .crisis-resources a[href^="tel:"]:hover {
+        text-decoration: underline !important;
+    }
+
     .search-hint {
         padding: 12px 20px;
         background: rgba(72, 219, 251, 0.05);
@@ -864,9 +882,13 @@ title: "The Neurodivergent Survival Guide"
         <div class="footer-note">
             <h3>A Living Resource Built From Community Wisdom</h3>
             <p>This guide represents far more than clinical research or theoretical frameworks. It's built from the ground up through extensive interviews with neurodivergent individuals who've found ways to thrive, not just survive. Each strategy, reframe, and insight comes from real people sharing what actually works in their daily lives.</p>
+            
             <p>The foundation includes my own lived experience navigating multiple neurotypes, countless conversations with close friends who've become my informal research partners, and formal interviews with dozens of community members who generously shared their most effective coping mechanisms, identity frameworks, and hard-won wisdom about living authentically in a neurotypical world.</p>
+            
             <p>What makes this resource different is its focus on moving beyond pathology. Instead of viewing neurodivergence as a collection of deficits to manage, the people who contributed to this guide have found ways to understand their brain differences as integral parts of their identity - bringing both challenges and strengths, requiring accommodation rather than cure.</p>
+            
             <p>This isn't a static resource. As I continue conversations with community members, discover new research that validates lived experiences, and receive feedback from readers, the guide evolves. Recent additions have come from a brilliant autistic engineer's executive function systems, a bipolar artist's emotional regulation toolkit, and an ADHD parent's family management strategies.</p>
+            
             <p>Every person's neurodivergent experience is unique, shaped by individual brain wiring, trauma history, social environment, and countless other factors. Take what resonates, adapt what partially fits, and leave what doesn't serve you. The goal isn't to find yourself in these pages, but to find tools and perspectives that help you understand and advocate for your own authentic way of being in the world.</p>
         </div>
     </main>
@@ -981,11 +1003,59 @@ function performSearch(query) {
         return;
     }
     
+    // Check for crisis-related search terms first
+    const crisisTerms = ['suicide', 'suicidal', 'kill myself', 'end it all', 'want to die', 'hurt myself', 'self harm', 'crisis', 'emergency'];
+    const lowerQuery = query.toLowerCase();
+    const isCrisisSearch = crisisTerms.some(term => lowerQuery.includes(term));
+    
+    if (isCrisisSearch) {
+        displayCrisisResources();
+        return;
+    }
+    
     // Perform fuzzy search
     const results = fuse.search(query);
     
     // Display results
     displaySearchResults(results, query);
+}
+
+function displayCrisisResources() {
+    const searchResults = document.getElementById('searchResults');
+    
+    const html = `
+        <div class="crisis-resources">
+            <div style="color: #dc2626; font-weight: 600; font-size: 1.1rem; margin-bottom: 12px;">
+                🚨 Crisis Support Available Now
+            </div>
+            <div style="color: #333; line-height: 1.6;">
+                <p style="margin: 0 0 12px 0; font-weight: 500;">If you're having thoughts of suicide or self-harm, you don't have to go through this alone. Help is available:</p>
+                
+                <div style="margin: 8px 0;">
+                    <strong style="color: #dc2626;">Emergency:</strong> <a href="tel:911">911</a>
+                </div>
+                
+                <div style="margin: 8px 0;">
+                    <strong style="color: #dc2626;">Suicide & Crisis Lifeline:</strong> <a href="tel:988">988</a>
+                    <br><small style="color: #666;">24/7 free and confidential support</small>
+                </div>
+                
+                <div style="margin: 8px 0;">
+                    <strong style="color: #dc2626;">Crisis Text Line:</strong> <span style="color: #dc2626; font-weight: 600;">Text HOME to 741741</span>
+                    <br><small style="color: #666;">24/7 crisis support via text</small>
+                </div>
+                
+                <div style="margin: 12px 0 8px 0; padding-top: 12px; border-top: 1px solid #fecaca;">
+                    <p style="margin: 0; font-size: 0.9rem; color: #555;">
+                        <strong>Remember:</strong> Crisis feelings are temporary, even when they don't feel like it. Professional counselors are trained to help you work through these moments safely.
+                    </p>
+                </div>
+            </div>
+        </div>
+    `;
+    
+    searchResults.innerHTML = html;
+    showSearchResults();
 }
 
 function displaySearchResults(results, query) {
@@ -1065,6 +1135,15 @@ function setupFallbackSearch() {
 
 function handleFallbackSearch(event) {
     const searchTerm = event.target.value.toLowerCase().trim();
+    
+    // Check for crisis terms first
+    const crisisTerms = ['suicide', 'suicidal', 'kill myself', 'end it all', 'want to die', 'hurt myself', 'self harm', 'crisis', 'emergency'];
+    const isCrisisSearch = crisisTerms.some(term => searchTerm.includes(term));
+    
+    if (isCrisisSearch) {
+        displayCrisisResources();
+        return;
+    }
     
     // Basic fallback routes for essential pages
     const routes = {
