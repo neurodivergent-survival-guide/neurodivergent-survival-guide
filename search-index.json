@@ -2,18 +2,18 @@
 layout: null
 ---
 [
-  {% assign pages = site.pages | where_exp: "page", "page.layout == 'struggle'" %}
-  {% for page in pages %}
-    {% unless page.status == 'draft' %}
-    {
-      "title": "{{ page.title | escape }}",
-      "subtitle": "{{ page.subtitle | escape }}",
-      "description": "{{ page.description | escape }}",
-      "url": "{{ page.url }}",
-      "condition": "{{ page.condition }}",
-      "search_terms": {{ page.search_terms | jsonify }},
-      "slug": "{{ page.slug }}"
-    }{% unless forloop.last %},{% endunless %}
-    {% endunless %}
-  {% endfor %}
+{% assign struggle_pages = site.pages | where: "layout", "struggle" %}
+{% for page in struggle_pages %}
+  {% unless page.status == 'draft' %}
+  {
+    "title": {{ page.title | jsonify }},
+    "subtitle": {{ page.subtitle | default: "" | jsonify }},
+    "description": {{ page.description | default: "" | jsonify }},
+    "url": {{ page.url | jsonify }},
+    "condition": {{ page.condition | default: "" | jsonify }},
+    "search_terms": {{ page.search_terms | default: array | jsonify }},
+    "slug": {{ page.slug | default: "" | jsonify }}
+  }{% unless forloop.last %},{% endunless %}
+  {% endunless %}
+{% endfor %}
 ]
