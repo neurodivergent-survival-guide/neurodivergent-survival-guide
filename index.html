@@ -183,10 +183,10 @@ title: "The Neurodivergent Survival Guide"
 
     /* Search Results Dropdown */
     .search-results {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
+        position: fixed;
+        top: auto;
+        left: auto;
+        right: auto;
         background: rgba(255, 255, 255, 0.98);
         backdrop-filter: blur(15px);
         border-radius: 0 0 16px 16px;
@@ -197,6 +197,7 @@ title: "The Neurodivergent Survival Guide"
         display: none;
         border: 1px solid rgba(255, 255, 255, 0.3);
         border-top: none;
+        min-width: 500px;
     }
 
     .search-results.show {
@@ -1023,6 +1024,14 @@ function displaySearchResults(results, query) {
 
 function showSearchResults() {
     const searchResults = document.getElementById('searchResults');
+    const searchBox = document.getElementById('searchBox');
+    
+    // Position the fixed dropdown below the search box
+    const searchBoxRect = searchBox.getBoundingClientRect();
+    searchResults.style.top = (searchBoxRect.bottom + window.scrollY) + 'px';
+    searchResults.style.left = searchBoxRect.left + 'px';
+    searchResults.style.width = searchBoxRect.width + 'px';
+    
     searchResults.classList.add('show');
 }
 
