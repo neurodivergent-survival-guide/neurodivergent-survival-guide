@@ -1177,9 +1177,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Additional offset for mobile due to smaller screens
                 if (isMobileDevice()) {
                     totalOffset += 70;
-                } else {
+                } /*else {
                     totalOffset += 140;
-                }
+                }*/
 
                 const elementPosition = targetElement.offsetTop;
                 const finalPosition = Math.max(0, elementPosition - totalOffset);
