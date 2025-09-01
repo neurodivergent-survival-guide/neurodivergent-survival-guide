@@ -3,6 +3,9 @@ layout: default
 title: "The Neurodivergent Survival Guide"
 ---
 <!-- index.html -->
+<!-- Add Fuse.js CDN to head section -->
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2"></script>
+
 <style>
     :root {
         --aurora-start: #1e3c72;
@@ -137,6 +140,7 @@ title: "The Neurodivergent Survival Guide"
         margin: 0 auto 2rem;
     }
 
+    /* Enhanced Search Styles */
     .search-section {
         max-width: 500px;
         margin: 2rem auto 0;
@@ -164,6 +168,7 @@ title: "The Neurodivergent Survival Guide"
         border-color: var(--rainbow-3);
         background: rgba(255, 255, 255, 0.25);
         box-shadow: 0 0 0 3px rgba(72, 219, 251, 0.2);
+        border-radius: 25px 25px 12px 12px;
     }
 
     .search-icon {
@@ -174,6 +179,95 @@ title: "The Neurodivergent Survival Guide"
         color: rgba(255, 255, 255, 0.7);
         font-size: 1.2rem;
         pointer-events: none;
+    }
+
+    /* Search Results Dropdown */
+    .search-results {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(15px);
+        border-radius: 0 0 16px 16px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+        max-height: 400px;
+        overflow-y: auto;
+        z-index: 1000;
+        display: none;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-top: none;
+    }
+
+    .search-results.show {
+        display: block;
+    }
+
+    .search-result-item {
+        padding: 12px 20px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+        text-decoration: none;
+        color: inherit;
+        display: block;
+    }
+
+    .search-result-item:hover {
+        background: rgba(72, 219, 251, 0.1);
+        text-decoration: none;
+        color: inherit;
+    }
+
+    .search-result-item:last-child {
+        border-bottom: none;
+    }
+
+    .result-title {
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 4px;
+        font-size: 0.95rem;
+    }
+
+    .result-condition {
+        display: inline-block;
+        background: var(--rainbow-3);
+        color: white;
+        padding: 2px 8px;
+        border-radius: 10px;
+        font-size: 0.75rem;
+        font-weight: 500;
+        margin-left: 8px;
+        text-transform: uppercase;
+    }
+
+    .result-condition.adhd { background: #d63031; }
+    .result-condition.autism { background: #27ae60; }
+    .result-condition.bipolar { background: #74b9ff; }
+    .result-condition.bpd { background: #f39c12; }
+    .result-condition.ocd { background: #a29bfe; }
+
+    .result-description {
+        color: #666;
+        font-size: 0.85rem;
+        line-height: 1.4;
+        margin-top: 4px;
+    }
+
+    .no-results {
+        padding: 20px;
+        text-align: center;
+        color: #666;
+        font-style: italic;
+    }
+
+    .search-hint {
+        padding: 12px 20px;
+        background: rgba(72, 219, 251, 0.05);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        font-size: 0.8rem;
+        color: #666;
     }
 
     .container {
@@ -585,26 +679,28 @@ title: "The Neurodivergent Survival Guide"
         }
     }
 
-    /* Mobile responsive tooltip adjustments */
+    /* Mobile responsive */
     @media (max-width: 1024px) {
-        .tooltip {
-            max-width: 400px;
+        .search-results {
+            max-height: 300px;
         }
     }
 
     @media (max-width: 768px) {
-        .tooltip {
-            position: fixed !important;
-            bottom: 20px !important;
-            left: 20px !important;
-            right: 20px !important;
-            transform: none !important;
-            max-width: none !important;
-            width: auto !important;
+        .search-section {
+            max-width: 90%;
         }
-
-        .tooltip::after {
-            display: none !important;
+        
+        .search-results {
+            max-height: 250px;
+        }
+        
+        .result-title {
+            font-size: 0.9rem;
+        }
+        
+        .result-description {
+            font-size: 0.8rem;
         }
 
         .hero {
@@ -613,10 +709,6 @@ title: "The Neurodivergent Survival Guide"
 
         .hero h1 {
             font-size: 2rem;
-        }
-
-        .search-section {
-            max-width: 90%;
         }
 
         .container {
@@ -665,12 +757,6 @@ title: "The Neurodivergent Survival Guide"
         .footer-note {
             padding: 1.2rem;
         }
-
-        .tooltip {
-            left: 10px !important;
-            right: 10px !important;
-            bottom: 10px !important;
-        }
     }
 </style>
 
@@ -679,7 +765,7 @@ title: "The Neurodivergent Survival Guide"
     <p>Navigate daily friction points with understanding, practical tools, and community wisdom from those who understand the journey</p>
     
     <div class="search-section">
-        <input type="text" class="search-box" placeholder="Search struggles, conditions, or symptoms..." id="searchBox">
+        <input type="text" class="search-box" placeholder="Search for conditions, struggles, or symptoms..." id="searchBox">
         <div class="search-results" id="searchResults"></div>
         <span class="search-icon">🔍</span>
     </div>
@@ -779,215 +865,237 @@ title: "The Neurodivergent Survival Guide"
 </div>
 
 <script>
-    function handleSearch(event) {
+// Enhanced Search Implementation with Fuse.js
+let searchIndex = null;
+let fuse = null;
+
+// Initialize search when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    initializeSearch();
+});
+
+async function initializeSearch() {
+    try {
+        // Load the search index
+        const response = await fetch('/search-index.json');
+        searchIndex = await response.json();
+        
+        // Configure Fuse.js for fuzzy search
+        const fuseOptions = {
+            keys: [
+                { name: 'title', weight: 0.4 },
+                { name: 'subtitle', weight: 0.3 },
+                { name: 'search_terms', weight: 0.2 },
+                { name: 'description', weight: 0.1 }
+            ],
+            threshold: 0.4, // Lower = more strict matching
+            distance: 100,
+            minMatchCharLength: 2,
+            includeScore: true,
+            includeMatches: true
+        };
+        
+        fuse = new Fuse(searchIndex, fuseOptions);
+        
+        // Set up search interface
+        setupSearchInterface();
+        
+    } catch (error) {
+        console.error('Failed to load search index:', error);
+        // Fallback to simple routing if search index fails
+        setupFallbackSearch();
+    }
+}
+
+function setupSearchInterface() {
+    const searchBox = document.getElementById('searchBox');
+    const searchResults = document.getElementById('searchResults');
+    
+    if (!searchBox || !searchResults) {
+        console.error('Search elements not found');
+        return;
+    }
+    
+    let searchTimeout;
+    
+    // Search as user types (with debouncing)
+    searchBox.addEventListener('input', function(e) {
+        clearTimeout(searchTimeout);
+        const query = e.target.value.trim();
+        
+        if (query.length < 2) {
+            hideSearchResults();
+            return;
+        }
+        
+        searchTimeout = setTimeout(() => {
+            performSearch(query);
+        }, 200); // 200ms delay to avoid excessive searching
+    });
+    
+    // Handle keyboard navigation
+    searchBox.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            const firstResult = searchResults.querySelector('.search-result-item');
+            if (firstResult) {
+                window.location.href = firstResult.href;
+            }
+        } else if (e.key === 'Escape') {
+            hideSearchResults();
+            searchBox.blur();
+        }
+    });
+    
+    // Hide results when clicking outside
+    document.addEventListener('click', function(e) {
+        if (!e.target.closest('.search-section')) {
+            hideSearchResults();
+        }
+    });
+    
+    // Show results when focusing on search box (if there's content)
+    searchBox.addEventListener('focus', function() {
+        if (this.value.trim().length >= 2) {
+            performSearch(this.value.trim());
+        }
+    });
+}
+
+function performSearch(query) {
+    const searchResults = document.getElementById('searchResults');
+    
+    if (!fuse || !searchIndex) {
+        console.error('Search not properly initialized');
+        return;
+    }
+    
+    // Perform fuzzy search
+    const results = fuse.search(query);
+    
+    // Display results
+    displaySearchResults(results, query);
+}
+
+function displaySearchResults(results, query) {
+    const searchResults = document.getElementById('searchResults');
+    
+    if (results.length === 0) {
+        searchResults.innerHTML = `
+            <div class="no-results">
+                No matches found for "${query}"<br>
+                <small>Try different keywords or check spelling</small>
+            </div>
+        `;
+        showSearchResults();
+        return;
+    }
+    
+    // Limit to top 8 results
+    const topResults = results.slice(0, 8);
+    
+    let html = '';
+    
+    // Add search hint for first few characters
+    if (query.length <= 3) {
+        html += `<div class="search-hint">💡 Keep typing for more specific results</div>`;
+    }
+    
+    // Generate result items
+    topResults.forEach(result => {
+        const item = result.item;
+        const score = result.score;
+        
+        html += `
+            <a href="${item.url}" class="search-result-item">
+                <div class="result-title">
+                    ${item.title}
+                    <span class="result-condition ${item.condition}">${item.condition.toUpperCase()}</span>
+                </div>
+                <div class="result-description">${item.description}</div>
+            </a>
+        `;
+    });
+    
+    searchResults.innerHTML = html;
+    showSearchResults();
+}
+
+function showSearchResults() {
+    const searchResults = document.getElementById('searchResults');
+    searchResults.classList.add('show');
+}
+
+function hideSearchResults() {
+    const searchResults = document.getElementById('searchResults');
+    searchResults.classList.remove('show');
+}
+
+// Fallback search function if Fuse.js fails to load
+function setupFallbackSearch() {
+    const searchBox = document.getElementById('searchBox');
+    
+    if (!searchBox) return;
+    
+    searchBox.addEventListener('keypress', function(event) {
         if (event.key === 'Enter') {
-            const searchTerm = event.target.value.toLowerCase().trim();
-            
-            // Comprehensive routing based on finalized project spec
-            const routes = {
-                // Conditions
-                'autism': 'conditions/autism.html',
-                'adhd': 'conditions/adhd.html',
-                'bipolar': 'conditions/bipolar.html',
-                'bpd': 'conditions/borderline-personality-disorder.html',
-                'borderline': 'conditions/borderline-personality-disorder.html',
-                'ocd': 'conditions/ocd.html',
-                
-                // Toolkits
-                'toolkit': 'toolkits/index.html',
-                'toolkits': 'toolkits/index.html',
-                'workplace': 'toolkits/workplace-accommodations.html',
-                'accommodation': 'toolkits/workplace-accommodations.html',
-                'education': 'toolkits/educational-accommodations.html',
-                'healthcare': 'toolkits/healthcare-advocacy.html',
-                'evaluation': 'toolkits/evaluation-preparation.html',
-                'financial': 'toolkits/financial-management.html',
-                
-                // Autism struggles (consolidated)
-                'social cues': 'struggles/missing-social-cues.html',
-                'missing social cues': 'struggles/missing-social-cues.html',
-                'nonverbal communication': 'struggles/missing-social-cues.html',
-                'eye contact': 'struggles/missing-social-cues.html',
-                'body language': 'struggles/missing-social-cues.html',
-                'too direct': 'struggles/being-too-direct.html',
-                'blunt': 'struggles/being-too-direct.html',
-                'social reciprocity': 'struggles/social-reciprocity-challenges.html',
-                'conversation': 'struggles/social-reciprocity-challenges.html',
-                'relationship maintenance': 'struggles/relationship-maintenance-struggles.html',
-                'friendships': 'struggles/relationship-maintenance-struggles.html',
-                'special interests': 'struggles/special-interests-consuming-focus.html',
-                'routine disruption': 'struggles/change-and-routine-disruption.html',
-                'schedule change': 'struggles/change-and-routine-disruption.html',
-                'transitions': 'struggles/change-and-routine-disruption.html',
-                'change': 'struggles/change-and-routine-disruption.html',
-                'sensory': 'struggles/sensory-processing-challenges.html',
-                'sensory processing': 'struggles/sensory-processing-challenges.html',
-                'stimming': 'struggles/stimming-and-sensory-regulation.html',
-                'self regulation': 'struggles/stimming-and-sensory-regulation.html',
-                'sensory seeking': 'struggles/stimming-and-sensory-regulation.html',
-                'face blindness': 'struggles/face-blindness.html',
-                'prosopagnosia': 'struggles/face-blindness.html',
-                'alexithymia': 'struggles/alexithymia.html',
-                'autistic inertia': 'struggles/autistic-inertia.html',
-                'inertia': 'struggles/autistic-inertia.html',
-                'masking': 'struggles/masking-burnout.html',
-                'masking burnout': 'struggles/masking-burnout.html',
-                'late diagnosis': 'struggles/late-diagnosis-grief.html',
-                'medication sensitivity': 'struggles/medication-sensitivity-management.html',
+            handleFallbackSearch(event);
+        }
+    });
+}
 
-                // ADHD struggles  
-                'task initiation': 'struggles/task-initiation-paralysis.html',
-                'starting tasks': 'struggles/task-initiation-paralysis.html',
-                'paralysis': 'struggles/task-initiation-paralysis.html',
-                'attention': 'struggles/attention-regulation.html',
-                'focus': 'struggles/attention-regulation.html',
-                'follow through': 'struggles/follow-through-completion.html',
-                'completion': 'struggles/follow-through-completion.html',
-                'finishing': 'struggles/follow-through-completion.html',
-                'organization': 'struggles/organization-and-planning-challenges.html',
-                'planning': 'struggles/organization-and-planning-challenges.html',
-                'time blindness': 'struggles/time-blindness.html',
-                'time': 'struggles/time-blindness.html',
-                'working memory': 'struggles/working-memory-difficulties.html',
-                'memory': 'struggles/working-memory-difficulties.html',
-                'physical restlessness': 'struggles/physical-restlessness.html',
-                'hyperactivity': 'struggles/physical-restlessness.html',
-                'fidgeting': 'struggles/physical-restlessness.html',
-                'interrupting': 'struggles/interrupting-and-blurting.html',
-                'blurting': 'struggles/interrupting-and-blurting.html',
-                'waiting': 'struggles/impatience-with-waiting.html',
-                'impatience': 'struggles/impatience-with-waiting.html',
-                'impulsive decisions': 'struggles/impulsive-decision-making.html',
-                'impulsivity': 'struggles/impulsive-decision-making.html',
-                'adhd hypersexuality': 'struggles/adhd-hypersexuality.html',
-                'rejection sensitive': 'struggles/rejection-sensitive-dysphoria.html',
-                'rsd': 'struggles/rejection-sensitive-dysphoria.html',
-                'emotional dysregulation': 'struggles/emotional-dysregulation.html',
-                'hyperfocus': 'struggles/hyperfocus-episodes.html',
-                'sleep': 'struggles/sleep-rhythm-disruption.html',
-                'object permanence': 'struggles/object-permanence-issues.html',
-                'interest based': 'struggles/interest-based-nervous-system.html',
-                'motivation': 'struggles/interest-based-nervous-system.html',
-                'stimulant appetite': 'struggles/stimulant-appetite-suppression.html',
-                'stimulant sleep': 'struggles/stimulant-sleep-disruption.html',
-                'stimulant crash': 'struggles/stimulant-crash-and-rebound.html',
-
-                // Bipolar struggles
-                'mania': 'struggles/elevated-mood-periods.html',
-                'manic': 'struggles/elevated-mood-periods.html',
-                'hypomania': 'struggles/elevated-mood-periods.html',
-                'elevated mood': 'struggles/elevated-mood-periods.html',
-                'decreased sleep': 'struggles/decreased-need-for-sleep.html',
-                'racing thoughts': 'struggles/racing-thoughts-flight-of-ideas.html',
-                'flight of ideas': 'struggles/racing-thoughts-flight-of-ideas.html',
-                'grandiosity': 'struggles/grandiosity-inflated-self-esteem.html',
-                'goal directed activity': 'struggles/increased-goal-directed-activity.html',
-                'bipolar hypersexuality': 'struggles/bipolar-hypersexuality.html',
-                'poor judgment': 'struggles/poor-judgment-during-episodes.html',
-                'depression': 'struggles/persistent-low-mood.html',
-                'low mood': 'struggles/persistent-low-mood.html',
-                'anhedonia': 'struggles/anhedonia.html',
-                'sleep disturbances': 'struggles/sleep-disturbances.html',
-                'fatigue': 'struggles/fatigue-energy-loss.html',
-                'concentration difficulties': 'struggles/concentration-difficulties.html',
-                'suicidal': 'struggles/suicidal-ideation.html',
-                'mixed states': 'struggles/mixed-states.html',
-                'rapid cycling': 'struggles/rapid-cycling-patterns.html',
-                'lithium side effects': 'struggles/lithium-side-effects.html',
-                'anticonvulsant': 'struggles/anticonvulsant-side-effects.html',
-                'antipsychotic': 'struggles/antipsychotic-side-effects.html',
-                'akathisia': 'struggles/akathisia.html',
-                'restless': 'struggles/akathisia.html',
-                'identity confusion': 'struggles/identity-confusion-between-episodes.html',
-                'relationship strain': 'struggles/relationship-strain-from-mood-volatility.html',
-                'manic spending': 'struggles/financial-consequences-manic-spending.html',
-
-                // BPD struggles
-                'abandonment': 'struggles/fear-of-abandonment.html',
-                'fear of abandonment': 'struggles/fear-of-abandonment.html',
-                'unstable relationships': 'struggles/unstable-interpersonal-relationships.html',
-                'identity': 'struggles/identity-disturbance.html',
-                'impulsive actions': 'struggles/impulsivity-potentially-damaging.html',
-                'bpd hypersexuality': 'struggles/bpd-hypersexuality.html',
-                'self harm': 'struggles/recurrent-suicidal-behaviors-self-harm.html',
-                'rapid mood changes': 'struggles/affective-instability.html',
-                'mood instability': 'struggles/affective-instability.html',
-                'emptiness': 'struggles/chronic-feelings-of-emptiness.html',
-                'intense anger': 'struggles/inappropriate-intense-anger.html',
-                'anger': 'struggles/inappropriate-intense-anger.html',
-                'dissociation': 'struggles/stress-related-dissociation-paranoia.html',
-                'paranoia': 'struggles/stress-related-dissociation-paranoia.html',
-                'emotional flashbacks': 'struggles/emotional-flashbacks.html',
-                'flashbacks': 'struggles/emotional-flashbacks.html',
-                'favorite person': 'struggles/favorite-person-dynamics.html',
-                'splitting': 'struggles/splitting-black-and-white-thinking.html',
-                'black and white': 'struggles/splitting-black-and-white-thinking.html',
-                'all or nothing': 'struggles/splitting-black-and-white-thinking.html',
-                'identity diffusion': 'struggles/identity-diffusion-in-relationships.html',
-                'shame': 'struggles/shame-spirals.html',
-                'shame spirals': 'struggles/shame-spirals.html',
-                'hypervigilance': 'struggles/hypervigilance-to-rejection-cues.html',
-                'rejection cues': 'struggles/hypervigilance-to-rejection-cues.html',
-                'bpd medication': 'struggles/bpd-medication-trial-management.html',
-                
-                // OCD struggles (consolidated)
-                'intrusive thoughts': 'struggles/intrusive-thoughts-images-urges.html',
-                'unwanted thoughts': 'struggles/intrusive-thoughts-images-urges.html',
-                'suppress thoughts': 'struggles/attempts-to-ignore-suppress-neutralize.html',
-                'neutralize thoughts': 'struggles/attempts-to-ignore-suppress-neutralize.html',
-                'compulsions': 'struggles/compulsive-behaviors-and-rituals.html',
-                'rituals': 'struggles/compulsive-behaviors-and-rituals.html',
-                'compulsive behaviors': 'struggles/compulsive-behaviors-and-rituals.html',
-                'pure o': 'struggles/pure-o-mental-compulsions.html',
-                'mental compulsions': 'struggles/pure-o-mental-compulsions.html',
-                'scrupulosity': 'struggles/moral-scrupulosity.html',
-                'moral ocd': 'struggles/moral-scrupulosity.html',
-                'contamination': 'struggles/contamination-beyond-germs.html',
-                'checking': 'struggles/checking-behaviors-never-complete.html',
-                'avoidance': 'struggles/avoidance-behaviors-lifestyle-restrictions.html',
-                'ocd depression': 'struggles/secondary-depression-from-shame-exhaustion.html',
-                'ssri sexual': 'struggles/ssri-sexual-side-effects.html',
-                'ssri blunting': 'struggles/ssri-emotional-blunting.html',
-                
-                // General hypersexuality search - route to struggles index since there are now 3 different pages
-                'hypersexuality': 'struggles/index.html'
-            };
-            
-            // Find matching route
-            let targetPage = null;
-            for (const [term, page] of Object.entries(routes)) {
-                if (searchTerm.includes(term)) {
-                    targetPage = page;
-                    break;
-                }
-            }
-            
-            if (targetPage) {
-                window.location.href = targetPage;
-            } else if (searchTerm) {
-                // If no specific match, route to appropriate section
-                if (searchTerm.includes('condition') || searchTerm.includes('brain') || searchTerm.includes('neurotype')) {
-                    window.location.href = 'conditions/index.html';
-                } else if (searchTerm.includes('toolkit') || searchTerm.includes('advocacy') || searchTerm.includes('system')) {
-                    window.location.href = 'toolkits/index.html';
-                } else {
-                    window.location.href = 'struggles/index.html';
-                }
-            }
+function handleFallbackSearch(event) {
+    const searchTerm = event.target.value.toLowerCase().trim();
+    
+    // Basic fallback routes for essential pages
+    const routes = {
+        'autism': 'conditions/autism.html',
+        'adhd': 'conditions/adhd.html',
+        'bipolar': 'conditions/bipolar.html',
+        'bpd': 'conditions/borderline-personality-disorder.html',
+        'ocd': 'conditions/ocd.html',
+        'task initiation': 'struggles/task-initiation-paralysis.html',
+        'paralysis': 'struggles/task-initiation-paralysis.html',
+        'attention': 'struggles/attention-regulation.html',
+        'memory': 'struggles/working-memory-difficulties.html',
+        'social cues': 'struggles/missing-social-cues.html',
+        'masking': 'struggles/masking-burnout.html'
+    };
+    
+    // Find matching route
+    let targetPage = null;
+    for (const [term, page] of Object.entries(routes)) {
+        if (searchTerm.includes(term)) {
+            targetPage = page;
+            break;
         }
     }
+    
+    if (targetPage) {
+        window.location.href = targetPage;
+    } else if (searchTerm) {
+        // Route to appropriate section
+        if (searchTerm.includes('condition') || searchTerm.includes('brain')) {
+            window.location.href = 'conditions/index.html';
+        } else if (searchTerm.includes('toolkit') || searchTerm.includes('advocacy')) {
+            window.location.href = 'toolkits/index.html';
+        } else {
+            window.location.href = 'struggles/index.html';
+        }
+    }
+}
 
-    // Smooth scrolling for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
-        });
+// Smooth scrolling for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
     });
+});
 </script>
