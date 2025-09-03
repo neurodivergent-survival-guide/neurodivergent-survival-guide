@@ -47,3 +47,14 @@ categories:
       - change
       - pressure
       - alone
+
+  - id: condition
+    name: "Common conditions"
+    icon: "🏷️"
+    description: "Which neurodivergent conditions frequently experience this struggle"
+    tags:
+      - adhd
+      - autism
+      - bipolar
+      - bpd
+      - ocd
