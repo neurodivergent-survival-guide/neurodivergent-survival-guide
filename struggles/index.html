@@ -631,7 +631,7 @@ permalink: /struggles/
 </div>
 
 <div class="breadcrumb">
-    <a href="{{ '/index.html' | relative_url }}">Home</a>
+    <a href="{{ site.baseurl }}/">Home</a>
     <span>></span>
     Daily Struggles
 </div>
@@ -653,66 +653,22 @@ permalink: /struggles/
                     <p>Select tags that describe your situation to find relevant struggles. You can choose multiple tags across different categories.</p>
                 </div>
 
-                <!-- Experience Tags -->
+                <!-- Dynamic Tag Categories -->
+                {% assign tag_data = site.data.tag_system %}
+                {% for category in tag_data.categories %}
                 <div class="filter-section">
                     <h3 class="filter-category">
-                        <span class="category-icon">💭</span>
-                        How it feels 
-                        <span class="tag-count">(10)</span>
+                        <span class="category-icon">{{ category.icon }}</span>
+                        {{ category.name }}
+                        <span class="tag-count">({{ category.tags | size }})</span>
                     </h3>
-                    <div class="tag-group experience-tags">
-                        <button class="tag-button" data-tag="stuck" data-category="experience">stuck</button>
-                        <button class="tag-button" data-tag="overwhelmed" data-category="experience">overwhelmed</button>
-                        <button class="tag-button" data-tag="restless" data-category="experience">restless</button>
-                        <button class="tag-button" data-tag="drained" data-category="experience">drained</button>
-                        <button class="tag-button" data-tag="foggy" data-category="experience">foggy</button>
-                        <button class="tag-button" data-tag="sensitive" data-category="experience">sensitive</button>
-                        <button class="tag-button" data-tag="disconnected" data-category="experience">disconnected</button>
-                        <button class="tag-button" data-tag="impulsive" data-category="experience">impulsive</button>
-                        <button class="tag-button" data-tag="anxious" data-category="experience">anxious</button>
-                        <button class="tag-button" data-tag="frustrated" data-category="experience">frustrated</button>
+                    <div class="tag-group {{ category.id }}-tags">
+                        {% for tag in category.tags %}
+                        <button class="tag-button" data-tag="{{ tag }}" data-category="{{ category.id }}">{{ tag }}</button>
+                        {% endfor %}
                     </div>
                 </div>
-
-                <!-- Functional Tags -->
-                <div class="filter-section">
-                    <h3 class="filter-category">
-                        <span class="category-icon">🧠</span>
-                        What's affected 
-                        <span class="tag-count">(9)</span>
-                    </h3>
-                    <div class="tag-group functional-tags">
-                        <button class="tag-button" data-tag="attention" data-category="functional">attention</button>
-                        <button class="tag-button" data-tag="memory" data-category="functional">memory</button>
-                        <button class="tag-button" data-tag="organization" data-category="functional">organization</button>
-                        <button class="tag-button" data-tag="communication" data-category="functional">communication</button>
-                        <button class="tag-button" data-tag="sensory" data-category="functional">sensory</button>
-                        <button class="tag-button" data-tag="emotional" data-category="functional">emotional</button>
-                        <button class="tag-button" data-tag="physical" data-category="functional">physical</button>
-                        <button class="tag-button" data-tag="time" data-category="functional">time</button>
-                        <button class="tag-button" data-tag="energy" data-category="functional">energy</button>
-                    </div>
-                </div>
-
-                <!-- Context Tags -->
-                <div class="filter-section">
-                    <h3 class="filter-category">
-                        <span class="category-icon">📍</span>
-                        Where it happens 
-                        <span class="tag-count">(9)</span>
-                    </h3>
-                    <div class="tag-group context-tags">
-                        <button class="tag-button" data-tag="work" data-category="context">work</button>
-                        <button class="tag-button" data-tag="school" data-category="context">school</button>
-                        <button class="tag-button" data-tag="home" data-category="context">home</button>
-                        <button class="tag-button" data-tag="social" data-category="context">social</button>
-                        <button class="tag-button" data-tag="public" data-category="context">public</button>
-                        <button class="tag-button" data-tag="routine" data-category="context">routine</button>
-                        <button class="tag-button" data-tag="change" data-category="context">change</button>
-                        <button class="tag-button" data-tag="pressure" data-category="context">pressure</button>
-                        <button class="tag-button" data-tag="alone" data-category="context">alone</button>
-                    </div>
-                </div>
+                {% endfor %}
 
                 <!-- Clear Filters Button -->
                 <div class="filter-controls">
@@ -823,9 +779,9 @@ class StruggleIndex {
               url: "{{ page.url }}",
               condition: "{{ page.condition }}",
               tags: {
-                experience: {{ page.tags.experience | jsonify }},
-                functional: {{ page.tags.functional | jsonify }},
-                context: {{ page.tags.context | jsonify }}
+                {% for category in site.data.tag_system.categories %}
+                {{ category.id }}: {{ page.tags[category.id] | jsonify }}{% unless forloop.last %},{% endunless %}
+                {% endfor %}
               }
             });
           {% endif %}
@@ -903,11 +859,12 @@ class StruggleIndex {
         }
         
         const filtered = this.struggles.filter(struggle => {
-            // Check if struggle has ANY of the selected tags
+            // Check if struggle has ANY of the selected tags across all categories
             return Array.from(this.selectedTags).some(tag => {
-                return (struggle.tags.experience && struggle.tags.experience.includes(tag)) ||
-                       (struggle.tags.functional && struggle.tags.functional.includes(tag)) ||
-                       (struggle.tags.context && struggle.tags.context.includes(tag));
+                {% for category in site.data.tag_system.categories %}
+                if (struggle.tags.{{ category.id }} && struggle.tags.{{ category.id }}.includes(tag)) return true;
+                {% endfor %}
+                return false;
             });
         });
         
