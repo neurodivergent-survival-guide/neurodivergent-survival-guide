@@ -1,8 +1,12 @@
 ---
 layout: default
-title: "Struggles"
+title: "Struggles Index"
+subtitle: "Find the daily friction points you're experiencing"
+description: "Browse 83 neurodivergent struggles by how they feel, what's affected, and where they happen. Filter by tags to find relevant resources for ADHD, autism, bipolar, BPD, and OCD challenges."
+permalink: /struggles/
 ---
-<!-- struggles/index.html -->
+<!-- File: /struggles/index.html -->
+
 <style>
     * {
         margin: 0;
@@ -22,14 +26,13 @@ title: "Struggles"
     .header {
         background: rgba(255, 255, 255, 0.1);
         backdrop-filter: blur(10px);
-        padding: 3rem 2rem;
+        padding: 2rem 2rem 1.5rem;
         border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-        text-align: center;
     }
 
     .header h1 {
         color: white;
-        font-size: 3rem;
+        font-size: 2.5rem;
         font-weight: 300;
         margin-bottom: 0.5rem;
     }
@@ -37,25 +40,36 @@ title: "Struggles"
     .header p {
         color: rgba(255, 255, 255, 0.9);
         font-size: 1.2rem;
+        margin-bottom: 1rem;
+    }
+
+    .header .subtitle {
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 1rem;
+        font-style: italic;
     }
 
     .breadcrumb {
         background: rgba(255, 255, 255, 0.05);
         padding: 0.8rem 2rem;
         border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        text-align: center;
+        overflow-x: auto;
+        white-space: nowrap;
     }
 
     .breadcrumb a {
         color: rgba(255, 255, 255, 0.8);
         text-decoration: none;
         font-size: 0.9rem;
-        font-weight: 500;
     }
 
     .breadcrumb a:hover {
         color: white;
-        text-decoration: underline;
+    }
+
+    .breadcrumb span {
+        color: rgba(255, 255, 255, 0.6);
+        margin: 0 0.5rem;
     }
 
     .container {
@@ -66,208 +80,380 @@ title: "Struggles"
         box-sizing: border-box;
     }
 
-    .intro-section {
+    .content-card {
         background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
         border-radius: 20px;
         padding: 2.5rem;
         box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-        margin-bottom: 3rem;
-        text-align: center;
+        margin-bottom: 2rem;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .intro-section {
+        margin-bottom: 2rem;
     }
 
     .intro-section h2 {
         color: #333;
-        font-size: 1.8rem;
         margin-bottom: 1rem;
+        font-size: 1.6rem;
+        font-weight: 400;
     }
 
     .intro-section p {
+        font-size: 1.05rem;
         color: #555;
-        font-size: 1.1rem;
-        margin-bottom: 1.5rem;
-        line-height: 1.8;
+        margin-bottom: 1rem;
     }
 
-    .how-to-use {
+    /* Tag Filters */
+    .tag-filters {
         background: #f8f9fa;
-        padding: 2rem;
         border-radius: 16px;
-        margin-top: 2rem;
+        padding: 2rem;
+        margin-bottom: 2rem;
+        border: 1px solid #e1e8ed;
     }
 
-    .how-to-use h3 {
+    .filter-introduction {
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+
+    .filter-introduction h2 {
         color: #333;
         margin-bottom: 1rem;
+        font-size: 1.6rem;
+        font-weight: 400;
+    }
+
+    .filter-introduction p {
+        color: #666;
+        font-size: 1.1rem;
+    }
+
+    .filter-section {
+        margin-bottom: 2rem;
+    }
+
+    .filter-category {
+        display: flex;
+        align-items: center;
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+        color: #333;
+        font-weight: 500;
+    }
+
+    .category-icon {
+        margin-right: 0.5rem;
         font-size: 1.3rem;
     }
 
-    .usage-scenarios {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 1.5rem;
-        margin-top: 1.5rem;
-    }
-
-    .scenario-card {
-        background: white;
-        padding: 1.5rem;
-        border-radius: 12px;
-        border-left: 4px solid #6b7280;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-    }
-
-    .scenario-card h4 {
-        color: #333;
-        margin-bottom: 0.5rem;
-        font-size: 1.1rem;
-        font-weight: 600;
-    }
-
-    .scenario-card p {
+    .tag-count {
+        font-size: 0.9rem;
         color: #666;
-        margin-bottom: 0;
-        font-size: 0.95rem;
+        font-weight: normal;
+        margin-left: 0.5rem;
     }
 
-    .category-section {
-        background: rgba(255, 255, 255, 0.95);
-        border-radius: 20px;
-        margin-bottom: 3rem;
-        overflow: hidden;
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    .tag-group {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
     }
 
-    .category-header {
-        background: linear-gradient(135deg, #6b7280, #4b5563);
+    .tag-button {
+        padding: 0.6rem 1.2rem;
+        border: 2px solid #e1e8ed;
+        background: white;
+        border-radius: 25px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        font-size: 0.9rem;
+        font-weight: 500;
+        color: #333;
+        min-height: 44px;
+    }
+
+    .tag-button:hover {
+        border-color: #6b7280;
+        background: #f8fafc;
+        transform: translateY(-1px);
+    }
+
+    .tag-button.selected {
+        background: #6b7280;
+        border-color: #6b7280;
         color: white;
-        padding: 2rem;
+    }
+
+    .filter-controls {
         text-align: center;
+        margin-top: 1.5rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid #e1e8ed;
     }
 
-    .category-header h2 {
-        font-size: 2rem;
-        margin-bottom: 0.5rem;
-        font-weight: 300;
+    .clear-button {
+        padding: 0.8rem 2rem;
+        background: #6c757d;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 0.9rem;
+        transition: all 0.2s ease;
+        min-height: 44px;
     }
 
-    .category-header p {
-        color: rgba(255, 255, 255, 0.9);
+    .clear-button:hover {
+        background: #545b62;
+        transform: translateY(-1px);
+    }
+
+    /* Selected Tags */
+    .selected-tags {
+        background: white;
+        border: 2px solid #6b7280;
+        border-radius: 16px;
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+        animation: slideIn 0.3s ease;
+    }
+
+    @keyframes slideIn {
+        from { opacity: 0; transform: translateY(-10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .selected-tags-header h3 {
+        margin: 0 0 1rem 0;
+        color: #333;
         font-size: 1.1rem;
+        font-weight: 500;
     }
 
+    .selected-tag-chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .tag-chip {
+        display: inline-flex;
+        align-items: center;
+        padding: 0.4rem 1rem;
+        background: #f8fafc;
+        border: 1px solid #6b7280;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        color: #333;
+    }
+
+    .remove-tag {
+        background: none;
+        border: none;
+        margin-left: 0.7rem;
+        cursor: pointer;
+        font-size: 1.3rem;
+        color: #666;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        transition: all 0.2s ease;
+        min-height: auto;
+    }
+
+    .remove-tag:hover {
+        background: #dc3545;
+        color: white;
+    }
+
+    .results-summary {
+        font-weight: 600;
+        color: #6b7280;
+        font-size: 1rem;
+    }
+
+    /* Results Section */
+    .results-header h2 {
+        color: #333;
+        margin-bottom: 2rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-weight: 400;
+    }
+
+    .total-count {
+        color: #666;
+        font-weight: normal;
+        font-size: 1rem;
+    }
+
+    /* Loading State */
+    .loading-state {
+        text-align: center;
+        padding: 3rem;
+    }
+
+    .loading-spinner {
+        width: 40px;
+        height: 40px;
+        border: 4px solid #e1e8ed;
+        border-top: 4px solid #6b7280;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        margin: 0 auto 1rem;
+    }
+
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+
+    /* Empty States */
+    .empty-state, .no-results-state {
+        text-align: center;
+        padding: 4rem 2rem;
+    }
+
+    .empty-icon {
+        font-size: 4rem;
+        margin-bottom: 1rem;
+        opacity: 0.5;
+    }
+
+    .empty-state h3, .no-results-state h3 {
+        color: #333;
+        margin-bottom: 1rem;
+        font-weight: 500;
+    }
+
+    .empty-state p, .no-results-state p {
+        color: #666;
+        font-size: 1.1rem;
+        max-width: 500px;
+        margin: 0 auto 2rem;
+    }
+
+    .secondary-button {
+        padding: 0.8rem 2rem;
+        background: white;
+        color: #6b7280;
+        border: 2px solid #6b7280;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 0.9rem;
+        transition: all 0.2s ease;
+        min-height: 44px;
+    }
+
+    .secondary-button:hover {
+        background: #6b7280;
+        color: white;
+        transform: translateY(-1px);
+    }
+
+    /* Struggles Grid */
     .struggles-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
         gap: 1.5rem;
-        padding: 2.5rem;
-        background: #e5e7eb;
     }
 
     .struggle-card {
         background: white;
+        border: 1px solid #e1e8ed;
         border-radius: 12px;
         padding: 1.5rem;
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-        transition: all 0.3s ease;
+        transition: all 0.2s ease;
         text-decoration: none;
         color: inherit;
-        border: 2px solid transparent;
-        min-height: 44px;
-        display: flex;
-        flex-direction: column;
+        display: block;
     }
 
     .struggle-card:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
         border-color: #6b7280;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(107, 114, 128, 0.15);
         text-decoration: none;
         color: inherit;
     }
 
     .struggle-card h3 {
         color: #333;
-        margin-bottom: 0.8rem;
+        margin-bottom: 0.5rem;
         font-size: 1.2rem;
         font-weight: 600;
     }
 
-    .struggle-card p {
+    .struggle-card .subtitle {
         color: #666;
-        margin-bottom: 1rem;
-        line-height: 1.6;
         font-size: 0.95rem;
-        flex-grow: 1;
+        margin-bottom: 1rem;
+        line-height: 1.4;
     }
 
-    .condition-tags {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.3rem;
-        margin-top: auto;
-    }
-
-    .condition-tag {
-        background: #e2e8f0;
-        color: #4a5568;
-        padding: 0.2rem 0.6rem;
-        border-radius: 12px;
-        font-size: 0.75rem;
+    .struggle-card .condition-badge {
+        display: inline-block;
+        padding: 0.3rem 0.8rem;
+        border-radius: 15px;
+        font-size: 0.8rem;
         font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
     }
 
-    .condition-tag.adhd { background: #fee2e2; color: #dc2626; }
-    .condition-tag.autism { background: #d1fae5; color: #059669; }
-    .condition-tag.bipolar { background: #dbeafe; color: #2563eb; }
-    .condition-tag.bpd { background: #fef3c7; color: #d97706; }
-
-    /* Focus states for accessibility */
-    .struggle-card:focus,
-    .jargon:focus,
-    .breadcrumb a:focus {
-        outline: 2px solid #fff;
-        outline-offset: 2px;
+    .condition-badge.adhd {
+        background: #ffebee;
+        color: #d63031;
     }
 
-    /* Motion accessibility */
-    @media (prefers-reduced-motion: reduce) {
-        *, *::before, *::after {
-            animation-duration: 0.01ms !important;
-            animation-iteration-count: 1 !important;
-            transition-duration: 0.01ms !important;
-        }
+    .condition-badge.autism {
+        background: #d4edda;
+        color: #27ae60;
     }
 
-    /* Jargon styling - context-aware based on background */
+    .condition-badge.bipolar {
+        background: #e3f2fd;
+        color: #74b9ff;
+    }
+
+    .condition-badge.bpd {
+        background: #fef9e7;
+        color: #f39c12;
+    }
+
+    .condition-badge.ocd {
+        background: #f3e5f5;
+        color: #9c27b0;
+    }
+
+    /* Jargon tooltip styles */
     .jargon {
+        color: #e84393;
         text-decoration: none;
-        border-bottom: 1px dotted;
+        border-bottom: 1px dotted #e84393;
         position: relative;
         cursor: help;
         font-weight: 500;
     }
 
-    /* Pink jargon for white backgrounds */
-    .intro-section .jargon,
-    .struggle-card .jargon,
-    .scenario-card .jargon,
-    .how-to-use .jargon {
-        color: #e84393;
-        border-bottom-color: #e84393;
-    }
-
-    .intro-section .jargon:hover,
-    .struggle-card .jargon:hover,
-    .scenario-card .jargon:hover,
-    .how-to-use .jargon:hover {
+    .jargon:hover {
         color: #fd79a8;
         border-bottom-color: #fd79a8;
     }
 
     /* White jargon for gradient backgrounds */
     .header .jargon,
-    .breadcrumb .jargon,
-    .category-header .jargon {
+    .breadcrumb .jargon {
         color: white;
         border-bottom-color: rgba(255, 255, 255, 0.7);
         background: rgba(255, 255, 255, 0.1);
@@ -276,13 +462,11 @@ title: "Struggles"
     }
 
     .header .jargon:hover,
-    .breadcrumb .jargon:hover,
-    .category-header .jargon:hover {
+    .breadcrumb .jargon:hover {
         background: rgba(255, 255, 255, 0.2);
         border-bottom-color: white;
     }
 
-    /* Auto-sizing tooltips */
     .tooltip {
         visibility: hidden;
         opacity: 0;
@@ -323,15 +507,89 @@ title: "Struggles"
         opacity: 1;
     }
 
-    /* Mobile responsive tooltip adjustments */
-    @media (max-width: 1024px) {
-        .tooltip {
-            max-width: 400px;
+    /* Focus states for accessibility */
+    .tag-button:focus,
+    .clear-button:focus,
+    .secondary-button:focus,
+    .struggle-card:focus,
+    .breadcrumb a:focus,
+    .jargon:focus {
+        outline: 2px solid #fff;
+        outline-offset: 2px;
+    }
+
+    /* Motion accessibility */
+    @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+        }
+
+        .tag-button:hover,
+        .clear-button:hover,
+        .struggle-card:hover {
+            transform: none;
         }
     }
 
-    /* Mobile-specific tooltip positioning */
+    /* Mobile Responsive */
     @media (max-width: 768px) {
+        .header {
+            padding: 1.5rem 1rem 1rem;
+        }
+
+        .header h1 {
+            font-size: 2rem;
+        }
+
+        .header p {
+            font-size: 1rem;
+        }
+
+        .breadcrumb {
+            padding: 0.6rem 1rem;
+        }
+
+        .container {
+            padding: 1rem;
+        }
+        
+        .content-card {
+            padding: 1.5rem;
+        }
+
+        .tag-filters {
+            padding: 1.5rem;
+        }
+        
+        .tag-group {
+            gap: 0.3rem;
+        }
+        
+        .tag-button {
+            font-size: 0.8rem;
+            padding: 0.5rem 1rem;
+        }
+        
+        .selected-tags {
+            flex-direction: column;
+            align-items: stretch;
+        }
+
+        .selected-tag-chips {
+            gap: 0.3rem;
+        }
+        
+        .struggles-grid {
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+        
+        .struggle-card {
+            padding: 1.2rem;
+        }
+
         .tooltip {
             position: fixed !important;
             bottom: 20px !important;
@@ -345,420 +603,450 @@ title: "Struggles"
         .tooltip::after {
             display: none !important;
         }
-
-        .header {
-            padding: 2rem 1rem;
-        }
-
-        .header h1 {
-            font-size: 2.5rem;
-        }
-
-        .container {
-            padding: 1rem;
-        }
-
-        .intro-section {
-            padding: 1.5rem;
-        }
-
-        .struggles-grid {
-            grid-template-columns: 1fr;
-            padding: 1.5rem;
-            gap: 1.2rem;
-        }
-
-        .usage-scenarios {
-            grid-template-columns: 1fr;
-        }
-
-        .category-header {
-            padding: 1.5rem;
-        }
-
-        .category-header h2 {
-            font-size: 1.8rem;
-        }
     }
 
     @media (max-width: 480px) {
         .header h1 {
-            font-size: 2rem;
+            font-size: 1.8rem;
         }
 
-        .intro-section {
+        .content-card {
             padding: 1.2rem;
         }
 
-        .tooltip {
-            left: 10px !important;
-            right: 10px !important;
-            bottom: 10px !important;
+        .tag-filters {
+            padding: 1.2rem;
+        }
+
+        .struggle-card {
+            padding: 1rem;
         }
     }
 </style>
 
-<div class="breadcrumb">
-    <a href="{{ '/index.html' | relative_url }}">Home</a>
+<div class="header">
+    <h1>Daily Struggles Navigator</h1>
+    <p>Find resources for the specific friction points you're experiencing</p>
+    <div class="subtitle">Browse by how struggles feel, what brain systems are affected, and where they happen</div>
 </div>
 
-<div class="header">
-    <h1>Daily Struggles</h1>
-    <p>When your brain meets friction in daily life</p>
+<div class="breadcrumb">
+    <a href="{{ '/index.html' | relative_url }}">Home</a>
+    <span>></span>
+    Daily Struggles
 </div>
 
 <div class="container">
     <main role="main" id="main-content">
-        <div class="intro-section">
-            <h2>Find Your Specific Friction Points</h2>
-            <p>Daily struggles are those predictable moments where your <a class="jargon">neurodivergent<span class="tooltip">Brain differences that affect how you process information, communicate, and interact with the world</span></a> brain bumps up against a world designed for different wiring. These aren't personal failings - they're friction points where your brain works differently than expected.</p>
-
-            <p>Each struggle offers practical strategies you can use right now, plus longer-term approaches for managing these challenges. Understanding your patterns helps you prepare, adapt, and realize you're not alone in these experiences.</p>
-
-            <div class="how-to-use">
-                <h3>How to Navigate This Section</h3>
+        <div class="content-card">
+            <div class="intro-section">
+                <h2>Navigate Your Daily Friction Points</h2>
+                <p>Daily life can feel impossibly difficult when your brain works differently from what the world expects. These struggles aren't personal failures or character flaws - they're predictable friction points that happen when <a class="jargon">neurodivergent<span class="tooltip">Brain differences that create distinct patterns of thinking, processing, and behavior</span></a> brains interact with environments designed for different types of processing.</p>
                 
-                <div class="usage-scenarios">
-                    <div class="scenario-card">
-                        <h4>When you recognize the experience</h4>
-                        <p>Scan the descriptions below. When something makes you think "Yes, that's exactly what happens to me," click through for immediate and long-term help.</p>
-                    </div>
-                    
-                    <div class="scenario-card">
-                        <h4>When you're exploring patterns</h4>
-                        <p>Look at the <a class="jargon">condition tags<span class="tooltip">Labels showing which conditions commonly experience each type of struggle</span></a> to see which struggles often co-occur. Understanding your pattern helps with planning and self-advocacy.</p>
-                    </div>
-                    
-                    <div class="scenario-card">
-                        <h4>When nothing quite fits</h4>
-                        <p>Try browsing by condition in the <a href="{{ '/conditions/index.html' | relative_url }}">Conditions</a> section, or explore terminology in the <a href="{{ '/glossary/index.html' | relative_url }}">Glossary</a>.</p>
+                <p>Each struggle page explains what the experience feels like from the inside, why it might be happening, and provides both immediate coping strategies and sustainable long-term approaches. Use the tag system below to find struggles that match your current experience.</p>
+            </div>
+
+            <!-- Tag Filtering Interface -->
+            <div class="tag-filters">
+                <div class="filter-introduction">
+                    <h2>Filter by Your Experience</h2>
+                    <p>Select tags that describe your situation to find relevant struggles. You can choose multiple tags across different categories.</p>
+                </div>
+
+                <!-- Experience Tags -->
+                <div class="filter-section">
+                    <h3 class="filter-category">
+                        <span class="category-icon">💭</span>
+                        How it feels 
+                        <span class="tag-count">(10)</span>
+                    </h3>
+                    <div class="tag-group experience-tags">
+                        <button class="tag-button" data-tag="stuck" data-category="experience">stuck</button>
+                        <button class="tag-button" data-tag="overwhelmed" data-category="experience">overwhelmed</button>
+                        <button class="tag-button" data-tag="restless" data-category="experience">restless</button>
+                        <button class="tag-button" data-tag="drained" data-category="experience">drained</button>
+                        <button class="tag-button" data-tag="foggy" data-category="experience">foggy</button>
+                        <button class="tag-button" data-tag="sensitive" data-category="experience">sensitive</button>
+                        <button class="tag-button" data-tag="disconnected" data-category="experience">disconnected</button>
+                        <button class="tag-button" data-tag="impulsive" data-category="experience">impulsive</button>
+                        <button class="tag-button" data-tag="anxious" data-category="experience">anxious</button>
+                        <button class="tag-button" data-tag="frustrated" data-category="experience">frustrated</button>
                     </div>
                 </div>
+
+                <!-- Functional Tags -->
+                <div class="filter-section">
+                    <h3 class="filter-category">
+                        <span class="category-icon">🧠</span>
+                        What's affected 
+                        <span class="tag-count">(9)</span>
+                    </h3>
+                    <div class="tag-group functional-tags">
+                        <button class="tag-button" data-tag="attention" data-category="functional">attention</button>
+                        <button class="tag-button" data-tag="memory" data-category="functional">memory</button>
+                        <button class="tag-button" data-tag="organization" data-category="functional">organization</button>
+                        <button class="tag-button" data-tag="communication" data-category="functional">communication</button>
+                        <button class="tag-button" data-tag="sensory" data-category="functional">sensory</button>
+                        <button class="tag-button" data-tag="emotional" data-category="functional">emotional</button>
+                        <button class="tag-button" data-tag="physical" data-category="functional">physical</button>
+                        <button class="tag-button" data-tag="time" data-category="functional">time</button>
+                        <button class="tag-button" data-tag="energy" data-category="functional">energy</button>
+                    </div>
+                </div>
+
+                <!-- Context Tags -->
+                <div class="filter-section">
+                    <h3 class="filter-category">
+                        <span class="category-icon">📍</span>
+                        Where it happens 
+                        <span class="tag-count">(9)</span>
+                    </h3>
+                    <div class="tag-group context-tags">
+                        <button class="tag-button" data-tag="work" data-category="context">work</button>
+                        <button class="tag-button" data-tag="school" data-category="context">school</button>
+                        <button class="tag-button" data-tag="home" data-category="context">home</button>
+                        <button class="tag-button" data-tag="social" data-category="context">social</button>
+                        <button class="tag-button" data-tag="public" data-category="context">public</button>
+                        <button class="tag-button" data-tag="routine" data-category="context">routine</button>
+                        <button class="tag-button" data-tag="change" data-category="context">change</button>
+                        <button class="tag-button" data-tag="pressure" data-category="context">pressure</button>
+                        <button class="tag-button" data-tag="alone" data-category="context">alone</button>
+                    </div>
+                </div>
+
+                <!-- Clear Filters Button -->
+                <div class="filter-controls">
+                    <button id="clear-filters" class="clear-button">Clear All Filters</button>
+                </div>
             </div>
-        </div>
 
-        <div class="category-section">
-            <div class="category-header">
-                <h2>When Your Brain Won't Cooperate</h2>
-                <p>Struggles with getting started, staying focused, and mental processes</p>
+            <!-- Selected Tags Display -->
+            <div class="selected-tags" id="selected-tags" style="display: none;">
+                <div class="selected-tags-header">
+                    <h3>Selected Filters:</h3>
+                </div>
+                <div class="selected-tag-chips" id="selected-tag-chips"></div>
+                <div class="results-summary">
+                    <span id="results-count">0</span> struggles match your filters
+                </div>
             </div>
-            
-            <div class="struggles-grid">
-                <a href="{{ '/struggles/task-initiation-paralysis.html' | relative_url }}" class="struggle-card">
-                    <h3>Task Initiation Paralysis</h3>
-                    <p>You know exactly what needs to be done but can't make yourself start. Even simple tasks feel like hitting an invisible wall, no matter how much you want to begin.</p>
-                    <div class="condition-tags">
-                        <span class="condition-tag adhd">ADHD</span>
-                        <span class="condition-tag autism">Autism</span>
-                        <span class="condition-tag bpd">BPD</span>
-                    </div>
-                </a>
-                
-                <a href="{{ '/struggles/attention-regulation.html' | relative_url }}" class="struggle-card">
-                    <h3>Attention Regulation</h3>
-                    <p>Your focus either won't turn on when you need it or won't turn off when you don't. You might hyperfocus for hours or find your mind wandering constantly.</p>
-                    <div class="condition-tags">
-                        <span class="condition-tag adhd">ADHD</span>
-                        <span class="condition-tag autism">Autism</span>
-                    </div>
-                </a>
 
-                <a href="{{ '/struggles/working-memory-difficulties.html' | relative_url }}" class="struggle-card">
-                    <h3>Working Memory Difficulties</h3>
-                    <p>You walk into rooms and forget why you came. Instructions slip away while you're trying to follow them. Your mental workspace feels too small for the job you're doing.</p>
-                    <div class="condition-tags">
-                        <span class="condition-tag adhd">ADHD</span>
-                    </div>
-                </a>
+            <!-- Results Area -->
+            <div class="results-section">
+                <div class="results-header" id="results-header">
+                    <h2>All Struggles <span class="total-count" id="total-count">(0)</span></h2>
+                </div>
 
-                <a href="{{ '/struggles/time-blindness.html' | relative_url }}" class="struggle-card">
-                    <h3>Time Blindness</h3>
-                    <p>Time feels slippery and unpredictable. Five minutes and five hours feel the same. You consistently underestimate how long tasks take or lose entire hours to focused work.</p>
-                    <div class="condition-tags">
-                        <span class="condition-tag adhd">ADHD</span>
-                        <span class="condition-tag autism">Autism</span>
-                    </div>
-                </a>
+                <!-- Loading State -->
+                <div class="loading-state" id="loading-state">
+                    <div class="loading-spinner"></div>
+                    <p>Loading struggles...</p>
+                </div>
 
-                <a href="{{ '/struggles/executive-function-challenges.html' | relative_url }}" class="struggle-card">
-                    <h3>Executive Function Challenges</h3>
-                    <p>You have five different things you're supposed to be managing and you don't know which one to tackle first. Everything feels equally urgent and overwhelming, so you end up doing none of them.</p>
-                    <div class="condition-tags">
-                        <span class="condition-tag adhd">ADHD</span>
-                        <span class="condition-tag autism">Autism</span>
-                    </div>
-                </a>
+                <!-- Empty State -->
+                <div class="empty-state" id="empty-state" style="display: none;">
+                    <div class="empty-icon">📋</div>
+                    <h3>No Struggles Available Yet</h3>
+                    <p>Struggle pages are being added to the site. Check back soon for resources on daily neurodivergent challenges.</p>
+                </div>
 
-                <a href="{{ '/struggles/follow-through-completion.html' | relative_url }}" class="struggle-card">
-                    <h3>Follow-Through and Completion</h3>
-                    <p>Starting projects feels exciting, but finishing them is nearly impossible. You have dozens of partially completed tasks and struggle to push through the final steps.</p>
-                    <div class="condition-tags">
-                        <span class="condition-tag adhd">ADHD</span>
-                        <span class="condition-tag bpd">BPD</span>
-                    </div>
-                </a>
-            </div>
-        </div>
+                <!-- No Results State -->
+                <div class="no-results-state" id="no-results-state" style="display: none;">
+                    <div class="empty-icon">🔍</div>
+                    <h3>No Matches Found</h3>
+                    <p>Try selecting different tags or clearing some filters to see more results.</p>
+                    <button class="secondary-button" onclick="clearAllFilters()">Clear All Filters</button>
+                </div>
 
-        <div class="category-section">
-            <div class="category-header">
-                <h2>When Your Body and Senses Feel Wrong</h2>
-                <p>Physical discomfort, sensory overwhelm, and embodiment challenges</p>
-            </div>
-            
-            <div class="struggles-grid">
-                <a href="{{ '/struggles/sensory-overwhelm.html' | relative_url }}" class="struggle-card">
-                    <h3>Sensory Overwhelm</h3>
-                    <p>Lights feel too bright, sounds too loud, textures too rough. Normal environments become unbearable, and you need to escape or shut down to cope.</p>
-                    <div class="condition-tags">
-                        <span class="condition-tag autism">Autism</span>
-                        <span class="condition-tag adhd">ADHD</span>
-                    </div>
-                </a>
-
-                <a href="{{ '/struggles/sensory-seeking-behaviors.html' | relative_url }}" class="struggle-card">
-                    <h3>Sensory Seeking Behaviors</h3>
-                    <p>You crave intense coffee, loud music, spicy food, or need to touch everything. Others might see these behaviors as excessive, but you need strong sensory input to feel awake and regulated.</p>
-                    <div class="condition-tags">
-                        <span class="condition-tag autism">Autism</span>
-                        <span class="condition-tag adhd">ADHD</span>
-                    </div>
-                </a>
-
-                <a href="{{ '/struggles/physical-restlessness.html' | relative_url }}" class="struggle-card">
-                    <h3>Physical Restlessness</h3>
-                    <p>Your body won't stay still. You need to move, fidget, or pace constantly. Sitting through meetings or classes feels physically painful or impossible.</p>
-                    <div class="condition-tags">
-                        <span class="condition-tag adhd">ADHD</span>
-                    </div>
-                </a>
-
-                <a href="{{ '/struggles/special-interests-consuming-focus.html' | relative_url }}" class="struggle-card">
-                    <h3>Special Interests Consuming Focus</h3>
-                    <p>Your passion project has taken over your entire life. You can talk about it for hours but struggle to care about anything else. Friends and family feel neglected while you dive deeper into your obsession.</p>
-                    <div class="condition-tags">
-                        <span class="condition-tag autism">Autism</span>
-                    </div>
-                </a>
-
-                <a href="{{ '/struggles/sleep-disruption.html' | relative_url }}" class="struggle-card">
-                    <h3>Sleep Disruption</h3>
-                    <p>Your sleep schedule feels completely out of sync with the world. You might be a night owl forced into morning schedules, or your sleep is frequently interrupted and unrefreshing.</p>
-                    <div class="condition-tags">
-                        <span class="condition-tag adhd">ADHD</span>
-                        <span class="condition-tag autism">Autism</span>
-                        <span class="condition-tag bipolar">Bipolar</span>
-                    </div>
-                </a>
-
-                <a href="{{ '/struggles/akathisia.html' | relative_url }}" class="struggle-card">
-                    <h3>Akathisia</h3>
-                    <p>You feel like you need to crawl out of your own skin. An overwhelming inner restlessness makes it impossible to sit still, often as a side effect of medications.</p>
-                    <div class="condition-tags">
-                        <span class="condition-tag bipolar">Bipolar</span>
-                        <span class="condition-tag bpd">BPD</span>
-                    </div>
-                </a>
-            </div>
-        </div>
-
-        <div class="category-section">
-            <div class="category-header">
-                <h2>When Emotions Feel Too Big</h2>
-                <p>Overwhelming feelings, emotional regulation, and internal experiences</p>
-            </div>
-            
-            <div class="struggles-grid">
-                <a href="{{ '/struggles/emotional-dysregulation.html' | relative_url }}" class="struggle-card">
-                    <h3>Emotional Dysregulation</h3>
-                    <p>Your emotions feel too intense for the situation. Small frustrations become overwhelming, and you struggle to manage feelings that seem to have their own agenda.</p>
-                    <div class="condition-tags">
-                        <span class="condition-tag bpd">BPD</span>
-                        <span class="condition-tag adhd">ADHD</span>
-                        <span class="condition-tag bipolar">Bipolar</span>
-                    </div>
-                </a>
-
-                <a href="{{ '/struggles/rejection-sensitive-dysphoria.html' | relative_url }}" class="struggle-card">
-                    <h3>Rejection Sensitive Dysphoria</h3>
-                    <p>When your friend texts back slowly, you're convinced they hate you. A neutral email response feels like harsh criticism. Perceived rejection creates physical pain and overwhelming emotional spirals.</p>
-                    <div class="condition-tags">
-                        <span class="condition-tag adhd">ADHD</span>
-                        <span class="condition-tag bpd">BPD</span>
-                    </div>
-                </a>
-
-                <a href="{{ '/struggles/autistic-meltdowns.html' | relative_url }}" class="struggle-card">
-                    <h3>Autistic Meltdowns</h3>
-                    <p>Sometimes your system becomes completely overwhelmed and shuts down or explodes. These aren't tantrums - they're your nervous system reaching capacity and needing to reset.</p>
-                    <div class="condition-tags">
-                        <span class="condition-tag autism">Autism</span>
-                    </div>
-                </a>
-
-                <a href="{{ '/struggles/interrupting-and-blurting.html' | relative_url }}" class="struggle-card">
-                    <h3>Interrupting and Blurting</h3>
-                    <p>Words come out of your mouth before your brain approves them. You interrupt people mid-sentence or say things you immediately regret, even when you're trying to be polite.</p>
-                    <div class="condition-tags">
-                        <span class="condition-tag adhd">ADHD</span>
-                    </div>
-                </a>
-
-                <a href="{{ '/struggles/mood-swings.html' | relative_url }}" class="struggle-card">
-                    <h3>Mood Swings</h3>
-                    <p>Your emotional state can shift dramatically and unpredictably. You might feel fine one moment and devastated the next, often without clear external triggers.</p>
-                    <div class="condition-tags">
-                        <span class="condition-tag bipolar">Bipolar</span>
-                        <span class="condition-tag bpd">BPD</span>
-                        <span class="condition-tag adhd">ADHD</span>
-                    </div>
-                </a>
-
-                <a href="{{ '/struggles/elevated-mood-periods.html' | relative_url }}" class="struggle-card">
-                    <h3>Elevated Mood Periods</h3>
-                    <p>You feel invincible, need barely any sleep, and have a million amazing ideas all at once. Your confidence soars, spending increases, and everything seems possible until reality crashes back in.</p>
-                    <div class="condition-tags">
-                        <span class="condition-tag bipolar">Bipolar</span>
-                    </div>
-                </a>
-            </div>
-        </div>
-
-        <div class="category-section">
-            <div class="category-header">
-                <h2>When Communication Feels Impossible</h2>
-                <p>Social interactions, misunderstandings, and connection challenges</p>
-            </div>
-            
-            <div class="struggles-grid">
-                <a href="{{ '/struggles/communication-issues.html' | relative_url }}" class="struggle-card">
-                    <h3>Communication Issues</h3>
-                    <p>Conversations feel like navigating a minefield of unwritten rules. You might say the wrong thing, miss social cues, or struggle to express what you actually mean.</p>
-                    <div class="condition-tags">
-                        <span class="condition-tag autism">Autism</span>
-                        <span class="condition-tag adhd">ADHD</span>
-                    </div>
-                </a>
-
-                <a href="{{ '/struggles/social-masking.html' | relative_url }}" class="struggle-card">
-                    <h3>Social Masking</h3>
-                    <p>You perform a version of yourself that feels acceptable to others, but it's exhausting and inauthentic. The real you feels hidden behind a carefully constructed persona.</p>
-                    <div class="condition-tags">
-                        <span class="condition-tag autism">Autism</span>
-                        <span class="condition-tag adhd">ADHD</span>
-                        <span class="condition-tag bpd">BPD</span>
-                    </div>
-                </a>
-
-                <a href="{{ '/struggles/hyperfocus-episodes.html' | relative_url }}" class="struggle-card">
-                    <h3>Hyperfocus Episodes</h3>
-                    <p>You start working on something interesting and suddenly six hours have vanished. You forgot to eat, drink, pee, or acknowledge that other humans exist. Time becomes meaningless when your brain locks onto something engaging.</p>
-                    <div class="condition-tags">
-                        <span class="condition-tag adhd">ADHD</span>
-                        <span class="condition-tag autism">Autism</span>
-                    </div>
-                </a>
-
-                <a href="{{ '/struggles/relationship-patterns.html' | relative_url }}" class="struggle-card">
-                    <h3>Relationship Patterns</h3>
-                    <p>Your relationships follow predictable but difficult patterns. You might get too close too fast, push people away when you need them most, or struggle with boundaries.</p>
-                    <div class="condition-tags">
-                        <span class="condition-tag bpd">BPD</span>
-                        <span class="condition-tag bipolar">Bipolar</span>
-                    </div>
-                </a>
-
-                <a href="{{ '/struggles/fear-of-abandonment.html' | relative_url }}" class="struggle-card">
-                    <h3>Fear of Abandonment</h3>
-                    <p>Every delayed text response means they hate you. When people seem distant, you panic that they're about to leave forever. You might push people away first to avoid the pain of being left.</p>
-                    <div class="condition-tags">
-                        <span class="condition-tag bpd">BPD</span>
-                    </div>
-                </a>
-
-                <a href="{{ '/struggles/being-too-direct.html' | relative_url }}" class="struggle-card">
-                    <h3>Being Too Direct</h3>
-                    <p>You say exactly what you mean and people call you rude or blunt. Small talk feels pointless, so you skip straight to the real conversation. Others seem offended by your honest communication style.</p>
-                    <div class="condition-tags">
-                        <span class="condition-tag autism">Autism</span>
-                    </div>
-                </a>
-            </div>
-        </div>
-
-        <div class="category-section">
-            <div class="category-header">
-                <h2>When the World Fights Back</h2>
-                <p>Environmental challenges, systems, and external expectations</p>
-            </div>
-            
-            <div class="struggles-grid">
-                <a href="{{ '/struggles/workplace-accommodations.html' | relative_url }}" class="struggle-card">
-                    <h3>Workplace Accommodations</h3>
-                    <p>Open offices, meetings, and standard work expectations feel impossible to navigate. You need different conditions to do your best work but struggle to ask for or get them.</p>
-                    <div class="condition-tags">
-                        <span class="condition-tag autism">Autism</span>
-                        <span class="condition-tag adhd">ADHD</span>
-                    </div>
-                </a>
-
-                <a href="{{ '/struggles/routine-disruptions.html' | relative_url }}" class="struggle-card">
-                    <h3>Routine Disruptions</h3>
-                    <p>Unexpected changes throw off your entire system. What seems like minor schedule shifts to others can derail your whole day or week, leaving you feeling dysregulated.</p>
-                    <div class="condition-tags">
-                        <span class="condition-tag autism">Autism</span>
-                        <span class="condition-tag adhd">ADHD</span>
-                    </div>
-                </a>
-
-                <a href="{{ '/struggles/missing-social-cues.html' | relative_url }}" class="struggle-card">
-                    <h3>Missing Social Cues</h3>
-                    <p>Conversations have hidden meanings you completely miss. People seem irritated and you have no idea what you did wrong. Everyone else appears to be following an invisible script.</p>
-                    <div class="condition-tags">
-                        <span class="condition-tag autism">Autism</span>
-                    </div>
-                </a>
-
-                <a href="{{ '/struggles/public-spaces-overwhelm.html' | relative_url }}" class="struggle-card">
-                    <h3>Public Spaces Overwhelm</h3>
-                    <p>Grocery stores, restaurants, and busy places feel like assault courses for your nervous system. The combination of sounds, lights, and people becomes unbearable quickly.</p>
-                    <div class="condition-tags">
-                        <span class="condition-tag autism">Autism</span>
-                        <span class="condition-tag adhd">ADHD</span>
-                    </div>
-                </a>
-
-                <a href="{{ '/struggles/organization-and-planning-challenges.html' | relative_url }}" class="struggle-card">
-                    <h3>Organization and Planning Challenges</h3>
-                    <p>Keeping track of belongings, appointments, and responsibilities feels like an impossible juggling act. Traditional organization systems don't work for your brain.</p>
-                    <div class="condition-tags">
-                        <span class="condition-tag adhd">ADHD</span>
-                        <span class="condition-tag autism">Autism</span>
-                    </div>
-                </a>
-
-                <a href="{{ '/struggles/financial-executive-function.html' | relative_url }}" class="struggle-card">
-                    <h3>Financial Executive Function</h3>
-                    <p>Managing money, budgeting, and financial planning overwhelm your executive function. Bills pile up, spending feels impulsive, and long-term financial health seems impossible.</p>
-                    <div class="condition-tags">
-                        <span class="condition-tag adhd">ADHD</span>
-                        <span class="condition-tag bpd">BPD</span>
-                        <span class="condition-tag bipolar">Bipolar</span>
-                    </div>
-                </a>
+                <!-- Struggles Grid -->
+                <div class="struggles-grid" id="struggles-grid">
+                    <!-- Struggles will be populated here by JavaScript -->
+                </div>
             </div>
         </div>
     </main>
 </div>
 
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-    // Handle jargon clicks to prevent event bubbling
-    const jargonTerms = document.querySelectorAll('.jargon');
-    jargonTerms.forEach(function(jargon) {
-        jargon.addEventListener('click', function(e) {
-            e.stopPropagation();
+// Struggles Index Filtering System
+class StruggleIndex {
+    constructor() {
+        this.selectedTags = new Set();
+        this.struggles = [];
+        this.isLoading = true;
+        this.init();
+    }
+    
+    async init() {
+        this.setupEventListeners();
+        await this.loadStruggles();
+        this.hideLoading();
+        this.displayAllStruggles();
+    }
+    
+    setupEventListeners() {
+        // Tag button clicks
+        document.querySelectorAll('.tag-button').forEach(button => {
+            button.addEventListener('click', (e) => {
+                this.toggleTag(e.target.dataset.tag);
+            });
         });
+        
+        // Clear filters button
+        document.getElementById('clear-filters').addEventListener('click', () => {
+            this.clearAllFilters();
+        });
+    }
+    
+    async loadStruggles() {
+        try {
+            // This will be populated by Jekyll with actual struggle data
+            const strugglesData = this.getJekyllStruggleData();
+            this.struggles = strugglesData;
+        } catch (error) {
+            console.error('Error loading struggles:', error);
+            this.struggles = [];
+        }
+    }
+    
+    getJekyllStruggleData() {
+        // This function will be populated by Jekyll liquid tags
+        const struggles = [];
+        
+        {% comment %}
+        Jekyll liquid code will populate this with actual struggle data:
+        {% for page in site.pages %}
+          {% if page.layout == 'struggle' and page.status != 'draft' %}
+            struggles.push({
+              title: "{{ page.title | escape }}",
+              subtitle: "{{ page.subtitle | escape }}",
+              url: "{{ page.url }}",
+              condition: "{{ page.condition }}",
+              tags: {
+                experience: {{ page.tags.experience | jsonify }},
+                functional: {{ page.tags.functional | jsonify }},
+                context: {{ page.tags.context | jsonify }}
+              }
+            });
+          {% endif %}
+        {% endfor %}
+        {% endcomment %}
+        
+        return struggles;
+    }
+    
+    toggleTag(tag) {
+        if (this.selectedTags.has(tag)) {
+            this.selectedTags.delete(tag);
+        } else {
+            this.selectedTags.add(tag);
+        }
+        
+        this.updateTagUI();
+        this.filterStruggles();
+    }
+    
+    clearAllFilters() {
+        this.selectedTags.clear();
+        this.updateTagUI();
+        this.displayAllStruggles();
+    }
+    
+    updateTagUI() {
+        // Update tag button states
+        document.querySelectorAll('.tag-button').forEach(button => {
+            if (this.selectedTags.has(button.dataset.tag)) {
+                button.classList.add('selected');
+            } else {
+                button.classList.remove('selected');
+            }
+        });
+        
+        // Update selected tags display
+        this.updateSelectedTagsDisplay();
+    }
+    
+    updateSelectedTagsDisplay() {
+        const selectedTagsContainer = document.getElementById('selected-tags');
+        const chipsContainer = document.getElementById('selected-tag-chips');
+        
+        if (this.selectedTags.size === 0) {
+            selectedTagsContainer.style.display = 'none';
+            return;
+        }
+        
+        selectedTagsContainer.style.display = 'block';
+        chipsContainer.innerHTML = '';
+        
+        this.selectedTags.forEach(tag => {
+            const chip = document.createElement('div');
+            chip.className = 'tag-chip';
+            chip.innerHTML = `
+                ${tag}
+                <button class="remove-tag" data-tag="${tag}" aria-label="Remove ${tag} filter">×</button>
+            `;
+            
+            // Add remove functionality
+            chip.querySelector('.remove-tag').addEventListener('click', (e) => {
+                e.preventDefault();
+                this.toggleTag(e.target.dataset.tag);
+            });
+            
+            chipsContainer.appendChild(chip);
+        });
+    }
+    
+    filterStruggles() {
+        if (this.selectedTags.size === 0) {
+            this.displayAllStruggles();
+            return;
+        }
+        
+        const filtered = this.struggles.filter(struggle => {
+            // Check if struggle has ANY of the selected tags
+            return Array.from(this.selectedTags).some(tag => {
+                return (struggle.tags.experience && struggle.tags.experience.includes(tag)) ||
+                       (struggle.tags.functional && struggle.tags.functional.includes(tag)) ||
+                       (struggle.tags.context && struggle.tags.context.includes(tag));
+            });
+        });
+        
+        this.displayStruggles(filtered, true);
+        this.updateResultsCount(filtered.length);
+    }
+    
+    displayAllStruggles() {
+        this.displayStruggles(this.struggles, false);
+        this.updateResultsCount(this.struggles.length);
+    }
+    
+    displayStruggles(struggles, isFiltered) {
+        const grid = document.getElementById('struggles-grid');
+        const header = document.getElementById('results-header');
+        const noResultsState = document.getElementById('no-results-state');
+        const emptyState = document.getElementById('empty-state');
+        
+        // Hide all states first
+        noResultsState.style.display = 'none';
+        emptyState.style.display = 'none';
+        grid.style.display = 'grid';
+        
+        if (struggles.length === 0) {
+            grid.style.display = 'none';
+            if (isFiltered) {
+                noResultsState.style.display = 'block';
+                header.querySelector('h2').textContent = 'No Results Found';
+            } else {
+                emptyState.style.display = 'block';
+                header.querySelector('h2').textContent = 'No Struggles Available Yet';
+            }
+            return;
+        }
+        
+        // Update header
+        const headerText = isFiltered ? 'Filtered Results' : 'All Struggles';
+        header.querySelector('h2').innerHTML = `${headerText} <span class="total-count">(${struggles.length})</span>`;
+        
+        // Clear and populate grid
+        grid.innerHTML = '';
+        struggles.forEach(struggle => {
+            const card = this.createStruggleCard(struggle);
+            grid.appendChild(card);
+        });
+    }
+    
+    createStruggleCard(struggle) {
+        const card = document.createElement('a');
+        card.className = 'struggle-card';
+        card.href = struggle.url;
+        
+        card.innerHTML = `
+            <h3>${struggle.title}</h3>
+            <p class="subtitle">${struggle.subtitle}</p>
+            <span class="condition-badge ${struggle.condition}">${struggle.condition.toUpperCase()}</span>
+        `;
+        
+        return card;
+    }
+    
+    updateResultsCount(count) {
+        const resultsCount = document.getElementById('results-count');
+        const totalCount = document.getElementById('total-count');
+        
+        if (resultsCount) {
+            resultsCount.textContent = count;
+        }
+        if (totalCount) {
+            totalCount.textContent = `(${count})`;
+        }
+    }
+    
+    hideLoading() {
+        const loadingState = document.getElementById('loading-state');
+        loadingState.style.display = 'none';
+    }
+}
+
+// Global function for clear button in no-results state
+function clearAllFilters() {
+    if (window.struggleIndex) {
+        window.struggleIndex.clearAllFilters();
+    }
+}
+
+// Initialize when page loads
+document.addEventListener('DOMContentLoaded', () => {
+    window.struggleIndex = new StruggleIndex();
+    
+    // Mobile touch optimization for jargon tooltips
+    const jargonElements = document.querySelectorAll('.jargon');
+    let activeTooltip = null;
+    
+    jargonElements.forEach(function(jargon) {
+        jargon.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            // Toggle tooltip logic with proper cleanup
+            const tooltip = this.querySelector('.tooltip');
+            
+            if (activeTooltip && activeTooltip !== this) {
+                activeTooltip.querySelector('.tooltip').style.visibility = 'hidden';
+                activeTooltip.querySelector('.tooltip').style.opacity = '0';
+            }
+            
+            if (tooltip.style.visibility === 'visible') {
+                tooltip.style.visibility = 'hidden';
+                tooltip.style.opacity = '0';
+                activeTooltip = null;
+            } else {
+                tooltip.style.visibility = 'visible';
+                tooltip.style.opacity = '1';
+                activeTooltip = this;
+            }
+        });
+        
+        // Keyboard accessibility
+        jargon.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                this.click();
+            }
+            if (e.key === 'Escape' && activeTooltip === this) {
+                this.querySelector('.tooltip').style.visibility = 'hidden';
+                this.querySelector('.tooltip').style.opacity = '0';
+                activeTooltip = null;
+            }
+        });
+    });
+    
+    // Close tooltips when clicking outside
+    document.addEventListener('click', function(e) {
+        if (!e.target.closest('.jargon') && activeTooltip) {
+            activeTooltip.querySelector('.tooltip').style.visibility = 'hidden';
+            activeTooltip.querySelector('.tooltip').style.opacity = '0';
+            activeTooltip = null;
+        }
     });
 });
 </script>
