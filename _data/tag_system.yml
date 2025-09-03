@@ -1,0 +1,49 @@
+# Tag System Configuration
+# This file defines all tag categories and tags for the struggles filtering system
+
+categories:
+  - id: experience
+    name: "How it feels"
+    icon: "💭"
+    description: "The subjective emotional experience of the struggle"
+    tags:
+      - stuck
+      - overwhelmed
+      - restless
+      - drained
+      - foggy
+      - sensitive
+      - disconnected
+      - impulsive
+      - anxious
+      - frustrated
+
+  - id: functional
+    name: "What's affected"
+    icon: "🧠"
+    description: "Which brain systems or functions are impacted"
+    tags:
+      - attention
+      - memory
+      - organization
+      - communication
+      - sensory
+      - emotional
+      - physical
+      - time
+      - energy
+
+  - id: context
+    name: "Where it happens"
+    icon: "📍"
+    description: "Environmental contexts where the struggle manifests"
+    tags:
+      - work
+      - school
+      - home
+      - social
+      - public
+      - routine
+      - change
+      - pressure
+      - alone
