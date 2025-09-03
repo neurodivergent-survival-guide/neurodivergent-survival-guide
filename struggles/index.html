@@ -364,7 +364,7 @@ permalink: /struggles/
     /* Struggles Grid */
     .struggles-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
         gap: 1.5rem;
     }
 
@@ -401,7 +401,7 @@ permalink: /struggles/
         line-height: 1.4;
     }
 
-    .struggle-card .condition-badge {
+    .struggle-card .primary-condition {
         display: inline-block;
         padding: 0.3rem 0.8rem;
         border-radius: 15px;
@@ -409,31 +409,97 @@ permalink: /struggles/
         font-weight: 500;
         text-transform: uppercase;
         letter-spacing: 0.5px;
+        margin-bottom: 1rem;
     }
 
-    .condition-badge.adhd {
+    .primary-condition.adhd {
         background: #ffebee;
         color: #d63031;
     }
 
-    .condition-badge.autism {
+    .primary-condition.autism {
         background: #d4edda;
         color: #27ae60;
     }
 
-    .condition-badge.bipolar {
+    .primary-condition.bipolar {
         background: #e3f2fd;
         color: #74b9ff;
     }
 
-    .condition-badge.bpd {
+    .primary-condition.bpd {
         background: #fef9e7;
         color: #f39c12;
     }
 
-    .condition-badge.ocd {
+    .primary-condition.ocd {
         background: #f3e5f5;
         color: #9c27b0;
+    }
+
+    /* Tag displays on cards */
+    .card-tags {
+        margin-top: 1rem;
+    }
+
+    .card-tag-category {
+        margin-bottom: 0.5rem;
+    }
+
+    .card-tag-category:last-child {
+        margin-bottom: 0;
+    }
+
+    .card-tag-label {
+        font-size: 0.7rem;
+        font-weight: 600;
+        color: #666;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-bottom: 0.2rem;
+        display: block;
+    }
+
+    .card-tag-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.25rem;
+    }
+
+    .card-tag {
+        display: inline-block;
+        padding: 0.2rem 0.5rem;
+        background: #f8f9fa;
+        border: 1px solid #e1e8ed;
+        border-radius: 10px;
+        font-size: 0.75rem;
+        color: #555;
+        line-height: 1.2;
+    }
+
+    /* Different colors for different tag categories */
+    .card-tag.experience {
+        background: #fff3cd;
+        border-color: #ffeaa7;
+        color: #856404;
+    }
+
+    .card-tag.functional {
+        background: #d1ecf1;
+        border-color: #bee5eb;
+        color: #0c5460;
+    }
+
+    .card-tag.context {
+        background: #d4edda;
+        border-color: #c3e6cb;
+        color: #155724;
+    }
+
+    .card-tag.condition {
+        background: #f8d7da;
+        border-color: #f5c6cb;
+        color: #721c24;
     }
 
     /* Jargon tooltip styles */
@@ -621,6 +687,10 @@ permalink: /struggles/
         .struggle-card {
             padding: 1rem;
         }
+
+        .struggles-grid {
+            grid-template-columns: 1fr;
+        }
     }
 </style>
 
@@ -765,29 +835,29 @@ class StruggleIndex {
         }
     }
     
-      getJekyllStruggleData() {
-          // This function will be populated by Jekyll with actual struggle data
-          const struggles = [];
-          
-          {% for page in site.pages %}
-            {% if page.layout == 'struggle' and page.status != 'draft' %}
-              struggles.push({
-                title: "{{ page.title | escape }}",
-                subtitle: "{{ page.subtitle | escape }}",
-                url: "{{ page.url }}",
-                condition: "{{ page.condition }}",
-                tags: {
-                  experience: {{ page.tags.experience | jsonify }},
-                  functional: {{ page.tags.functional | jsonify }},
-                  context: {{ page.tags.context | jsonify }},
-                  condition: {{ page.tags.condition | jsonify }}
-                }
-              });
-            {% endif %}
-          {% endfor %}
-          
-          return struggles;
-      }
+    getJekyllStruggleData() {
+        // This function will be populated by Jekyll with actual struggle data
+        const struggles = [];
+        
+        {% for page in site.pages %}
+          {% if page.layout == 'struggle' and page.status != 'draft' %}
+            struggles.push({
+              title: "{{ page.title | escape }}",
+              subtitle: "{{ page.subtitle | escape }}",
+              url: "{{ page.url }}",
+              condition: "{{ page.condition }}",
+              tags: {
+                experience: {{ page.tags.experience | jsonify }},
+                functional: {{ page.tags.functional | jsonify }},
+                context: {{ page.tags.context | jsonify }},
+                condition: {{ page.tags.condition | jsonify }}
+              }
+            });
+          {% endif %}
+        {% endfor %}
+        
+        return struggles;
+    }
     
     toggleTag(tag) {
         if (this.selectedTags.has(tag)) {
@@ -859,10 +929,10 @@ class StruggleIndex {
         const filtered = this.struggles.filter(struggle => {
             // Check if struggle has ANY of the selected tags across all categories
             return Array.from(this.selectedTags).some(tag => {
-                {% for category in site.data.tag_system.categories %}
-                if (struggle.tags.{{ category.id }} && struggle.tags.{{ category.id }}.includes(tag)) return true;
-                {% endfor %}
-                return false;
+                return (struggle.tags.experience && struggle.tags.experience.includes(tag)) ||
+                       (struggle.tags.functional && struggle.tags.functional.includes(tag)) ||
+                       (struggle.tags.context && struggle.tags.context.includes(tag)) ||
+                       (struggle.tags.condition && struggle.tags.condition.includes(tag));
             });
         });
         
@@ -915,10 +985,61 @@ class StruggleIndex {
         card.className = 'struggle-card';
         card.href = struggle.url;
         
+        // Build tags HTML
+        let tagsHTML = '<div class="card-tags">';
+        
+        // Add each tag category if it has tags
+        if (struggle.tags.experience && struggle.tags.experience.length > 0) {
+            tagsHTML += `
+                <div class="card-tag-category">
+                    <span class="card-tag-label">How it feels</span>
+                    <div class="card-tag-list">
+                        ${struggle.tags.experience.map(tag => `<span class="card-tag experience">${tag}</span>`).join('')}
+                    </div>
+                </div>
+            `;
+        }
+        
+        if (struggle.tags.functional && struggle.tags.functional.length > 0) {
+            tagsHTML += `
+                <div class="card-tag-category">
+                    <span class="card-tag-label">What's affected</span>
+                    <div class="card-tag-list">
+                        ${struggle.tags.functional.map(tag => `<span class="card-tag functional">${tag}</span>`).join('')}
+                    </div>
+                </div>
+            `;
+        }
+        
+        if (struggle.tags.context && struggle.tags.context.length > 0) {
+            tagsHTML += `
+                <div class="card-tag-category">
+                    <span class="card-tag-label">Where it happens</span>
+                    <div class="card-tag-list">
+                        ${struggle.tags.context.map(tag => `<span class="card-tag context">${tag}</span>`).join('')}
+                    </div>
+                </div>
+            `;
+        }
+        
+        if (struggle.tags.condition && struggle.tags.condition.length > 0) {
+            tagsHTML += `
+                <div class="card-tag-category">
+                    <span class="card-tag-label">Conditions</span>
+                    <div class="card-tag-list">
+                        ${struggle.tags.condition.map(tag => `<span class="card-tag condition">${tag}</span>`).join('')}
+                    </div>
+                </div>
+            `;
+        }
+        
+        tagsHTML += '</div>';
+        
         card.innerHTML = `
             <h3>${struggle.title}</h3>
             <p class="subtitle">${struggle.subtitle}</p>
-            <span class="condition-badge ${struggle.condition}">${struggle.condition.toUpperCase()}</span>
+            <span class="primary-condition ${struggle.condition}">${struggle.condition.toUpperCase()}</span>
+            ${tagsHTML}
         `;
         
         return card;
