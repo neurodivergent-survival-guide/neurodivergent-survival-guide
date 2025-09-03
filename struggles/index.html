@@ -765,31 +765,29 @@ class StruggleIndex {
         }
     }
     
-    getJekyllStruggleData() {
-        // This function will be populated by Jekyll liquid tags
-        const struggles = [];
-        
-        {% comment %}
-        Jekyll liquid code will populate this with actual struggle data:
-        {% for page in site.pages %}
-          {% if page.layout == 'struggle' and page.status != 'draft' %}
-            struggles.push({
-              title: "{{ page.title | escape }}",
-              subtitle: "{{ page.subtitle | escape }}",
-              url: "{{ page.url }}",
-              condition: "{{ page.condition }}",
-              tags: {
-                {% for category in site.data.tag_system.categories %}
-                {{ category.id }}: {{ page.tags[category.id] | jsonify }}{% unless forloop.last %},{% endunless %}
-                {% endfor %}
-              }
-            });
-          {% endif %}
-        {% endfor %}
-        {% endcomment %}
-        
-        return struggles;
-    }
+      getJekyllStruggleData() {
+          // This function will be populated by Jekyll with actual struggle data
+          const struggles = [];
+          
+          {% for page in site.pages %}
+            {% if page.layout == 'struggle' and page.status != 'draft' %}
+              struggles.push({
+                title: "{{ page.title | escape }}",
+                subtitle: "{{ page.subtitle | escape }}",
+                url: "{{ page.url }}",
+                condition: "{{ page.condition }}",
+                tags: {
+                  experience: {{ page.tags.experience | jsonify }},
+                  functional: {{ page.tags.functional | jsonify }},
+                  context: {{ page.tags.context | jsonify }},
+                  condition: {{ page.tags.condition | jsonify }}
+                }
+              });
+            {% endif %}
+          {% endfor %}
+          
+          return struggles;
+      }
     
     toggleTag(tag) {
         if (this.selectedTags.has(tag)) {
