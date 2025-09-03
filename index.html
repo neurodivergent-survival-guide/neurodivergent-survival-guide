@@ -537,6 +537,77 @@ title: "The Neurodivergent Survival Guide"
         box-shadow: 0 8px 25px rgba(72, 219, 251, 0.3);
     }
 
+    .share-experience {
+        background: var(--card-background);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        padding: 2rem;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+        margin: 3rem 0;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-left: 4px solid #48dbfb;
+    }
+
+    .share-experience h3 {
+        color: #48dbfb;
+        margin-bottom: 1rem;
+        font-size: 1.3rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+    }
+
+    .share-experience > p {
+        color: var(--text-secondary);
+        margin-bottom: 1.5rem;
+        font-size: 0.95rem;
+        text-align: center;
+    }
+
+    .contribution-types {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1rem;
+        margin: 1.5rem 0;
+    }
+
+    .contrib-item {
+        background: rgba(248, 249, 255, 0.8);
+        backdrop-filter: blur(5px);
+        padding: 1rem;
+        border-radius: 12px;
+        border-left: 3px solid #48dbfb;
+        transition: all 0.3s ease;
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+
+    .contrib-item:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(72, 219, 251, 0.15);
+    }
+
+    .contrib-item strong {
+        color: #333;
+        display: block;
+        margin-bottom: 0.3rem;
+    }
+
+    .email-cta {
+        background: rgba(255, 255, 255, 0.9);
+        padding: 1.5rem;
+        border-radius: 12px;
+        text-align: center;
+        margin-top: 1.5rem;
+        border: 2px solid rgba(72, 219, 251, 0.2);
+    }
+
+    .email-cta a:hover {
+        color: #2d98da;
+        text-decoration: underline;
+    }
+
     .tip-jar {
         background: rgba(255, 248, 240, 0.95);
         backdrop-filter: blur(10px);
@@ -741,6 +812,7 @@ title: "The Neurodivergent Survival Guide"
         .intro-section,
         .how-it-works,
         .quick-access,
+        .share-experience,
         .tip-jar,
         .footer-note {
             padding: 1.5rem;
@@ -756,6 +828,10 @@ title: "The Neurodivergent Survival Guide"
         }
 
         .quick-links {
+            grid-template-columns: 1fr;
+        }
+
+        .contribution-types {
             grid-template-columns: 1fr;
         }
 
@@ -776,6 +852,7 @@ title: "The Neurodivergent Survival Guide"
         .intro-section,
         .how-it-works,
         .quick-access,
+        .share-experience,
         .tip-jar,
         .footer-note {
             padding: 1.2rem;
@@ -838,18 +915,6 @@ title: "The Neurodivergent Survival Guide"
             </div>
         </div>
 
-        <div class="tip-jar">
-            <h3>❤️ Support This Resource</h3>
-            <p>This guide represents hundreds of hours of research, lived experience, and careful writing to help our community navigate daily challenges. If these resources have helped you understand yourself better or made your day a little easier, consider supporting the project.</p>
-            <p><strong>All donations help:</strong> Keep this resource completely free • Cover hosting and maintenance costs • Fund ongoing research and content updates • Allow more time for creating new resources</p>
-            <div class="kofi-info">
-                <a href="https://ko-fi.com/neurodivergent_survival_guide" target="_blank" style="text-decoration: none; color: #333; font-weight: 600;">
-                    <strong>Ko-fi.com/neurodivergent_survival_guide</strong>
-                </a>
-            </div>
-            <p style="font-style: italic; color: #666; font-size: 0.9rem;">This guide will always remain free regardless of donations. Support only if this resource has genuinely helped you.</p>
-        </div>
-
         <div class="how-it-works">
             <h2>How This Guide Works</h2>
             <div class="workflow-steps">
@@ -871,6 +936,50 @@ title: "The Neurodivergent Survival Guide"
                     <p>Get immediate strategies and long-term approaches that work for your life. Explore connected topics to build fuller understanding.</p>
                 </div>
             </div>
+        </div>
+
+        <div class="share-experience">
+            <h3>🤝 Share Your Experience</h3>
+            <p>This guide grows stronger with every perspective shared. Your daily strategies, hard-won insights, and real experiences help others who are navigating similar challenges.</p>
+            
+            <div class="contribution-types">
+                <div class="contrib-item">
+                    <strong>What helps you thrive:</strong> Specific strategies, tools, or approaches that actually work in your daily life
+                </div>
+                <div class="contrib-item">
+                    <strong>What you wish you'd known earlier:</strong> Insights that would have saved you time, energy, or confusion
+                </div>
+                <div class="contrib-item">
+                    <strong>Gaps you've noticed:</strong> Struggles or experiences that aren't well-represented in existing resources
+                </div>
+                <div class="contrib-item">
+                    <strong>System navigation wins:</strong> How you successfully advocated for accommodations or found helpful professionals
+                </div>
+            </div>
+            
+            <div class="email-cta">
+                <p><strong>Email us at:</strong> 
+                    <a href="mailto:stories.neurodivergent.guide@gmail.com?subject=Sharing My Experience" 
+                       style="color: #48dbfb; text-decoration: none; font-weight: 600;">
+                        stories.neurodivergent.guide@gmail.com
+                    </a>
+                </p>
+                <p style="font-size: 0.9rem; color: #666; margin-top: 0.5rem; font-style: italic;">
+                    All contributions are voluntary. We'll never share your personal information, and you can contribute anonymously if preferred.
+                </p>
+            </div>
+        </div>
+
+        <div class="tip-jar">
+            <h3>❤️ Support This Resource</h3>
+            <p>This guide represents hundreds of hours of research, lived experience, and careful writing to help our community navigate daily challenges. If these resources have helped you understand yourself better or made your day a little easier, consider supporting the project.</p>
+            <p><strong>All donations help:</strong> Keep this resource completely free • Cover hosting and maintenance costs • Fund ongoing research and content updates • Allow more time for creating new resources</p>
+            <div class="kofi-info">
+                <a href="https://ko-fi.com/neurodivergent_survival_guide" target="_blank" style="text-decoration: none; color: #333; font-weight: 600;">
+                    <strong>Ko-fi.com/neurodivergent_survival_guide</strong>
+                </a>
+            </div>
+            <p style="font-style: italic; color: #666; font-size: 0.9rem;">This guide will always remain free regardless of donations. Support only if this resource has genuinely helped you.</p>
         </div>
 
         <div class="disclaimer">
@@ -1082,7 +1191,7 @@ function displaySearchResults(results, query) {
         const score = result.score;
         
         html += `
-            <a href="${item.url}" class="search-result-item">
+            <a href="{{ '/' | relative_url }}${item.url.replace(/^\//, '')}" class="search-result-item">
                 <div class="result-title">
                     ${item.title}
                     <span class="result-condition ${item.condition}">${item.condition.toUpperCase()}</span>
@@ -1139,19 +1248,19 @@ function handleFallbackSearch(event) {
         return;
     }
     
-    // Basic fallback routes for essential pages
+    // Basic fallback routes for essential pages - now using relative_url
     const routes = {
-        'autism': 'conditions/autism.html',
-        'adhd': 'conditions/adhd.html',
-        'bipolar': 'conditions/bipolar.html',
-        'bpd': 'conditions/borderline-personality-disorder.html',
-        'ocd': 'conditions/ocd.html',
-        'task initiation': 'struggles/task-initiation-paralysis.html',
-        'paralysis': 'struggles/task-initiation-paralysis.html',
-        'attention': 'struggles/attention-regulation.html',
-        'memory': 'struggles/working-memory-difficulties.html',
-        'social cues': 'struggles/missing-social-cues.html',
-        'masking': 'struggles/masking-burnout.html'
+        'autism': '{{ "/conditions/autism.html" | relative_url }}',
+        'adhd': '{{ "/conditions/adhd.html" | relative_url }}',
+        'bipolar': '{{ "/conditions/bipolar.html" | relative_url }}',
+        'bpd': '{{ "/conditions/borderline-personality-disorder.html" | relative_url }}',
+        'ocd': '{{ "/conditions/ocd.html" | relative_url }}',
+        'task initiation': '{{ "/struggles/task-initiation-paralysis.html" | relative_url }}',
+        'paralysis': '{{ "/struggles/task-initiation-paralysis.html" | relative_url }}',
+        'attention': '{{ "/struggles/attention-regulation.html" | relative_url }}',
+        'memory': '{{ "/struggles/working-memory-difficulties.html" | relative_url }}',
+        'social cues': '{{ "/struggles/missing-social-cues.html" | relative_url }}',
+        'masking': '{{ "/struggles/masking-burnout.html" | relative_url }}'
     };
     
     // Find matching route
@@ -1168,11 +1277,11 @@ function handleFallbackSearch(event) {
     } else if (searchTerm) {
         // Route to appropriate section
         if (searchTerm.includes('condition') || searchTerm.includes('brain')) {
-            window.location.href = 'conditions/index.html';
+            window.location.href = '{{ "/conditions/index.html" | relative_url }}';
         } else if (searchTerm.includes('toolkit') || searchTerm.includes('advocacy')) {
-            window.location.href = 'toolkits/index.html';
+            window.location.href = '{{ "/toolkits/index.html" | relative_url }}';
         } else {
-            window.location.href = 'struggles/index.html';
+            window.location.href = '{{ "/struggles/index.html" | relative_url }}';
         }
     }
 }
