@@ -338,6 +338,33 @@ th {
 <script>
 let allResults = [];
 
+// Populate dropdown on page load
+document.addEventListener('DOMContentLoaded', function() {
+    populateArticleDropdown();
+});
+
+function populateArticleDropdown() {
+    const select = document.getElementById('article-select');
+    const articleElements = document.querySelectorAll('#article-data div[data-title]');
+    
+    // Sort articles alphabetically
+    const articles = Array.from(articleElements).map(el => ({
+        title: el.dataset.title,
+        url: el.dataset.url,
+        condition: el.dataset.condition
+    })).sort((a, b) => a.title.localeCompare(b.title));
+    
+    // Add options to dropdown
+    articles.forEach(article => {
+        const option = document.createElement('option');
+        option.value = article.url;
+        option.textContent = article.title;
+        option.dataset.title = article.title;
+        option.dataset.condition = article.condition;
+        select.appendChild(option);
+    });
+}
+
 async function analyzeAllArticles() {
     const button = document.querySelector('.analyze-btn');
     const loading = document.getElementById('loading');
