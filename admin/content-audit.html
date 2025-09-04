@@ -1,12 +1,12 @@
 ---
 layout: default
 title: "Content Audit Dashboard"
-permalink: /admin/content-audit.html
+permalink: /admin/content-audit/
 ---
 
 <style>
 .audit-container {
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
     padding: 2rem;
 }
@@ -18,7 +18,7 @@ permalink: /admin/content-audit.html
 
 .audit-stats {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     gap: 1rem;
     margin-bottom: 2rem;
 }
@@ -31,38 +31,51 @@ permalink: /admin/content-audit.html
     text-align: center;
 }
 
+.stat-number {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
 .audit-table {
     background: white;
     border-radius: 8px;
-    overflow: hidden;
+    overflow-x: auto;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
-.table-header {
-    background: #f8f9fa;
-    padding: 1rem;
-    font-weight: 600;
-    border-bottom: 2px solid #dee2e6;
+table {
+    width: 100%;
+    border-collapse: collapse;
 }
 
-.article-row {
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-    align-items: center;
-    padding: 1rem;
+th, td {
+    padding: 1rem 0.8rem;
+    text-align: left;
     border-bottom: 1px solid #eee;
 }
 
-.article-row:hover {
+th {
     background: #f8f9fa;
+    font-weight: 600;
+    position: sticky;
+    top: 0;
+    z-index: 10;
 }
 
 .article-title {
     font-weight: 500;
+    max-width: 250px;
+}
+
+.article-title a {
+    text-decoration: none;
+    color: #007acc;
 }
 
 .word-count {
     text-align: center;
+    font-weight: 500;
     padding: 0.3rem 0.6rem;
     border-radius: 4px;
     font-size: 0.9rem;
@@ -72,22 +85,23 @@ permalink: /admin/content-audit.html
 .count-target { background: #e8f5e8; color: #2e7d32; }
 .count-high { background: #fff3e0; color: #f57c00; }
 
-.status-indicator {
+.status-badge {
     display: inline-block;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    margin-right: 0.5rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 500;
 }
 
-.status-published { background: #4caf50; }
-.status-draft { background: #ff9800; }
+.status-published { background: #e8f5e8; color: #2e7d32; }
+.status-draft { background: #fff3e0; color: #f57c00; }
 
 .filter-controls {
     margin-bottom: 2rem;
     display: flex;
     gap: 1rem;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .filter-btn {
@@ -98,11 +112,36 @@ permalink: /admin/content-audit.html
     border-radius: 4px;
     cursor: pointer;
     transition: all 0.2s;
+    text-decoration: none;
 }
 
+.filter-btn:hover,
 .filter-btn.active {
     background: #007acc;
     color: white;
+}
+
+.section-targets {
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+}
+
+.targets-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.target-item {
+    text-align: center;
+}
+
+.target-range {
+    font-weight: 600;
+    color: #007acc;
 }
 </style>
 
@@ -110,210 +149,210 @@ permalink: /admin/content-audit.html
     <div class="audit-header">
         <h1>Content Audit Dashboard</h1>
         <p>Word count analysis and quality control for all struggle articles</p>
+        <small>Last updated: {{ site.time | date: "%B %d, %Y at %I:%M %p" }}</small>
+    </div>
+
+    <div class="section-targets">
+        <h3>Target Word Count Ranges</h3>
+        <div class="targets-grid">
+            <div class="target-item">
+                <div>Section 1 (What)</div>
+                <div class="target-range">300-400 words</div>
+            </div>
+            <div class="target-item">
+                <div>Section 2 (Why)</div>
+                <div class="target-range">~400 words</div>
+            </div>
+            <div class="target-item">
+                <div>Section 3 (Next 5 Min)</div>
+                <div class="target-range">300-500 words</div>
+            </div>
+            <div class="target-item">
+                <div>Section 4 (Long-term)</div>
+                <div class="target-range">~550 words</div>
+            </div>
+            <div class="target-item">
+                <div>Section 5 (Medical)</div>
+                <div class="target-range">200-300 words</div>
+            </div>
+            <div class="target-item">
+                <div>Section 6 (Validation)</div>
+                <div class="target-range">~400 words</div>
+            </div>
+        </div>
+        <p style="text-align: center; margin-top: 1rem;"><strong>Total Target: 2,150-2,550 words</strong></p>
     </div>
 
     <div class="audit-stats">
         <div class="stat-card">
-            <h3 id="total-articles">0</h3>
+            <div class="stat-number">{{ site.data.audit_stats.total_articles }}</div>
             <p>Total Articles</p>
         </div>
         <div class="stat-card">
-            <h3 id="avg-word-count">0</h3>
+            <div class="stat-number">{{ site.data.audit_stats.average_words }}</div>
             <p>Average Words</p>
         </div>
         <div class="stat-card">
-            <h3 id="articles-on-target">0</h3>
-            <p>On Target (2,150-2,550)</p>
+            <div class="stat-number">{{ site.data.audit_stats.on_target_count }}</div>
+            <p>On Target</p>
         </div>
         <div class="stat-card">
-            <h3 id="articles-need-work">0</h3>
-            <p>Need Attention</p>
+            <div class="stat-number">{{ site.data.audit_stats.under_target_count }}</div>
+            <p>Under Target</p>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">{{ site.data.audit_stats.over_target_count }}</div>
+            <p>Over Target</p>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">{{ site.data.audit_stats.draft_count }}</div>
+            <p>Drafts</p>
         </div>
     </div>
 
     <div class="filter-controls">
-        <button class="filter-btn active" onclick="filterArticles('all')">All Articles</button>
-        <button class="filter-btn" onclick="filterArticles('under-target')">Under Target</button>
-        <button class="filter-btn" onclick="filterArticles('over-target')">Over Target</button>
-        <button class="filter-btn" onclick="filterArticles('on-target')">On Target</button>
-        <button class="filter-btn" onclick="filterArticles('draft')">Drafts</button>
+        <a href="#" class="filter-btn active" onclick="filterTable('all')">All Articles</a>
+        <a href="#" class="filter-btn" onclick="filterTable('under-target')">Under Target</a>
+        <a href="#" class="filter-btn" onclick="filterTable('over-target')">Over Target</a>
+        <a href="#" class="filter-btn" onclick="filterTable('on-target')">On Target</a>
+        <a href="#" class="filter-btn" onclick="filterTable('draft')">Drafts</a>
     </div>
 
     <div class="audit-table">
-        <div class="table-header article-row">
-            <div>Article Title</div>
-            <div>Total Words</div>
-            <div>Section 1</div>
-            <div>Section 2</div>
-            <div>Section 3</div>
-            <div>Section 4</div>
-            <div>Section 5</div>
-            <div>Section 6</div>
-        </div>
-        <div id="article-list">
-            <!-- Articles will be populated by JavaScript -->
-        </div>
+        <table id="audit-table">
+            <thead>
+                <tr>
+                    <th>Article Title</th>
+                    <th>Condition</th>
+                    <th>Status</th>
+                    <th>Total Words</th>
+                    <th>Section 1</th>
+                    <th>Section 2</th>
+                    <th>Section 3</th>
+                    <th>Section 4</th>
+                    <th>Section 5</th>
+                    <th>Section 6</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for article in site.data.content_audit %}
+                <tr class="article-row" 
+                    data-total="{{ article.total_words }}"
+                    data-status="{{ article.status }}"
+                    data-condition="{{ article.condition }}">
+                    <td class="article-title">
+                        <a href="{{ article.url }}">{{ article.title }}</a>
+                    </td>
+                    <td>
+                        <span class="condition-badge condition-{{ article.condition }}">
+                            {{ article.condition | upcase }}
+                        </span>
+                    </td>
+                    <td>
+                        <span class="status-badge status-{{ article.status }}">
+                            {{ article.status | capitalize }}
+                        </span>
+                    </td>
+                    <td>
+                        <span class="word-count {% if article.total_words < 2150 %}count-low{% elsif article.total_words > 2550 %}count-high{% else %}count-target{% endif %}">
+                            {{ article.total_words }}
+                        </span>
+                    </td>
+                    <td>
+                        <span class="word-count {% if article.sections.what < 300 %}count-low{% elsif article.sections.what > 400 %}count-high{% else %}count-target{% endif %}">
+                            {{ article.sections.what }}
+                        </span>
+                    </td>
+                    <td>
+                        <span class="word-count {% if article.sections.why < 380 %}count-low{% elsif article.sections.why > 420 %}count-high{% else %}count-target{% endif %}">
+                            {{ article.sections.why }}
+                        </span>
+                    </td>
+                    <td>
+                        <span class="word-count {% if article.sections.nextFive < 300 %}count-low{% elsif article.sections.nextFive > 500 %}count-high{% else %}count-target{% endif %}">
+                            {{ article.sections.nextFive }}
+                        </span>
+                    </td>
+                    <td>
+                        <span class="word-count {% if article.sections.longTerm < 500 %}count-low{% elsif article.sections.longTerm > 600 %}count-high{% else %}count-target{% endif %}">
+                            {{ article.sections.longTerm }}
+                        </span>
+                    </td>
+                    <td>
+                        <span class="word-count {% if article.sections.medical < 200 %}count-low{% elsif article.sections.medical > 300 %}count-high{% else %}count-target{% endif %}">
+                            {{ article.sections.medical }}
+                        </span>
+                    </td>
+                    <td>
+                        <span class="word-count {% if article.sections.validation < 380 %}count-low{% elsif article.sections.validation > 420 %}count-high{% else %}count-target{% endif %}">
+                            {{ article.sections.validation }}
+                        </span>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
 </div>
 
 <script>
-// Article data structure - in a real implementation, this would come from Jekyll site data
-const articles = [
-    {% for page in site.pages %}
-        {% if page.layout == 'struggle' %}
-        {
-            title: "{{ page.title }}",
-            slug: "{{ page.slug }}",
-            condition: "{{ page.condition }}",
-            status: "{{ page.status | default: 'published' }}",
-            url: "{{ page.url }}",
-            // Word counts would be calculated by analyzing the actual page content
-            sections: {
-                what: 0,    // Section 1
-                why: 0,     // Section 2  
-                nextFive: 0, // Section 3
-                longTerm: 0, // Section 4
-                medical: 0,  // Section 5
-                validation: 0 // Section 6
-            }
-        },
-        {% endif %}
-    {% endfor %}
-];
-
-// Target ranges for each section
-const targets = {
-    what: { min: 300, max: 400, target: 350 },
-    why: { min: 380, max: 420, target: 400 },
-    nextFive: { min: 300, max: 500, target: 400 },
-    longTerm: { min: 500, max: 600, target: 550 },
-    medical: { min: 200, max: 300, target: 250 },
-    validation: { min: 380, max: 420, target: 400 }
-};
-
-// Word count analysis function
-function analyzeWordCount(content) {
-    // This would parse the actual HTML content of each struggle page
-    // and extract word counts from each section based on section IDs
-    // For now, returning placeholder data
-    
-    return {
-        what: Math.floor(Math.random() * 200) + 250,    // Random for demo
-        why: Math.floor(Math.random() * 200) + 300,
-        nextFive: Math.floor(Math.random() * 300) + 200,
-        longTerm: Math.floor(Math.random() * 300) + 400,
-        medical: Math.floor(Math.random() * 150) + 150,
-        validation: Math.floor(Math.random() * 200) + 300
-    };
-}
-
-// Fetch and analyze all articles
-async function loadArticleData() {
-    // In real implementation, this would:
-    // 1. Fetch each struggle page URL
-    // 2. Parse the HTML content
-    // 3. Extract word counts from each section div
-    // 4. Calculate totals and compliance
-    
-    for (let article of articles) {
-        // Simulate fetching article content and counting words
-        article.sections = analyzeWordCount(article.content);
-        article.totalWords = Object.values(article.sections).reduce((a, b) => a + b, 0);
-        article.onTarget = article.totalWords >= 2150 && article.totalWords <= 2550;
-    }
-}
-
-// Render article table
-function renderArticles(filteredArticles = articles) {
-    const container = document.getElementById('article-list');
-    container.innerHTML = '';
-    
-    filteredArticles.forEach(article => {
-        const row = document.createElement('div');
-        row.className = 'article-row';
-        
-        const statusClass = article.status === 'draft' ? 'status-draft' : 'status-published';
-        
-        row.innerHTML = `
-            <div class="article-title">
-                <span class="status-indicator ${statusClass}"></span>
-                <a href="${article.url}">${article.title}</a>
-            </div>
-            <div class="word-count ${getWordCountClass(article.totalWords)}">${article.totalWords}</div>
-            <div class="word-count ${getSectionClass('what', article.sections.what)}">${article.sections.what}</div>
-            <div class="word-count ${getSectionClass('why', article.sections.why)}">${article.sections.why}</div>
-            <div class="word-count ${getSectionClass('nextFive', article.sections.nextFive)}">${article.sections.nextFive}</div>
-            <div class="word-count ${getSectionClass('longTerm', article.sections.longTerm)}">${article.sections.longTerm}</div>
-            <div class="word-count ${getSectionClass('medical', article.sections.medical)}">${article.sections.medical}</div>
-            <div class="word-count ${getSectionClass('validation', article.sections.validation)}">${article.sections.validation}</div>
-        `;
-        
-        container.appendChild(row);
-    });
-    
-    updateStats(filteredArticles);
-}
-
-// Color coding functions
-function getWordCountClass(totalWords) {
-    if (totalWords < 2150) return 'count-low';
-    if (totalWords > 2550) return 'count-high';
-    return 'count-target';
-}
-
-function getSectionClass(section, wordCount) {
-    const target = targets[section];
-    if (wordCount < target.min) return 'count-low';
-    if (wordCount > target.max) return 'count-high';
-    return 'count-target';
-}
-
-// Update summary statistics
-function updateStats(articlesToCount = articles) {
-    document.getElementById('total-articles').textContent = articlesToCount.length;
-    
-    const avgWords = Math.round(
-        articlesToCount.reduce((sum, a) => sum + a.totalWords, 0) / articlesToCount.length
-    );
-    document.getElementById('avg-word-count').textContent = avgWords;
-    
-    const onTarget = articlesToCount.filter(a => a.onTarget).length;
-    document.getElementById('articles-on-target').textContent = onTarget;
-    
-    const needWork = articlesToCount.filter(a => !a.onTarget).length;
-    document.getElementById('articles-need-work').textContent = needWork;
-}
-
-// Filtering functions
-function filterArticles(type) {
+function filterTable(type) {
     // Update button states
     document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
     event.target.classList.add('active');
     
-    let filtered;
-    switch(type) {
-        case 'under-target':
-            filtered = articles.filter(a => a.totalWords < 2150);
-            break;
-        case 'over-target':
-            filtered = articles.filter(a => a.totalWords > 2550);
-            break;
-        case 'on-target':
-            filtered = articles.filter(a => a.onTarget);
-            break;
-        case 'draft':
-            filtered = articles.filter(a => a.status === 'draft');
-            break;
-        default:
-            filtered = articles;
-    }
+    const rows = document.querySelectorAll('.article-row');
     
-    renderArticles(filtered);
+    rows.forEach(row => {
+        const totalWords = parseInt(row.dataset.total);
+        const status = row.dataset.status;
+        let show = false;
+        
+        switch(type) {
+            case 'all':
+                show = true;
+                break;
+            case 'under-target':
+                show = totalWords < 2150;
+                break;
+            case 'over-target':
+                show = totalWords > 2550;
+                break;
+            case 'on-target':
+                show = totalWords >= 2150 && totalWords <= 2550;
+                break;
+            case 'draft':
+                show = status === 'draft';
+                break;
+        }
+        
+        row.style.display = show ? 'table-row' : 'none';
+    });
 }
 
-// Initialize on page load
+// Sort table by column
+function sortTable(columnIndex) {
+    const table = document.getElementById('audit-table');
+    const rows = Array.from(table.querySelectorAll('tbody tr'));
+    
+    rows.sort((a, b) => {
+        const aVal = parseInt(a.cells[columnIndex].textContent) || 0;
+        const bVal = parseInt(b.cells[columnIndex].textContent) || 0;
+        return aVal - bVal;
+    });
+    
+    const tbody = table.querySelector('tbody');
+    rows.forEach(row => tbody.appendChild(row));
+}
+
+// Make headers clickable for sorting
 document.addEventListener('DOMContentLoaded', function() {
-    loadArticleData();
-    renderArticles();
+    const headers = document.querySelectorAll('th');
+    headers.forEach((header, index) => {
+        if (index >= 3) { // Only make word count columns sortable
+            header.style.cursor = 'pointer';
+            header.addEventListener('click', () => sortTable(index));
+        }
+    });
 });
 </script>
