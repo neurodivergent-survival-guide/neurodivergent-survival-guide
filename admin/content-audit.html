@@ -4,105 +4,33 @@ title: Content Audit Dashboard
 permalink: /content-audit/
 ---
 
-<style>
-.audit-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 2rem;
-}
-
-.control-row {
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-    margin-bottom: 1rem;
-    flex-wrap: wrap;
-}
-
-.btn {
-    padding: 1rem 2rem;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 1rem;
-}
-
-.btn-blue { background: #007acc; color: white; }
-.btn-purple { background: #6c5ce7; color: white; }
-.btn-green { background: #28a745; color: white; }
-
-.article-select, .search-box {
-    padding: 0.8rem;
-    border: 2px solid #ddd;
-    border-radius: 6px;
-    width: 300px;
-}
-
-.results {
-    background: white;
-    padding: 2rem;
-    border-radius: 8px;
-    margin-top: 2rem;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}
-</style>
-
-<div class="audit-container">
+<div style="max-width: 800px; margin: 0 auto; padding: 2rem;">
     <h1>Content Audit Dashboard</h1>
     
-    <div class="control-row">
-        <button class="btn btn-blue" onclick="analyzeAll()">Analyze All Articles</button>
-        <button class="btn btn-green" id="copy-btn" onclick="copyResults()" disabled>Copy Results</button>
+    <div style="margin: 2rem 0;">
+        <input type="text" id="article-url" placeholder="Paste article URL here..." style="width: 100%; padding: 1rem; margin-bottom: 1rem;">
+        <button onclick="analyzeURL()" style="padding: 1rem 2rem; background: #007acc; color: white; border: none; border-radius: 4px;">Analyze Article</button>
     </div>
     
-    <div class="control-row">
-        <select id="article-select" class="article-select">
-            <option value="">Select article...</option>
-        </select>
-        <button class="btn btn-purple" onclick="analyzeSingle()">Analyze Single</button>
+    <div id="results" style="background: #f8f9fa; padding: 2rem; border-radius: 8px; margin-top: 2rem;">
+        <p>Paste any struggle article URL above and click "Analyze Article" to get word counts.</p>
     </div>
-    
-    <div class="control-row">
-        <input type="text" class="search-box" id="search-box" placeholder="Search articles...">
-    </div>
-    
-    <div class="results" id="results">
-        <p>Click "Analyze All Articles" to scan your struggle pages.</p>
-    </div>
-</div>
-
-<div style="display: none;" id="article-data">
-{% for page in site.pages %}{% if page.layout == 'struggle' %}<div data-title="{{ page.title }}" data-url="{{ page.url }}" data-condition="{{ page.condition }}"></div>{% endif %}{% endfor %}
 </div>
 
 <script>
-let allResults = [];
-
-document.addEventListener('DOMContentLoaded', function() {
-    const select = document.getElementById('article-select');
-    const articles = document.querySelectorAll('#article-data div[data-title]');
+async function analyzeURL() {
+    const url = document.getElementById('article-url').value.trim();
+    const results = document.getElementById('results');
     
-    Array.from(articles).forEach(el => {
-        const option = document.createElement('option');
-        option.value = el.dataset.url;
-        option.textContent = el.dataset.title;
-        option.dataset.title = el.dataset.title;
-        option.dataset.condition = el.dataset.condition;
-        select.appendChild(option);
-    });
-});
-
-async function analyzeSingle() {
-    const select = document.getElementById('article-select');
-    const option = select.options[select.selectedIndex];
-    
-    if (!option.value) {
-        alert('Please select an article');
+    if (!url) {
+        results.innerHTML = '<p>Please enter a URL</p>';
         return;
     }
     
     try {
-        const response = await fetch(option.value);
+        results.innerHTML = '<p>Analyzing...</p>';
+        
+        const response = await fetch(url);
         const html = await response.text();
         const parser = new DOMParser();
         const doc = parser.parseFromString(html, 'text/html');
@@ -117,96 +45,27 @@ async function analyzeSingle() {
         };
         
         const total = Object.values(sections).reduce((a, b) => a + b, 0);
+        const status = total >= 2150 && total <= 2550 ? 'ON TARGET' : total < 2150 ? 'UNDER TARGET' : 'OVER TARGET';
         
-        let text = `ANALYSIS: ${option.dataset.title}\n`;
-        text += `Total: ${total} words\n\n`;
-        text += `What: ${sections.what} words\n`;
-        text += `Why: ${sections.why} words\n`;
-        text += `Next 5: ${sections.nextFive} words\n`;
-        text += `Long-term: ${sections.longTerm} words\n`;
-        text += `Medical: ${sections.medical} words\n`;
-        text += `Validation: ${sections.validation} words\n`;
+        let output = `WORD COUNT ANALYSIS\n\n`;
+        output += `Total: ${total} words (${status})\n\n`;
+        output += `What This Feels Like: ${sections.what} words\n`;
+        output += `Why This Happens: ${sections.why} words\n`;
+        output += `Next 5 Minutes: ${sections.nextFive} words\n`;
+        output += `Long-term Solutions: ${sections.longTerm} words\n`;
+        output += `Medical Intervention: ${sections.medical} words\n`;
+        output += `Validation: ${sections.validation} words\n\n`;
+        output += `TARGET RANGES:\n`;
+        output += `What: 300-400 | Why: ~400 | Next 5: 300-500\n`;
+        output += `Long-term: ~550 | Medical: 200-300 | Validation: ~400`;
         
-        await navigator.clipboard.writeText(text);
-        document.getElementById('results').innerHTML = `<pre>${text}</pre><p>Results copied to clipboard!</p>`;
+        await navigator.clipboard.writeText(output);
+        
+        results.innerHTML = `<pre style="white-space: pre-wrap;">${output}</pre><p><strong>Results copied to clipboard!</strong></p>`;
         
     } catch (error) {
-        document.getElementById('results').innerHTML = `<p>Error: ${error.message}</p>`;
+        results.innerHTML = `<p>Error: ${error.message}</p>`;
     }
-}
-
-async function analyzeAll() {
-    const articles = document.querySelectorAll('#article-data div[data-title]');
-    const results = document.getElementById('results');
-    
-    results.innerHTML = '<p>Analyzing...</p>';
-    allResults = [];
-    
-    for (let el of articles) {
-        try {
-            const response = await fetch(el.dataset.url);
-            const html = await response.text();
-            const parser = new DOMParser();
-            const doc = parser.parseFromString(html, 'text/html');
-            
-            const sections = {
-                what: countWords(doc, '.what-section'),
-                why: countWords(doc, '.why-section'),
-                nextFive: countWords(doc, '.immediate-help'),
-                longTerm: countWords(doc, '.long-term'),
-                medical: countWords(doc, '.medical-section'),
-                validation: countWords(doc, '.validation-section')
-            };
-            
-            const total = Object.values(sections).reduce((a, b) => a + b, 0);
-            
-            allResults.push({
-                title: el.dataset.title,
-                total: total,
-                sections: sections
-            });
-            
-        } catch (error) {
-            console.error('Error analyzing:', el.dataset.title);
-        }
-    }
-    
-    allResults.sort((a, b) => a.total - b.total);
-    displayResults();
-    document.getElementById('copy-btn').disabled = false;
-}
-
-function displayResults() {
-    let html = '<h3>Article Analysis Results</h3>';
-    html += '<table border="1" style="width:100%; border-collapse: collapse;">';
-    html += '<tr><th>Article</th><th>Total</th><th>What</th><th>Why</th><th>Next5</th><th>Long</th><th>Med</th><th>Valid</th></tr>';
-    
-    allResults.forEach(article => {
-        const status = article.total < 2150 ? 'style="background: #ffebee;"' : article.total > 2550 ? 'style="background: #fff3e0;"' : 'style="background: #e8f5e8;"';
-        html += `<tr ${status}>`;
-        html += `<td>${article.title}</td>`;
-        html += `<td>${article.total}</td>`;
-        html += `<td>${article.sections.what}</td>`;
-        html += `<td>${article.sections.why}</td>`;
-        html += `<td>${article.sections.nextFive}</td>`;
-        html += `<td>${article.sections.longTerm}</td>`;
-        html += `<td>${article.sections.medical}</td>`;
-        html += `<td>${article.sections.validation}</td>`;
-        html += '</tr>';
-    });
-    
-    html += '</table>';
-    document.getElementById('results').innerHTML = html;
-}
-
-async function copyResults() {
-    let text = 'CONTENT AUDIT RESULTS\n\n';
-    allResults.forEach(article => {
-        text += `${article.title}: ${article.total} words\n`;
-    });
-    
-    await navigator.clipboard.writeText(text);
-    alert('Results copied to clipboard!');
 }
 
 function countWords(doc, selector) {
