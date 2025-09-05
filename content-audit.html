@@ -274,7 +274,7 @@ th {
     </div>
 
     <div class="counting-note">
-        <strong>New Word Count Standards:</strong> Only sections 1, 2, 5, and 6 are counted toward word targets. Coping sections (Next 5 Minutes and Long-term Solutions) are evaluated for quality and functionality, not word count. Target total: 1,800-2,200 words for counted sections only.
+        <strong>Updated Word Count Standards:</strong> Only sections 1, 2, 5, and 6 are counted toward word targets. Coping sections (Next 5 Minutes and Long-term Solutions) are evaluated for quality and functionality, not word count. <strong>New target total: 1,000-1,500 words for counted sections only.</strong>
     </div>
 
     <div class="audit-controls">
@@ -296,9 +296,9 @@ th {
         
         <div class="filter-controls">
             <label><input type="radio" name="filter" value="all" checked onchange="filterResults()"> All Articles</label>
-            <label><input type="radio" name="filter" value="under" onchange="filterResults()"> Under Target (&lt;1800)</label>
-            <label><input type="radio" name="filter" value="target" onchange="filterResults()"> On Target (1800-2200)</label>
-            <label><input type="radio" name="filter" value="over" onchange="filterResults()"> Over Target (&gt;2200)</label>
+            <label><input type="radio" name="filter" value="under" onchange="filterResults()"> Under Target (&lt;1000)</label>
+            <label><input type="radio" name="filter" value="target" onchange="filterResults()"> On Target (1000-1500)</label>
+            <label><input type="radio" name="filter" value="over" onchange="filterResults()"> Over Target (&gt;1500)</label>
         </div>
         
         <div class="loading" id="loading">
@@ -341,9 +341,9 @@ th {
                     <th>Condition</th>
                     <th>Total Counted</th>
                     <th>What (300-400)</th>
-                    <th>Why (~400)</th>
+                    <th>Why (300-400)</th>
                     <th>Medical (200-300)</th>
-                    <th>Validation (~400)</th>
+                    <th>Validation (200-400)</th>
                     <th>Status</th>
                 </tr>
             </thead>
@@ -424,24 +424,24 @@ async function analyzeSingleArticle() {
         
         // Only count sections 1, 2, 5, 6 toward total
         const totalCountedWords = sections.what + sections.why + sections.medical + sections.validation;
-        const onTarget = totalCountedWords >= 1800 && totalCountedWords <= 2200;
+        const onTarget = totalCountedWords >= 1000 && totalCountedWords <= 1500;
         
         let clipboardText = `SINGLE ARTICLE ANALYSIS: ${article.title}\n`;
         clipboardText += `Condition: ${article.condition.toUpperCase()}\n`;
-        clipboardText += `Total Counted Words: ${totalCountedWords} ${onTarget ? '✓ ON TARGET' : totalCountedWords < 1800 ? '✗ UNDER TARGET' : '⚠ OVER TARGET'}\n\n`;
+        clipboardText += `Total Counted Words: ${totalCountedWords} ${onTarget ? '✓ ON TARGET' : totalCountedWords < 1000 ? '✗ UNDER TARGET' : '⚠ OVER TARGET'}\n\n`;
         
         clipboardText += `COUNTED SECTIONS BREAKDOWN:\n`;
         clipboardText += `What This Feels Like: ${sections.what} words ${sections.what >= 300 && sections.what <= 400 ? '✓' : sections.what < 300 ? '(need +' + (300 - sections.what) + ')' : '(over by ' + (sections.what - 400) + ')'}\n`;
-        clipboardText += `Why This Happens: ${sections.why} words ${sections.why >= 380 && sections.why <= 420 ? '✓' : sections.why < 380 ? '(need +' + (380 - sections.why) + ')' : '(over by ' + (sections.why - 420) + ')'}\n`;
+        clipboardText += `Why This Happens: ${sections.why} words ${sections.why >= 300 && sections.why <= 400 ? '✓' : sections.why < 300 ? '(need +' + (300 - sections.why) + ')' : '(over by ' + (sections.why - 400) + ')'}\n`;
         clipboardText += `Medical Intervention: ${sections.medical} words ${sections.medical >= 200 && sections.medical <= 300 ? '✓' : sections.medical < 200 ? '(need +' + (200 - sections.medical) + ')' : '(over by ' + (sections.medical - 300) + ')'}\n`;
-        clipboardText += `Validation: ${sections.validation} words ${sections.validation >= 350 && sections.validation <= 450 ? '✓' : sections.validation < 350 ? '(need +' + (350 - sections.validation) + ')' : '(over by ' + (sections.validation - 450) + ')'}\n\n`;
+        clipboardText += `Validation: ${sections.validation} words ${sections.validation >= 200 && sections.validation <= 400 ? '✓' : sections.validation < 200 ? '(need +' + (200 - sections.validation) + ')' : '(over by ' + (sections.validation - 400) + ')'}\n\n`;
         
         clipboardText += `TARGET RANGES (Counted Sections Only):\n`;
         clipboardText += `What This Feels Like: 300-400 words\n`;
-        clipboardText += `Why This Happens: ~400 words\n`;
+        clipboardText += `Why This Happens: 300-400 words\n`;
         clipboardText += `Medical Intervention: 200-300 words\n`;
-        clipboardText += `Validation: ~400 words\n`;
-        clipboardText += `Total Target: 1,800-2,200 words\n\n`;
+        clipboardText += `Validation: 200-400 words\n`;
+        clipboardText += `Total Target: 1,000-1,500 words\n\n`;
         clipboardText += `NOTE: Coping sections (Next 5 Minutes, Long-term Solutions) are not counted toward word targets.\n`;
         clipboardText += `They are evaluated for quality and functionality (5-8 strategies each).\n`;
         
@@ -504,7 +504,7 @@ async function analyzeAllArticles() {
             
             // Only count sections 1, 2, 5, 6 toward total
             const totalCountedWords = sections.what + sections.why + sections.medical + sections.validation;
-            const onTarget = totalCountedWords >= 1800 && totalCountedWords <= 2200;
+            const onTarget = totalCountedWords >= 1000 && totalCountedWords <= 1500;
             
             allResults.push({
                 ...article,
@@ -547,11 +547,11 @@ function filterResults() {
         
         let matchesFilter = true;
         if (filterType === 'under') {
-            matchesFilter = article.totalCountedWords < 1800;
+            matchesFilter = article.totalCountedWords < 1000;
         } else if (filterType === 'target') {
-            matchesFilter = article.totalCountedWords >= 1800 && article.totalCountedWords <= 2200;
+            matchesFilter = article.totalCountedWords >= 1000 && article.totalCountedWords <= 1500;
         } else if (filterType === 'over') {
-            matchesFilter = article.totalCountedWords > 2200;
+            matchesFilter = article.totalCountedWords > 1500;
         }
         
         return matchesSearch && matchesFilter;
@@ -572,23 +572,23 @@ async function copyResultsToClipboard() {
         const matchesSearch = article.title.toLowerCase().includes(searchTerm);
         let matchesFilter = true;
         if (filterType === 'under') {
-            matchesFilter = article.totalCountedWords < 1800;
+            matchesFilter = article.totalCountedWords < 1000;
         } else if (filterType === 'target') {
-            matchesFilter = article.totalCountedWords >= 1800 && article.totalCountedWords <= 2200;
+            matchesFilter = article.totalCountedWords >= 1000 && article.totalCountedWords <= 1500;
         } else if (filterType === 'over') {
-            matchesFilter = article.totalCountedWords > 2200;
+            matchesFilter = article.totalCountedWords > 1500;
         }
         return matchesSearch && matchesFilter;
     });
     
-    let clipboardText = `CONTENT AUDIT RESULTS (${filteredResults.length} articles) - NEW STANDARDS\n`;
+    let clipboardText = `CONTENT AUDIT RESULTS (${filteredResults.length} articles) - UPDATED STANDARDS\n`;
     clipboardText += `Filter: ${filterType === 'all' ? 'All Articles' : filterType} ${searchTerm ? `| Search: "${searchTerm}"` : ''}\n\n`;
     
     const totalArticles = filteredResults.length;
     const avgWords = Math.round(filteredResults.reduce((sum, a) => sum + a.totalCountedWords, 0) / totalArticles);
     const onTarget = filteredResults.filter(a => a.onTarget).length;
-    const underTarget = filteredResults.filter(a => a.totalCountedWords < 1800).length;
-    const overTarget = filteredResults.filter(a => a.totalCountedWords > 2200).length;
+    const underTarget = filteredResults.filter(a => a.totalCountedWords < 1000).length;
+    const overTarget = filteredResults.filter(a => a.totalCountedWords > 1500).length;
     
     clipboardText += `SUMMARY:\n`;
     clipboardText += `Total: ${totalArticles} | Average: ${avgWords} words | On Target: ${onTarget} | Under: ${underTarget} | Over: ${overTarget}\n\n`;
@@ -598,16 +598,16 @@ async function copyResultsToClipboard() {
     clipboardText += `${'='.repeat(70)}\n`;
     
     filteredResults.forEach(article => {
-        const status = article.totalCountedWords < 1800 ? 'LOW' : article.totalCountedWords > 2200 ? 'HIGH' : 'OK';
+        const status = article.totalCountedWords < 1000 ? 'LOW' : article.totalCountedWords > 1500 ? 'HIGH' : 'OK';
         clipboardText += `${article.title.substring(0, 25).padEnd(25)} | ${article.totalCountedWords.toString().padStart(5)} | ${article.sections.what.toString().padStart(4)} | ${article.sections.why.toString().padStart(3)} | ${article.sections.medical.toString().padStart(7)} | ${article.sections.validation.toString().padStart(5)} | ${status}\n`;
     });
     
-    clipboardText += `\nNEW TARGET RANGES (Counted Sections Only):\n`;
+    clipboardText += `\nUPDATED TARGET RANGES (Counted Sections Only):\n`;
     clipboardText += `What This Feels Like: 300-400 words\n`;
-    clipboardText += `Why This Happens: ~400 words\n`;
+    clipboardText += `Why This Happens: 300-400 words\n`;
     clipboardText += `Medical Intervention: 200-300 words\n`;
-    clipboardText += `Validation: ~400 words\n`;
-    clipboardText += `TOTAL TARGET: 1,800-2,200 words\n\n`;
+    clipboardText += `Validation: 200-400 words\n`;
+    clipboardText += `TOTAL TARGET: 1,000-1,500 words\n\n`;
     clipboardText += `NOTE: Coping sections (Next 5 Minutes, Long-term Solutions) are excluded from word counts.\n`;
     clipboardText += `They are evaluated for quality/functionality (5-8 strategies each), not word targets.\n`;
     
@@ -658,8 +658,8 @@ function renderResults(results) {
     results.forEach(article => {
         const row = document.createElement('tr');
         
-        const statusClass = article.totalCountedWords < 1800 ? 'under' : 
-                           article.totalCountedWords > 2200 ? 'over' : 'target';
+        const statusClass = article.totalCountedWords < 1000 ? 'under' : 
+                           article.totalCountedWords > 1500 ? 'over' : 'target';
         
         row.innerHTML = `
             <td class="article-title">
@@ -671,7 +671,7 @@ function renderResults(results) {
                 </span>
             </td>
             <td>
-                <span class="word-count ${getCountClass(article.totalCountedWords, 1800, 2200)}">
+                <span class="word-count ${getCountClass(article.totalCountedWords, 1000, 1500)}">
                     ${article.totalCountedWords}
                 </span>
             </td>
@@ -681,7 +681,7 @@ function renderResults(results) {
                 </span>
             </td>
             <td>
-                <span class="word-count ${getCountClass(article.sections.why, 380, 420)}">
+                <span class="word-count ${getCountClass(article.sections.why, 300, 400)}">
                     ${article.sections.why}
                 </span>
             </td>
@@ -691,7 +691,7 @@ function renderResults(results) {
                 </span>
             </td>
             <td>
-                <span class="word-count ${getCountClass(article.sections.validation, 350, 450)}">
+                <span class="word-count ${getCountClass(article.sections.validation, 200, 400)}">
                     ${article.sections.validation}
                 </span>
             </td>
@@ -715,8 +715,8 @@ function updateSummaryStats(results) {
     document.getElementById('avg-words').textContent = avgWords;
     
     const onTarget = results.filter(a => a.onTarget).length;
-    const underTarget = results.filter(a => a.totalCountedWords < 1800).length;
-    const overTarget = results.filter(a => a.totalCountedWords > 2200).length;
+    const underTarget = results.filter(a => a.totalCountedWords < 1000).length;
+    const overTarget = results.filter(a => a.totalCountedWords > 1500).length;
     
     document.getElementById('on-target').textContent = onTarget;
     document.getElementById('under-target').textContent = underTarget;
