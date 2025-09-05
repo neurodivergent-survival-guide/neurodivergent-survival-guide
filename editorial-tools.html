@@ -1,0 +1,289 @@
+---
+layout: default
+title: Editorial Tools
+permalink: /editorial-tools/
+---
+<!-- File: _pages/editorial-tools.html -->
+
+<style>
+    .tool-section {
+        margin-bottom: 40px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 20px;
+        background-color: #fafafa;
+    }
+    .tool-section h2 {
+        color: #34495e;
+        margin-top: 0;
+        border-bottom: 2px solid #3498db;
+        padding-bottom: 10px;
+    }
+    .page-card {
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        margin: 15px 0;
+        padding: 15px;
+        background-color: white;
+    }
+    .page-title {
+        font-size: 18px;
+        font-weight: bold;
+        color: #2c3e50;
+        margin-bottom: 5px;
+    }
+    .page-link {
+        color: #3498db;
+        text-decoration: none;
+        font-size: 14px;
+    }
+    .page-link:hover {
+        text-decoration: underline;
+    }
+    .search-term {
+        background-color: #3498db;
+        color: white;
+        padding: 3px 8px;
+        border-radius: 12px;
+        font-size: 12px;
+        margin: 2px;
+        display: inline-block;
+    }
+    .count-good {
+        color: #27ae60;
+        font-weight: bold;
+    }
+    .count-warning {
+        color: #f39c12;
+        font-weight: bold;
+    }
+    .count-error {
+        color: #e74c3c;
+        font-weight: bold;
+    }
+    .strategy-section {
+        margin: 5px 0;
+        padding: 5px;
+        background-color: #f8f9fa;
+        border-radius: 3px;
+    }
+    .related-link {
+        background-color: #95a5a6;
+        color: white;
+        padding: 2px 6px;
+        border-radius: 10px;
+        font-size: 11px;
+        margin: 2px;
+        display: inline-block;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 15px;
+    }
+    th, td {
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+    th {
+        background-color: #f2f2f2;
+        font-weight: bold;
+    }
+</style>
+
+<h1>Editorial Tools</h1>
+
+<!-- Search Terms Overview -->
+<div class="tool-section">
+    <h2>🔍 Search Terms Overview</h2>
+    <p>Review all search terms across struggle pages for clinical language or overly formal terms.</p>
+    
+    {% assign struggle_pages = site.pages | where: "layout", "struggle" %}
+    {% for page in struggle_pages %}
+        <div class="page-card">
+            <div class="page-title">{{ page.title }}</div>
+            <a href="{{ page.url | relative_url }}" class="page-link">View Page</a> | 
+            <a href="https://github.com/your-repo/edit/main{{ page.path }}" class="page-link" target="_blank">Edit on GitHub</a>
+            
+            {% if page.search_terms %}
+                <div style="margin: 10px 0;">
+                    <strong>Search Terms:</strong><br>
+                    {% for term in page.search_terms %}
+                        <span class="search-term">{{ term }}</span>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div style="margin: 10px 0; color: #e74c3c;">
+                    <strong>⚠️ No search terms found</strong>
+                </div>
+            {% endif %}
+        </div>
+    {% endfor %}
+</div>
+
+<!-- Coping Strategy Counter -->
+<div class="tool-section">
+    <h2>📝 Coping Strategy Counter</h2>
+    <p>Count list items in coping sections to ensure 5-8 strategies (not always 8).</p>
+    
+    {% for page in struggle_pages %}
+        {% assign content = page.content %}
+        
+        <!-- Count li elements in immediate-help section -->
+        {% assign next_five_section = content | split: '<div class="immediate-help">' | last | split: '</div>' | first %}
+        {% assign next_five_lis = next_five_section | split: '<li>' | size | minus: 1 %}
+        
+        <!-- Count li elements in long-term section -->
+        {% assign long_term_section = content | split: '<div class="long-term">' | last | split: '</div>' | first %}
+        {% assign long_term_lis = long_term_section | split: '<li>' | size | minus: 1 %}
+        
+        <div class="page-card">
+            <div class="page-title">{{ page.title }}</div>
+            <a href="{{ page.url | relative_url }}" class="page-link">View Page</a> | 
+            <a href="https://github.com/your-repo/edit/main{{ page.path }}" class="page-link" target="_blank">Edit on GitHub</a>
+            
+            <div class="strategy-section">
+                <strong>Next 5 Minutes:</strong> 
+                {% if next_five_lis >= 5 and next_five_lis <= 8 %}
+                    <span class="count-good">{{ next_five_lis }} strategies</span>
+                {% else %}
+                    <span class="count-warning">{{ next_five_lis }} strategies</span>
+                {% endif %}
+                (target: 5-8)
+            </div>
+            
+            <div class="strategy-section">
+                <strong>Long-term Solutions:</strong> 
+                {% if long_term_lis >= 5 and long_term_lis <= 8 %}
+                    <span class="count-good">{{ long_term_lis }} strategies</span>
+                {% else %}
+                    <span class="count-warning">{{ long_term_lis }} strategies</span>
+                {% endif %}
+                (target: 5-8)
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+<!-- Jargon Tooltip Counter -->
+<div class="tool-section">
+    <h2>💬 Jargon Tooltip Counter</h2>
+    <p>Count jargon tooltips per page (target range: 18-25, but varies).</p>
+    
+    {% for page in struggle_pages %}
+        {% assign tooltip_count = page.content | split: '<span class="jargon">' | size | minus: 1 %}
+        
+        <div class="page-card">
+            <div class="page-title">{{ page.title }}</div>
+            <a href="{{ page.url | relative_url }}" class="page-link">View Page</a> | 
+            <a href="https://github.com/your-repo/edit/main{{ page.path }}" class="page-link" target="_blank">Edit on GitHub</a>
+            
+            <div style="margin: 10px 0;">
+                <strong>Jargon Tooltips:</strong> 
+                {% if tooltip_count >= 18 and tooltip_count <= 25 %}
+                    <span class="count-good">{{ tooltip_count }}</span>
+                {% elsif tooltip_count < 18 %}
+                    <span class="count-warning">{{ tooltip_count }} (low)</span>
+                {% else %}
+                    <span class="count-error">{{ tooltip_count }} (high)</span>
+                {% endif %}
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+<!-- Related Struggles Checker -->
+<div class="tool-section">
+    <h2>🔗 Related Struggles Checker</h2>
+    <p>Verify exactly 4-5 related struggle links per page.</p>
+    
+    {% for page in struggle_pages %}
+        {% assign related_links = page.content | split: 'class="struggle-tag"' | size | minus: 1 %}
+        
+        <div class="page-card">
+            <div class="page-title">{{ page.title }}</div>
+            <a href="{{ page.url | relative_url }}" class="page-link">View Page</a> | 
+            <a href="https://github.com/your-repo/edit/main{{ page.path }}" class="page-link" target="_blank">Edit on GitHub</a>
+            
+            <div style="margin: 10px 0;">
+                <strong>Related Links:</strong> 
+                {% if related_links >= 4 and related_links <= 5 %}
+                    <span class="count-good">{{ related_links }}</span>
+                {% else %}
+                    <span class="count-warning">{{ related_links }}</span>
+                {% endif %}
+                (target: 4-5)
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+<!-- Summary Statistics -->
+<div class="tool-section">
+    <h2>📊 Summary Statistics</h2>
+    
+    {% assign total_pages = struggle_pages | size %}
+    {% assign pages_with_search_terms = 0 %}
+    {% assign optimal_tooltip_pages = 0 %}
+    {% assign optimal_strategy_pages = 0 %}
+    {% assign optimal_related_pages = 0 %}
+    
+    {% for page in struggle_pages %}
+        {% if page.search_terms %}
+            {% assign pages_with_search_terms = pages_with_search_terms | plus: 1 %}
+        {% endif %}
+        
+        {% assign tooltip_count = page.content | split: '<span class="jargon">' | size | minus: 1 %}
+        {% if tooltip_count >= 18 and tooltip_count <= 25 %}
+            {% assign optimal_tooltip_pages = optimal_tooltip_pages | plus: 1 %}
+        {% endif %}
+        
+        {% assign related_links = page.content | split: 'class="struggle-tag"' | size | minus: 1 %}
+        {% if related_links >= 4 and related_links <= 5 %}
+            {% assign optimal_related_pages = optimal_related_pages | plus: 1 %}
+        {% endif %}
+        
+        {% assign next_five_section = page.content | split: '<div class="immediate-help">' | last | split: '</div>' | first %}
+        {% assign next_five_lis = next_five_section | split: '<li>' | size | minus: 1 %}
+        {% assign long_term_section = page.content | split: '<div class="long-term">' | last | split: '</div>' | first %}
+        {% assign long_term_lis = long_term_section | split: '<li>' | size | minus: 1 %}
+        
+        {% if next_five_lis >= 5 and next_five_lis <= 8 and long_term_lis >= 5 and long_term_lis <= 8 %}
+            {% assign optimal_strategy_pages = optimal_strategy_pages | plus: 1 %}
+        {% endif %}
+    {% endfor %}
+    
+    <table>
+        <tr>
+            <th>Metric</th>
+            <th>Count</th>
+            <th>Percentage</th>
+        </tr>
+        <tr>
+            <td>Total Struggle Pages</td>
+            <td>{{ total_pages }}</td>
+            <td>100%</td>
+        </tr>
+        <tr>
+            <td>Pages with Search Terms</td>
+            <td>{{ pages_with_search_terms }}</td>
+            <td>{{ pages_with_search_terms | times: 100 | divided_by: total_pages }}%</td>
+        </tr>
+        <tr>
+            <td>Optimal Tooltip Count (18-25)</td>
+            <td>{{ optimal_tooltip_pages }}</td>
+            <td>{{ optimal_tooltip_pages | times: 100 | divided_by: total_pages }}%</td>
+        </tr>
+        <tr>
+            <td>Optimal Strategy Count (5-8 each)</td>
+            <td>{{ optimal_strategy_pages }}</td>
+            <td>{{ optimal_strategy_pages | times: 100 | divided_by: total_pages }}%</td>
+        </tr>
+        <tr>
+            <td>Optimal Related Links (4-5)</td>
+            <td>{{ optimal_related_pages }}</td>
+            <td>{{ optimal_related_pages | times: 100 | divided_by: total_pages }}%</td>
+        </tr>
+    </table>
+</div>
