@@ -1,407 +1,153 @@
-// services/pushNotifications.ts
-import { PushNotifications, Token, PushNotificationSchema, ActionPerformed } from '@capacitor/push-notifications';
-import { Capacitor } from '@capacitor/core';
-import { FCM } from '@capacitor-community/fcm';
+---
+layout: struggle
+title: "Stimulant Crash and Rebound"
+subtitle: "Evening mood drops and symptom return as medication wears off"
+description: "Managing ADHD medication crash and rebound effects. Strategies for dealing with mood drops and symptom return as stimulants wear off each day."
+slug: stimulant-crash-and-rebound
+condition: adhd
 
-// Notification debounce tracking
-const NOTIFICATION_DEBOUNCE_KEY = 'nexus_notification_debounce';
-const NOTIFICATION_DEBOUNCE_MS = 24 * 60 * 60 * 1000; // 24 hours
+tags:
+  experience: [drained, frustrated]
+  functional: [attention, emotional]
+  context: [routine, work, home]
+  condition: [adhd]
 
-// TESTING FLAG: Set to false to disable debouncing during testing
-const ENABLE_NOTIFICATION_DEBOUNCE = false; // TODO: Set to true for production
+# Content Management (Mandatory)
+status: published
+featured: false
 
-class PushNotificationService {
-  private token: string | null = null;
-  private activeNotifications: Set<HTMLElement> = new Set();
+# SEO Optimization (Mandatory)
+search_terms: ["meds wearing off", "crash every day", "irritable afternoon", "brain fog evening", "need another dose", "worse without meds", "exhausted when Adderall ends", "moody medication"]
+---
+<!-- struggles/stimulant-crash-and-rebound.html -->
+<div class="content-card">
+    <div class="what-section">
+        <h2 id="what-this-feels-like">What This Feels Like</h2>
+        <p><a class="jargon">Stimulant crash<span class="tooltip">A temporary period of increased fatigue, mood drop, or symptom return as ADHD medication wears off</span></a> typically feels like a predictable shift that happens at roughly the same time each day as your medication metabolizes out of your system. Many people notice their focus starting to scatter around the same afternoon hour, tasks feeling suddenly harder, or a mild but noticeable shift in mood or energy that becomes as reliable as clockwork once you recognize the pattern.</p>
 
-  async initialize() {
-    // Check if we're on a native platform
-    if (!Capacitor.isNativePlatform()) {
-      return;
-    }
+        <p>The cognitive shift often feels like someone gradually dimmed the lights in your brain. You might find yourself re-reading the same paragraph multiple times, losing track of conversations mid-sentence, or suddenly feeling like simple decisions require enormous effort.</p>
 
-    try {
-      // Request permission
-      const permStatus = await PushNotifications.checkPermissions();
-      
-      if (permStatus.receive === 'prompt') {
-        const result = await PushNotifications.requestPermissions();
-        
-        if (result.receive !== 'granted') {
-          console.error('[PUSH_NOTIFICATIONS] Permission denied');
-          return;
-        }
-      }
+        <p>You might find yourself feeling more irritable than usual, getting overwhelmed by sounds or conversations that were manageable earlier in the day. Some people describe feeling "raw" or like their usual emotional buffer has thinned out. <a class="jargon">Rebound symptoms<span class="tooltip">ADHD symptoms returning temporarily stronger than baseline as medication effects fade</span></a> can make you feel more scattered, hyperactive, or impulsive than you normally would without medication - like your brain is overcorrecting for the day's focus and swinging in the opposite direction.</p>
 
-      // Register with Apple/Google
-      await PushNotifications.register();
+        <p>The contrast is often the most noticeable and frustrating part of this experience. Tasks that felt manageable a few hours ago suddenly feel impossible or overwhelming. Your <a class="jargon">attention regulation<span class="tooltip">Your brain's ability to direct and sustain focus where you want it</span></a> feels like it went from smooth sailing to choppy waters, and you might find yourself missing the clarity and mental organization you had earlier in the day. Some people describe it as feeling like they're trying to think through fog or mud.</p>
 
-      // Get FCM token - PLATFORM SPECIFIC HANDLING
-      PushNotifications.addListener('registration', async (token: Token) => {
-        let fcmToken = token.value; // Default to the provided token
-        
-        // On iOS, we need to convert APNs token to FCM token
-        if (Capacitor.getPlatform() === 'ios') {
-          try {
-            const fcmResult = await FCM.getToken();
-            fcmToken = fcmResult.token;
-          } catch (error) {
-            console.error('[PUSH_NOTIFICATIONS] Failed to get FCM token on iOS:', error);
-            return;
-          }
-        }
-        
-        this.token = fcmToken;
-        
-        // Send FCM token to backend
-        await this.registerTokenWithBackend(fcmToken);
-      });
+        <p>Physical sensations are also common during this transition. Many people experience mild fatigue that feels different from regular tiredness - more like a heaviness or mental exhaustion. The timing becomes predictable once you notice the pattern, usually occurring <a class="jargon">4-6 hours after your last dose<span class="tooltip">The typical window when immediate-release stimulants begin wearing off significantly</span></a> depending on the specific medication and your individual metabolism.</p>
 
-      // Handle registration errors
-      PushNotifications.addListener('registrationError', (error: any) => {
-        console.error('[PUSH_NOTIFICATIONS] Registration error:', error);
-      });
-
-      // Handle incoming notifications
-      PushNotifications.addListener('pushNotificationReceived', (notification: PushNotificationSchema) => {
-        // Check debounce
-        if (this.shouldDebounceNotification(notification)) {
-          return;
-        }
-        
-        // Show in-app notification banner
-        this.showInAppNotification(notification);
-      });
-
-      // Handle notification tap
-      PushNotifications.addListener('pushNotificationActionPerformed', (notification: ActionPerformed) => {
-        // Navigate based on notification data
-        this.handleNotificationTap(notification);
-      });
-      
-    } catch (error) {
-      console.error('[PUSH_NOTIFICATIONS] Error in initialize():', error);
-      throw error;
-    }
-  }
-
-  private shouldDebounceNotification(notification: PushNotificationSchema): boolean {
-    // Check if debouncing is disabled for testing
-    if (!ENABLE_NOTIFICATION_DEBOUNCE) {
-      return false; // Skip debounce during testing
-    }
-    
-    const data = notification.data;
-    if (!data || !data.type) return false;
-    
-    // Create unique key for this notification type
-    const debounceKey = `${NOTIFICATION_DEBOUNCE_KEY}_${data.type}_${data.favoriter_uuid || data.event_uuid || 'general'}`;
-    
-    const lastShown = localStorage.getItem(debounceKey);
-    const now = Date.now();
-    
-    if (lastShown) {
-      const timeSinceLastShown = now - parseInt(lastShown);
-      if (timeSinceLastShown < NOTIFICATION_DEBOUNCE_MS) {
-        return true; // Should debounce
-      }
-    }
-    
-    // Update last shown time
-    localStorage.setItem(debounceKey, now.toString());
-    return false;
-  }
-
-  private async registerTokenWithBackend(token: string) {
-    try {
-      const platform = Capacitor.getPlatform(); // 'ios' or 'android'
-      
-      // Get auth token from localStorage (mobile app pattern)
-      const authToken = localStorage.getItem('authToken');
-      
-      if (!authToken) {
-        alert('[PUSH DEBUG] No auth token found - cannot register push token');
-        console.error('[PUSH_NOTIFICATIONS] No auth token found - user must be logged in');
-        return;
-      }
-      
-      // For API routes, we need the app URL, not the PostgREST URL
-      const appUrl = typeof window !== 'undefined' && window.location.origin 
-        ? window.location.origin 
-        : 'http://localhost:3000';
-      const registerUrl = `${appUrl}/api/push/register`;
-      
-      alert(`[PUSH DEBUG] Registering to: ${registerUrl}`);
-      
-      const response = await fetch(registerUrl, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${authToken}`
-        },
-        body: JSON.stringify({ token, platform })
-      });
-
-      alert(`[PUSH DEBUG] Registration response: ${response.status}`);
-
-      if (!response.ok) {
-        const responseText = await response.text();
-        alert(`[PUSH DEBUG] Registration failed: ${responseText}`);
-        throw new Error(`Failed to register push token: ${response.status} - ${responseText}`);
-      } else {
-        alert('[PUSH DEBUG] Push token registered successfully!');
-      }
-
-    } catch (error) {
-      alert(`[PUSH DEBUG] Registration error: ${error}`);
-      console.error('[PUSH_NOTIFICATIONS] Registration error:', error);
-    }
-  }
-
-  private showInAppNotification(notification: PushNotificationSchema) {
-    // Create notification banner element
-    const banner = document.createElement('div');
-    banner.className = 'notification-banner';
-    
-    // Check if it's a favorite notification to add heart icon
-    const data = notification.data;
-    const isFavorite = data?.type === 'favorite';
-    
-    if (isFavorite) {
-      // Extract stagename from title (format: "Stagename favorited you!")
-      const stagename = notification.title?.replace(' favorited you!', '') || 'Someone';
-      
-      banner.innerHTML = `
-        <div class="notification-content" style="display: flex; align-items: center; gap: 16px;">
-          <svg style="width: 48px; height: 48px; color: #ef4444; flex-shrink: 0;" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M21 8.5c0-2.485-2.239-4.5-5-4.5-1.672 0-3.148.821-4 2.094C11.148 4.821 9.672 4 8 4 5.239 4 3 6.015 3 8.5c0 1.045.349 2.005.937 2.774C5.575 13.976 12 21 12 21s6.425-7.024 8.063-9.726A4.496 4.496 0 0021 8.5z" />
-          </svg>
-          <div style="flex: 1; min-width: 0;">
-            <div class="notification-title" style="font-weight: 600; margin-bottom: 2px;">${stagename} just favorited you</div>
-            <div class="notification-body" style="opacity: 0.9; font-size: 14px;">Tap to view their profile</div>
-          </div>
+        <div class="highlight-box">
+            <p><strong>Common experiences:</strong> Feeling like your brain "turned off" at a specific time; increased sensitivity to noise, light, or stimulation; tasks requiring significantly more effort than they did earlier; mild to moderate mood drop or irritability; appetite changes ranging from intense hunger to no interest in food; feeling like you need your morning dose again to function normally.</p>
         </div>
-      `;
-    } else {
-      // Default layout for other notifications
-      banner.innerHTML = `
-        <div class="notification-content">
-          <div class="notification-title">${notification.title || 'Notification'}</div>
-          <div class="notification-body">${notification.body || ''}</div>
+    </div>
+
+    <div class="why-section">
+        <h2 id="why-this-happens">Why This Might Be Happening</h2>
+        <p><a class="jargon">Stimulant medications<span class="tooltip">ADHD medications like Adderall, Ritalin, or Vyvanse that increase dopamine and norepinephrine</span></a> work by blocking <a class="jargon">reuptake transporters<span class="tooltip">Proteins that normally remove neurotransmitters from synapses to end their signaling</span></a> and increasing levels of <a class="jargon">dopamine<span class="tooltip">A neurotransmitter involved in motivation, focus, reward processing, and movement</span></a> and <a class="jargon">norepinephrine<span class="tooltip">A neurotransmitter that affects attention, arousal, and cognitive function</span></a> in your brain. As the medication <a class="jargon">metabolizes<span class="tooltip">Gets broken down and eliminated from your body by natural processes</span></a> out of your system, these elevated neurotransmitter levels gradually return toward your natural baseline, and you experience the <a class="jargon">neurochemical contrast<span class="tooltip">The uncomfortable feeling of suddenly having lower levels of dopamine and norepinephrine after being elevated by medication</span></a>.</p>
+
+        <p>What many people call a "crash" is often just the normal return of <a class="jargon">ADHD symptoms<span class="tooltip">Challenges with attention, impulse control, and executive function that the medication was managing</span></a> as the medication's effects fade. However, some people do experience true <a class="jargon">rebound effects<span class="tooltip">When symptoms temporarily appear stronger than baseline as the body adjusts to medication leaving the system</span></a> where symptoms feel temporarily more intense than they would be without medication at all. This happens when your brain's regulatory systems temporarily overshoot in the opposite direction as they readjust to the absence of medication.</p>
+
+        <p>Individual differences in <a class="jargon">medication metabolism<span class="tooltip">How quickly your body processes and eliminates medication, which varies significantly between people</span></a> play a huge role in how you experience these transitions. Some people are <a class="jargon">rapid metabolizers<span class="tooltip">People whose bodies break down medication faster than average, leading to shorter duration of effects</span></a> and experience sharper, more noticeable transitions, while others have more gradual fade-outs that feel smoother.</p>
+
+        <p>Environmental and lifestyle factors also influence how intensely you experience medication wear-off. What you've eaten, how well you slept, your stress levels, and even <a class="jargon">circadian rhythms<span class="tooltip">Your body's natural daily biological cycles that affect when you're alert or tired</span></a> can affect both how your medication works and how you experience it leaving your system. <a class="jargon">Dehydration<span class="tooltip">Inadequate fluid levels in your body, which can worsen ADHD symptoms and medication side effects</span></a> and <a class="jargon">blood sugar fluctuations<span class="tooltip">Changes in glucose levels that can affect brain function and mood stability</span></a> can intensify crash symptoms significantly.</p>
+
+        <p>The experience also depends heavily on your <a class="jargon">neuroadaptation<span class="tooltip">How your brain adjusts to regular medication presence over time</span></a> patterns. When you take stimulants regularly, your brain develops certain compensatory mechanisms. As medication levels drop, these systems are still adjusting, which can create temporary imbalances that feel more intense than your unmedicated baseline until everything recalibrates.</p>
+
+        <div class="learn-more" onclick="toggleLearnMore(this)">
+            <h3>Learn More: Pharmacokinetics and Rebound Mechanisms ↓</h3>
+            <div class="learn-more-content">
+                <p><a class="jargon">Immediate-release stimulants<span class="tooltip">Medications that deliver their full dose quickly and wear off within 4-6 hours</span></a> like regular Adderall or Ritalin create more pronounced transition periods compared to <a class="jargon">extended-release formulations<span class="tooltip">Medications designed to release gradually over 8-12 hours for smoother effects</span></a>. The steeper the medication curve, the more noticeable the contrast when it ends. Extended-release versions use various <a class="jargon">drug delivery technologies<span class="tooltip">Methods like osmotic pumps, wax matrices, or beaded capsules that control how medication is released over time</span></a> to create smoother concentration curves, though individual metabolism still varies significantly.</p>
+
+                <p>True <a class="jargon">rebound effects<span class="tooltip">When symptoms temporarily appear stronger than baseline as the body adjusts to medication leaving the system</span></a> occur when your brain's natural regulatory systems temporarily overshoot in the opposite direction as they readjust to the absence of medication. This involves complex interactions between <a class="jargon">dopaminergic<span class="tooltip">Related to dopamine neurotransmitter systems in the brain</span></a> and <a class="jargon">noradrenergic<span class="tooltip">Related to norepinephrine neurotransmitter systems in the brain</span></a> circuits, particularly in areas like the <a class="jargon">prefrontal cortex<span class="tooltip">Brain region responsible for executive function, decision-making, and attention control</span></a> and <a class="jargon">striatum<span class="tooltip">Brain region involved in movement, motivation, and reward processing</span></a>. This neurochemical rebalancing typically resolves within a few hours.</p>
+
+                <p>Research suggests that <a class="jargon">tolerance<span class="tooltip">When your body adapts to medication over time, potentially reducing its effectiveness</span></a> and <a class="jargon">sensitization<span class="tooltip">When your nervous system becomes more responsive to medication effects over time</span></a> patterns can influence rebound experiences, though the mechanisms are still being studied and vary significantly between individuals. Some people develop more pronounced rebound over time, while others find their transitions become smoother with consistent dosing.</p>
+            </div>
         </div>
-      `;
-    }
-    
-    // Add styles with full width minus padding
-    banner.style.cssText = `
-      position: fixed;
-      top: 20px;
-      left: 16px;
-      right: 16px;
-      background: #1f2937;
-      color: white;
-      padding: 16px 20px;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-      z-index: 9999;
-      animation: slideIn 0.3s ease-out;
-      cursor: pointer;
-      border: 1px solid #374151;
-      touch-action: pan-y;
-      user-select: none;
-      -webkit-user-select: none;
-    `;
+    </div>
 
-    // Track this notification
-    this.activeNotifications.add(banner);
+    <div class="immediate-help">
+        <h2 id="next-five-minutes">What Can Help You Through the Next 5 Minutes</h2>
+        <p>When you're experiencing <a class="jargon">medication wear-off<span class="tooltip">The predictable time period when your ADHD medication effects are fading</span></a> right now:</p>
 
-    // Add to page
-    document.body.appendChild(banner);
+        <ul>
+            <li><strong>Acknowledge it's temporary and neurochemical:</strong> Remind yourself this is a <a class="jargon">pharmacological transition<span class="tooltip">A predictable body process related to how medications work, not a personal failing</span></a>, not permanent or a reflection of your capability. Most people feel significantly better within 1-3 hours as their neurochemical systems stabilize and return to their natural baseline patterns.</li>
+            <li><strong>Dramatically reduce demands on yourself:</strong> This isn't the time for complex tasks, difficult conversations, or important decisions. Your <a class="jargon">executive function<span class="tooltip">Brain skills including planning, decision-making, and impulse control</span></a> is temporarily compromised, so lower your expectations for productivity during your typical <a class="jargon">crash window<span class="tooltip">The predictable time period when you experience medication wear-off effects</span></a> and shift to simpler, less cognitively demanding activities.</li>
+            <li><strong>Manage sensory input strategically:</strong> You may be significantly more sensitive to noise, light, or stimulation during transitions. Consider dimming lights, using noise-canceling headphones, moving to a quieter space, or using <a class="jargon">sensory regulation tools<span class="tooltip">Items like weighted blankets, fidget objects, or calming music that help manage sensory overwhelm</span></a> that work for you.</li>
+            <li><strong>Address hydration and nutrition immediately:</strong> <a class="jargon">Stimulants<span class="tooltip">ADHD medications that increase dopamine and norepinephrine levels</span></a> can suppress appetite and you might not realize you're dehydrated or haven't eaten adequately. Both conditions can significantly worsen crash symptoms, so drink water and have a protein-rich snack if possible.</li>
+            <li><strong>Use grounding techniques that match your current state:</strong> Focus on physical sensations, breathing exercises, or simple activities that don't require much <a class="jargon">cognitive load<span class="tooltip">The amount of mental effort and attention a task requires</span></a>. Some people find gentle movement, warm showers, or holding something with interesting texture helpful for staying present during the transition.</li>
+        </ul>
 
-    // Touch handling for swipe to dismiss
-    let startY = 0;
-    let currentY = 0;
-    let isDragging = false;
+        <div class="highlight-box">
+            <p><strong>Emergency comfort strategy:</strong> Create a "crash kit" with easy-to-eat snacks, water, comfortable clothes, and low-effort activities (podcasts, simple games, comfort shows, easy books) that you can access during these predictable times without having to make decisions or exert significant mental energy.</p>
+        </div>
+    </div>
 
-    const handleTouchStart = (e: TouchEvent) => {
-      startY = e.touches[0].clientY;
-      isDragging = true;
-      banner.style.transition = 'none';
-    };
+    <div class="long-term">
+        <h2 id="healthy-long-term-solutions">What Are Some Healthy Long-Term Solutions</h2>
+        <p>Building sustainable approaches to manage <a class="jargon">medication transitions<span class="tooltip">The periods when medication effects are wearing off or starting up</span></a> and minimize discomfort:</p>
 
-    const handleTouchMove = (e: TouchEvent) => {
-      if (!isDragging) return;
-      
-      currentY = e.touches[0].clientY;
-      const deltaY = currentY - startY;
-      
-      // Only allow upward swipes
-      if (deltaY < 0) {
-        banner.style.transform = `translateY(${deltaY}px)`;
-        banner.style.opacity = `${1 + (deltaY / 100)}`;
-      }
-    };
+        <ul>
+            <li><strong>Work systematically with your prescriber on timing optimization:</strong> Many people benefit from <a class="jargon">dose splitting<span class="tooltip">Taking medication in smaller, multiple doses throughout the day instead of one large dose</span></a>, switching to <a class="jargon">extended-release formulations<span class="tooltip">Medications designed to release gradually over 8-12 hours for smoother effects</span></a>, or adding a small <a class="jargon">booster dose<span class="tooltip">A smaller afternoon dose to help bridge the gap between morning medication and evening</span></a> to smooth transitions. Document your crash patterns with specific times and symptoms to give your prescriber concrete optimization data.</li>
+            <li><strong>Strategically plan your day around <a class="jargon">medication curves<span class="tooltip">The predictable pattern of when your medication is most and least effective</span></a>:</strong> Schedule demanding cognitive tasks, important meetings, and complex projects during peak effectiveness windows. Plan lighter activities, routine tasks, and social time during wear-off periods. Many people find homework, creative work, or household tasks work better at specific times relative to their medication schedule.</li>
+            <li><strong>Develop comprehensive <a class="jargon">transition rituals<span class="tooltip">Consistent routines that help you shift between different states or times of day</span></a>:</strong> Create consistent, comforting routines for the time when your medication typically wears off. This might include specific snacks, a change of environment, particular music, or activities that provide structure and predictability during the neurochemical transition period.</li>
+            <li><strong>Optimize nutrition timing and composition:</strong> Eat adequate protein throughout the day, avoid letting blood sugar drop during <a class="jargon">medication wear-off<span class="tooltip">The predictable time period when your ADHD medication effects are fading</span></a> periods, and consider timing larger meals for when appetite returns. <a class="jargon">Blood sugar instability<span class="tooltip">Fluctuations in glucose levels that can affect brain function and mood</span></a> can significantly worsen mood and energy crashes during medication transitions.</li>
+            <li><strong>Communicate proactively with household members:</strong> Let family, roommates, or close friends know about your <a class="jargon">crash timing<span class="tooltip">When you predictably experience medication wear-off effects</span></a> so they can adjust expectations, provide appropriate support, and understand that you may need extra patience or space during these times. This prevents misunderstandings and reduces social stress during vulnerable periods.</li>
+        </ul>
 
-    const handleTouchEnd = () => {
-      if (!isDragging) return;
-      isDragging = false;
-      
-      const deltaY = currentY - startY;
-      banner.style.transition = 'all 0.3s ease-out';
-      
-      // If swiped up more than 50px, dismiss
-      if (deltaY < -50) {
-        banner.style.transform = 'translateY(-100%)';
-        banner.style.opacity = '0';
-        setTimeout(() => this.removeNotification(banner), 300);
-      } else {
-        // Snap back
-        banner.style.transform = 'translateY(0)';
-        banner.style.opacity = '1';
-      }
-    };
+        <div class="learn-more" onclick="toggleLearnMore(this)">
+            <h3>Learn More: Medication Optimization Strategies ↓</h3>
+            <div class="learn-more-content">
+                <p><a class="jargon">Extended-release formulations<span class="tooltip">Medications designed to release gradually over 8-12 hours for smoother effects</span></a> like Vyvanse, Concerta, or XR versions often provide smoother wear-off curves compared to <a class="jargon">immediate-release<span class="tooltip">Medications that deliver their full dose quickly and wear off within 4-6 hours</span></a> versions. However, they're not automatically better for everyone - some people prefer the predictability and control of shorter-acting medications, and some find extended-release versions provide uneven coverage throughout the day.</p>
 
-    // Add swipe listeners
-    banner.addEventListener('touchstart', handleTouchStart, { passive: true });
-    banner.addEventListener('touchmove', handleTouchMove, { passive: true });
-    banner.addEventListener('touchend', handleTouchEnd);
-    banner.addEventListener('touchcancel', handleTouchEnd);
+                <p><a class="jargon">Booster dosing<span class="tooltip">Taking a smaller second dose in the afternoon to extend medication coverage</span></a> involves taking a smaller afternoon dose (typically 25-50% of morning dose) to extend coverage without interfering with sleep. This requires careful timing and prescriber guidance to avoid evening sleep disruption, but can be highly effective for people who experience significant afternoon crashes.</p>
 
-    // Auto remove after 5 seconds
-    const autoRemoveTimer = setTimeout(() => {
-      banner.style.animation = 'slideOut 0.3s ease-out';
-      setTimeout(() => this.removeNotification(banner), 300);
-    }, 5000);
+                <p>Some people benefit from <a class="jargon">medication holidays<span class="tooltip">Planned breaks from medication to assess baseline functioning and reset tolerance</span></a> or <a class="jargon">structured titration<span class="tooltip">Gradually adjusting medication dose to find optimal effectiveness with minimal side effects</span></a> to find their optimal dosing pattern. These approaches should always be done under medical supervision and with careful monitoring of functioning across different life domains.</p>
+            </div>
+        </div>
+    </div>
 
-    // Handle tap
-    banner.addEventListener('click', () => {
-      clearTimeout(autoRemoveTimer);
-      this.removeNotification(banner);
-      this.handleNotificationTap({ notification: notification } as ActionPerformed);
-    });
+    <div class="medical-section">
+        <h2 id="medical-intervention">When Should I Consider Medical Intervention</h2>
+        <p>Contact your healthcare provider if <a class="jargon">medication transitions<span class="tooltip">The periods when medication effects are wearing off or starting up</span></a> are significantly impacting your functioning or quality of life:</p>
 
-    // Store timer reference for cleanup
-    (banner as any).__autoRemoveTimer = autoRemoveTimer;
-  }
+        <ul>
+            <li>Severe mood crashes that affect your relationships, create safety concerns, or involve thoughts of self-harm</li>
+            <li><a class="jargon">Rebound symptoms<span class="tooltip">ADHD symptoms returning temporarily stronger than baseline as medication effects fade</span></a> are so intense they prevent you from functioning safely in important domains like driving, childcare, work responsibilities, or managing finances</li>
+            <li>You're avoiding social situations, commitments, or important activities because of predictable crash timing</li>
+            <li><a class="jargon">Sleep disruption<span class="tooltip">Difficulty falling asleep, staying asleep, or getting quality rest</span></a> is occurring because you're trying to avoid crashes by taking medication too late in the day, creating a cycle of sleep problems and worsened crashes</li>
+            <li>Physical symptoms like severe headaches, nausea, significant <a class="jargon">cardiovascular changes<span class="tooltip">Changes in heart rate, blood pressure, or circulation</span></a>, or other concerning bodily reactions during wear-off periods</li>
+            <li>You're considering stopping effective medication solely because of manageable crash effects, rather than working on optimization</li>
+            <li><a class="jargon">Medication timing<span class="tooltip">When you take your doses throughout the day</span></a> conflicts significantly with your work, school, or family schedule, creating ongoing stress or functional problems</li>
+        </ul>
 
-  private removeNotification(banner: HTMLElement) {
-    // Clear timer if exists
-    const timer = (banner as any).__autoRemoveTimer;
-    if (timer) {
-      clearTimeout(timer);
-    }
-    
-    // Remove from tracking
-    this.activeNotifications.delete(banner);
-    
-    // Remove from DOM
-    if (banner.parentNode) {
-      banner.remove();
-    }
-  }
+        <p>Most prescribers are very familiar with <a class="jargon">stimulant pharmacokinetics<span class="tooltip">How stimulant medications are absorbed, distributed, and eliminated by your body</span></a> and have multiple evidence-based strategies for smoothing out medication curves. This is usually a solvable problem rather than something you need to endure, and optimization often significantly improves quality of life without major medication changes.</p>
 
-  private handleNotificationTap(action: ActionPerformed) {
-    const data = action.notification?.data;
-    
-    if (!data) return;
+        <div class="highlight-box">
+            <p><strong>What to track for your doctor:</strong> Exact timing of crashes relative to doses, how long they last, specific symptoms you notice, what you've eaten and when, sleep quality and timing, hydration levels, stress factors, and what strategies help or worsen the experience. Even a week of detailed tracking can provide valuable optimization data for medication adjustment.</p>
+        </div>
+    </div>
 
-    // For mobile apps, we need to use the app's navigation system
-    // This assumes you have a global router or navigation method
-    const navigate = (path: string) => {
-      // If using React Navigation or similar
-      if ((window as any).appNavigate) {
-        (window as any).appNavigate(path);
-      } else {
-        // Fallback for web testing
-        window.location.href = path;
-      }
-    };
+    <div class="validation-section">
+        <h2 id="youre-not-imagining-this">You're Not Imagining This</h2>
+        <p><a class="jargon">Stimulant crash<span class="tooltip">A temporary period of increased fatigue, mood drop, or symptom return as ADHD medication wears off</span></a> and <a class="jargon">rebound effects<span class="tooltip">When symptoms temporarily appear stronger than baseline as the body adjusts to medication leaving the system</span></a> are well-recognized, documented experiences in <a class="jargon">ADHD treatment<span class="tooltip">Medical and behavioral approaches to managing ADHD symptoms</span></a>. Healthcare providers expect patients to report these transitions and have established, evidence-based strategies for managing them. You're describing a predictable pharmacological effect, not an unusual or problematic response.</p>
 
-    // Navigate based on notification type (matching backend data structure)
-    switch (data.type) {
-      case 'favorite':
-        // Backend sends favoriter_uuid
-        if (data.favoriter_uuid) {
-          navigate(`/profile/${data.favoriter_uuid}`);
-        }
-        break;
-      case 'event_invite':
-        // Backend sends event_uuid
-        if (data.event_uuid) {
-          navigate(`/calendar/${data.event_uuid}`);
-        }
-        break;
-      case 'chat_request':
-        navigate('/chats');
-        break;
-      default:
-        navigate('/');
-    }
-  }
+        <p>This experience doesn't mean your medication "isn't working" or that you're becoming <a class="jargon">dependent<span class="tooltip">Requiring something to function, though ADHD medication dependence is therapeutic rather than addictive</span></a> in a problematic way. <a class="jargon">ADHD medications<span class="tooltip">Stimulant and non-stimulant medications used to manage ADHD symptoms</span></a> are designed to be active in your system for limited periods, and experiencing their absence is completely normal and expected. Noticing when effective treatment stops being active doesn't indicate weakness or over-reliance.</p>
 
-  async unregister() {
-    if (!this.token) {
-      return;
-    }
+        <p>Many successful people with <a class="jargon">ADHD<span class="tooltip">Attention-Deficit/Hyperactivity Disorder affecting attention, impulse control, and executive function</span></a> go through a period of <a class="jargon">medication optimization<span class="tooltip">Working with healthcare providers to find the right medication, dose, and timing for optimal benefit</span></a> where they work systematically with their prescriber to find the right balance of medication effectiveness and manageable transitions. You're not being dramatic, oversensitive, or unreasonably demanding - you're describing a real pharmacological experience that deserves appropriate medical attention and optimization.</p>
 
-    try {
-      // Get auth token from localStorage
-      const authToken = localStorage.getItem('authToken');
-      if (!authToken) {
-        console.error('[PUSH_NOTIFICATIONS] No auth token found');
-        return;
-      }
-      
-      await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/push/register`, {
-        method: 'DELETE',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${authToken}`
-        },
-        body: JSON.stringify({ token: this.token })
-      });
+        <p>It's also worth noting that <a class="jargon">medication sensitivity<span class="tooltip">How strongly your body responds to medication effects and side effects</span></a> varies widely between individuals due to genetic, metabolic, and physiological differences. Some people barely notice <a class="jargon">wear-off periods<span class="tooltip">Times when medication effects are fading from your system</span></a> while others are very aware of them and experience significant transitions. Neither response is wrong, unusual, or indicative of how well the medication is working overall.</p>
 
-      // Unregister from push notifications
-      await PushNotifications.unregister();
-      this.token = null;
-      
-      // Clear all active notifications
-      this.activeNotifications.forEach(banner => this.removeNotification(banner));
-      
-    } catch (error) {
-      console.error('[PUSH_NOTIFICATIONS] Failed to unregister:', error);
-    }
-  }
-}
+        <p>The nervous system that creates challenges with <a class="jargon">attention regulation<span class="tooltip">Your brain's ability to direct and sustain focus where you want it</span></a> and <a class="jargon">executive function<span class="tooltip">Brain skills including planning, decision-making, and impulse control</span></a> also has remarkable capabilities for <a class="jargon">hyperfocus<span class="tooltip">Intense concentration on tasks of interest, often for hours at a time</span></a>, creative problem-solving, and adapting to changing environments. The same neurological differences that make medication transitions more noticeable may also contribute to your ability to think in unique ways, notice patterns others miss, and approach problems from novel angles.</p>
 
-// Add CSS for animations
-if (typeof document !== 'undefined') {
-  const style = document.createElement('style');
-  style.textContent = `
-    @keyframes slideIn {
-      from {
-        transform: translateY(-100%);
-        opacity: 0;
-      }
-      to {
-        transform: translateY(0);
-        opacity: 1;
-      }
-    }
-    
-    @keyframes slideOut {
-      from {
-        transform: translateY(0);
-        opacity: 1;
-      }
-      to {
-        transform: translateY(-100%);
-        opacity: 0;
-      }
-    }
-  `;
-  document.head.appendChild(style);
-}
+        <div class="highlight-box">
+            <p><strong>Remember:</strong> Experiencing <a class="jargon">medication transitions<span class="tooltip">The periods when medication effects are wearing off or starting up</span></a> doesn't mean you're "too dependent" on medication. People with diabetes notice when insulin wears off, people with glasses notice when they take them off, and people with hearing aids notice when the batteries die. Noticing when helpful treatment stops being active is a normal awareness of how tools that improve your functioning work in your body.</p>
+        </div>
+    </div>
 
-// Export singleton instance
-export const pushNotificationService = new PushNotificationService();
+    <div class="related-struggles">
+        <h3>Related Struggles</h3>
+        <div class="struggle-tags">
+            <a href="{{ '/struggles/stimulant-sleep-disruption.html' | relative_url }}" class="struggle-tag">Stimulant Sleep Disruption</a>
+            <a href="{{ '/struggles/stimulant-appetite-suppression.html' | relative_url }}" class="struggle-tag">Stimulant Appetite Suppression</a>
+            <a href="{{ '/struggles/emotional-dysregulation-adhd.html' | relative_url }}" class="struggle-tag">Emotional Dysregulation (ADHD)</a>
+            <a href="{{ '/struggles/attention-regulation.html' | relative_url }}" class="struggle-tag">Attention Regulation</a>
+        </div>
+    </div>
+</div>
