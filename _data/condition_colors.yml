@@ -17,10 +17,10 @@ autism:
   container_background: "#d4edda"
 
 bipolar:
-  primary: "#002366"
-  secondary: "#0984e3"
-  gradient_start: "#002366"
-  gradient_end: "#0984e3"
+  primary: "#0984e3"
+  secondary: "#002366"
+  gradient_start: "#0984e3"
+  gradient_end: "#002366"
   container_background: "#e3f2fd"
 
 bpd:
