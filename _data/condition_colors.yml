@@ -19,7 +19,7 @@ autism:
 bipolar:
   secondary: "#353dab"
   primary: "#0984e3"
-  gradient_start: "#74b9ff"
+  gradient_start: "#353dab"
   gradient_end: "#0984e3"
   container_background: "#e3f2fd"
 
