@@ -17,8 +17,8 @@ autism:
   container_background: "#d4edda"
 
 bipolar:
-  secondary: "#353dab"
-  primary: "#0984e3"
+  primary: "#353dab"
+  secondary: "#0984e3"
   gradient_start: "#353dab"
   gradient_end: "#0984e3"
   container_background: "#e3f2fd"
