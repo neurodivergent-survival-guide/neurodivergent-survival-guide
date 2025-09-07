@@ -598,7 +598,7 @@ async function copyResultsToClipboard() {
     clipboardText += `${'='.repeat(70)}\n`;
     
     filteredResults.forEach(article => {
-        const status = article.totalCountedWords < 900 ? 'LOW' : article.totalCountedWords > 1400 ? 'HIGH' : 'OK';
+        const status = article.totalCountedWords < 1000 ? 'LOW' : article.totalCountedWords > 1500 ? 'HIGH' : 'OK';
         clipboardText += `${article.title.substring(0, 25).padEnd(25)} | ${article.totalCountedWords.toString().padStart(5)} | ${article.sections.what.toString().padStart(4)} | ${article.sections.why.toString().padStart(3)} | ${article.sections.medical.toString().padStart(7)} | ${article.sections.validation.toString().padStart(5)} | ${status}\n`;
     });
     
