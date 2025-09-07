@@ -424,9 +424,12 @@ document.addEventListener('DOMContentLoaded', function() {
 </div>
 
 <!-- Unique Jargon Terms Analysis -->
-<div class="tool-section">
+<div class="tool-section jargon-analysis-section">
     <h2>💬 Unique Jargon Terms Analysis</h2>
     <p>Count unique jargon terms per page (target range: 18-25) and display all terms used.</p>
+    
+    <button class="expand-all-btn" onclick="expandAllInSection('jargon-analysis-section')">Expand All</button>
+    <button class="collapse-all-btn" onclick="collapseAllInSection('jargon-analysis-section')">Collapse All</button>
     
     {% assign page_counter = 0 %}
     {% for condition_group in pages_by_condition %}
