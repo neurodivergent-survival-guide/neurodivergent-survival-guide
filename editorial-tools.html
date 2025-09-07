@@ -187,14 +187,15 @@ function extractJargonTermsFromHTML(htmlContent) {
     const uniqueTerms = new Set();
     
     jargonElements.forEach(jargonEl => {
-        // Get the first text node (the actual jargon term, not the tooltip)
-        let jargonText = '';
-        for (let node of jargonEl.childNodes) {
-            if (node.nodeType === Node.TEXT_NODE) {
-                jargonText = node.textContent.trim();
-                break;
-            }
-        }
+        // Clone the element to avoid modifying the original
+        const clone = jargonEl.cloneNode(true);
+        
+        // Remove all tooltip spans from the clone
+        const tooltips = clone.querySelectorAll('.tooltip');
+        tooltips.forEach(tooltip => tooltip.remove());
+        
+        // Get the remaining text content (which should be the jargon term)
+        const jargonText = clone.textContent.trim();
         
         if (jargonText) {
             // Normalize: lowercase and clean whitespace
