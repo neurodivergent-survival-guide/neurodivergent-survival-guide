@@ -428,8 +428,14 @@ document.addEventListener('DOMContentLoaded', function() {
     <h2>💬 Unique Jargon Terms Analysis</h2>
     <p>Count unique jargon terms per page (target range: 18-25) and display all terms used.</p>
     
-    <button class="expand-all-btn" onclick="expandAllInSection('jargon-analysis-section')">Expand All</button>
-    <button class="collapse-all-btn" onclick="collapseAllInSection('jargon-analysis-section')">Collapse All</button>
+    <div class="section-controls">
+        <button class="expand-all-btn" onclick="expandAllInSection('jargon-analysis-section')">Expand All</button>
+        <button class="collapse-all-btn" onclick="collapseAllInSection('jargon-analysis-section')">Collapse All</button>
+        <label class="hide-compliant-checkbox">
+            <input type="checkbox" onchange="toggleCompliantVisibility('jargon-analysis-section', this)">
+            Hide pages with target jargon count (18-25)
+        </label>
+    </div>
     
     {% assign page_counter = 0 %}
     {% for condition_group in pages_by_condition %}
