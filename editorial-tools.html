@@ -129,6 +129,46 @@ permalink: /editorial-tools/
         background-color: #95a5a6;
         color: white;
     }
+    .section-controls {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 15px;
+        flex-wrap: wrap;
+    }
+    .expand-all-btn {
+        background: #3498db;
+        color: white;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 4px;
+        font-size: 14px;
+        cursor: pointer;
+    }
+    .expand-all-btn:hover {
+        background: #2980b9;
+    }
+    .collapse-all-btn {
+        background: #95a5a6;
+        color: white;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 4px;
+        font-size: 14px;
+        cursor: pointer;
+    }
+    .collapse-all-btn:hover {
+        background: #7f8c8d;
+    }
+    .hide-compliant-checkbox {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        font-size: 14px;
+    }
+    .hide-compliant-checkbox input {
+        margin: 0;
+    }
     table {
         width: 100%;
         border-collapse: collapse;
@@ -175,6 +215,58 @@ function togglePageCard(element) {
     } else {
         icon.textContent = '▼';
     }
+}
+
+function expandAllInSection(sectionClass) {
+    const section = document.querySelector(`.${sectionClass}`);
+    const cards = section.querySelectorAll('.page-card');
+    
+    cards.forEach(card => {
+        card.classList.remove('collapsed');
+        const icon = card.querySelector('.toggle-icon');
+        if (icon) icon.textContent = '▼';
+    });
+}
+
+function collapseAllInSection(sectionClass) {
+    const section = document.querySelector(`.${sectionClass}`);
+    const cards = section.querySelectorAll('.page-card');
+    
+    cards.forEach(card => {
+        card.classList.add('collapsed');
+        const icon = card.querySelector('.toggle-icon');
+        if (icon) icon.textContent = '▶';
+    });
+}
+
+function toggleCompliantVisibility(sectionClass, checkboxElement) {
+    const section = document.querySelector(`.${sectionClass}`);
+    const cards = section.querySelectorAll('.page-card');
+    
+    cards.forEach(card => {
+        let isCompliant = false;
+        
+        // Determine compliance based on section type
+        if (sectionClass === 'strategy-counter-section') {
+            // Check if both strategy counts are in target range (5-8)
+            const goodCounts = card.querySelectorAll('.count-good');
+            isCompliant = goodCounts.length === 2; // Both sections should be good
+        } else if (sectionClass === 'jargon-analysis-section') {
+            // Check if jargon count is in target range (18-25)
+            const jargonCountElement = card.querySelector('[id^="jargon-count-"]');
+            if (jargonCountElement) {
+                const hasGoodCount = jargonCountElement.innerHTML.includes('count-good');
+                isCompliant = hasGoodCount;
+            }
+        }
+        
+        // Show/hide based on compliance and checkbox state
+        if (checkboxElement.checked && isCompliant) {
+            card.style.display = 'none';
+        } else {
+            card.style.display = 'block';
+        }
+    });
 }
 
 function extractJargonTermsFromHTML(htmlContent) {
@@ -330,9 +422,14 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 
 <!-- Search Terms Overview -->
-<div class="tool-section">
+<div class="tool-section search-terms-section">
     <h2>🔍 Search Terms Overview</h2>
     <p>Review all search terms across struggle pages for clinical language or overly formal terms.</p>
+    
+    <div class="section-controls">
+        <button class="expand-all-btn" onclick="expandAllInSection('search-terms-section')">Expand All</button>
+        <button class="collapse-all-btn" onclick="collapseAllInSection('search-terms-section')">Collapse All</button>
+    </div>
     
     {% assign page_counter = 0 %}
     {% for condition_group in pages_by_condition %}
@@ -369,9 +466,18 @@ document.addEventListener('DOMContentLoaded', function() {
 </div>
 
 <!-- Coping Strategy Counter -->
-<div class="tool-section">
+<div class="tool-section strategy-counter-section">
     <h2>📝 Coping Strategy Counter</h2>
     <p>Count list items in coping sections to ensure 5-8 strategies (not always 8).</p>
+    
+    <div class="section-controls">
+        <button class="expand-all-btn" onclick="expandAllInSection('strategy-counter-section')">Expand All</button>
+        <button class="collapse-all-btn" onclick="collapseAllInSection('strategy-counter-section')">Collapse All</button>
+        <label class="hide-compliant-checkbox">
+            <input type="checkbox" onchange="toggleCompliantVisibility('strategy-counter-section', this)">
+            Hide pages with optimal strategy counts (5-8 each)
+        </label>
+    </div>
     
     {% assign page_counter = 0 %}
     {% for condition_group in pages_by_condition %}
@@ -396,7 +502,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 <div class="collapsible-content">
                     <a href="{{ page.url | relative_url }}" class="page-link">View Page</a> | 
-                    <a href="https://github.com/your-repo/edit/main{{ page.path }}" class="page-link" target="_blank">Edit on GitHub</a>
+                    <a href="https://github.com/neurodivergent-survival-guide/neurodivergent-survival-guide/edit/main{{ page.path }}" class="page-link" target="_blank">Edit on GitHub</a>
                     
                     <div class="strategy-section">
                         <strong>Next 5 Minutes:</strong> 
@@ -433,7 +539,7 @@ document.addEventListener('DOMContentLoaded', function() {
         <button class="collapse-all-btn" onclick="collapseAllInSection('jargon-analysis-section')">Collapse All</button>
         <label class="hide-compliant-checkbox">
             <input type="checkbox" onchange="toggleCompliantVisibility('jargon-analysis-section', this)">
-            Hide pages with target jargon count (18-25)
+            Hide pages with optimal jargon count (18-25)
         </label>
     </div>
     
@@ -451,7 +557,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 <div class="collapsible-content">
                     <a href="{{ page.url | relative_url }}" class="page-link">View Page</a> | 
-                    <a href="https://github.com/your-repo/edit/main{{ page.path }}" class="page-link" target="_blank">Edit on GitHub</a>
+                    <a href="https://github.com/neurodivergent-survival-guide/neurodivergent-survival-guide/edit/main{{ page.path }}" class="page-link" target="_blank">Edit on GitHub</a>
                     
                     <div style="margin: 10px 0;">
                         <strong>Unique Jargon Terms:</strong> 
