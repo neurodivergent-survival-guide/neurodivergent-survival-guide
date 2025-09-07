@@ -642,8 +642,13 @@ function countSectionWords(doc, selector) {
     }
     
     const clone = section.cloneNode(true);
+    // Remove tooltips from word count
     const tooltips = clone.querySelectorAll('.tooltip');
     tooltips.forEach(tooltip => tooltip.remove());
+    
+    // Remove Learn More sections from word count
+    const learnMoreSections = clone.querySelectorAll('.learn-more');
+    learnMoreSections.forEach(learnMore => learnMore.remove());
     
     const text = clone.textContent || clone.innerText || '';
     const words = text.trim().split(/\s+/).filter(word => word.length > 0);
