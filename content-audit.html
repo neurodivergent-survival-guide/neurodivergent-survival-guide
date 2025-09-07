@@ -344,6 +344,7 @@ th {
                     <th>Why (200-300)</th>
                     <th>Medical (200-300)</th>
                     <th>Validation (200-400)</th>
+                    <th>Unique Jargon</th>
                     <th>Status</th>
                 </tr>
             </thead>
@@ -422,13 +423,16 @@ async function analyzeSingleArticle() {
             validation: countSectionWords(doc, '.validation-section')
         };
         
+        const uniqueJargon = countUniqueJargon(doc);
+        
         // Only count sections 1, 2, 5, 6 toward total
         const totalCountedWords = sections.what + sections.why + sections.medical + sections.validation;
         const onTarget = totalCountedWords >= 1000 && totalCountedWords <= 1500;
         
         let clipboardText = `SINGLE ARTICLE ANALYSIS: ${article.title}\n`;
         clipboardText += `Condition: ${article.condition.toUpperCase()}\n`;
-        clipboardText += `Total Counted Words: ${totalCountedWords} ${onTarget ? '✓ ON TARGET' : totalCountedWords < 1000 ? '✗ UNDER TARGET' : '⚠ OVER TARGET'}\n\n`;
+        clipboardText += `Total Counted Words: ${totalCountedWords} ${onTarget ? '✓ ON TARGET' : totalCountedWords < 1000 ? '✗ UNDER TARGET' : '⚠ OVER TARGET'}\n`;
+        clipboardText += `Unique Jargon Terms: ${uniqueJargon}\n\n`;
         
         clipboardText += `COUNTED SECTIONS BREAKDOWN:\n`;
         clipboardText += `What This Feels Like: ${sections.what} words ${sections.what >= 300 && sections.what <= 400 ? '✓' : sections.what < 300 ? '(need +' + (300 - sections.what) + ')' : '(over by ' + (sections.what - 400) + ')'}\n`;
@@ -441,7 +445,8 @@ async function analyzeSingleArticle() {
         clipboardText += `Why This Happens: 200-300 words\n`;
         clipboardText += `Medical Intervention: 200-300 words\n`;
         clipboardText += `Validation: 200-400 words\n`;
-        clipboardText += `Total Target: 1,000-1,500 words\n\n`;
+        clipboardText += `Total Target: 1,000-1,500 words\n`;
+        clipboardText += `Jargon Target: 18-25 unique terms\n\n`;
         clipboardText += `NOTE: Coping sections (Next 5 Minutes, Long-term Solutions) are not counted toward word targets.\n`;
         clipboardText += `They are evaluated for quality and functionality (5-8 strategies each).\n`;
         
@@ -502,6 +507,8 @@ async function analyzeAllArticles() {
                 validation: countSectionWords(doc, '.validation-section')
             };
             
+            const uniqueJargon = countUniqueJargon(doc);
+            
             // Only count sections 1, 2, 5, 6 toward total
             const totalCountedWords = sections.what + sections.why + sections.medical + sections.validation;
             const onTarget = totalCountedWords >= 1000 && totalCountedWords <= 1500;
@@ -510,6 +517,7 @@ async function analyzeAllArticles() {
                 ...article,
                 sections,
                 totalCountedWords,
+                uniqueJargon,
                 onTarget
             });
             
@@ -519,6 +527,7 @@ async function analyzeAllArticles() {
                 ...article,
                 sections: { what: 0, why: 0, medical: 0, validation: 0 },
                 totalCountedWords: 0,
+                uniqueJargon: 0,
                 onTarget: false,
                 error: true
             });
@@ -586,20 +595,21 @@ async function copyResultsToClipboard() {
     
     const totalArticles = filteredResults.length;
     const avgWords = Math.round(filteredResults.reduce((sum, a) => sum + a.totalCountedWords, 0) / totalArticles);
+    const avgJargon = Math.round(filteredResults.reduce((sum, a) => sum + a.uniqueJargon, 0) / totalArticles);
     const onTarget = filteredResults.filter(a => a.onTarget).length;
     const underTarget = filteredResults.filter(a => a.totalCountedWords < 1000).length;
     const overTarget = filteredResults.filter(a => a.totalCountedWords > 1500).length;
     
     clipboardText += `SUMMARY:\n`;
-    clipboardText += `Total: ${totalArticles} | Average: ${avgWords} words | On Target: ${onTarget} | Under: ${underTarget} | Over: ${overTarget}\n\n`;
+    clipboardText += `Total: ${totalArticles} | Average: ${avgWords} words | Average Jargon: ${avgJargon} terms | On Target: ${onTarget} | Under: ${underTarget} | Over: ${overTarget}\n\n`;
     
     clipboardText += `DETAILED BREAKDOWN (Counted Sections Only):\n`;
-    clipboardText += `Article | Total | What | Why | Medical | Valid | Status\n`;
-    clipboardText += `${'='.repeat(70)}\n`;
+    clipboardText += `Article | Total | What | Why | Medical | Valid | Jargon | Status\n`;
+    clipboardText += `${'='.repeat(75)}\n`;
     
     filteredResults.forEach(article => {
         const status = article.totalCountedWords < 1000 ? 'LOW' : article.totalCountedWords > 1500 ? 'HIGH' : 'OK';
-        clipboardText += `${article.title.substring(0, 25).padEnd(25)} | ${article.totalCountedWords.toString().padStart(5)} | ${article.sections.what.toString().padStart(4)} | ${article.sections.why.toString().padStart(3)} | ${article.sections.medical.toString().padStart(7)} | ${article.sections.validation.toString().padStart(5)} | ${status}\n`;
+        clipboardText += `${article.title.substring(0, 25).padEnd(25)} | ${article.totalCountedWords.toString().padStart(5)} | ${article.sections.what.toString().padStart(4)} | ${article.sections.why.toString().padStart(3)} | ${article.sections.medical.toString().padStart(7)} | ${article.sections.validation.toString().padStart(5)} | ${article.uniqueJargon.toString().padStart(6)} | ${status}\n`;
     });
     
     clipboardText += `\nUPDATED TARGET RANGES (Counted Sections Only):\n`;
@@ -607,7 +617,8 @@ async function copyResultsToClipboard() {
     clipboardText += `Why This Happens: 200-300 words\n`;
     clipboardText += `Medical Intervention: 200-300 words\n`;
     clipboardText += `Validation: 200-400 words\n`;
-    clipboardText += `TOTAL TARGET: 1,000-1,500 words\n\n`;
+    clipboardText += `TOTAL TARGET: 1,000-1,500 words\n`;
+    clipboardText += `JARGON TARGET: 18-25 unique terms\n\n`;
     clipboardText += `NOTE: Coping sections (Next 5 Minutes, Long-term Solutions) are excluded from word counts.\n`;
     clipboardText += `They are evaluated for quality/functionality (5-8 strategies each), not word targets.\n`;
     
@@ -656,6 +667,24 @@ function countSectionWords(doc, selector) {
     return words.length;
 }
 
+function countUniqueJargon(doc) {
+    // Find all jargon tooltips and extract unique terms
+    const jargonElements = doc.querySelectorAll('.jargon');
+    const uniqueTerms = new Set();
+    
+    jargonElements.forEach(element => {
+        // Get the text content of the jargon term (not the tooltip)
+        const jargonText = element.childNodes[0]?.textContent?.trim();
+        if (jargonText) {
+            // Normalize the text: lowercase and remove extra whitespace
+            const normalizedTerm = jargonText.toLowerCase().replace(/\s+/g, ' ');
+            uniqueTerms.add(normalizedTerm);
+        }
+    });
+    
+    return uniqueTerms.size;
+}
+
 function renderResults(results) {
     const tbody = document.getElementById('results-body');
     tbody.innerHTML = '';
@@ -698,6 +727,11 @@ function renderResults(results) {
             <td>
                 <span class="word-count ${getCountClass(article.sections.validation, 200, 400)}">
                     ${article.sections.validation}
+                </span>
+            </td>
+            <td>
+                <span class="word-count ${getCountClass(article.uniqueJargon, 18, 25)}">
+                    ${article.uniqueJargon}
                 </span>
             </td>
             <td>
