@@ -257,57 +257,75 @@ document.addEventListener('DOMContentLoaded', function() {
         if (icon) icon.textContent = '▶';
     });
     
-    // Analyze jargon for each page - simplified approach
-    let optimalJargonPages = 0;
-    const totalPages = {{ struggle_pages.size }};
-    let processedPages = 0;
-    
-    // Process each page individually with error handling
-    {% assign page_counter = 0 %}
-    {% for condition_group in pages_by_condition %}
-        {% for page in condition_group.items %}
-            {% assign page_counter = page_counter | plus: 1 %}
-            {% assign unique_id = page_counter | append: '-' | append: condition_group.name %}
-            
-            try {
-                const pageContent{{ page_counter }} = {{ page.content | jsonify }};
-                const count = analyzeJargonForPage(pageContent{{ page_counter }}, '{{ unique_id }}');
-                
-                if (count >= 18 && count <= 25) {
-                    optimalJargonPages++;
-                }
-                
-                processedPages++;
-                
-                // Update summary when all pages are processed
-                if (processedPages === totalPages) {
-                    document.getElementById('jargon-summary-count').textContent = optimalJargonPages;
-                    document.getElementById('jargon-summary-percent').textContent = Math.round((optimalJargonPages * 100) / totalPages) + '%';
-                }
-            } catch (error) {
-                console.error('Error processing page {{ unique_id }}:', error);
-                
-                // Show error in the UI
-                const countElement = document.getElementById('jargon-count-{{ unique_id }}');
-                const termsElement = document.getElementById('jargon-terms-{{ unique_id }}');
-                
-                if (countElement) {
-                    countElement.innerHTML = '<span class="count-error">Error</span>';
-                }
-                if (termsElement) {
-                    termsElement.innerHTML = '<em>Analysis failed</em>';
-                }
-                
-                processedPages++;
-                
-                // Still update summary
-                if (processedPages === totalPages) {
-                    document.getElementById('jargon-summary-count').textContent = optimalJargonPages;
-                    document.getElementById('jargon-summary-percent').textContent = Math.round((optimalJargonPages * 100) / totalPages) + '%';
-                }
-            }
+    // Since we can't safely pass page content via JavaScript, 
+    // we'll fetch each page individually to analyze jargon
+    const pageUrls = [
+        {% for condition_group in pages_by_condition %}
+            {% for page in condition_group.items %}
+                {% assign page_counter = page_counter | plus: 1 %}
+                {% assign unique_id = page_counter | append: '-' | append: condition_group.name %}
+                {
+                    url: '{{ page.url | relative_url }}',
+                    id: '{{ unique_id }}'
+                },
+            {% endfor %}
         {% endfor %}
-    {% endfor %}
+    ];
+    
+    let optimalJargonPages = 0;
+    let processedPages = 0;
+    const totalPages = pageUrls.length;
+    
+    // Process each page by fetching it
+    pageUrls.forEach(async (pageInfo) => {
+        try {
+            const response = await fetch(pageInfo.url);
+            const html = await response.text();
+            
+            // Parse the HTML to extract content
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(html, 'text/html');
+            
+            // Find the main content area
+            const contentArea = doc.querySelector('.content-card') || doc.querySelector('main') || doc.body;
+            const contentHtml = contentArea ? contentArea.innerHTML : html;
+            
+            const count = analyzeJargonForPage(contentHtml, pageInfo.id);
+            
+            if (count >= 18 && count <= 25) {
+                optimalJargonPages++;
+            }
+            
+            processedPages++;
+            
+            // Update summary when all pages are processed
+            if (processedPages === totalPages) {
+                document.getElementById('jargon-summary-count').textContent = optimalJargonPages;
+                document.getElementById('jargon-summary-percent').textContent = Math.round((optimalJargonPages * 100) / totalPages) + '%';
+            }
+        } catch (error) {
+            console.error('Error fetching/processing page:', pageInfo.url, error);
+            
+            // Show error in the UI
+            const countElement = document.getElementById('jargon-count-' + pageInfo.id);
+            const termsElement = document.getElementById('jargon-terms-' + pageInfo.id);
+            
+            if (countElement) {
+                countElement.innerHTML = '<span class="count-error">Fetch Error</span>';
+            }
+            if (termsElement) {
+                termsElement.innerHTML = '<em>Could not fetch page content</em>';
+            }
+            
+            processedPages++;
+            
+            // Still update summary
+            if (processedPages === totalPages) {
+                document.getElementById('jargon-summary-count').textContent = optimalJargonPages;
+                document.getElementById('jargon-summary-percent').textContent = Math.round((optimalJargonPages * 100) / totalPages) + '%';
+            }
+        }
+    });
 });
 </script>
 
