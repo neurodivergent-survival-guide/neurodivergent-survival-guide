@@ -49,6 +49,15 @@ permalink: /editorial-tools/
         margin: 2px;
         display: inline-block;
     }
+    .jargon-term {
+        background-color: #9b59b6;
+        color: white;
+        padding: 3px 8px;
+        border-radius: 12px;
+        font-size: 12px;
+        margin: 2px;
+        display: inline-block;
+    }
     .count-good {
         color: #27ae60;
         font-weight: bold;
@@ -75,6 +84,13 @@ permalink: /editorial-tools/
         font-size: 11px;
         margin: 2px;
         display: inline-block;
+    }
+    .jargon-list {
+        margin: 10px 0;
+        padding: 10px;
+        background-color: #f8f9fa;
+        border-radius: 5px;
+        border-left: 4px solid #9b59b6;
     }
     table {
         width: 100%;
@@ -166,54 +182,92 @@ permalink: /editorial-tools/
     {% endfor %}
 </div>
 
-<!-- Jargon Tooltip Counter -->
+<!-- Unique Jargon Terms Analysis -->
 <div class="tool-section">
-    <h2>💬 Jargon Tooltip Counter</h2>
-    <p>Count jargon tooltips per page (target range: 18-25, but varies).</p>
+    <h2>💬 Unique Jargon Terms Analysis</h2>
+    <p>Count unique jargon terms per page (target range: 18-25) and display all terms used.</p>
+    
+    <script>
+        function extractUniqueJargon(content) {
+            // Create a temporary div to parse HTML
+            const tempDiv = document.createElement('div');
+            tempDiv.innerHTML = content;
+            
+            // Find all jargon elements
+            const jargonElements = tempDiv.querySelectorAll('.jargon');
+            const uniqueTerms = new Set();
+            
+            jargonElements.forEach(element => {
+                // Get the text content of the jargon term (not the tooltip)
+                const jargonText = element.childNodes[0]?.textContent?.trim();
+                if (jargonText) {
+                    // Normalize the text: lowercase and remove extra whitespace
+                    const normalizedTerm = jargonText.toLowerCase().replace(/\s+/g, ' ');
+                    uniqueTerms.add(normalizedTerm);
+                }
+            });
+            
+            return Array.from(uniqueTerms).sort();
+        }
+        
+        function analyzeJargonForPage(pageContent, pageId) {
+            const uniqueTerms = extractUniqueJargon(pageContent);
+            const count = uniqueTerms.length;
+            
+            // Update the count display
+            const countElement = document.getElementById('jargon-count-' + pageId);
+            if (countElement) {
+                let className = 'count-warning';
+                let status = '';
+                
+                if (count >= 18 && count <= 25) {
+                    className = 'count-good';
+                } else if (count < 18) {
+                    className = 'count-warning';
+                    status = ' (low)';
+                } else {
+                    className = 'count-error';
+                    status = ' (high)';
+                }
+                
+                countElement.innerHTML = `<span class="${className}">${count}${status}</span>`;
+            }
+            
+            // Update the terms list
+            const termsElement = document.getElementById('jargon-terms-' + pageId);
+            if (termsElement && uniqueTerms.length > 0) {
+                termsElement.innerHTML = uniqueTerms.map(term => 
+                    `<span class="jargon-term">${term}</span>`
+                ).join('');
+            }
+        }
+        
+        // Run analysis when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            {% for page in struggle_pages %}
+                {% assign page_id = forloop.index %}
+                const pageContent{{ page_id }} = {{ page.content | jsonify }};
+                analyzeJargonForPage(pageContent{{ page_id }}, {{ page_id }});
+            {% endfor %}
+        });
+    </script>
     
     {% for page in struggle_pages %}
-        {% assign tooltip_count = page.content | split: '<span class="jargon">' | size | minus: 1 %}
-        
+        {% assign page_id = forloop.index %}
         <div class="page-card">
             <div class="page-title">{{ page.title }}</div>
             <a href="{{ page.url | relative_url }}" class="page-link">View Page</a> | 
             <a href="https://github.com/your-repo/edit/main{{ page.path }}" class="page-link" target="_blank">Edit on GitHub</a>
             
             <div style="margin: 10px 0;">
-                <strong>Jargon Tooltips:</strong> 
-                {% if tooltip_count >= 18 and tooltip_count <= 25 %}
-                    <span class="count-good">{{ tooltip_count }}</span>
-                {% elsif tooltip_count < 18 %}
-                    <span class="count-warning">{{ tooltip_count }} (low)</span>
-                {% else %}
-                    <span class="count-error">{{ tooltip_count }} (high)</span>
-                {% endif %}
+                <strong>Unique Jargon Terms:</strong> 
+                <span id="jargon-count-{{ page_id }}">Analyzing...</span>
+                (target: 18-25)
             </div>
-        </div>
-    {% endfor %}
-</div>
-
-<!-- Related Struggles Checker -->
-<div class="tool-section">
-    <h2>🔗 Related Struggles Checker</h2>
-    <p>Verify exactly 4-5 related struggle links per page.</p>
-    
-    {% for page in struggle_pages %}
-        {% assign related_links = page.content | split: 'class="struggle-tag"' | size | minus: 1 %}
-        
-        <div class="page-card">
-            <div class="page-title">{{ page.title }}</div>
-            <a href="{{ page.url | relative_url }}" class="page-link">View Page</a> | 
-            <a href="https://github.com/your-repo/edit/main{{ page.path }}" class="page-link" target="_blank">Edit on GitHub</a>
             
-            <div style="margin: 10px 0;">
-                <strong>Related Links:</strong> 
-                {% if related_links >= 4 and related_links <= 5 %}
-                    <span class="count-good">{{ related_links }}</span>
-                {% else %}
-                    <span class="count-warning">{{ related_links }}</span>
-                {% endif %}
-                (target: 4-5)
+            <div class="jargon-list">
+                <strong>Terms Used:</strong><br>
+                <div id="jargon-terms-{{ page_id }}">Loading...</div>
             </div>
         </div>
     {% endfor %}
@@ -225,23 +279,11 @@ permalink: /editorial-tools/
     
     {% assign total_pages = struggle_pages | size %}
     {% assign pages_with_search_terms = 0 %}
-    {% assign optimal_tooltip_pages = 0 %}
     {% assign optimal_strategy_pages = 0 %}
-    {% assign optimal_related_pages = 0 %}
     
     {% for page in struggle_pages %}
         {% if page.search_terms %}
             {% assign pages_with_search_terms = pages_with_search_terms | plus: 1 %}
-        {% endif %}
-        
-        {% assign tooltip_count = page.content | split: '<span class="jargon">' | size | minus: 1 %}
-        {% if tooltip_count >= 18 and tooltip_count <= 25 %}
-            {% assign optimal_tooltip_pages = optimal_tooltip_pages | plus: 1 %}
-        {% endif %}
-        
-        {% assign related_links = page.content | split: 'class="struggle-tag"' | size | minus: 1 %}
-        {% if related_links >= 4 and related_links <= 5 %}
-            {% assign optimal_related_pages = optimal_related_pages | plus: 1 %}
         {% endif %}
         
         {% assign next_five_section = page.content | split: '<div class="immediate-help">' | last | split: '</div>' | first %}
@@ -271,19 +313,35 @@ permalink: /editorial-tools/
             <td>{{ pages_with_search_terms | times: 100 | divided_by: total_pages }}%</td>
         </tr>
         <tr>
-            <td>Optimal Tooltip Count (18-25)</td>
-            <td>{{ optimal_tooltip_pages }}</td>
-            <td>{{ optimal_tooltip_pages | times: 100 | divided_by: total_pages }}%</td>
-        </tr>
-        <tr>
             <td>Optimal Strategy Count (5-8 each)</td>
             <td>{{ optimal_strategy_pages }}</td>
             <td>{{ optimal_strategy_pages | times: 100 | divided_by: total_pages }}%</td>
         </tr>
         <tr>
-            <td>Optimal Related Links (4-5)</td>
-            <td>{{ optimal_related_pages }}</td>
-            <td>{{ optimal_related_pages | times: 100 | divided_by: total_pages }}%</td>
+            <td id="jargon-summary">Optimal Jargon Count (18-25)</td>
+            <td id="jargon-summary-count">Calculating...</td>
+            <td id="jargon-summary-percent">Calculating...</td>
         </tr>
     </table>
+    
+    <script>
+        // Update jargon summary after analysis is complete
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(function() {
+                let optimalJargonPages = 0;
+                const totalPages = {{ total_pages }};
+                
+                {% for page in struggle_pages %}
+                    {% assign page_id = forloop.index %}
+                    const countElement{{ page_id }} = document.getElementById('jargon-count-{{ page_id }}');
+                    if (countElement{{ page_id }} && countElement{{ page_id }}.innerHTML.includes('count-good')) {
+                        optimalJargonPages++;
+                    }
+                {% endfor %}
+                
+                document.getElementById('jargon-summary-count').textContent = optimalJargonPages;
+                document.getElementById('jargon-summary-percent').textContent = Math.round((optimalJargonPages * 100) / totalPages) + '%';
+            }, 500);
+        });
+    </script>
 </div>
