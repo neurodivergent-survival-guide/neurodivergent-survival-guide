@@ -26,11 +26,22 @@ permalink: /editorial-tools/
         padding: 15px;
         background-color: white;
     }
+    .page-card.collapsed .collapsible-content {
+        display: none;
+    }
     .page-title {
         font-size: 18px;
         font-weight: bold;
         color: #2c3e50;
         margin-bottom: 5px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    .toggle-icon {
+        font-size: 14px;
+        color: #7f8c8d;
     }
     .page-link {
         color: #3498db;
@@ -76,21 +87,47 @@ permalink: /editorial-tools/
         background-color: #f8f9fa;
         border-radius: 3px;
     }
-    .related-link {
-        background-color: #95a5a6;
-        color: white;
-        padding: 2px 6px;
-        border-radius: 10px;
-        font-size: 11px;
-        margin: 2px;
-        display: inline-block;
-    }
     .jargon-list {
         margin: 10px 0;
         padding: 10px;
         background-color: #f8f9fa;
         border-radius: 5px;
         border-left: 4px solid #9b59b6;
+    }
+    .collapsible-content {
+        margin-top: 10px;
+    }
+    .toc {
+        background-color: #ecf0f1;
+        padding: 15px;
+        border-radius: 8px;
+        margin-bottom: 30px;
+    }
+    .toc h3 {
+        margin-top: 0;
+        color: #2c3e50;
+    }
+    .toc-section {
+        margin-bottom: 15px;
+    }
+    .toc-section h4 {
+        margin: 5px 0;
+        color: #34495e;
+        font-size: 16px;
+    }
+    .toc-link {
+        display: inline-block;
+        margin: 2px 5px;
+        padding: 3px 8px;
+        background-color: #bdc3c7;
+        color: #2c3e50;
+        text-decoration: none;
+        border-radius: 4px;
+        font-size: 12px;
+    }
+    .toc-link:hover {
+        background-color: #95a5a6;
+        color: white;
     }
     table {
         width: 100%;
@@ -110,31 +147,181 @@ permalink: /editorial-tools/
 
 <h1>Editorial Tools</h1>
 
+<!-- Table of Contents -->
+<div class="toc">
+    <h3>Table of Contents - Struggle Pages</h3>
+    {% assign struggle_pages = site.pages | where: "layout", "struggle" %}
+    {% assign pages_by_condition = struggle_pages | group_by: "condition" %}
+    
+    {% for condition_group in pages_by_condition %}
+        <div class="toc-section">
+            <h4>{{ condition_group.name | upcase }}</h4>
+            {% for page in condition_group.items %}
+                <a href="#page-{{ forloop.index }}-{{ condition_group.name }}" class="toc-link">{{ page.title }}</a>
+            {% endfor %}
+        </div>
+    {% endfor %}
+</div>
+
+<script>
+function togglePageCard(element) {
+    const card = element.closest('.page-card');
+    const icon = element.querySelector('.toggle-icon');
+    
+    card.classList.toggle('collapsed');
+    
+    if (card.classList.contains('collapsed')) {
+        icon.textContent = '▶';
+    } else {
+        icon.textContent = '▼';
+    }
+}
+
+function extractJargonTermsFromHTML(htmlContent) {
+    // Create a temporary container
+    const container = document.createElement('div');
+    container.innerHTML = htmlContent;
+    
+    // Find all elements with class 'jargon'
+    const jargonElements = container.querySelectorAll('.jargon');
+    const uniqueTerms = new Set();
+    
+    jargonElements.forEach(jargonEl => {
+        // Get the first text node (the actual jargon term, not the tooltip)
+        let jargonText = '';
+        for (let node of jargonEl.childNodes) {
+            if (node.nodeType === Node.TEXT_NODE) {
+                jargonText = node.textContent.trim();
+                break;
+            }
+        }
+        
+        if (jargonText) {
+            // Normalize: lowercase and clean whitespace
+            const normalized = jargonText.toLowerCase().replace(/\s+/g, ' ');
+            uniqueTerms.add(normalized);
+        }
+    });
+    
+    return Array.from(uniqueTerms).sort();
+}
+
+function analyzeJargonForPage(pageContent, pageId) {
+    try {
+        const uniqueTerms = extractJargonTermsFromHTML(pageContent);
+        const count = uniqueTerms.length;
+        
+        // Update count display
+        const countElement = document.getElementById('jargon-count-' + pageId);
+        if (countElement) {
+            let className = 'count-warning';
+            let status = '';
+            
+            if (count >= 18 && count <= 25) {
+                className = 'count-good';
+            } else if (count < 18) {
+                status = ' (low)';
+            } else {
+                className = 'count-error';
+                status = ' (high)';
+            }
+            
+            countElement.innerHTML = `<span class="${className}">${count}${status}</span>`;
+        }
+        
+        // Update terms display
+        const termsElement = document.getElementById('jargon-terms-' + pageId);
+        if (termsElement) {
+            if (uniqueTerms.length > 0) {
+                termsElement.innerHTML = uniqueTerms.map(term => 
+                    `<span class="jargon-term">${term}</span>`
+                ).join('');
+            } else {
+                termsElement.innerHTML = '<em>No jargon terms found</em>';
+            }
+        }
+        
+        return count;
+    } catch (error) {
+        console.error('Error analyzing jargon for page', pageId, error);
+        return 0;
+    }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize all cards as collapsed
+    document.querySelectorAll('.page-card').forEach(card => {
+        card.classList.add('collapsed');
+        const icon = card.querySelector('.toggle-icon');
+        if (icon) icon.textContent = '▶';
+    });
+    
+    // Analyze jargon for each page
+    let optimalJargonPages = 0;
+    const totalPages = {{ struggle_pages.size }};
+    
+    {% assign page_counter = 0 %}
+    {% for condition_group in pages_by_condition %}
+        {% for page in condition_group.items %}
+            {% assign page_counter = page_counter | plus: 1 %}
+            {% assign unique_id = page_counter | append: '-' | append: condition_group.name %}
+            
+            setTimeout(function() {
+                const content = {{ page.content | jsonify }};
+                const count = analyzeJargonForPage(content, '{{ unique_id }}');
+                if (count >= 18 && count <= 25) {
+                    optimalJargonPages++;
+                }
+                
+                // Update summary after all pages processed
+                if ({{ page_counter }} === totalPages) {
+                    setTimeout(function() {
+                        document.getElementById('jargon-summary-count').textContent = optimalJargonPages;
+                        document.getElementById('jargon-summary-percent').textContent = Math.round((optimalJargonPages * 100) / totalPages) + '%';
+                    }, 100);
+                }
+            }, {{ page_counter | times: 50 }});
+        {% endfor %}
+    {% endfor %}
+});
+</script>
+
 <!-- Search Terms Overview -->
 <div class="tool-section">
     <h2>🔍 Search Terms Overview</h2>
     <p>Review all search terms across struggle pages for clinical language or overly formal terms.</p>
     
-    {% assign struggle_pages = site.pages | where: "layout", "struggle" %}
-    {% for page in struggle_pages %}
-        <div class="page-card">
-            <div class="page-title">{{ page.title }}</div>
-            <a href="{{ page.url | relative_url }}" class="page-link">View Page</a> | 
-            <a href="https://github.com/your-repo/edit/main{{ page.path }}" class="page-link" target="_blank">Edit on GitHub</a>
+    {% assign page_counter = 0 %}
+    {% for condition_group in pages_by_condition %}
+        {% for page in condition_group.items %}
+            {% assign page_counter = page_counter | plus: 1 %}
+            {% assign unique_id = page_counter | append: '-' | append: condition_group.name %}
             
-            {% if page.search_terms %}
-                <div style="margin: 10px 0;">
-                    <strong>Search Terms:</strong><br>
-                    {% for term in page.search_terms %}
-                        <span class="search-term">{{ term }}</span>
-                    {% endfor %}
+            <div class="page-card" id="page-{{ unique_id }}">
+                <div class="page-title" onclick="togglePageCard(this)">
+                    <span class="toggle-icon">▶</span>
+                    {{ page.title }}
                 </div>
-            {% else %}
-                <div style="margin: 10px 0; color: #e74c3c;">
-                    <strong>⚠️ No search terms found</strong>
+                
+                <div class="collapsible-content">
+                    <a href="{{ page.url | relative_url }}" class="page-link">View Page</a> | 
+                    <a href="https://github.com/your-repo/edit/main{{ page.path }}" class="page-link" target="_blank">Edit on GitHub</a>
+                    
+                    {% if page.search_terms %}
+                        <div style="margin: 10px 0;">
+                            <strong>Search Terms:</strong><br>
+                            {% for term in page.search_terms %}
+                                <span class="search-term">{{ term }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        <div style="margin: 10px 0; color: #e74c3c;">
+                            <strong>⚠️ No search terms found</strong>
+                        </div>
+                    {% endif %}
                 </div>
-            {% endif %}
-        </div>
+            </div>
+        {% endfor %}
     {% endfor %}
 </div>
 
@@ -143,42 +330,53 @@ permalink: /editorial-tools/
     <h2>📝 Coping Strategy Counter</h2>
     <p>Count list items in coping sections to ensure 5-8 strategies (not always 8).</p>
     
-    {% for page in struggle_pages %}
-        {% assign content = page.content %}
-        
-        <!-- Count li elements in immediate-help section -->
-        {% assign next_five_section = content | split: '<div class="immediate-help">' | last | split: '</div>' | first %}
-        {% assign next_five_lis = next_five_section | split: '<li>' | size | minus: 1 %}
-        
-        <!-- Count li elements in long-term section -->
-        {% assign long_term_section = content | split: '<div class="long-term">' | last | split: '</div>' | first %}
-        {% assign long_term_lis = long_term_section | split: '<li>' | size | minus: 1 %}
-        
-        <div class="page-card">
-            <div class="page-title">{{ page.title }}</div>
-            <a href="{{ page.url | relative_url }}" class="page-link">View Page</a> | 
-            <a href="https://github.com/your-repo/edit/main{{ page.path }}" class="page-link" target="_blank">Edit on GitHub</a>
+    {% assign page_counter = 0 %}
+    {% for condition_group in pages_by_condition %}
+        {% for page in condition_group.items %}
+            {% assign page_counter = page_counter | plus: 1 %}
+            {% assign unique_id = page_counter | append: '-' | append: condition_group.name %}
+            {% assign content = page.content %}
             
-            <div class="strategy-section">
-                <strong>Next 5 Minutes:</strong> 
-                {% if next_five_lis >= 5 and next_five_lis <= 8 %}
-                    <span class="count-good">{{ next_five_lis }} strategies</span>
-                {% else %}
-                    <span class="count-warning">{{ next_five_lis }} strategies</span>
-                {% endif %}
-                (target: 5-8)
-            </div>
+            <!-- Count li elements in immediate-help section -->
+            {% assign next_five_section = content | split: '<div class="immediate-help">' | last | split: '</div>' | first %}
+            {% assign next_five_lis = next_five_section | split: '<li>' | size | minus: 1 %}
             
-            <div class="strategy-section">
-                <strong>Long-term Solutions:</strong> 
-                {% if long_term_lis >= 5 and long_term_lis <= 8 %}
-                    <span class="count-good">{{ long_term_lis }} strategies</span>
-                {% else %}
-                    <span class="count-warning">{{ long_term_lis }} strategies</span>
-                {% endif %}
-                (target: 5-8)
+            <!-- Count li elements in long-term section -->
+            {% assign long_term_section = content | split: '<div class="long-term">' | last | split: '</div>' | first %}
+            {% assign long_term_lis = long_term_section | split: '<li>' | size | minus: 1 %}
+            
+            <div class="page-card">
+                <div class="page-title" onclick="togglePageCard(this)">
+                    <span class="toggle-icon">▶</span>
+                    {{ page.title }}
+                </div>
+                
+                <div class="collapsible-content">
+                    <a href="{{ page.url | relative_url }}" class="page-link">View Page</a> | 
+                    <a href="https://github.com/your-repo/edit/main{{ page.path }}" class="page-link" target="_blank">Edit on GitHub</a>
+                    
+                    <div class="strategy-section">
+                        <strong>Next 5 Minutes:</strong> 
+                        {% if next_five_lis >= 5 and next_five_lis <= 8 %}
+                            <span class="count-good">{{ next_five_lis }} strategies</span>
+                        {% else %}
+                            <span class="count-warning">{{ next_five_lis }} strategies</span>
+                        {% endif %}
+                        (target: 5-8)
+                    </div>
+                    
+                    <div class="strategy-section">
+                        <strong>Long-term Solutions:</strong> 
+                        {% if long_term_lis >= 5 and long_term_lis <= 8 %}
+                            <span class="count-good">{{ long_term_lis }} strategies</span>
+                        {% else %}
+                            <span class="count-warning">{{ long_term_lis }} strategies</span>
+                        {% endif %}
+                        (target: 5-8)
+                    </div>
+                </div>
             </div>
-        </div>
+        {% endfor %}
     {% endfor %}
 </div>
 
@@ -187,89 +385,35 @@ permalink: /editorial-tools/
     <h2>💬 Unique Jargon Terms Analysis</h2>
     <p>Count unique jargon terms per page (target range: 18-25) and display all terms used.</p>
     
-    <script>
-        function extractUniqueJargon(content) {
-            // Create a temporary div to parse HTML
-            const tempDiv = document.createElement('div');
-            tempDiv.innerHTML = content;
+    {% assign page_counter = 0 %}
+    {% for condition_group in pages_by_condition %}
+        {% for page in condition_group.items %}
+            {% assign page_counter = page_counter | plus: 1 %}
+            {% assign unique_id = page_counter | append: '-' | append: condition_group.name %}
             
-            // Find all jargon elements
-            const jargonElements = tempDiv.querySelectorAll('.jargon');
-            const uniqueTerms = new Set();
-            
-            jargonElements.forEach(element => {
-                // Get the text content of the jargon term (not the tooltip)
-                const jargonText = element.childNodes[0]?.textContent?.trim();
-                if (jargonText) {
-                    // Normalize the text: lowercase and remove extra whitespace
-                    const normalizedTerm = jargonText.toLowerCase().replace(/\s+/g, ' ');
-                    uniqueTerms.add(normalizedTerm);
-                }
-            });
-            
-            return Array.from(uniqueTerms).sort();
-        }
-        
-        function analyzeJargonForPage(pageContent, pageId) {
-            const uniqueTerms = extractUniqueJargon(pageContent);
-            const count = uniqueTerms.length;
-            
-            // Update the count display
-            const countElement = document.getElementById('jargon-count-' + pageId);
-            if (countElement) {
-                let className = 'count-warning';
-                let status = '';
+            <div class="page-card">
+                <div class="page-title" onclick="togglePageCard(this)">
+                    <span class="toggle-icon">▶</span>
+                    {{ page.title }}
+                </div>
                 
-                if (count >= 18 && count <= 25) {
-                    className = 'count-good';
-                } else if (count < 18) {
-                    className = 'count-warning';
-                    status = ' (low)';
-                } else {
-                    className = 'count-error';
-                    status = ' (high)';
-                }
-                
-                countElement.innerHTML = `<span class="${className}">${count}${status}</span>`;
-            }
-            
-            // Update the terms list
-            const termsElement = document.getElementById('jargon-terms-' + pageId);
-            if (termsElement && uniqueTerms.length > 0) {
-                termsElement.innerHTML = uniqueTerms.map(term => 
-                    `<span class="jargon-term">${term}</span>`
-                ).join('');
-            }
-        }
-        
-        // Run analysis when page loads
-        document.addEventListener('DOMContentLoaded', function() {
-            {% for page in struggle_pages %}
-                {% assign page_id = forloop.index %}
-                const pageContent{{ page_id }} = {{ page.content | jsonify }};
-                analyzeJargonForPage(pageContent{{ page_id }}, {{ page_id }});
-            {% endfor %}
-        });
-    </script>
-    
-    {% for page in struggle_pages %}
-        {% assign page_id = forloop.index %}
-        <div class="page-card">
-            <div class="page-title">{{ page.title }}</div>
-            <a href="{{ page.url | relative_url }}" class="page-link">View Page</a> | 
-            <a href="https://github.com/your-repo/edit/main{{ page.path }}" class="page-link" target="_blank">Edit on GitHub</a>
-            
-            <div style="margin: 10px 0;">
-                <strong>Unique Jargon Terms:</strong> 
-                <span id="jargon-count-{{ page_id }}">Analyzing...</span>
-                (target: 18-25)
+                <div class="collapsible-content">
+                    <a href="{{ page.url | relative_url }}" class="page-link">View Page</a> | 
+                    <a href="https://github.com/your-repo/edit/main{{ page.path }}" class="page-link" target="_blank">Edit on GitHub</a>
+                    
+                    <div style="margin: 10px 0;">
+                        <strong>Unique Jargon Terms:</strong> 
+                        <span id="jargon-count-{{ unique_id }}">Analyzing...</span>
+                        (target: 18-25)
+                    </div>
+                    
+                    <div class="jargon-list">
+                        <strong>Terms Used:</strong><br>
+                        <div id="jargon-terms-{{ unique_id }}">Loading...</div>
+                    </div>
+                </div>
             </div>
-            
-            <div class="jargon-list">
-                <strong>Terms Used:</strong><br>
-                <div id="jargon-terms-{{ page_id }}">Loading...</div>
-            </div>
-        </div>
+        {% endfor %}
     {% endfor %}
 </div>
 
@@ -318,30 +462,9 @@ permalink: /editorial-tools/
             <td>{{ optimal_strategy_pages | times: 100 | divided_by: total_pages }}%</td>
         </tr>
         <tr>
-            <td id="jargon-summary">Optimal Jargon Count (18-25)</td>
+            <td>Optimal Jargon Count (18-25)</td>
             <td id="jargon-summary-count">Calculating...</td>
             <td id="jargon-summary-percent">Calculating...</td>
         </tr>
     </table>
-    
-    <script>
-        // Update jargon summary after analysis is complete
-        document.addEventListener('DOMContentLoaded', function() {
-            setTimeout(function() {
-                let optimalJargonPages = 0;
-                const totalPages = {{ total_pages }};
-                
-                {% for page in struggle_pages %}
-                    {% assign page_id = forloop.index %}
-                    const countElement{{ page_id }} = document.getElementById('jargon-count-{{ page_id }}');
-                    if (countElement{{ page_id }} && countElement{{ page_id }}.innerHTML.includes('count-good')) {
-                        optimalJargonPages++;
-                    }
-                {% endfor %}
-                
-                document.getElementById('jargon-summary-count').textContent = optimalJargonPages;
-                document.getElementById('jargon-summary-percent').textContent = Math.round((optimalJargonPages * 100) / totalPages) + '%';
-            }, 500);
-        });
-    </script>
 </div>
