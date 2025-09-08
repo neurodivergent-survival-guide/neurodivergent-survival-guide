@@ -274,6 +274,80 @@ permalink: /unified-editorial/
     transform: rotate(180deg);
 }
 
+.jargon-section {
+    background: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 6px;
+    padding: 1rem;
+    margin-top: 1rem;
+}
+
+.jargon-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.8rem;
+}
+
+.jargon-title {
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.jargon-count {
+    padding: 0.3rem 0.6rem;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.jargon-optimal { background: #d4edda; color: #27ae60; }
+.jargon-warning { background: #fff3cd; color: #856404; }
+.jargon-error { background: #f8d7da; color: #721c24; }
+
+.jargon-terms {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.jargon-term {
+    background: #6c5ce7;
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 12px;
+    font-size: 0.85rem;
+}
+
+.search-terms-section {
+    background: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 6px;
+    padding: 1rem;
+    margin-top: 1rem;
+}
+
+.search-terms-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.8rem;
+}
+
+.search-terms-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.search-term {
+    background: #007acc;
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 12px;
+    font-size: 0.85rem;
+}
+
 .links {
     margin-top: 1rem;
     padding-top: 1rem;
@@ -375,6 +449,9 @@ permalink: /unified-editorial/
 let allResults = [];
 
 async function analyzeAllArticles() {
+    // DEBUG: Log start
+    console.log('=== Starting analysis ===');
+    
     const button = document.querySelector('.analyze-btn');
     const loading = document.getElementById('loading');
     const resultsContainer = document.getElementById('results-container');
@@ -387,6 +464,8 @@ async function analyzeAllArticles() {
     summaryStats.style.display = 'none';
     
     const articleElements = document.querySelectorAll('.article-info');
+    console.log(`DEBUG: Found ${articleElements.length} articles to analyze`);
+    
     const articles = Array.from(articleElements).map(el => ({
         title: el.dataset.title,
         url: el.dataset.url,
@@ -402,11 +481,24 @@ async function analyzeAllArticles() {
         const article = articles[i];
         document.getElementById('progress').textContent = i + 1;
         
+        // DEBUG: Log each article being fetched
+        console.log(`\nDEBUG: Fetching article ${i+1}/${articles.length}: ${article.title}`);
+        console.log(`  URL: ${article.url}`);
+        
         try {
             const response = await fetch(article.url);
             const html = await response.text();
+            
+            // DEBUG: Log response details
+            console.log(`  Response status: ${response.status}, HTML length: ${html.length}`);
+            
             const parser = new DOMParser();
             const doc = parser.parseFromString(html, 'text/html');
+            
+            // DEBUG: Check what's in the parsed document
+            const hasBody = doc.body !== null;
+            const hasContentCard = html.includes('content-card');
+            console.log(`  Has body: ${hasBody}, Has content-card: ${hasContentCard}`);
             
             // Count words in each section
             const sections = {
@@ -418,8 +510,66 @@ async function analyzeAllArticles() {
                 validation: countSectionWords(doc, '.validation-section')
             };
             
-            // Count unique jargon terms
-            const uniqueJargon = countUniqueJargon(doc);
+            // DEBUG: Log section counts
+            console.log(`  Sections - What: ${sections.what}, Why: ${sections.why}, Medical: ${sections.medical}, Validation: ${sections.validation}`);
+            console.log(`  Strategies - Next 5: ${sections.nextFive}, Long-term: ${sections.longTerm}`);
+            
+            // Extract jargon terms - try multiple selectors
+            let jargonElements = doc.querySelectorAll('a.jargon');
+            console.log(`  Found ${jargonElements.length} a.jargon elements`);
+            
+            if (jargonElements.length === 0) {
+                jargonElements = doc.querySelectorAll('.jargon');
+                console.log(`  Found ${jargonElements.length} .jargon elements`);
+            }
+            
+            if (jargonElements.length === 0) {
+                jargonElements = doc.querySelectorAll('[class="jargon"]');
+                console.log(`  Found ${jargonElements.length} [class="jargon"] elements`);
+            }
+            
+            // DEBUG: If still no jargon, check raw HTML
+            if (jargonElements.length === 0) {
+                const jargonCount = (html.match(/class="jargon"/g) || []).length;
+                console.log(`  Raw HTML contains ${jargonCount} instances of class="jargon"`);
+                
+                // Show a sample of the HTML to see what we're getting
+                if (jargonCount > 0) {
+                    const jargonIndex = html.indexOf('class="jargon"');
+                    if (jargonIndex > -1) {
+                        const sample = html.substring(Math.max(0, jargonIndex - 50), Math.min(html.length, jargonIndex + 200));
+                        console.log(`  Sample around jargon: ...${sample}...`);
+                    }
+                }
+            }
+            
+            const uniqueTerms = new Set();
+            
+            jargonElements.forEach((element, index) => {
+                const clone = element.cloneNode(true);
+                // Remove all nested spans (tooltips)
+                const tooltips = clone.querySelectorAll('span');
+                tooltips.forEach(tooltip => tooltip.remove());
+                
+                const jargonText = clone.textContent.trim();
+                if (jargonText) {
+                    const normalizedTerm = jargonText.toLowerCase().replace(/\s+/g, ' ');
+                    uniqueTerms.add(normalizedTerm);
+                    
+                    // DEBUG: Log first few terms
+                    if (index < 3) {
+                        console.log(`    Term ${index + 1}: "${jargonText}"`);
+                    }
+                }
+            });
+            
+            const uniqueJargonList = Array.from(uniqueTerms).sort();
+            const uniqueJargon = uniqueJargonList.length;
+            
+            console.log(`  FINAL: ${uniqueJargon} unique jargon terms extracted`);
+            if (uniqueJargon > 0 && uniqueJargon <= 5) {
+                console.log(`  Terms: ${uniqueJargonList.join(', ')}`);
+            }
             
             // Calculate totals and compliance
             const totalCountedWords = sections.what + sections.why + sections.medical + sections.validation;
@@ -442,6 +592,7 @@ async function analyzeAllArticles() {
                 sections,
                 totalCountedWords,
                 uniqueJargon,
+                uniqueJargonList,
                 wordCountOk,
                 strategiesOk,
                 jargonOk,
@@ -454,17 +605,30 @@ async function analyzeAllArticles() {
             });
             
         } catch (error) {
-            console.error(`Error analyzing ${article.title}:`, error);
+            console.error(`ERROR analyzing ${article.title}:`, error);
             allResults.push({
                 ...article,
                 error: true,
                 sections: { what: 0, why: 0, nextFive: 0, longTerm: 0, medical: 0, validation: 0 },
                 totalCountedWords: 0,
                 uniqueJargon: 0,
+                uniqueJargonList: [],
+                wordCountOk: false,
+                strategiesOk: false,
+                jargonOk: false,
+                searchTermsOk: false,
+                whatOk: false,
+                whyOk: false,
+                medicalOk: false,
+                validationOk: false,
                 fullyCompliant: false
             });
         }
     }
+    
+    console.log('\n=== Analysis complete ===');
+    console.log(`Total articles analyzed: ${allResults.length}`);
+    console.log(`Articles with jargon: ${allResults.filter(a => a.uniqueJargon > 0).length}`);
     
     // Sort by least compliant first (most issues)
     allResults.sort((a, b) => {
@@ -507,25 +671,6 @@ function countStrategies(doc, selector) {
     
     const listItems = section.querySelectorAll('li');
     return listItems.length;
-}
-
-function countUniqueJargon(doc) {
-    const jargonElements = doc.querySelectorAll('.jargon, a.jargon, span.jargon');
-    const uniqueTerms = new Set();
-    
-    jargonElements.forEach(element => {
-        const clone = element.cloneNode(true);
-        const tooltips = clone.querySelectorAll('.tooltip, span.tooltip');
-        tooltips.forEach(tooltip => tooltip.remove());
-        
-        const jargonText = clone.textContent.trim();
-        if (jargonText) {
-            const normalizedTerm = jargonText.toLowerCase().replace(/\s+/g, ' ');
-            uniqueTerms.add(normalizedTerm);
-        }
-    });
-    
-    return uniqueTerms.size;
 }
 
 function renderResults() {
@@ -640,10 +785,10 @@ function renderResults() {
                             ${article.uniqueJargon} terms (Target: 18-25)
                         </span>
                     </div>
-                    <div class="jargon-terms">
+                    <div class="jargon-terms" style="line-height: 1.6;">
                         ${article.uniqueJargonList && article.uniqueJargonList.length > 0 
-                            ? article.uniqueJargonList.map(term => `<span class="jargon-term">${term}</span>`).join('')
-                            : '<span style="color: #999;">Unable to extract jargon terms</span>'}
+                            ? article.uniqueJargonList.join(', ')
+                            : '<span style="color: #999;">Unable to extract jargon terms - check console for debug info</span>'}
                     </div>
                 </div>
                 
@@ -654,9 +799,9 @@ function renderResults() {
                             ${article.searchTerms.length} terms (Target: 6-8)
                         </span>
                     </div>
-                    <div class="search-terms-list">
+                    <div class="search-terms-list" style="line-height: 1.6;">
                         ${article.searchTerms && article.searchTerms.length > 0 
-                            ? article.searchTerms.map(term => `<span class="search-term">${term}</span>`).join('')
+                            ? '"' + article.searchTerms.join('", "') + '"'
                             : '<span style="color: #999;">No search terms defined</span>'}
                     </div>
                 </div>
