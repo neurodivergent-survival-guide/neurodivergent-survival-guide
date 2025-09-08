@@ -404,8 +404,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <!-- Unique Jargon Terms Analysis -->
 <div class="tool-section jargon-analysis-section">
-    <h2>💬 Unique Jargon Terms Analysis</h2>
-    <p>Count unique jargon terms per page (target range: 18-25) and display all terms used.</p>
+    <h2>💬 Jargon Elements Analysis</h2>
+    <p>Count jargon elements per page (note: some terms may be repeated). Target range: 18-25 unique terms.</p>
     
     <div class="section-controls">
         <button class="expand-all-btn" onclick="expandAllInSection('jargon-analysis-section')">Expand All</button>
@@ -436,22 +436,23 @@ document.addEventListener('DOMContentLoaded', function() {
                     <a href="https://github.com/neurodivergent-survival-guide/neurodivergent-survival-guide/edit/main{{ page.path }}" class="page-link" target="_blank">Edit on GitHub</a>
                     
                     <div style="margin: 10px 0;">
-                        <strong>Jargon Elements Count:</strong> 
+                        <strong>Total Jargon Elements:</strong> 
                         <span data-jargon-count="{{ jargon_count }}">
                             {% if jargon_count >= 18 and jargon_count <= 25 %}
                                 <span class="count-good">{{ jargon_count }}</span>
                             {% elsif jargon_count < 18 %}
-                                <span class="count-warning">{{ jargon_count }} (low)</span>
+                                <span class="count-warning">{{ jargon_count }} (may be low)</span>
                             {% else %}
-                                <span class="count-error">{{ jargon_count }} (high)</span>
+                                <span class="count-error">{{ jargon_count }}</span>
                             {% endif %}
                         </span>
-                        (target: 18-25 unique terms)
+                        (includes repeats)
                     </div>
                     
                     <div class="jargon-list">
-                        <strong>Note:</strong> This shows the count of jargon elements. Some terms may be repeated. 
-                        View the page to see actual unique terms used.
+                        <strong>Note:</strong> This count includes repeated terms. Some pages like Time Blindness repeat key terms frequently (e.g., "ADHD" appears many times), so the total count may be much higher than unique terms.
+                        <br><br>
+                        For accurate unique term count, use the <a href="{{ '/content-audit/' | relative_url }}">Content Audit Dashboard</a> which properly extracts and counts unique terms.
                     </div>
                 </div>
             </div>
