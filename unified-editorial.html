@@ -1030,6 +1030,7 @@ function renderResults() {
                     <span class="condition-badge condition-${article.condition}">${article.condition}</span>
                 </div>
                 <div class="overall-status">
+                    <button class="reanalyze-btn" onclick="event.stopPropagation(); reanalyzeArticle(${index})" title="Re-analyze this article">↻</button>
                     <span class="status-indicator status-${overallStatus}">${statusText}</span>
                     <span class="toggle-icon">▼</span>
                 </div>
