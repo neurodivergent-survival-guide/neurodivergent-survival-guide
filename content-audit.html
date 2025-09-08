@@ -404,8 +404,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <!-- Unique Jargon Terms Analysis -->
 <div class="tool-section jargon-analysis-section">
-    <h2>💬 Jargon Elements Analysis</h2>
-    <p>Count jargon elements per page (note: some terms may be repeated). Target range: 18-25 unique terms.</p>
+    <h2>💬 Jargon Terms Analysis</h2>
+    <p>Display and count jargon usage per page. Target: 18-25 unique terms (though repeats will show higher counts).</p>
     
     <div class="section-controls">
         <button class="expand-all-btn" onclick="expandAllInSection('jargon-analysis-section')">Expand All</button>
@@ -422,8 +422,9 @@ document.addEventListener('DOMContentLoaded', function() {
             {% assign page_counter = page_counter | plus: 1 %}
             {% assign unique_id = page_counter | append: '-' | append: condition_group.name %}
             
-            <!-- Count jargon spans -->
-            {% assign jargon_count = page.content | split: 'class="jargon"' | size | minus: 1 %}
+            <!-- Extract jargon terms from content -->
+            {% assign content_parts = page.content | split: 'class="jargon">' %}
+            {% assign jargon_count = content_parts | size | minus: 1 %}
             
             <div class="page-card">
                 <div class="page-title" onclick="togglePageCard(this)">
@@ -436,23 +437,40 @@ document.addEventListener('DOMContentLoaded', function() {
                     <a href="https://github.com/neurodivergent-survival-guide/neurodivergent-survival-guide/edit/main{{ page.path }}" class="page-link" target="_blank">Edit on GitHub</a>
                     
                     <div style="margin: 10px 0;">
-                        <strong>Total Jargon Elements:</strong> 
-                        <span data-jargon-count="{{ jargon_count }}">
+                        <strong>Jargon Instances:</strong> 
+                        <span id="jargon-count-{{ unique_id }}" data-jargon-count="{{ jargon_count }}">
                             {% if jargon_count >= 18 and jargon_count <= 25 %}
                                 <span class="count-good">{{ jargon_count }}</span>
                             {% elsif jargon_count < 18 %}
-                                <span class="count-warning">{{ jargon_count }} (may be low)</span>
+                                <span class="count-warning">{{ jargon_count }} (low)</span>
                             {% else %}
-                                <span class="count-error">{{ jargon_count }}</span>
+                                <span class="count-error">{{ jargon_count }} (high)</span>
                             {% endif %}
                         </span>
-                        (includes repeats)
+                        <span style="font-size: 0.9em; color: #666;">(includes repeats)</span>
                     </div>
                     
                     <div class="jargon-list">
-                        <strong>Note:</strong> This count includes repeated terms. Some pages like Time Blindness repeat key terms frequently (e.g., "ADHD" appears many times), so the total count may be much higher than unique terms.
-                        <br><br>
-                        For accurate unique term count, use the <a href="{{ '/content-audit/' | relative_url }}">Content Audit Dashboard</a> which properly extracts and counts unique terms.
+                        <strong>Terms Found:</strong><br>
+                        <div id="jargon-terms-{{ unique_id }}">
+                            {% assign term_list = "" %}
+                            {% for part in content_parts %}
+                                {% if forloop.first == false %}
+                                    {% assign before_tooltip = part | split: '<span class="tooltip">' | first %}
+                                    {% assign term = before_tooltip | split: '<' | first | strip %}
+                                    {% if term != "" and term != " " %}
+                                        {% unless term_list contains term %}
+                                            <span class="jargon-term">{{ term | downcase }}</span>
+                                            {% assign term_list = term_list | append: term | append: "," %}
+                                        {% endunless %}
+                                    {% endif %}
+                                {% endif %}
+                            {% endfor %}
+                            
+                            {% if term_list == "" %}
+                                <em style="color: #999;">Unable to extract terms - view page directly to see jargon usage</em>
+                            {% endif %}
+                        </div>
                     </div>
                 </div>
             </div>
