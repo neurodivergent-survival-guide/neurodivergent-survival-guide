@@ -473,15 +473,24 @@ permalink: /unified-editorial/
 <script>
 let allResults = [];
 
-// Initialize page when loaded
-window.addEventListener('DOMContentLoaded', function() {
-    console.log('Page loaded, initializing article list...');
-    initializeArticleList();
-});
+// Initialize the article list immediately when script loads
+initializeArticleList();
 
 function initializeArticleList() {
+    console.log('Initializing article list...');
     const articleElements = document.querySelectorAll('.article-info');
     const container = document.getElementById('results-container');
+    
+    if (!container) {
+        console.error('Results container not found');
+        return;
+    }
+    
+    console.log(`Found ${articleElements.length} articles to display`);
+    
+    // Clear container
+    container.innerHTML = '';
+    allResults = [];
     
     // Create initial list of articles with "Analyze" buttons
     articleElements.forEach((el, index) => {
@@ -520,7 +529,12 @@ function initializeArticleList() {
     });
     
     // Update total count
-    document.getElementById('total-articles').textContent = allResults.length;
+    const totalElement = document.getElementById('total-articles');
+    if (totalElement) {
+        totalElement.textContent = allResults.length;
+    }
+    
+    console.log('Article list initialized');
 }
 
 async function analyzeSingleArticle(index) {
