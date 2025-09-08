@@ -854,4 +854,110 @@ function collapseAll() {
         card.classList.remove('expanded');
     });
 }
+
+async function reanalyzeArticle(index) {
+    const article = allResults[index];
+    console.log(`Re-analyzing: ${article.title}`);
+    
+    // Change button to show loading
+    const card = document.getElementById(`article-${index}`);
+    const reanalyzeBtn = card.querySelector('.reanalyze-btn');
+    const originalText = reanalyzeBtn.textContent;
+    reanalyzeBtn.textContent = '⏳';
+    reanalyzeBtn.disabled = true;
+    
+    try {
+        const response = await fetch(article.url);
+        const html = await response.text();
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, 'text/html');
+        
+        // Count words in each section
+        const sections = {
+            what: countSectionWords(doc, '.what-section'),
+            why: countSectionWords(doc, '.why-section'),
+            nextFive: countStrategies(doc, '.immediate-help'),
+            longTerm: countStrategies(doc, '.long-term'),
+            medical: countSectionWords(doc, '.medical-section'),
+            validation: countSectionWords(doc, '.validation-section')
+        };
+        
+        // Extract jargon terms
+        let jargonElements = doc.querySelectorAll('a.jargon');
+        if (jargonElements.length === 0) {
+            jargonElements = doc.querySelectorAll('.jargon');
+        }
+        
+        const uniqueTerms = new Set();
+        jargonElements.forEach(element => {
+            const clone = element.cloneNode(true);
+            const tooltips = clone.querySelectorAll('span');
+            tooltips.forEach(tooltip => tooltip.remove());
+            
+            const jargonText = clone.textContent.trim();
+            if (jargonText) {
+                const normalizedTerm = jargonText.toLowerCase().replace(/\s+/g, ' ');
+                uniqueTerms.add(normalizedTerm);
+            }
+        });
+        
+        const uniqueJargonList = Array.from(uniqueTerms).sort();
+        const uniqueJargon = uniqueJargonList.length;
+        
+        // Calculate compliance
+        const totalCountedWords = sections.what + sections.why + sections.medical + sections.validation;
+        const wordCountOk = totalCountedWords >= 1000 && totalCountedWords <= 1500;
+        const strategiesOk = (sections.nextFive >= 5 && sections.nextFive <= 8) && 
+                            (sections.longTerm >= 5 && sections.longTerm <= 8);
+        const jargonOk = uniqueJargon >= 18 && uniqueJargon <= 25;
+        const searchTermsOk = article.searchTerms.length >= 6 && article.searchTerms.length <= 8;
+        
+        const whatOk = sections.what >= 300 && sections.what <= 400;
+        const whyOk = sections.why >= 200 && sections.why <= 300;
+        const medicalOk = sections.medical >= 200 && sections.medical <= 300;
+        const validationOk = sections.validation >= 200 && sections.validation <= 400;
+        
+        const fullyCompliant = wordCountOk && strategiesOk && jargonOk && searchTermsOk;
+        
+        // Update the article in allResults
+        allResults[index] = {
+            ...article,
+            sections,
+            totalCountedWords,
+            uniqueJargon,
+            uniqueJargonList,
+            wordCountOk,
+            strategiesOk,
+            jargonOk,
+            searchTermsOk,
+            whatOk,
+            whyOk,
+            medicalOk,
+            validationOk,
+            fullyCompliant
+        };
+        
+        console.log(`Re-analysis complete: ${article.title}`);
+        console.log(`  Word count: ${totalCountedWords} (${wordCountOk ? 'OK' : 'NEEDS WORK'})`);
+        console.log(`  Jargon terms: ${uniqueJargon} (${jargonOk ? 'OK' : 'NEEDS WORK'})`);
+        
+        // Re-render and update stats
+        renderResults();
+        updateSummaryStats();
+        
+        // Keep the card expanded if it was expanded
+        if (card.classList.contains('expanded')) {
+            const newCard = document.getElementById(`article-${index}`);
+            newCard.classList.add('expanded');
+        }
+        
+    } catch (error) {
+        console.error(`Error re-analyzing ${article.title}:`, error);
+        reanalyzeBtn.textContent = '⚠';
+        setTimeout(() => {
+            reanalyzeBtn.textContent = originalText;
+            reanalyzeBtn.disabled = false;
+        }, 2000);
+    }
+}
 </script>
