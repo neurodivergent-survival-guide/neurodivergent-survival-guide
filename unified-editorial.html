@@ -641,7 +641,9 @@ function renderResults() {
                         </span>
                     </div>
                     <div class="jargon-terms">
-                        ${article.uniqueJargonList.map(term => `<span class="jargon-term">${term}</span>`).join('')}
+                        ${article.uniqueJargonList && article.uniqueJargonList.length > 0 
+                            ? article.uniqueJargonList.map(term => `<span class="jargon-term">${term}</span>`).join('')
+                            : '<span style="color: #999;">Unable to extract jargon terms</span>'}
                     </div>
                 </div>
                 
@@ -653,7 +655,9 @@ function renderResults() {
                         </span>
                     </div>
                     <div class="search-terms-list">
-                        ${article.searchTerms.map(term => `<span class="search-term">${term}</span>`).join('')}
+                        ${article.searchTerms && article.searchTerms.length > 0 
+                            ? article.searchTerms.map(term => `<span class="search-term">${term}</span>`).join('')
+                            : '<span style="color: #999;">No search terms defined</span>'}
                     </div>
                 </div>
                 
