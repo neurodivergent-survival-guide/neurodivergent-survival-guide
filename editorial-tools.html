@@ -253,10 +253,10 @@ function toggleCompliantVisibility(sectionClass, checkboxElement) {
             isCompliant = goodCounts.length === 2; // Both sections should be good
         } else if (sectionClass === 'jargon-analysis-section') {
             // Check if jargon count is in target range (18-25)
-            const jargonCountElement = card.querySelector('[id^="jargon-count-"]');
+            const jargonCountElement = card.querySelector('[data-jargon-count]');
             if (jargonCountElement) {
-                const hasGoodCount = jargonCountElement.innerHTML.includes('count-good');
-                isCompliant = hasGoodCount;
+                const count = parseInt(jargonCountElement.dataset.jargonCount);
+                isCompliant = count >= 18 && count <= 25;
             }
         }
         
@@ -269,192 +269,12 @@ function toggleCompliantVisibility(sectionClass, checkboxElement) {
     });
 }
 
-function extractJargonTermsFromHTML(htmlContent) {
-    // Create a temporary container
-    const container = document.createElement('div');
-    container.innerHTML = htmlContent;
-    
-    // Find all elements with class 'jargon'
-    const jargonElements = container.querySelectorAll('.jargon');
-    const uniqueTerms = new Set();
-    
-    jargonElements.forEach(jargonEl => {
-        // Clone the element to avoid modifying the original
-        const clone = jargonEl.cloneNode(true);
-        
-        // Remove all tooltip spans from the clone
-        const tooltips = clone.querySelectorAll('.tooltip');
-        tooltips.forEach(tooltip => tooltip.remove());
-        
-        // Get the remaining text content (which should be the jargon term)
-        const jargonText = clone.textContent.trim();
-        
-        if (jargonText) {
-            // Normalize: lowercase and clean whitespace
-            const normalized = jargonText.toLowerCase().replace(/\s+/g, ' ');
-            uniqueTerms.add(normalized);
-        }
-    });
-    
-    return Array.from(uniqueTerms).sort();
-}
-
-function analyzeJargonForPage(pageContent, pageId) {
-    try {
-        const uniqueTerms = extractJargonTermsFromHTML(pageContent);
-        const count = uniqueTerms.length;
-        
-        // Update count display
-        const countElement = document.getElementById('jargon-count-' + pageId);
-        if (countElement) {
-            let className = 'count-warning';
-            let status = '';
-            
-            if (count >= 18 && count <= 25) {
-                className = 'count-good';
-            } else if (count < 18) {
-                status = ' (low)';
-            } else {
-                className = 'count-error';
-                status = ' (high)';
-            }
-            
-            countElement.innerHTML = `<span class="${className}">${count}${status}</span>`;
-        }
-        
-        // Update terms display
-        const termsElement = document.getElementById('jargon-terms-' + pageId);
-        if (termsElement) {
-            if (uniqueTerms.length > 0) {
-                termsElement.innerHTML = uniqueTerms.map(term => 
-                    `<span class="jargon-term">${term}</span>`
-                ).join('');
-            } else {
-                termsElement.innerHTML = '<em>No jargon terms found</em>';
-            }
-        }
-        
-        return count;
-    } catch (error) {
-        console.error('Error analyzing jargon for page', pageId, error);
-        return 0;
-    }
-}
-
-// Function to count list items in a section
-function countListItemsInSection(pageContent, sectionClass) {
-    const container = document.createElement('div');
-    container.innerHTML = pageContent;
-    
-    // Find the section by class name
-    const section = container.querySelector('.' + sectionClass);
-    if (!section) {
-        return 0;
-    }
-    
-    // Count all li elements within the section
-    const listItems = section.querySelectorAll('li');
-    return listItems.length;
-}
-
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize all cards as collapsed
     document.querySelectorAll('.page-card').forEach(card => {
         card.classList.add('collapsed');
         const icon = card.querySelector('.toggle-icon');
         if (icon) icon.textContent = '▶';
-    });
-    
-    // Since we can't safely pass page content via JavaScript, 
-    // we'll fetch each page individually to analyze jargon and count strategies
-    const pageUrls = [
-        {% for condition_group in pages_by_condition %}
-            {% for page in condition_group.items %}
-                {% assign page_counter = page_counter | plus: 1 %}
-                {% assign unique_id = page_counter | append: '-' | append: condition_group.name %}
-                {
-                    url: '{{ page.url | relative_url }}',
-                    id: '{{ unique_id }}'
-                },
-            {% endfor %}
-        {% endfor %}
-    ];
-    
-    let optimalJargonPages = 0;
-    let processedPages = 0;
-    const totalPages = pageUrls.length;
-    
-    // Process each page by fetching it
-    pageUrls.forEach(async (pageInfo) => {
-        try {
-            const response = await fetch(pageInfo.url);
-            const html = await response.text();
-            
-            // Parse the HTML to extract content
-            const parser = new DOMParser();
-            const doc = parser.parseFromString(html, 'text/html');
-            
-            // Find the main content area
-            const contentArea = doc.querySelector('.content-card') || doc.querySelector('main') || doc.body;
-            const contentHtml = contentArea ? contentArea.innerHTML : html;
-            
-            // Analyze jargon
-            const count = analyzeJargonForPage(contentHtml, pageInfo.id);
-            
-            if (count >= 18 && count <= 25) {
-                optimalJargonPages++;
-            }
-            
-            // Count strategies
-            const nextFiveCount = countListItemsInSection(contentHtml, 'immediate-help');
-            const longTermCount = countListItemsInSection(contentHtml, 'long-term');
-            
-            // Update strategy counts display
-            const strategyCard = document.querySelector(`#page-${pageInfo.id}`);
-            if (strategyCard) {
-                const nextFiveElement = strategyCard.querySelector('.next-five-count');
-                const longTermElement = strategyCard.querySelector('.long-term-count');
-                
-                if (nextFiveElement) {
-                    const className = (nextFiveCount >= 5 && nextFiveCount <= 8) ? 'count-good' : 'count-warning';
-                    nextFiveElement.innerHTML = `<span class="${className}">${nextFiveCount} strategies</span>`;
-                }
-                
-                if (longTermElement) {
-                    const className = (longTermCount >= 5 && longTermCount <= 8) ? 'count-good' : 'count-warning';
-                    longTermElement.innerHTML = `<span class="${className}">${longTermCount} strategies</span>`;
-                }
-            }
-            
-            processedPages++;
-            
-            // Update summary when all pages are processed
-            if (processedPages === totalPages) {
-                document.getElementById('jargon-summary-count').textContent = optimalJargonPages;
-                document.getElementById('jargon-summary-percent').textContent = Math.round((optimalJargonPages * 100) / totalPages) + '%';
-            }
-        } catch (error) {
-            console.error('Error fetching/processing page:', pageInfo.url, error);
-            
-            // Show error in the UI
-            const countElement = document.getElementById('jargon-count-' + pageInfo.id);
-            const termsElement = document.getElementById('jargon-terms-' + pageInfo.id);
-            
-            if (countElement) {
-                countElement.innerHTML = '<span class="count-error">Fetch Error</span>';
-            }
-            if (termsElement) {
-                termsElement.innerHTML = '<em>Could not fetch page content</em>';
-            }
-            
-            processedPages++;
-            
-            // Still update summary
-            if (processedPages === totalPages) {
-                document.getElementById('jargon-summary-count').textContent = optimalJargonPages;
-                document.getElementById('jargon-summary-percent').textContent = Math.round((optimalJargonPages * 100) / totalPages) + '%';
-            }
-        }
     });
 });
 </script>
@@ -522,8 +342,28 @@ document.addEventListener('DOMContentLoaded', function() {
         {% for page in condition_group.items %}
             {% assign page_counter = page_counter | plus: 1 %}
             {% assign unique_id = page_counter | append: '-' | append: condition_group.name %}
+            {% assign content = page.content %}
             
-            <div class="page-card" id="page-{{ unique_id }}">
+            <!-- Count li elements - more flexible approach -->
+            <!-- Look for immediate-help section with any attributes -->
+            {% assign parts = content | split: 'class="immediate-help"' %}
+            {% if parts.size > 1 %}
+                {% assign next_five_section = parts[1] | split: '</div>' | first %}
+                {% assign next_five_lis = next_five_section | split: '<li>' | size | minus: 1 %}
+            {% else %}
+                {% assign next_five_lis = 0 %}
+            {% endif %}
+            
+            <!-- Look for long-term section with any attributes -->
+            {% assign parts = content | split: 'class="long-term"' %}
+            {% if parts.size > 1 %}
+                {% assign long_term_section = parts[1] | split: '</div>' | first %}
+                {% assign long_term_lis = long_term_section | split: '<li>' | size | minus: 1 %}
+            {% else %}
+                {% assign long_term_lis = 0 %}
+            {% endif %}
+            
+            <div class="page-card">
                 <div class="page-title" onclick="togglePageCard(this)">
                     <span class="toggle-icon">▶</span>
                     {{ page.title }}
@@ -535,13 +375,25 @@ document.addEventListener('DOMContentLoaded', function() {
                     
                     <div class="strategy-section">
                         <strong>Next 5 Minutes:</strong> 
-                        <span class="next-five-count">Loading...</span>
+                        {% if next_five_lis >= 5 and next_five_lis <= 8 %}
+                            <span class="count-good">{{ next_five_lis }} strategies</span>
+                        {% elsif next_five_lis == 0 %}
+                            <span class="count-error">Section not found</span>
+                        {% else %}
+                            <span class="count-warning">{{ next_five_lis }} strategies</span>
+                        {% endif %}
                         (target: 5-8)
                     </div>
                     
                     <div class="strategy-section">
                         <strong>Long-term Solutions:</strong> 
-                        <span class="long-term-count">Loading...</span>
+                        {% if long_term_lis >= 5 and long_term_lis <= 8 %}
+                            <span class="count-good">{{ long_term_lis }} strategies</span>
+                        {% elsif long_term_lis == 0 %}
+                            <span class="count-error">Section not found</span>
+                        {% else %}
+                            <span class="count-warning">{{ long_term_lis }} strategies</span>
+                        {% endif %}
                         (target: 5-8)
                     </div>
                 </div>
@@ -570,6 +422,9 @@ document.addEventListener('DOMContentLoaded', function() {
             {% assign page_counter = page_counter | plus: 1 %}
             {% assign unique_id = page_counter | append: '-' | append: condition_group.name %}
             
+            <!-- Count jargon spans -->
+            {% assign jargon_count = page.content | split: 'class="jargon"' | size | minus: 1 %}
+            
             <div class="page-card">
                 <div class="page-title" onclick="togglePageCard(this)">
                     <span class="toggle-icon">▶</span>
@@ -581,14 +436,22 @@ document.addEventListener('DOMContentLoaded', function() {
                     <a href="https://github.com/neurodivergent-survival-guide/neurodivergent-survival-guide/edit/main{{ page.path }}" class="page-link" target="_blank">Edit on GitHub</a>
                     
                     <div style="margin: 10px 0;">
-                        <strong>Unique Jargon Terms:</strong> 
-                        <span id="jargon-count-{{ unique_id }}">Analyzing...</span>
-                        (target: 18-25)
+                        <strong>Jargon Elements Count:</strong> 
+                        <span data-jargon-count="{{ jargon_count }}">
+                            {% if jargon_count >= 18 and jargon_count <= 25 %}
+                                <span class="count-good">{{ jargon_count }}</span>
+                            {% elsif jargon_count < 18 %}
+                                <span class="count-warning">{{ jargon_count }} (low)</span>
+                            {% else %}
+                                <span class="count-error">{{ jargon_count }} (high)</span>
+                            {% endif %}
+                        </span>
+                        (target: 18-25 unique terms)
                     </div>
                     
                     <div class="jargon-list">
-                        <strong>Terms Used:</strong><br>
-                        <div id="jargon-terms-{{ unique_id }}">Loading...</div>
+                        <strong>Note:</strong> This shows the count of jargon elements. Some terms may be repeated. 
+                        View the page to see actual unique terms used.
                     </div>
                 </div>
             </div>
@@ -602,10 +465,41 @@ document.addEventListener('DOMContentLoaded', function() {
     
     {% assign total_pages = struggle_pages | size %}
     {% assign pages_with_search_terms = 0 %}
+    {% assign optimal_strategy_pages = 0 %}
+    {% assign optimal_jargon_pages = 0 %}
     
     {% for page in struggle_pages %}
         {% if page.search_terms %}
             {% assign pages_with_search_terms = pages_with_search_terms | plus: 1 %}
+        {% endif %}
+        
+        <!-- Count strategies -->
+        {% assign content = page.content %}
+        
+        {% assign parts = content | split: 'class="immediate-help"' %}
+        {% if parts.size > 1 %}
+            {% assign next_five_section = parts[1] | split: '</div>' | first %}
+            {% assign next_five_lis = next_five_section | split: '<li>' | size | minus: 1 %}
+        {% else %}
+            {% assign next_five_lis = 0 %}
+        {% endif %}
+        
+        {% assign parts = content | split: 'class="long-term"' %}
+        {% if parts.size > 1 %}
+            {% assign long_term_section = parts[1] | split: '</div>' | first %}
+            {% assign long_term_lis = long_term_section | split: '<li>' | size | minus: 1 %}
+        {% else %}
+            {% assign long_term_lis = 0 %}
+        {% endif %}
+        
+        {% if next_five_lis >= 5 and next_five_lis <= 8 and long_term_lis >= 5 and long_term_lis <= 8 %}
+            {% assign optimal_strategy_pages = optimal_strategy_pages | plus: 1 %}
+        {% endif %}
+        
+        <!-- Count jargon -->
+        {% assign jargon_count = page.content | split: 'class="jargon"' | size | minus: 1 %}
+        {% if jargon_count >= 18 and jargon_count <= 25 %}
+            {% assign optimal_jargon_pages = optimal_jargon_pages | plus: 1 %}
         {% endif %}
     {% endfor %}
     
@@ -627,13 +521,13 @@ document.addEventListener('DOMContentLoaded', function() {
         </tr>
         <tr>
             <td>Optimal Strategy Count (5-8 each)</td>
-            <td id="strategy-summary-count">Calculating...</td>
-            <td id="strategy-summary-percent">Calculating...</td>
+            <td>{{ optimal_strategy_pages }}</td>
+            <td>{{ optimal_strategy_pages | times: 100 | divided_by: total_pages }}%</td>
         </tr>
         <tr>
             <td>Optimal Jargon Count (18-25)</td>
-            <td id="jargon-summary-count">Calculating...</td>
-            <td id="jargon-summary-percent">Calculating...</td>
+            <td>{{ optimal_jargon_pages }}</td>
+            <td>{{ optimal_jargon_pages | times: 100 | divided_by: total_pages }}%</td>
         </tr>
     </table>
 </div>
