@@ -474,7 +474,8 @@ permalink: /unified-editorial/
 let allResults = [];
 
 // Initialize page when loaded
-document.addEventListener('DOMContentLoaded', function() {
+window.addEventListener('DOMContentLoaded', function() {
+    console.log('Page loaded, initializing article list...');
     initializeArticleList();
 });
 
