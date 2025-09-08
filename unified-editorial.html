@@ -633,6 +633,30 @@ function renderResults() {
                     </div>
                 </div>
                 
+                <div class="jargon-section">
+                    <div class="jargon-header">
+                        <span class="jargon-title">Unique Jargon Terms</span>
+                        <span class="jargon-count ${article.jargonOk ? 'jargon-optimal' : article.uniqueJargon < 18 ? 'jargon-warning' : 'jargon-error'}">
+                            ${article.uniqueJargon} terms (Target: 18-25)
+                        </span>
+                    </div>
+                    <div class="jargon-terms">
+                        ${article.uniqueJargonList.map(term => `<span class="jargon-term">${term}</span>`).join('')}
+                    </div>
+                </div>
+                
+                <div class="search-terms-section">
+                    <div class="search-terms-header">
+                        <span class="jargon-title">Search Terms</span>
+                        <span class="jargon-count ${article.searchTermsOk ? 'jargon-optimal' : 'jargon-warning'}">
+                            ${article.searchTerms.length} terms (Target: 6-8)
+                        </span>
+                    </div>
+                    <div class="search-terms-list">
+                        ${article.searchTerms.map(term => `<span class="search-term">${term}</span>`).join('')}
+                    </div>
+                </div>
+                
                 <div class="links">
                     <a href="${article.url}" target="_blank">View Page</a>
                     <a href="https://github.com/neurodivergent-survival-guide/neurodivergent-survival-guide/edit/main/struggles/${article.url.split('/').pop()}" target="_blank">Edit on GitHub</a>
