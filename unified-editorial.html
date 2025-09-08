@@ -348,20 +348,25 @@ permalink: /unified-editorial/
     font-size: 0.85rem;
 }
 
-.links {
-    margin-top: 1rem;
-    padding-top: 1rem;
-    border-top: 1px solid #dee2e6;
+.reanalyze-btn {
+    background: #007acc;
+    color: white;
+    border: none;
+    padding: 0.3rem 0.6rem;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-right: 0.5rem;
+    font-weight: bold;
 }
 
-.links a {
-    margin-right: 1rem;
-    color: #007acc;
-    text-decoration: none;
+.reanalyze-btn:hover {
+    background: #005999;
 }
 
-.links a:hover {
-    text-decoration: underline;
+.reanalyze-btn:disabled {
+    background: #ccc;
+    cursor: not-allowed;
 }
 
 @media (max-width: 768px) {
