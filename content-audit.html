@@ -669,12 +669,20 @@ function countSectionWords(doc, selector) {
 
 function countUniqueJargon(doc) {
     // Find all jargon tooltips and extract unique terms
-    const jargonElements = doc.querySelectorAll('.jargon');
+    const jargonElements = doc.querySelectorAll('.jargon, a.jargon, span.jargon');
     const uniqueTerms = new Set();
     
     jargonElements.forEach(element => {
-        // Get the text content of the jargon term (not the tooltip)
-        const jargonText = element.childNodes[0]?.textContent?.trim();
+        // Clone the element to avoid modifying the original
+        const clone = element.cloneNode(true);
+        
+        // Remove all tooltip spans from the clone
+        const tooltips = clone.querySelectorAll('.tooltip, span.tooltip');
+        tooltips.forEach(tooltip => tooltip.remove());
+        
+        // Get the remaining text content (which should be the jargon term)
+        const jargonText = clone.textContent.trim();
+        
         if (jargonText) {
             // Normalize the text: lowercase and remove extra whitespace
             const normalizedTerm = jargonText.toLowerCase().replace(/\s+/g, ' ');
