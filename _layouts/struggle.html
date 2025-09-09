@@ -494,19 +494,39 @@ layout: default
     }
 
     .learn-more {
-        background: linear-gradient(45deg, #a29bfe, #6c5ce7);
+        background: linear-gradient(45deg, {{ colors.gradient_end }}, {{ colors.gradient_start }});
         color: white;
         padding: 1.5rem;
         border-radius: 12px;
         margin: 1.5rem 0;
         cursor: pointer;
         transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .learn-more::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(255, 255, 255, 0.1);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .learn-more:hover::before {
+        opacity: 1;
     }
 
     .learn-more h3 {
         margin-bottom: 1rem;
         font-size: 1.2rem;
         color: white;
+        position: relative;
+        z-index: 1;
     }
 
     .learn-more:hover {
