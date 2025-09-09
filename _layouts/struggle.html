@@ -362,41 +362,71 @@ layout: default
         font-size: 1.6rem;
     }
 
-    /* Common section styling with section-specific burnt colors */
+    /* Common section styling - BLACK TEXT with colored strong tags */
     .what-section p,
     .what-section ul,
     .what-section li {
+        color: #333;
+    }
+
+    .what-section strong {
         color: #d63031;
+        font-weight: 600;
     }
 
     .why-section p,
     .why-section ul,
     .why-section li {
+        color: #333;
+    }
+
+    .why-section strong {
         color: #f39c12;
+        font-weight: 600;
     }
 
     .immediate-help p,
     .immediate-help ul,
     .immediate-help li {
+        color: #333;
+    }
+
+    .immediate-help strong {
         color: #005599;
+        font-weight: 600;
     }
 
     .long-term p,
     .long-term ul,
     .long-term li {
+        color: #333;
+    }
+
+    .long-term strong {
         color: #155724;
+        font-weight: 600;
     }
 
     .medical-section p,
     .medical-section ul,
     .medical-section li {
+        color: #333;
+    }
+
+    .medical-section strong {
         color: #0c5460;
+        font-weight: 600;
     }
 
     .validation-section p,
     .validation-section ul,
     .validation-section li {
+        color: #333;
+    }
+
+    .validation-section strong {
         color: #5a4fcf;
+        font-weight: 600;
     }
 
     /* Common formatting for all sections */
@@ -460,6 +490,7 @@ layout: default
     .highlight-box p {
         margin: 0;
         line-height: 1.6;
+        color: #333;
     }
 
     .highlight-box strong {
@@ -469,9 +500,10 @@ layout: default
         transition: color 0.3s ease;
         display: inline-block;
         margin-bottom: 0.25rem;
+        font-weight: 600;
     }
 
-    /* Section-specific highlight box colors */
+    /* Section-specific highlight box colors - BLACK TEXT with colored strong and accent bar */
     .what-section .highlight-box {
         background: rgba(255, 255, 255, 0.85);
         margin: 1.5rem 0;
@@ -481,7 +513,6 @@ layout: default
         background: #d63031;
     }
 
-    .what-section .highlight-box p,
     .what-section .highlight-box strong {
         color: #d63031;
     }
@@ -495,7 +526,6 @@ layout: default
         background: #f39c12;
     }
 
-    .why-section .highlight-box p,
     .why-section .highlight-box strong {
         color: #f39c12;
     }
@@ -509,7 +539,6 @@ layout: default
         background: #005599;
     }
 
-    .immediate-help .highlight-box p,
     .immediate-help .highlight-box strong {
         color: #005599;
     }
@@ -523,7 +552,6 @@ layout: default
         background: #155724;
     }
 
-    .long-term .highlight-box p,
     .long-term .highlight-box strong {
         color: #155724;
     }
@@ -537,7 +565,6 @@ layout: default
         background: #0c5460;
     }
 
-    .medical-section .highlight-box p,
     .medical-section .highlight-box strong {
         color: #0c5460;
     }
@@ -551,7 +578,6 @@ layout: default
         background: #5a4fcf;
     }
 
-    .validation-section .highlight-box p,
     .validation-section .highlight-box strong {
         color: #5a4fcf;
     }
@@ -599,7 +625,7 @@ layout: default
         transform: translateY(-1px);
     }
 
-    /* Learn More Sections - White background with burnt text colors */
+    /* Learn More Sections - White background with BLACK text and colored headers */
     .learn-more {
         background: white;
         padding: 0;
@@ -616,35 +642,83 @@ layout: default
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     }
 
-    /* Context-aware Learn More text coloring based on parent section */
-    .what-section .learn-more h3,
-    .what-section .learn-more p {
+    /* Context-aware Learn More - BLACK text with colored headers and strong tags */
+    .what-section .learn-more h3 {
         color: #d63031 !important;
     }
 
-    .why-section .learn-more h3,
-    .why-section .learn-more p {
+    .what-section .learn-more p {
+        color: #333 !important;
+    }
+
+    .what-section .learn-more strong {
+        color: #d63031 !important;
+        font-weight: 600;
+    }
+
+    .why-section .learn-more h3 {
         color: #f39c12 !important;
     }
 
-    .immediate-help .learn-more h3,
-    .immediate-help .learn-more p {
+    .why-section .learn-more p {
+        color: #333 !important;
+    }
+
+    .why-section .learn-more strong {
+        color: #f39c12 !important;
+        font-weight: 600;
+    }
+
+    .immediate-help .learn-more h3 {
         color: #005599 !important;
     }
 
-    .long-term .learn-more h3,
-    .long-term .learn-more p {
+    .immediate-help .learn-more p {
+        color: #333 !important;
+    }
+
+    .immediate-help .learn-more strong {
+        color: #005599 !important;
+        font-weight: 600;
+    }
+
+    .long-term .learn-more h3 {
         color: #155724 !important;
     }
 
-    .medical-section .learn-more h3,
-    .medical-section .learn-more p {
+    .long-term .learn-more p {
+        color: #333 !important;
+    }
+
+    .long-term .learn-more strong {
+        color: #155724 !important;
+        font-weight: 600;
+    }
+
+    .medical-section .learn-more h3 {
         color: #0c5460 !important;
     }
 
-    .validation-section .learn-more h3,
-    .validation-section .learn-more p {
+    .medical-section .learn-more p {
+        color: #333 !important;
+    }
+
+    .medical-section .learn-more strong {
+        color: #0c5460 !important;
+        font-weight: 600;
+    }
+
+    .validation-section .learn-more h3 {
         color: #5a4fcf !important;
+    }
+
+    .validation-section .learn-more p {
+        color: #333 !important;
+    }
+
+    .validation-section .learn-more strong {
+        color: #5a4fcf !important;
+        font-weight: 600;
     }
 
     .learn-more h3 {
@@ -675,7 +749,7 @@ layout: default
 
     .learn-more-content {
         display: none;
-        padding: 0 1.5rem 1.5rem 1.5rem;
+        padding: 1rem 1.5rem 1.5rem 1.5rem;
         border-top: 1px solid #e0e0e0;
         user-select: text;
         -webkit-user-select: text;
@@ -699,15 +773,15 @@ layout: default
         display: block;
     }
 
-    /* Jargon styling - simplified */
+    /* Jargon styling - BLACK text with colored underline */
     .jargon {
-        color: #e84393;
+        color: #333;
         text-decoration: none;
         border-bottom: 1px dotted;
         border-bottom-color: currentColor;
         position: relative;
         cursor: help;
-        font-weight: 500;
+        font-weight: 600;
         tabindex: 0;
         transition: opacity 0.2s ease;
     }
@@ -716,87 +790,63 @@ layout: default
         opacity: 0.8;
     }
 
-    /* Context-specific jargon colors matching section burnt colors */
+    /* Context-specific jargon - BLACK text with section-colored underline */
     .what-section .jargon {
-        color: #d63031;
-        font-weight: 600;
         border-bottom-color: #d63031;
     }
 
     .why-section .jargon {
-        color: #f39c12;
-        font-weight: 600;
         border-bottom-color: #f39c12;
     }
 
     .immediate-help .jargon {
-        color: #005599;
-        font-weight: 600;
         border-bottom-color: #005599;
     }
 
     .long-term .jargon {
-        color: #155724;
-        font-weight: 600;
         border-bottom-color: #155724;
     }
 
     .medical-section .jargon {
-        color: #0c5460;
-        font-weight: 600;
         border-bottom-color: #0c5460;
     }
 
     .validation-section .jargon {
-        color: #5a4fcf;
-        font-weight: 600;
         border-bottom-color: #5a4fcf;
     }
 
-    /* Updated jargon colors in Learn More sections to match parent burnt colors */
+    /* Jargon in Learn More sections - BLACK text with subtle colored background */
     .what-section .learn-more .jargon {
-        color: #d63031;
-        border-bottom-color: #d63031;
         background: rgba(214, 48, 49, 0.08);
         padding: 2px 6px;
         border-radius: 4px;
     }
 
     .why-section .learn-more .jargon {
-        color: #f39c12;
-        border-bottom-color: #f39c12;
         background: rgba(243, 156, 18, 0.08);
         padding: 2px 6px;
         border-radius: 4px;
     }
 
     .immediate-help .learn-more .jargon {
-        color: #005599;
-        border-bottom-color: #005599;
         background: rgba(0, 85, 153, 0.08);
         padding: 2px 6px;
         border-radius: 4px;
     }
 
     .long-term .learn-more .jargon {
-        color: #155724;
-        border-bottom-color: #155724;
         background: rgba(21, 87, 36, 0.08);
         padding: 2px 6px;
         border-radius: 4px;
     }
 
     .medical-section .learn-more .jargon {
-        color: #0c5460;
-        border-bottom-color: #0c5460;
         background: rgba(12, 84, 96, 0.08);
         padding: 2px 6px;
         border-radius: 4px;
     }
 
     .validation-section .learn-more .jargon {
-        color: #5a4fcf;
-        border-bottom-color: #5a4fcf;
         background: rgba(90, 79, 207, 0.08);
         padding: 2px 6px;
         border-radius: 4px;
