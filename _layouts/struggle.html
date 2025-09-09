@@ -493,48 +493,58 @@ layout: default
         transform: translateY(-1px);
     }
 
-    /* Learn More Sections - Updated with context-aware coloring */
+    /* Learn More Sections - White background with burnt text colors */
     .learn-more {
-        background: linear-gradient(135deg, #8b92a8, #6c7589);
-        color: white;
+        background: white;
         padding: 0;
         border-radius: 12px;
         margin: 1rem 0 0 0;
         transition: all 0.3s ease;
         position: relative;
         overflow: hidden;
+        border: 2px solid #e0e0e0;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
     }
 
-    /* Context-aware Learn More coloring based on parent section */
-    .what-section .learn-more {
-        background: linear-gradient(135deg, #c73e3a, #8b2220) !important;
+    .learn-more:hover {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     }
 
-    .why-section .learn-more {
-        background: linear-gradient(135deg, #d4a574, #b8860b) !important;
+    /* Context-aware Learn More text coloring based on parent section */
+    .what-section .learn-more h3,
+    .what-section .learn-more p {
+        color: #d63031 !important;
     }
 
-    .immediate-help .learn-more {
-        background: linear-gradient(135deg, #4a7c9e, #2c5282) !important;
+    .why-section .learn-more h3,
+    .why-section .learn-more p {
+        color: #f39c12 !important;
     }
 
-    .long-term .learn-more {
-        background: linear-gradient(135deg, #5a8a70, #2d5a3d) !important;
+    .immediate-help .learn-more h3,
+    .immediate-help .learn-more p {
+        color: #005599 !important;
     }
 
-    .medical-section .learn-more {
-        background: linear-gradient(135deg, #4a9b9e, #2c7a7b) !important;
+    .long-term .learn-more h3,
+    .long-term .learn-more p {
+        color: #155724 !important;
     }
 
-    .validation-section .learn-more {
-        background: linear-gradient(135deg, #7c6fa7, #5a4a8a) !important;
+    .medical-section .learn-more h3,
+    .medical-section .learn-more p {
+        color: #0c5460 !important;
+    }
+
+    .validation-section .learn-more h3,
+    .validation-section .learn-more p {
+        color: #5a4fcf !important;
     }
 
     .learn-more h3 {
         margin: 0;
         padding: 1.5rem;
         font-size: 1.2rem;
-        color: white;
         position: relative;
         z-index: 1;
         cursor: pointer;
@@ -545,20 +555,22 @@ layout: default
         transition: background 0.3s ease;
         display: block;
         width: 100%;
+        background: white;
+        font-weight: 600;
     }
 
     .learn-more h3:hover {
-        background: rgba(255, 255, 255, 0.1);
+        background: rgba(0, 0, 0, 0.02);
     }
 
     .learn-more h3:active {
-        background: rgba(255, 255, 255, 0.05);
+        background: rgba(0, 0, 0, 0.04);
     }
 
     .learn-more-content {
         display: none;
-        padding: 1rem 1rem 1.5rem 1rem;
-        border-top: 1px solid rgba(255, 255, 255, 0.3);
+        padding: 0 1.5rem 1.5rem 1.5rem;
+        border-top: 1px solid #e0e0e0;
         user-select: text;
         -webkit-user-select: text;
         -moz-user-select: text;
@@ -566,14 +578,15 @@ layout: default
         pointer-events: auto;
         position: relative;
         z-index: 2;
+        background: white;
     }
 
     .learn-more-content p {
-        color: white;
         margin-bottom: 1rem;
         user-select: text;
         -webkit-user-select: text;
         pointer-events: auto;
+        line-height: 1.6;
     }
 
     .learn-more.expanded .learn-more-content {
@@ -608,11 +621,51 @@ layout: default
         border-bottom-color: #333;
     }
 
-    .learn-more .jargon,
-    .learn-more-content .jargon {
-        color: white;
-        border-bottom-color: rgba(255, 255, 255, 0.7);
-        background: rgba(255, 255, 255, 0.1);
+    /* Updated jargon colors in Learn More sections to match parent burnt colors */
+    .what-section .learn-more .jargon {
+        color: #d63031;
+        border-bottom-color: #d63031;
+        background: rgba(214, 48, 49, 0.08);
+        padding: 2px 6px;
+        border-radius: 4px;
+    }
+
+    .why-section .learn-more .jargon {
+        color: #f39c12;
+        border-bottom-color: #f39c12;
+        background: rgba(243, 156, 18, 0.08);
+        padding: 2px 6px;
+        border-radius: 4px;
+    }
+
+    .immediate-help .learn-more .jargon {
+        color: #005599;
+        border-bottom-color: #005599;
+        background: rgba(0, 85, 153, 0.08);
+        padding: 2px 6px;
+        border-radius: 4px;
+    }
+
+    .long-term .learn-more .jargon {
+        color: #155724;
+        border-bottom-color: #155724;
+        background: rgba(21, 87, 36, 0.08);
+        padding: 2px 6px;
+        border-radius: 4px;
+    }
+
+    .medical-section .learn-more .jargon {
+        color: #0c5460;
+        border-bottom-color: #0c5460;
+        background: rgba(12, 84, 96, 0.08);
+        padding: 2px 6px;
+        border-radius: 4px;
+    }
+
+    .validation-section .learn-more .jargon {
+        color: #5a4fcf;
+        border-bottom-color: #5a4fcf;
+        background: rgba(90, 79, 207, 0.08);
         padding: 2px 6px;
         border-radius: 4px;
     }
