@@ -493,55 +493,79 @@ layout: default
         transform: translateY(-1px);
     }
 
+    /* Learn More Sections - Updated with context-aware coloring */
     .learn-more {
-        background: linear-gradient(45deg, #8b92a8, #6c7589);
+        background: linear-gradient(135deg, #8b92a8, #6c7589);
         color: white;
-        padding: 1.5rem;
+        padding: 0;
         border-radius: 12px;
-        margin: 1.5rem 0;
-        cursor: pointer;
+        margin: 1rem 0 0 0;
         transition: all 0.3s ease;
         position: relative;
         overflow: hidden;
     }
 
-    .learn-more::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: rgba(255, 255, 255, 0.1);
-        opacity: 0;
-        transition: opacity 0.3s ease;
+    /* Context-aware Learn More coloring based on parent section */
+    .what-section .learn-more {
+        background: linear-gradient(135deg, #c73e3a, #8b2220) !important;
     }
 
-    .learn-more:hover::before {
-        opacity: 1;
+    .why-section .learn-more {
+        background: linear-gradient(135deg, #d4a574, #b8860b) !important;
+    }
+
+    .immediate-help .learn-more {
+        background: linear-gradient(135deg, #4a7c9e, #2c5282) !important;
+    }
+
+    .long-term .learn-more {
+        background: linear-gradient(135deg, #5a8a70, #2d5a3d) !important;
+    }
+
+    .medical-section .learn-more {
+        background: linear-gradient(135deg, #4a9b9e, #2c7a7b) !important;
+    }
+
+    .validation-section .learn-more {
+        background: linear-gradient(135deg, #7c6fa7, #5a4a8a) !important;
     }
 
     .learn-more h3 {
-        margin-bottom: 1rem;
+        margin: 0;
+        padding: 1.5rem;
         font-size: 1.2rem;
         color: white;
         position: relative;
         z-index: 1;
+        cursor: pointer;
+        user-select: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        transition: background 0.3s ease;
+        display: block;
+        width: 100%;
     }
 
-    .learn-more:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    .learn-more h3:hover {
+        background: rgba(255, 255, 255, 0.1);
+    }
+
+    .learn-more h3:active {
+        background: rgba(255, 255, 255, 0.05);
     }
 
     .learn-more-content {
         display: none;
-        padding: 1rem 0rem 0rem 0rem;
+        padding: 1rem 1.5rem 0.75rem 1.5rem;
         border-top: 1px solid rgba(255, 255, 255, 0.3);
         user-select: text;
         -webkit-user-select: text;
         -moz-user-select: text;
         -ms-user-select: text;
+        pointer-events: auto;
+        position: relative;
+        z-index: 2;
     }
 
     .learn-more-content p {
@@ -549,6 +573,7 @@ layout: default
         margin-bottom: 1rem;
         user-select: text;
         -webkit-user-select: text;
+        pointer-events: auto;
     }
 
     .learn-more.expanded .learn-more-content {
@@ -854,8 +879,8 @@ layout: default
                 <a href="#what-this-feels-like" class="toc-link">
                     <span class="toc-icon">💭</span> What This Feels Like
                 </a>
-                <a href="#why-this-happens" class="toc-link">
-                    <span class="toc-icon">🧠</span> Why This Happens  
+                <a href="#why-this-might-be-happening" class="toc-link">
+                    <span class="toc-icon">🧠</span> Why This Might Be Happening  
                 </a>
                 <a href="#next-five-minutes" class="toc-link">
                     <span class="toc-icon">⚡</span> Next 5 Minutes
@@ -966,14 +991,18 @@ function toggleTOC() {
     }
 }
 
-// Learn more toggle
-function toggleLearnMore(element) {
-    element.classList.toggle('expanded');
-    const arrow = element.querySelector('h3');
-    if (element.classList.contains('expanded')) {
-        arrow.innerHTML = arrow.innerHTML.replace('↓', '↑');
-    } else {
-        arrow.innerHTML = arrow.innerHTML.replace('↑', '↓');
+// Learn more toggle - updated to expect container passed from this.parentElement
+function toggleLearnMore(container) {
+    if (container && container.classList.contains('learn-more')) {
+        container.classList.toggle('expanded');
+        const arrow = container.querySelector('h3');
+        if (arrow) {
+            if (container.classList.contains('expanded')) {
+                arrow.innerHTML = arrow.innerHTML.replace('↓', '↑');
+            } else {
+                arrow.innerHTML = arrow.innerHTML.replace('↑', '↓');
+            }
+        }
     }
 }
 
