@@ -23,6 +23,19 @@ search_terms: ["need less sleep", "feel fine tired", "energized no sleep", "mani
 
 <!-- File: /struggles/decreased-need-for-sleep.html -->
 
+<script>
+function toggleLearnMore(element) {
+    var content = element.nextElementSibling;
+    if (content.style.display === "none" || content.style.display === "") {
+        content.style.display = "block";
+        element.innerHTML = element.innerHTML.replace("↓", "↑");
+    } else {
+        content.style.display = "none";
+        element.innerHTML = element.innerHTML.replace("↑", "↓");
+    }
+}
+</script>
+
 <div class="content-card">
     <div class="what-section">
         <h2 id="what-this-feels-like">What This Feels Like</h2>
@@ -34,6 +47,10 @@ search_terms: ["need less sleep", "feel fine tired", "energized no sleep", "mani
 
         <p>This often serves as the biggest puzzle piece in recognizing <a class="jargon">mood episode patterns<span class="tooltip">Recurring cycles of mood symptoms that indicate the onset of manic, hypomanic, or depressive episodes</span></a>. Sleep changes frequently appear before other <a class="jargon">hypomanic<span class="tooltip">A milder form of mania lasting at least four days with elevated mood but less severe impairment</span></a> or <a class="jargon">manic symptoms<span class="tooltip">Symptoms of elevated, expansive, or irritable mood including increased energy, racing thoughts, and decreased need for sleep</span></a> become obvious. Your brain is preparing to release reward chemicals, creating a sense of productivity and readiness to tackle the world as other mood changes begin trickling in.</p>
 
+        <div class="highlight-box">
+            <p><strong>Common experiences:</strong> Waking after 2-3 hours feeling completely energized; wondering why you ever needed 8 hours of sleep; feeling like you've discovered a superpower; noticing this pattern before other mood changes; experiencing more efficient, restorative sleep quality during these periods.</p>
+        </div>
+
         <div class="learn-more">
             <h3 onclick="toggleLearnMore(this)">Learn More: Why Decreased Sleep Feels So Refreshing ↓</h3>
             <div class="learn-more-content">
@@ -41,10 +58,6 @@ search_terms: ["need less sleep", "feel fine tired", "energized no sleep", "mani
                 <p>The <a class="jargon">dopaminergic system<span class="tooltip">Brain pathways involving dopamine that regulate motivation, reward, and arousal</span></a> also becomes hyperactive during elevated mood episodes. Dr. Wehr's research suggests that high dopamine concentrations during mania affect not only mood but also <a class="jargon">sleep architecture<span class="tooltip">The structure and patterns of sleep stages throughout the night</span></a>, making shorter sleep periods feel more restorative than they would during normal mood states.</p>
                 <p>This refreshing quality isn't imagined - your brain is actually processing sleep differently. However, this biological change also serves as a warning sign, as studies show that decreased sleep need often appears 1-2 days before other episode symptoms become apparent.</p>
             </div>
-        </div>
-
-        <div class="highlight-box">
-            <p><strong>Common experiences:</strong> Waking after 2-3 hours feeling completely energized; wondering why you ever needed 8 hours of sleep; feeling like you've discovered a superpower; noticing this pattern before other mood changes; experiencing more efficient, restorative sleep quality during these periods.</p>
         </div>
     </div>
 
