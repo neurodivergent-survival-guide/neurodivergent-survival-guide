@@ -121,6 +121,12 @@ layout: default
             content: ") ";
             border: none !important;
         }
+        
+        .highlight-box {
+            background: white !important;
+            border: 2pt solid #333 !important;
+            page-break-inside: avoid;
+        }
     }
 
     .header {
@@ -387,6 +393,61 @@ layout: default
     .validation-section li {
         margin-bottom: 0.8rem;
         font-size: 0.95rem;
+    }
+
+    /* Highlight Box - Bottom Bar Accent Design */
+    .highlight-box {
+        background: #fafafa;
+        padding: 20px;
+        margin: 20px 0;
+        border-radius: 8px 8px 0 0;
+        position: relative;
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    .highlight-box::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, {{ colors.gradient_start }}, {{ colors.gradient_end }});
+        border-radius: 0 0 8px 8px;
+        transition: background 0.3s ease;
+    }
+
+    .highlight-box:hover {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        transform: translateY(-1px);
+    }
+
+    .highlight-box p {
+        color: #444;
+        margin: 0;
+        line-height: 1.6;
+    }
+
+    .highlight-box strong {
+        color: {{ colors.primary }};
+        text-transform: uppercase;
+        font-size: 0.9em;
+        letter-spacing: 1px;
+        transition: color 0.3s ease;
+        display: inline-block;
+        margin-bottom: 0.25rem;
+    }
+
+    /* Context-specific highlight box adjustments */
+    .what-section .highlight-box,
+    .why-section .highlight-box,
+    .immediate-help .highlight-box,
+    .long-term .highlight-box,
+    .medical-section .highlight-box,
+    .validation-section .highlight-box {
+        background: rgba(255, 255, 255, 0.85);
+        margin: 1.5rem 0;
     }
 
     .related-struggles {
@@ -664,6 +725,11 @@ layout: default
             padding: 1.5rem;
         }
 
+        .highlight-box {
+            margin: 1rem 0;
+            padding: 16px;
+        }
+
         .toc-links {
             grid-template-columns: 1fr;
         }
@@ -685,7 +751,8 @@ layout: default
         .toc-card:hover,
         .learn-more:hover,
         .struggle-tag:hover,
-        .struggle-navigation .nav-link:hover {
+        .struggle-navigation .nav-link:hover,
+        .highlight-box:hover {
             transform: none !important;
         }
     }
@@ -706,6 +773,10 @@ layout: default
         .medical-section,
         .validation-section {
             padding: 1.2rem;
+        }
+
+        .highlight-box {
+            padding: 14px;
         }
 
         .table-of-contents {
