@@ -362,7 +362,44 @@ layout: default
         font-size: 1.6rem;
     }
 
-    /* Common section styling */
+    /* Common section styling with section-specific burnt colors */
+    .what-section p,
+    .what-section ul,
+    .what-section li {
+        color: #d63031;
+    }
+
+    .why-section p,
+    .why-section ul,
+    .why-section li {
+        color: #f39c12;
+    }
+
+    .immediate-help p,
+    .immediate-help ul,
+    .immediate-help li {
+        color: #005599;
+    }
+
+    .long-term p,
+    .long-term ul,
+    .long-term li {
+        color: #155724;
+    }
+
+    .medical-section p,
+    .medical-section ul,
+    .medical-section li {
+        color: #0c5460;
+    }
+
+    .validation-section p,
+    .validation-section ul,
+    .validation-section li {
+        color: #5a4fcf;
+    }
+
+    /* Common formatting for all sections */
     .what-section p,
     .why-section p,
     .immediate-help p,
@@ -371,7 +408,6 @@ layout: default
     .validation-section p {
         margin-bottom: 1rem;
         font-size: 1.05rem;
-        color: #555;
     }
 
     .what-section ul,
@@ -380,7 +416,6 @@ layout: default
     .long-term ul,
     .medical-section ul,
     .validation-section ul {
-        color: #555;
         padding-left: 1.2rem;
         margin-bottom: 1rem;
     }
@@ -395,7 +430,7 @@ layout: default
         font-size: 0.95rem;
     }
 
-    /* Highlight Box - Bottom Bar Accent Design */
+    /* Highlight Box - Base styles */
     .highlight-box {
         background: #fafafa;
         padding: 20px;
@@ -413,7 +448,6 @@ layout: default
         left: 0;
         right: 0;
         height: 4px;
-        background: linear-gradient(90deg, {{ colors.gradient_start }}, {{ colors.gradient_end }});
         border-radius: 0 0 8px 8px;
         transition: background 0.3s ease;
     }
@@ -424,13 +458,11 @@ layout: default
     }
 
     .highlight-box p {
-        color: #444;
         margin: 0;
         line-height: 1.6;
     }
 
     .highlight-box strong {
-        color: {{ colors.primary }};
         text-transform: uppercase;
         font-size: 0.9em;
         letter-spacing: 1px;
@@ -439,15 +471,89 @@ layout: default
         margin-bottom: 0.25rem;
     }
 
-    /* Context-specific highlight box adjustments */
-    .what-section .highlight-box,
-    .why-section .highlight-box,
-    .immediate-help .highlight-box,
-    .long-term .highlight-box,
-    .medical-section .highlight-box,
+    /* Section-specific highlight box colors */
+    .what-section .highlight-box {
+        background: rgba(255, 255, 255, 0.85);
+        margin: 1.5rem 0;
+    }
+
+    .what-section .highlight-box::after {
+        background: #d63031;
+    }
+
+    .what-section .highlight-box p,
+    .what-section .highlight-box strong {
+        color: #d63031;
+    }
+
+    .why-section .highlight-box {
+        background: rgba(255, 255, 255, 0.85);
+        margin: 1.5rem 0;
+    }
+
+    .why-section .highlight-box::after {
+        background: #f39c12;
+    }
+
+    .why-section .highlight-box p,
+    .why-section .highlight-box strong {
+        color: #f39c12;
+    }
+
+    .immediate-help .highlight-box {
+        background: rgba(255, 255, 255, 0.85);
+        margin: 1.5rem 0;
+    }
+
+    .immediate-help .highlight-box::after {
+        background: #005599;
+    }
+
+    .immediate-help .highlight-box p,
+    .immediate-help .highlight-box strong {
+        color: #005599;
+    }
+
+    .long-term .highlight-box {
+        background: rgba(255, 255, 255, 0.85);
+        margin: 1.5rem 0;
+    }
+
+    .long-term .highlight-box::after {
+        background: #155724;
+    }
+
+    .long-term .highlight-box p,
+    .long-term .highlight-box strong {
+        color: #155724;
+    }
+
+    .medical-section .highlight-box {
+        background: rgba(255, 255, 255, 0.85);
+        margin: 1.5rem 0;
+    }
+
+    .medical-section .highlight-box::after {
+        background: #0c5460;
+    }
+
+    .medical-section .highlight-box p,
+    .medical-section .highlight-box strong {
+        color: #0c5460;
+    }
+
     .validation-section .highlight-box {
         background: rgba(255, 255, 255, 0.85);
         margin: 1.5rem 0;
+    }
+
+    .validation-section .highlight-box::after {
+        background: #5a4fcf;
+    }
+
+    .validation-section .highlight-box p,
+    .validation-section .highlight-box strong {
+        color: #5a4fcf;
     }
 
     .related-struggles {
@@ -597,28 +703,54 @@ layout: default
     .jargon {
         color: #e84393;
         text-decoration: none;
-        border-bottom: 1px dotted #e84393;
+        border-bottom: 1px dotted;
+        border-bottom-color: currentColor;
         position: relative;
         cursor: help;
         font-weight: 500;
         tabindex: 0;
+        transition: opacity 0.2s ease;
     }
 
     .jargon:hover {
-        color: #fd79a8;
-        border-bottom-color: #fd79a8;
+        opacity: 0.8;
     }
 
-    /* Context-specific jargon colors */
-    .what-section .jargon,
-    .why-section .jargon,
-    .immediate-help .jargon,
-    .long-term .jargon,
-    .medical-section .jargon,
-    .validation-section .jargon {
-        color: #333;
+    /* Context-specific jargon colors matching section burnt colors */
+    .what-section .jargon {
+        color: #d63031;
         font-weight: 600;
-        border-bottom-color: #333;
+        border-bottom-color: #d63031;
+    }
+
+    .why-section .jargon {
+        color: #f39c12;
+        font-weight: 600;
+        border-bottom-color: #f39c12;
+    }
+
+    .immediate-help .jargon {
+        color: #005599;
+        font-weight: 600;
+        border-bottom-color: #005599;
+    }
+
+    .long-term .jargon {
+        color: #155724;
+        font-weight: 600;
+        border-bottom-color: #155724;
+    }
+
+    .medical-section .jargon {
+        color: #0c5460;
+        font-weight: 600;
+        border-bottom-color: #0c5460;
+    }
+
+    .validation-section .jargon {
+        color: #5a4fcf;
+        font-weight: 600;
+        border-bottom-color: #5a4fcf;
     }
 
     /* Updated jargon colors in Learn More sections to match parent burnt colors */
