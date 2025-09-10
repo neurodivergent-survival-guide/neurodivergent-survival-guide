@@ -140,6 +140,32 @@ permalink: /validate-struggles.html
         color: #dc3545;
     }
     
+    .page-links {
+        margin: 0.5rem 0;
+        padding: 0.5rem 1rem;
+        background: #e9ecef;
+        border-radius: 4px;
+        display: flex;
+        gap: 1rem;
+        font-size: 0.9rem;
+    }
+    
+    .page-links a {
+        color: #007bff;
+        text-decoration: none;
+        padding: 0.25rem 0.5rem;
+        background: white;
+        border-radius: 4px;
+        border: 1px solid #dee2e6;
+        transition: all 0.3s ease;
+    }
+    
+    .page-links a:hover {
+        background: #007bff;
+        color: white;
+        text-decoration: none;
+    }
+    
     .loading {
         text-align: center;
         padding: 2rem;
@@ -171,6 +197,9 @@ permalink: /validate-struggles.html
             ✓ No condition suffixes in link text
             ✓ All linked struggles exist in struggle_order.yml
             ✓ Each page has exactly 4 or 5 related struggles
+        </p>
+        <p style="font-size: 0.85rem; color: #999; margin-top: 0.5rem;">
+            Access this validator at: <a href="https://neurodivergentsurvival.guide/validate-struggles.html" style="color: #d63031;">https://neurodivergentsurvival.guide/validate-struggles.html</a>
         </p>
     </div>
 
@@ -265,7 +294,9 @@ permalink: /validate-struggles.html
             title: "{{ page.title | escape }}",
             slug: "{{ page.slug }}",
             url: "{{ page.url }}",
-            condition: "{{ page.condition }}"
+            condition: "{{ page.condition }}",
+            liveUrl: "https://neurodivergentsurvival.guide/struggles/{{ page.slug }}.html",
+            githubUrl: "https://github.com/neurodivergent-survival-guide/neurodivergent-survival-guide/blob/main/struggles/{{ page.slug }}.html"
         }{% unless forloop.last %},{% endunless %}
         {% endfor %}
     ];
@@ -354,6 +385,12 @@ permalink: /validate-struggles.html
                 
                 htmlOutput += '</summary>';
                 
+                // Add page links with buttons
+                htmlOutput += '<div class="page-links">';
+                htmlOutput += `📄 <a href="${page.liveUrl}" target="_blank">View Live Page</a>`;
+                htmlOutput += `💻 <a href="${page.githubUrl}" target="_blank">Edit on GitHub</a>`;
+                htmlOutput += '</div>';
+                
                 // Add details
                 errors.forEach(error => {
                     htmlOutput += `<div class="error-item"><strong>Error:</strong> ${error}</div>`;
@@ -378,7 +415,17 @@ permalink: /validate-struggles.html
                 htmlOutput += '</details>';
                 
             } catch (error) {
-                htmlOutput += `<div class="error-item">Failed to validate ${page.title}: ${error.message}</div>`;
+                htmlOutput += '<details>';
+                htmlOutput += '<summary>';
+                htmlOutput += `<span class="page-title">${page.title}</span> `;
+                htmlOutput += '<span class="invalid">⚠️ Validation failed</span>';
+                htmlOutput += '</summary>';
+                htmlOutput += '<div class="page-links">';
+                htmlOutput += `📄 <a href="${page.liveUrl}" target="_blank">View Live Page</a>`;
+                htmlOutput += `💻 <a href="${page.githubUrl}" target="_blank">Edit on GitHub</a>`;
+                htmlOutput += '</div>';
+                htmlOutput += `<div class="error-item">Failed to validate: ${error.message}</div>`;
+                htmlOutput += '</details>';
             }
         }
         
@@ -387,7 +434,7 @@ permalink: /validate-struggles.html
         if (totalErrors === 0 && totalWarnings === 0) {
             summaryHtml = '<div class="success-item">';
             summaryHtml += '<strong>✅ All struggle pages passed validation!</strong><br>';
-            summaryHtml += `Checked ${strugglePages.length} pages - all have valid related struggle links.`;
+            summaryHtml += `Checked ${strugglePages.length} pages on <a href="https://neurodivergentsurvival.guide" target="_blank">neurodivergentsurvival.guide</a> - all have valid related struggle links.`;
             summaryHtml += '</div>';
         } else {
             summaryHtml = '<div class="stats-grid">';
