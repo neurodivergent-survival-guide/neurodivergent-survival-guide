@@ -728,10 +728,11 @@ layout: default
         position: relative;
         z-index: 1;
         cursor: pointer;
-        user-select: none;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
+        user-select: text;  /* Allows header text selection */
+        -webkit-user-select: text;
+        -moz-user-select: text;
+        -ms-user-select: text;
+        cursor: pointer;
         transition: background 0.3s ease;
         display: block;
         width: 100%;
