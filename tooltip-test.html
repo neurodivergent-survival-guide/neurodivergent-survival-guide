@@ -145,21 +145,40 @@ function changeTooltipStyle() {
     
     let newStyles = '';
     
+    // Section color mappings
+    const sectionColors = `
+        /* Section-specific jargon colors */
+        .what-section .jargon { color: #d63031 !important; }
+        .why-section .jargon { color: #f39c12 !important; }
+        .immediate-help .jargon { color: #005599 !important; }
+        .long-term .jargon { color: #155724 !important; }
+        .medical-section .jargon { color: #0c5460 !important; }
+        .validation-section .jargon { color: #5a4fcf !important; }
+        
+        /* Section-specific tooltip borders */
+        .what-section .tooltip { border-bottom: 3px solid #d63031 !important; }
+        .why-section .tooltip { border-bottom: 3px solid #f39c12 !important; }
+        .immediate-help .tooltip { border-bottom: 3px solid #005599 !important; }
+        .long-term .tooltip { border-bottom: 3px solid #155724 !important; }
+        .medical-section .tooltip { border-bottom: 3px solid #0c5460 !important; }
+        .validation-section .tooltip { border-bottom: 3px solid #5a4fcf !important; }
+    `;
+    
     switch(value) {
         case '1':
-            // Classic Dark with bottom border
+            // Classic Dark with section-aware colors
             newStyles = `
                 .jargon {
-                    color: #007acc !important;
-                    border-bottom: 1px dotted #007acc !important;
+                    border-bottom: 1px dotted currentColor !important;
                 }
+                
+                ${sectionColors}
                 
                 .tooltip {
                     background: #1a1a1a !important;
                     color: white !important;
                     border-radius: 6px !important;
                     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3) !important;
-                    border-bottom: 3px solid #007acc !important;
                     opacity: 1 !important;
                 }
                 
@@ -176,12 +195,13 @@ function changeTooltipStyle() {
             break;
             
         case '2':
-            // Glassmorphism with bottom border
+            // Glassmorphism with section-aware colors
             newStyles = `
                 .jargon {
-                    color: #6366f1 !important;
-                    border-bottom: 2px solid #6366f1 !important;
+                    border-bottom: 2px solid currentColor !important;
                 }
+                
+                ${sectionColors}
                 
                 .tooltip {
                     background: rgba(255, 255, 255, 0.95) !important;
@@ -189,8 +209,7 @@ function changeTooltipStyle() {
                     color: #1e293b !important;
                     border-radius: 12px !important;
                     border: 1px solid rgba(255, 255, 255, 0.3) !important;
-                    border-bottom: 3px solid #6366f1 !important;
-                    box-shadow: 0 8px 32px rgba(99, 102, 241, 0.2) !important;
+                    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15) !important;
                     opacity: 1 !important;
                 }
                 
@@ -201,40 +220,42 @@ function changeTooltipStyle() {
             break;
             
         case '9':
-            // Minimal Line with bottom border
+            // Minimal White with section-aware colors
             newStyles = `
                 .jargon {
-                    color: #475569 !important;
-                    border-bottom: 1px solid #cbd5e1 !important;
+                    border-bottom: 1px solid currentColor !important;
                     padding-bottom: 2px !important;
                 }
+                
+                ${sectionColors}
                 
                 .tooltip {
                     background: white !important;
                     color: #1e293b !important;
                     border-radius: 4px !important;
                     box-shadow: 0 1px 3px rgba(0,0,0,0.12) !important;
-                    border-bottom: 4px solid #3b82f6 !important;
-                    padding-left: 16px !important;
+                    border-bottom-width: 4px !important;
+                    border-bottom-style: solid !important;
                     opacity: 1 !important;
                 }
             `;
             break;
             
         case '12':
-            // Modern Card with bottom border
+            // Modern Card with section-aware colors
             newStyles = `
                 .jargon {
-                    color: #8b5cf6 !important;
                     font-weight: 500 !important;
                     border-bottom: 2px solid transparent !important;
-                    background: linear-gradient(to right, #8b5cf6, #8b5cf6) bottom / 0% 2px no-repeat !important;
+                    background: linear-gradient(to right, currentColor, currentColor) bottom / 0% 2px no-repeat !important;
                     transition: background-size 0.3s !important;
                 }
                 
                 .jargon:hover {
                     background-size: 100% 2px !important;
                 }
+                
+                ${sectionColors}
                 
                 .tooltip {
                     background: white !important;
@@ -243,7 +264,6 @@ function changeTooltipStyle() {
                     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
                                 0 10px 10px -5px rgba(0, 0, 0, 0.04) !important;
                     border: 1px solid #e5e7eb !important;
-                    border-bottom: 3px solid #8b5cf6 !important;
                     padding: 16px 20px !important;
                     opacity: 1 !important;
                 }
