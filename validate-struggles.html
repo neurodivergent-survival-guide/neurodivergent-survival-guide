@@ -1,0 +1,415 @@
+---
+layout: default
+title: "Struggle Links Validator"
+permalink: /validate-struggles.html
+---
+<!-- File: /validate-struggles.html -->
+
+<style>
+    .validation-container {
+        max-width: 1200px;
+        margin: 2rem auto;
+        padding: 2rem;
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    
+    .validation-header {
+        border-bottom: 3px solid #d63031;
+        padding-bottom: 1rem;
+        margin-bottom: 2rem;
+    }
+    
+    .validation-header h1 {
+        color: #333;
+        font-size: 2rem;
+    }
+    
+    .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+        margin: 2rem 0;
+    }
+    
+    .stat-card {
+        background: #f8f9fa;
+        padding: 1.5rem;
+        border-radius: 8px;
+        text-align: center;
+        border-top: 3px solid #d63031;
+    }
+    
+    .stat-number {
+        font-size: 2.5rem;
+        font-weight: bold;
+        color: #d63031;
+    }
+    
+    .stat-label {
+        color: #666;
+        margin-top: 0.5rem;
+    }
+    
+    .validation-section {
+        background: #f8f9fa;
+        padding: 1.5rem;
+        border-radius: 8px;
+        margin: 2rem 0;
+    }
+    
+    .validation-section h2 {
+        color: #333;
+        margin-bottom: 1rem;
+        font-size: 1.5rem;
+    }
+    
+    .error-item {
+        background: #f8d7da;
+        border-left: 4px solid #dc3545;
+        padding: 1rem;
+        margin: 0.5rem 0;
+        border-radius: 4px;
+    }
+    
+    .warning-item {
+        background: #fff3cd;
+        border-left: 4px solid #ffc107;
+        padding: 1rem;
+        margin: 0.5rem 0;
+        border-radius: 4px;
+    }
+    
+    .success-item {
+        background: #d4edda;
+        border-left: 4px solid #28a745;
+        padding: 1rem;
+        margin: 0.5rem 0;
+        border-radius: 4px;
+    }
+    
+    .page-title {
+        font-weight: bold;
+        color: #d63031;
+    }
+    
+    .issue-detail {
+        margin-top: 0.5rem;
+        font-size: 0.9rem;
+        color: #555;
+    }
+    
+    .code {
+        background: #f4f4f4;
+        padding: 2px 6px;
+        border-radius: 3px;
+        font-family: monospace;
+    }
+    
+    details {
+        margin: 1rem 0;
+    }
+    
+    summary {
+        cursor: pointer;
+        padding: 0.5rem;
+        background: #e9ecef;
+        border-radius: 4px;
+        font-weight: bold;
+    }
+    
+    summary:hover {
+        background: #dee2e6;
+    }
+    
+    .link-list {
+        margin: 1rem 0;
+        padding-left: 2rem;
+    }
+    
+    .link-list li {
+        margin: 0.5rem 0;
+    }
+    
+    .valid {
+        color: #28a745;
+    }
+    
+    .invalid {
+        color: #dc3545;
+    }
+    
+    .loading {
+        text-align: center;
+        padding: 2rem;
+        color: #666;
+    }
+    
+    .loading-spinner {
+        border: 3px solid #f3f3f3;
+        border-top: 3px solid #d63031;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        animation: spin 1s linear infinite;
+        margin: 0 auto 1rem;
+    }
+    
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+</style>
+
+<div class="validation-container">
+    <div class="validation-header">
+        <h1>🔍 Struggle Links Validator</h1>
+        <p>Automated validation of all struggle page related links</p>
+        <p style="font-size: 0.9rem; color: #666; margin-top: 0.5rem;">
+            This tool validates: 
+            ✓ No condition suffixes in link text
+            ✓ All linked struggles exist in struggle_order.yml
+            ✓ Each page has exactly 4 or 5 related struggles
+        </p>
+    </div>
+
+    {% comment %}
+    Collect all valid struggle slugs from struggle_order.yml
+    {% endcomment %}
+    {% assign valid_slugs = '' | split: '' %}
+    {% assign total_defined_struggles = 0 %}
+    
+    {% for condition_data in site.data.struggle_order %}
+        {% assign condition = condition_data[0] %}
+        {% assign struggles = condition_data[1] %}
+        {% for struggle in struggles %}
+            {% assign valid_slugs = valid_slugs | push: struggle.slug %}
+            {% assign total_defined_struggles = total_defined_struggles | plus: 1 %}
+        {% endfor %}
+    {% endfor %}
+
+    {% comment %}
+    Get all struggle pages
+    {% endcomment %}
+    {% assign struggle_pages = site.pages | where: "layout", "struggle" %}
+    {% assign published_struggles = struggle_pages | where_exp: "page", "page.status != 'draft'" %}
+    
+    <div class="stats-grid">
+        <div class="stat-card">
+            <div class="stat-number">{{ total_defined_struggles }}</div>
+            <div class="stat-label">Defined Struggles</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">{{ published_struggles.size }}</div>
+            <div class="stat-label">Published Pages</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">{{ valid_slugs.size }}</div>
+            <div class="stat-label">Valid Slugs</div>
+        </div>
+    </div>
+
+    <div class="validation-section">
+        <h2>📋 Validation Results</h2>
+        <div id="validation-results">
+            <div class="loading">
+                <div class="loading-spinner"></div>
+                <p>Loading and validating all struggle pages...</p>
+                <p style="font-size: 0.9rem; color: #999;">This may take a moment as we check each page.</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="validation-section">
+        <h2>🛠️ How to Fix Common Issues</h2>
+        <ul>
+            <li><strong>Condition Suffixes:</strong> Remove "(ADHD)", "(Autism)", "(Bipolar)", "(BPD)", or "(OCD)" from link text. Example: Change "Emotional Dysregulation (ADHD)" to just "Emotional Dysregulation"</li>
+            <li><strong>Invalid Slugs:</strong> Ensure all linked struggles match exactly the slugs defined in <code>_data/struggle_order.yml</code></li>
+            <li><strong>Link Counts:</strong> Each struggle page must have exactly 4 or 5 related struggles (not "4-5", pick one number)</li>
+            <li><strong>Missing Links:</strong> If a page shows 0 links, check that it has a <code>&lt;div class="related-struggles"&gt;</code> section with <code>struggle-tag</code> links</li>
+        </ul>
+    </div>
+
+    <div class="validation-section">
+        <h2>📚 All Valid Struggle Slugs</h2>
+        <p>These are all the valid struggle slugs defined in struggle_order.yml:</p>
+        
+        {% for condition_data in site.data.struggle_order %}
+            {% assign condition = condition_data[0] %}
+            {% assign struggles = condition_data[1] %}
+            <details>
+                <summary>{{ condition | upcase }} ({{ struggles.size }} struggles)</summary>
+                <ul class="link-list">
+                    {% for struggle in struggles %}
+                        <li><span class="code">{{ struggle.slug }}</span> - {{ struggle.title }}</li>
+                    {% endfor %}
+                </ul>
+            </details>
+        {% endfor %}
+    </div>
+</div>
+
+<script>
+    // Store all valid slugs from Jekyll data
+    const validSlugs = new Set([
+        {% for slug in valid_slugs %}
+            "{{ slug }}"{% unless forloop.last %},{% endunless %}
+        {% endfor %}
+    ]);
+    
+    // Store all struggle pages data
+    const strugglePages = [
+        {% for page in published_struggles %}
+        {
+            title: "{{ page.title | escape }}",
+            slug: "{{ page.slug }}",
+            url: "{{ page.url }}",
+            condition: "{{ page.condition }}"
+        }{% unless forloop.last %},{% endunless %}
+        {% endfor %}
+    ];
+    
+    // Function to validate pages
+    async function validateAllPages() {
+        const resultsDiv = document.getElementById('validation-results');
+        let totalErrors = 0;
+        let totalWarnings = 0;
+        let pagesWithIssues = [];
+        let htmlOutput = '';
+        
+        for (const page of strugglePages) {
+            try {
+                // Fetch the page content
+                const response = await fetch(page.url);
+                const text = await response.text();
+                
+                // Parse the HTML
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(text, 'text/html');
+                
+                // Find all related struggle links
+                const relatedSection = doc.querySelector('.related-struggles');
+                const struggleLinks = relatedSection ? relatedSection.querySelectorAll('a.struggle-tag') : [];
+                
+                const errors = [];
+                const warnings = [];
+                const validLinks = [];
+                
+                // Check each link
+                struggleLinks.forEach(link => {
+                    const href = link.getAttribute('href');
+                    const linkText = link.textContent.trim();
+                    
+                    // Extract slug from href
+                    const slugMatch = href.match(/struggles\/([^.]+)\.html/);
+                    const slug = slugMatch ? slugMatch[1] : null;
+                    
+                    // Check for condition suffixes
+                    if (/\((ADHD|Autism|Bipolar|BPD|OCD)\)/.test(linkText)) {
+                        errors.push(`Link text contains condition suffix: "${linkText}"`);
+                        totalErrors++;
+                    }
+                    
+                    // Check if slug is valid
+                    if (slug && !validSlugs.has(slug)) {
+                        errors.push(`Invalid slug: "${slug}" (link text: "${linkText}")`);
+                        totalErrors++;
+                    } else if (slug) {
+                        validLinks.push(`${slug} → ${linkText}`);
+                    }
+                });
+                
+                // Check link count
+                const linkCount = struggleLinks.length;
+                if (linkCount !== 4 && linkCount !== 5) {
+                    warnings.push(`Has ${linkCount} related links (should be 4 or 5)`);
+                    totalWarnings++;
+                }
+                
+                if (linkCount === 0) {
+                    errors.push('No related struggles section found');
+                    totalErrors++;
+                }
+                
+                // Build HTML for this page
+                const hasIssues = errors.length > 0 || warnings.length > 0;
+                if (hasIssues) {
+                    pagesWithIssues.push(page.title);
+                }
+                
+                htmlOutput += '<details>';
+                htmlOutput += '<summary>';
+                htmlOutput += `<span class="page-title">${page.title}</span> `;
+                
+                if (errors.length > 0) {
+                    htmlOutput += `<span class="invalid">❌ ${errors.length} error(s)</span> `;
+                }
+                if (warnings.length > 0) {
+                    htmlOutput += `<span style="color: #ffc107;">⚠️ ${warnings.length} warning(s)</span>`;
+                }
+                if (!hasIssues) {
+                    htmlOutput += '<span class="valid">✅ All checks passed</span>';
+                }
+                
+                htmlOutput += '</summary>';
+                
+                // Add details
+                errors.forEach(error => {
+                    htmlOutput += `<div class="error-item"><strong>Error:</strong> ${error}</div>`;
+                });
+                
+                warnings.forEach(warning => {
+                    htmlOutput += `<div class="warning-item"><strong>Warning:</strong> ${warning}</div>`;
+                });
+                
+                if (!hasIssues) {
+                    htmlOutput += `<div class="success-item">All ${linkCount} related struggle links are valid with no issues.</div>`;
+                }
+                
+                if (validLinks.length > 0) {
+                    htmlOutput += '<div class="issue-detail"><strong>Valid links found:</strong><ul class="link-list">';
+                    validLinks.forEach(link => {
+                        htmlOutput += `<li class="valid">✓ ${link}</li>`;
+                    });
+                    htmlOutput += '</ul></div>';
+                }
+                
+                htmlOutput += '</details>';
+                
+            } catch (error) {
+                htmlOutput += `<div class="error-item">Failed to validate ${page.title}: ${error.message}</div>`;
+            }
+        }
+        
+        // Add summary at the top
+        let summaryHtml = '';
+        if (totalErrors === 0 && totalWarnings === 0) {
+            summaryHtml = '<div class="success-item">';
+            summaryHtml += '<strong>✅ All struggle pages passed validation!</strong><br>';
+            summaryHtml += `Checked ${strugglePages.length} pages - all have valid related struggle links.`;
+            summaryHtml += '</div>';
+        } else {
+            summaryHtml = '<div class="stats-grid">';
+            summaryHtml += `<div class="stat-card"><div class="stat-number" style="color: #dc3545;">${totalErrors}</div><div class="stat-label">Total Errors</div></div>`;
+            summaryHtml += `<div class="stat-card"><div class="stat-number" style="color: #ffc107;">${totalWarnings}</div><div class="stat-label">Total Warnings</div></div>`;
+            summaryHtml += `<div class="stat-card"><div class="stat-number">${pagesWithIssues.length}</div><div class="stat-label">Pages with Issues</div></div>`;
+            summaryHtml += '</div>';
+            
+            if (pagesWithIssues.length > 0) {
+                summaryHtml += '<div class="warning-item" style="margin-top: 1rem;">';
+                summaryHtml += '<strong>Pages needing attention:</strong><br>';
+                summaryHtml += pagesWithIssues.join(', ');
+                summaryHtml += '</div>';
+            }
+        }
+        
+        resultsDiv.innerHTML = summaryHtml + '<h3 style="margin-top: 2rem;">Detailed Results by Page:</h3>' + htmlOutput;
+    }
+    
+    // Run validation when page loads
+    document.addEventListener('DOMContentLoaded', function() {
+        // Small delay to ensure page is fully rendered
+        setTimeout(validateAllPages, 100);
+    });
+</script>
