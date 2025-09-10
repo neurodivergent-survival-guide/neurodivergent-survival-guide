@@ -774,41 +774,45 @@ layout: default
         display: block;
     }
 
-    /* Jargon styling - BLACK text with colored underline */
+    /* Jargon styling - Minimal Line with section-aware colors */
     .jargon {
-        color: #333;
         text-decoration: none;
         border-bottom: 1px dotted;
-        border-bottom-color: currentColor;
+        padding-bottom: 2px;
         position: relative;
         cursor: help;
         font-weight: 600;
         tabindex: 0;
-        transition: opacity 0.2s ease;
     }
 
-    /* Context-specific jargon - BLACK text with section-colored underline */
-    .what-section .jargon {
-        border-bottom-color: #d63031;
+    /* Section-specific jargon colors */
+    .what-section .jargon { 
+        color: #b71c1c;  /* Darker red */
+        border-bottom-color: #b71c1c;
     }
-
-    .why-section .jargon {
+    
+    .why-section .jargon { 
+        color: #f39c12;
         border-bottom-color: #f39c12;
     }
-
-    .immediate-help .jargon {
+    
+    .immediate-help .jargon { 
+        color: #005599;
         border-bottom-color: #005599;
     }
-
-    .long-term .jargon {
+    
+    .long-term .jargon { 
+        color: #155724;
         border-bottom-color: #155724;
     }
-
-    .medical-section .jargon {
+    
+    .medical-section .jargon { 
+        color: #0c5460;
         border-bottom-color: #0c5460;
     }
-
-    .validation-section .jargon {
+    
+    .validation-section .jargon { 
+        color: #5a4fcf;
         border-bottom-color: #5a4fcf;
     }
 
@@ -849,7 +853,7 @@ layout: default
         border-radius: 4px;
     }
 
-    /* Simplified tooltip system */
+    /* Minimal Line tooltip with section-aware bottom borders */
     .tooltip {
         visibility: hidden;
         opacity: 0;
@@ -857,14 +861,14 @@ layout: default
         bottom: calc(100% + 8px);
         left: 50%;
         transform: translateX(-50%);
-        background: #333;
-        color: white;
+        background: white;
+        color: #1e293b;
         padding: 12px 16px;
-        border-radius: 8px;
+        border-radius: 4px;
         font-size: 0.9rem;
         font-weight: normal;
         z-index: 1001;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        box-shadow: 0 1px 3px rgba(0,0,0,0.12);
         transition: opacity 0.3s, visibility 0.3s;
         max-width: 300px;
         width: max-content;
@@ -872,16 +876,33 @@ layout: default
         text-align: left;
         line-height: 1.5;
         pointer-events: none;
+        border-bottom-width: 4px;
+        border-bottom-style: solid;
     }
 
-    .tooltip::after {
-        content: '';
-        position: absolute;
-        top: 100%;
-        left: 50%;
-        transform: translateX(-50%);
-        border: 6px solid transparent;
-        border-top-color: #333;
+    /* Section-specific tooltip bottom borders */
+    .what-section .tooltip { 
+        border-bottom-color: #b71c1c;  /* Darker red */
+    }
+    
+    .why-section .tooltip { 
+        border-bottom-color: #f39c12;
+    }
+    
+    .immediate-help .tooltip { 
+        border-bottom-color: #005599;
+    }
+    
+    .long-term .tooltip { 
+        border-bottom-color: #155724;
+    }
+    
+    .medical-section .tooltip { 
+        border-bottom-color: #0c5460;
+    }
+    
+    .validation-section .tooltip { 
+        border-bottom-color: #5a4fcf;
     }
 
     .jargon:hover .tooltip {
@@ -957,8 +978,10 @@ layout: default
             max-width: none !important;
             z-index: 9999 !important;
             border-radius: 12px;
-            background: #000 !important;
-            background: rgba(0, 0, 0, 1) !important;
+            background: white !important;
+            color: #1e293b !important;
+            border-bottom-width: 4px !important;
+            border-bottom-style: solid !important;
         }
 
         .tooltip::after {
@@ -972,7 +995,7 @@ layout: default
             opacity: 0.8;
             margin-bottom: 0.5rem;
             padding-bottom: 0.5rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
             text-align: center;
         }
 
