@@ -1,0 +1,767 @@
+---
+layout: default
+title: "Learn More Pattern Audit Tool"
+permalink: /learn-more-audit/
+---
+
+<style>
+.audit-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.audit-header {
+    text-align: center;
+    margin-bottom: 2rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 2rem;
+    border-radius: 12px;
+}
+
+.audit-header h1 {
+    margin-bottom: 0.5rem;
+    font-size: 2.5rem;
+}
+
+.audit-header p {
+    font-size: 1.2rem;
+    opacity: 0.95;
+}
+
+.pattern-examples {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.pattern-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.pattern-correct {
+    border-left: 5px solid #48bb78;
+}
+
+.pattern-incorrect {
+    border-left: 5px solid #f56565;
+}
+
+.pattern-card h3 {
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.pattern-correct h3 {
+    color: #48bb78;
+}
+
+.pattern-incorrect h3 {
+    color: #f56565;
+}
+
+.code-sample {
+    background: #2d3748;
+    color: #f7fafc;
+    padding: 1rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    margin: 0.5rem 0;
+}
+
+.code-highlight {
+    color: #48bb78;
+    font-weight: bold;
+}
+
+.code-error {
+    color: #fc8181;
+    font-weight: bold;
+}
+
+.controls {
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.scan-btn {
+    background: #007acc;
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.scan-btn:hover {
+    background: #005999;
+    transform: translateY(-1px);
+}
+
+.scan-btn:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.loading {
+    text-align: center;
+    padding: 2rem;
+    display: none;
+    font-size: 1.1rem;
+    color: #007acc;
+}
+
+.loading-spinner {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #007acc;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-right: 0.5rem;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.summary-stats {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    display: none;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    text-align: center;
+}
+
+.stat-card {
+    padding: 1.5rem;
+    border-radius: 8px;
+}
+
+.stat-correct {
+    background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+    color: white;
+}
+
+.stat-incorrect {
+    background: linear-gradient(135deg, #f56565 0%, #e53e3e 100%);
+    color: white;
+}
+
+.stat-none {
+    background: linear-gradient(135deg, #a0aec0 0%, #718096 100%);
+    color: white;
+}
+
+.stat-number {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    font-size: 1rem;
+    opacity: 0.95;
+}
+
+.results-container {
+    display: none;
+}
+
+.results-section {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.results-section h2 {
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.article-item {
+    padding: 1rem;
+    border-bottom: 1px solid #e2e8f0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background 0.2s ease;
+}
+
+.article-item:hover {
+    background: #f8f9fa;
+}
+
+.article-item:last-child {
+    border-bottom: none;
+}
+
+.article-info {
+    flex-grow: 1;
+}
+
+.article-title {
+    font-weight: 600;
+    color: #2d3748;
+    margin-bottom: 0.3rem;
+}
+
+.article-details {
+    font-size: 0.9rem;
+    color: #718096;
+}
+
+.condition-badge {
+    display: inline-block;
+    padding: 0.2rem 0.6rem;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-right: 0.5rem;
+}
+
+.condition-adhd { background: #ffebee; color: #d63031; }
+.condition-autism { background: #d4edda; color: #27ae60; }
+.condition-bipolar { background: #e3f2fd; color: #2196f3; }
+.condition-bpd { background: #fef9e7; color: #f39c12; }
+.condition-ocd { background: #f3e5f5; color: #9c27b0; }
+
+.pattern-badges {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
+}
+
+.pattern-badge {
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.pattern-correct-badge {
+    background: #d4edda;
+    color: #27ae60;
+}
+
+.pattern-incorrect-badge {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.action-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.action-link {
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.view-link {
+    background: #e6f7ff;
+    color: #007acc;
+}
+
+.view-link:hover {
+    background: #007acc;
+    color: white;
+}
+
+.edit-link {
+    background: #fff7e6;
+    color: #d97706;
+}
+
+.edit-link:hover {
+    background: #d97706;
+    color: white;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 3rem;
+    color: #718096;
+}
+
+.export-btn {
+    background: #805ad5;
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    font-weight: 500;
+    margin-left: 1rem;
+}
+
+.export-btn:hover {
+    background: #6b46c1;
+}
+
+.filter-controls {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    padding: 0.5rem 1rem;
+    border: 2px solid #e2e8f0;
+    background: white;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.filter-btn:hover {
+    border-color: #007acc;
+    color: #007acc;
+}
+
+.filter-btn.active {
+    background: #007acc;
+    color: white;
+    border-color: #007acc;
+}
+
+@media (max-width: 768px) {
+    .pattern-examples {
+        grid-template-columns: 1fr;
+    }
+    
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .article-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+    
+    .action-links {
+        width: 100%;
+    }
+}
+</style>
+
+<div class="audit-container">
+    <div class="audit-header">
+        <h1>🔍 Learn More Pattern Audit Tool</h1>
+        <p>Verify correct implementation of text-selectable Learn More sections</p>
+    </div>
+
+    <div class="pattern-examples">
+        <div class="pattern-card pattern-correct">
+            <h3>✅ Correct Pattern (Text-Selectable)</h3>
+            <div class="code-sample">
+&lt;div class="learn-more"&gt;<br>
+&nbsp;&nbsp;&lt;h3 <span class="code-highlight">onclick="toggleLearnMore(this.parentElement)"</span>&gt;Learn More: Topic ↓&lt;/h3&gt;<br>
+&nbsp;&nbsp;&lt;div class="learn-more-content"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;Content...&lt;/p&gt;<br>
+&nbsp;&nbsp;&lt;/div&gt;<br>
+&lt;/div&gt;
+            </div>
+            <ul style="margin-top: 1rem; color: #27ae60;">
+                <li>onclick on h3 element</li>
+                <li>Passes this.parentElement</li>
+                <li>Text fully selectable</li>
+            </ul>
+        </div>
+
+        <div class="pattern-card pattern-incorrect">
+            <h3>❌ Incorrect Pattern (Breaks Selection)</h3>
+            <div class="code-sample">
+&lt;div class="learn-more" <span class="code-error">onclick="toggleLearnMore(this)"</span>&gt;<br>
+&nbsp;&nbsp;&lt;h3&gt;Learn More: Topic ↓&lt;/h3&gt;<br>
+&nbsp;&nbsp;&lt;div class="learn-more-content"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;Content...&lt;/p&gt;<br>
+&nbsp;&nbsp;&lt;/div&gt;<br>
+&lt;/div&gt;
+            </div>
+            <ul style="margin-top: 1rem; color: #e53e3e;">
+                <li>onclick on div container</li>
+                <li>Prevents text selection</li>
+                <li>Poor user experience</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="controls">
+        <button class="scan-btn" onclick="scanAllArticles()">🔍 Scan All Struggle Pages</button>
+        <button class="export-btn" onclick="exportResults()" style="display: none;" id="export-btn">📥 Export Results</button>
+        
+        <div class="loading" id="loading">
+            <div class="loading-spinner"></div>
+            Scanning articles... <span id="progress">0</span> of <span id="total">0</span> complete
+        </div>
+    </div>
+
+    <div class="summary-stats" id="summary-stats">
+        <h2 style="text-align: center; margin-bottom: 2rem;">Scan Results Summary</h2>
+        <div class="stats-grid">
+            <div class="stat-card stat-correct">
+                <div class="stat-number" id="correct-count">0</div>
+                <div class="stat-label">Correct Implementation</div>
+            </div>
+            <div class="stat-card stat-incorrect">
+                <div class="stat-number" id="incorrect-count">0</div>
+                <div class="stat-label">Need Fixing</div>
+            </div>
+            <div class="stat-card stat-none">
+                <div class="stat-number" id="none-count">0</div>
+                <div class="stat-label">No Learn More Sections</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="results-container" id="results-container">
+        <div class="filter-controls" id="filter-controls" style="display: none;">
+            <button class="filter-btn active" onclick="filterResults('all')">All Articles</button>
+            <button class="filter-btn" onclick="filterResults('incorrect')">Need Fixing</button>
+            <button class="filter-btn" onclick="filterResults('correct')">Correct</button>
+            <button class="filter-btn" onclick="filterResults('none')">No Learn More</button>
+        </div>
+
+        <div class="results-section" id="incorrect-section" style="display: none;">
+            <h2 style="color: #e53e3e;">❌ Articles Needing Fixes</h2>
+            <div id="incorrect-list"></div>
+        </div>
+
+        <div class="results-section" id="correct-section" style="display: none;">
+            <h2 style="color: #38a169;">✅ Correctly Implemented</h2>
+            <div id="correct-list"></div>
+        </div>
+
+        <div class="results-section" id="none-section" style="display: none;">
+            <h2 style="color: #718096;">📄 No Learn More Sections</h2>
+            <div id="none-list"></div>
+        </div>
+    </div>
+</div>
+
+<!-- Hidden data for Jekyll to populate -->
+<div style="display: none;" id="article-data">
+{% for page in site.pages %}
+  {% if page.layout == 'struggle' %}
+  <div class="article-info"
+       data-title="{{ page.title }}" 
+       data-url="{{ page.url }}" 
+       data-condition="{{ page.condition }}"
+       data-slug="{{ page.slug }}"
+       data-status="{{ page.status | default: 'published' }}"></div>
+  {% endif %}
+{% endfor %}
+</div>
+
+<script>
+let scanResults = {
+    correct: [],
+    incorrect: [],
+    none: []
+};
+
+let currentFilter = 'all';
+
+async function scanAllArticles() {
+    const button = document.querySelector('.scan-btn');
+    const loading = document.getElementById('loading');
+    const summaryStats = document.getElementById('summary-stats');
+    const resultsContainer = document.getElementById('results-container');
+    const exportBtn = document.getElementById('export-btn');
+    
+    // Reset
+    button.disabled = true;
+    button.textContent = '⏳ Scanning...';
+    loading.style.display = 'block';
+    summaryStats.style.display = 'none';
+    resultsContainer.style.display = 'none';
+    
+    scanResults = {
+        correct: [],
+        incorrect: [],
+        none: []
+    };
+    
+    const articleElements = document.querySelectorAll('.article-info');
+    const articles = Array.from(articleElements).map(el => ({
+        title: el.dataset.title,
+        url: el.dataset.url,
+        condition: el.dataset.condition,
+        slug: el.dataset.slug,
+        status: el.dataset.status
+    }));
+    
+    document.getElementById('total').textContent = articles.length;
+    
+    for (let i = 0; i < articles.length; i++) {
+        const article = articles[i];
+        document.getElementById('progress').textContent = i + 1;
+        
+        try {
+            const response = await fetch(article.url);
+            const html = await response.text();
+            
+            // Check for Learn More patterns
+            const learnMoreResults = analyzeLearnMorePatterns(html);
+            
+            const articleResult = {
+                ...article,
+                ...learnMoreResults
+            };
+            
+            if (learnMoreResults.hasIncorrect) {
+                scanResults.incorrect.push(articleResult);
+            } else if (learnMoreResults.hasCorrect) {
+                scanResults.correct.push(articleResult);
+            } else {
+                scanResults.none.push(articleResult);
+            }
+            
+        } catch (error) {
+            console.error(`Error scanning ${article.title}:`, error);
+            scanResults.none.push({
+                ...article,
+                error: true,
+                errorMessage: error.message
+            });
+        }
+    }
+    
+    // Display results
+    displayResults();
+    
+    loading.style.display = 'none';
+    summaryStats.style.display = 'block';
+    resultsContainer.style.display = 'block';
+    button.disabled = false;
+    button.textContent = '🔍 Re-scan All Pages';
+    exportBtn.style.display = 'inline-block';
+    
+    // Update summary stats
+    document.getElementById('correct-count').textContent = scanResults.correct.length;
+    document.getElementById('incorrect-count').textContent = scanResults.incorrect.length;
+    document.getElementById('none-count').textContent = scanResults.none.length;
+}
+
+function analyzeLearnMorePatterns(html) {
+    const results = {
+        hasCorrect: false,
+        hasIncorrect: false,
+        correctCount: 0,
+        incorrectCount: 0,
+        patterns: []
+    };
+    
+    // Pattern 1: Correct - onclick on h3 with this.parentElement
+    const correctPattern = /<h3\s+onclick="toggleLearnMore\(this\.parentElement\)"/g;
+    const correctMatches = html.match(correctPattern) || [];
+    results.correctCount = correctMatches.length;
+    if (correctMatches.length > 0) {
+        results.hasCorrect = true;
+        correctMatches.forEach(() => {
+            results.patterns.push({ type: 'correct', pattern: 'h3 onclick with this.parentElement' });
+        });
+    }
+    
+    // Pattern 2: Incorrect - onclick on div
+    const incorrectDivPattern = /<div[^>]*class="learn-more"[^>]*onclick=/g;
+    const incorrectDivMatches = html.match(incorrectDivPattern) || [];
+    
+    // Pattern 3: Incorrect - onclick with just this (not this.parentElement)
+    const incorrectThisPattern = /onclick="toggleLearnMore\(this\)"/g;
+    const incorrectThisMatches = html.match(incorrectThisPattern) || [];
+    
+    results.incorrectCount = incorrectDivMatches.length + incorrectThisMatches.length;
+    if (results.incorrectCount > 0) {
+        results.hasIncorrect = true;
+        incorrectDivMatches.forEach(() => {
+            results.patterns.push({ type: 'incorrect', pattern: 'onclick on div element' });
+        });
+        incorrectThisMatches.forEach(() => {
+            results.patterns.push({ type: 'incorrect', pattern: 'toggleLearnMore(this) without .parentElement' });
+        });
+    }
+    
+    // Check if there are any Learn More sections at all
+    const hasLearnMore = html.includes('class="learn-more"') || html.includes("class='learn-more'");
+    if (!hasLearnMore) {
+        results.patterns.push({ type: 'none', pattern: 'No Learn More sections found' });
+    }
+    
+    return results;
+}
+
+function displayResults() {
+    const filterControls = document.getElementById('filter-controls');
+    filterControls.style.display = 'flex';
+    
+    // Display incorrect articles
+    const incorrectSection = document.getElementById('incorrect-section');
+    const incorrectList = document.getElementById('incorrect-list');
+    
+    if (scanResults.incorrect.length > 0) {
+        incorrectSection.style.display = 'block';
+        incorrectList.innerHTML = scanResults.incorrect.map(article => createArticleItem(article, 'incorrect')).join('');
+    } else {
+        incorrectSection.style.display = 'none';
+    }
+    
+    // Display correct articles
+    const correctSection = document.getElementById('correct-section');
+    const correctList = document.getElementById('correct-list');
+    
+    if (scanResults.correct.length > 0) {
+        correctSection.style.display = 'block';
+        correctList.innerHTML = scanResults.correct.map(article => createArticleItem(article, 'correct')).join('');
+    } else {
+        correctSection.style.display = 'none';
+    }
+    
+    // Display articles with no Learn More
+    const noneSection = document.getElementById('none-section');
+    const noneList = document.getElementById('none-list');
+    
+    if (scanResults.none.length > 0) {
+        noneSection.style.display = 'block';
+        noneList.innerHTML = scanResults.none.map(article => createArticleItem(article, 'none')).join('');
+    } else {
+        noneSection.style.display = 'none';
+    }
+}
+
+function createArticleItem(article, category) {
+    const patternBadges = article.patterns ? article.patterns.map(p => {
+        const badgeClass = p.type === 'correct' ? 'pattern-correct-badge' : 
+                          p.type === 'incorrect' ? 'pattern-incorrect-badge' : '';
+        return badgeClass ? `<span class="pattern-badge ${badgeClass}">${p.pattern}</span>` : '';
+    }).join('') : '';
+    
+    return `
+        <div class="article-item">
+            <div class="article-info">
+                <div class="article-title">
+                    ${article.title}
+                    <span class="condition-badge condition-${article.condition}">${article.condition}</span>
+                </div>
+                <div class="article-details">
+                    ${category === 'incorrect' ? `❌ ${article.incorrectCount} incorrect pattern(s)` : ''}
+                    ${category === 'correct' ? `✅ ${article.correctCount} correct pattern(s)` : ''}
+                    ${category === 'none' ? '📄 No Learn More sections' : ''}
+                </div>
+                ${patternBadges ? `<div class="pattern-badges">${patternBadges}</div>` : ''}
+            </div>
+            <div class="action-links">
+                <a href="${article.url}" target="_blank" class="action-link view-link">View Page</a>
+                <a href="https://github.com/neurodivergent-survival-guide/neurodivergent-survival-guide/edit/main/struggles/${article.slug}.html" 
+                   target="_blank" class="action-link edit-link">Edit</a>
+            </div>
+        </div>
+    `;
+}
+
+function filterResults(filter) {
+    currentFilter = filter;
+    
+    // Update button states
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.classList.remove('active');
+    });
+    event.target.classList.add('active');
+    
+    // Show/hide sections based on filter
+    const incorrectSection = document.getElementById('incorrect-section');
+    const correctSection = document.getElementById('correct-section');
+    const noneSection = document.getElementById('none-section');
+    
+    switch(filter) {
+        case 'all':
+            incorrectSection.style.display = scanResults.incorrect.length > 0 ? 'block' : 'none';
+            correctSection.style.display = scanResults.correct.length > 0 ? 'block' : 'none';
+            noneSection.style.display = scanResults.none.length > 0 ? 'block' : 'none';
+            break;
+        case 'incorrect':
+            incorrectSection.style.display = scanResults.incorrect.length > 0 ? 'block' : 'none';
+            correctSection.style.display = 'none';
+            noneSection.style.display = 'none';
+            break;
+        case 'correct':
+            incorrectSection.style.display = 'none';
+            correctSection.style.display = scanResults.correct.length > 0 ? 'block' : 'none';
+            noneSection.style.display = 'none';
+            break;
+        case 'none':
+            incorrectSection.style.display = 'none';
+            correctSection.style.display = 'none';
+            noneSection.style.display = scanResults.none.length > 0 ? 'block' : 'none';
+            break;
+    }
+}
+
+function exportResults() {
+    const report = {
+        scanDate: new Date().toISOString(),
+        summary: {
+            total: scanResults.correct.length + scanResults.incorrect.length + scanResults.none.length,
+            correct: scanResults.correct.length,
+            incorrect: scanResults.incorrect.length,
+            none: scanResults.none.length
+        },
+        articlesNeedingFixes: scanResults.incorrect.map(a => ({
+            title: a.title,
+            url: a.url,
+            condition: a.condition,
+            patterns: a.patterns
+        })),
+        correctArticles: scanResults.correct.map(a => a.title),
+        noLearnMore: scanResults.none.map(a => a.title)
+    };
+    
+    const blob = new Blob([JSON.stringify(report, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `learn-more-audit-${new Date().toISOString().split('T')[0]}.json`;
+    a.click();
+    URL.revokeObjectURL(url);
+}
+</script>
