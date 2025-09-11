@@ -880,29 +880,67 @@ layout: default
         border-bottom-style: solid;
     }
 
-    /* Section-specific tooltip bottom borders */
+    /* Tooltip connector arrow */
+    .tooltip::after {
+        content: '';
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 0;
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        border-top: 8px solid;
+    }
+
+    /* Section-specific tooltip bottom borders and arrow colors */
     .what-section .tooltip { 
         border-bottom-color: #b71c1c;  /* Darker red */
+    }
+    
+    .what-section .tooltip::after {
+        border-top-color: #b71c1c;
     }
     
     .why-section .tooltip { 
         border-bottom-color: #f39c12;
     }
     
+    .why-section .tooltip::after {
+        border-top-color: #f39c12;
+    }
+    
     .immediate-help .tooltip { 
         border-bottom-color: #005599;
+    }
+    
+    .immediate-help .tooltip::after {
+        border-top-color: #005599;
     }
     
     .long-term .tooltip { 
         border-bottom-color: #155724;
     }
     
+    .long-term .tooltip::after {
+        border-top-color: #155724;
+    }
+    
     .medical-section .tooltip { 
         border-bottom-color: #0c5460;
     }
     
+    .medical-section .tooltip::after {
+        border-top-color: #0c5460;
+    }
+    
     .validation-section .tooltip { 
         border-bottom-color: #5a4fcf;
+    }
+    
+    .validation-section .tooltip::after {
+        border-top-color: #5a4fcf;
     }
 
     .jargon:hover .tooltip {
