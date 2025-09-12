@@ -1143,31 +1143,27 @@ function displayCrisisResources() {
     
     const html = `
         <div class="crisis-resources">
-            <div style="color: #dc2626; font-weight: 600; font-size: 1.1rem; margin-bottom: 12px;">
+            <div class="crisis-header">
                 🚨 Crisis Support Available Now
             </div>
-            <div style="color: #333; line-height: 1.6;">
-                <p style="margin: 0 0 12px 0; font-weight: 500;">If you're having thoughts of suicide or self-harm, you don't have to go through this alone. Help is available:</p>
-                
-                <div style="margin: 8px 0;">
-                    <strong style="color: #dc2626;">Emergency:</strong> <a href="tel:911">911</a>
-                </div>
-                
-                <div style="margin: 8px 0;">
-                    <strong style="color: #dc2626;">Suicide & Crisis Lifeline:</strong> <a href="tel:988">988</a>
-                    <br><small style="color: #666;">24/7 free and confidential support</small>
-                </div>
-                
-                <div style="margin: 8px 0;">
-                    <strong style="color: #dc2626;">Crisis Text Line:</strong> <span style="color: #dc2626; font-weight: 600;">Text HOME to 741741</span>
-                    <br><small style="color: #666;">24/7 crisis support via text</small>
-                </div>
-                
-                <div style="margin: 12px 0 8px 0; padding-top: 12px; border-top: 1px solid #fecaca;">
-                    <p style="margin: 0; font-size: 0.9rem; color: #555;">
-                        <strong>Remember:</strong> Crisis feelings are temporary, even when they don't feel like it. Professional counselors are trained to help you work through these moments safely.
-                    </p>
-                </div>
+            <p class="crisis-intro">If you're having thoughts of suicide or self-harm, you don't have to go through this alone. Help is available:</p>
+            
+            <div class="crisis-option">
+                <strong>Emergency:</strong> <a href="tel:911">911</a>
+            </div>
+            
+            <div class="crisis-option">
+                <strong>Suicide & Crisis Lifeline:</strong> <a href="tel:988">988</a>
+                <small>24/7 free and confidential support</small>
+            </div>
+            
+            <div class="crisis-option">
+                <strong>Crisis Text Line:</strong> <span style="color: #dc2626; font-weight: 600;">Text HOME to 741741</span>
+                <small>24/7 crisis support via text</small>
+            </div>
+            
+            <div class="crisis-footer">
+                <p><strong>Remember:</strong> Crisis feelings are temporary, even when they don't feel like it. Professional counselors are trained to help you work through these moments safely.</p>
             </div>
         </div>
     `;
