@@ -23,6 +23,9 @@ title: "The Neurodivergent Survival Guide"
         --card-background: rgba(255, 255, 255, 0.95);
         --glass-background: rgba(255, 255, 255, 0.1);
         --glass-border: rgba(255, 255, 255, 0.2);
+        --steel-light: #718096;
+        --steel-dark: #4a5568;
+        --steel-darker: #2d3748;
     }
 
     * {
@@ -140,7 +143,7 @@ title: "The Neurodivergent Survival Guide"
         margin: 0 auto 2rem;
     }
 
-    /* Search Styles (keeping existing) */
+    /* Search Styles */
     .search-section {
         max-width: 500px;
         margin: 2rem auto 0;
@@ -167,9 +170,9 @@ title: "The Neurodivergent Survival Guide"
     }
 
     .search-box:focus {
-        border-color: var(--rainbow-3);
+        border-color: var(--steel-light);
         background: rgba(255, 255, 255, 0.25);
-        box-shadow: 0 0 0 3px rgba(72, 219, 251, 0.2);
+        box-shadow: 0 0 0 3px rgba(113, 128, 150, 0.2);
         border-radius: 25px 25px 12px 12px;
     }
 
@@ -216,7 +219,7 @@ title: "The Neurodivergent Survival Guide"
     }
 
     .search-result-item:hover {
-        background: rgba(72, 219, 251, 0.1);
+        background: rgba(113, 128, 150, 0.1);
         text-decoration: none;
         color: inherit;
     }
@@ -234,7 +237,7 @@ title: "The Neurodivergent Survival Guide"
 
     .result-condition {
         display: inline-block;
-        background: var(--rainbow-3);
+        background: var(--steel-light);
         color: white;
         padding: 2px 8px;
         border-radius: 10px;
@@ -399,7 +402,7 @@ title: "The Neurodivergent Survival Guide"
         font-style: italic;
     }
 
-    /* FEATURED ARTICLES SECTION - OPTION 1: Card Grid */
+    /* FEATURED ARTICLES SECTION */
     .featured-section {
         background: var(--card-background);
         backdrop-filter: blur(10px);
@@ -439,7 +442,7 @@ title: "The Neurodivergent Survival Guide"
         text-decoration: none;
         color: inherit;
         transition: all 0.3s ease;
-        border-left: 4px solid var(--rainbow-3);
+        border-left: 4px solid var(--steel-light);
         display: flex;
         flex-direction: column;
     }
@@ -466,7 +469,7 @@ title: "The Neurodivergent Survival Guide"
 
     .featured-card-condition {
         display: inline-block;
-        background: var(--rainbow-3);
+        background: var(--steel-light);
         color: white;
         padding: 2px 8px;
         border-radius: 8px;
@@ -509,22 +512,22 @@ title: "The Neurodivergent Survival Guide"
     }
 
     .random-button {
-        background: linear-gradient(45deg, var(--rainbow-5), var(--rainbow-3));
+        background: linear-gradient(45deg, var(--steel-dark), var(--steel-light));
         color: white;
         border: none;
         padding: 1rem 2rem;
         border-radius: 25px;
         font-size: 1.1rem;
-        font-weight: 600;
+        font-weight: 500;
         cursor: pointer;
         transition: all 0.3s ease;
         margin-bottom: 2rem;
-        box-shadow: 0 4px 15px rgba(72, 219, 251, 0.3);
+        box-shadow: 0 4px 15px rgba(74, 85, 104, 0.3);
     }
 
     .random-button:hover {
         transform: translateY(-2px);
-        box-shadow: 0 6px 20px rgba(72, 219, 251, 0.4);
+        box-shadow: 0 6px 20px rgba(74, 85, 104, 0.4);
     }
 
     .random-button:active {
@@ -546,14 +549,14 @@ title: "The Neurodivergent Survival Guide"
         text-decoration: none;
         color: inherit;
         transition: all 0.3s ease;
-        border-bottom: 3px solid var(--rainbow-3);
+        border-bottom: 3px solid var(--steel-light);
     }
 
     .random-struggle-card:hover {
-        background: var(--rainbow-3);
+        background: var(--steel-light);
         color: white;
         transform: translateY(-2px);
-        box-shadow: 0 8px 25px rgba(72, 219, 251, 0.3);
+        box-shadow: 0 8px 25px rgba(113, 128, 150, 0.3);
     }
 
     .random-struggle-title {
@@ -567,7 +570,7 @@ title: "The Neurodivergent Survival Guide"
         opacity: 0.9;
     }
 
-    /* Rest of your existing styles... */
+    /* Share Experience Section */
     .share-experience {
         background: var(--card-background);
         backdrop-filter: blur(10px);
@@ -576,11 +579,11 @@ title: "The Neurodivergent Survival Guide"
         box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
         margin: 3rem 0;
         border: 1px solid rgba(255, 255, 255, 0.2);
-        border-left: 4px solid #48dbfb;
+        border-left: 4px solid var(--steel-light);
     }
 
     .share-experience h3 {
-        color: #48dbfb;
+        color: var(--steel-dark);
         margin-bottom: 1rem;
         font-size: 1.3rem;
         display: flex;
@@ -608,7 +611,7 @@ title: "The Neurodivergent Survival Guide"
         backdrop-filter: blur(5px);
         padding: 1rem;
         border-radius: 12px;
-        border-left: 3px solid #48dbfb;
+        border-left: 3px solid var(--steel-light);
         transition: all 0.3s ease;
         font-size: 0.9rem;
         line-height: 1.5;
@@ -616,7 +619,7 @@ title: "The Neurodivergent Survival Guide"
 
     .contrib-item:hover {
         transform: translateY(-2px);
-        box-shadow: 0 8px 25px rgba(72, 219, 251, 0.15);
+        box-shadow: 0 8px 25px rgba(113, 128, 150, 0.15);
     }
 
     .contrib-item strong {
@@ -631,11 +634,11 @@ title: "The Neurodivergent Survival Guide"
         border-radius: 12px;
         text-align: center;
         margin-top: 1.5rem;
-        border: 2px solid rgba(72, 219, 251, 0.2);
+        border: 2px solid rgba(113, 128, 150, 0.2);
     }
 
     .email-cta a:hover {
-        color: #2d98da;
+        color: var(--steel-dark);
         text-decoration: underline;
     }
 
@@ -724,6 +727,34 @@ title: "The Neurodivergent Survival Guide"
 
     /* Mobile responsive */
     @media (max-width: 768px) {
+        .search-section {
+            max-width: 90%;
+            margin: 1rem auto;
+        }
+        
+        .search-box {
+            font-size: 1rem;
+            padding: 0.8rem 1.2rem;
+        }
+        
+        .search-results {
+            max-height: 60vh;
+            min-width: unset;
+            width: 90vw !important;
+            left: 5vw !important;
+            right: 5vw !important;
+            border-radius: 0 0 12px 12px;
+        }
+        
+        .crisis-resources {
+            padding: 12px !important;
+            font-size: 0.9rem;
+        }
+        
+        .crisis-resources a[href^="tel:"] {
+            font-size: 1rem !important;
+        }
+        
         .featured-grid {
             grid-template-columns: 1fr;
         }
@@ -734,6 +765,22 @@ title: "The Neurodivergent Survival Guide"
 
         .main-sections {
             grid-template-columns: 1fr;
+        }
+        
+        .hero {
+            padding: 2rem 1rem;
+        }
+        
+        .hero h1 {
+            font-size: 2rem;
+        }
+        
+        .hero p {
+            font-size: 1rem;
+        }
+        
+        .container {
+            padding: 1rem;
         }
     }
 </style>
@@ -811,23 +858,20 @@ title: "The Neurodivergent Survival Guide"
             
             <div class="contribution-types">
                 <div class="contrib-item">
-                    <strong>What helps you thrive:</strong> Specific strategies, tools, or approaches that actually work in your daily life
+                    <strong>Strategies that actually work:</strong> Specific tools, approaches, or accommodations that help you thrive in daily life or navigate systems successfully
                 </div>
                 <div class="contrib-item">
-                    <strong>What you wish you'd known earlier:</strong> Insights that would have saved you time, energy, or confusion
+                    <strong>What you wish you'd known earlier:</strong> Insights that would have saved you time, energy, or confusion if someone had explained them sooner
                 </div>
                 <div class="contrib-item">
-                    <strong>Gaps you've noticed:</strong> Struggles or experiences that aren't well-represented in existing resources
-                </div>
-                <div class="contrib-item">
-                    <strong>System navigation wins:</strong> How you successfully advocated for accommodations or found helpful professionals
+                    <strong>Gaps you've noticed:</strong> Struggles or experiences that aren't well-represented in existing resources or need better coverage
                 </div>
             </div>
             
             <div class="email-cta">
                 <p><strong>Email us at:</strong> 
                     <a href="mailto:stories.neurodivergent.guide@gmail.com?subject=Sharing My Experience" 
-                       style="color: #4a5568; text-decoration: none; font-weight: 600;">
+                       style="color: var(--steel-dark); text-decoration: none; font-weight: 600;">
                         stories.neurodivergent.guide@gmail.com
                     </a>
                 </p>
@@ -847,19 +891,6 @@ title: "The Neurodivergent Survival Guide"
                 </a>
             </div>
             <p style="font-style: italic; color: #666; font-size: 0.9rem;">This guide will always remain free regardless of donations. Support only if this resource has genuinely helped you.</p>
-        </div>
-
-        <div class="disclaimer">
-            <h4>Important Disclaimer</h4>
-            <p>This guide is for educational and self-understanding purposes only. It is not intended to diagnose, treat, or replace professional medical or mental health care. If you're experiencing significant distress or impairment, please consult with qualified healthcare professionals.</p>
-            <p><strong>Crisis Resources:</strong> Emergency: 911 | Suicide & Crisis Lifeline: 988 | Crisis Text Line: Text HOME to 741741</p>
-        </div>
-
-        <div class="footer-note">
-            <h3>A Living Resource Built From Community Wisdom</h3>
-            <p>This guide represents far more than clinical research or theoretical frameworks. It's built from the ground up through extensive interviews with neurodivergent individuals who've found ways to thrive, not just survive.</p>
-            
-            <p>Every person's neurodivergent experience is unique, shaped by individual brain wiring, trauma history, social environment, and countless other factors. Take what resonates, adapt what partially fits, and leave what doesn't serve you. The goal isn't to find yourself in these pages, but to find tools and perspectives that help you understand and advocate for your own authentic way of being in the world.</p>
         </div>
     </main>
 </div>
