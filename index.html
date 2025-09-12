@@ -8,9 +8,9 @@ title: "The Neurodivergent Survival Guide"
 
 <style>
     :root {
-        --aurora-start: #1e3c72;
-        --aurora-mid: #2a5298;
-        --aurora-end: #764ba2;
+        --aurora-start: #4a5568;
+        --aurora-mid: #2d3748;
+        --aurora-end: #1a202c;
         --rainbow-1: #ff6b6b;
         --rainbow-2: #feca57;
         --rainbow-3: #48dbfb;
@@ -125,7 +125,7 @@ title: "The Neurodivergent Survival Guide"
     .hero h1 {
         color: white;
         font-size: 2.5rem;
-        font-weight: 300;
+        font-weight: 400;
         margin-bottom: 1rem;
         background: linear-gradient(135deg, #fff, #e0e7ff);
         -webkit-background-clip: text;
@@ -140,7 +140,7 @@ title: "The Neurodivergent Survival Guide"
         margin: 0 auto 2rem;
     }
 
-    /* Enhanced Search Styles */
+    /* Search Styles (keeping existing) */
     .search-section {
         max-width: 500px;
         margin: 2rem auto 0;
@@ -183,7 +183,6 @@ title: "The Neurodivergent Survival Guide"
         pointer-events: none;
     }
 
-    /* Search Results Dropdown */
     .search-results {
         position: fixed;
         top: auto;
@@ -263,32 +262,6 @@ title: "The Neurodivergent Survival Guide"
         text-align: center;
         color: #666;
         font-style: italic;
-    }
-
-    .crisis-resources {
-        background: #fff5f5 !important;
-        border-left: 4px solid #dc2626 !important;
-        padding: 16px !important;
-        margin: 0 !important;
-    }
-
-    .crisis-resources a[href^="tel:"] {
-        color: #dc2626 !important;
-        text-decoration: none !important;
-        font-weight: 600 !important;
-        font-size: 1.1rem !important;
-    }
-
-    .crisis-resources a[href^="tel:"]:hover {
-        text-decoration: underline !important;
-    }
-
-    .search-hint {
-        padding: 12px 20px;
-        background: rgba(72, 219, 251, 0.05);
-        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-        font-size: 0.8rem;
-        color: #666;
     }
 
     .container {
@@ -426,7 +399,8 @@ title: "The Neurodivergent Survival Guide"
         font-style: italic;
     }
 
-    .how-it-works {
+    /* FEATURED ARTICLES SECTION - OPTION 1: Card Grid */
+    .featured-section {
         background: var(--card-background);
         backdrop-filter: blur(10px);
         border-radius: 20px;
@@ -436,107 +410,164 @@ title: "The Neurodivergent Survival Guide"
         border: 1px solid rgba(255, 255, 255, 0.2);
     }
 
-    .how-it-works h2 {
+    .featured-section h2 {
         color: var(--text-primary);
-        margin-bottom: 2rem;
+        margin-bottom: 1rem;
         font-size: 1.8rem;
         font-weight: 400;
         text-align: center;
     }
 
-    .workflow-steps {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 2rem;
-        margin-top: 2rem;
+    .featured-section > p {
+        text-align: center;
+        color: var(--text-secondary);
+        margin-bottom: 2rem;
+        font-size: 1rem;
     }
 
-    .workflow-step {
-        text-align: center;
-        padding: 1.5rem;
+    .featured-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+    }
+
+    .featured-card {
         background: rgba(248, 249, 255, 0.8);
         backdrop-filter: blur(5px);
+        padding: 1.5rem;
         border-radius: 16px;
-        border-left: 4px solid var(--rainbow-3);
+        text-decoration: none;
+        color: inherit;
         transition: all 0.3s ease;
+        border-left: 4px solid var(--rainbow-3);
+        display: flex;
+        flex-direction: column;
     }
 
-    .workflow-step:hover {
+    .featured-card:hover {
         transform: translateY(-2px);
         box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+        background: rgba(248, 249, 255, 0.95);
     }
 
-    .step-number {
-        display: inline-block;
-        width: 40px;
-        height: 40px;
-        background: linear-gradient(45deg, var(--rainbow-3), var(--rainbow-5));
-        color: white;
-        border-radius: 50%;
-        line-height: 40px;
-        font-weight: 600;
-        margin-bottom: 1rem;
-    }
-
-    .workflow-step h4 {
-        color: var(--rainbow-5);
-        margin-bottom: 0.8rem;
+    .featured-card-title {
         font-size: 1.1rem;
+        font-weight: 600;
+        color: var(--text-primary);
+        margin-bottom: 0.5rem;
     }
 
-    .workflow-step p {
+    .featured-card-subtitle {
+        font-size: 0.9rem;
         color: var(--text-secondary);
-        font-size: 0.95rem;
+        line-height: 1.4;
+        flex-grow: 1;
     }
 
-    .quick-access {
+    .featured-card-condition {
+        display: inline-block;
+        background: var(--rainbow-3);
+        color: white;
+        padding: 2px 8px;
+        border-radius: 8px;
+        font-size: 0.7rem;
+        font-weight: 500;
+        margin-top: 0.8rem;
+        text-transform: uppercase;
+        width: fit-content;
+    }
+
+    .featured-card-condition.adhd { background: #d63031; }
+    .featured-card-condition.autism { background: #27ae60; }
+    .featured-card-condition.bipolar { background: #74b9ff; }
+    .featured-card-condition.bpd { background: #f39c12; }
+    .featured-card-condition.ocd { background: #a29bfe; }
+
+    /* RANDOM STRUGGLES SECTION */
+    .random-section {
         background: var(--card-background);
         backdrop-filter: blur(10px);
         border-radius: 20px;
-        padding: 2rem;
-        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+        padding: 2.5rem;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
         margin: 3rem 0;
-        text-align: center;
         border: 1px solid rgba(255, 255, 255, 0.2);
+        text-align: center;
     }
 
-    .quick-access h3 {
+    .random-section h2 {
         color: var(--text-primary);
-        margin-bottom: 1.5rem;
-        font-size: 1.4rem;
+        margin-bottom: 1rem;
+        font-size: 1.8rem;
+        font-weight: 400;
     }
 
-    .quick-links {
+    .random-section > p {
+        color: var(--text-secondary);
+        margin-bottom: 2rem;
+        font-size: 1rem;
+    }
+
+    .random-button {
+        background: linear-gradient(45deg, var(--rainbow-5), var(--rainbow-3));
+        color: white;
+        border: none;
+        padding: 1rem 2rem;
+        border-radius: 25px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin-bottom: 2rem;
+        box-shadow: 0 4px 15px rgba(72, 219, 251, 0.3);
+    }
+
+    .random-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(72, 219, 251, 0.4);
+    }
+
+    .random-button:active {
+        transform: translateY(0);
+    }
+
+    .random-struggles {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        grid-template-columns: repeat(3, 1fr);
         gap: 1rem;
-        margin-top: 1.5rem;
+        margin-top: 2rem;
     }
 
-    .quick-link {
+    .random-struggle-card {
         background: rgba(248, 249, 255, 0.8);
         backdrop-filter: blur(5px);
-        padding: 1rem 1.5rem;
+        padding: 1.2rem;
         border-radius: 12px;
         text-decoration: none;
-        color: var(--rainbow-5);
-        font-weight: 500;
+        color: inherit;
         transition: all 0.3s ease;
-        border-left: 3px solid var(--rainbow-3);
-        min-height: 44px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        border-bottom: 3px solid var(--rainbow-3);
     }
 
-    .quick-link:hover {
+    .random-struggle-card:hover {
         background: var(--rainbow-3);
         color: white;
-        text-decoration: none;
         transform: translateY(-2px);
         box-shadow: 0 8px 25px rgba(72, 219, 251, 0.3);
     }
 
+    .random-struggle-title {
+        font-weight: 600;
+        font-size: 0.95rem;
+        margin-bottom: 0.3rem;
+    }
+
+    .random-struggle-subtitle {
+        font-size: 0.85rem;
+        opacity: 0.9;
+    }
+
+    /* Rest of your existing styles... */
     .share-experience {
         background: var(--card-background);
         backdrop-filter: blur(10px);
@@ -691,171 +722,18 @@ title: "The Neurodivergent Survival Guide"
         font-size: 0.95rem;
     }
 
-    /* Jargon tooltip styles */
-    .jargon {
-        color: #e84393;
-        text-decoration: none;
-        border-bottom: 1px dotted #e84393;
-        position: relative;
-        cursor: help;
-        font-weight: 500;
-    }
-
-    .jargon:hover {
-        color: #fd79a8;
-        border-bottom-color: #fd79a8;
-    }
-
-    .tooltip {
-        visibility: hidden;
-        opacity: 0;
-        position: absolute;
-        bottom: calc(100% + 8px);
-        left: 50%;
-        transform: translateX(-50%);
-        background: #333;
-        color: white;
-        padding: 12px 16px;
-        border-radius: 8px;
-        font-size: 0.9rem;
-        font-weight: normal;
-        z-index: 1001;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-        transition: opacity 0.3s, visibility 0.3s;
-        max-width: 800px;
-        min-width: 200px;
-        width: max-content;
-        white-space: normal;
-        text-align: left;
-        line-height: 1.5;
-        pointer-events: none;
-    }
-
-    .tooltip::after {
-        content: '';
-        position: absolute;
-        top: 100%;
-        left: 50%;
-        transform: translateX(-50%);
-        border: 6px solid transparent;
-        border-top-color: #333;
-    }
-
-    .jargon:hover .tooltip {
-        visibility: visible;
-        opacity: 1;
-    }
-
-    /* Focus states for accessibility */
-    .section-card:focus,
-    .quick-link:focus,
-    .jargon:focus,
-    .search-box:focus {
-        outline: 2px solid #fff;
-        outline-offset: 2px;
-    }
-
-    /* Motion accessibility */
-    @media (prefers-reduced-motion: reduce) {
-        *, *::before, *::after {
-            animation-duration: 0.01ms !important;
-            animation-iteration-count: 1 !important;
-            transition-duration: 0.01ms !important;
-        }
-        
-        body::before,
-        body::after {
-            animation: none !important;
-        }
-        
-        .hero::before {
-            animation: none !important;
-        }
-    }
-
     /* Mobile responsive */
-    @media (max-width: 1024px) {
-        .search-results {
-            max-height: 300px;
-        }
-    }
-
     @media (max-width: 768px) {
-        .search-section {
-            max-width: 90%;
-        }
-        
-        .search-results {
-            max-height: 250px;
-        }
-        
-        .result-title {
-            font-size: 0.9rem;
-        }
-        
-        .result-description {
-            font-size: 0.8rem;
+        .featured-grid {
+            grid-template-columns: 1fr;
         }
 
-        .hero {
-            padding: 2rem 1rem;
-        }
-
-        .hero h1 {
-            font-size: 2rem;
-        }
-
-        .container {
-            padding: 1rem;
-        }
-
-        .intro-section,
-        .how-it-works,
-        .quick-access,
-        .share-experience,
-        .tip-jar,
-        .footer-note {
-            padding: 1.5rem;
+        .random-struggles {
+            grid-template-columns: 1fr;
         }
 
         .main-sections {
             grid-template-columns: 1fr;
-            max-width: none;
-        }
-
-        .workflow-steps {
-            grid-template-columns: 1fr;
-        }
-
-        .quick-links {
-            grid-template-columns: 1fr;
-        }
-
-        .contribution-types {
-            grid-template-columns: 1fr;
-        }
-
-        .disclaimer {
-            padding: 1.2rem;
-        }
-    }
-
-    @media (max-width: 480px) {
-        .hero h1 {
-            font-size: 1.8rem;
-        }
-
-        .hero p {
-            font-size: 1rem;
-        }
-
-        .intro-section,
-        .how-it-works,
-        .quick-access,
-        .share-experience,
-        .tip-jar,
-        .footer-note {
-            padding: 1.2rem;
         }
     }
 </style>
@@ -903,38 +781,27 @@ title: "The Neurodivergent Survival Guide"
             </a>
         </div>
 
-        <div class="quick-access">
-            <h3>Popular Starting Points</h3>
-            <p style="color: #666; margin-bottom: 1.5rem;">Jump directly to commonly accessed topics</p>
-            <div class="quick-links">
-                <a href="{{ '/struggles/task-initiation-paralysis.html' | relative_url }}" class="quick-link">Task Initiation Paralysis</a>
-                <a href="{{ '/conditions/autism.html' | relative_url }}" class="quick-link">Autism Guide</a>
-                <a href="{{ '/conditions/adhd.html' | relative_url }}" class="quick-link">ADHD Guide</a>
-                <a href="{{ '/struggles/working-memory-difficulties.html' | relative_url }}" class="quick-link">Working Memory Difficulties</a>
-                <a href="{{ '/conditions/bipolar.html' | relative_url }}" class="quick-link">Bipolar Guide</a>
+        <!-- FEATURED ARTICLES SECTION -->
+        <div class="featured-section">
+            <h2>Featured Resources</h2>
+            <p>Our most comprehensive and helpful guides for understanding common neurodivergent experiences</p>
+            
+            <div class="featured-grid" id="featuredGrid">
+                <!-- Featured articles will be inserted here by JavaScript -->
             </div>
         </div>
 
-        <div class="how-it-works">
-            <h2>How This Guide Works</h2>
-            <div class="workflow-steps">
-                <div class="workflow-step">
-                    <div class="step-number">1</div>
-                    <h4>Start Where You Are</h4>
-                    <p>Enter through any point - a daily struggle, a condition you're exploring, or a term you heard. All paths connect to build understanding.</p>
-                </div>
-
-                <div class="workflow-step">
-                    <div class="step-number">2</div>
-                    <h4>Understand the Why</h4>
-                    <p>Learn what's happening in your brain and why certain situations create friction. Knowledge reduces self-blame and shame.</p>
-                </div>
-
-                <div class="workflow-step">
-                    <div class="step-number">3</div>
-                    <h4>Build Your Toolkit</h4>
-                    <p>Get immediate strategies and long-term approaches that work for your life. Explore connected topics to build fuller understanding.</p>
-                </div>
+        <!-- RANDOM STRUGGLES SECTION -->
+        <div class="random-section">
+            <h2>Explore Random Struggles</h2>
+            <p>Not sure where to start? Discover struggles you might not have realized had a name or explanation</p>
+            
+            <button class="random-button" onclick="loadRandomStruggles()">
+                🎲 Show Me Random Struggles
+            </button>
+            
+            <div class="random-struggles" id="randomStruggles">
+                <!-- Random struggles will be inserted here -->
             </div>
         </div>
 
@@ -960,7 +827,7 @@ title: "The Neurodivergent Survival Guide"
             <div class="email-cta">
                 <p><strong>Email us at:</strong> 
                     <a href="mailto:stories.neurodivergent.guide@gmail.com?subject=Sharing My Experience" 
-                       style="color: #48dbfb; text-decoration: none; font-weight: 600;">
+                       style="color: #4a5568; text-decoration: none; font-weight: 600;">
                         stories.neurodivergent.guide@gmail.com
                     </a>
                 </p>
@@ -998,22 +865,117 @@ title: "The Neurodivergent Survival Guide"
 </div>
 
 <script>
-// Enhanced Search Implementation with Fuse.js
+// Generate arrays from Jekyll pages
+const allStruggles = [
+{% assign published_struggles = site.pages | where: "layout", "struggle" | where: "status", "published" %}
+{% for struggle in published_struggles %}
+    { 
+        title: "{{ struggle.title | escape }}", 
+        subtitle: "{{ struggle.subtitle | escape }}", 
+        url: "{{ struggle.url | relative_url }}", 
+        condition: "{{ struggle.condition }}" 
+    }{% unless forloop.last %},{% endunless %}
+{% endfor %}
+];
+
+const featuredArticles = [
+{% assign featured_struggles = site.pages | where: "layout", "struggle" | where: "featured", true | where: "status", "published" %}
+{% for struggle in featured_struggles limit: 12 %}
+    { 
+        title: "{{ struggle.title | escape }}", 
+        subtitle: "{{ struggle.subtitle | escape }}", 
+        url: "{{ struggle.url | relative_url }}", 
+        condition: "{{ struggle.condition }}" 
+    }{% unless forloop.last %},{% endunless %}
+{% endfor %}
+];
+
+// Load featured articles on page load
+function loadFeaturedArticles() {
+    const grid = document.getElementById('featuredGrid');
+    let html = '';
+    
+    // Handle case where we have fewer than 6 featured articles
+    let articlesToShow = [...featuredArticles];
+    
+    // If we have fewer than 6 featured articles, repeat them to fill the grid
+    if (articlesToShow.length < 6 && articlesToShow.length > 0) {
+        while (articlesToShow.length < 6) {
+            articlesToShow.push(...featuredArticles.slice(0, Math.min(featuredArticles.length, 6 - articlesToShow.length)));
+        }
+        articlesToShow = articlesToShow.slice(0, 6);
+    }
+    
+    // If no featured articles, show message
+    if (articlesToShow.length === 0) {
+        grid.innerHTML = '<p style="text-align: center; color: #666;">Featured articles coming soon</p>';
+        return;
+    }
+    
+    // Shuffle for rotation effect (only if we have at least 6 unique articles)
+    if (featuredArticles.length >= 6) {
+        articlesToShow = [...featuredArticles].sort(() => Math.random() - 0.5).slice(0, 6);
+    }
+    
+    articlesToShow.forEach(article => {
+        html += `
+            <a href="{{ site.baseurl }}${article.url}" class="featured-card">
+                <div class="featured-card-title">${article.title}</div>
+                <div class="featured-card-subtitle">${article.subtitle}</div>
+                <span class="featured-card-condition ${article.condition}">${article.condition.toUpperCase()}</span>
+            </a>
+        `;
+    });
+    
+    grid.innerHTML = html;
+}
+
+// Load random struggles
+function loadRandomStruggles() {
+    const container = document.getElementById('randomStruggles');
+    
+    // Shuffle and pick 3 random struggles
+    const shuffled = [...allStruggles].sort(() => Math.random() - 0.5);
+    const selected = shuffled.slice(0, 3);
+    
+    let html = '';
+    selected.forEach(struggle => {
+        html += `
+            <a href="{{ site.baseurl }}${struggle.url}" class="random-struggle-card">
+                <div class="random-struggle-title">${struggle.title}</div>
+                <div class="random-struggle-subtitle">${struggle.subtitle}</div>
+            </a>
+        `;
+    });
+    
+    container.innerHTML = html;
+    
+    // Add a little animation
+    container.style.opacity = '0';
+    setTimeout(() => {
+        container.style.transition = 'opacity 0.5s ease';
+        container.style.opacity = '1';
+    }, 10);
+}
+
+// Initialize on page load
+document.addEventListener('DOMContentLoaded', function() {
+    loadFeaturedArticles();
+    loadRandomStruggles();
+    
+    // Rotate featured articles every 30 seconds
+    setInterval(loadFeaturedArticles, 30000);
+});
+
+// Keep existing search implementation
 let searchIndex = null;
 let fuse = null;
 
-// Initialize search when DOM is loaded
-document.addEventListener('DOMContentLoaded', function() {
-    initializeSearch();
-});
-
 async function initializeSearch() {
     try {
-        // Load the search index - use Jekyll's relative_url filter to handle subpaths
         const response = await fetch('{{ "/search-index.json" | relative_url }}');
         searchIndex = await response.json();
         
-        // Configure Fuse.js for fuzzy search
         const fuseOptions = {
             keys: [
                 { name: 'title', weight: 0.4 },
@@ -1021,7 +983,7 @@ async function initializeSearch() {
                 { name: 'search_terms', weight: 0.2 },
                 { name: 'description', weight: 0.1 }
             ],
-            threshold: 0.4, // Lower = more strict matching
+            threshold: 0.4,
             distance: 100,
             minMatchCharLength: 2,
             includeScore: true,
@@ -1029,13 +991,10 @@ async function initializeSearch() {
         };
         
         fuse = new Fuse(searchIndex, fuseOptions);
-        
-        // Set up search interface
         setupSearchInterface();
         
     } catch (error) {
         console.error('Failed to load search index:', error);
-        // Fallback to simple routing if search index fails
         setupFallbackSearch();
     }
 }
@@ -1049,12 +1008,10 @@ function setupSearchInterface() {
         return;
     }
     
-    // Move search results to body to escape all stacking contexts
     document.body.appendChild(searchResults);
     
     let searchTimeout;
     
-    // Search as user types (with debouncing)
     searchBox.addEventListener('input', function(e) {
         clearTimeout(searchTimeout);
         const query = e.target.value.trim();
@@ -1066,10 +1023,9 @@ function setupSearchInterface() {
         
         searchTimeout = setTimeout(() => {
             performSearch(query);
-        }, 200); // 200ms delay to avoid excessive searching
+        }, 200);
     });
     
-    // Handle keyboard navigation
     searchBox.addEventListener('keydown', function(e) {
         if (e.key === 'Enter') {
             e.preventDefault();
@@ -1083,14 +1039,12 @@ function setupSearchInterface() {
         }
     });
     
-    // Hide results when clicking outside
     document.addEventListener('click', function(e) {
         if (!e.target.closest('.search-section') && !e.target.closest('.search-results')) {
             hideSearchResults();
         }
     });
     
-    // Show results when focusing on search box (if there's content)
     searchBox.addEventListener('focus', function() {
         if (this.value.trim().length >= 2) {
             performSearch(this.value.trim());
@@ -1106,7 +1060,6 @@ function performSearch(query) {
         return;
     }
     
-    // Check for crisis-related search terms first
     const crisisTerms = ['suicide', 'suicidal', 'kill myself', 'end it all', 'want to die', 'hurt myself', 'self harm', 'crisis', 'emergency'];
     const lowerQuery = query.toLowerCase();
     const isCrisisSearch = crisisTerms.some(term => lowerQuery.includes(term));
@@ -1116,11 +1069,64 @@ function performSearch(query) {
         return;
     }
     
-    // Perform fuzzy search
     const results = fuse.search(query);
-    
-    // Display results
     displaySearchResults(results, query);
+}
+
+function displaySearchResults(results, query) {
+    const searchResults = document.getElementById('searchResults');
+    
+    if (results.length === 0) {
+        searchResults.innerHTML = `
+            <div class="no-results">
+                No matches found for "${query}"<br>
+                <small>Try different keywords or check spelling</small>
+            </div>
+        `;
+        showSearchResults();
+        return;
+    }
+    
+    const topResults = results.slice(0, 8);
+    
+    let html = '';
+    
+    if (query.length <= 3) {
+        html += `<div class="search-hint">💡 Keep typing for more specific results</div>`;
+    }
+    
+    topResults.forEach(result => {
+        const item = result.item;
+        html += `
+            <a href="{{ '/' | relative_url }}${item.url.replace(/^\//, '')}" class="search-result-item">
+                <div class="result-title">
+                    ${item.title}
+                    <span class="result-condition ${item.condition}">${item.condition.toUpperCase()}</span>
+                </div>
+                <div class="result-description">${item.description}</div>
+            </a>
+        `;
+    });
+    
+    searchResults.innerHTML = html;
+    showSearchResults();
+}
+
+function showSearchResults() {
+    const searchResults = document.getElementById('searchResults');
+    const searchBox = document.getElementById('searchBox');
+    
+    const searchBoxRect = searchBox.getBoundingClientRect();
+    searchResults.style.top = (searchBoxRect.bottom + window.scrollY) + 'px';
+    searchResults.style.left = searchBoxRect.left + 'px';
+    searchResults.style.width = searchBoxRect.width + 'px';
+    
+    searchResults.classList.add('show');
+}
+
+function hideSearchResults() {
+    const searchResults = document.getElementById('searchResults');
+    searchResults.classList.remove('show');
 }
 
 function displayCrisisResources() {
@@ -1161,142 +1167,8 @@ function displayCrisisResources() {
     showSearchResults();
 }
 
-function displaySearchResults(results, query) {
-    const searchResults = document.getElementById('searchResults');
-    
-    if (results.length === 0) {
-        searchResults.innerHTML = `
-            <div class="no-results">
-                No matches found for "${query}"<br>
-                <small>Try different keywords or check spelling</small>
-            </div>
-        `;
-        showSearchResults();
-        return;
-    }
-    
-    // Limit to top 8 results
-    const topResults = results.slice(0, 8);
-    
-    let html = '';
-    
-    // Add search hint for first few characters
-    if (query.length <= 3) {
-        html += `<div class="search-hint">💡 Keep typing for more specific results</div>`;
-    }
-    
-    // Generate result items
-    topResults.forEach(result => {
-        const item = result.item;
-        const score = result.score;
-        
-        html += `
-            <a href="{{ '/' | relative_url }}${item.url.replace(/^\//, '')}" class="search-result-item">
-                <div class="result-title">
-                    ${item.title}
-                    <span class="result-condition ${item.condition}">${item.condition.toUpperCase()}</span>
-                </div>
-                <div class="result-description">${item.description}</div>
-            </a>
-        `;
-    });
-    
-    searchResults.innerHTML = html;
-    showSearchResults();
-}
-
-function showSearchResults() {
-    const searchResults = document.getElementById('searchResults');
-    const searchBox = document.getElementById('searchBox');
-    
-    // Position the fixed dropdown below the search box
-    const searchBoxRect = searchBox.getBoundingClientRect();
-    searchResults.style.top = (searchBoxRect.bottom + window.scrollY) + 'px';
-    searchResults.style.left = searchBoxRect.left + 'px';
-    searchResults.style.width = searchBoxRect.width + 'px';
-    
-    searchResults.classList.add('show');
-}
-
-function hideSearchResults() {
-    const searchResults = document.getElementById('searchResults');
-    searchResults.classList.remove('show');
-}
-
-// Fallback search function if Fuse.js fails to load
-function setupFallbackSearch() {
-    const searchBox = document.getElementById('searchBox');
-    
-    if (!searchBox) return;
-    
-    searchBox.addEventListener('keypress', function(event) {
-        if (event.key === 'Enter') {
-            handleFallbackSearch(event);
-        }
-    });
-}
-
-function handleFallbackSearch(event) {
-    const searchTerm = event.target.value.toLowerCase().trim();
-    
-    // Check for crisis terms first
-    const crisisTerms = ['suicide', 'suicidal', 'kill myself', 'end it all', 'want to die', 'hurt myself', 'self harm', 'crisis', 'emergency'];
-    const isCrisisSearch = crisisTerms.some(term => searchTerm.includes(term));
-    
-    if (isCrisisSearch) {
-        displayCrisisResources();
-        return;
-    }
-    
-    // Basic fallback routes for essential pages - now using relative_url
-    const routes = {
-        'autism': '{{ "/conditions/autism.html" | relative_url }}',
-        'adhd': '{{ "/conditions/adhd.html" | relative_url }}',
-        'bipolar': '{{ "/conditions/bipolar.html" | relative_url }}',
-        'bpd': '{{ "/conditions/borderline-personality-disorder.html" | relative_url }}',
-        'ocd': '{{ "/conditions/ocd.html" | relative_url }}',
-        'task initiation': '{{ "/struggles/task-initiation-paralysis.html" | relative_url }}',
-        'paralysis': '{{ "/struggles/task-initiation-paralysis.html" | relative_url }}',
-        'attention': '{{ "/struggles/attention-regulation.html" | relative_url }}',
-        'memory': '{{ "/struggles/working-memory-difficulties.html" | relative_url }}',
-        'social cues': '{{ "/struggles/missing-social-cues.html" | relative_url }}',
-        'masking': '{{ "/struggles/masking-burnout.html" | relative_url }}'
-    };
-    
-    // Find matching route
-    let targetPage = null;
-    for (const [term, page] of Object.entries(routes)) {
-        if (searchTerm.includes(term)) {
-            targetPage = page;
-            break;
-        }
-    }
-    
-    if (targetPage) {
-        window.location.href = targetPage;
-    } else if (searchTerm) {
-        // Route to appropriate section
-        if (searchTerm.includes('condition') || searchTerm.includes('brain')) {
-            window.location.href = '{{ "/conditions/index.html" | relative_url }}';
-        } else if (searchTerm.includes('toolkit') || searchTerm.includes('advocacy')) {
-            window.location.href = '{{ "/toolkits/index.html" | relative_url }}';
-        } else {
-            window.location.href = '{{ "/struggles/index.html" | relative_url }}';
-        }
-    }
-}
-
-// Smooth scrolling for anchor links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-        }
-    });
+// Initialize search on DOM load
+document.addEventListener('DOMContentLoaded', function() {
+    initializeSearch();
 });
 </script>
