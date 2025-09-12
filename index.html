@@ -266,6 +266,103 @@ title: "The Neurodivergent Survival Guide"
         color: #666;
         font-style: italic;
     }
+    
+    /* Crisis Resources Styling */
+    .crisis-resources {
+        background: #fff5f5 !important;
+        border: 2px solid #dc2626 !important;
+        border-radius: 0 0 16px 16px !important;
+        padding: 24px !important;
+        margin: 0 !important;
+        box-shadow: 0 4px 12px rgba(220, 38, 38, 0.15) !important;
+    }
+    
+    .crisis-header {
+        color: #dc2626 !important;
+        font-weight: 700 !important;
+        font-size: 1.25rem !important;
+        margin-bottom: 16px !important;
+        display: flex !important;
+        align-items: center !important;
+        gap: 8px !important;
+    }
+    
+    .crisis-intro {
+        margin: 0 0 20px 0 !important;
+        font-weight: 500 !important;
+        color: #333 !important;
+        line-height: 1.6 !important;
+        font-size: 1rem !important;
+    }
+    
+    .crisis-option {
+        margin: 8px 0 !important;
+        padding: 14px 18px !important;
+        background: white !important;
+        border-radius: 8px !important;
+        border: 1px solid #fecaca !important;
+        line-height: 1.6 !important;
+        transition: all 0.2s ease !important;
+    }
+    
+    .crisis-option:hover {
+        box-shadow: 0 2px 8px rgba(220, 38, 38, 0.15) !important;
+        border-color: #dc2626 !important;
+        transform: translateY(-1px);
+    }
+    
+    .crisis-option strong {
+        color: #dc2626 !important;
+        display: inline-block !important;
+        min-width: 200px !important;
+        font-size: 1rem !important;
+    }
+    
+    .crisis-option a[href^="tel:"] {
+        color: #dc2626 !important;
+        text-decoration: none !important;
+        font-weight: 700 !important;
+        font-size: 1.15rem !important;
+        padding: 2px 8px !important;
+        border-radius: 4px !important;
+        transition: all 0.2s ease !important;
+        display: inline-block !important;
+    }
+    
+    .crisis-option a[href^="tel:"]:hover {
+        background: #dc2626 !important;
+        color: white !important;
+        transform: scale(1.05);
+    }
+    
+    .crisis-text-highlight {
+        color: #dc2626 !important;
+        font-weight: 700 !important;
+        font-size: 1.1rem !important;
+    }
+    
+    .crisis-option small {
+        display: block !important;
+        color: #666 !important;
+        margin-top: 6px !important;
+        margin-left: 200px !important;
+        font-size: 0.9rem !important;
+    }
+    
+    .crisis-footer {
+        margin: 20px 0 0 0 !important;
+        padding: 16px !important;
+        background: #fef2f2 !important;
+        border-radius: 8px !important;
+        border: 1px solid #fecaca !important;
+    }
+    
+    .crisis-footer p {
+        margin: 0 !important;
+        font-size: 0.95rem !important;
+        color: #555 !important;
+        line-height: 1.6 !important;
+    }
 
     .container {
         max-width: 1200px;
@@ -712,11 +809,24 @@ title: "The Neurodivergent Survival Guide"
         }
         
         .crisis-resources {
-            padding: 12px !important;
-            font-size: 0.9rem;
+            padding: 16px !important;
         }
         
-        .crisis-resources a[href^="tel:"] {
+        .crisis-option {
+            padding: 12px !important;
+        }
+        
+        .crisis-option strong {
+            min-width: unset !important;
+            display: block !important;
+            margin-bottom: 4px !important;
+        }
+        
+        .crisis-option small {
+            margin-left: 0 !important;
+        }
+        
+        .crisis-option a[href^="tel:"] {
             font-size: 1rem !important;
         }
         
@@ -1158,7 +1268,7 @@ function displayCrisisResources() {
             </div>
             
             <div class="crisis-option">
-                <strong>Crisis Text Line:</strong> <span style="color: #dc2626; font-weight: 600;">Text HOME to 741741</span>
+                <strong>Crisis Text Line:</strong> <span class="crisis-text-highlight">Text HOME to 741741</span>
                 <small>24/7 crisis support via text</small>
             </div>
             
