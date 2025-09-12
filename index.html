@@ -442,7 +442,7 @@ title: "The Neurodivergent Survival Guide"
         text-decoration: none;
         color: inherit;
         transition: all 0.3s ease;
-        border-left: 4px solid var(--steel-light);
+        border-left: 4px solid;
         display: flex;
         flex-direction: column;
     }
@@ -511,8 +511,19 @@ title: "The Neurodivergent Survival Guide"
         font-size: 1rem;
     }
 
+    @keyframes seamlessRainbow {
+        from { background-position: 0px 0; }
+        to { background-position: 900px 0; }
+    }
+
     .random-button {
-        background: linear-gradient(45deg, var(--steel-dark), var(--steel-light));
+        background: linear-gradient(90deg, 
+            #ff6b6b 0px, #feca57 150px, #48dbfb 300px, 
+            #ff9ff3 450px, #54a0ff 600px, #5f27cd 750px,
+            #ff6b6b 900px);
+        background-size: 900px 100%;
+        background-repeat: repeat-x;
+        animation: seamlessRainbow 30s linear infinite;
         color: white;
         border: none;
         padding: 1rem 2rem;
@@ -520,14 +531,14 @@ title: "The Neurodivergent Survival Guide"
         font-size: 1.1rem;
         font-weight: 500;
         cursor: pointer;
-        transition: all 0.3s ease;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
         margin-bottom: 2rem;
-        box-shadow: 0 4px 15px rgba(74, 85, 104, 0.3);
+        box-shadow: 0 4px 15px rgba(72, 219, 251, 0.3);
     }
 
     .random-button:hover {
         transform: translateY(-2px);
-        box-shadow: 0 6px 20px rgba(74, 85, 104, 0.4);
+        box-shadow: 0 6px 20px rgba(72, 219, 251, 0.4);
     }
 
     .random-button:active {
@@ -549,11 +560,10 @@ title: "The Neurodivergent Survival Guide"
         text-decoration: none;
         color: inherit;
         transition: all 0.3s ease;
-        border-bottom: 3px solid var(--steel-light);
+        border-bottom: 3px solid;
     }
 
     .random-struggle-card:hover {
-        background: var(--steel-light);
         color: white;
         transform: translateY(-2px);
         box-shadow: 0 8px 25px rgba(113, 128, 150, 0.3);
@@ -678,51 +688,6 @@ title: "The Neurodivergent Survival Guide"
         font-weight: 600;
         color: #333;
         border: 2px solid rgba(255, 118, 117, 0.3);
-    }
-
-    .disclaimer {
-        background: rgba(255, 242, 242, 0.9);
-        backdrop-filter: blur(10px);
-        border: 1px solid #ffcccb;
-        padding: 1.5rem;
-        border-radius: 16px;
-        margin: 2rem 0;
-    }
-
-    .disclaimer h4 {
-        color: #d63031;
-        margin-bottom: 0.8rem;
-        font-size: 1.2rem;
-    }
-
-    .disclaimer p {
-        color: var(--text-secondary);
-        font-size: 0.95rem;
-        margin-bottom: 0.8rem;
-    }
-
-    .footer-note {
-        background: var(--card-background);
-        backdrop-filter: blur(10px);
-        border-radius: 20px;
-        padding: 2rem;
-        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
-        text-align: center;
-        margin: 3rem 0;
-        border-left: 4px solid #6c5ce7;
-        border: 1px solid rgba(255, 255, 255, 0.2);
-    }
-
-    .footer-note h3 {
-        color: #6c5ce7;
-        margin-bottom: 1rem;
-        font-size: 1.3rem;
-    }
-
-    .footer-note p {
-        color: var(--text-secondary);
-        margin-bottom: 1rem;
-        font-size: 0.95rem;
     }
 
     /* Mobile responsive */
@@ -896,6 +861,15 @@ title: "The Neurodivergent Survival Guide"
 </div>
 
 <script>
+// Condition colors from _data/condition_colors.yml
+const conditionColors = {
+    adhd: { primary: '#d63031', secondary: '#b71c1c' },
+    autism: { primary: '#27ae60', secondary: '#196f3d' },
+    bipolar: { primary: '#0984e3', secondary: '#002366' },
+    bpd: { primary: '#f39c12', secondary: '#d68910' },
+    ocd: { primary: '#9b59b6', secondary: '#8e44ad' }
+};
+
 // Generate arrays from Jekyll pages
 const allStruggles = [
 {% assign published_struggles = site.pages | where: "layout", "struggle" | where: "status", "published" %}
@@ -949,8 +923,9 @@ function loadFeaturedArticles() {
     }
     
     articlesToShow.forEach(article => {
+        const color = conditionColors[article.condition]?.primary || '#718096';
         html += `
-            <a href="{{ site.baseurl }}${article.url}" class="featured-card">
+            <a href="{{ site.baseurl }}${article.url}" class="featured-card" style="border-left-color: ${color};">
                 <div class="featured-card-title">${article.title}</div>
                 <div class="featured-card-subtitle">${article.subtitle}</div>
                 <span class="featured-card-condition ${article.condition}">${article.condition.toUpperCase()}</span>
@@ -971,8 +946,11 @@ function loadRandomStruggles() {
     
     let html = '';
     selected.forEach(struggle => {
+        const color = conditionColors[struggle.condition]?.primary || '#718096';
         html += `
-            <a href="{{ site.baseurl }}${struggle.url}" class="random-struggle-card">
+            <a href="{{ site.baseurl }}${struggle.url}" class="random-struggle-card" style="border-bottom-color: ${color};" 
+               onmouseover="this.style.backgroundColor='${color}'; this.style.color='white';" 
+               onmouseout="this.style.backgroundColor='rgba(248, 249, 255, 0.8)'; this.style.color='inherit';">
                 <div class="random-struggle-title">${struggle.title}</div>
                 <div class="random-struggle-subtitle">${struggle.subtitle}</div>
             </a>
