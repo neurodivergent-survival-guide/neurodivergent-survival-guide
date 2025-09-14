@@ -633,9 +633,10 @@ layout: default
         margin: 1rem 0 0 0;
         transition: all 0.3s ease;
         position: relative;
-        overflow: hidden;
+        overflow: visible !important;
         border: 2px solid #e0e0e0;
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        z-index: 100;
     }
 
     .learn-more:hover {
@@ -758,8 +759,9 @@ layout: default
         -ms-user-select: text;
         pointer-events: auto;
         position: relative;
-        z-index: 2;
+        z-index: 101;
         background: white;
+        overflow: visible !important;
     }
 
     .learn-more-content p {
@@ -772,6 +774,17 @@ layout: default
 
     .learn-more.expanded .learn-more-content {
         display: block;
+    }
+
+    /* Fix z-index specifically for jargon and tooltips inside Learn More sections */
+    .learn-more .jargon {
+        position: relative;
+        z-index: 102;
+    }
+
+    .learn-more .tooltip {
+        z-index: 103 !important;
+        position: absolute !important;
     }
 
     /* Jargon styling - Minimal Line with section-aware colors */
@@ -880,9 +893,24 @@ layout: default
         border-bottom-style: solid;
     }
 
-    /* Section-specific tooltip bottom borders */
+    /* Tooltip arrow/pointer */
+    .tooltip::after {
+        content: '';
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 0;
+        border-left: 6px solid transparent;
+        border-right: 6px solid transparent;
+        border-top: 6px solid white;
+        filter: drop-shadow(0 2px 2px rgba(0,0,0,0.1));
+    }
+
+    /* Section-specific tooltip bottom borders and arrows */
     .what-section .tooltip { 
-        border-bottom-color: #b71c1c;  /* Darker red */
+        border-bottom-color: #b71c1c;
     }
     
     .why-section .tooltip { 
