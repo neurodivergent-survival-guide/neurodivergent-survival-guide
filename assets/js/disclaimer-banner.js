@@ -1,10 +1,58 @@
 /**
  * Neurodivergent Survival Guide - Secure Disclaimer Banner
  * Uses sessionStorage for better privacy and security
+ * Excludes pages with 'default' layout
  */
 
 (function() {
     'use strict';
+
+    // Check if page should show disclaimer banner
+    function shouldShowDisclaimer() {
+        // Method 1: Check for data attribute on body or html
+        const body = document.body;
+        const html = document.documentElement;
+        
+        if (body.dataset.layout === 'default' || html.dataset.layout === 'default') {
+            return false;
+        }
+        
+        // Method 2: Check for class on body or html
+        if (body.classList.contains('layout-default') || html.classList.contains('layout-default')) {
+            return false;
+        }
+        
+        // Method 3: Check meta tag
+        const layoutMeta = document.querySelector('meta[name="page-layout"]');
+        if (layoutMeta && layoutMeta.content === 'default') {
+            return false;
+        }
+        
+        // Method 4: Check for specific elements that only exist in non-default layouts
+        // For example, if struggle pages have unique elements
+        const isStrugglePage = document.querySelector('.content-card, .struggle-content, .what-section');
+        const isConditionPage = document.querySelector('.condition-content, .condition-header');
+        const isToolkitPage = document.querySelector('.toolkit-content, .toolkit-header');
+        
+        // If none of these specific content types exist, it's likely a default page
+        if (!isStrugglePage && !isConditionPage && !isToolkitPage) {
+            // Additional check: if there's no specific layout indicator, assume it's default
+            const hasLayoutIndicator = body.dataset.layout || html.dataset.layout || 
+                                      body.className.includes('layout-') || 
+                                      html.className.includes('layout-');
+            
+            // If no layout indicator at all, we might be on a default page
+            if (!hasLayoutIndicator) {
+                // But let's check for home page specific elements to be sure
+                const isHomePage = document.querySelector('.hero-section, .home-content, #home');
+                if (isHomePage) {
+                    return false; // Don't show on home page (typically uses default layout)
+                }
+            }
+        }
+        
+        return true; // Show disclaimer on all non-default pages
+    }
 
     // Secure storage functions using sessionStorage
     function setDismissalStatus(dismissed) {
@@ -44,6 +92,12 @@
     }
 
     function createDisclaimerBanner() {
+        // First check if this page should show the disclaimer
+        if (!shouldShowDisclaimer()) {
+            console.log('Disclaimer banner suppressed on default layout page');
+            return;
+        }
+
         // Check if banner already exists (prevent duplicates)
         if (document.getElementById('nsg-disclaimer-banner')) {
             return;
@@ -144,7 +198,8 @@
         window.NSGDisclaimer = {
             dismiss: dismissDisclaimer,
             reset: function() { setDismissalStatus(false); },
-            status: getDismissalStatus
+            status: getDismissalStatus,
+            shouldShow: shouldShowDisclaimer // Expose for debugging
         };
     }
 
