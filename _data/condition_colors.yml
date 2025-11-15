@@ -3,11 +3,11 @@
 # Primary/secondary are full strength, container backgrounds are tinted
 
 adhd:
-  primary: "#d63031"
-  secondary: "#b71c1c"
-  gradient_start: "#d63031"
-  gradient_end: "#b71c1c"
-  container_background: "#ffebee"
+  primary: "#e57373"           # Softer red, still vibrant
+  secondary: "#c62828"         # Deeper red for contrast
+  gradient_start: "#e57373"    # Matches new primary
+  gradient_end: "#c62828"      # Matches new secondary
+  container_background: "#ffebee"  # This is already perfect - very soft pink
 
 autism:
   primary: "#27ae60"
